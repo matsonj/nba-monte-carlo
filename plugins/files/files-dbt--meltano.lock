@@ -1,0 +1,10 @@
+{
+  "plugin_type": "files",
+  "name": "files-dbt",
+  "namespace": "files_dbt",
+  "variant": "meltano",
+  "label": "dbt Files",
+  "docs": "https://hub.meltano.com/files/files-dbt",
+  "repo": "https://github.com/meltano/files-dbt",
+  "pip_url": "git+https://github.com/meltano/files-dbt.git@config-version-2"
+}

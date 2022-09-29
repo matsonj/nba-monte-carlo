@@ -1,0 +1,33 @@
+config:
+  send_anonymous_usage_stats: False
+  use_colors: True
+meltano:
+  target: "{{ env_var('DBT_TARGET') }}"
+  outputs:
+    snowflake:
+      type: snowflake
+      threads: 2
+      account: "{{ env_var('TARGET_SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('TARGET_SNOWFLAKE_USER') }}"
+      password: "{{ env_var('TARGET_SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('TARGET_SNOWFLAKE_ROLE') }}"
+      database: "{{ env_var('TARGET_SNOWFLAKE_DBNAME') }}"
+      warehouse: "{{ env_var('TARGET_SNOWFLAKE_WAREHOUSE') }}"
+      schema: "{{ env_var('DBT_TARGET_SCHEMA') }}"
+    postgres:
+      type: postgres
+      threads: 2
+      host: "{{ env_var('TARGET_POSTGRES_HOST') }}"
+      port: "{{ env_var('TARGET_POSTGRES_PORT') | int }}"
+      user: "{{ env_var('TARGET_POSTGRES_USER') }}"
+      pass: "{{ env_var('TARGET_POSTGRES_PASSWORD') }}"
+      dbname: "{{ env_var('TARGET_POSTGRES_DBNAME') }}"
+      schema: "{{ env_var('DBT_TARGET_SCHEMA') }}"
+    bigquery:
+      type: bigquery
+      threads: 2
+      method: service-account
+      project: "{{ env_var('TARGET_BIGQUERY_PROJECT_ID') }}"
+      dataset: "{{ env_var('DBT_TARGET_SCHEMA') }}"
+      keyfile: "{{ env_var('TARGET_BIGQUERY_CREDENTIALS_PATH') }}"
+      location: "{{ env_var('TARGET_BIGQUERY_LOCATION') }}"

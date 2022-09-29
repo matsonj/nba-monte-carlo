@@ -15,3 +15,8 @@ plugins:
     namespace: target_duckdb
     pip_url: git+https://github.com/jwills/target-duckdb.git
     executable: target-duckdb
+  transformers:
+  - name: dbt
+    variant: dbt-labs
+    pip_url: dbt-core~=1.1.0 dbt-postgres~=1.1.0 dbt-redshift~=1.1.0 dbt-snowflake~=1.1.0
+      dbt-bigquery~=1.1.0
