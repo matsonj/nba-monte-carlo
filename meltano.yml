@@ -5,3 +5,13 @@ environments:
 - name: dev
 - name: staging
 - name: prod
+plugins:
+  extractors:
+  - name: tap-spreadsheets-anywhere
+    variant: ets
+    pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
+  loaders:
+  - name: target-duckdb
+    namespace: target_duckdb
+    pip_url: git+https://github.com/jwills/target-duckdb.git
+    executable: target-duckdb
