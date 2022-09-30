@@ -1,4 +1,4 @@
-name: my_meltano_project
+name: nba_monte_carlo
 version: '1.0'
 profile: meltano
 config-version: 2
@@ -23,4 +23,4 @@ clean-targets:
 - dbt_packages
 - logs
 models:
-  my_meltano_project: null
+  nba_monte_carlo: null

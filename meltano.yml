@@ -1,6 +1,7 @@
 version: 1
 default_environment: dev
 project_id: 88c91a02-d68b-4952-8e56-94a297cf141f
+# drop this before "going public"
 environments:
 - name: dev
 - name: staging
@@ -16,7 +17,14 @@ plugins:
     pip_url: git+https://github.com/jwills/target-duckdb.git
     executable: target-duckdb
   transformers:
-  - name: dbt
-    variant: dbt-labs
-    pip_url: dbt-core~=1.1.0 dbt-postgres~=1.1.0 dbt-redshift~=1.1.0 dbt-snowflake~=1.1.0
-      dbt-bigquery~=1.1.0
+  - name: dbt-duckdb
+    namespace: dbt_duckdb
+    pip_url: git+https://github.com/jwills/dbt-duckdb.git
+    executable: dbt
+    config: 
+      project_dir: $MELTANO_PROJECT_ROOT/transform/
+      profiles_dir: $MELTANO_PROJECT_ROOT/transform/profile/
+  utilities:
+  - name: superset
+    variant: apache
+    pip_url: apache-superset==1.5.0 markupsafe==2.0.1 duckdb-engine
