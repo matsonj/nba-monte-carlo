@@ -11,20 +11,41 @@ plugins:
   - name: tap-spreadsheets-anywhere
     variant: ets
     pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
+    config:
+      tables:
+      - path: file:///mnt/c/Users/matso/OneDrive/Documents/test_data
+        name: test_load
+        pattern: .*
+        start_date: '2001-01-01T00:00:00Z'
+        key_properties: [key]
+        format: csv
   loaders:
   - name: target-duckdb
     namespace: target_duckdb
-    pip_url: git+https://github.com/jwills/target-duckdb.git
+    pip_url: target-duckdb==0.4.0
     executable: target-duckdb
+    settings:
+    - name: filepath
+    - name: default_target_schema
+    config:
+      filepath: /home/jacob/meltano-projects/mdsbox.db
+      default_target_schema: main
   transformers:
-  - name: dbt-duckdb
-    namespace: dbt_duckdb
-    pip_url: git+https://github.com/jwills/dbt-duckdb.git
-    executable: dbt
-    config: 
-      project_dir: $MELTANO_PROJECT_ROOT/transform/
-      profiles_dir: $MELTANO_PROJECT_ROOT/transform/profile/
+  - name: dbt
+    variant: dbt-labs
+    pip_url: dbt-duckdb==1.2.0
+    settings:
+    - name: path
+    config:
+      path: /home/jacob/meltano-projects/mdsbox.db
   utilities:
   - name: superset
     variant: apache
-    pip_url: apache-superset==1.5.0 markupsafe==2.0.1 duckdb-engine
+    pip_url: apache-superset==1.5.0 markupsafe==2.0.1 duckdb-engine==0.6.4
+schedules:
+- name: spreadsheets-anywhere-to-duckdb
+  interval: '@once'
+  extractor: tap-spreadsheets-anywhere
+  loader: target-duckdb
+  transform: skip
+  start_date: 2022-10-01 18:08:45.303947

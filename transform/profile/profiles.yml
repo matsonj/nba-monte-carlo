@@ -6,3 +6,4 @@ meltano:
   outputs:
     dev:
       type: duckdb
+      path: "{{ env_var('DBT_PATH') }}"
