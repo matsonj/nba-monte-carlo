@@ -54,10 +54,10 @@ SELECT * FROM test;
 note to self: steps 4 to 8 should probably be a makefile. baby steps!
 
 ## Todos
-[x] write initial steps
-[ ] create a makefile so you 'make pipeline' and it just all happens
-[ ] get data and load to github
-[ ] add extraction steps to spreadsheets anywhere
-[ ] build basic data frame w/dbt
-[ ] build the monte carlo sim
-[ ] some basic charts in superset (replicate 538?)
+- [x] write initial steps
+- [ ] create a makefile so you 'make pipeline' and it just all happens
+- [ ] get data and load to github
+- [ ] add extraction steps to spreadsheets anywhere
+- [ ] build basic data frame w/dbt
+- [ ] build the monte carlo sim
+- [ ] some basic charts in superset (replicate 538?)
