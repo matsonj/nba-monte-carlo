@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: nba
+    schema: main
+    tables:
+      - name: schedule
+        description: this is the nba schedule
+      - name: team_ratings
+        description: team ELO ratings & win totals
