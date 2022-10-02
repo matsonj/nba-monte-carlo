@@ -19,6 +19,12 @@ plugins:
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [key]
         format: csv
+      - path: https://raw.githubusercontent.com/matsonj/nba-monte-carlo/master/data
+        name: schedule
+        pattern: .*
+        start_date: '2001-01-01T00:00:00Z'
+        key_properties: []
+        format: csv
   loaders:
   - name: target-duckdb
     namespace: target_duckdb
