@@ -28,7 +28,7 @@ plugins:
     - name: filepath
     - name: default_target_schema
     config:
-      filepath: /home/jacob/meltano-projects/mdsbox.db
+      filepath: /tmp/mdsbox.db
       default_target_schema: main
   transformers:
   - name: dbt
@@ -37,7 +37,7 @@ plugins:
     settings:
     - name: path
     config:
-      path: /home/jacob/meltano-projects/mdsbox.db
+      path: /tmp/mdsbox.db
   utilities:
   - name: superset
     variant: apache
