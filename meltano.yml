@@ -13,17 +13,23 @@ plugins:
     pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
     config:
       tables:
-      - path: file:///mnt/c/Users/matso/OneDrive/Documents/test_data
+      - path: file:///mnt/c/Users/matso/OneDrive/Documents/test_data/test
         name: test_load
         pattern: .*
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [key]
         format: csv
-      - path: https://raw.githubusercontent.com/matsonj/nba-monte-carlo/master/data
+      - path: file:///mnt/c/Users/matso/OneDrive/Documents/test_data/schedule
         name: schedule
         pattern: .*
         start_date: '2001-01-01T00:00:00Z'
-        key_properties: []
+        key_properties: [key]
+        format: csv
+      - path: file:///mnt/c/Users/matso/OneDrive/Documents/test_data/team ratings
+        name: team_ratings
+        pattern: .*
+        start_date: '2001-01-01T00:00:00Z'
+        key_properties: [team]
         format: csv
   loaders:
   - name: target-duckdb
