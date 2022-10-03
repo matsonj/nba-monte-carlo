@@ -7,3 +7,4 @@ meltano:
     dev:
       type: duckdb
       path: "{{ env_var('DBT_PATH') }}"
+      threads: 4

@@ -4,7 +4,7 @@ sources:
   - name: nba
     schema: main
     tables:
-      - name: schedule
+      - name: raw_schedule
         description: this is the nba schedule
-      - name: team_ratings
+      - name: raw_team_ratings
         description: team ELO ratings & win totals

@@ -20,13 +20,13 @@ plugins:
         key_properties: [key]
         format: csv
       - path: file:///mnt/c/Users/matso/OneDrive/Documents/test_data/schedule
-        name: schedule
+        name: raw_schedule
         pattern: .*
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [key]
         format: csv
       - path: file:///mnt/c/Users/matso/OneDrive/Documents/test_data/team ratings
-        name: team_ratings
+        name: raw_team_ratings
         pattern: .*
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [team]
@@ -34,7 +34,7 @@ plugins:
   loaders:
   - name: target-duckdb
     namespace: target_duckdb
-    pip_url: target-duckdb==0.4.0
+    pip_url: target-duckdb==0.4.1
     executable: target-duckdb
     settings:
     - name: filepath
@@ -45,7 +45,7 @@ plugins:
   transformers:
   - name: dbt
     variant: dbt-labs
-    pip_url: dbt-duckdb==1.2.0
+    pip_url: dbt-duckdb==1.2.1
     settings:
     - name: path
     config:
