@@ -1,6 +1,11 @@
 # MDS in a box
 This project serves as end to end example of running the "Modern Data Stack" in a local environment. Development is primarily done on Windows via WSL, which means Mac is untested (but should work).
 
+## Current progress
+Right now, you can get the nba schedule and elo ratings from this project and generate the following query. more to come, see to-dos at bottom of readme.
+![image](https://user-images.githubusercontent.com/16811433/193890561-a0b3a9f5-be83-439d-ae49-0c959d4e9cb2.png)
+
+
 ## Getting started - Windows
 1. Create your WSL environment. Open a PowerShell terminal running as an administrator and execute:
 ```
