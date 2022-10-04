@@ -42,6 +42,12 @@ unzip duckdb_cli-linux-amd64.zip
 SELECT * FROM reg_season_summary;
 ```
 
+## Running your pipeline on demand
+After your run ```make pipeline```, you can run your pipeline again at any time with the following meltano command:
+```
+meltano run tap-spreadsheets-anywhere target-duckdb dbt:build
+```
+
 ## Todos
 - [x] write initial steps
 - [x] create a makefile so you 'make pipeline' and it just all happens
