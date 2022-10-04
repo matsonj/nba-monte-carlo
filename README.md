@@ -58,9 +58,14 @@ note to self: steps 4 to 8 should probably be a makefile. baby steps!
 ## Todos
 - [x] write initial steps
 - [ ] create a makefile so you 'make pipeline' and it just all happens
-- [x] get data and load to ~~github~~ local storage
-- [ ] find a web location for the source files
+- [x] get data and load to github storage
 - [x] add extraction steps to spreadsheets anywhere
 - [x] build basic data frame w/dbt
-- [ ] build the monte carlo sim
+- [x] build the monte carlo sim
+- [ ] add meta-stats
+  - [ ] playoff seeding
+  - [ ] playin game stuff
+  - [ ] playoff schedule
+  - [ ] series winners
+  - [ ] playoff wins
 - [ ] some basic charts in superset (replicate 538?)
