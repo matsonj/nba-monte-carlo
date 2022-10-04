@@ -21,51 +21,30 @@ sudo apt-get update
 ```
 sudo apt-get install python3.8 python3-pip python3.8-venv
 ```
-4. Now its time to grab pipx. 
+4. clone the this repo.
 ```
-# install pipx and ensure it is on the path
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
-# Be sure pipx is available on your path
-source ~/.bashrc
-```
-5. install meltano
-```
-pipx install meltano
-# check the version
-meltano --version
-```
-6. clone the this repo.
-```
-mkdir nba-monte-carlo
-cd nba-monte-carlo
+mkdir meltano-projects
+cd meltano-projects
 git clone https://github.com/matsonj/nba-monte-carlo.git
 # Go one folder level down into the folder that git just created
 cd nba-monte-carlo
+5. build your project
 ```
-7. run meltano install
+make pipeline
 ```
-meltano install
-# if you run into any dependency issues, clear them and then re-run meltano install
+6. if you feel so inclined, install the duckDB CLI and check your work.
 ```
-8. run your pipeline!
-```
- meltano run tap-spreadsheets-anywhere target-duckdb dbt:build
- ```
- 9. if you feel so inclined, install the duckDB CLI and check your work.
- ```
 wget https://github.com/duckdb/duckdb/releases/download/v0.5.1/duckdb_cli-linux-amd64.zip
 sudo apt install unzip
 unzip duckdb_cli-linux-amd64.zip
 ./duckdb
 .open /tmp/mdsbox.db
-SELECT * FROM test;
+SELECT * FROM reg_season_summary;
 ```
-note to self: steps 4 to 8 should probably be a makefile. baby steps!
 
 ## Todos
 - [x] write initial steps
-- [ ] create a makefile so you 'make pipeline' and it just all happens
+- [x] create a makefile so you 'make pipeline' and it just all happens
 - [x] get data and load to github storage
 - [x] add extraction steps to spreadsheets anywhere
 - [x] build basic data frame w/dbt
