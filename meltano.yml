@@ -42,6 +42,9 @@ plugins:
     pip_url: dbt-duckdb==1.2.1
     settings:
     - name: path
+    - name: models
+      value: "$MELTANO_TRANSFORM__PACKAGE_NAME $MELTANO_EXTRACTOR_NAMESPACE nba_monte_carlo"
+      label: "Models"
     config:
       path: /tmp/mdsbox.db
   utilities:
