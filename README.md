@@ -19,7 +19,7 @@ sudo apt-get update
 ```
 3. Install python3.
 ```
-sudo apt-get install python3.8 python3-pip
+sudo apt-get install python3.8 python3-pip python3.8-venv
 ```
 4. Now its time to grab pipx. 
 ```
@@ -28,8 +28,6 @@ python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 # Be sure pipx is available on your path
 source ~/.bashrc
-# Install venv for pipx to operate correctly
-sudo apt install python3.8-venv
 ```
 5. install meltano
 ```
