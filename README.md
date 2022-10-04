@@ -28,6 +28,7 @@ cd meltano-projects
 git clone https://github.com/matsonj/nba-monte-carlo.git
 # Go one folder level down into the folder that git just created
 cd nba-monte-carlo
+```
 5. build your project
 ```
 make pipeline
