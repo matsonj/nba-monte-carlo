@@ -63,7 +63,7 @@ note to self: steps 4 to 8 should probably be a makefile. baby steps!
 - [x] build basic data frame w/dbt
 - [x] build the monte carlo sim
 - [ ] add meta-stats
-  - [ ] playoff seeding
+  - [x] playoff seeding
   - [ ] playin game stuff
   - [ ] playoff schedule
   - [ ] series winners
