@@ -3,7 +3,7 @@ This project serves as end to end example of running the "Modern Data Stack" in 
 
 ## Current progress
 Right now, you can get the nba schedule and elo ratings from this project and generate the following query. more to come, see to-dos at bottom of readme.
-![image](https://user-images.githubusercontent.com/16811433/193890561-a0b3a9f5-be83-439d-ae49-0c959d4e9cb2.png)
+<img width="1005" alt="image" src="https://user-images.githubusercontent.com/16811433/193949511-71944c9f-2a73-4a01-bacd-c95259323ff2.png">
 
 
 ## Getting started - Windows
