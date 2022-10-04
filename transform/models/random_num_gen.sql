@@ -3,14 +3,8 @@
     materialized = "view"
 ) }}
 
-SELECT *
-FROM {{ ref( 'random_num_gen_1' ) }}
-UNION ALL
-SELECT *
-FROM {{ ref( 'random_num_gen_2' ) }}
-UNION ALL
-SELECT *
-FROM {{ ref( 'random_num_gen_3' ) }}
-UNION ALL
-SELECT *
-FROM {{ ref( 'random_num_gen_4' ) }}
+SELECT i.scenario_id,
+    s.game_id,
+    random() as rand_result
+FROM {{ ref( 'scenario_gen' ) }} i
+    CROSS JOIN {{ ref( 'schedules' ) }} S

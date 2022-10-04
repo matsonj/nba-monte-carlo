@@ -6,5 +6,5 @@
 SELECT scenario_id, 
     winning_team, 
     COUNT(1) as wins
-FROM {{ ref( 'simulator' ) }}
+FROM {{ ref( 'reg_season_simulator' ) }}
 GROUP BY ALL
