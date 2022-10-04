@@ -23,7 +23,7 @@ cte_made_playoffs AS (
     CASE WHEN season_rank <= 10 THEN 1
       ELSE 0 
     END AS made_playoffs,
-    CASE WHEN season_rank BETWEEN 6 AND 10 THEN 1
+    CASE WHEN season_rank BETWEEN 7 AND 10 THEN 1
       ELSE 0
     END AS made_play_in
   FROM cte_ranked_wins 
