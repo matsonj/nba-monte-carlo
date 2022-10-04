@@ -2,10 +2,14 @@
 This project serves as end to end example of running the "Modern Data Stack" in a local environment. Development is primarily done on Windows via WSL, which means Mac is untested (but should work).
 
 ## Getting started - Windows
+All steps should be completed in a PowerShell terminal running as an administrator.
+
 1. Create your WSL environment.
 ```
 wsl --install
 ```
+* If this was the first time WSL has been installed, restart your machine.
+
 2. Open Ubuntu in your terminal and update your packages. 
 ```
 sudo apt-get update
