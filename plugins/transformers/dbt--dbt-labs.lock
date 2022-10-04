@@ -36,7 +36,7 @@
     },
     {
       "name": "models",
-      "value": "$MELTANO_TRANSFORM__PACKAGE_NAME $MELTANO_EXTRACTOR_NAMESPACE nba_monte_carlo",
+      "value": "$MELTANO_TRANSFORM__PACKAGE_NAME $MELTANO_EXTRACTOR_NAMESPACE my_meltano_project",
       "label": "Models"
     }
   ],
