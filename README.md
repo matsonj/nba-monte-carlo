@@ -28,6 +28,8 @@ python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 # Be sure pipx is available on your path
 source ~/.bashrc
+# Install venv for pipx to operate correctly
+sudo apt install python3.8-venv
 ```
 5. install meltano
 ```
@@ -40,6 +42,8 @@ meltano --version
 mkdir nba-monte-carlo
 cd nba-monte-carlo
 git clone https://github.com/matsonj/nba-monte-carlo.git
+# Go one folder level down into the folder that git just created
+cd nba-monte-carlo
 ```
 7. run meltano install
 ```
@@ -53,6 +57,7 @@ meltano install
  9. if you feel so inclined, install the duckDB CLI and check your work.
  ```
 wget https://github.com/duckdb/duckdb/releases/download/v0.5.1/duckdb_cli-linux-amd64.zip
+sudo apt install unzip
 unzip duckdb_cli-linux-amd64.zip
 ./duckdb
 .open /tmp/mdsbox.db
