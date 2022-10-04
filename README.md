@@ -52,7 +52,7 @@ meltano install
 ```
 8. run your pipeline!
 ```
- meltano elt tap-spreadsheets-anywhere target-duckdb --transform=run
+ meltano run tap-spreadsheets-anywhere target-duckdb dbt:build
  ```
  9. if you feel so inclined, install the duckDB CLI and check your work.
  ```
