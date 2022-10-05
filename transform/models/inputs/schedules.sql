@@ -4,6 +4,7 @@
 ) }}
 
 SELECT S.key::int AS game_id,
+    S.type,
     V.team AS visiting_team,
     V.elo_rating::int AS visiting_team_elo_rating,
     H.team AS home_team,
