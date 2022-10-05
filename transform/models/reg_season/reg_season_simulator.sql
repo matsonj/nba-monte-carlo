@@ -9,3 +9,4 @@ SELECT
     END AS winning_team
 FROM {{ ref( 'schedules' ) }} S
     LEFT JOIN {{ ref( 'random_num_gen' ) }} R ON R.game_id = S.game_id
+WHERE S.type = 'reg_season'
