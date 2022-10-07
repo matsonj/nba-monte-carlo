@@ -4,7 +4,7 @@
   "namespace": "superset",
   "variant": "apache",
   "label": "Superset",
-  "docs": "https://hub.meltano.com/utilities/superset/apache",
+  "docs": "https://hub.meltano.com/utilities/superset--apache",
   "repo": "https://github.com/apache/superset",
   "pip_url": "apache-superset==1.5.0 markupsafe==2.0.1",
   "settings": [
