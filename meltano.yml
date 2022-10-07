@@ -1,7 +1,5 @@
 version: 1
 default_environment: dev
-project_id: 88c91a02-d68b-4952-8e56-94a297cf141f
-# drop this before "going public"
 environments:
 - name: dev
 - name: staging
@@ -27,24 +25,15 @@ plugins:
         format: csv
   loaders:
   - name: target-duckdb
-    namespace: target_duckdb
-    pip_url: target-duckdb==0.4.1
-    executable: target-duckdb
-    settings:
-    - name: filepath
-    - name: default_target_schema
+    variant: jwills
+    pip_url: target-duckdb~=0.4
     config:
       filepath: /tmp/mdsbox.db
       default_target_schema: main
   transformers:
-  - name: dbt
-    variant: dbt-labs
-    pip_url: dbt-duckdb==1.2.1
-    settings:
-    - name: path
-    - name: models
-      value: "$MELTANO_TRANSFORM__PACKAGE_NAME $MELTANO_EXTRACTOR_NAMESPACE nba_monte_carlo"
-      label: "Models"
+  - name: dbt-duckdb
+    variant: jwills
+    pip_url: dbt-core~=1.2.0 dbt-duckdb~=1.2.0
     config:
       path: /tmp/mdsbox.db
   utilities:
