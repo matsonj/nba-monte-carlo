@@ -46,7 +46,7 @@ SELECT * FROM reg_season_summary;
 ## Running your pipeline on demand
 After your run ```make pipeline```, you can run your pipeline again at any time with the following meltano command:
 ```
-meltano run tap-spreadsheets-anywhere target-duckdb dbt:build
+meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
 ```
 
 ## Todos
