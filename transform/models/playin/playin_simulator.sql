@@ -17,4 +17,4 @@ FROM {{ ref( 'schedules' ) }} S
     LEFT JOIN {{ ref( 'ratings' ) }} RH ON RH.team = EH.winning_team
     LEFT JOIN {{ ref( 'reg_season_end' ) }} EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
     LEFT JOIN {{ ref( 'ratings' ) }} RV ON RV.team = EV.winning_team
-WHERE S.type = 'playin'
+WHERE S.type = 'playin_r1'
