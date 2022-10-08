@@ -71,4 +71,4 @@ meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
   - [ ] playoff wins
 - [ ] some basic charts in superset (replicate 538?)
 - [x] add github action to build it
-- [ ] add dbt docs as github pages
+- [x] add dbt docs as github pages
