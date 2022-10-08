@@ -1,0 +1,37 @@
+name: manual_build
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'What is the reason to trigger this manually?'
+        # Default value if no value is explicitly provided
+        default: 'testing github actions'
+        # Input has to be provided for the workflow to run
+        required: true
+
+jobs:
+  manual_build:
+    name:  manual_build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@master
+        with:
+          python-version: '3.8'
+
+      - name: python basics
+        # should prob shift to requirements.txt, but setting like this for now
+        run: |
+          python3 -m pip install --user pipx
+          python3 -m pipx ensurepath
+          pipx install meltano
+
+      - name: meltano install
+        run: meltano install
+
+      - name: build pipeline
+        run: meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
+        

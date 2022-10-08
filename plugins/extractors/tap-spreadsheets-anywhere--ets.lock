@@ -4,7 +4,7 @@
   "namespace": "tap_spreadsheets_anywhere",
   "variant": "ets",
   "label": "Spreadsheets Anywhere",
-  "docs": "https://hub.meltano.com/extractors/tap-spreadsheets-anywhere",
+  "docs": "https://hub.meltano.com/extractors/tap-spreadsheets-anywhere--ets",
   "repo": "https://github.com/ets/tap-spreadsheets-anywhere",
   "pip_url": "git+https://github.com/ets/tap-spreadsheets-anywhere.git",
   "capabilities": [
