@@ -66,7 +66,7 @@ meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
 - [ ] add meta-stats
   - [x] playoff seeding
   - [ ] playin game stuff
-  - [ ] playoff schedule
+  - [x] playoff schedule
   - [ ] series winners
   - [ ] playoff wins
 - [ ] some basic charts in superset (replicate 538?)
