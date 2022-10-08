@@ -4,7 +4,7 @@ This project serves as end to end example of running the "Modern Data Stack" in 
 ## Current progress
 Right now, you can get the nba schedule and elo ratings from this project and generate the following query. more to come, see to-dos at bottom of readme.
 <img width="1005" alt="image" src="https://user-images.githubusercontent.com/16811433/193949511-71944c9f-2a73-4a01-bacd-c95259323ff2.png">
-
+![image](https://user-images.githubusercontent.com/16811433/194679803-90afe1af-07e2-4fc8-b883-1e86fd14ab84.png)
 
 ## Getting started - Windows
 1. Create your WSL environment. Open a PowerShell terminal running as an administrator and execute:
