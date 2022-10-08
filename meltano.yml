@@ -11,7 +11,7 @@ plugins:
     pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
     config:
       tables:
-      - path: https://github.com/matsonj/nba-monte-carlo/raw/master/data
+      - path: https://github.com/matsonj/nba-monte-carlo/raw/playoffs/data
         name: raw_schedule
         pattern: nba_schedule_2023.csv
         start_date: '2001-01-01T00:00:00Z'
