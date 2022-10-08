@@ -4,4 +4,4 @@ pipeline:
 	source ~/.bashrc ;\
 	pipx install meltano ;\
 	meltano install ;\
-	meltano run tap-spreadsheets-anywhere target-duckdb dbt:build
+	meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
