@@ -15,11 +15,11 @@ macro-paths:
 - macros
 snapshot-paths:
 - snapshots
-target-path: ../.meltano/transformers/dbt/target
+target-path: docs
 log-path: logs
 packages-install-path: dbt_packages
 clean-targets:
-- ../.meltano/transformers/dbt/target
+- docs
 - dbt_packages
 - logs
 models:
