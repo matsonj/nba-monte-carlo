@@ -8,3 +8,5 @@ sources:
         description: this is the nba schedule
       - name: raw_team_ratings
         description: team ELO ratings & win totals
+      - name: raw_xf_series_to_seed
+        description: cross ref table to match series to seeds
