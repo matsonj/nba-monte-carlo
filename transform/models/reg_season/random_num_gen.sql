@@ -1,6 +1,6 @@
 {{
   config(
-    materialized = "view"
+    materialized = "table"
 ) }}
 
 SELECT i.scenario_id,
