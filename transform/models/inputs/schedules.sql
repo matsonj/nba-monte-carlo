@@ -18,6 +18,7 @@ GROUP BY ALL
 UNION ALL
 SELECT S.key::int AS game_id,
     S.type,
+    s.series_id,
     S.visitorneutral AS visiting_team,
     NULL AS visiting_team_elo_rating,
     S.homeneutral AS home_team,
