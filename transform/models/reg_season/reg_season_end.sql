@@ -14,7 +14,7 @@ WITH cte_wins AS (
 ),
 cte_ranked_wins AS (
   SELECT *, 
-    ROW_NUMBER() OVER (PARTITION BY scenario_id, conf ORDER BY wins, winning_team DESC ) as season_rank
+    ROW_NUMBER() OVER (PARTITION BY scenario_id, conf ORDER BY wins DESC, winning_team DESC ) as season_rank
   FROM cte_wins
   --no tiebreaker, so however row number handles order ties will need to be dealt with
 ),

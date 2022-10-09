@@ -1,5 +1,10 @@
 
 
+  create  table
+    "main"."schedules__dbt_tmp"
+  as (
+    
+
 SELECT S.key::int AS game_id,
     S.type,
     s.series_id,
@@ -23,3 +28,5 @@ SELECT S.key::int AS game_id,
 FROM "main"."main"."raw_schedule" S
 WHERE S.type <> 'reg_season'
 GROUP BY ALL
+  );
+
