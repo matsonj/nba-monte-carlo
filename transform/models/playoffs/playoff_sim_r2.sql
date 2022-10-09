@@ -1,8 +1,3 @@
-{{
-  config(
-    materialized = "table"
-) }}
-
 WITH cte_step_1 AS (
     SELECT 
         R.scenario_id,
@@ -22,9 +17,9 @@ WITH cte_step_1 AS (
         END AS winning_team 
     FROM {{ ref( 'schedules' ) }} S
         LEFT JOIN {{ ref( 'random_num_gen' ) }} R ON R.game_id = S.game_id
-        LEFT JOIN {{ ref( 'initialize_seeding' ) }} EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
-        LEFT JOIN {{ ref( 'initialize_seeding' ) }} EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
-    WHERE S.type = 'playoffs_r1' ),
+        LEFT JOIN {{ ref( 'playoff_sim_r1_end' ) }} EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
+        LEFT JOIN {{ ref( 'playoff_sim_r1_end' ) }} EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
+    WHERE S.type = 'playoffs_r2' ),
 cte_step_2 AS (
     SELECT step1.*,
         ROW_NUMBER() OVER (PARTITION BY scenario_id, series_id, winning_team  ORDER BY scenario_id, series_id, game_id ) AS series_result
