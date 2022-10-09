@@ -24,10 +24,10 @@ plugins:
         key_properties: [team]
         format: csv
       - path: https://raw.githubusercontent.com/matsonj/nba-monte-carlo/master/data
-        name: xf_series_to_seed
+        name: raw_xf_series_to_seed
         pattern: xf_series_to_seed.csv
         start_date: '2001-01-01T00:00:00Z'
-        key_properties: [team]
+        key_properties: [series_id]
         format: csv
   loaders:
   - name: target-duckdb
