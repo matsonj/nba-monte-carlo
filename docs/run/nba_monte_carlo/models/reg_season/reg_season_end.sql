@@ -1,5 +1,10 @@
 
 
+  create  table
+    "main"."reg_season_end__dbt_tmp"
+  as (
+    
+
 WITH cte_wins AS (
   SELECT S.scenario_id, 
       S.winning_team,
@@ -27,3 +32,5 @@ cte_made_playoffs AS (
   FROM cte_ranked_wins 
 )
 SELECT * FROM cte_made_playoffs
+  );
+
