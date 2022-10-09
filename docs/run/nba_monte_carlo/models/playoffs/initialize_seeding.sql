@@ -1,4 +1,6 @@
-WITH cte_teams AS (
+
+  create view "main"."initialize_seeding__dbt_tmp" as (
+    WITH cte_teams AS (
     SELECT scenario_id,
         conf,
         winning_team,
@@ -13,3 +15,4 @@ SELECT T.*,
     R.elo_rating
 FROM cte_teams T
     LEFT JOIN "main"."main"."ratings" R ON T.winning_team = R.team
+  );
