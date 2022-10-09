@@ -1,6 +1,20 @@
 
+  create view "main"."playoff_sim_r2__dbt_tmp" as (
+    WITH  __dbt__cte__playoff_sim_r1_end as (
 
-WITH cte_step_1 AS (
+
+SELECT E.scenario_id,
+    E.series_id,
+    E.game_id,
+    E.winning_team,
+    CASE WHEN E.winning_team = E.home_team THEN E.home_team_elo_rating
+        ELSE E.visiting_team_elo_rating
+    END AS elo_rating,
+    XF.seed
+FROM "main"."main"."playoff_sim_r1" E
+    LEFT JOIN "main"."main"."xf_series_to_seed" XF ON XF.series_id = E.series_id
+WHERE E.series_result = 4
+),cte_step_1 AS (
     SELECT 
         R.scenario_id,
         S.game_id,
@@ -19,9 +33,9 @@ WITH cte_step_1 AS (
         END AS winning_team 
     FROM "main"."main"."schedules" S
         LEFT JOIN "main"."main"."random_num_gen" R ON R.game_id = S.game_id
-        LEFT JOIN "main"."main"."initialize_seeding" EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
-        LEFT JOIN "main"."main"."initialize_seeding" EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
-    WHERE S.type = 'playoffs_r1' ),
+        LEFT JOIN __dbt__cte__playoff_sim_r1_end EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
+        LEFT JOIN __dbt__cte__playoff_sim_r1_end EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
+    WHERE S.type = 'playoffs_r2' ),
 cte_step_2 AS (
     SELECT step1.*,
         ROW_NUMBER() OVER (PARTITION BY scenario_id, series_id, winning_team  ORDER BY scenario_id, series_id, game_id ) AS series_result
@@ -41,3 +55,4 @@ FROM cte_step_2 step2
 ORDER BY step2.scenario_id, 
     step2.series_id, 
     step2.game_id
+  );
