@@ -8,4 +8,3 @@ SELECT i.scenario_id,
     random() as rand_result
 FROM {{ ref( 'scenario_gen' ) }} i
     CROSS JOIN {{ ref( 'schedules' ) }} S
-WHERE S.type ILIKE 'playoff%'
