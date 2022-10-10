@@ -3,10 +3,16 @@
 WITH cte_wins AS (
   SELECT S.scenario_id, 
       S.winning_team,
-      R.conf,
+      CASE 
+        WHEN S.winning_team = S.home_team THEN S.home_conf
+        ELSE S.visiting_conf
+      END AS conf,
+      CASE
+        WHEN S.winning_team = S.home_team THEN S.home_team_elo_rating
+        ELSE S.visiting_team_elo_rating
+      END AS elo_rating,
       COUNT(1) as wins
   FROM "main"."main"."reg_season_simulator" S
-    LEFT JOIN "main"."main"."ratings" R ON R.team = S.winning_team
   GROUP BY ALL
 ),
 cte_ranked_wins AS (
