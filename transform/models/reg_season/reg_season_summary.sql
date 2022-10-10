@@ -5,10 +5,9 @@
 
 SELECT winning_team as team,
   E.conf,
-  R.elo_rating,
   ROUND(AVG(wins),1) AS avg_wins,
-  R.win_total as vegas_wins,
-  ROUND(AVG(R.win_total) - AVG(wins),1) as elo_vs_vegas,
+  V.win_total as vegas_wins,
+  ROUND(AVG(V.win_total) - AVG(wins),1) as elo_vs_vegas,
   ROUND(PERCENTILE_CONT(0.05) within group (order by wins asc),1) as wins_5th,
   ROUND(PERCENTILE_CONT(0.95) within group (order by wins asc),1) as wins_95th,
   COUNT(*) FILTER (WHERE made_playoffs = 1 AND made_play_in = 0) as made_playoffs,
@@ -17,5 +16,5 @@ SELECT winning_team as team,
   ROUND(AVG(season_rank),1) AS avg_seed,
   ROUND(PERCENTILE_CONT(0.95) within group (order by season_rank asc),1) as seed_95th
 FROM {{ ref( 'reg_season_end' ) }} E 
-  LEFT JOIN {{ ref( 'ratings' ) }} R ON R.team = E.winning_team
+  LEFT JOIN {{ ref( 'vegas_wins' ) }} V ON V.team = E.winning_team
 GROUP BY ALL
