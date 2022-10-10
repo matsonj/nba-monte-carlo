@@ -63,12 +63,18 @@ meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
 - [x] add extraction steps to spreadsheets anywhere
 - [x] build basic data frame w/dbt
 - [x] build the monte carlo sim
-- [ ] add meta-stats
+- [x] add meta-stats
   - [x] playoff seeding
-  - [ ] playin game stuff
+  - [x] playin game stuff
   - [x] playoff schedule
-  - [ ] series winners
-  - [ ] playoff wins
+  - [x] series winners
+  - [x] playoff wins
 - [ ] some basic charts in superset (replicate 538?)
 - [x] add github action to build it
 - [x] add dbt docs as github pages
+
+## Optional stuff
+- [ ] add dbt tests
+- [ ] add dmodel descriptions
+- [ ] change elo calculation to a udf
+- [ ] make playoff elimination stuff a macro (param: schedule type)
