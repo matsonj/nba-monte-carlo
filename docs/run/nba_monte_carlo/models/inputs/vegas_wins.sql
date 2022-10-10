@@ -1,14 +1,12 @@
 
 
   create  table
-    "main"."ratings__dbt_tmp"
+    "main"."vegas_wins__dbt_tmp"
   as (
     
 
 SELECT team,
-    team_long,
-    conf,
-    elo_rating::int as elo_rating
+    win_total
 FROM "main"."main"."raw_team_ratings" S
 GROUP BY ALL
   );
