@@ -15,22 +15,22 @@ FROM "main"."main"."playoff_sim_r2" E
     LEFT JOIN "main"."main"."xf_series_to_seed" XF ON XF.series_id = E.series_id
 WHERE E.series_result = 4
 ),cte_step_1 AS (
-    SELECT 
+    SELECT
         R.scenario_id,
         S.game_id,
-        s.series_id,
-        S.visiting_team,
-        S.home_team,
+        S.series_id,
+        S.visiting_team AS visitor_key,
+        S.home_team AS home_key,
         EV.winning_team AS visiting_team,
         EV.elo_rating AS visiting_team_elo_rating,
         EH.winning_team AS home_team,
         EH.elo_rating AS home_team_elo_rating,
         1-(1/(10^(-(EV.elo_rating - EH.elo_rating )::dec/400)+1)) as home_team_win_probability,
         R.rand_result,
-        CASE 
+        CASE
             WHEN 1-(1/(10^(-(EV.elo_rating - EH.elo_rating )::dec/400)+1)) >= R.rand_result THEN EH.winning_team
             ELSE EV.winning_team
-        END AS winning_team 
+        END AS winning_team
     FROM "main"."main"."schedules" S
         LEFT JOIN "main"."main"."random_num_gen" R ON R.game_id = S.game_id
         LEFT JOIN __dbt__cte__playoff_sim_r2_end EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
@@ -48,7 +48,7 @@ cte_final_game AS (
     FROM cte_step_2
     WHERE series_result = 4
 )
-SELECT step2.* 
+SELECT step2.*
 FROM cte_step_2 step2
     INNER JOIN cte_final_game F ON F.scenario_id = step2.scenario_id 
         AND f.series_id = step2.series_id AND step2.game_id <= f.game_id
