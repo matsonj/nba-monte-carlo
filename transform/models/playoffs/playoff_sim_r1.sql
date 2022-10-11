@@ -4,19 +4,19 @@
 ) }}
 
 WITH cte_step_1 AS (
-    SELECT 
+    SELECT
         R.scenario_id,
         S.game_id,
-        s.series_id,
-        S.visiting_team,
-        S.home_team,
+        S.series_id,
+        S.visiting_team AS visitor_key,
+        S.home_team AS home_key,
         EV.winning_team AS visiting_team,
         EV.elo_rating AS visiting_team_elo_rating,
         EH.winning_team AS home_team,
         EH.elo_rating AS home_team_elo_rating,
         1-(1/(10^(-(EV.elo_rating - EH.elo_rating )::dec/400)+1)) as home_team_win_probability,
         R.rand_result,
-        CASE 
+        CASE
             WHEN 1-(1/(10^(-(EV.elo_rating - EH.elo_rating )::dec/400)+1)) >= R.rand_result THEN EH.winning_team
             ELSE EV.winning_team
         END AS winning_team 
