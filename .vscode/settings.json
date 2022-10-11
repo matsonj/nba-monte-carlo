@@ -1,0 +1,8 @@
+{
+    "sqlfluff.excludeRules": [
+        "L014",
+        "L016",
+        "L031",
+        "L034"
+    ]
+}
