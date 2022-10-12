@@ -1,6 +1,6 @@
 {{
   config(
-    materialized = "view"
+    materialized = "ephemeral"
 ) }}
 
 SELECT i.generate_series as scenario_id

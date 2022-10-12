@@ -1,11 +1,11 @@
 {{
   config(
-    materialized = "table"
+    materialized = "ephemeral"
 ) }}
 
 SELECT team,
     team_long,
     conf,
     elo_rating::int as elo_rating
-FROM {{ source( 'nba' , 'raw_team_ratings' ) }} S
+FROM '/tmp/storage/raw_team_ratings/*.parquet' S
 GROUP BY ALL
