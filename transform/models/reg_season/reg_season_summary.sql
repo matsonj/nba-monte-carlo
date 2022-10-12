@@ -1,6 +1,9 @@
+-- depends-on: {{ ref( 'reg_season_end' ) }}
+
 {{
   config(
-    materialized = "view"
+    materialized = "table",
+    post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/storage/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
 ) }}
 
 SELECT winning_team as team,
@@ -15,6 +18,6 @@ SELECT winning_team as team,
   ROUND(PERCENTILE_CONT(0.05) within group (order by season_rank asc),1) as seed_5th,
   ROUND(AVG(season_rank),1) AS avg_seed,
   ROUND(PERCENTILE_CONT(0.95) within group (order by season_rank asc),1) as seed_95th
-FROM {{ ref( 'reg_season_end' ) }} E 
+FROM '/tmp/storage/reg_season_end.parquet' E 
   LEFT JOIN {{ ref( 'vegas_wins' ) }} V ON V.team = E.winning_team
 GROUP BY ALL

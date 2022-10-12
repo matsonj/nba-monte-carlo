@@ -1,3 +1,9 @@
+{{
+  config(
+    materialized = "ephemeral"
+) }}
+
+
 SELECT 
     R.scenario_id,
     S.*,

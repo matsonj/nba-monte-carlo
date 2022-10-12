@@ -1,9 +1,9 @@
 {{
   config(
-    materialized = "table"
+    materialized = "ephemeral"
 ) }}
 
 SELECT team,
     win_total
-FROM {{ source( 'nba' , 'raw_team_ratings' ) }} S
+FROM '/tmp/storage/raw_team_ratings/*.parquet' S
 GROUP BY ALL

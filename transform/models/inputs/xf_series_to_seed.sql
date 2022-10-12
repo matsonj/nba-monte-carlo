@@ -1,3 +1,8 @@
+{{
+  config(
+    materialized = "ephemeral"
+) }}
+
 SELECT series_id,
     seed
-FROM {{ source( 'nba' , 'raw_xf_series_to_seed' ) }}
+FROM '/tmp/storage/raw_xf_series_to_seed/*.parquet'
