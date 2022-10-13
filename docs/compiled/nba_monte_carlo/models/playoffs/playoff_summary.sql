@@ -1,86 +1,56 @@
-with  __dbt__cte__playoff_sim_r1_end as (
+-- depends-on: "main"."main"."initialize_seeding"
+-- depends-on: "main"."main"."playoff_sim_r1"
+-- depends-on: "main"."main"."playoff_sim_r2"
+-- depends-on: "main"."main"."playoff_sim_r3"
+-- depends-on: "main"."main"."playoff_sim_r4"
 
 
-SELECT E.scenario_id,
-    E.series_id,
-    E.game_id,
-    E.winning_team,
-    CASE WHEN E.winning_team = E.home_team THEN E.home_team_elo_rating
-        ELSE E.visiting_team_elo_rating
-    END AS elo_rating,
-    XF.seed
-FROM "main"."main"."playoff_sim_r1" E
-    LEFT JOIN "main"."main"."xf_series_to_seed" XF ON XF.series_id = E.series_id
-WHERE E.series_result = 4
-),  __dbt__cte__playoff_sim_r2_end as (
+
+WITH  __dbt__cte__ratings as (
 
 
-SELECT E.scenario_id,
-    E.series_id,
-    E.game_id,
-    E.winning_team,
-    CASE WHEN E.winning_team = E.home_team THEN E.home_team_elo_rating
-        ELSE E.visiting_team_elo_rating
-    END AS elo_rating,
-    XF.seed
-FROM "main"."main"."playoff_sim_r2" E
-    LEFT JOIN "main"."main"."xf_series_to_seed" XF ON XF.series_id = E.series_id
-WHERE E.series_result = 4
-),  __dbt__cte__playoff_sim_r3_end as (
+SELECT team,
+    team_long,
+    conf,
+    elo_rating::int as elo_rating
+FROM '/tmp/storage/raw_team_ratings/*.parquet' S
+GROUP BY ALL
+),  __dbt__cte__teams as (
 
 
-SELECT E.scenario_id,
-    E.series_id,
-    E.game_id,
-    E.winning_team,
-    CASE WHEN E.winning_team = E.home_team THEN E.home_team_elo_rating
-        ELSE E.visiting_team_elo_rating
-    END AS elo_rating,
-    XF.seed
-FROM "main"."main"."playoff_sim_r3" E
-    LEFT JOIN "main"."main"."xf_series_to_seed" XF ON XF.series_id = E.series_id
-WHERE E.series_result = 4
-),  __dbt__cte__playoff_sim_r4_end as (
-
-
-SELECT E.scenario_id,
-    E.series_id,
-    E.game_id,
-    E.winning_team,
-    CASE WHEN E.winning_team = E.home_team THEN E.home_team_elo_rating
-        ELSE E.visiting_team_elo_rating
-    END AS elo_rating,
-    'champ' AS seed
-FROM "main"."main"."playoff_sim_r4" E
-WHERE E.series_result = 4
+SELECT S.visitorneutral AS team_long,
+    R.team
+FROM '/tmp/storage/raw_schedule/*.parquet' S
+    LEFT JOIN __dbt__cte__ratings R ON R.team_long = S.visitorneutral
+GROUP BY ALL
 ),cte_playoffs_r1 AS (
     SELECT winning_team,
         COUNT(1) AS made_playoffs
-    FROM "main"."main"."initialize_seeding"
+    FROM '/tmp/storage/initialize_seeding.parquet'
     GROUP BY ALL
 ),
 cte_playoffs_r2 AS (
     SELECT winning_team,
         COUNT(1) AS made_conf_semis
-    FROM __dbt__cte__playoff_sim_r1_end
+    FROM '/tmp/storage/playoff_sim_r1.parquet'
     GROUP BY ALL
 ),
 cte_playoffs_r3 AS (
         SELECT winning_team,
         COUNT(1) AS made_conf_finals
-    FROM __dbt__cte__playoff_sim_r2_end
+    FROM '/tmp/storage/playoff_sim_r2.parquet'
     GROUP BY ALL
 ),
 cte_playoffs_r4 AS (
         SELECT winning_team,
         COUNT(1) AS made_finals
-    FROM __dbt__cte__playoff_sim_r3_end
+    FROM '/tmp/storage/playoff_sim_r3.parquet'
     GROUP BY ALL
 ),
 cte_playoffs_finals AS (
         SELECT winning_team,
         COUNT(1) AS won_finals
-    FROM __dbt__cte__playoff_sim_r4_end
+    FROM '/tmp/storage/playoff_sim_r4.parquet'
     GROUP BY ALL
 )
 
@@ -90,7 +60,7 @@ SELECT T.team,
     R3.made_conf_finals,
     R4.made_finals,
     F.won_finals
-FROM "main"."main"."teams" T
+FROM __dbt__cte__teams T
     LEFT JOIN cte_playoffs_r1 R1 ON R1.winning_team = T.team
     LEFT JOIN cte_playoffs_r2 R2 ON R2.winning_team = T.team
     LEFT JOIN cte_playoffs_r3 R3 ON R3.winning_team = T.team

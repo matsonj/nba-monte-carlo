@@ -2,5 +2,5 @@
 
 SELECT team,
     win_total
-FROM "main"."main"."raw_team_ratings" S
+FROM '/tmp/storage/raw_team_ratings/*.parquet' S
 GROUP BY ALL
