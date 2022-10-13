@@ -2,7 +2,7 @@
 
 {{
   config(
-    materialized = "table",
+    materialized = "view",
     post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/storage/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
 ) }}
 
