@@ -1,31 +1,42 @@
-with cte_playoffs_r1 AS (
+-- depends-on: {{ ref( 'initialize_seeding' ) }}
+-- depends-on: {{ ref( 'playoff_sim_r1' ) }}
+-- depends-on: {{ ref( 'playoff_sim_r2' ) }}
+-- depends-on: {{ ref( 'playoff_sim_r3' ) }}
+-- depends-on: {{ ref( 'playoff_sim_r4' ) }}
+
+{{
+  config(
+    materialized = "ephemeral"
+) }}
+
+WITH cte_playoffs_r1 AS (
     SELECT winning_team,
         COUNT(1) AS made_playoffs
-    FROM {{ ref( 'initialize_seeding' ) }}
+    FROM '/tmp/storage/initialize_seeding.parquet'
     GROUP BY ALL
 ),
 cte_playoffs_r2 AS (
     SELECT winning_team,
         COUNT(1) AS made_conf_semis
-    FROM {{ ref( 'playoff_sim_r1_end' ) }}
+    FROM '/tmp/storage/playoff_sim_r1.parquet'
     GROUP BY ALL
 ),
 cte_playoffs_r3 AS (
         SELECT winning_team,
         COUNT(1) AS made_conf_finals
-    FROM {{ ref( 'playoff_sim_r2_end' ) }}
+    FROM '/tmp/storage/playoff_sim_r2.parquet'
     GROUP BY ALL
 ),
 cte_playoffs_r4 AS (
         SELECT winning_team,
         COUNT(1) AS made_finals
-    FROM {{ ref( 'playoff_sim_r3_end' ) }}
+    FROM '/tmp/storage/playoff_sim_r3.parquet'
     GROUP BY ALL
 ),
 cte_playoffs_finals AS (
         SELECT winning_team,
         COUNT(1) AS won_finals
-    FROM {{ ref( 'playoff_sim_r4_end' ) }}
+    FROM '/tmp/storage/playoff_sim_r4.parquet'
     GROUP BY ALL
 )
 
