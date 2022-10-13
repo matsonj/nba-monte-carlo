@@ -36,16 +36,59 @@ plugins:
     config:
       filepath: /tmp/mdsbox.db
       default_target_schema: main
-  transformers:
-  - name: dbt-duckdb
-    variant: jwills
-    pip_url: dbt-core~=1.2.0 dbt-duckdb~=1.2.0
-    config:
-      path: /tmp/mdsbox.db
   utilities:
   - name: superset
     variant: apache
     pip_url: apache-superset==1.5.0 markupsafe==2.0.1 duckdb-engine==0.6.4
+  - name: dbt-duckdb
+    namespace: dbt_ext
+    label: dbt duckdb extension
+    pip_url: dbt-core~=1.2.0 dbt-duckdb~=1.2.0 git+https://github.com/meltano/dbt-ext.git@feat/working-dbt-ext
+    executable: dbt_invoker
+    config:
+      path: /tmp/mdsbox.db
+    settings:
+    - name: project_dir
+      value: $MELTANO_PROJECT_ROOT/transform
+      label: Projects Directory
+    - name: skip_pre_invoke
+      kind: boolean
+      value: false
+      description: Whether to skip pre-invoke hooks which automatically run dbt clean and deps
+      env: DBT_EXT_SKIP_PRE_INVOKE
+    - name: type
+      env: DBT_EXT_TYPE
+      value: duckdb
+    - name: profiles_dir
+      env: DBT_PROFILES_DIR
+      value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
+      label: Profiles Directory
+    - name: project_dir
+      label: Projects Directory
+      value: $MELTANO_PROJECT_ROOT/transform
+    - name: profiles_dir
+      label: Profiles Directory
+      value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
+      env: DBT_PROFILES_DIR  
+    - name: path
+      label: Path
+      kind: string
+      description: The path on your local filesystem where you would like the DuckDB database file and it's associated write-ahead log to be written.
+    - name: schema
+      kind: string
+      label: Schema
+      value: main
+      description: Specify the schema to write into.
+    commands:
+      build:
+        args: build
+        description: Will run your models, tests, snapshots and seeds in DAG order.
+      describe:
+        args: describe
+        executable: dbt_extension
+      initialize:
+        args: initialize
+        executable: dbt_extension
 schedules:
 - name: spreadsheets-anywhere-to-duckdb
   interval: '@once'
