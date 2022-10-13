@@ -1,3 +1,5 @@
+-- depends-on: {{ ref( 'random_num_gen' ) }}
+
 {{
   config(
     materialized = "ephemeral"
@@ -7,12 +9,12 @@
 SELECT 
     R.scenario_id,
     S.*,
-    1-(1/(10^(-(S.visiting_team_elo_rating - S.home_team_elo_rating )::dec/400)+1)) as home_team_win_probability,
+    {{ elo_calc( 'S.home_team_elo_rating', 'S.visiting_team_elo_rating' ) }} as home_team_win_probability,
     R.rand_result,
     CASE 
-        WHEN 1-(1/(10^(-(S.visiting_team_elo_rating - S.home_team_elo_rating )::dec/400)+1)) >= R.rand_result THEN S.home_team
+        WHEN {{ elo_calc( 'S.home_team_elo_rating', 'S.visiting_team_elo_rating' ) }}  >= R.rand_result THEN S.home_team
         ELSE S.visiting_team
     END AS winning_team
 FROM {{ ref( 'schedules' ) }} S
-    LEFT JOIN {{ ref( 'random_num_gen' ) }} R ON R.game_id = S.game_id
+    LEFT JOIN '/tmp/storage/random_num_gen.parquet' R ON R.game_id = S.game_id
 WHERE S.type = 'reg_season'
