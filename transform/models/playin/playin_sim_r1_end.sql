@@ -1,11 +1,8 @@
 {{
-    config(
-        materialized = "view"
+  config(
+    materialized = "ephemeral"
 ) }}
 
--- annoyingly, both playin games perform slightly differently (one game the winner advances to playoffs,
--- the other game the losing team is eliminated.) as a result, we have write specific code for those
--- game ids.
 WITH cte_playin_details AS (
     SELECT S.scenario_id,
         S.game_id,
