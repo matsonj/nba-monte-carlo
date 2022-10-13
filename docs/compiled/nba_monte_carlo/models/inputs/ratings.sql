@@ -4,5 +4,5 @@ SELECT team,
     team_long,
     conf,
     elo_rating::int as elo_rating
-FROM "main"."main"."raw_team_ratings" S
+FROM '/tmp/storage/raw_team_ratings/*.parquet' S
 GROUP BY ALL

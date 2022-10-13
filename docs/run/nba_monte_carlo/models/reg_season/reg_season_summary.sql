@@ -1,6 +1,15 @@
 
   create view "main"."reg_season_summary__dbt_tmp" as (
-    
+    with __dbt__cte__vegas_wins as (
+
+
+SELECT team,
+    win_total
+FROM '/tmp/storage/raw_team_ratings/*.parquet' S
+GROUP BY ALL
+)-- depends-on: "main"."main"."reg_season_end"
+
+
 
 SELECT winning_team as team,
   E.conf,
@@ -14,7 +23,7 @@ SELECT winning_team as team,
   ROUND(PERCENTILE_CONT(0.05) within group (order by season_rank asc),1) as seed_5th,
   ROUND(AVG(season_rank),1) AS avg_seed,
   ROUND(PERCENTILE_CONT(0.95) within group (order by season_rank asc),1) as seed_95th
-FROM "main"."main"."reg_season_end" E 
-  LEFT JOIN "main"."main"."vegas_wins" V ON V.team = E.winning_team
+FROM '/tmp/storage/reg_season_end.parquet' E 
+  LEFT JOIN __dbt__cte__vegas_wins V ON V.team = E.winning_team
 GROUP BY ALL
   );
