@@ -17,7 +17,6 @@
         "python.pythonPath": "/usr/local/bin/python",
         "python.languageServer": "Pylance"
         // any other settings go here
-        // I also haven't included any settings specific to eslint or frontend work (because I don't know what we'd want/need to set
     },
     "extensions": [
         "ms-python.python",
@@ -32,10 +31,4 @@
 
 	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
 	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
-
-	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
-	// "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
-
-	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "vscode"
 }
