@@ -40,6 +40,8 @@ plugins:
   - name: superset
     variant: apache
     pip_url: apache-superset==1.5.0 markupsafe==2.0.1 duckdb-engine==0.6.4
+    config:
+      ENABLE_PROXY_FIX: True
   - name: dbt-duckdb
     namespace: dbt_ext
     label: dbt duckdb extension

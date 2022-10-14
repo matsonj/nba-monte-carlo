@@ -7,7 +7,7 @@
 	"context": "..",
 	"build": {
         "args": {
-            "VARIANT": "3.10",
+            "VARIANT": "3.9",
         }
     },
 
