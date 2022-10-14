@@ -10,3 +10,5 @@ sources:
         description: team ELO ratings & win totals
       - name: raw_xf_series_to_seed
         description: cross ref table to match series to seeds
+      - name: raw_fivethirtyeight_ratings
+        description: ratings from 538 repo
