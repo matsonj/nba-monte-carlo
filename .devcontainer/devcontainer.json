@@ -21,7 +21,8 @@
     "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "ms-vscode.makefile-tools"
     ],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
