@@ -1,23 +1,11 @@
-{% if target.name == 'parquet' %}
 {{
-  config(
-    materialized = "ephemeral"
+    config(
+      materialized = "ephemeral" if target.name == 'parquet' else "view"
 ) }}
-{% endif %}
-
-{% if target.name != 'parquet' %}
-{{
-  config(
-    materialized = "view"
-) }}
-{% endif %}
 
 SELECT
     team,
     win_total
-{% if target.name == 'parquet' %}
-FROM '/tmp/storage/raw_team_ratings/*.parquet'
-{% elif target.name != 'parquet' %}
-FROM {{ source( 'nba', 'raw_team_ratings' ) }}
-{% endif %}
+FROM {{ "'/tmp/storage/raw_team_ratings/*.parquet'" if target.name == 'parquet' 
+    else source( 'nba', 'raw_team_ratings' ) }}
 GROUP BY ALL

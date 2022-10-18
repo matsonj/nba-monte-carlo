@@ -4,73 +4,53 @@
 -- depends-on: {{ ref( 'playoff_sim_r3' ) }}
 -- depends-on: {{ ref( 'playoff_sim_r4' ) }}
 
-{% if target.name == 'parquet' %}
 {{
     config(
-        materialized = "ephemeral"
+      materialized = "ephemeral" if target.name == 'parquet' else "view"
 ) }}
-{% elif target.name != 'parquet' %}
-{{
-    config(
-        materialized = "view"
-) }}
-{% endif %}
-
 
 WITH cte_playoffs_r1 AS (
     SELECT
         winning_team,
-        COUNT(1) AS made_playoffs
-    {% if target.name == 'parquet' %}
-    FROM '/tmp/storage/initialize_seeding.parquet'
-    {% elif target.name != 'parquet' %}
-    FROM {{ ref( 'initialize_seeding' ) }}
-    {% endif %}
+        COUNT(*) AS made_playoffs
+    FROM {{ "'/tmp/storage/initialize_seeding.parquet'" if target.name == 'parquet'
+        else ref( 'initialize_seeding' ) }}
     GROUP BY ALL
 ),
 
 cte_playoffs_r2 AS (
     SELECT
         winning_team,
-        COUNT(1) AS made_conf_semis
-    {% if target.name == 'parquet' %}
-    FROM '/tmp/storage/playoff_sim_r1.parquet'
-    {% elif target.name != 'parquet' %}
-    FROM {{ ref( 'playoff_sim_r1' ) }}
-    {% endif %}
+        COUNT(*) AS made_conf_semis
+    FROM {{ "'/tmp/storage/playoff_sim_r1.parquet'" if target.name == 'parquet'
+        else ref( 'playoff_sim_r1' ) }}
     GROUP BY ALL
 ),
 
 cte_playoffs_r3 AS (
-        SELECT winning_team,
-        COUNT(1) AS made_conf_finals
-    {% if target.name == 'parquet' %}
-    FROM '/tmp/storage/playoff_sim_r2.parquet'
-    {% elif target.name != 'parquet' %}
-    FROM {{ ref( 'playoff_sim_r2' ) }}
-    {% endif %}
+    SELECT 
+        winning_team,
+        COUNT(*) AS made_conf_finals
+    FROM {{ "'/tmp/storage/playoff_sim_r2.parquet'" if target.name == 'parquet'
+        else ref( 'playoff_sim_r2' ) }}
     GROUP BY ALL
 ),
 
 cte_playoffs_r4 AS (
-        SELECT winning_team,
-        COUNT(1) AS made_finals
-    {% if target.name == 'parquet' %}
-    FROM '/tmp/storage/playoff_sim_r3.parquet'
-    {% elif target.name != 'parquet' %}
-    FROM {{ ref( 'playoff_sim_r3' ) }}
-    {% endif %}
+    SELECT 
+        winning_team,
+        COUNT(*) AS made_finals
+    FROM {{ "'/tmp/storage/playoff_sim_r3.parquet'" if target.name == 'parquet'
+        else ref( 'playoff_sim_r3' ) }}
     GROUP BY ALL
 ),
 
 cte_playoffs_finals AS (
-        SELECT winning_team,
-        COUNT(1) AS won_finals
-    {% if target.name == 'parquet' %}
-    FROM '/tmp/storage/playoff_sim_r4.parquet'
-    {% elif target.name != 'parquet' %}
-    FROM {{ ref( 'playoff_sim_r4' ) }}
-    {% endif %}
+    SELECT 
+        winning_team,
+        COUNT(*) AS won_finals
+    FROM {{ "'/tmp/storage/playoff_sim_r4.parquet'" if target.name == 'parquet'
+        else ref( 'playoff_sim_r4' ) }}
     GROUP BY ALL
 )
 
