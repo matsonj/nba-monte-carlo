@@ -1,16 +1,7 @@
-{% if target.name == 'parquet' %}
 {{
-  config(
-    materialized = "ephemeral"
+    config(
+        materialized = "ephemeral" if target.name == 'parquet' else "view"
 ) }}
-{% endif %}
-
-{% if target.name != 'parquet' %}
-{{
-  config(
-    materialized = "view"
-) }}
-{% endif %}
 
 SELECT
     S.key::int AS game_id,
@@ -22,11 +13,8 @@ SELECT
     H.conf AS home_conf,
     H.team AS home_team,
     H.elo_rating::int AS home_team_elo_rating
-{% if target.name == 'parquet' %}
-FROM '/tmp/storage/raw_schedule/*.parquet' S
-{% elif target.name != 'parquet' %}
-FROM {{ source( 'nba', 'raw_schedule' ) }} S
-{% endif %}
+FROM {{ "'/tmp/storage/raw_schedule/*.parquet'" if target.name == 'parquet'
+    else source( 'nba', 'raw_schedule' ) }} AS S
 LEFT JOIN {{ ref( 'ratings' ) }} V ON V.team_long = S.visitorneutral
 LEFT JOIN {{ ref( 'ratings' ) }} H ON H.team_long = S.homeneutral
 WHERE S.type = 'reg_season'
@@ -42,10 +30,7 @@ SELECT
     NULL AS home_conf,
     S.homeneutral AS home_team,
     NULL AS home_team_elo_rating
-{% if target.name == 'parquet' %}
-FROM '/tmp/storage/raw_schedule/*.parquet' AS S
-{% elif target.name != 'parquet' %}
-FROM {{ source( 'nba', 'raw_schedule' ) }} S
-{% endif %}
+FROM {{ "'/tmp/storage/raw_schedule/*.parquet'" if target.name == 'parquet'
+    else source( 'nba', 'raw_schedule' ) }} AS S
 WHERE S.type <> 'reg_season'
 GROUP BY ALL
