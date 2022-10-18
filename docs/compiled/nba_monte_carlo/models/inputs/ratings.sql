@@ -10,6 +10,6 @@ SELECT
     conf,
     elo_rating::int AS elo_rating
 
-FROM '/tmp/storage/raw_team_ratings/*.parquet'
+FROM "main"."main"."raw_team_ratings"
 
 GROUP BY ALL
