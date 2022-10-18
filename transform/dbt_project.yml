@@ -26,4 +26,4 @@ models:
   nba_monte_carlo: null
 
 vars:
-  scenarios: 5000
+  scenarios: 500
