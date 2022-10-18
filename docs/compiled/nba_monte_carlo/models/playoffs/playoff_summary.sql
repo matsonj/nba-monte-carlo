@@ -9,43 +9,12 @@
 
 
 
-WITH  __dbt__cte__ratings as (
-
-
-
-
-
-
-SELECT
-    team,
-    team_long,
-    conf,
-    elo_rating::int AS elo_rating
-
-FROM '/tmp/storage/raw_team_ratings/*.parquet'
-
-GROUP BY ALL
-),  __dbt__cte__teams as (
-
-
-
-
-
-
-SELECT
-    S.visitorneutral AS team_long,
-    R.team
-
-FROM '/tmp/storage/raw_schedule/*.parquet' AS S
-
-    LEFT JOIN __dbt__cte__ratings R ON R.team_long = S.visitorneutral
-GROUP BY ALL
-),cte_playoffs_r1 AS (
+WITH cte_playoffs_r1 AS (
     SELECT
         winning_team,
         COUNT(1) AS made_playoffs
     
-    FROM '/tmp/storage/initialize_seeding.parquet'
+    FROM "main"."main"."initialize_seeding"
     
     GROUP BY ALL
 ),
@@ -55,7 +24,7 @@ cte_playoffs_r2 AS (
         winning_team,
         COUNT(1) AS made_conf_semis
     
-    FROM '/tmp/storage/playoff_sim_r1.parquet'
+    FROM "main"."main"."playoff_sim_r1"
     
     GROUP BY ALL
 ),
@@ -64,7 +33,7 @@ cte_playoffs_r3 AS (
         SELECT winning_team,
         COUNT(1) AS made_conf_finals
     
-    FROM '/tmp/storage/playoff_sim_r2.parquet'
+    FROM "main"."main"."playoff_sim_r2"
     
     GROUP BY ALL
 ),
@@ -73,7 +42,7 @@ cte_playoffs_r4 AS (
         SELECT winning_team,
         COUNT(1) AS made_finals
     
-    FROM '/tmp/storage/playoff_sim_r3.parquet'
+    FROM "main"."main"."playoff_sim_r3"
     
     GROUP BY ALL
 ),
@@ -82,7 +51,7 @@ cte_playoffs_finals AS (
         SELECT winning_team,
         COUNT(1) AS won_finals
     
-    FROM '/tmp/storage/playoff_sim_r4.parquet'
+    FROM "main"."main"."playoff_sim_r4"
     
     GROUP BY ALL
 )
@@ -94,7 +63,7 @@ SELECT
     R3.made_conf_finals,
     R4.made_finals,
     F.won_finals
-FROM __dbt__cte__teams T
+FROM "main"."main"."teams" T
 LEFT JOIN cte_playoffs_r1 R1 ON R1.winning_team = T.team
 LEFT JOIN cte_playoffs_r2 R2 ON R2.winning_team = T.team
 LEFT JOIN cte_playoffs_r3 R3 ON R3.winning_team = T.team
