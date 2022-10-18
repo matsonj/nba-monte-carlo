@@ -8,6 +8,6 @@ SELECT
     team,
     win_total
 
-FROM '/tmp/storage/raw_team_ratings/*.parquet'
+FROM "main"."main"."raw_team_ratings"
 
 GROUP BY ALL
