@@ -48,6 +48,8 @@ plugins:
   - name: dbt-duckdb
     variant: jwills
     pip_url: dbt-core~=1.2.0 dbt-duckdb~=1.2.0
+    config:
+      path: /tmp/mdsbox.db
   utilities:
   - name: superset
     variant: apache
