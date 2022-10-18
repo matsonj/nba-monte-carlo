@@ -1,27 +1,19 @@
 -- depends-on: {{ ref( 'reg_season_summary' ) }}
 
-{% if target.name == 'parquet' %}
 {{
     config(
-        materialized = "view",
+        materialized = "view" if target.name == 'parquet' else "table",
         post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/storage/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
+            if target.name == 'parquet' else " "
 ) }}
-{% elif target.name != 'parquet' %}
-{{
-    config(
-        materialized = "table"
-) }}
-{% endif %}
 
-SELECT R.*,
+SELECT
+    R.*,
     P.made_playoffs,
     P.made_conf_semis,
     P.made_conf_finals,
     P.made_finals,
     P.won_finals
-{% if target.name == 'parquet' %}
-FROM '/tmp/storage/reg_season_summary.parquet' R
-{% elif target.name != 'parquet' %}
-FROM {{ ref( 'reg_season_summary' ) }} R
-{% endif %}
+FROM {{ "'/tmp/storage/reg_season_summary.parquet'" if target.name == 'parquet'
+    else ref( 'reg_season_summary' ) }} R
 LEFT JOIN {{ ref( 'playoff_summary' ) }} P ON P.team = R.team

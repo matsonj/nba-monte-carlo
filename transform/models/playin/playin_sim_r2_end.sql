@@ -1,14 +1,7 @@
-{% if target.name == 'parquet' %}
 {{
     config(
-        materialized = "ephemeral"
+      materialized = "ephemeral" if target.name == 'parquet' else "view"
 ) }}
-{% elif target.name != 'parquet' %}
-{{
-    config(
-        materialized = "view"
-) }}
-{% endif %}
 
 SELECT
     P1.scenario_id,

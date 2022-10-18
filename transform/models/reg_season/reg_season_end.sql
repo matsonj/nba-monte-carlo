@@ -1,17 +1,9 @@
-{% if target.name == 'parquet' %}
 {{
-  config(
-    materialized = "view",
-    post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/storage/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
+    config(
+        materialized = "view" if target.name == 'parquet' else "table",
+        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/storage/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
+            if target.name == 'parquet' else " "
 ) }}
-{% endif %}
-
-{% if target.name != 'parquet' %}
-{{
-  config(
-    materialized = "table"
-) }}
-{% endif %}
 
 WITH cte_wins AS (
     SELECT
