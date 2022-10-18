@@ -3,8 +3,6 @@
 
 
 
-
-
 SELECT
     R.scenario_id,
     S.game_id,
@@ -20,9 +18,7 @@ SELECT
         ELSE EV.winning_team
     END AS winning_team 
 FROM "main"."main"."schedules" S
-    
     LEFT JOIN "main"."main"."random_num_gen" R ON R.game_id = S.game_id
     LEFT JOIN "main"."main"."reg_season_end" EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
     LEFT JOIN "main"."main"."reg_season_end" EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
-    
 WHERE S.type = 'playin_r1'

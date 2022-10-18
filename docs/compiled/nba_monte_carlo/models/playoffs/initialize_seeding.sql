@@ -2,8 +2,6 @@
 
 
 
-
-
 WITH cte_teams AS (
     SELECT
         scenario_id,
@@ -11,9 +9,7 @@ WITH cte_teams AS (
         winning_team,
         seed,
         elo_rating
-    
     FROM "main"."main"."reg_season_end"
-    
     WHERE season_rank < 7
     UNION ALL
     SELECT *

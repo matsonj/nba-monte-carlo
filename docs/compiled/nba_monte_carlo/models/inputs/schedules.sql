@@ -1,9 +1,5 @@
 
 
-
-
-
-
 SELECT
     S.key::int AS game_id,
     S.type,
@@ -14,9 +10,7 @@ SELECT
     H.conf AS home_conf,
     H.team AS home_team,
     H.elo_rating::int AS home_team_elo_rating
-
-FROM "main"."main"."raw_schedule" S
-
+FROM "main"."main"."raw_schedule" AS S
 LEFT JOIN "main"."main"."ratings" V ON V.team_long = S.visitorneutral
 LEFT JOIN "main"."main"."ratings" H ON H.team_long = S.homeneutral
 WHERE S.type = 'reg_season'
@@ -32,8 +26,6 @@ SELECT
     NULL AS home_conf,
     S.homeneutral AS home_team,
     NULL AS home_team_elo_rating
-
-FROM "main"."main"."raw_schedule" S
-
+FROM "main"."main"."raw_schedule" AS S
 WHERE S.type <> 'reg_season'
 GROUP BY ALL

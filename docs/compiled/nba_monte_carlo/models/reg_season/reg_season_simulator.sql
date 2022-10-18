@@ -2,10 +2,6 @@
 
 
 
-
-
-
-
 SELECT 
     R.scenario_id,
     S.*,
@@ -16,6 +12,5 @@ SELECT
         ELSE S.visiting_team
     END AS winning_team
 FROM "main"."main"."schedules" S
-    
-    LEFT JOIN "main"."main"."random_num_gen"R ON R.game_id = S.game_id
+LEFT JOIN "main"."main"."random_num_gen" R ON R.game_id = S.game_id
 WHERE S.type = 'reg_season'

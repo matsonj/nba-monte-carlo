@@ -1,11 +1,8 @@
 
 
-
-
 -- depends-on: "main"."main"."initialize_seeding"
 
 WITH cte_playoff_sim AS (
-    
     
 -- depends-on: "main"."main"."random_num_gen"
 
@@ -52,7 +49,6 @@ FROM cte_step_2 step2
 ORDER BY step2.scenario_id, 
     step2.series_id, 
     step2.game_id
-    
 )
 
 SELECT
