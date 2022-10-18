@@ -27,10 +27,4 @@ jobs:
         run: meltano install
 
       - name: build pipeline
-        run: meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
-
-      - name: build pipeline but make it parquet
-        run: |
-          meltano run tap-spreadsheets-anywhere target-duckdb
-          meltano invoke dbt-duckdb build --target parquet
-        
+        run: meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build        
