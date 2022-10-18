@@ -1,8 +1,15 @@
 
 
-SELECT team,
+
+
+
+
+SELECT
+    team,
     team_long,
     conf,
-    elo_rating::int as elo_rating
-FROM "main"."main"."raw_team_ratings" S
+    elo_rating::int AS elo_rating
+
+FROM '/tmp/storage/raw_team_ratings/*.parquet'
+
 GROUP BY ALL
