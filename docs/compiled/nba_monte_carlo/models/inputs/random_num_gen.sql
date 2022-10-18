@@ -1,9 +1,5 @@
 
 
-
-
-
-
 SELECT
     i.scenario_id,
     S.game_id,

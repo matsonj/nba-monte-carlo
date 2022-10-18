@@ -1,7 +1,5 @@
 
 
-
-
 SELECT
     P1.scenario_id,
     P1.conf,

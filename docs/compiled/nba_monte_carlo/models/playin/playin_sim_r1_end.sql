@@ -1,7 +1,5 @@
 
 
-
-
 WITH cte_playin_details AS (
     SELECT
         S.scenario_id,

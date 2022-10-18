@@ -6,53 +6,43 @@
 
 
 
-
-
-
 WITH cte_playoffs_r1 AS (
     SELECT
         winning_team,
-        COUNT(1) AS made_playoffs
-    
+        COUNT(*) AS made_playoffs
     FROM "main"."main"."initialize_seeding"
-    
     GROUP BY ALL
 ),
 
 cte_playoffs_r2 AS (
     SELECT
         winning_team,
-        COUNT(1) AS made_conf_semis
-    
+        COUNT(*) AS made_conf_semis
     FROM "main"."main"."playoff_sim_r1"
-    
     GROUP BY ALL
 ),
 
 cte_playoffs_r3 AS (
-        SELECT winning_team,
-        COUNT(1) AS made_conf_finals
-    
+    SELECT 
+        winning_team,
+        COUNT(*) AS made_conf_finals
     FROM "main"."main"."playoff_sim_r2"
-    
     GROUP BY ALL
 ),
 
 cte_playoffs_r4 AS (
-        SELECT winning_team,
-        COUNT(1) AS made_finals
-    
+    SELECT 
+        winning_team,
+        COUNT(*) AS made_finals
     FROM "main"."main"."playoff_sim_r3"
-    
     GROUP BY ALL
 ),
 
 cte_playoffs_finals AS (
-        SELECT winning_team,
-        COUNT(1) AS won_finals
-    
+    SELECT 
+        winning_team,
+        COUNT(*) AS won_finals
     FROM "main"."main"."playoff_sim_r4"
-    
     GROUP BY ALL
 )
 
