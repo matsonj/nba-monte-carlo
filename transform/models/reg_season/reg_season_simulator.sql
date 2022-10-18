@@ -1,10 +1,18 @@
 -- depends-on: {{ ref( 'random_num_gen' ) }}
 
+{% if target.name == 'parquet' %}
 {{
   config(
     materialized = "ephemeral"
 ) }}
+{% endif %}
 
+{% if target.name != 'parquet' %}
+{{
+  config(
+    materialized = "view"
+) }}
+{% endif %}
 
 SELECT 
     R.scenario_id,
@@ -16,5 +24,9 @@ SELECT
         ELSE S.visiting_team
     END AS winning_team
 FROM {{ ref( 'schedules' ) }} S
-    LEFT JOIN '/tmp/storage/random_num_gen.parquet' R ON R.game_id = S.game_id
+    {% if target.name == 'parquet' %}
+    LEFT JOIN '/tmp/storage/random_num_gen.parquet'
+    {% elif target.name != 'parquet' %}
+    LEFT JOIN {{ ref( 'random_num_gen' ) }}
+    {%- endif -%} R ON R.game_id = S.game_id
 WHERE S.type = 'reg_season'
