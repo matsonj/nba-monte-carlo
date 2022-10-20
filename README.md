@@ -60,21 +60,12 @@ meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
 There is an additional target in the meltano.yml file as well as dbt profiles.yml file that allows use of parquet as a storage medium. This can be invoked with ```make parquet```. 
 
 ## Todos
-- [x] write initial steps
-- [x] create a makefile so you 'make pipeline' and it just all happens
-- [x] get data and load to github storage
-- [x] add extraction steps to spreadsheets anywhere
-- [x] build basic data frame w/dbt
-- [x] build the monte carlo sim
-- [x] add meta-stats
-  - [x] playoff seeding
-  - [x] playin game stuff
-  - [x] playoff schedule
-  - [x] series winners
-  - [x] playoff wins
-- [x] some basic charts in superset (replicate 538?)
-- [x] add github action to build it
-- [x] add dbt docs as github pages
+- [ ] replace reg season schedule with 538 schedule
+- [ ] add table for results
+- [ ] add config options in dbt vars to ignore completed games
+- [ ] add table for new ratings
+- [ ] add config to use original or new ratings
+- [ ] make simulator only sim incomplete games
 
 ## Optional stuff
 - [ ] add dbt tests
