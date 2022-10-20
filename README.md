@@ -56,6 +56,9 @@ After your run ```make run```, you can run your pipeline again at any time with 
 meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
 ```
 
+## Using Parquet instead of a database
+There is an additional target in the meltano.yml file as well as dbt profiles.yml file that allows use of parquet as a storage medium. This can be invoked with ```make parquet```. 
+
 ## Todos
 - [x] write initial steps
 - [x] create a makefile so you 'make pipeline' and it just all happens
@@ -69,12 +72,12 @@ meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
   - [x] playoff schedule
   - [x] series winners
   - [x] playoff wins
-- [ ] some basic charts in superset (replicate 538?)
+- [x] some basic charts in superset (replicate 538?)
 - [x] add github action to build it
 - [x] add dbt docs as github pages
 
 ## Optional stuff
 - [ ] add dbt tests
 - [ ] add model descriptions
-- [ ] change elo calculation to a udf
-- [ ] make playoff elimination stuff a macro (param: schedule type)
+- [x] change elo calculation to a udf
+- [x] make playoff elimination stuff a macro (param: schedule type)

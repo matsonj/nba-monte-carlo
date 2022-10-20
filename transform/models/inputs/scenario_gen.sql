@@ -1,7 +1,7 @@
 {{
-  config(
-    materialized = "view"
+    config(
+      materialized = "ephemeral" if target.name == 'parquet' else "view"
 ) }}
 
-SELECT i.generate_series as scenario_id
-FROM generate_series(1,10000) i
+SELECT I.generate_series AS scenario_id
+FROM generate_series(1, {{ var('scenarios') }} ) AS I

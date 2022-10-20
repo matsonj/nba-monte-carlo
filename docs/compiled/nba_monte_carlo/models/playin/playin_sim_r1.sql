@@ -1,4 +1,9 @@
-SELECT 
+-- depends-on: "main"."main"."random_num_gen"
+-- depends-on: "main"."main"."reg_season_end"
+
+
+
+SELECT
     R.scenario_id,
     S.game_id,
     EV.conf AS conf,
@@ -6,10 +11,10 @@ SELECT
     EV.elo_rating AS visiting_team_elo_rating,
     EH.winning_team AS home_team,
     EH.elo_rating AS home_team_elo_rating,
-    1-(1/(10^(-(EV.elo_rating - EH.elo_rating )::dec/400)+1)) as home_team_win_probability,
+    ( 1 - (1 / (10 ^ (-( S.visiting_team_elo_rating - S.home_team_elo_rating )::real/400)+1))) * 10000 AS home_team_win_probability,
     R.rand_result,
     CASE 
-        WHEN 1-(1/(10^(-(EV.elo_rating - EH.elo_rating )::dec/400)+1)) >= R.rand_result THEN EH.winning_team
+        WHEN ( 1 - (1 / (10 ^ (-( S.visiting_team_elo_rating - S.home_team_elo_rating )::real/400)+1))) * 10000 >= R.rand_result THEN EH.winning_team
         ELSE EV.winning_team
     END AS winning_team 
 FROM "main"."main"."schedules" S

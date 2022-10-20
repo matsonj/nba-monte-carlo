@@ -1,3 +1,10 @@
-SELECT series_id,
+{{
+    config(
+        materialized = "ephemeral" if target.name == 'parquet' else "view"
+) }}
+
+SELECT
+    series_id,
     seed
-FROM {{ source( 'nba' , 'raw_xf_series_to_seed' ) }}
+FROM {{ "'/tmp/storage/raw_xf_series_to_seed/*.parquet'" if target.name == 'parquet' 
+    else source('nba', 'raw_xf_series_to_seed' ) }}

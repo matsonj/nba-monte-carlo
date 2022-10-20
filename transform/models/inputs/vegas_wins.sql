@@ -1,9 +1,11 @@
 {{
-  config(
-    materialized = "table"
+    config(
+      materialized = "ephemeral" if target.name == 'parquet' else "view"
 ) }}
 
-SELECT team,
+SELECT
+    team,
     win_total
-FROM {{ source( 'nba' , 'raw_team_ratings' ) }} S
+FROM {{ "'/tmp/storage/raw_team_ratings/*.parquet'" if target.name == 'parquet' 
+    else source( 'nba', 'raw_team_ratings' ) }}
 GROUP BY ALL

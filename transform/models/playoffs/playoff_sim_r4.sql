@@ -1,41 +1,15 @@
-WITH cte_step_1 AS (
-    SELECT 
-        R.scenario_id,
-        S.game_id,
-        s.series_id,
-        S.visiting_team AS visitor_key,
-        S.home_team AS home_key,
-        EV.winning_team AS visiting_team,
-        EV.elo_rating AS visiting_team_elo_rating,
-        EH.winning_team AS home_team,
-        EH.elo_rating AS home_team_elo_rating,
-        1-(1/(10^(-(EV.elo_rating - EH.elo_rating )::dec/400)+1)) as home_team_win_probability,
-        R.rand_result,
-        CASE 
-            WHEN 1-(1/(10^(-(EV.elo_rating - EH.elo_rating )::dec/400)+1)) >= R.rand_result THEN EH.winning_team
-            ELSE EV.winning_team
-        END AS winning_team 
-    FROM {{ ref( 'schedules' ) }} S
-        LEFT JOIN {{ ref( 'random_num_gen' ) }} R ON R.game_id = S.game_id
-        LEFT JOIN {{ ref( 'playoff_sim_r3_end' ) }} EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
-        LEFT JOIN {{ ref( 'playoff_sim_r3_end' ) }} EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
-    WHERE S.type = 'playoffs_r4' ),
-cte_step_2 AS (
-    SELECT step1.*,
-        ROW_NUMBER() OVER (PARTITION BY scenario_id, series_id, winning_team  ORDER BY scenario_id, series_id, game_id ) AS series_result
-    FROM cte_step_1 step1
-),
-cte_final_game AS (
-    SELECT scenario_id,
-        series_id,
-        game_id
-    FROM cte_step_2
-    WHERE series_result = 4
+{{
+    config(
+        materialized = "view" if target.name == 'parquet' else "table",
+        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/storage/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
+            if target.name == 'parquet' else " "
+) }}
+
+-- depends-on: {{ ref( 'playoff_sim_r3' ) }}
+
+WITH cte_playoff_sim AS (
+    {{ playoff_sim('playoffs_r4','/tmp/storage/playoff_sim_r3.parquet') if target.name == 'parquet'
+        else playoff_sim('playoffs_r4','playoff_sim_r3' )}}
 )
-SELECT step2.* 
-FROM cte_step_2 step2
-    INNER JOIN cte_final_game F ON F.scenario_id = step2.scenario_id 
-        AND f.series_id = step2.series_id AND step2.game_id <= f.game_id
-ORDER BY step2.scenario_id, 
-    step2.series_id, 
-    step2.game_id
+
+{{ playoff_sim_end( 'cte_playoff_sim' ) }}
