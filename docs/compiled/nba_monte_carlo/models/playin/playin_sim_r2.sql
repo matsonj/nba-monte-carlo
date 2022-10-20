@@ -1,3 +1,7 @@
+-- depends-on: "main"."main"."random_num_gen"
+
+
+
 SELECT 
     R.scenario_id,
     S.game_id,
@@ -8,10 +12,10 @@ SELECT
     EV.winning_team_elo_rating AS visiting_team_elo_rating,
     EH.remaining_team AS home_team,
     EH.losing_team_elo_rating AS home_team_elo_rating,
-    1-(1/(10^(-(EV.winning_team_elo_rating - EH.losing_team_elo_rating )::dec/400)+1)) as home_team_win_probability,
+    ( 1 - (1 / (10 ^ (-( S.visiting_team_elo_rating - S.home_team_elo_rating )::real/400)+1))) * 10000 as home_team_win_probability,
     R.rand_result,
     CASE 
-        WHEN 1-(1/(10^(-(EV.winning_team_elo_rating - EH.losing_team_elo_rating )::dec/400)+1)) >= R.rand_result THEN EH.remaining_team
+        WHEN ( 1 - (1 / (10 ^ (-( S.visiting_team_elo_rating - S.home_team_elo_rating )::real/400)+1))) * 10000 >= R.rand_result THEN EH.remaining_team
         ELSE EV.remaining_team
     END AS winning_team 
 FROM "main"."main"."schedules" S

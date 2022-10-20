@@ -1,10 +1,13 @@
 {{
-  config(
-    materialized = "table"
+    config(
+        materialized = "view" if target.name == 'parquet' else "table",
+        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/storage/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
+            if target.name == 'parquet' else " "
 ) }}
 
-SELECT i.scenario_id,
-    s.game_id,
-    random() as rand_result
-FROM {{ ref( 'scenario_gen' ) }} i
-    CROSS JOIN {{ ref( 'schedules' ) }} S
+SELECT
+    i.scenario_id,
+    S.game_id,
+    (random() * 10000)::smallint AS rand_result
+FROM {{ ref( 'scenario_gen' ) }} AS i
+CROSS JOIN {{ ref( 'schedules' ) }} AS S
