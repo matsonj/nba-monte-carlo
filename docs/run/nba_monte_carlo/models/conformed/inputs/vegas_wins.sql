@@ -1,5 +1,5 @@
 
-  create view "main_main"."vegas_wins__dbt_tmp" as (
+  create view "main"."vegas_wins__dbt_tmp" as (
     
 
 SELECT

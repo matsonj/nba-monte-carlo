@@ -1,5 +1,5 @@
 
-  create view "main_main"."schedules__dbt_tmp" as (
+  create view "main"."schedules__dbt_tmp" as (
     
 
 SELECT
@@ -13,8 +13,8 @@ SELECT
     H.team AS home_team,
     H.elo_rating::int AS home_team_elo_rating
 FROM "main"."main_prep"."prep_schedule" AS S
-LEFT JOIN "main"."main_main"."ratings" V ON V.team_long = S.visitorneutral
-LEFT JOIN "main"."main_main"."ratings" H ON H.team_long = S.homeneutral
+LEFT JOIN "main"."main_prep"."prep_team_ratings" V ON V.team_long = S.visitorneutral
+LEFT JOIN "main"."main_prep"."prep_team_ratings" H ON H.team_long = S.homeneutral
 WHERE S.type = 'reg_season'
 GROUP BY ALL
 UNION ALL

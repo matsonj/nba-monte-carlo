@@ -1,5 +1,5 @@
 
-  create view "main_main"."latest_results__dbt_tmp" as (
+  create view "main"."latest_results__dbt_tmp" as (
     
 
 SELECT

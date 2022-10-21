@@ -1,4 +1,4 @@
--- depends-on: "main"."main_main"."random_num_gen"
+-- depends-on: "main"."main"."random_num_gen"
 
 
 
@@ -18,8 +18,8 @@ SELECT
         WHEN ( 1 - (1 / (10 ^ (-( S.visiting_team_elo_rating - S.home_team_elo_rating )::real/400)+1))) * 10000 >= R.rand_result THEN EH.remaining_team
         ELSE EV.remaining_team
     END AS winning_team 
-FROM "main"."main_main"."schedules" S
-    LEFT JOIN "main"."main_main"."random_num_gen" R ON R.game_id = S.game_id
-    LEFT JOIN "main"."main_main"."playin_sim_r1_end" EH ON R.scenario_id = EH.scenario_id AND EH.game_id = S.home_team[7:]
-    LEFT JOIN "main"."main_main"."playin_sim_r1_end" EV ON R.scenario_id = EV.scenario_id AND EV.game_id = S.visiting_team[8:]
+FROM "main"."main"."schedules" S
+    LEFT JOIN "main"."main"."random_num_gen" R ON R.game_id = S.game_id
+    LEFT JOIN "main"."main"."playin_sim_r1_end" EH ON R.scenario_id = EH.scenario_id AND EH.game_id = S.home_team[7:]
+    LEFT JOIN "main"."main"."playin_sim_r1_end" EV ON R.scenario_id = EV.scenario_id AND EV.game_id = S.visiting_team[8:]
 WHERE S.type = 'playin_r2'

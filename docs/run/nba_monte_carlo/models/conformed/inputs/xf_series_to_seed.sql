@@ -1,5 +1,5 @@
 
-  create view "main_main"."xf_series_to_seed__dbt_tmp" as (
+  create view "main"."xf_series_to_seed__dbt_tmp" as (
     
 
 SELECT
