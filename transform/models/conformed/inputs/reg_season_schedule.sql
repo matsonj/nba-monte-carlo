@@ -5,7 +5,7 @@
 
 SELECT
     (S._smart_source_lineno - 1)::int AS game_id,
-    'regular_season' AS type,
+    'reg_season' AS type,
     0 as series_id,
     V.conf AS visiting_conf,
     V.team AS visiting_team,
