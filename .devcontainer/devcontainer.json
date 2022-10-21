@@ -17,7 +17,8 @@
         "python.pythonPath": "/usr/local/bin/python",
         "python.languageServer": "Pylance",
         "files.associations": {
-            "*.sql": "jinja-sql"
+            "*.sql": "jinja-sql",
+        "dbt.profilesDirOverride": "/workspaces/nba-monte-carlo/transforms/profiles/"
         }
         // any other settings go here
     },
