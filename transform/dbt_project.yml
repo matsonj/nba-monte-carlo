@@ -27,8 +27,5 @@ models:
     prep:
       schema: prep
 
-    conformed:
-      schema: main
-
 vars:
   scenarios: 500
