@@ -17,6 +17,7 @@ SELECT
     CASE 
         WHEN score1 > score2 THEN team2
         ELSE team1
-    END AS losing_team
+    END AS losing_team,
+    {{ var('include_actuals') }} AS include_actuals
 FROM {{ ref( 'prep_nba_elo_latest' ) }}
 WHERE score1 IS NOT NULL
