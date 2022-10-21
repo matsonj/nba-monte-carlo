@@ -2,11 +2,18 @@ version: 2
 
 sources:
   - name: nba
-    schema: main
+    schema: raw
     tables:
-      - name: raw_schedule
+      - name: schedule
+        identifier: nba_schedule_2023
         description: this is the nba schedule
-      - name: raw_team_ratings
+      - name: team_ratings
         description: team ELO ratings & win totals
-      - name: raw_xf_series_to_seed
+      - name: xf_series_to_seed
         description: cross ref table to match series to seeds
+      - name: nba_elo_latest
+        description: ratings from 538 repo
+      - name: latest_RAPTOR_by_player
+        description: 538 RAPTOR ratings by player
+      - name: latest_RAPTOR_by_team
+        description: 538 RAPTOR ratings by player by team & game type

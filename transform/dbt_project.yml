@@ -23,7 +23,10 @@ clean-targets:
 - dbt_packages
 - logs
 models:
-  nba_monte_carlo: null
+  nba_monte_carlo:
+    prep:
+      schema: prep
 
 vars:
   scenarios: 500
+  include_actuals: true
