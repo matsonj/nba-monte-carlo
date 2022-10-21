@@ -12,37 +12,37 @@ plugins:
     config:
       tables:
       - path: file://./data
-        name: raw_schedule
+        name: nba_schedule_2023
         pattern: nba_schedule_2023.csv
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [key]
         format: csv
       - path: file://./data
-        name: raw_team_ratings
+        name: team_ratings
         pattern: team_ratings.csv
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [team]
         format: csv
       - path: file://./data
-        name: raw_xf_series_to_seed
+        name: xf_series_to_seed
         pattern: xf_series_to_seed.csv
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [series_id]
         format: csv
       - path: https://projects.fivethirtyeight.com/nba-model
-        name: raw_fivethirtyeight_ratings
+        name: nba_elo_latest
         pattern: nba_elo_latest.csv
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [date,team1,team2]
         format: csv
       - path: https://projects.fivethirtyeight.com/nba-model/2022
-        name: raw_player_ratings
+        name: latest_RAPTOR_by_player
         pattern: latest_RAPTOR_by_player.csv
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [player_id]
         format: csv
       - path: https://projects.fivethirtyeight.com/nba-model/2022
-        name: raw_latest_RAPTOR_by_team
+        name: latest_RAPTOR_by_team
         pattern: latest_RAPTOR_by_team.csv
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [player_id,season_type]
@@ -53,7 +53,7 @@ plugins:
     pip_url: target-duckdb~=0.4
     config:
       filepath: /tmp/mdsbox.db
-      default_target_schema: main
+      default_target_schema: raw
   - name: target-parquet
     variant: estrategiahq
     pip_url: git+https://github.com/estrategiahq/target-parquet.git
