@@ -9,6 +9,5 @@ SELECT
     team2 AS visiting_team,
     score2 AS visiting_team_score,
     date
-FROM {{ "'/tmp/storage/raw_fivethirtyeight_ratings/*.parquet'" if target.name == 'parquet'
-    else source( 'nba', 'raw_fivethirtyeight_ratings' ) }}
+FROM {{ ref( 'prep_nba_elo_latest' ) }}
 WHERE score1 IS NOT NULL
