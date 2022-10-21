@@ -1,0 +1,48 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/docker-existing-dockerfile
+{
+	"name": "Meltano MDS",
+
+	// Sets the run context to one level up instead of the .devcontainer folder.
+	"context": "..",
+	"build": {
+        "args": {
+            "VARIANT": "3.9",
+        }
+    },
+
+	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+	"dockerFile": "Dockerfile.dev-container",
+    "settings": {
+        "python.pythonPath": "/usr/local/bin/python",
+        "python.languageServer": "Pylance",
+        "files.associations": {
+            "*.sql": "jinja-sql",
+        "dbt.profilesDirOverride": "/workspaces/nba-monte-carlo/transforms/profiles/"
+        }
+        // any other settings go here
+    },
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "redhat.vscode-yaml",
+        "ms-vscode.makefile-tools",
+        "EditorConfig.EditorConfig",
+        "samuelcolvin.jinjahtml",
+        "innoverio.vscode-dbt-power-user",
+        "github.vscode-pull-request-github",
+        "eamodio.gitlens",
+        "GitHub.copilot",
+        "visualstudioexptteam.vscodeintellicode",
+        "bastienboutonnet.vscode-dbt",
+        "vivaxy.vscode-conventional-commits"
+    ],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Uncomment the next line to run commands after the container is created - for example installing curl.
+	"postCreateCommand": "pip3 install pipx && pipx install meltano"
+
+	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+}
