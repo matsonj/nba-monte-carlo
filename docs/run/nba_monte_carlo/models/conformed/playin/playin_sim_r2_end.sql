@@ -1,5 +1,5 @@
 
-  create view "main_main"."playin_sim_r2_end__dbt_tmp" as (
+  create view "main"."playin_sim_r2_end__dbt_tmp" as (
     
 
 SELECT
@@ -8,7 +8,7 @@ SELECT
     P1.winning_team,
     P1.conf || '-7' AS seed,
     P1.winning_team_elo_rating
-FROM "main"."main_main"."playin_sim_r1_end" P1
+FROM "main"."main"."playin_sim_r1_end" P1
 WHERE P1.result = 'winner advance'
 UNION ALL
 SELECT
@@ -20,5 +20,5 @@ SELECT
         WHEN P2.winning_team = P2.home_team THEN P2.home_team_elo_rating
         ELSE P2.visiting_team_elo_rating
     END AS elo_rating
-FROM "main"."main_main"."playin_sim_r2" P2
+FROM "main"."main"."playin_sim_r2" P2
   );

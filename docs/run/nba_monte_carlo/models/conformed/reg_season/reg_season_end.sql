@@ -1,7 +1,7 @@
 
 
   create  table
-    "main_main"."reg_season_end__dbt_tmp"
+    "main"."reg_season_end__dbt_tmp"
   as (
     
 
@@ -18,7 +18,7 @@ WITH cte_wins AS (
             ELSE S.visiting_team_elo_rating
         END AS elo_rating,
         COUNT(*) AS wins
-    FROM "main"."main_main"."reg_season_simulator" S
+    FROM "main"."main"."reg_season_simulator" S
     GROUP BY ALL
 ),
 

@@ -13,7 +13,7 @@ WITH cte_wins AS (
             ELSE S.visiting_team_elo_rating
         END AS elo_rating,
         COUNT(*) AS wins
-    FROM "main"."main_main"."reg_season_simulator" S
+    FROM "main"."main"."reg_season_simulator" S
     GROUP BY ALL
 ),
 

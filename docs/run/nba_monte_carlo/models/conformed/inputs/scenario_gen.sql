@@ -1,5 +1,5 @@
 
-  create view "main_main"."scenario_gen__dbt_tmp" as (
+  create view "main"."scenario_gen__dbt_tmp" as (
     
 
 SELECT I.generate_series AS scenario_id

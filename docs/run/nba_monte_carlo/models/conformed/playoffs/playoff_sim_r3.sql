@@ -1,15 +1,15 @@
 
 
   create  table
-    "main_main"."playoff_sim_r3__dbt_tmp"
+    "main"."playoff_sim_r3__dbt_tmp"
   as (
     
 
--- depends-on: "main"."main_main"."playoff_sim_r2"
+-- depends-on: "main"."main"."playoff_sim_r2"
 
 WITH cte_playoff_sim AS (
     
--- depends-on: "main"."main_main"."random_num_gen"
+-- depends-on: "main"."main"."random_num_gen"
 
 WITH cte_step_1 AS (
     SELECT
@@ -28,11 +28,11 @@ WITH cte_step_1 AS (
          WHEN ( 1 - (1 / (10 ^ (-( EV.elo_rating - EH.elo_rating )::real/400)+1))) * 10000 >= R.rand_result THEN EH.winning_team
          ELSE EV.winning_team
       END AS winning_team 
-    FROM "main"."main_main"."schedules" S
+    FROM "main"."main"."schedules" S
     
-    LEFT JOIN "main"."main_main"."random_num_gen" R ON R.game_id = S.game_id
-    LEFT JOIN  "main"."main_main"."playoff_sim_r2" EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
-    LEFT JOIN  "main"."main_main"."playoff_sim_r2" EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
+    LEFT JOIN "main"."main"."random_num_gen" R ON R.game_id = S.game_id
+    LEFT JOIN  "main"."main"."playoff_sim_r2" EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
+    LEFT JOIN  "main"."main"."playoff_sim_r2" EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
     
     WHERE S.type =  'playoffs_r3' ),
 cte_step_2 AS (
@@ -66,7 +66,7 @@ SELECT
     END AS elo_rating,
     XF.seed
     FROM cte_playoff_sim E
-LEFT JOIN "main"."main_main"."xf_series_to_seed" XF ON XF.series_id = E.series_id
+LEFT JOIN "main"."main"."xf_series_to_seed" XF ON XF.series_id = E.series_id
 WHERE E.series_result = 4
   );
 
