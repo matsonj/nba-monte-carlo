@@ -15,14 +15,26 @@
 	"dockerFile": "Dockerfile.dev-container",
     "settings": {
         "python.pythonPath": "/usr/local/bin/python",
-        "python.languageServer": "Pylance"
+        "python.languageServer": "Pylance",
+        "files.associations": {
+            "*.sql": "jinja-sql"
+        }
         // any other settings go here
     },
     "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
         "redhat.vscode-yaml",
-        "ms-vscode.makefile-tools"
+        "ms-vscode.makefile-tools",
+        "EditorConfig.EditorConfig",
+        "samuelcolvin.jinjahtml",
+        "innoverio.vscode-dbt-power-user",
+        "github.vscode-pull-request-github",
+        "eamodio.gitlens",
+        "GitHub.copilot",
+        "visualstudioexptteam.vscodeintellicode",
+        "bastienboutonnet.vscode-dbt",
+        "vivaxy.vscode-conventional-commits"
     ],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
