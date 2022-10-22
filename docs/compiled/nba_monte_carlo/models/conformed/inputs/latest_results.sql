@@ -18,3 +18,4 @@ SELECT
     True AS include_actuals
 FROM "main"."main_prep"."prep_nba_elo_latest"
 WHERE score1 IS NOT NULL
+GROUP BY ALL
