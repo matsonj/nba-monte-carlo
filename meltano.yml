@@ -81,7 +81,7 @@ plugins:
       label: Projects Directory
     - name: skip_pre_invoke
       kind: boolean
-      value: false
+      value: true
       description: Whether to skip pre-invoke hooks which automatically run dbt clean and deps
       env: DBT_EXT_SKIP_PRE_INVOKE
     - name: type
@@ -94,10 +94,6 @@ plugins:
     - name: project_dir
       label: Projects Directory
       value: $MELTANO_PROJECT_ROOT/transform
-    - name: profiles_dir
-      label: Profiles Directory
-      value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
-      env: DBT_PROFILES_DIR  
     - name: path
       label: Path
       kind: string
