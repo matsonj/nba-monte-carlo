@@ -16,9 +16,9 @@
     "settings": {
         "python.pythonPath": "/usr/local/bin/python",
         "python.languageServer": "Pylance",
+        "dbt.profilesDirOverride": "/workspaces/nba-monte-carlo/transform/profiles/duckdb/",
         "files.associations": {
-            "*.sql": "jinja-sql",
-        "dbt.profilesDirOverride": "/workspaces/nba-monte-carlo/transforms/profiles/"
+            "*.sql": "jinja-sql"
         }
         // any other settings go here
     },
@@ -35,7 +35,8 @@
         "GitHub.copilot",
         "visualstudioexptteam.vscodeintellicode",
         "bastienboutonnet.vscode-dbt",
-        "vivaxy.vscode-conventional-commits"
+        "vivaxy.vscode-conventional-commits",
+        "mechatroner.rainbow-csv"
     ],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
