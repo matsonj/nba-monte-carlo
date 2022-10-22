@@ -28,5 +28,5 @@ models:
       schema: prep
 
 vars:
-  scenarios: 500
+  scenarios: 100000
   include_actuals: true
