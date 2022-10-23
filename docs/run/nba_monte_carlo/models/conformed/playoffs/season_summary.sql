@@ -8,6 +8,7 @@
 
 
 SELECT
+    ratings.elo_rating,
     R.*,
     P.made_playoffs,
     P.made_conf_semis,
@@ -16,5 +17,6 @@ SELECT
     P.won_finals
 FROM "main"."main"."reg_season_summary" R
 LEFT JOIN "main"."main"."playoff_summary" P ON P.team = R.team
+LEFT JOIN "main"."main"."ratings" ratings ON ratings.team = R.team
   );
 
