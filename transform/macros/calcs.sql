@@ -3,7 +3,7 @@
 {%- endmacro -%}
 
 {%- macro elo_diff(home_team, visiting_team, result)  -%}
-   50 * (( {{result}} ) - (1 / (10 ^ ( - ({{visiting_team}} - {{home_team}}) / 400) + 1)))
+   50.0 * (( {{result}} ) - (1 / (10 ^ ( - ({{visiting_team}} - {{home_team}})::real / 400) + 1)))
 {%- endmacro -%}
 
 {% macro playoff_sim(round,seed_file) %}

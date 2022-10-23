@@ -11,14 +11,28 @@
         S.home_team,
         LR.winning_team,
         CASE
-            WHEN LR.winning_team = S.visiting_team THEN 0
-            ELSE 1
+            WHEN LR.winning_team = S.visiting_team THEN 1
+            ELSE 0
         END AS game_result
     FROM {{ ref( 'schedules' ) }} S
     JOIN {{ ref( 'latest_results' ) }} LR ON LR.game_id = S.game_id AND LR.include_actuals = true
     ORDER BY S.game_id
 {% endset %}
 {% do log(sql_statement, info=True) %}
+
+{% set log_table %}
+    CREATE OR REPLACE TABLE results_log(
+        game_id INTEGER, 
+        visiting_team VARCHAR(3), 
+        visiting_team_elo_rating REAL,
+        home_team VARCHAR(3),
+        home_team_elo_rating REAL,
+        winning_team VARCHAR(3),
+        elo_change REAL
+    )
+{% endset %}
+{% do log(log_table, info=True) %}
+{% do run_query(log_table) %}
 
 -- load elo ratings into a temporary table
 {% set temp_ratings %}
@@ -51,11 +65,19 @@
     {% for j in workings_game.rows %}
         {% set update_proc %}
             UPDATE workings_ratings
-                SET elo_rating = elo_rating + {{ elo_diff( j[4] , j[2] , j[6] ) }}
+                SET elo_rating = elo_rating - {{ elo_diff( j[4] , j[2] , j[6] ) }}
                 WHERE team = '{{ j[3] }}';
             UPDATE workings_ratings
-                SET elo_rating = elo_rating - {{ elo_diff( j[4] , j[2] , j[6] ) }}
+                SET elo_rating = elo_rating + {{ elo_diff( j[4] , j[2] , j[6] ) }}
                 WHERE team = '{{ j[1] }}';
+            INSERT INTO results_log VALUES 
+                ({{ j[0] }},
+                '{{ j[1] }}',
+                {{ j[2] }},
+                '{{ j[3] }}',
+                {{ j[4] }},
+                '{{ j[5] }}',
+                {{ elo_diff( j[4] , j[2] , j[6] ) }});
         {% endset %}
         {%- do log("running update below...", info=True)  -%}
         {% do log(update_proc, info=True) %}
