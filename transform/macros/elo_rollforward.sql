@@ -6,17 +6,17 @@
 -- get the schedule loaded (will loop through this)
 {% set sql_statement %}
     SELECT
-        S.game_id,
-        S.visiting_team,
-        S.home_team,
-        LR.winning_team,
+        (S._smart_source_lineno - 1) AS game_id,
+        S.team2 AS visiting_team,
+        S.team1 AS home_team,
+        CASE WHEN score1 > score2 THEN team1 ELSE team2 END AS winning_team,
         CASE
-            WHEN LR.winning_team = S.visiting_team THEN 1
+            WHEN score2 > score1 THEN 1
             ELSE 0
         END AS game_result
-    FROM {{ ref( 'schedules' ) }} S
-    JOIN {{ ref( 'latest_results' ) }} LR ON LR.game_id = S.game_id AND LR.include_actuals = true
-    ORDER BY S.game_id
+    FROM {{ source( 'nba', 'nba_elo_latest' ) }} S
+    WHERE score1 IS NOT NULL
+    ORDER BY S._smart_source_lineno
 {% endset %}
 {% do log(sql_statement, info=True) %}
 
@@ -38,7 +38,7 @@
 {% set temp_ratings %}
     CREATE OR REPLACE TEMPORARY TABLE workings_ratings AS (
         SELECT team, elo_rating, elo_rating AS original_rating
-        FROM {{ ref( 'prep_team_ratings' ) }}
+        FROM {{ source('nba', 'team_ratings' ) }}
     )
 {% endset %}
 {% do run_query(temp_ratings) %}

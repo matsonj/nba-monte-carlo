@@ -29,6 +29,5 @@ jobs:
       - name: build pipeline
         run: |
           meltano run tap-spreadsheets-anywhere target-duckdb --full-refresh
-          meltano invoke dbt-duckdb build -s +prep_team_ratings,+schedules
           meltano invoke dbt-duckdb run-operation elo_rollforward
           meltano run dbt-duckdb:build
