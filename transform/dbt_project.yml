@@ -28,5 +28,6 @@ models:
       schema: prep
 
 vars:
-  scenarios: 100000
+  scenarios: 10000
   include_actuals: true
+  latest_ratings: true

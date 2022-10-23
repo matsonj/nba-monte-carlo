@@ -14,6 +14,6 @@ SELECT
     H.team AS home_team,
     H.elo_rating::int AS home_team_elo_rating
 FROM {{ ref( 'prep_nba_elo_latest' ) }} AS S
-LEFT JOIN {{ ref( 'prep_team_ratings' ) }} V ON V.team = S.team2
-LEFT JOIN {{ ref( 'prep_team_ratings' ) }} H ON H.team = S.team1
+LEFT JOIN {{ ref( 'ratings' ) }} V ON V.team = S.team2
+LEFT JOIN {{ ref( 'ratings' ) }} H ON H.team = S.team1
 GROUP BY ALL

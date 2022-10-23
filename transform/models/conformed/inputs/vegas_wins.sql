@@ -6,5 +6,5 @@
 SELECT
     team,
     win_total
-FROM {{ ref( 'prep_team_ratings' ) }}
+FROM {{ ref( 'ratings' ) }}
 GROUP BY ALL

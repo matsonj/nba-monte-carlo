@@ -8,6 +8,7 @@
 ) }}
 
 SELECT
+    ratings.elo_rating,
     R.*,
     P.made_playoffs,
     P.made_conf_semis,
@@ -17,3 +18,4 @@ SELECT
 FROM {{ "'/tmp/storage/reg_season_summary.parquet'" if target.name == 'parquet'
     else ref( 'reg_season_summary' ) }} R
 LEFT JOIN {{ ref( 'playoff_summary' ) }} P ON P.team = R.team
+LEFT JOIN {{ ref( 'ratings' ) }} ratings ON ratings.team = R.team
