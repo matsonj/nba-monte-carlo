@@ -5,6 +5,6 @@
 SELECT
     team,
     win_total
-FROM "main"."main_prep"."prep_team_ratings"
+FROM "main"."main"."ratings"
 GROUP BY ALL
   );

@@ -13,7 +13,7 @@ SELECT
     H.team AS home_team,
     H.elo_rating::int AS home_team_elo_rating
 FROM "main"."main_prep"."prep_nba_elo_latest" AS S
-LEFT JOIN "main"."main_prep"."prep_team_ratings" V ON V.team = S.team2
-LEFT JOIN "main"."main_prep"."prep_team_ratings" H ON H.team = S.team1
+LEFT JOIN "main"."main"."ratings" V ON V.team = S.team2
+LEFT JOIN "main"."main"."ratings" H ON H.team = S.team1
 GROUP BY ALL
   );
