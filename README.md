@@ -1,5 +1,5 @@
 # MDS in a box
-This project serves as end to end example of running the "Modern Data Stack" in a local environment. Development is primarily done on Windows via WSL, which means Mac is untested (but should work).
+This project serves as end to end example of running the "Modern Data Stack" in a local environment. For those looking for a more integrated experience, devcontainers have been implemented as well. If you have docker and WSL installed, the container can booted up right from VS Code.
 
 ## Current progress
 Right now, you can get the nba schedule and elo ratings from this project and generate the following query. more to come, see to-dos at bottom of readme. And of course, the dbt docs are self hosted in Github Pages, [check them out here](https://matsonj.github.io/nba-monte-carlo/).
@@ -53,7 +53,7 @@ meltano run superset:ui
 ## Running your pipeline on demand
 After your run ```make run```, you can run your pipeline again at any time with the following meltano command:
 ```
-meltano run tap-spreadsheets-anywhere target-duckdb dbt-duckdb:build
+meltano run tap-spreadsheets-anywhere target-duckdb --full-refresh dbt-duckdb:build
 ```
 
 ## Using Parquet instead of a database
@@ -64,12 +64,15 @@ There is an additional target in the meltano.yml file as well as dbt profiles.ym
 - [x] add table for results
 - [x] add config options in dbt vars to ignore completed games
 - [x] make simulator only sim incomplete games
-- [ ] add table for new ratings
-- [ ] add config to use original or new ratings
+- [x] add table for new ratings
+- [x] add config to use original or new ratings
 
 
 ## Optional stuff
-- [ ] add dbt tests
+- [x] add dbt tests
 - [ ] add model descriptions
 - [x] change elo calculation to a udf
 - [x] make playoff elimination stuff a macro (param: schedule type)
+
+## Source Data
+The data contained within this project comes from [538](https://data.fivethirtyeight.com/#nba-forecasts), [basketball reference](https://basketballreference.com), and [draft kings](https://www.draftkings.com). 
