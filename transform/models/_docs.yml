@@ -13,6 +13,13 @@ models:
   - name: prep_xf_series_to_seed
     tests:
       - empty_table
+  - name: prep_latest_ratings
+    columns:
+      - name: team
+        tests:
+          - unique
+    tests:
+      - empty_table
   - name: latest_results
     columns:
       - name: game_id
@@ -119,4 +126,3 @@ models:
       - name: seed
         tests:
           - not_null
-
