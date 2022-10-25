@@ -1,0 +1,44 @@
+{
+  "plugin_type": "utilities",
+  "name": "dbt-osmosis",
+  "namespace": "dbt_osmosis",
+  "variant": "z3z1ma",
+  "label": "dbt-osmosis",
+  "docs": "https://hub.meltano.com/utilities/dbt-osmosis--z3z1ma",
+  "repo": "https://github.com/z3z1ma/dbt-osmosis",
+  "pip_url": "dbt-osmosis",
+  "executable": "dbt-osmosis",
+  "settings": [
+    {
+      "name": "adapter",
+      "env": "ADAPTER",
+      "description": "This should be set to the adapter you have installed as meltano will install\ndbt and its profile directory into `transform/<adapter>` directory. We use this \nconfig option to resolve dbt profile directory.\n"
+    }
+  ],
+  "commands": {
+    "server": {
+      "args": "server --register-project --project-dir ${MELTANO_PROJECT_ROOT}/transform --profiles-dir ${MELTANO_PROJECT_ROOT}/transform/profiles/${ADAPTER}",
+      "description": "Start a server exposing two primary endpoints. /compile and /run which receive POST\nrequests and compile or run dbt SQL against your dbt profile. It is significantly faster \nand simpler than dbt RPC and internally does not rely on it. This server is compatible with \nhttps://github.com/innoverio/vscode-dbt-power-user providing VS code users interactive\nquery previews via a simple \u25b6\ufe0f button or Cmd+Enter.\n"
+    },
+    "workbench": {
+      "args": "workbench --project-dir ${MELTANO_PROJECT_ROOT}/transform --profiles-dir ${MELTANO_PROJECT_ROOT}/transform/profiles/${ADAPTER}",
+      "description": "Start an interactive dbt workbench. Copy and paste model code into the workbench\nor author a model from scratch. The workbench allows you to write dbt with instant\ncompile-as-you-type functionality. Spin it up or tear it down as needed.\n"
+    },
+    "diff": {
+      "args": "diff --project-dir ${MELTANO_PROJECT_ROOT}/transform --profiles-dir ${MELTANO_PROJECT_ROOT}/transform/profiles/${ADAPTER}",
+      "description": "Diff a dbt model from git HEAD to inspect changes as you develop, requires -m [MODEL]"
+    },
+    "diff-cache": {
+      "args": "diff --project-dir ${MELTANO_PROJECT_ROOT}/transform --profiles-dir ${MELTANO_PROJECT_ROOT}/transform/profiles/${ADAPTER} --temp-table",
+      "description": "Diff a query from git HEAD to inspect changes as you develop caching the HEAD rev of the model \nto a schema called `dbt_diff`, requires -m [MODEL]\n"
+    },
+    "run": {
+      "args": "run --project-dir ${MELTANO_PROJECT_ROOT}/transform --profiles-dir ${MELTANO_PROJECT_ROOT}/transform/profiles/${ADAPTER}",
+      "description": "Organizes all dbt schema yaml files and cascadingly inherits documentation to keep it DRY."
+    },
+    "compose": {
+      "args": "compose --project-dir ${MELTANO_PROJECT_ROOT}/transform --profiles-dir ${MELTANO_PROJECT_ROOT}/transform/profiles/${ADAPTER}",
+      "description": "A slimmer version of `run` used in precommit hooks"
+    }
+  }
+}
