@@ -1,14 +1,14 @@
 {{
     config(
         materialized = "view" if target.name == 'parquet' else "table",
-        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/storage/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
+        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/data_catalog/conformed/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
             if target.name == 'parquet' else " "
 ) }}
 
 -- depends-on: {{ ref( 'initialize_seeding' ) }}
 
 WITH cte_playoff_sim AS (
-    {{ playoff_sim('playoffs_r1','/tmp/storage/initialize_seeding.parquet') if target.name == 'parquet'
+    {{ playoff_sim('playoffs_r1','/tmp/data_catalog/conformed/initialize_seeding.parquet') if target.name == 'parquet'
         else playoff_sim('playoffs_r1','initialize_seeding' )}}
 )
 

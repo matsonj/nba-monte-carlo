@@ -4,5 +4,5 @@
 ) }}
 
 SELECT *
-FROM {{ "'/tmp/storage/nba_elo_latest/*.parquet'" if target.name == 'parquet' 
-    else source('nba', 'nba_elo_latest' ) }}
+FROM {{ ref( 'raw_nba_elo_latest' ) }}
+GROUP BY ALL
