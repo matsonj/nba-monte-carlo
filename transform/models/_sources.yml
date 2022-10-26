@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: nba
-    schema: raw
+    schema: psa
     tables:
       - name: schedule
         identifier: nba_schedule_2023
