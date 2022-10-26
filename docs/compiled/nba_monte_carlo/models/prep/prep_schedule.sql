@@ -1,4 +1,4 @@
 
 
 SELECT *
-FROM "main"."raw"."nba_schedule_2023"
+FROM "main"."main"."raw_schedule"

@@ -1,7 +1,8 @@
 
-  create view "main_prep"."prep_nba_elo_latest__dbt_tmp" as (
+  create view "main"."prep_nba_elo_latest__dbt_tmp" as (
     
 
 SELECT *
-FROM "main"."raw"."nba_elo_latest"
+FROM "main"."main"."raw_nba_elo_latest"
+GROUP BY ALL
   );

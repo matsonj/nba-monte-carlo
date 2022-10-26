@@ -1,4 +1,4 @@
 
 
 SELECT *
-FROM "main"."raw"."team_ratings"
+FROM "main"."main"."raw_team_ratings"

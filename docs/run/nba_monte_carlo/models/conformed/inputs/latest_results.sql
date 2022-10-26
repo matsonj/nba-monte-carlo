@@ -18,7 +18,7 @@ SELECT
         ELSE team1
     END AS losing_team,
     True AS include_actuals
-FROM "main"."main_prep"."prep_nba_elo_latest"
+FROM "main"."main"."prep_nba_elo_latest"
 WHERE score1 IS NOT NULL
 GROUP BY ALL
   );

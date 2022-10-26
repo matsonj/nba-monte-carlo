@@ -3,4 +3,4 @@
 SELECT
     *,
     True AS latest_ratings
-FROM raw.elo_post
+FROM "main"."psa"."elo_post"
