@@ -4,5 +4,4 @@
 ) }}
 
 SELECT *
-FROM {{ "'/tmp/storage/team_ratings/*.parquet'" if target.name == 'parquet' 
-    else source('nba', 'team_ratings' ) }}
+FROM {{ ref( 'raw_team_ratings' ) }}

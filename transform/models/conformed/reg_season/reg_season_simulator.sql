@@ -17,7 +17,7 @@ SELECT
     END AS winning_team,
     COALESCE(LR.include_actuals, false) AS include_actuals
 FROM {{ ref( 'schedules' ) }} S
-LEFT JOIN {{ "'/tmp/storage/random_num_gen.parquet'" if target.name == 'parquet'
+LEFT JOIN {{ "'/tmp/data_catalog/conformed/random_num_gen.parquet'" if target.name == 'parquet'
         else ref( 'random_num_gen' ) }} R ON R.game_id = S.game_id
 LEFT JOIN {{ ref( 'latest_results' ) }} LR ON LR.game_id = S.game_id
 WHERE S.type = 'reg_season'

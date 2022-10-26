@@ -3,7 +3,7 @@
 {{
     config(
         materialized = "view" if target.name == 'parquet' else "table",
-        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/storage/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
+        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/data_catalog/conformed/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
             if target.name == 'parquet' else " "
 ) }}
 
@@ -14,7 +14,7 @@ WITH cte_teams AS (
         winning_team,
         seed,
         elo_rating
-    FROM {{ "'/tmp/storage/reg_season_end.parquet'" if target.name == 'parquet'
+    FROM {{ "'/tmp/data_catalog/conformed/reg_season_end.parquet'" if target.name == 'parquet'
         else ref( 'reg_season_end' ) }}
     WHERE season_rank < 7
     UNION ALL
