@@ -17,3 +17,5 @@ sources:
         description: 538 RAPTOR ratings by player
       - name: latest_RAPTOR_by_team
         description: 538 RAPTOR ratings by player by team & game type
+      - name: elo_post
+        description: elo after running proc for record actual results
