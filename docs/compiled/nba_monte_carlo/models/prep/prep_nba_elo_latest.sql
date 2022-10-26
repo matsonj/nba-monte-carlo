@@ -1,4 +1,5 @@
 
 
 SELECT *
-FROM "main"."raw"."nba_elo_latest"
+FROM "main"."main"."raw_nba_elo_latest"
+GROUP BY ALL

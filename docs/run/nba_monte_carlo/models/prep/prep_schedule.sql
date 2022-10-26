@@ -1,7 +1,7 @@
 
-  create view "main_prep"."prep_schedule__dbt_tmp" as (
+  create view "main"."prep_schedule__dbt_tmp" as (
     
 
 SELECT *
-FROM "main"."raw"."nba_schedule_2023"
+FROM "main"."main"."raw_schedule"
   );
