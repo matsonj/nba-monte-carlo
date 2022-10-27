@@ -115,11 +115,6 @@ plugins:
         executable: dbt_extension
     config:
       path: /tmp/mdsbox.db
-  - name: dbt-osmosis
-    variant: z3z1ma
-    pip_url: dbt-osmosis
-    config:
-      adapter: dbt-duckdb
 schedules:
 - name: spreadsheets-anywhere-to-duckdb
   interval: '@once'
