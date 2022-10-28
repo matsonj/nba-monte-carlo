@@ -151,6 +151,10 @@ plugins:
       description: Specify the schema to write into.
     config:
       path: /tmp/mdsbox.db
+    commands:
+      python:
+        executable: python
+        args: ""
 schedules:
 - name: spreadsheets-anywhere-to-duckdb
   interval: '@once'
