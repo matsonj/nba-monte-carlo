@@ -17,6 +17,7 @@
         "python.pythonPath": "/usr/local/bin/python",
         "python.languageServer": "Pylance",
         "dbt.profilesDirOverride": "/workspaces/nba-monte-carlo/transform/profiles/duckdb",
+        "dbt.server.osmosisHost": "127.0.0.1",
         "files.associations": {
             "*.sql": "jinja-sql"
         }
@@ -40,7 +41,8 @@
     "customizations": {
         "vscode": {
             "settings": {
-                "python.defaultInterpreterPath": "/usr/local/bin/python"
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "dbt.dbtPythonPath": "meltano invoke dbt-osmosis:python"
             }
         }
     },
@@ -48,7 +50,7 @@
 	// "forwardPorts": [],
 
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	"postCreateCommand": "pip3 install pipx && pipx install meltano"
+	"postCreateCommand": "pip3 install pipx && pipx install meltano && meltano install utility dbt-osmosis"
 
 	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
 	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
