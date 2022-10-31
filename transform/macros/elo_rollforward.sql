@@ -39,7 +39,7 @@
 {% set temp_ratings %}
     CREATE OR REPLACE TEMPORARY TABLE workings_ratings AS (
         SELECT team, elo_rating, elo_rating AS original_rating
-        FROM {{ "'s3://datalake//psa/team_ratings/*.parquet'" }}
+        FROM {{ "'s3://datalake/psa/team_ratings/*.parquet'" }}
         GROUP BY ALL
     )
 {% endset %}
