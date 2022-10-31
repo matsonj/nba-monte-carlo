@@ -5,5 +5,5 @@
 SELECT
     *,
     True AS latest_ratings
-FROM "main"."psa"."elo_post"
+FROM '/tmp/data_catalog/prep/elo_post.parquet'
   );
