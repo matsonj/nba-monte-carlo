@@ -3,5 +3,5 @@
     
 
 SELECT *
-FROM "main"."psa"."nba_elo_latest"
+FROM '/tmp/data_catalog/psa/nba_elo_latest/*.parquet'
   );
