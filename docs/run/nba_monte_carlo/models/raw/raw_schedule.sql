@@ -3,5 +3,5 @@
     
 
 SELECT *
-FROM "main"."psa"."nba_schedule_2023"
+FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
   );

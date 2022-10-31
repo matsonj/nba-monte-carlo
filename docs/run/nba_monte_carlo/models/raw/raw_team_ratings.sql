@@ -3,5 +3,5 @@
     
 
 SELECT *
-FROM "main"."psa"."team_ratings"
+FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
   );
