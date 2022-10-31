@@ -28,7 +28,7 @@ WITH cte_step_1 AS (
       END AS winning_team 
     FROM {{ ref( 'schedules' ) }} S
     {% if target.name == 'parquet' %}
-    LEFT JOIN '/tmp/data_catalog/conformed/random_num_gen.parquet' R ON R.game_id = S.game_id
+    LEFT JOIN 's3://datalake/conformed/random_num_gen.parquet' R ON R.game_id = S.game_id
     LEFT JOIN '{{ seed_file }}' EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
     LEFT JOIN '{{ seed_file }}' EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
     {% elif target.name != 'parquet' %}

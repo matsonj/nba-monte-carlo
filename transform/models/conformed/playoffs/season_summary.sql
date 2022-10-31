@@ -3,7 +3,7 @@
 {{
     config(
         materialized = "view" if target.name == 'parquet' else "table",
-        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/data_catalog/conformed/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
+        post_hook = "COPY (SELECT * FROM {{ this }} ) TO 's3://datalake/conformed/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
             if target.name == 'parquet' else " "
 ) }}
 
@@ -15,7 +15,7 @@ SELECT
     P.made_conf_finals,
     P.made_finals,
     P.won_finals
-FROM {{ "'/tmp/data_catalog/conformed/reg_season_summary.parquet'" if target.name == 'parquet'
+FROM {{ "'s3://datalake/conformed/reg_season_summary.parquet'" if target.name == 'parquet'
     else ref( 'reg_season_summary' ) }} R
 LEFT JOIN {{ ref( 'playoff_summary' ) }} P ON P.team = R.team
 LEFT JOIN {{ ref( 'ratings' ) }} ratings ON ratings.team = R.team

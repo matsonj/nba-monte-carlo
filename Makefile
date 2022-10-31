@@ -1,14 +1,23 @@
-build:
+pip_install:
+	pip install pipx
+	pipx install meltano
+	pipx install localstack
+
+build: pip_install
 	meltano install
+
+start_s3:
+	localstack start -d
+
+init_s3:
+	awslocal s3 mb s3://datalake
 
 run:
 	meltano run tap-spreadsheets-anywhere target-duckdb --full-refresh dbt-duckdb:build
 
 parquet:
 	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh;\
-	mkdir /tmp/data_catalog/conformed;\
-	mkdir /tmp/data_catalog/prep;\
-	mkdir /tmp/data_catalog/raw;\
+	awslocal s3 sync /tmp/data_catalog/psa s3://datalake/psa
 	meltano invoke dbt-duckdb run-operation elo_rollforward --target parquet;\
 	meltano invoke dbt-duckdb build --target parquet
 

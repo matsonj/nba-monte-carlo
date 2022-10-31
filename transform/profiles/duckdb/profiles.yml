@@ -20,3 +20,13 @@ meltano:
     parquet:
       type: duckdb
       threads: 4
+      extensions:
+        - httpfs
+        - parquet
+      settings:
+        s3_region: us-east-1
+        s3_access_key_id: "test"
+        s3_secret_access_key: "test"
+        s3_endpoint: "localhost:4566"
+        s3_url_style: "path"
+        s3_use_ssl: false

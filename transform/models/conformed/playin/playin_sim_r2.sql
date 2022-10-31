@@ -22,7 +22,7 @@ SELECT
         ELSE EV.remaining_team
     END AS winning_team 
 FROM {{ ref( 'schedules' ) }} S
-    LEFT JOIN {{ "'/tmp/data_catalog/conformed/random_num_gen.parquet'" if target.name == 'parquet'
+    LEFT JOIN {{ "'s3://datalake/conformed/random_num_gen.parquet'" if target.name == 'parquet'
         else ref( 'random_num_gen' ) }} R ON R.game_id = S.game_id
     LEFT JOIN {{ ref( 'playin_sim_r1_end' ) }} EH ON R.scenario_id = EH.scenario_id AND EH.game_id = S.home_team[7:]
     LEFT JOIN {{ ref( 'playin_sim_r1_end' ) }} EV ON R.scenario_id = EV.scenario_id AND EV.game_id = S.visiting_team[8:]

@@ -6,5 +6,5 @@
 SELECT
     *,
     {{ var('latest_ratings') }} AS latest_ratings
-FROM {{ "'/tmp/data_catalog/prep/elo_post.parquet'" if target.name == 'parquet' 
+FROM {{ "'s3://datalake/prep/elo_post.parquet'" if target.name == 'parquet' 
     else source('nba', 'elo_post' ) }}
