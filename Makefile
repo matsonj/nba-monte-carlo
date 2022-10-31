@@ -13,7 +13,8 @@ parquet:
 	meltano invoke dbt-duckdb build --target parquet
 
 pipeline:
-	meltano run tap-spreadsheets-anywhere target-duckdb --full-refresh;\
+	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh;\
+	mkdir /tmp/data_catalog/prep;\
 	meltano invoke dbt-duckdb run-operation elo_rollforward;\
 	meltano run dbt-duckdb:build
 
