@@ -48,12 +48,6 @@ plugins:
         key_properties: [player_id, season_type]
         format: csv
   loaders:
-  - name: target-duckdb
-    variant: jwills
-    pip_url: target-duckdb~=0.4
-    config:
-      filepath: /tmp/mdsbox.db
-      default_target_schema: psa
   - name: target-parquet
     variant: estrategiahq
     pip_url: git+https://github.com/estrategiahq/target-parquet.git
