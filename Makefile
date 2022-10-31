@@ -5,6 +5,8 @@ run:
 	meltano run tap-spreadsheets-anywhere target-duckdb --full-refresh dbt-duckdb:build
 
 parquet:
+	cd /tmp;\
+	rm -r -f data_catalog;\
 	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh;\
 	mkdir /tmp/data_catalog/conformed;\
 	mkdir /tmp/data_catalog/prep;\
@@ -13,6 +15,8 @@ parquet:
 	meltano invoke dbt-duckdb build --target parquet
 
 pipeline:
+	cd /tmp;\
+	rm -r -f data_catalog;\
 	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh;\
 	mkdir /tmp/data_catalog/prep;\
 	meltano invoke dbt-duckdb run-operation elo_rollforward;\
