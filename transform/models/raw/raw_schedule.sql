@@ -4,5 +4,4 @@
 ) }}
 
 SELECT *
-FROM {{ "'s3://datalake/psa/nba_schedule_2023/*.parquet'" if target.name == 'parquet' 
-    else source('nba', 'schedule' ) }}
+FROM {{ "''s3://datalake/psa/nba_schedule_2023/*.parquet'" }}

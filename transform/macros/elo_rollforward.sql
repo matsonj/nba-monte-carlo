@@ -14,8 +14,7 @@
             WHEN score2 > score1 THEN 1
             ELSE 0
         END AS game_result
-    FROM {{ "'s3://datalake/psa/nba_elo_latest/*.parquet'" if target.name == 'parquet' 
-        else source( 'nba', 'nba_elo_latest' ) }} S
+    FROM {{ "'s3://datalake/psa/nba_elo_latest/*.parquet'" }} S
     WHERE score1 IS NOT NULL
     GROUP BY ALL
     ORDER BY S._smart_source_lineno
@@ -40,8 +39,7 @@
 {% set temp_ratings %}
     CREATE OR REPLACE TEMPORARY TABLE workings_ratings AS (
         SELECT team, elo_rating, elo_rating AS original_rating
-        FROM {{ "'s3://datalake/psa/team_ratings/*.parquet'" if target.name == 'parquet' 
-            else source('nba', 'team_ratings' ) }}
+        FROM {{ "'s3://datalake//psa/team_ratings/*.parquet'" }}
         GROUP BY ALL
     )
 {% endset %}
@@ -92,15 +90,8 @@
     {% set update_proc = true %}
 {% endfor %} 
 {% set output %}
-    {% if target.name == 'parquet' %}
-        COPY (SELECT * FROM workings_ratings ) TO 's3://datalake/prep/elo_post.parquet' (FORMAT 'parquet', CODEC 'ZSTD');
-        COPY (SELECT * FROM results_log) TO 's3://datalake/prep/results_log.parquet' (FORMAT 'parquet', CODEC 'ZSTD');
-    {% else %}
-        CREATE OR REPLACE TABLE psa.elo_post AS (
-        SELECT *
-        FROM workings_ratings
-    );
-    {% endif %}
+    COPY (SELECT * FROM workings_ratings ) TO 's3://datalake/prep/elo_post.parquet' (FORMAT 'parquet', CODEC 'ZSTD');
+    COPY (SELECT * FROM results_log) TO 's3://datalake/prep/results_log.parquet' (FORMAT 'parquet', CODEC 'ZSTD');
 {% endset %}
 {% do log(output, info=True) %}
 {% do run_query(output) %}
