@@ -4,5 +4,4 @@
 ) }}
 
 SELECT *
-FROM {{ "'/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'" if target.name == 'parquet' 
-    else source('nba', 'schedule' ) }}
+FROM {{ "'/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'" }}
