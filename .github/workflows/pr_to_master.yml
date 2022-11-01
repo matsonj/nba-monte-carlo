@@ -37,6 +37,8 @@ jobs:
           echo "Waiting for LocalStack startup..."  # Wait 30 seconds for the LocalStack container
           localstack wait -t 30                     # to become ready before timing out 
           echo "Startup complete"  
+          
+          make init_s3                              # get things warm
 
   #    - name: build pipeline
   #      run: make pipeline
