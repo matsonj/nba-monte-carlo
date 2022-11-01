@@ -50,7 +50,7 @@
 	// "forwardPorts": [],
 
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	"postCreateCommand": "pip3 install pipx && pipx install meltano && meltano install utility dbt-osmosis"
+	"postCreateCommand": "pip3 install pipx && pipx install meltano && pip3 install localstack"
 
 	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
 	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
