@@ -17,13 +17,13 @@ run:
 
 parquet:
 	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh;\
-	awslocal s3 sync /tmp/data_catalog/psa s3://datalake/psa
+	awslocal s3 sync /tmp/data_catalog/psa s3://datalake/psa;\
 	meltano invoke dbt-duckdb run-operation elo_rollforward --target parquet;\
 	meltano invoke dbt-duckdb build --target parquet
 
 pipeline:
 	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh;\
-	mkdir /tmp/data_catalog/prep;\
+	awslocal s3 sync /tmp/data_catalog/psa s3://datalake/psa;\
 	meltano invoke dbt-duckdb run-operation elo_rollforward;\
 	meltano run dbt-duckdb:build
 
