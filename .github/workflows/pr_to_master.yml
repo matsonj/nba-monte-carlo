@@ -26,10 +26,16 @@ jobs:
       - name: meltano install
         run: meltano install
 
+      # grabbed from here: https://docs.localstack.cloud/ci/github-actions/
       - name: build localstack
         run: |
-          make start_s3
-          make init_s3
+          pip install localstack awscli-local[ver1] # install LocalStack cli and awslocal
+          docker pull localstack/localstack         # Make sure to pull the latest version of the image
+          localstack start -d                       # Start LocalStack in the background
+          
+          echo "Waiting for LocalStack startup..."  # Wait 30 seconds for the LocalStack container
+          localstack wait -t 30                     # to become ready before timing out 
+          echo "Startup complete"  
 
   #    - name: build pipeline
   #      run: make pipeline
