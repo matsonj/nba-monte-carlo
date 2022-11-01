@@ -4,4 +4,4 @@
 ) }}
 
 SELECT *
-FROM {{ "''s3://datalake/psa/nba_schedule_2023/*.parquet'" }}
+FROM {{ "'s3://datalake/psa/nba_schedule_2023/*.parquet'" }}
