@@ -7,7 +7,7 @@ build: pip_install
 	meltano install
 
 start_s3:
-	localstack start -d
+	docker run --rm -it -p 4566:4566 -p 4510-4559:4510-4559 localstack/localstack
 
 init_s3:
 	awslocal s3 mb s3://datalake

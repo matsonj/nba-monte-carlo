@@ -26,8 +26,13 @@ jobs:
       - name: meltano install
         run: meltano install
 
-      - name: build pipeline
-        run: make pipeline
+      - name: build localstack
+        run: |
+          make start_s3
+          make init_s3
+
+  #    - name: build pipeline
+  #      run: make pipeline
 
       - name: build parquet pipeline
         run: make parquet

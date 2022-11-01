@@ -8,3 +8,16 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/shar
 RUN apt-get update
 RUN apt-get install -y gcc gfortran musl-dev
 ENV PYTHONUNBUFFERED 1
+
+# If "context" is set to ".." in devcontainer.json, use .devcontainer/library-scripts/*.sh
+COPY .devcontainer/library-scripts/*.sh /tmp/library-scripts/
+
+ENV DOCKER_BUILDKIT=1
+RUN apt-get update && /bin/bash /tmp/library-scripts/docker-in-docker-debian.sh
+ENTRYPOINT ["/usr/local/share/docker-init.sh"]
+VOLUME [ "/var/lib/docker" ]
+CMD ["sleep", "infinity"]
+
+# since we are running as a non-root user, need to run this script too
+COPY .devcontainer/library-scripts/common-debian.sh /tmp/library-scripts/
+RUN apt-get update && bash /tmp/library-scripts/common-debian.sh

@@ -48,10 +48,17 @@
     },
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
+    "runArgs": ["--init", "--privileged"],
+    "overrideCommand": false,
+
+    // hold the docker image for localstack
+    "mounts": ["source=dind-var-lib-docker,target=/var/lib/docker,type=volume"],
 
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	"postCreateCommand": "pip3 install pipx && pipx install meltano && pip3 install localstack"
+	"postCreateCommand": "pip3 install pipx && pipx install meltano && pip install localstack awscli-local[ver1]"
 
 	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
 	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+    
 }
