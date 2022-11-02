@@ -1,10 +1,7 @@
--- depends-on: {{ ref( 'reg_season_end' ) }}
-
 {{
     config(
-        materialized = "view" if target.name == 'parquet' else "table",
-        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/data_catalog/conformed/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
-            if target.name == 'parquet' else " "
+        materialized = "table",
+        schema = "export"
 ) }}
 
 WITH cte_teams AS (
@@ -14,8 +11,7 @@ WITH cte_teams AS (
         winning_team,
         seed,
         elo_rating
-    FROM {{ "'/tmp/data_catalog/conformed/reg_season_end.parquet'" if target.name == 'parquet'
-        else ref( 'reg_season_end' ) }}
+    FROM {{ ref( 'reg_season_end' ) }}
     WHERE season_rank < 7
     UNION ALL
     SELECT *

@@ -7,16 +7,10 @@ meltano:
   outputs:
     dev:
       type: duckdb
-      path: "{{ env_var('DBT_DUCKDB_PATH') }}"
       threads: 4
     staging:
       type: duckdb
-      path: "{{ env_var('DBT_DUCKDB_PATH') }}"
       threads: 4
     prod:
-      type: duckdb
-      path: "{{ env_var('DBT_DUCKDB_PATH') }}"
-      threads: 4
-    parquet:
       type: duckdb
       threads: 4
