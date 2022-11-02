@@ -1,8 +1,3 @@
-{{
-    config(
-        materialized = "ephemeral" if target.name == 'parquet' else "view"
-) }}
-
 SELECT
     S.key::int AS game_id,
     S.type,

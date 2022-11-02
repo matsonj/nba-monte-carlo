@@ -1,20 +1,8 @@
--- depends-on: {{ ref( 'initialize_seeding' ) }}
--- depends-on: {{ ref( 'playoff_sim_r1' ) }}
--- depends-on: {{ ref( 'playoff_sim_r2' ) }}
--- depends-on: {{ ref( 'playoff_sim_r3' ) }}
--- depends-on: {{ ref( 'playoff_sim_r4' ) }}
-
-{{
-    config(
-      materialized = "ephemeral" if target.name == 'parquet' else "view"
-) }}
-
 WITH cte_playoffs_r1 AS (
     SELECT
         winning_team,
         COUNT(*) AS made_playoffs
-    FROM {{ "'/tmp/data_catalog/conformed/initialize_seeding.parquet'" if target.name == 'parquet'
-        else ref( 'initialize_seeding' ) }}
+    FROM {{ ref( 'initialize_seeding' ) }}
     GROUP BY ALL
 ),
 
@@ -22,8 +10,7 @@ cte_playoffs_r2 AS (
     SELECT
         winning_team,
         COUNT(*) AS made_conf_semis
-    FROM {{ "'/tmp/data_catalog/conformed/playoff_sim_r1.parquet'" if target.name == 'parquet'
-        else ref( 'playoff_sim_r1' ) }}
+    FROM {{ ref( 'playoff_sim_r1' ) }}
     GROUP BY ALL
 ),
 
@@ -31,8 +18,7 @@ cte_playoffs_r3 AS (
     SELECT 
         winning_team,
         COUNT(*) AS made_conf_finals
-    FROM {{ "'/tmp/data_catalog/conformed/playoff_sim_r2.parquet'" if target.name == 'parquet'
-        else ref( 'playoff_sim_r2' ) }}
+    FROM {{ ref( 'playoff_sim_r2' ) }}
     GROUP BY ALL
 ),
 
@@ -40,8 +26,7 @@ cte_playoffs_r4 AS (
     SELECT 
         winning_team,
         COUNT(*) AS made_finals
-    FROM {{ "'/tmp/data_catalog/conformed/playoff_sim_r3.parquet'" if target.name == 'parquet'
-        else ref( 'playoff_sim_r3' ) }}
+    FROM {{ ref( 'playoff_sim_r3' ) }}
     GROUP BY ALL
 ),
 
@@ -49,8 +34,7 @@ cte_playoffs_finals AS (
     SELECT 
         winning_team,
         COUNT(*) AS won_finals
-    FROM {{ "'/tmp/data_catalog/conformed/playoff_sim_r4.parquet'" if target.name == 'parquet'
-        else ref( 'playoff_sim_r4' ) }}
+    FROM {{ ref( 'playoff_sim_r4' ) }}
     GROUP BY ALL
 )
 

@@ -1,8 +1,7 @@
 {{
     config(
-        materialized = "view" if target.name == 'parquet' else "table",
-        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/data_catalog/conformed/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
-            if target.name == 'parquet' else " "
+        materialized = "table",
+        schema = "export"
 ) }}
 
 WITH cte_wins AS (
