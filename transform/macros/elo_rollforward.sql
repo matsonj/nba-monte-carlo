@@ -89,6 +89,7 @@
     {% endfor %}
     {% set update_proc = true %}
 {% endfor %} 
+-- NOTE: because we are using duckdb in-memory, need to explicity materialize our result tables
 {% set output %}
     COPY (SELECT * FROM workings_ratings ) TO '/tmp/data_catalog/prep/elo_post.parquet' (FORMAT 'parquet', CODEC 'ZSTD');
     COPY (SELECT * FROM results_log) TO '/tmp/data_catalog/prep/results_log.parquet' (FORMAT 'parquet', CODEC 'ZSTD');

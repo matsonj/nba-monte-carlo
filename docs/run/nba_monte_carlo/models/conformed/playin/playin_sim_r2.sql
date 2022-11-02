@@ -1,10 +1,6 @@
 
   create view "main"."playin_sim_r2__dbt_tmp" as (
-    -- depends-on: "main"."main"."random_num_gen"
-
-
-
-SELECT 
+    SELECT 
     R.scenario_id,
     S.game_id,
     S.home_team[7:] AS home_team_id,

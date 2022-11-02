@@ -1,11 +1,3 @@
--- depends-on: {{ ref( 'random_num_gen' ) }}
--- depends-on: {{ ref( 'reg_season_end' ) }}
-
-{{
-    config(
-      materialized = "ephemeral" if target.name == 'parquet' else "view"
-) }}
-
 SELECT
     R.scenario_id,
     S.game_id,
@@ -21,10 +13,7 @@ SELECT
         ELSE EV.winning_team
     END AS winning_team 
 FROM {{ ref( 'schedules' ) }} S
-    LEFT JOIN {{ "'/tmp/data_catalog/conformed/random_num_gen.parquet'" if target.name == 'parquet'
-        else ref( 'random_num_gen' ) }} R ON R.game_id = S.game_id
-    LEFT JOIN {{ "'/tmp/data_catalog/conformed/reg_season_end.parquet'" if target.name == 'parquet'
-        else ref( 'reg_season_end' ) }} EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
-    LEFT JOIN {{ "'/tmp/data_catalog/conformed/reg_season_end.parquet'" if target.name == 'parquet'
-        else ref( 'reg_season_end' ) }} EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
+    LEFT JOIN {{ ref( 'random_num_gen' ) }} R ON R.game_id = S.game_id
+    LEFT JOIN {{ ref( 'reg_season_end' ) }} EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
+    LEFT JOIN {{ ref( 'reg_season_end' ) }} EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
 WHERE S.type = 'playin_r1'

@@ -1,11 +1,16 @@
-
-
-WITH cte_team1 AS (
+WITH  __dbt__cte__raw_nba_elo_latest as (
+SELECT *
+FROM '/tmp/data_catalog/psa/nba_elo_latest/*.parquet'
+),  __dbt__cte__prep_nba_elo_latest as (
+SELECT *
+FROM __dbt__cte__raw_nba_elo_latest
+GROUP BY ALL
+),cte_team1 AS (
     SELECT
         date,
         team1,
         elo1_post
-    FROM "main"."main"."prep_nba_elo_latest"
+    FROM __dbt__cte__prep_nba_elo_latest
     WHERE elo1_post IS NOT NULL
 ),
 
@@ -14,7 +19,7 @@ cte_team2 AS (
         date,
         team2,
         elo2_post
-    FROM "main"."main"."prep_nba_elo_latest"
+    FROM __dbt__cte__prep_nba_elo_latest
     WHERE elo1_post IS NOT NULL
 ),
 

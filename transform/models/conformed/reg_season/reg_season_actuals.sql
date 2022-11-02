@@ -1,8 +1,3 @@
-{{
-    config(
-        materialized = "ephemeral" if target.name == 'parquet' else "view"
-) }}
-
 WITH cte_wins AS (
     SELECT 
         winning_team,

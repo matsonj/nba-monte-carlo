@@ -1,8 +1,6 @@
 
   create view "main"."latest_results__dbt_tmp" as (
-    
-
-SELECT
+    SELECT
     (_smart_source_lineno - 1)::int AS game_id,
     team1 AS home_team, 
     score1 AS home_team_score,

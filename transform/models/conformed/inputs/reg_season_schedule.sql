@@ -1,8 +1,3 @@
-{{
-    config(
-        materialized = "ephemeral" if target.name == 'parquet' else "view"
-) }}
-
 SELECT
     (S._smart_source_lineno - 1)::int AS game_id,
     'reg_season' AS type,

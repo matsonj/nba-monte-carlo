@@ -1,14 +1,6 @@
 
   create view "main"."playoff_summary__dbt_tmp" as (
-    -- depends-on: "main"."main"."initialize_seeding"
--- depends-on: "main"."main"."playoff_sim_r1"
--- depends-on: "main"."main"."playoff_sim_r2"
--- depends-on: "main"."main"."playoff_sim_r3"
--- depends-on: "main"."main"."playoff_sim_r4"
-
-
-
-WITH cte_playoffs_r1 AS (
+    WITH cte_playoffs_r1 AS (
     SELECT
         winning_team,
         COUNT(*) AS made_playoffs

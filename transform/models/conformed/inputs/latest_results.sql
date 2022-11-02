@@ -1,8 +1,3 @@
-{{
-    config(
-        materialized = "ephemeral" if target.name == 'parquet' else "view"
-) }}
-
 SELECT
     (_smart_source_lineno - 1)::int AS game_id,
     team1 AS home_team, 
