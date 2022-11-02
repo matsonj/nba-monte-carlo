@@ -1,8 +1,6 @@
 
   create view "main"."schedules__dbt_tmp" as (
-    
-
-SELECT
+    SELECT
     *
 FROM "main"."main"."reg_season_schedule"
 UNION ALL

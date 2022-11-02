@@ -1,6 +1,11 @@
-
-
-SELECT
+with __dbt__cte__raw_nba_elo_latest as (
+SELECT *
+FROM '/tmp/data_catalog/psa/nba_elo_latest/*.parquet'
+),  __dbt__cte__prep_nba_elo_latest as (
+SELECT *
+FROM __dbt__cte__raw_nba_elo_latest
+GROUP BY ALL
+)SELECT
     (_smart_source_lineno - 1)::int AS game_id,
     team1 AS home_team, 
     score1 AS home_team_score,
@@ -16,6 +21,6 @@ SELECT
         ELSE team1
     END AS losing_team,
     True AS include_actuals
-FROM "main"."main"."prep_nba_elo_latest"
+FROM __dbt__cte__prep_nba_elo_latest
 WHERE score1 IS NOT NULL
 GROUP BY ALL

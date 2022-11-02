@@ -1,8 +1,6 @@
 
   create view "main"."playin_sim_r2_end__dbt_tmp" as (
-    
-
-SELECT
+    SELECT
     P1.scenario_id,
     P1.conf,
     P1.winning_team,

@@ -1,8 +1,6 @@
 
   create view "main"."prep_latest_ratings__dbt_tmp" as (
-    
-
-WITH cte_team1 AS (
+    WITH cte_team1 AS (
     SELECT
         date,
         team1,

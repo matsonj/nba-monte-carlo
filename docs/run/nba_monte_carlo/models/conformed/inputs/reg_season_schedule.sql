@@ -1,8 +1,6 @@
 
   create view "main"."reg_season_schedule__dbt_tmp" as (
-    
-
-SELECT
+    SELECT
     (S._smart_source_lineno - 1)::int AS game_id,
     'reg_season' AS type,
     0 as series_id,

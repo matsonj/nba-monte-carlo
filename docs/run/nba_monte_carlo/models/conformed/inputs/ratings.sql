@@ -1,8 +1,6 @@
 
   create view "main"."ratings__dbt_tmp" as (
-    
-
-SELECT
+    SELECT
     orig.team,
     orig.team_long,
     orig.conf,

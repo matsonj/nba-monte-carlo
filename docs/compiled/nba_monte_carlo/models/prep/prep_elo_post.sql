@@ -1,5 +1,3 @@
-
-
 SELECT
     *,
     True AS latest_ratings
