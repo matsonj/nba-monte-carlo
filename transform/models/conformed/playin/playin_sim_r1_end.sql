@@ -1,8 +1,3 @@
-{{
-    config(
-      materialized = "ephemeral" if target.name == 'parquet' else "view"
-) }}
-
 WITH cte_playin_details AS (
     SELECT
         S.scenario_id,

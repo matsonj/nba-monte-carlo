@@ -1,8 +1,6 @@
 
   create view "main"."reg_season_actuals__dbt_tmp" as (
-    
-
-WITH cte_wins AS (
+    WITH cte_wins AS (
     SELECT 
         winning_team,
         COUNT(*) as wins

@@ -1,8 +1,6 @@
 
   create view "main"."post_season_schedule__dbt_tmp" as (
-    
-
-SELECT
+    SELECT
     S.key::int AS game_id,
     S.type,
     S.series_id,

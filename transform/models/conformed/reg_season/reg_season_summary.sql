@@ -1,10 +1,7 @@
--- depends-on: {{ ref( 'reg_season_end' ) }}
-
 {{
     config(
-        materialized = "view" if target.name == 'parquet' else "table",
-        post_hook = "COPY (SELECT * FROM {{ this }} ) TO '/tmp/data_catalog/conformed/{{ this.table }}.parquet' (FORMAT 'parquet', CODEC 'ZSTD');"
-            if target.name == 'parquet' else " "
+        materialized = "table",
+        schema = "export"
 ) }}
 
     WITH cte_summary AS (
@@ -21,8 +18,7 @@
         ROUND(PERCENTILE_CONT(0.05) WITHIN GROUP (ORDER BY season_rank ASC), 1) AS seed_5th,
         ROUND(AVG(season_rank), 1) AS avg_seed,
         ROUND(PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY season_rank ASC), 1) AS seed_95th
-    FROM {{ "'/tmp/data_catalog/conformed/reg_season_end.parquet'" if target.name == 'parquet'
-            else ref( 'reg_season_end' ) }} E
+    FROM {{ ref( 'reg_season_end' ) }} E
     LEFT JOIN {{ ref( 'vegas_wins' ) }} V ON V.team = E.winning_team
     GROUP BY ALL
     )
