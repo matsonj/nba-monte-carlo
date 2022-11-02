@@ -1,11 +1,6 @@
 
   create view "main"."playin_sim_r1__dbt_tmp" as (
-    -- depends-on: "main"."main"."random_num_gen"
--- depends-on: "main"."main"."reg_season_end"
-
-
-
-SELECT
+    SELECT
     R.scenario_id,
     S.game_id,
     EV.conf AS conf,

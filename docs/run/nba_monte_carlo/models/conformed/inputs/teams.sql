@@ -1,8 +1,6 @@
 
   create view "main"."teams__dbt_tmp" as (
-    
-
-SELECT
+    SELECT
     S.visitorneutral AS team_long,
     R.team
 FROM "main"."main"."prep_schedule" S

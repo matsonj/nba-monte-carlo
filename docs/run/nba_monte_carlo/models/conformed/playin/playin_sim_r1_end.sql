@@ -1,8 +1,6 @@
 
   create view "main"."playin_sim_r1_end__dbt_tmp" as (
-    
-
-WITH cte_playin_details AS (
+    WITH cte_playin_details AS (
     SELECT
         S.scenario_id,
         S.game_id,
