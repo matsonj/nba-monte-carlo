@@ -35,18 +35,6 @@ plugins:
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [date, team1, team2]
         format: csv
-      - path: https://projects.fivethirtyeight.com/nba-model/2022
-        name: latest_RAPTOR_by_player
-        pattern: latest_RAPTOR_by_player.csv
-        start_date: '2001-01-01T00:00:00Z'
-        key_properties: [player_id]
-        format: csv
-      - path: https://projects.fivethirtyeight.com/nba-model/2022
-        name: latest_RAPTOR_by_team
-        pattern: latest_RAPTOR_by_team.csv
-        start_date: '2001-01-01T00:00:00Z'
-        key_properties: [player_id, season_type]
-        format: csv
   loaders:
   - name: target-parquet
     variant: estrategiahq
