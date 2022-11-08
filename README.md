@@ -13,7 +13,7 @@ wsl --install
 ```
 * If this was the first time WSL has been installed, restart your machine.
 
-2. Open Ubuntu in your terminal and update your packages. 
+2. Open Ubuntu in your terminal and update your packages.
 ```
 sudo apt-get update
 ```
@@ -50,6 +50,19 @@ meltano run superset:ui
 
 7. Explore your data inside superset. Go to SQL Labs > SQL Editor and write a custom query. A good example is ```SELECT * FROM reg_season_end```.
 
+## Getting Started - Docker
+
+You can also use docker to build the container, helpful if you
+are having issues with dependencies. The `Dockerfile` contained in this repo
+uses the meltano Docker image and runs both the `make build` and
+`make pipeline` steps.
+
+1. Make sure Docker is installed and running
+
+2. Build the container `make build-docker`
+
+3. Connect to the Docker shell instance: `docker -it run mdsbox bash`
+
 ## Running your pipeline on demand
 After your run ```make pipeline```, you can run your pipeline again at any time with the following meltano command:
 ```
@@ -75,4 +88,4 @@ There is an additional target in the meltano.yml file as well as dbt profiles.ym
 - [x] make playoff elimination stuff a macro (param: schedule type)
 
 ## Source Data
-The data contained within this project comes from [538](https://data.fivethirtyeight.com/#nba-forecasts), [basketball reference](https://basketballreference.com), and [draft kings](https://www.draftkings.com). 
+The data contained within this project comes from [538](https://data.fivethirtyeight.com/#nba-forecasts), [basketball reference](https://basketballreference.com), and [draft kings](https://www.draftkings.com).
