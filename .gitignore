@@ -2,3 +2,6 @@
 /.meltano
 .env
 /transform/dbt_packages
+/transform/logs
+/docs
+*.log
