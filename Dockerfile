@@ -10,9 +10,14 @@ WORKDIR /usr/src/app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+
+COPY Makefile .
+COPY meltano.yml .
+RUN make build
+
 COPY . .
 
-RUN make build
+SHELL ["/bin/bash", "-c"]
 RUN source /venv/bin/activate
 
 ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
