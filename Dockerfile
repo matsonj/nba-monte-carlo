@@ -13,6 +13,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 RUN make build
-RUN make pipeline
+RUN source /venv/bin/activate
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
