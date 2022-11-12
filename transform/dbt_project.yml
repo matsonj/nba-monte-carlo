@@ -31,9 +31,9 @@ models:
     conformed:
       materialized: ephemeral
 vars:
-  scenarios: 10000            # set number of scenarios. 100k is safe on 8GB of RAM
+  scenarios: 1000             # set number of scenarios. 100k is safe on 8GB of RAM
   include_actuals: true       # set to true to use actual game results, otherwise sim entire season
   latest_ratings: true        # set to true to use latest ELO ratings, otherwise use start of season ratings
-  enable_export: true         # set to true to export files to parquet
+  enable_export: false        # set to true to export files to parquet
 #  sim_start_game_id: 0       # placeholder one multi-container is in place
 on-run-end: "{{ export_to_parquet( var('enable_export') ) }}" 
