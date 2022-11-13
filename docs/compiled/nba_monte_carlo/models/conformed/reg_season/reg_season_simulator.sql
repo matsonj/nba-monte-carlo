@@ -105,6 +105,6 @@ GROUP BY ALL
     END AS winning_team,
     COALESCE(LR.include_actuals, false) AS include_actuals
 FROM __dbt__cte__schedules S
-LEFT JOIN "main"."main_export"."random_num_gen" R ON R.game_id = S.game_id
+LEFT JOIN "main"."main"."random_num_gen" R ON R.game_id = S.game_id
 LEFT JOIN __dbt__cte__latest_results LR ON LR.game_id = S.game_id
 WHERE S.type = 'reg_season'
