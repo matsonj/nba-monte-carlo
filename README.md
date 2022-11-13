@@ -50,14 +50,9 @@ meltano run superset:ui
 
 7. Explore your data inside superset. Go to SQL Labs > SQL Editor and write a custom query. A good example is ```SELECT * FROM reg_season_end```.
 
-## Running your pipeline on demand
-After your run ```make pipeline```, you can run your pipeline again at any time with the following meltano command:
-```
-meltano run tap-spreadsheets-anywhere target-duckdb --full-refresh dbt-duckdb:build
-```
 
 ## Using Parquet instead of a database
-There is an additional target in the meltano.yml file as well as dbt profiles.yml file that allows use of parquet as a storage medium. This can be invoked with ```make parquet```. This is experimental and implementation will evolve over time.
+This project leverages parquet instead of a database for file storage. This is experimental and implementation will evolve over time.
 
 ## Todos
 - [x] replace reg season schedule with 538 schedule
@@ -66,7 +61,10 @@ There is an additional target in the meltano.yml file as well as dbt profiles.ym
 - [x] make simulator only sim incomplete games
 - [x] add table for new ratings
 - [x] add config to use original or new ratings
-
+- [ ] cleanup dbt-osmosis
+- [ ] clean up env vars + implement incremental builds
+- [ ] clean up dev container plugins (remove irrelevant ones, add some others)
+- [ ] add dbt tests on simulator tables that no numeric values are null (elo ratings, home team win probabilities)
 
 ## Optional stuff
 - [x] add dbt tests
