@@ -3,6 +3,8 @@ version: 2
 sources:
   - name: nba
     schema: psa
+    meta:
+      external_location: "/tmp/data_catalog/psa/{identifier}/*.parquet"
     tables:
       - name: schedule
         identifier: nba_schedule_2023

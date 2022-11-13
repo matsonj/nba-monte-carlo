@@ -1,2 +1,2 @@
 SELECT *
-FROM {{ ref( 'raw_schedule' ) }}
+FROM {{ source( 'nba', 'schedule' ) }}
