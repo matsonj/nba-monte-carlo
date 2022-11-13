@@ -1,7 +1,6 @@
 {{ 
     config(
-        materialized='external', 
-        location="/tmp/data_catalog/conformed/" ~ this.name ~ ".parquet"
+        materialized='table'
 ) }}
 
 SELECT
