@@ -1,9 +1,11 @@
 
-
-  create  table
-    "main_export"."random_num_gen__dbt_tmp"
-  as (
+  
     
+
+    create  table
+      "main"."random_num_gen__dbt_tmp"
+    as (
+      
 
 with __dbt__cte__scenario_gen as (
 SELECT I.generate_series AS scenario_id
@@ -89,5 +91,5 @@ FROM __dbt__cte__post_season_schedule
     (random() * 10000)::smallint AS rand_result
 FROM __dbt__cte__scenario_gen AS i
 CROSS JOIN __dbt__cte__schedules AS S
-  );
-
+    );
+  

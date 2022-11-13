@@ -89,7 +89,7 @@ SELECT
 FROM __dbt__cte__prep_xf_series_to_seed
 ),cte_playoff_sim AS (
     
--- depends-on: "main"."main_export"."random_num_gen"
+-- depends-on: "main"."main"."random_num_gen"
 
 WITH cte_step_1 AS (
     SELECT
@@ -110,9 +110,9 @@ WITH cte_step_1 AS (
       END AS winning_team 
     FROM __dbt__cte__schedules S
     
-    LEFT JOIN "main"."main_export"."random_num_gen" R ON R.game_id = S.game_id
-    LEFT JOIN  "main"."main_export"."playoff_sim_r3" EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
-    LEFT JOIN  "main"."main_export"."playoff_sim_r3" EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
+    LEFT JOIN "main"."main"."random_num_gen" R ON R.game_id = S.game_id
+    LEFT JOIN  "main"."main"."playoff_sim_r3" EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
+    LEFT JOIN  "main"."main"."playoff_sim_r3" EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
     
     WHERE S.type =  'playoffs_r4' ),
 cte_step_2 AS (

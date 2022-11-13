@@ -44,7 +44,7 @@ WITH cte_playoffs_r1 AS (
     SELECT
         winning_team,
         COUNT(*) AS made_playoffs
-    FROM "main"."main_export"."initialize_seeding"
+    FROM "main"."main"."initialize_seeding"
     GROUP BY ALL
 ),
 
@@ -52,7 +52,7 @@ cte_playoffs_r2 AS (
     SELECT
         winning_team,
         COUNT(*) AS made_conf_semis
-    FROM "main"."main_export"."playoff_sim_r1"
+    FROM "main"."main"."playoff_sim_r1"
     GROUP BY ALL
 ),
 
@@ -60,7 +60,7 @@ cte_playoffs_r3 AS (
     SELECT 
         winning_team,
         COUNT(*) AS made_conf_finals
-    FROM "main"."main_export"."playoff_sim_r2"
+    FROM "main"."main"."playoff_sim_r2"
     GROUP BY ALL
 ),
 
@@ -68,7 +68,7 @@ cte_playoffs_r4 AS (
     SELECT 
         winning_team,
         COUNT(*) AS made_finals
-    FROM "main"."main_export"."playoff_sim_r3"
+    FROM "main"."main"."playoff_sim_r3"
     GROUP BY ALL
 ),
 
@@ -76,7 +76,7 @@ cte_playoffs_finals AS (
     SELECT 
         winning_team,
         COUNT(*) AS won_finals
-    FROM "main"."main_export"."playoff_sim_r4"
+    FROM "main"."main"."playoff_sim_r4"
     GROUP BY ALL
 )
 
@@ -101,6 +101,6 @@ LEFT JOIN cte_playoffs_finals F ON F.winning_team = T.team
     P.made_conf_finals,
     P.made_finals,
     P.won_finals
-FROM "main"."main_export"."reg_season_summary" R
+FROM "main"."main"."reg_season_summary" R
 LEFT JOIN __dbt__cte__playoff_summary P ON P.team = R.team
 LEFT JOIN __dbt__cte__ratings ratings ON ratings.team = R.team
