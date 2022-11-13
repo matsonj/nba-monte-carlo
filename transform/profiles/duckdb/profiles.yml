@@ -8,9 +8,12 @@ meltano:
     dev:
       type: duckdb
       threads: 4
+      external_root: /tmp/data_catalog/conformed
     staging:
       type: duckdb
       threads: 4
+      external_root: /tmp/data_catalog/conformed
     prod:
       type: duckdb
       threads: 4
+      external_root: /tmp/data_catalog/conformed
