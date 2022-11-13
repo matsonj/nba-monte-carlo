@@ -8,10 +8,10 @@ SELECT
     EV.winning_team_elo_rating AS visiting_team_elo_rating,
     EH.remaining_team AS home_team,
     EH.losing_team_elo_rating AS home_team_elo_rating,
-    {{ elo_calc( 'S.home_team_elo_rating', 'S.visiting_team_elo_rating' ) }} as home_team_win_probability,
+    {{ elo_calc( 'EH.losing_team_elo_rating', 'EV.winning_team_elo_rating' ) }} as home_team_win_probability,
     R.rand_result,
     CASE 
-        WHEN {{ elo_calc( 'S.home_team_elo_rating', 'S.visiting_team_elo_rating' ) }} >= R.rand_result THEN EH.remaining_team
+        WHEN {{ elo_calc( 'EH.losing_team_elo_rating', 'EV.winning_team_elo_rating' ) }} >= R.rand_result THEN EH.remaining_team
         ELSE EV.remaining_team
     END AS winning_team 
 FROM {{ ref( 'schedules' ) }} S
