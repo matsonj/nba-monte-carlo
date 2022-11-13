@@ -1,8 +1,6 @@
 {{ 
-    config(
-        materialized='external', 
-        location="/tmp/data_catalog/conformed/" ~ this.name ~ ".parquet"
-) }}
+    config(materialized='external')
+}}
 
 WITH cte_playoff_sim AS (
     {{ playoff_sim('playoffs_r4','playoff_sim_r3' ) }}

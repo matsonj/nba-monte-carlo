@@ -1,2 +1,2 @@
 SELECT *
-FROM {{ ref( 'raw_team_ratings' ) }}
+FROM {{ source( 'nba', 'team_ratings' ) }}

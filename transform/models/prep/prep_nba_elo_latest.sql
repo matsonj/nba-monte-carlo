@@ -1,3 +1,3 @@
 SELECT *
-FROM {{ ref( 'raw_nba_elo_latest' ) }}
+FROM {{ source( 'nba', 'nba_elo_latest' ) }}
 GROUP BY ALL
