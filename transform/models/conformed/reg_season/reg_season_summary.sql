@@ -1,7 +1,7 @@
-{{
+{{ 
     config(
-        materialized = "table",
-        schema = "export"
+        materialized='external', 
+        location="/tmp/data_catalog/conformed/" ~ this.name ~ ".parquet"
 ) }}
 
     WITH cte_summary AS (

@@ -1,7 +1,6 @@
-{{
+{{ 
     config(
-        materialized = "table",
-        schema = "export"
+        materialized='table'
 ) }}
 
 SELECT
