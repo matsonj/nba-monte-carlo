@@ -41,7 +41,7 @@ GROUP BY ALL
     SELECT
         winning_team,
         COUNT(*) AS made_playoffs
-    FROM "main"."main_export"."initialize_seeding"
+    FROM "main"."main"."initialize_seeding"
     GROUP BY ALL
 ),
 
@@ -49,7 +49,7 @@ cte_playoffs_r2 AS (
     SELECT
         winning_team,
         COUNT(*) AS made_conf_semis
-    FROM "main"."main_export"."playoff_sim_r1"
+    FROM "main"."main"."playoff_sim_r1"
     GROUP BY ALL
 ),
 
@@ -57,7 +57,7 @@ cte_playoffs_r3 AS (
     SELECT 
         winning_team,
         COUNT(*) AS made_conf_finals
-    FROM "main"."main_export"."playoff_sim_r2"
+    FROM "main"."main"."playoff_sim_r2"
     GROUP BY ALL
 ),
 
@@ -65,7 +65,7 @@ cte_playoffs_r4 AS (
     SELECT 
         winning_team,
         COUNT(*) AS made_finals
-    FROM "main"."main_export"."playoff_sim_r3"
+    FROM "main"."main"."playoff_sim_r3"
     GROUP BY ALL
 ),
 
@@ -73,7 +73,7 @@ cte_playoffs_finals AS (
     SELECT 
         winning_team,
         COUNT(*) AS won_finals
-    FROM "main"."main_export"."playoff_sim_r4"
+    FROM "main"."main"."playoff_sim_r4"
     GROUP BY ALL
 )
 

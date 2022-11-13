@@ -110,7 +110,7 @@ LEFT JOIN cte_losses L ON L.losing_team = T.Team
         ROUND(PERCENTILE_CONT(0.05) WITHIN GROUP (ORDER BY season_rank ASC), 1) AS seed_5th,
         ROUND(AVG(season_rank), 1) AS avg_seed,
         ROUND(PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY season_rank ASC), 1) AS seed_95th
-    FROM "main"."main_export"."reg_season_end" E
+    FROM "main"."main"."reg_season_end" E
     LEFT JOIN __dbt__cte__vegas_wins V ON V.team = E.winning_team
     GROUP BY ALL
     )
