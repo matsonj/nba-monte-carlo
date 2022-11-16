@@ -21,6 +21,7 @@ docker-build:
 
 docker-run:
 	docker run \
+	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
 		--env MDS_SCENARIOS=100 \
 		--env MDS_INCLUDE_ACTUALS=true \
 		--env MDS_LATEST_RATINGS=true \
