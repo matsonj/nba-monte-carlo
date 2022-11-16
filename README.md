@@ -65,6 +65,41 @@ meltano run superset:ui
 7. Explore your data inside superset. Go to SQL Labs > SQL Editor and write a custom query. A good example is ```SELECT * FROM reg_season_end```.
 
 
+## Using Docker and Kubernetes
+
+You can build a docker container by running: 
+
+```
+make docker-build
+```
+
+Then run the container using 
+```
+make docker-run
+```
+These are both aliases defined in the Makefile:
+
+```
+docker-build:
+	docker build -t mdsbox .
+
+docker-run:
+	docker run \
+	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
+		--env MDS_SCENARIOS=100 \
+		--env MDS_INCLUDE_ACTUALS=true \
+		--env MDS_LATEST_RATINGS=true \
+		--env MDS_ENABLE_EXPORT=true \
+		mdsbox make pipeline
+```
+
+You can then scale out to Kubernetes, assuming you have it installed:
+
+```
+kubectl apply -f ./kubernetes/pod.yaml
+```
+
+
 ## Using Parquet instead of a database
 This project leverages parquet instead of a database for file storage. This is experimental and implementation will evolve over time.
 

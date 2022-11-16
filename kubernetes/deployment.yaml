@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mdsbox
+  labels:
+    app: mdsbox
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mdsbox
+  template:
+    metadata:
+      labels:
+        app: mdsbox
+    spec:
+      containers:
+        - name: mdsbox
+          image: mdsbox
+          command: ["make"]
+          args: ["pipeline"]
+          imagePullPolicy: Never
+          resources:
+          limits:
+            memory: 2Gi
+            cpu: "4"
+          requests:
+            memory: 512Mi
+            cpu: "1"
+          env:
+            - name: MELTANO_CLI_LOG_LEVEL
+              value: warning
+            - name: MDS_SCENARIOS
+              value: "100"
+            - name: MDS_INCLUDE_ACTUALS
+              value: "true"
+            - name: MDS_ENABLE_EXPORT
+              value: "true"
+            - name: MDS_LATEST_RATINGS
+              value: "true"
