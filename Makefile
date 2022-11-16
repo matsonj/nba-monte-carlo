@@ -2,12 +2,12 @@ build:
 	meltano install
 
 pipeline:
-	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh;\
-	meltano invoke dbt-duckdb deps;\
-	mkdir /tmp/data_catalog/conformed;\
-	mkdir /tmp/data_catalog/prep;\
-	mkdir /tmp/data_catalog/raw;\
-	meltano invoke dbt-duckdb run-operation elo_rollforward;\
+	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh
+	meltano invoke dbt-duckdb deps
+	mkdir /tmp/data_catalog/conformed
+	mkdir /tmp/data_catalog/prep
+	mkdir /tmp/data_catalog/raw
+	meltano invoke dbt-duckdb run-operation elo_rollforward
 	meltano invoke dbt-duckdb build
 
 server:
