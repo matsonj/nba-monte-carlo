@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: mdsbox
 spec:
+  restartPolicy: Never
   containers:
     - name: nginx
       image: mdsbox
