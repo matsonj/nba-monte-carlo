@@ -76,6 +76,7 @@ plugins:
       value: $MELTANO_PROJECT_ROOT/transform
       label: Projects Directory
     - name: path
+      env: DBT_DUCKDB_PATH
       kind: string
       label: Path
       description: The path on your local filesystem where you would like the DuckDB
