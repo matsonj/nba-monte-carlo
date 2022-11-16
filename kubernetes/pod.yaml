@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mdsbox
+spec:
+  containers:
+    - name: nginx
+      image: mdsbox
+      command: ["make"]
+      args: ["pipeline"]
+      imagePullPolicy: Never
+      resources:
+        limits:
+          memory: 2Gi
+          cpu: "4"
+        requests:
+          memory: 512Mi
+          cpu: "1"
+      env:
+        - name: MELTANO_CLI_LOG_LEVEL
+          value: warning
+        - name: MDS_SCENARIOS
+          value: "100"
+        - name: MDS_INCLUDE_ACTUALS
+          value: "true"
+        - name: MDS_ENABLE_EXPORT
+          value: "true"
+        - name: MDS_LATEST_RATINGS
+          value: "true"
