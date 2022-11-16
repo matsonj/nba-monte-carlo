@@ -46,7 +46,21 @@ meltano run superset:ui
 
    - SQL Alchemy URL: ```duckdb:////tmp/mdsbox.db```
 
-   - Advanced Settings > Other > Engine Parameters: ```{"connect_args":{"read_only":true}}```
+   - Advanced Settings > SQL Lab > ✔ Expose Database in SQL Lab > ✔ Allow CREATE VIEW AS & ✔ Allow this database to be explored & ✔ Allow DML
+
+   - Since the dbt run is materialized to `.parquet` files only, to make the tables available in Superset, go to SQL Lab > SQL Editor and run:
+   
+       ```c
+       CREATE VIEW initialized_seeding as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/initialize_seeding.parquet');
+       CREATE VIEW playoff_sim_r1 as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/playoff_sim_r1.parquet');
+       CREATE VIEW playoff_sim_r2 as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/playoff_sim_r2.parquet');
+       CREATE VIEW playoff_sim_r3 as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/playoff_sim_r3.parquet');
+       CREATE VIEW playoff_sim_r4 as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/playoff_sim_r4.parquet');
+       CREATE VIEW reg_season_summary as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/reg_season_summary.parquet');
+       CREATE VIEW season_summary as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/season_summary.parquet');
+       CREATE VIEW reg_season_end as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/reg_season_end.parquet');
+       ```
+
 
 7. Explore your data inside superset. Go to SQL Labs > SQL Editor and write a custom query. A good example is ```SELECT * FROM reg_season_end```.
 
