@@ -1,147 +1,162 @@
 version: 1
 default_environment: dev
 environments:
-- name: dev
-- name: staging
-- name: prod
+  - name: dev
+    env:
+      TMP_PATH: /tmp
+  - name: staging
+    env:
+      TMP_PATH: /tmp
+  - name: docker
+    env:
+      MELTANO_PROJECT_ROOT: /usr/src/app
+      TMP_PATH: /usr/src/app/tmp
+  - name: prod
+    env:
+      TMP_PATH: /tmp
+
 plugins:
   extractors:
-  - name: tap-spreadsheets-anywhere
-    variant: ets
-    pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
-    config:
-      tables:
-      - path: file://./data
-        name: nba_schedule_2023
-        pattern: nba_schedule_2023.csv
-        start_date: '2001-01-01T00:00:00Z'
-        key_properties: [key]
-        format: csv
-      - path: file://./data
-        name: team_ratings
-        pattern: team_ratings.csv
-        start_date: '2001-01-01T00:00:00Z'
-        key_properties: [team]
-        format: csv
-      - path: file://./data
-        name: xf_series_to_seed
-        pattern: xf_series_to_seed.csv
-        start_date: '2001-01-01T00:00:00Z'
-        key_properties: [series_id]
-        format: csv
-      - path: https://projects.fivethirtyeight.com/nba-model
-        name: nba_elo_latest
-        pattern: nba_elo_latest.csv
-        start_date: '2001-01-01T00:00:00Z'
-        key_properties: [date, team1, team2]
-        format: csv
+    - name: tap-spreadsheets-anywhere
+      variant: ets
+      pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
+      config:
+        tables:
+          - path: file://./data
+            name: nba_schedule_2023
+            pattern: nba_schedule_2023.csv
+            start_date: "2001-01-01T00:00:00Z"
+            key_properties: [key]
+            format: csv
+          - path: file://./data
+            name: team_ratings
+            pattern: team_ratings.csv
+            start_date: "2001-01-01T00:00:00Z"
+            key_properties: [team]
+            format: csv
+          - path: file://./data
+            name: xf_series_to_seed
+            pattern: xf_series_to_seed.csv
+            start_date: "2001-01-01T00:00:00Z"
+            key_properties: [series_id]
+            format: csv
+          - path: https://projects.fivethirtyeight.com/nba-model
+            name: nba_elo_latest
+            pattern: nba_elo_latest.csv
+            start_date: "2001-01-01T00:00:00Z"
+            key_properties: [date, team1, team2]
+            format: csv
   loaders:
-  - name: target-parquet
-    variant: estrategiahq
-    pip_url: git+https://github.com/estrategiahq/target-parquet.git
-    config:
-      destination_path: /tmp/data_catalog/psa
-      file_size: 100000
-      compression_method: snappy
-      streams_in_separate_folder: true
+    - name: target-parquet
+      variant: estrategiahq
+      pip_url: git+https://github.com/estrategiahq/target-parquet.git
+      config:
+        destination_path: $TMP_PATH/data_catalog/psa
+        file_size: 100000
+        compression_method: snappy
+        streams_in_separate_folder: true
   utilities:
-  - name: superset
-    variant: apache
-    pip_url: apache-superset==1.5.0 markupsafe==2.0.1 duckdb-engine==0.6.4
-    config:
-      ENABLE_PROXY_FIX: true
-  - name: dbt-duckdb
-    namespace: dbt_ext
-    label: dbt duckdb extension
-    pip_url: dbt-core~=1.3.0 dbt-duckdb~=1.3.1 git+https://github.com/meltano/dbt-ext.git
-    executable: dbt_invoker
-    settings:
-    - name: project_dir
-      value: $MELTANO_PROJECT_ROOT/transform
-      label: Projects Directory
-    - name: skip_pre_invoke
-      env: DBT_EXT_SKIP_PRE_INVOKE
-      kind: boolean
-      value: true
-      description: Whether to skip pre-invoke hooks which automatically run dbt clean
-        and deps
-    - name: type
-      env: DBT_EXT_TYPE
-      value: duckdb
-    - name: profiles_dir
-      env: DBT_PROFILES_DIR
-      value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
-      label: Profiles Directory
-    - name: project_dir
-      value: $MELTANO_PROJECT_ROOT/transform
-      label: Projects Directory
-    - name: path
-      kind: string
-      label: Path
-      description: The path on your local filesystem where you would like the DuckDB
-        database file and it's associated write-ahead log to be written.
-    - name: schema
-      kind: string
-      value: main
-      label: Schema
-      description: Specify the schema to write into.
-    commands:
-      build:
-        args: build
-        description: Will run your models, tests, snapshots and seeds in DAG order.
-      describe:
-        args: describe
-        executable: dbt_extension
-      initialize:
-        args: initialize
-        executable: dbt_extension
-    config:
-      path: /tmp/mdsbox.db
-  - name: dbt-osmosis
-    variant: z3z1ma
-    pip_url: dbt-osmosis dbt-duckdb~=1.3.1 git+https://github.com/meltano/dbt-ext.git
-    namespace: dbt_duckdb
-    settings:
-    - name: project_dir
-      value: $MELTANO_PROJECT_ROOT/transform
-      label: Projects Directory
-    - name: skip_pre_invoke
-      env: DBT_EXT_SKIP_PRE_INVOKE
-      kind: boolean
-      value: true
-      description: Whether to skip pre-invoke hooks which automatically run dbt clean
-        and deps
-    - name: type
-      env: DBT_EXT_TYPE
-      value: duckdb
-    - name: profiles_dir
-      env: DBT_PROFILES_DIR
-      value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
-      label: Profiles Directory
-    - name: project_dir
-      value: $MELTANO_PROJECT_ROOT/transform
-      label: Projects Directory
-    - name: path
-      kind: string
-      label: Path
-      description: The path on your local filesystem where you would like the DuckDB
-        database file and it's associated write-ahead log to be written.
-    - name: schema
-      kind: string
-      value: main
-      label: Schema
-      description: Specify the schema to write into.
-    config:
-      path: /tmp/mdsbox.db
-    commands:
-      python:
-        executable: python
-        args: ""
+    - name: superset
+      variant: apache
+      pip_url: apache-superset>=1.5.0
+      config:
+        ENABLE_PROXY_FIX: true
+    - name: dbt-duckdb
+      namespace: dbt_ext
+      label: dbt duckdb extension
+      pip_url: dbt-core~=1.2.0 dbt-duckdb~=1.2.0 git+https://github.com/meltano/dbt-ext.git
+      executable: dbt_invoker
+      settings:
+        - name: project_dir
+          value: $MELTANO_PROJECT_ROOT/transform
+          label: Projects Directory
+        - name: skip_pre_invoke
+          env: DBT_EXT_SKIP_PRE_INVOKE
+          kind: boolean
+          value: true
+          description:
+            Whether to skip pre-invoke hooks which automatically run dbt clean
+            and deps
+        - name: type
+          env: DBT_EXT_TYPE
+          value: duckdb
+        - name: profiles_dir
+          env: DBT_PROFILES_DIR
+          value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
+          label: Profiles Directory
+        - name: project_dir
+          value: $MELTANO_PROJECT_ROOT/transform
+          label: Projects Directory
+        - name: path
+          kind: string
+          label: Path
+          description:
+            The path on your local filesystem where you would like the DuckDB
+            database file and it's associated write-ahead log to be written.
+        - name: schema
+          kind: string
+          value: main
+          label: Schema
+          description: Specify the schema to write into.
+      commands:
+        build:
+          args: build
+          description: Will run your models, tests, snapshots and seeds in DAG order.
+        describe:
+          args: describe
+          executable: dbt_extension
+        initialize:
+          args: initialize
+          executable: dbt_extension
+      config:
+        path: $TMP_PATH/mdsbox.db
+    - name: dbt-osmosis
+      variant: z3z1ma
+      pip_url: dbt-osmosis dbt-duckdb~=1.2.0 git+https://github.com/meltano/dbt-ext.git
+      namespace: dbt_duckdb
+      settings:
+        - name: project_dir
+          value: $MELTANO_PROJECT_ROOT/transform
+          label: Projects Directory
+        - name: skip_pre_invoke
+          env: DBT_EXT_SKIP_PRE_INVOKE
+          kind: boolean
+          value: true
+          description:
+            Whether to skip pre-invoke hooks which automatically run dbt clean
+            and deps
+        - name: type
+          env: DBT_EXT_TYPE
+          value: duckdb
+        - name: profiles_dir
+          env: DBT_PROFILES_DIR
+          value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
+          label: Profiles Directory
+        - name: project_dir
+          value: $MELTANO_PROJECT_ROOT/transform
+          label: Projects Directory
+        - name: path
+          kind: string
+          label: Path
+          description:
+            The path on your local filesystem where you would like the DuckDB
+            database file and it's associated write-ahead log to be written.
+        - name: schema
+          kind: string
+          value: main
+          label: Schema
+          description: Specify the schema to write into.
+      config:
+        path: $TMP_PATH/mdsbox.db
+      commands:
+        python:
+          executable: python
+          args: ""
 schedules:
-- name: spreadsheets-anywhere-to-duckdb
-  interval: '@once'
-  extractor: tap-spreadsheets-anywhere
-  loader: target-duckdb
-  transform: skip
-  start_date: 2022-10-01 18:08:45.303947
+  - name: spreadsheets-anywhere-to-duckdb
+    interval: "@once"
+    extractor: tap-spreadsheets-anywhere
+    loader: target-duckdb
+    transform: skip
+    start_date: 2022-10-01 18:08:45.303947
 project_id: 0f7b47e6-7268-4193-9522-1773c1ee9fee
