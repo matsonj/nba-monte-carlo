@@ -7,13 +7,38 @@ select
     
     
 
-with all_values as (
+with  __dbt__cte__raw_team_ratings as (
+SELECT *
+FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
+),  __dbt__cte__prep_team_ratings as (
+SELECT *
+FROM __dbt__cte__raw_team_ratings
+),  __dbt__cte__prep_elo_post as (
+SELECT
+    *,
+    True AS latest_ratings
+FROM '/tmp/data_catalog/prep/elo_post.parquet'
+),  __dbt__cte__ratings as (
+SELECT
+    orig.team,
+    orig.team_long,
+    orig.conf,
+    CASE
+        WHEN latest.latest_ratings = true AND latest.elo_rating IS NOT NULL THEN latest.elo_rating
+        ELSE orig.elo_rating
+    END AS elo_rating,
+    orig.elo_rating AS original_rating,
+    orig.win_total
+FROM __dbt__cte__prep_team_ratings orig
+LEFT JOIN __dbt__cte__prep_elo_post latest ON latest.team = orig.team
+GROUP BY ALL
+),all_values as (
 
     select
         conf as value_field,
         count(*) as n_records
 
-    from "main"."main"."ratings"
+    from __dbt__cte__ratings
     group by conf
 
 )
@@ -21,7 +46,7 @@ with all_values as (
 select *
 from all_values
 where value_field not in (
-    'east','west'
+    'East','West'
 )
 
 
