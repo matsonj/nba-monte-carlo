@@ -1,9 +1,6 @@
-WITH  __dbt__cte__raw_nba_elo_latest as (
+WITH  __dbt__cte__prep_nba_elo_latest as (
 SELECT *
 FROM '/tmp/data_catalog/psa/nba_elo_latest/*.parquet'
-),  __dbt__cte__prep_nba_elo_latest as (
-SELECT *
-FROM __dbt__cte__raw_nba_elo_latest
 GROUP BY ALL
 ),  __dbt__cte__latest_results as (
 SELECT
@@ -25,18 +22,12 @@ SELECT
 FROM __dbt__cte__prep_nba_elo_latest
 WHERE score1 IS NOT NULL
 GROUP BY ALL
-),  __dbt__cte__raw_schedule as (
-SELECT *
-FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
 ),  __dbt__cte__prep_schedule as (
 SELECT *
-FROM __dbt__cte__raw_schedule
-),  __dbt__cte__raw_team_ratings as (
-SELECT *
-FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
+FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
 ),  __dbt__cte__prep_team_ratings as (
 SELECT *
-FROM __dbt__cte__raw_team_ratings
+FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
 ),  __dbt__cte__prep_elo_post as (
 SELECT
     *,

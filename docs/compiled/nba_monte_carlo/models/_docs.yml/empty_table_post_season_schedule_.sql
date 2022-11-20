@@ -1,11 +1,8 @@
 
 
-    with __dbt__cte__raw_schedule as (
+    with __dbt__cte__prep_schedule as (
 SELECT *
 FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
-),  __dbt__cte__prep_schedule as (
-SELECT *
-FROM __dbt__cte__raw_schedule
 ),  __dbt__cte__post_season_schedule as (
 SELECT
     S.key::int AS game_id,

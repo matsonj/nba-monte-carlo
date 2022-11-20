@@ -1,1 +1,0 @@
-PRAGMA memory_limit='4GB'

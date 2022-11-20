@@ -1,15 +1,9 @@
-with __dbt__cte__raw_schedule as (
+with __dbt__cte__prep_schedule as (
 SELECT *
 FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
-),  __dbt__cte__prep_schedule as (
-SELECT *
-FROM __dbt__cte__raw_schedule
-),  __dbt__cte__raw_team_ratings as (
-SELECT *
-FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
 ),  __dbt__cte__prep_team_ratings as (
 SELECT *
-FROM __dbt__cte__raw_team_ratings
+FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
 ),  __dbt__cte__prep_elo_post as (
 SELECT
     *,
