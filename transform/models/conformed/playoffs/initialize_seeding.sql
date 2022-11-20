@@ -16,5 +16,7 @@ WITH cte_teams AS (
     FROM {{ ref('playin_sim_r2_end' ) }}
 )
 
-SELECT T.*
+SELECT
+    T.*,
+    {{ var( 'sim_start_game_id' ) }} AS sim_start_game_id
 FROM cte_teams T

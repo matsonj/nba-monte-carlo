@@ -55,6 +55,7 @@ plugins:
         file_size: 100000
         compression_method: snappy
         streams_in_separate_folder: true
+        add_record_metadata: true
   utilities:
     - name: superset
       variant: apache
@@ -64,7 +65,7 @@ plugins:
     - name: dbt-duckdb
       namespace: dbt_ext
       label: dbt duckdb extension
-      pip_url: dbt-core~=1.3.0 dbt-duckdb~=1.3.1 git+https://github.com/meltano/dbt-ext.git
+      pip_url: dbt-core~=1.3.0 dbt-duckdb~=1.3.2 git+https://github.com/meltano/dbt-ext.git
       executable: dbt_invoker
       settings:
         - name: project_dir
