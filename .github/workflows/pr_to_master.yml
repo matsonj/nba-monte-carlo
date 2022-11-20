@@ -24,7 +24,7 @@ jobs:
           pipx install meltano
 
       - name: meltano install
-        run: meltano install
+        run: make build
 
       - name: build pipeline
         run: make pipeline
