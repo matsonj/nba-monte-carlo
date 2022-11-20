@@ -43,5 +43,7 @@ cte_made_playoffs AS (
     FROM cte_ranked_wins
 )
 
-SELECT *
+SELECT 
+    *,
+    {{ var( 'sim_start_game_id' ) }} AS sim_start_game_id
 FROM cte_made_playoffs

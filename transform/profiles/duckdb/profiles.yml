@@ -9,6 +9,7 @@ meltano:
       type: duckdb
       threads: 4
       external_root: /tmp/data_catalog/conformed
+      path: "{{ env_var('DBT_DUCKDB_PATH') }}"
     staging:
       type: duckdb
       threads: 4
