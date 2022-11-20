@@ -3,3 +3,4 @@
 .env
 /transform/dbt_packages
 /transform/.tmp
+/docs/run

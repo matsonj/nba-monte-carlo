@@ -1,11 +1,8 @@
 
 
-    WITH  __dbt__cte__raw_team_ratings as (
+    WITH  __dbt__cte__prep_team_ratings as (
 SELECT *
 FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
-),  __dbt__cte__prep_team_ratings as (
-SELECT *
-FROM __dbt__cte__raw_team_ratings
 ),  __dbt__cte__prep_elo_post as (
 SELECT
     *,
@@ -31,12 +28,9 @@ SELECT
     win_total
 FROM __dbt__cte__ratings
 GROUP BY ALL
-),  __dbt__cte__raw_nba_elo_latest as (
-SELECT *
-FROM '/tmp/data_catalog/psa/nba_elo_latest/*.parquet'
 ),  __dbt__cte__prep_nba_elo_latest as (
 SELECT *
-FROM __dbt__cte__raw_nba_elo_latest
+FROM '/tmp/data_catalog/psa/nba_elo_latest/*.parquet'
 GROUP BY ALL
 ),  __dbt__cte__latest_results as (
 SELECT
@@ -58,12 +52,9 @@ SELECT
 FROM __dbt__cte__prep_nba_elo_latest
 WHERE score1 IS NOT NULL
 GROUP BY ALL
-),  __dbt__cte__raw_schedule as (
-SELECT *
-FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
 ),  __dbt__cte__prep_schedule as (
 SELECT *
-FROM __dbt__cte__raw_schedule
+FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
 ),  __dbt__cte__teams as (
 SELECT
     S.visitorneutral AS team_long,
@@ -125,6 +116,7 @@ SELECT
     C.wins_5th || ' to ' || C.wins_95th AS win_range,
     C.seed_5th || ' to ' || C.seed_95th AS seed_range,
     c.made_postseason,
-    c.made_play_in
+    c.made_play_in,
+    0 AS sim_start_game_id
 FROM cte_summary C
 LEFT JOIN __dbt__cte__reg_season_actuals A ON A.team = C.team

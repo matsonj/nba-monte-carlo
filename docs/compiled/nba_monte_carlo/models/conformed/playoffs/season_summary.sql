@@ -1,17 +1,11 @@
 
 
-with __dbt__cte__raw_schedule as (
+with __dbt__cte__prep_schedule as (
 SELECT *
 FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
-),  __dbt__cte__prep_schedule as (
-SELECT *
-FROM __dbt__cte__raw_schedule
-),  __dbt__cte__raw_team_ratings as (
-SELECT *
-FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
 ),  __dbt__cte__prep_team_ratings as (
 SELECT *
-FROM __dbt__cte__raw_team_ratings
+FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
 ),  __dbt__cte__prep_elo_post as (
 SELECT
     *,
@@ -100,7 +94,8 @@ LEFT JOIN cte_playoffs_finals F ON F.winning_team = T.team
     P.made_conf_semis,
     P.made_conf_finals,
     P.made_finals,
-    P.won_finals
+    P.won_finals,
+    0 AS sim_start_game_id
 FROM "main"."main"."reg_season_summary" R
 LEFT JOIN __dbt__cte__playoff_summary P ON P.team = R.team
 LEFT JOIN __dbt__cte__ratings ratings ON ratings.team = R.team

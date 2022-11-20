@@ -3,19 +3,13 @@
 with __dbt__cte__scenario_gen as (
 SELECT I.generate_series AS scenario_id
 FROM generate_series(1, 10000 ) AS I
-),  __dbt__cte__raw_nba_elo_latest as (
-SELECT *
-FROM '/tmp/data_catalog/psa/nba_elo_latest/*.parquet'
 ),  __dbt__cte__prep_nba_elo_latest as (
 SELECT *
-FROM __dbt__cte__raw_nba_elo_latest
+FROM '/tmp/data_catalog/psa/nba_elo_latest/*.parquet'
 GROUP BY ALL
-),  __dbt__cte__raw_team_ratings as (
-SELECT *
-FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
 ),  __dbt__cte__prep_team_ratings as (
 SELECT *
-FROM __dbt__cte__raw_team_ratings
+FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
 ),  __dbt__cte__prep_elo_post as (
 SELECT
     *,
@@ -50,12 +44,9 @@ FROM __dbt__cte__prep_nba_elo_latest AS S
 LEFT JOIN __dbt__cte__ratings V ON V.team = S.team2
 LEFT JOIN __dbt__cte__ratings H ON H.team = S.team1
 GROUP BY ALL
-),  __dbt__cte__raw_schedule as (
-SELECT *
-FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
 ),  __dbt__cte__prep_schedule as (
 SELECT *
-FROM __dbt__cte__raw_schedule
+FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
 ),  __dbt__cte__post_season_schedule as (
 SELECT
     S.key::int AS game_id,
@@ -81,6 +72,7 @@ FROM __dbt__cte__post_season_schedule
 )SELECT
     i.scenario_id,
     S.game_id,
-    (random() * 10000)::smallint AS rand_result
+    (random() * 10000)::smallint AS rand_result,
+    0 AS sim_start_game_id
 FROM __dbt__cte__scenario_gen AS i
 CROSS JOIN __dbt__cte__schedules AS S
