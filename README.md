@@ -31,17 +31,10 @@ cd nba-monte-carlo
 ```
 5. build your project
 ```
-make build
-make pipeline
-make visuals
+make build pipeline superset-visuals
 ```
-
-6. Create your admin user & explore your data inside superset by booting it up, logging in, and checking out your dashboard!
-
-```
-meltano invoke superset:create-admin
-meltano run superset:ui
-```
+Make sure to open up superset when prompted (default location is localhost:8088). 
+The username and password is "admin" and "password".
 
 ## Using Docker and Kubernetes
 
