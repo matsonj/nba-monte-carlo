@@ -10,8 +10,8 @@ pipeline:
 	meltano invoke dbt-duckdb run-operation elo_rollforward
 	meltano invoke dbt-duckdb build
 
-visuals:
-	meltano invoke superset import-datasources -p visuals/dashboards.json
+superset-visuals:
+	meltano invoke superset import-datasources -p visuals/dashboards.json ;\
 	meltano invoke superset import-dashboards -p visuals/dashboards.json
 
 server:
