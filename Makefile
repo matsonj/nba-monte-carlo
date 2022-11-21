@@ -10,6 +10,10 @@ pipeline:
 	meltano invoke dbt-duckdb run-operation elo_rollforward
 	meltano invoke dbt-duckdb build
 
+visuals:
+	meltano invoke superset import-datasources -p visuals/dashboards.json
+	meltano invoke superset import-dashboards -p visuals/dashboards.json
+
 server:
 	meltano invoke dbt-osmosis server serve --profiles-dir /workspaces/nba-monte-carlo/transform/profiles/duckdb --host 127.0.0.1 --port 8581
 
