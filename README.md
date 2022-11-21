@@ -45,6 +45,7 @@ meltano run superset:ui
  - lastly, connect it to duck db. navigate to localhost:8088, login, and add duckdb as a database.
 
    - SQL Alchemy URL: ```duckdb:////tmp/mdsbox.db```
+   - Advanced Settings > Other > Engine Parameters: ```{"connect_args":{"read_only":true}}```
 
    - Advanced Settings > SQL Lab > ✔ Expose Database in SQL Lab > ✔ Allow CREATE VIEW AS & ✔ Allow this database to be explored & ✔ Allow DML
 
