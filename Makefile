@@ -2,7 +2,7 @@ build:
 	meltano install
 
 pipeline:
-	meltano run tap-spreadsheets-anywhere target-parquet
+	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh
 	mkdir -p data/data_catalog/conformed
 	mkdir -p data/data_catalog/prep
 	mkdir -p data/data_catalog/raw
@@ -11,7 +11,7 @@ pipeline:
 	meltano invoke dbt-duckdb build
 
 superset-visuals:
-    meltano invoke superset fab create-admin --username admin --firstname lebron --lastname james --email admin@admin.org --password password
+	meltano invoke superset fab create-admin --username admin --firstname lebron --lastname james --email admin@admin.org --password password
 	meltano invoke superset import-datasources -p visuals/datasources.yml
 	meltano invoke superset import-dashboards -p visuals/dashboards.json
 	meltano invoke superset:ui
