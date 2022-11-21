@@ -2,7 +2,7 @@ build:
 	meltano install
 
 pipeline:
-	meltano run tap-spreadsheets-anywhere target-parquet --full-refresh
+	meltano run tap-spreadsheets-anywhere add-timestamps target-parquet --full-refresh
 	mkdir -p data/data_catalog/conformed
 	mkdir -p data/data_catalog/prep
 	mkdir -p data/data_catalog/raw
