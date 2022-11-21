@@ -11,7 +11,7 @@ pipeline:
 	meltano invoke dbt-duckdb build
 
 superset-visuals:
-	meltano invoke superset import-datasources -p visuals/dashboards.json ;\
+	meltano invoke superset import-datasources -p visuals/datasources.yml ;\
 	meltano invoke superset import-dashboards -p visuals/dashboards.json
 
 server:
