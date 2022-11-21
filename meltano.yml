@@ -111,48 +111,6 @@ plugins:
           executable: dbt_extension
       config:
         path: $TMP_PATH/mdsbox.db
-    - name: dbt-osmosis
-      variant: z3z1ma
-      pip_url: dbt-osmosis dbt-duckdb~=1.3.1 git+https://github.com/meltano/dbt-ext.git
-      namespace: dbt_duckdb
-      settings:
-        - name: project_dir
-          value: $MELTANO_PROJECT_ROOT/transform
-          label: Projects Directory
-        - name: skip_pre_invoke
-          env: DBT_EXT_SKIP_PRE_INVOKE
-          kind: boolean
-          value: true
-          description:
-            Whether to skip pre-invoke hooks which automatically run dbt clean
-            and deps
-        - name: type
-          env: DBT_EXT_TYPE
-          value: duckdb
-        - name: profiles_dir
-          env: DBT_PROFILES_DIR
-          value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
-          label: Profiles Directory
-        - name: project_dir
-          value: $MELTANO_PROJECT_ROOT/transform
-          label: Projects Directory
-        - name: path
-          kind: string
-          label: Path
-          description:
-            The path on your local filesystem where you would like the DuckDB
-            database file and it's associated write-ahead log to be written.
-        - name: schema
-          kind: string
-          value: main
-          label: Schema
-          description: Specify the schema to write into.
-      config:
-        path: $TMP_PATH/mdsbox.db
-      commands:
-        python:
-          executable: python
-          args: ""
 schedules:
   - name: spreadsheets-anywhere-to-duckdb
     interval: "@once"

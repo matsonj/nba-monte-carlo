@@ -16,8 +16,6 @@
     "settings": {
         "python.pythonPath": "/usr/local/bin/python",
         "python.languageServer": "Pylance",
-        "dbt.profilesDirOverride": "/workspaces/nba-monte-carlo/transform/profiles/duckdb",
-        "dbt.server.osmosisHost": "127.0.0.1",
         "files.associations": {
             "*.sql": "jinja-sql"
         }
@@ -30,7 +28,6 @@
         "ms-vscode.makefile-tools",
         "EditorConfig.EditorConfig",
         "samuelcolvin.jinjahtml",
-        "z3z1ma.vscode-dbt-power-user-osmosis",
         "github.vscode-pull-request-github",
         "eamodio.gitlens",
         "visualstudioexptteam.vscodeintellicode",
@@ -38,14 +35,6 @@
         "vivaxy.vscode-conventional-commits",
         "mechatroner.rainbow-csv"
     ],
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "python.defaultInterpreterPath": "/usr/local/bin/python",
-                "dbt.dbtPythonPath": "meltano invoke dbt-osmosis:python"
-            }
-        }
-    },
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
