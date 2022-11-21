@@ -29,41 +29,19 @@ git clone https://github.com/matsonj/nba-monte-carlo.git
 # Go one folder level down into the folder that git just created
 cd nba-monte-carlo
 ```
-5. build your project & run your pipeline
+5. build your project
 ```
 make build
 make pipeline
+make visuals
 ```
-6. Connect duckdb to superset. first, create an admin users
+
+6. Create your admin user & explore your data inside superset by booting it up, logging in, and checking out your dashboard!
+
 ```
 meltano invoke superset:create-admin
-```
- - then boot up superset
-```
 meltano run superset:ui
 ```
- - lastly, connect it to duck db. navigate to localhost:8088, login, and add duckdb as a database.
-
-   - SQL Alchemy URL: ```duckdb:////tmp/mdsbox.db```
-
-   - Advanced Settings > SQL Lab > ✔ Expose Database in SQL Lab > ✔ Allow CREATE VIEW AS & ✔ Allow this database to be explored & ✔ Allow DML
-
-   - Since the dbt run is materialized to `.parquet` files only, to make the tables available in Superset, go to SQL Lab > SQL Editor and run:
-   
-       ```c
-       CREATE VIEW initialized_seeding as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/initialize_seeding.parquet');
-       CREATE VIEW playoff_sim_r1 as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/playoff_sim_r1.parquet');
-       CREATE VIEW playoff_sim_r2 as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/playoff_sim_r2.parquet');
-       CREATE VIEW playoff_sim_r3 as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/playoff_sim_r3.parquet');
-       CREATE VIEW playoff_sim_r4 as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/playoff_sim_r4.parquet');
-       CREATE VIEW reg_season_summary as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/reg_season_summary.parquet');
-       CREATE VIEW season_summary as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/season_summary.parquet');
-       CREATE VIEW reg_season_end as SELECT * FROM read_parquet('/tmp/data_catalog/conformed/reg_season_end.parquet');
-       ```
-
-
-7. Explore your data inside superset. Go to SQL Labs > SQL Editor and write a custom query. A good example is ```SELECT * FROM reg_season_end```.
-
 
 ## Using Docker and Kubernetes
 
