@@ -51,7 +51,7 @@ plugins:
       variant: estrategiahq
       pip_url: git+https://github.com/estrategiahq/target-parquet.git
       config:
-        destination_path: $TMP_PATH/data_catalog/psa
+        destination_path: $MELTANO_PROJECT_ROOT/data/data_catalog/psa
         file_size: 100000
         compression_method: snappy
         streams_in_separate_folder: true
@@ -110,7 +110,7 @@ plugins:
           args: initialize
           executable: dbt_extension
       config:
-        path: $TMP_PATH/mdsbox.db
+        path: $MELTANO_PROJECT_ROOT/data/data_catalog/mdsbox.db
 schedules:
   - name: spreadsheets-anywhere-to-duckdb
     interval: "@once"
