@@ -88,9 +88,9 @@ This project leverages parquet instead of a database for file storage. This is e
 - [x] make simulator only sim incomplete games
 - [x] add table for new ratings
 - [x] add config to use original or new ratings
-- [ ] cleanup dbt-osmosis
+- [x] cleanup dbt-osmosis
 - [ ] clean up env vars + implement incremental builds
-- [ ] clean up dev container plugins (remove irrelevant ones, add some others)
+- [x] clean up dev container plugins (remove irrelevant ones, add some others)
 - [ ] add dbt tests on simulator tables that no numeric values are null (elo ratings, home team win probabilities)
 
 ## Optional stuff
