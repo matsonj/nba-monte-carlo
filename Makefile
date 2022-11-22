@@ -1,24 +1,20 @@
 build:
 	meltano install
-	mkdir -p /tmp/data_catalog/conformed
-	mkdir -p /tmp/data_catalog/prep
-	mkdir -p /tmp/data_catalog/raw
 
 pipeline:
-	meltano run tap-spreadsheets-anywhere target-parquet
+	meltano run tap-spreadsheets-anywhere add-timestamps target-parquet
+	mkdir -p data/data_catalog/conformed
+	mkdir -p data/data_catalog/prep
+	mkdir -p data/data_catalog/raw
 	meltano invoke dbt-duckdb deps
 	meltano invoke dbt-duckdb run-operation elo_rollforward
 	meltano invoke dbt-duckdb build
 
 superset-visuals:
-	meltano invoke superset import-datasources -p visuals/datasources.yml ;\
+	meltano invoke superset fab create-admin --username admin --firstname lebron --lastname james --email admin@admin.org --password password
+	meltano invoke superset import-datasources -p visuals/datasources.yml
 	meltano invoke superset import-dashboards -p visuals/dashboards.json
-
-server:
-	meltano invoke dbt-osmosis server serve --profiles-dir /workspaces/nba-monte-carlo/transform/profiles/duckdb --host 127.0.0.1 --port 8581
-
-register:
-	meltano invoke dbt-osmosis server register-project --profiles-dir /workspaces/nba-monte-carlo/transform/profiles/duckdb --project-dir /workspaces/nba-monte-carlo/transform
+	meltano invoke superset:ui
 
 docker-build:
 	docker build -t mdsbox .
