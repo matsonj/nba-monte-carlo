@@ -14,7 +14,7 @@
             WHEN score2 > score1 THEN 1
             ELSE 0
         END AS game_result
-    FROM {{ "'/workspaces/nba-monte-carlo/data/data_catalog/psa/nba_elo_latest/*.parquet'" }} S
+    FROM '{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/nba_elo_latest/*.parquet' S
     WHERE score1 IS NOT NULL
     GROUP BY ALL
     ORDER BY S._smart_source_lineno
@@ -39,7 +39,7 @@
 {% set temp_ratings %}
     CREATE OR REPLACE TEMPORARY TABLE workings_ratings AS (
         SELECT team, elo_rating, elo_rating AS original_rating
-        FROM {{ "'/workspaces/nba-monte-carlo/data/data_catalog/psa/team_ratings/*.parquet'" }}
+        FROM  '{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/team_ratings/*.parquet'
         GROUP BY ALL
     )
 {% endset %}
@@ -91,8 +91,8 @@
 {% endfor %} 
 -- NOTE: because we are using duckdb in-memory, need to explicity materialize our result tables
 {% set output %}
-    COPY (SELECT * FROM workings_ratings ) TO '/workspaces/nba-monte-carlo/data/data_catalog/prep/elo_post.parquet' (FORMAT 'parquet', CODEC 'ZSTD');
-    COPY (SELECT * FROM results_log) TO '/workspaces/nba-monte-carlo/data/data_catalog/prep/results_log.parquet' (FORMAT 'parquet', CODEC 'ZSTD');
+    COPY (SELECT * FROM workings_ratings ) TO '{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/prep/elo_post.parquet' (FORMAT 'parquet', CODEC 'ZSTD');
+    COPY (SELECT * FROM results_log) TO '{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/prep/results_log.parquet' (FORMAT 'parquet', CODEC 'ZSTD');
 {% endset %}
 {% do log(output, info=True) %}
 {% do run_query(output) %}

@@ -10,8 +10,7 @@ SELECT
     P.made_conf_semis,
     P.made_conf_finals,
     P.made_finals,
-    P.won_finals,
-    {{ var( 'sim_start_game_id' ) }} AS sim_start_game_id
+    P.won_finals
 FROM {{ ref( 'reg_season_summary' ) }} R
 LEFT JOIN {{ ref( 'playoff_summary' ) }} P ON P.team = R.team
 LEFT JOIN {{ ref( 'ratings' ) }} ratings ON ratings.team = R.team
