@@ -4,7 +4,7 @@ sources:
   - name: nba
     schema: psa
     meta:
-      external_location: "/workspaces/nba-monte-carlo/data/data_catalog/psa/{identifier}/*.parquet"
+      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
     tables:
       - name: schedule
         identifier: nba_schedule_2023
@@ -19,5 +19,10 @@ sources:
         description: 538 RAPTOR ratings by player
       - name: latest_RAPTOR_by_team
         description: 538 RAPTOR ratings by player by team & game type
+  - name: nba_prep
+    schema: prep
+    meta: 
+      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/prep/{identifier}.parquet"
+    tables:
       - name: elo_post
         description: elo after running proc for record actual results
