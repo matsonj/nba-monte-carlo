@@ -120,7 +120,7 @@ plugins:
   mappers:
    - name: meltano-map-transformer
      variant: meltano
-     pip_url: git+https://github.com/MeltanoLabs/meltano-map-transform.git@chore-sdk-v0.14.0
+     pip_url: git+https://github.com/MeltanoLabs/meltano-map-transform.git
      mappings:
      - name: add-timestamps
        # This adds timestamp columns to all of the named streams
