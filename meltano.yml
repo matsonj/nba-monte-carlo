@@ -9,8 +9,8 @@ environments:
       TMP_PATH: /tmp
   - name: docker
     env:
-      MELTANO_PROJECT_ROOT: /usr/src/app
-      TMP_PATH: /usr/src/app/tmp
+      MELTANO_PROJECT_ROOT: /workspaces/nba-monte-carlo
+      TMP_PATH: /workspaces/nba-monte-carlo/tmp
   - name: prod
     env:
       TMP_PATH: /tmp

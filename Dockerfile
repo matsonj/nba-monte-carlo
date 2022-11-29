@@ -1,6 +1,6 @@
 FROM python:3.9
 
-WORKDIR /usr/src/app
+WORKDIR /workspaces/nba-monte-carlo
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
   && wget https://github.com/duckdb/duckdb/releases/download/v0.5.1/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip \
   && pip install --no-cache-dir meltano==2.10.0
 
-COPY meltano.yml /usr/src/app/
+COPY meltano.yml ./
 
 RUN meltano --log-level=debug --environment=docker install extractors
 RUN meltano --log-level=debug --environment=docker install loaders
