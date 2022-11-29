@@ -6,7 +6,33 @@ Right now, you can get the nba schedule and elo ratings from this project and ge
 ![image](https://user-images.githubusercontent.com/16811433/195012880-adf8da03-ab16-4c16-8080-95514fb41c21.png)
 ![image](https://user-images.githubusercontent.com/16811433/195012951-dde884a0-88f5-48d5-8203-b6f06ba7dbd4.png)
 
-## Getting started - Windows
+## Using GitHub Codespaces
+
+Want to try MDS in a Box right away? Create a Codespace:
+
+![image](https://user-images.githubusercontent.com/79663385/204594948-1d50a7f2-b17f-4cb8-b8d4-7659cd526dd5.png)
+
+You can run in the Codespace two ways:
+
+1. Directly in the Codespaces development environment:
+
+	```
+	make build pipeline superset-visuals
+	```
+	
+2. Or using Docker inside the Codespace:
+
+	```
+	make docker-build docker-run
+	```
+
+In both cases, you will need to wait for the pipeline to run and Superset configuration to complete. 
+
+You can then access the Superset dashboard by clicking on the Open in Browswer button on the Ports tab:
+![image](https://user-images.githubusercontent.com/79663385/204596948-64cac757-cbaf-434d-ab65-327b8ed8f043.png)
+and log in with the username and password: "admin" and "password".
+
+## Building MDS in a box in Windows
 1. Create your WSL environment. Open a PowerShell terminal running as an administrator and execute:
 ```
 wsl --install
@@ -71,34 +97,8 @@ You can then scale out to Kubernetes, assuming you have it installed:
 kubectl apply -f ./kubernetes/pod.yaml
 ```
 
-## Using GitHub Codespaces
-
-Want to try MDS in a Box right away? Create a Codespace:
-
-![image](https://user-images.githubusercontent.com/79663385/204594948-1d50a7f2-b17f-4cb8-b8d4-7659cd526dd5.png)
-
-You can run in the Codespace two ways:
-
-1. Directly in the Codespaces development environment:
-
-	```
-	make build pipeline superset-visuals
-	```
-	
-2. Or using Docker inside the Codespace:
-
-	```
-	make docker-build docker-run
-	```
-
-In both cases, you will need to wait for the pipeline to run and Superset configuration to complete. 
-
-You can then access the Superset dashboard by clicking on the Open in Browswer button on the Ports tab:
-![image](https://user-images.githubusercontent.com/79663385/204596948-64cac757-cbaf-434d-ab65-327b8ed8f043.png)
-and log in with the username and password: "admin" and "password".
-
 ## Using Parquet instead of a database
-This project leverages parquet instead of a database for file storage. This is experimental and implementation will evolve over time.
+This project leverages parquet in addition to a database for file storage. This is experimental and implementation will evolve over time.
 
 ## Todos
 - [x] replace reg season schedule with 538 schedule
