@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
   unzip \
   wget \
   && rm -rf /var/lib/apt/lists/* \
-  && wget https://github.com/duckdb/duckdb/releases/download/v0.5.1/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip \
+  && wget https://github.com/duckdb/duckdb/releases/download/v0.6.0/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip \
   && pip install --no-cache-dir meltano==2.10.0
 
 COPY meltano.yml ./
