@@ -25,11 +25,11 @@ clean-targets:
 models:
   nba_monte_carlo:
     raw:
-      materialized: ephemeral
+      +materialized: table
     prep:
-      materialized: ephemeral
+      +materialized: table
     conformed:
-      materialized: ephemeral
+      +materialized: view
 vars:
   scenarios: 10000            # set number of scenarios. 100k is safe on 8GB of RAM
   include_actuals: true       # set to true to use actual game results, otherwise sim entire season
