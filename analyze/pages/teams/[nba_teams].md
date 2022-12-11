@@ -156,7 +156,7 @@ ORDER BY ABS(elo_change) desc
 />
 
 ### Quality Wins
-yeah there is a bug here (need to fix), its related to how schedule game_id and nba_elo_latest game_id tie out to each other (join need to be date & team, instead of game_id??)
+<sub>Win quality (good & bad) is ranked on the difference in ELO rating between the teams at the time the game was played. It does not account for lineup changes or resting players.</sub>
 <DataTable
     data={quality_wins.filter(d => d.winning_team === $page.params.nba_teams)}
 />
@@ -203,8 +203,7 @@ yeah there is a bug here (need to fix), its related to how schedule game_id and 
 
 ## Playoff Analysis
 
-Placeholder. test2
-- add the following
+add the following:
 - play-in analysis (if playin games exist, i.e. count > 1)
   - this will show % of time by spot, and then % of advancing by seed
 - playoff analysis
