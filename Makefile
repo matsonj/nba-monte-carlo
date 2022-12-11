@@ -31,9 +31,9 @@ docker-run:
 
 evidence-build:
 	cd analyze && npm update
-
-evidence-run:
-	mkdir -p data_catalog
+	cd analyze && mkdir -p data_catalog
 	cp -r /workspaces/nba-monte-carlo/data/data_catalog/* /workspaces/nba-monte-carlo/analyze/data_catalog
 	cp /workspaces/nba-monte-carlo/analyze/data_catalog/mdsbox.db /workspaces/nba-monte-carlo/analyze/
+
+evidence-run:
 	cd analyze && npm run dev

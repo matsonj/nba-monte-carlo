@@ -1,0 +1,46 @@
+name: 'Deploy to Netlify'
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    name: 'Deploy'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@master
+        with:
+          python-version: '3.9'
+
+      - name: python basics
+        # should prob shift to requirements.txt, but setting like this for now
+        run: |
+          python3 -m pip install --user pipx
+          python3 -m pipx ensurepath
+          pipx install meltano
+
+      - name: meltano install
+        run: meltano install
+
+      - name: build pipeline
+        run: make pipeline
+
+      - name: evidence install & build
+        run: |
+          make evidence-build && npm run build
+
+      - name: copy output to working directory
+        run: |
+          mkdir -p /home/runner/work/_temp/_github_home/build
+          cp analyze/build/* /home/runner/work/_temp/_github_home/build
+
+      - name: Deploy Netlify
+        uses: danakim/gh-action-deploy-netlify@master
+        with:
+          AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          DEPLOY_PROD: true
