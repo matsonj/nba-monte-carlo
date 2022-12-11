@@ -1,4 +1,8 @@
-.evidence/template
+.evidence/template/.evidence-queries
+.evidence/template/.svelte-kit
+.evidence/template/node_modules
+.evidence/template/src
+.evidence/template/static
 .svelte-kit
 build
 node_modules
