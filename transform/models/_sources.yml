@@ -26,3 +26,5 @@ sources:
     tables:
       - name: elo_post
         description: elo after running proc for record actual results
+      - name: results_log
+        description: game results with elo before each game. feeds into elo_post, which holds latest ratings
