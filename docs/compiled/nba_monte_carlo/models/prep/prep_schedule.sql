@@ -1,2 +1,2 @@
 SELECT *
-FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
+FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/nba_schedule_2023/*.parquet'
