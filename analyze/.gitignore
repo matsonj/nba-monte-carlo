@@ -5,3 +5,4 @@ node_modules
 .DS_Store
 data_catalog
 mdsbox.db
+needful_things.db
