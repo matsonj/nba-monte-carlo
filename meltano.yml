@@ -63,11 +63,12 @@ plugins:
         output: $MELTANO_PROJECT_ROOT/output
         do_timestamp_file: true
   utilities:
-    - name: superset
-      variant: apache
-      pip_url: apache-superset>=1.5.0 markupsafe==2.0.1 Werkzeug==2.0.3 WTForms==2.3.0 duckdb-engine==0.6.4
-      config:
-        ENABLE_PROXY_FIX: true
+  # removing for now
+  #  - name: superset
+  #    variant: apache
+  #    pip_url: apache-superset>=1.5.0 markupsafe==2.0.1 Werkzeug==2.0.3 WTForms==2.3.0 duckdb-engine==0.6.4
+  #    config:
+  #      ENABLE_PROXY_FIX: true
     - name: evidence
       namespace: evidence
       commands:
