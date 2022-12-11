@@ -44,6 +44,8 @@ WHERE conf = 'West'
 ```
 
 ## Team Index
+<sub>Each team is summarized in the index. Click on a specific team to drill down to their analytical page.</sub>
+
 ## Eastern Conference
 {#each east_conf as record}
 
