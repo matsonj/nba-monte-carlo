@@ -2,12 +2,12 @@
 
     WITH  __dbt__cte__prep_team_ratings as (
 SELECT *
-FROM '/tmp/data_catalog/psa/team_ratings/*.parquet'
+FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/team_ratings/*.parquet'
 ),  __dbt__cte__prep_elo_post as (
 SELECT
     *,
     True AS latest_ratings
-FROM '/tmp/data_catalog/prep/elo_post.parquet'
+FROM  '/workspaces/nba-monte-carlo/data/data_catalog/prep/elo_post.parquet'
 ),  __dbt__cte__ratings as (
 SELECT
     orig.team,
@@ -30,7 +30,7 @@ FROM __dbt__cte__ratings
 GROUP BY ALL
 ),  __dbt__cte__prep_nba_elo_latest as (
 SELECT *
-FROM '/tmp/data_catalog/psa/nba_elo_latest/*.parquet'
+FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/nba_elo_latest/*.parquet'
 GROUP BY ALL
 ),  __dbt__cte__latest_results as (
 SELECT
@@ -54,7 +54,7 @@ WHERE score1 IS NOT NULL
 GROUP BY ALL
 ),  __dbt__cte__prep_schedule as (
 SELECT *
-FROM '/tmp/data_catalog/psa/nba_schedule_2023/*.parquet'
+FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/nba_schedule_2023/*.parquet'
 ),  __dbt__cte__teams as (
 SELECT
     S.visitorneutral AS team_long,
