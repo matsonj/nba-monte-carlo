@@ -28,3 +28,12 @@ docker-run:
 		--env MDS_LATEST_RATINGS=true \
 		--env MDS_ENABLE_EXPORT=true \
 		mdsbox make pipeline superset-visuals 
+
+evidence-build:
+	cd analyze && npm update
+
+evidence-run:
+	mkdir -p data_catalog
+	cp -r /workspaces/nba-monte-carlo/data/data_catalog/* /workspaces/nba-monte-carlo/analyze/data_catalog
+	cp /workspaces/nba-monte-carlo/analyze/data_catalog/mdsbox.db /workspaces/nba-monte-carlo/analyze/
+	cd analyze && npm run dev
