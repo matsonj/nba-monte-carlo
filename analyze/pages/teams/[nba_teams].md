@@ -5,7 +5,7 @@ select *,
     elo_vs_vegas*-1.0 as vs_vegas_num1,
     avg_wins as predicted_wins,
     (COALESCE(made_postseason,0) + COALESCE(made_play_in,0) )/ 10000.0 as made_playoffs_pct1
-from '/workspaces/nba-monte-carlo/analyze/data_catalog/conformed/reg_season_summary.parquet'
+from reg_season_summary
 ```
 
 ```records_table
@@ -53,7 +53,7 @@ FROM reg_season_actuals_enriched
 ```elo_latest
 SELECT *,
     elo_rating - original_rating as since_start
-FROM '/workspaces/nba-monte-carlo/analyze/data_catalog/prep/elo_post.parquet'
+FROM prep_elo_post
 ```
 
 ```seed_details
@@ -104,8 +104,8 @@ SELECT
     team1 || ' vs ' || team2 as matchup,
     score1 || ' - ' || score2 as score,
     ABS(elo_change) AS elo_change_num1
-FROM '/workspaces/nba-monte-carlo/analyze/data_catalog/prep/results_log.parquet' RL
-LEFT JOIN '/workspaces/nba-monte-carlo/analyze/data_catalog/psa/nba_elo_latest/*.parquet' AR ON
+FROM prep_results_log RL
+LEFT JOIN prep_nba_elo_latest AR ON
     AR._smart_source_lineno - 1 = RL.game_id
 QUALIFY ROW_NUMBER() OVER ( PARTITION BY winning_team ORDER BY ABS(elo_change) DESC ) <=5
 ORDER BY ABS(elo_change) desc
@@ -118,8 +118,8 @@ SELECT
     team1 || ' vs ' || team2 as matchup,
     score1 || ' - ' || score2 as score,
     ABS(elo_change) AS elo_change_num1
-FROM '/workspaces/nba-monte-carlo/analyze/data_catalog/prep/results_log.parquet' RL
-LEFT JOIN '/workspaces/nba-monte-carlo/analyze/data_catalog/psa/nba_elo_latest/*.parquet' AR ON
+FROM prep_results_log RL
+LEFT JOIN prep_nba_elo_latest AR ON
     AR._smart_source_lineno - 1 = RL.game_id
 QUALIFY ROW_NUMBER() OVER ( PARTITION BY CASE WHEN winning_team = home_team THEN visiting_team ELSE home_team END ORDER BY ABS(elo_change) DESC ) <=5
 ORDER BY ABS(elo_change) desc
