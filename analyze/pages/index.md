@@ -2,7 +2,7 @@
 
 Welcome to the [NBA monte carlo simulator](https://github.com/matsonj/nba-monte-carlo) project. Evidence is used as the as data visualization & analysis part of [MDS in a box](https://www.dataduel.co/modern-data-stack-in-a-box-with-duckdb/).
 
-This project leverages duckdb, meltano, and evidence and builds and runs about once per day in a github action.
+This project leverages duckdb, meltano, dbt, and evidence and builds and runs about once per day in a github action. You can learn more about this on [this page](/about).
 
 ## Conference leaders
 - <Value data={east_conf} column=team /> 
@@ -44,9 +44,6 @@ select
 from ${reg_season}
 WHERE conf = 'West'
 ```
-
-## Team Index
-<sub>Each team is summarized in the index. Click on a specific team to drill down to their analytical page.</sub>
 
 ## Eastern Conference
 {#each east_conf as record}
