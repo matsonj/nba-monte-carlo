@@ -19,6 +19,22 @@ FROM reg_season_actuals_enriched
 UNION ALL
 SELECT
     team,
+    'at home' as type,
+    home_wins,
+    home_losses,
+    home_wins::real / (home_wins+home_losses)::real as win_pct_num3
+FROM reg_season_actuals_enriched
+UNION ALL
+SELECT
+    team,
+    'away' as type,
+    away_wins,
+    away_losses,
+    away_wins::real / (away_wins+away_losses)::real as win_pct_num3
+FROM reg_season_actuals_enriched
+UNION ALL
+SELECT
+    team,
     'as favorite',
     wins_as_favorite,
     losses_as_favorite,
@@ -153,6 +169,7 @@ ORDER BY ABS(elo_change) desc
 
 <DataTable
     data={records_table.filter(d => d.team === $page.params.nba_teams)} 
+    rows=7
 />
 
 ### Quality Wins
@@ -162,6 +179,7 @@ ORDER BY ABS(elo_change) desc
 />
 
 ### Bad Losses
+
 
 <DataTable
     data={bad_losses.filter(d => d.losing_team === $page.params.nba_teams)}
