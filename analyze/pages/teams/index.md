@@ -34,15 +34,15 @@ from ${reg_season}
 WHERE conf = 'West'
 ```
 
-# Team Index
-## Eastern Conference
+## team browser
+### Eastern Conference
 {#each east_conf as record}
 
 [{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
 
 {/each}
 
-## Western Conference
+### Western Conference
 {#each west_conf as record}
 
 [{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
