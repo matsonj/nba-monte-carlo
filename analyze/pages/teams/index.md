@@ -14,7 +14,7 @@ order by conf, avg_wins desc
 select
   '[' || team || '](/teams/' || team || ')' as team_link,
   team,
-  elo_rating as elo_rating_num0,
+  elo_rating,
   avg_wins,
   make_playoffs_pct1,
   win_finals_pct1
@@ -26,7 +26,7 @@ WHERE conf = 'East'
 select
   '[' || team || '](/teams/' || team || ')' as team_link,
   team,
-  elo_rating as elo_rating_num0,
+  elo_rating,
   avg_wins,
   make_playoffs_pct1,
   win_finals_pct1
@@ -38,13 +38,13 @@ WHERE conf = 'West'
 ### Eastern Conference
 {#each east_conf as record}
 
-[{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating_num0/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
+[{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
 
 {/each}
 
 ### Western Conference
 {#each west_conf as record}
 
-[{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating_num0/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
+[{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
 
 {/each}
