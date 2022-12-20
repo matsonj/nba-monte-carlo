@@ -4,7 +4,7 @@
 ) }}
 
 SELECT
-    ROUND(ratings.elo_rating,0) || ' (' || CASE WHEN original_rating < elo_rating THEN '+' ELSE '' END || (elo_rating-original_rating)::int || ')' AS elo_rating,
+    ROUND(ratings.elo_rating,0)::int || ' (' || CASE WHEN original_rating < elo_rating THEN '+' ELSE '' END || (elo_rating-original_rating)::int || ')' AS elo_rating,
     R.*,
     P.made_playoffs,
     P.made_conf_semis,
