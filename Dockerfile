@@ -1,4 +1,7 @@
-FROM python:3.9
+FROM nikolaik/python-nodejs:python3.9-nodejs19
+
+ARG SSL_KEYSTORE_PASSWORD
+USER root
 
 WORKDIR /workspaces/nba-monte-carlo
 
@@ -24,9 +27,9 @@ RUN meltano --log-level=debug --environment=docker install extractors
 RUN meltano --log-level=debug --environment=docker install loaders
 RUN meltano --log-level=debug --environment=docker install mappers
 RUN meltano --log-level=debug --environment=docker install utility dbt-duckdb
-RUN meltano --log-level=debug --environment=docker install utility superset
 
 COPY data ./data
 COPY transform ./transform
 COPY visuals ./visuals
 COPY Makefile .
+COPY analyze ./analyze
