@@ -24,15 +24,15 @@ jobs:
           pipx install meltano
 
       - name: meltano install
-        run: meltano install
-
-      - name: build pipeline
         run: |
           meltano --log-level=debug install extractors
           meltano --log-level=debug install loaders
           meltano --log-level=debug install mappers
           meltano --log-level=debug install utility dbt-duckdb
 
+      - name: build pipeline
+        run: make pipeline
+        
       - name: evidence install & build
         run: |
           make evidence-build
