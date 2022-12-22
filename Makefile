@@ -54,3 +54,30 @@ docker-run-evidence:
 		--env MDS_ENABLE_EXPORT=true \
 		--env ENVIRONMENT=docker \
 		mdsbox make pipeline evidence-visuals
+
+rill-install:
+	curl -s https://cdn.rilldata.com/install.sh | bash
+
+rill-build:
+	mkdir -p rill
+	cd rill && rill init
+	cd rill && for file in ../data/data_catalog/conformed/*.parquet; do rill source add $$file; done
+
+rill-run:
+	cd rill && rill start
+
+rill-visuals:
+	make rill-install
+	make rill-build
+	make rill-run
+
+docker-run-rill:
+		docker run \
+		--publish 9009:9009 \
+	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
+		--env MDS_SCENARIOS=10000 \
+		--env MDS_INCLUDE_ACTUALS=true \
+		--env MDS_LATEST_RATINGS=true \
+		--env MDS_ENABLE_EXPORT=true \
+		--env ENVIRONMENT=docker \
+		mdsbox make pipeline rill-visuals	
