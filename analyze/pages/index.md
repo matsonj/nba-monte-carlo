@@ -64,7 +64,12 @@ FROM reg_season_end
 GROUP BY ALL
 ORDER BY sort_key
 ```
+
+```thru_date
+SELECT max(date) as end_date FROM latest_results
+```
 ## Conference Summaries
+_<sub>This data was last updated as of <Value data={thru_date} column=end_date/>.</sub>_
 
 ### End of Season Seeding
 <AreaChart
