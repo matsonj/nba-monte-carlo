@@ -1,11 +1,13 @@
-# Detailed Analysis for <Value data={season_summary.filter(d => d.team === $page.params.nba_teams)} column=team/>
+# Detailed Analysis for <Value data={season_summary.filter(d => d.team === $page.params.nba_teams)} column=team_long/>
 
 ```season_summary
-select *, 
-    elo_vs_vegas*-1.0 as vs_vegas_num1,
-    avg_wins as predicted_wins,
-    (COALESCE(made_postseason,0) + COALESCE(made_play_in,0) )/ 10000.0 as made_playoffs_pct1
-from '/workspaces/nba-monte-carlo/analyze/data_catalog/conformed/reg_season_summary.parquet'
+select R.*,
+    R.elo_vs_vegas*-1.0 as vs_vegas_num1,
+    R.avg_wins as predicted_wins,
+    (COALESCE(R.made_postseason,0) + COALESCE(R.made_play_in,0) )/ 10000.0 as made_playoffs_pct1,
+    T.team_long
+from reg_season_summary R
+left join prep_team_ratings T on R.team = T.team
 ```
 
 ```records_table
@@ -15,6 +17,22 @@ SELECT
     wins,
     losses,
     wins::real / (wins+losses)::real as win_pct_num3
+FROM reg_season_actuals_enriched
+UNION ALL
+SELECT
+    team,
+    'at home' as type,
+    home_wins,
+    home_losses,
+    home_wins::real / (home_wins+home_losses)::real as win_pct_num3
+FROM reg_season_actuals_enriched
+UNION ALL
+SELECT
+    team,
+    'away' as type,
+    away_wins,
+    away_losses,
+    away_wins::real / (away_wins+away_losses)::real as win_pct_num3
 FROM reg_season_actuals_enriched
 UNION ALL
 SELECT
@@ -53,7 +71,7 @@ FROM reg_season_actuals_enriched
 ```elo_latest
 SELECT *,
     elo_rating - original_rating as since_start
-FROM '/workspaces/nba-monte-carlo/analyze/data_catalog/prep/elo_post.parquet'
+FROM prep_elo_post
 ```
 
 ```seed_details
@@ -101,13 +119,13 @@ GROUP BY ALL
 SELECT
     winning_team,
     date,
-    team1 || ' vs ' || team2 as matchup,
+    CASE WHEN team1 = winning_team THEN team2 ELSE '@' || team1 END as matchup,
     score1 || ' - ' || score2 as score,
     ABS(elo_change) AS elo_change_num1
-FROM '/workspaces/nba-monte-carlo/analyze/data_catalog/prep/results_log.parquet' RL
-LEFT JOIN '/workspaces/nba-monte-carlo/analyze/data_catalog/psa/nba_elo_latest/*.parquet' AR ON
+FROM prep_results_log RL
+LEFT JOIN prep_nba_elo_latest AR ON
     AR._smart_source_lineno - 1 = RL.game_id
-QUALIFY ROW_NUMBER() OVER ( PARTITION BY winning_team ORDER BY ABS(elo_change) DESC ) <=5
+QUALIFY ROW_NUMBER() OVER ( PARTITION BY winning_team ORDER BY ABS(elo_change) DESC ) <=3
 ORDER BY ABS(elo_change) desc
 ```
 
@@ -115,17 +133,38 @@ ORDER BY ABS(elo_change) desc
 SELECT
     CASE WHEN winning_team = home_team THEN visiting_team ELSE home_team END AS losing_team,
     date,
-    team1 || ' vs ' || team2 as matchup,
+    CASE WHEN team1 <> winning_team THEN team2 ELSE '@' || team1 END as matchup,
     score1 || ' - ' || score2 as score,
     ABS(elo_change) AS elo_change_num1
-FROM '/workspaces/nba-monte-carlo/analyze/data_catalog/prep/results_log.parquet' RL
-LEFT JOIN '/workspaces/nba-monte-carlo/analyze/data_catalog/psa/nba_elo_latest/*.parquet' AR ON
+FROM prep_results_log RL
+LEFT JOIN prep_nba_elo_latest AR ON
     AR._smart_source_lineno - 1 = RL.game_id
-QUALIFY ROW_NUMBER() OVER ( PARTITION BY CASE WHEN winning_team = home_team THEN visiting_team ELSE home_team END ORDER BY ABS(elo_change) DESC ) <=5
+QUALIFY ROW_NUMBER() OVER ( PARTITION BY CASE WHEN winning_team = home_team THEN visiting_team ELSE home_team END ORDER BY ABS(elo_change) DESC ) <=3
 ORDER BY ABS(elo_change) desc
 ```
 
-### Season-to-date Results
+```game_trend
+with cte_games AS (
+SELECT 0 as game_id, team, original_rating as elo_rating, 0 as elo_change 
+FROM prep_elo_post
+UNION ALL
+SELECT game_id, visiting_team as team, visiting_team_elo_rating as elo_rating, elo_change
+FROM prep_results_log
+UNION ALL
+SELECT game_id, home_team as team, home_team_elo_rating as elo_rating, elo_change*-1 as elo_change
+FROM prep_results_log )
+SELECT 
+    COALESCE(AR.date,'2022-10-17') AS date,
+    RL.team, 
+    RL.elo_rating, 
+    RL.elo_change,
+    sum(RL.elo_change) over (partition by team order by COALESCE(AR.date,'2022-10-17') asc rows between unbounded preceding and current row) as cumulative_elo_change_num0
+FROM cte_games RL
+LEFT JOIN prep_nba_elo_latest AR ON
+    AR._smart_source_lineno - 1 = RL.game_id
+```
+
+## Season-to-date Results
 
 <BigValue 
     data={elo_latest.filter(d => d.team === $page.params.nba_teams)} 
@@ -149,10 +188,18 @@ ORDER BY ABS(elo_change) desc
     comparison='vs_vegas_num1' 
 /> 
 
+<LineChart
+    data={game_trend.filter(d => d.team === $page.params.nba_teams)} 
+    x=date
+    y=cumulative_elo_change_num0
+    title='elo change over time'
+/>
+
 ### Matchup Summary
 
 <DataTable
     data={records_table.filter(d => d.team === $page.params.nba_teams)} 
+    rows=7
 />
 
 ### Quality Wins
@@ -162,6 +209,7 @@ ORDER BY ABS(elo_change) desc
 />
 
 ### Bad Losses
+
 
 <DataTable
     data={bad_losses.filter(d => d.losing_team === $page.params.nba_teams)}

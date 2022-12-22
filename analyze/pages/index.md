@@ -1,11 +1,8 @@
 # NBA Monte Carlo Simulator
 
-Welcome to the [NBA monte carlo simulator](https://github.com/matsonj/nba-monte-carlo) project. Evidence is used as the as data visualization & analysis part of [MDS in a box](http://mdsinabox.com).
+Welcome to the [NBA monte carlo simulator](https://github.com/matsonj/nba-monte-carlo) project. Evidence is used as the as data visualization & analysis part of [MDS in a box](https://www.dataduel.co/modern-data-stack-in-a-box-with-duckdb/).
 
-## Conference leaders
-- <Value data={east_conf} column=team /> 
-leads the Eastern Conference with <Value data={east_conf} column=avg_wins /> Expected Wins.
-- <Value data={west_conf} column=team /> leads the Western Conference with <Value data={west_conf} column=avg_wins /> Expected Wins.
+This project leverages duckdb, meltano, dbt, and evidence and builds and runs about once per day in a github action. You can learn more about this on [this page](/about).
 
 ```reg_season
 select
@@ -43,19 +40,72 @@ from ${reg_season}
 WHERE conf = 'West'
 ```
 
-## Team Index
-<sub>Each team is summarized in the index. Click on a specific team to drill down to their analytical page.</sub>
+```seed_details
+SELECT
+    winning_team as team,
+    season_rank as seed,
+    conf,
+    count(*) / 10000.0 as occurances_pct1
+FROM reg_season_end
+GROUP BY ALL
+```
 
-## Eastern Conference
-{#each east_conf as record}
+```wins_seed_scatter
+SELECT
+    winning_team as team,
+    conf,
+    count(*) / 10000.0 as odds_pct1,
+    case when season_rank <= 6 then 'top six seed'
+        when season_rank between 7 and 10 then 'play in'
+        else 'missed playoffs'
+    end as season_result,
+    Count(*) FILTER (WHERE season_rank <=6)*-1 AS sort_key
+FROM reg_season_end
+GROUP BY ALL
+ORDER BY sort_key
+```
+## Conference Summaries
 
-[{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
+### End of Season Seeding
+<AreaChart
+    data={seed_details.filter(d => d.conf === "East")} 
+    x=seed
+    y=occurances_pct1
+    series=team
+    xAxisTitle=seed
+    title='Eastern Conference'
+    yMax=1
+/>
 
-{/each}
+<AreaChart
+    data={seed_details.filter(d => d.conf === "West")} 
+    x=seed
+    y=occurances_pct1
+    series=team
+    xAxisTitle=seed
+    title='Western Conference'
+    yMax=1
+/>
 
-## Western Conference
-{#each west_conf as record}
+### End of Season Playoff Odds
+<BarChart
+    data={wins_seed_scatter.filter(d => d.conf === "East")} 
+    x=team
+    y=odds_pct1
+    series=season_result
+    xAxisTitle=seed
+    title='Eastern Conference'
+    swapXY=true
+    sort=sort_key
+/>
 
-[{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
-
-{/each}
+<BarChart
+    data={wins_seed_scatter.filter(d => d.conf === "West")} 
+    x=team
+    y=odds_pct1
+    series=season_result
+    xAxisTitle=seed
+    title='Western Conference'
+    swapXY=true
+    sort=sort_key
+/>

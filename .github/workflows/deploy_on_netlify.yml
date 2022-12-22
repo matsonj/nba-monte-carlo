@@ -31,12 +31,13 @@ jobs:
 
       - name: evidence install & build
         run: |
-          make evidence-build && npm run build
+          make evidence-build
+          cd analyze && npm run build
 
       - name: copy output to working directory
         run: |
           mkdir -p /home/runner/work/_temp/_github_home/build
-          cp analyze/build/* /home/runner/work/_temp/_github_home/build
+          cp -r analyze/build/* /home/runner/work/_temp/_github_home/build
 
       - name: Deploy Netlify
         uses: danakim/gh-action-deploy-netlify@master

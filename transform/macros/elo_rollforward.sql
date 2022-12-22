@@ -38,7 +38,7 @@
 -- load elo ratings into a temporary table
 {% set temp_ratings %}
     CREATE OR REPLACE TEMPORARY TABLE workings_ratings AS (
-        SELECT team, elo_rating, elo_rating AS original_rating
+        SELECT team, elo_rating::real as elo_rating, elo_rating::real AS original_rating
         FROM  '{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/team_ratings/*.parquet'
         GROUP BY ALL
     )
