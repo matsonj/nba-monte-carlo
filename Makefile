@@ -44,7 +44,7 @@ evidence-build:
 	cp /workspaces/nba-monte-carlo/analyze/data_catalog/mdsbox.db /workspaces/nba-monte-carlo/analyze/
 
 evidence-run:
-	cd analyze && npm run dev
+	cd analyze && npm run dev -- --host 0.0.0.0
 
 evidence-visuals:
 	make evidence-build
@@ -56,3 +56,14 @@ docker-run-evidence:
 	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
 		--env ENVIRONMENT=docker \
 		mdsbox make evidence-visuals
+
+docker-evidence-test:
+		docker run \
+		--publish 3000:3000 \
+	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
+		--env MDS_SCENARIOS=10000 \
+		--env MDS_INCLUDE_ACTUALS=true \
+		--env MDS_LATEST_RATINGS=true \
+		--env MDS_ENABLE_EXPORT=true \
+		--env ENVIRONMENT=docker \
+		mdsbox make pipeline evidence-visuals
