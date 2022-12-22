@@ -27,7 +27,11 @@ jobs:
         run: meltano install
 
       - name: build pipeline
-        run: make pipeline
+        run: |
+          meltano --log-level=debug --environment=docker install extractors
+          meltano --log-level=debug --environment=docker install loaders
+          meltano --log-level=debug --environment=docker install mappers
+          meltano --log-level=debug --environment=docker install utility dbt-duckdb
 
       - name: evidence install & build
         run: |
