@@ -13,16 +13,6 @@ pipeline:
 docker-build:
 	docker build -t mdsbox .
 
-docker-run-pipeline:
-	docker run \
-	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
-		--env MDS_SCENARIOS=10000 \
-		--env MDS_INCLUDE_ACTUALS=true \
-		--env MDS_LATEST_RATINGS=true \
-		--env MDS_ENABLE_EXPORT=true \
-		--env ENVIRONMENT=docker \
-		mdsbox make pipeline 
-
 superset-visuals:
 	meltano install utility superset
 	meltano invoke superset fab create-admin --username admin --firstname lebron --lastname james --email admin@admin.org --password password
@@ -34,8 +24,12 @@ docker-run-superset:
 	docker run \
 		--publish 8088:8088 \
 	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
+		--env MDS_SCENARIOS=10000 \
+		--env MDS_INCLUDE_ACTUALS=true \
+		--env MDS_LATEST_RATINGS=true \
+		--env MDS_ENABLE_EXPORT=true \
 		--env ENVIRONMENT=docker \
-		mdsbox make superset-visuals
+		mdsbox make pipeline superset-visuals
 
 evidence-build:
 	cd analyze && npm update
@@ -51,13 +45,6 @@ evidence-visuals:
 	make evidence-run
 
 docker-run-evidence:
-	docker run \
-		--publish 3000:3000 \
-	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
-		--env ENVIRONMENT=docker \
-		mdsbox make evidence-visuals
-
-docker-evidence-test:
 		docker run \
 		--publish 3000:3000 \
 	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
