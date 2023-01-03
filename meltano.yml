@@ -65,7 +65,7 @@ plugins:
   utilities:
     - name: superset
       variant: apache
-      pip_url: apache-superset>=2.0.0 markupsafe==2.0.1 Werkzeug==2.0.3 WTForms==2.3.0 duckdb-engine==0.6.4 cryptography==3.4.7
+      pip_url: apache-superset>=2.0.0 markupsafe==2.0.1 Werkzeug==2.0.3 WTForms==2.3.0 duckdb-engine==0.6.6 cryptography==3.4.7
       python_version: 3.9
       config:
         ENABLE_PROXY_FIX: true
