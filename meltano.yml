@@ -65,7 +65,7 @@ plugins:
   utilities:
     - name: superset
       variant: apache
-      pip_url: apache-superset>=1.5.0 markupsafe==2.0.1 Werkzeug==2.0.3 WTForms==2.3.0 duckdb-engine==0.6.4
+      pip_url: apache-superset>=2.0.0 markupsafe==2.0.1 Werkzeug==2.0.3 WTForms==2.3.0 duckdb-engine==0.6.4 cryptography==3.4.7
       config:
         ENABLE_PROXY_FIX: true
     - name: evidence
@@ -171,11 +171,6 @@ plugins:
           executable: dbt_extension
       config:
         path: $MELTANO_PROJECT_ROOT/data/data_catalog/mdsbox.db
-    - name: superset
-      variant: apache
-      pip_url: apache-superset>=1.5.0 markupsafe==2.0.1 Werkzeug==2.0.3 WTForms==2.3.0 duckdb-engine==0.6.4
-      config:
-        ENABLE_PROXY_FIX: true
   mappers:
    - name: meltano-map-transformer
      variant: meltano
