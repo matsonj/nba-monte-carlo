@@ -24,7 +24,12 @@ jobs:
           pipx install meltano==2.10.0
 
       - name: meltano install
-        run: make build
+        # explicitly not running all installs, since testing the visuals is out of scope
+        run: |
+          meltano --log-level=debug install extractors
+          meltano --log-level=debug install loaders
+          meltano --log-level=debug install mappers
+          meltano --log-level=debug install utility dbt-duckdb
 
       - name: build pipeline
         run: make pipeline
