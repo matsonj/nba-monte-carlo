@@ -21,7 +21,7 @@ jobs:
         run: |
           python3 -m pip install --user pipx
           python3 -m pipx ensurepath
-          pipx install meltano
+          pipx install meltano==2.10.0
 
       - name: meltano install
         run: |
