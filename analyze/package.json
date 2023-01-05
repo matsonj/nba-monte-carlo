@@ -12,6 +12,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/evidence": "^5.0.12"
+    "@evidence-dev/evidence": "^7.0.0"
   }
 }
