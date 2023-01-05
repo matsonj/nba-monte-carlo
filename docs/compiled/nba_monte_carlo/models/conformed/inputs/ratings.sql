@@ -1,12 +1,4 @@
-with __dbt__cte__prep_team_ratings as (
-SELECT *
-FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/team_ratings/*.parquet'
-),  __dbt__cte__prep_elo_post as (
 SELECT
-    *,
-    True AS latest_ratings
-FROM  '/workspaces/nba-monte-carlo/data/data_catalog/prep/elo_post.parquet'
-)SELECT
     orig.team,
     orig.team_long,
     orig.conf,
@@ -16,6 +8,6 @@ FROM  '/workspaces/nba-monte-carlo/data/data_catalog/prep/elo_post.parquet'
     END AS elo_rating,
     orig.elo_rating AS original_rating,
     orig.win_total
-FROM __dbt__cte__prep_team_ratings orig
-LEFT JOIN __dbt__cte__prep_elo_post latest ON latest.team = orig.team
+FROM "main"."main"."prep_team_ratings" orig
+LEFT JOIN "main"."main"."prep_elo_post" latest ON latest.team = orig.team
 GROUP BY ALL

@@ -1,37 +1,4 @@
-WITH  __dbt__cte__prep_schedule as (
-SELECT *
-FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/nba_schedule_2023/*.parquet'
-),  __dbt__cte__prep_team_ratings as (
-SELECT *
-FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/team_ratings/*.parquet'
-),  __dbt__cte__prep_elo_post as (
-SELECT
-    *,
-    True AS latest_ratings
-FROM  '/workspaces/nba-monte-carlo/data/data_catalog/prep/elo_post.parquet'
-),  __dbt__cte__ratings as (
-SELECT
-    orig.team,
-    orig.team_long,
-    orig.conf,
-    CASE
-        WHEN latest.latest_ratings = true AND latest.elo_rating IS NOT NULL THEN latest.elo_rating
-        ELSE orig.elo_rating
-    END AS elo_rating,
-    orig.elo_rating AS original_rating,
-    orig.win_total
-FROM __dbt__cte__prep_team_ratings orig
-LEFT JOIN __dbt__cte__prep_elo_post latest ON latest.team = orig.team
-GROUP BY ALL
-),  __dbt__cte__teams as (
-SELECT
-    S.visitorneutral AS team_long,
-    R.team
-FROM __dbt__cte__prep_schedule S
-LEFT JOIN __dbt__cte__ratings AS R ON R.team_long = S.visitorneutral
-WHERE R.team IS NOT NULL
-GROUP BY ALL
-),cte_playoffs_r1 AS (
+WITH cte_playoffs_r1 AS (
     SELECT
         winning_team,
         COUNT(*) AS made_playoffs
@@ -78,7 +45,7 @@ SELECT
     R3.made_conf_finals,
     R4.made_finals,
     F.won_finals
-FROM __dbt__cte__teams T
+FROM "main"."main"."teams" T
 LEFT JOIN cte_playoffs_r1 R1 ON R1.winning_team = T.team
 LEFT JOIN cte_playoffs_r2 R2 ON R2.winning_team = T.team
 LEFT JOIN cte_playoffs_r3 R3 ON R3.winning_team = T.team

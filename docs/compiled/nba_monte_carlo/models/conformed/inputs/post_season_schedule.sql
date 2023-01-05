@@ -1,7 +1,4 @@
-with __dbt__cte__prep_schedule as (
-SELECT *
-FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/nba_schedule_2023/*.parquet'
-)SELECT
+SELECT
     S.key::int AS game_id,
     S.type,
     S.series_id,
@@ -11,6 +8,6 @@ FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/nba_schedule_2023/*.parq
     NULL AS home_conf,
     S.homeneutral AS home_team,
     NULL AS home_team_elo_rating
-FROM __dbt__cte__prep_schedule AS S
+FROM "main"."main"."prep_schedule" AS S
 WHERE S.type <> 'reg_season'
 GROUP BY ALL
