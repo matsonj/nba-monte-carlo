@@ -1,9 +1,6 @@
 
 
-    with __dbt__cte__prep_schedule as (
-SELECT *
-FROM '/workspaces/nba-monte-carlo/data/data_catalog/psa/nba_schedule_2023/*.parquet'
-)SELECT COALESCE(COUNT(*),0) AS records
-    FROM __dbt__cte__prep_schedule
+    SELECT COALESCE(COUNT(*),0) AS records
+    FROM "main"."main"."prep_schedule"
     HAVING COUNT(*) = 0
 
