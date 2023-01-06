@@ -20,11 +20,9 @@ It runs practically anywhere, and has been tested in the environments below.
 ![image](https://user-images.githubusercontent.com/16811433/195012951-dde884a0-88f5-48d5-8203-b6f06ba7dbd4.png)
 
 ### [Evidence.dev](https://www.evidence.dev)
-A | B | C
+_ | _ | _
 -|-|-
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/16811433/210928882-9853abd4-5633-4b1a-b8e6-7d63faa8c3ca.png"> |
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/16811433/210928938-cbe97bb6-b352-4b69-8669-83289af8bd2b.png"> |
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/16811433/210929106-6e95db75-c068-48f5-a4b3-9ed57ac0023e.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/16811433/210928882-9853abd4-5633-4b1a-b8e6-7d63faa8c3ca.png"> | <img width="600" alt="image" src="https://user-images.githubusercontent.com/16811433/210928938-cbe97bb6-b352-4b69-8669-83289af8bd2b.png"> | <img width="600" alt="image" src="https://user-images.githubusercontent.com/16811433/210929106-6e95db75-c068-48f5-a4b3-9ed57ac0023e.png">
 
 
 
