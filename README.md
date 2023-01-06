@@ -28,7 +28,7 @@ It runs practically anywhere, and has been tested in the environments below.
 
 This version can also be explored live at [mdsinabox.com](http://www.mdsinabox.com). 
 ### [Rill Developer](https://www.rilldata.com/)
-```screenshots```
+<img width="1435" alt="image" src="https://user-images.githubusercontent.com/16811433/210934893-7ca7d0aa-9629-4fbb-8009-89658b92158b.png">
 
 Rill should be considered experimental - no dashboards have been defined yet!
 
