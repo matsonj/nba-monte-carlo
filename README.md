@@ -45,7 +45,7 @@ make build pipeline superset-visuals
 ```
 You will need to wait for the pipeline to run and Superset configuration to complete. The 4-core codespace performs signifcantly better in testing, and is recommended for a better experience.
 
-Once the build completes, you can access the Superset dashboard by clicking on the Open in Browswer button on the Ports tab:
+Once the build completes, you can access the Superset dashboard by clicking on the Open in Browser button on the Ports tab:
 ![image](https://user-images.githubusercontent.com/79663385/204596948-64cac757-cbaf-434d-ab65-327b8ed8f043.png)
 and log in with the username and password: "admin" and "password".
 
