@@ -48,7 +48,7 @@ SELECT
     count(*) / 10000.0 as occurances_pct1
 FROM reg_season_end
 GROUP BY ALL
-ORDER BY seed, count(*)
+ORDER BY seed, count(*) DESC
 ```
 
 ```wins_seed_scatter
