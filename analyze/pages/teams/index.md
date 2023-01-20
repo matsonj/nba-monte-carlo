@@ -10,27 +10,38 @@ from season_summary
 order by conf, avg_wins desc
 ```
 
+```standings
+SELECT
+    team,
+    wins || '-' || losses AS record
+FROM reg_season_actuals_enriched
+```
+
 ```east_conf
 select
-  '/teams/' || team as team_link,
-  team,
+  '/teams/' || R.team as team_link,
+  R.team,
+  S.record,
   elo_rating,
   avg_wins,
   make_playoffs_pct1,
   win_finals_pct1
-from ${reg_season}
+FROM ${reg_season} R
+LEFT JOIN ${standings} S ON S.team = R.team
 WHERE conf = 'East'
 ```
 
 ```west_conf
 select
-  '/teams/' || team as team_link,
-  team,
+  '/teams/' || R.team as team_link,
+  R.team,
+  S.record,
   elo_rating,
   avg_wins,
   make_playoffs_pct1,
   win_finals_pct1
-from ${reg_season}
+FROM ${reg_season} R
+LEFT JOIN ${standings} S ON S.team = R.team
 WHERE conf = 'West'
 ```
 

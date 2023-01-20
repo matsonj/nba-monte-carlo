@@ -115,32 +115,19 @@ FROM ${wins_seed_scatter}
 GROUP BY ALL
 ```
 
-```quality_wins
+```most_recent_games
 SELECT
+    date,
+    visiting_team,
+    '@' as " ",
+    home_team,
+    score2 || ' - ' || score1 as score,
     winning_team,
-    date,
-    CASE WHEN team1 = winning_team THEN team2 ELSE '@' || team1 END as matchup,
-    score1 || ' - ' || score2 as score,
     ABS(elo_change) AS elo_change_num1
 FROM prep_results_log RL
 LEFT JOIN prep_nba_elo_latest AR ON
     AR._smart_source_lineno - 1 = RL.game_id
-QUALIFY ROW_NUMBER() OVER ( PARTITION BY winning_team ORDER BY ABS(elo_change) DESC ) <=3
-ORDER BY ABS(elo_change) desc
-```
-
-```bad_losses
-SELECT
-    CASE WHEN winning_team = home_team THEN visiting_team ELSE home_team END AS losing_team,
-    date,
-    CASE WHEN team1 <> winning_team THEN team2 ELSE '@' || team1 END as matchup,
-    score1 || ' - ' || score2 as score,
-    ABS(elo_change) AS elo_change_num1
-FROM prep_results_log RL
-LEFT JOIN prep_nba_elo_latest AR ON
-    AR._smart_source_lineno - 1 = RL.game_id
-QUALIFY ROW_NUMBER() OVER ( PARTITION BY CASE WHEN winning_team = home_team THEN visiting_team ELSE home_team END ORDER BY ABS(elo_change) DESC ) <=3
-ORDER BY ABS(elo_change) desc
+ORDER BY date desc
 ```
 
 ```game_trend
@@ -195,24 +182,19 @@ LEFT JOIN prep_nba_elo_latest AR ON
     title='elo change over time'
 />
 
+### Most Recent Games
+
+<DataTable
+    data={most_recent_games.filter(d => d.home_team === $page.params.nba_teams | d.visiting_team === $page.params.nba_teams)} 
+    rows=5
+/>
+
+
 ### Matchup Summary
 
 <DataTable
     data={records_table.filter(d => d.team === $page.params.nba_teams)} 
     rows=7
-/>
-
-### Quality Wins
-<sub>Win quality (good & bad) is ranked on the difference in ELO rating between the teams at the time the game was played. It does not account for lineup changes or resting players.</sub>
-<DataTable
-    data={quality_wins.filter(d => d.winning_team === $page.params.nba_teams)}
-/>
-
-### Bad Losses
-
-
-<DataTable
-    data={bad_losses.filter(d => d.losing_team === $page.params.nba_teams)}
 />
 
 ### Playoff Odds
