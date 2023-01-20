@@ -19,6 +19,7 @@ FROM reg_season_actuals_enriched
 
 ```east_conf
 select
+  ROW_NUMBER() OVER (ORDER BY avg_wins DESC) AS seed,
   '/teams/' || R.team as team_link,
   R.team,
   S.record,
@@ -29,10 +30,12 @@ select
 FROM ${reg_season} R
 LEFT JOIN ${standings} S ON S.team = R.team
 WHERE conf = 'East'
+ORDER BY avg_wins DESC
 ```
 
 ```west_conf
 select
+  ROW_NUMBER() OVER (ORDER BY avg_wins DESC) AS seed,
   '/teams/' || R.team as team_link,
   R.team,
   S.record,
@@ -43,6 +46,7 @@ select
 FROM ${reg_season} R
 LEFT JOIN ${standings} S ON S.team = R.team
 WHERE conf = 'West'
+ORDER BY avg_wins DESC
 ```
 
 ## Team Browser
