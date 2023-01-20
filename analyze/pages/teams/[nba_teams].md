@@ -174,18 +174,18 @@ LEFT JOIN prep_nba_elo_latest AR ON
 
 <BigValue 
     data={season_summary.filter(d => d.team === $page.params.nba_teams)} 
+    value='predicted_wins' 
+    comparison='vs_vegas_num1' 
+/> 
+
+<BigValue 
+    data={season_summary.filter(d => d.team === $page.params.nba_teams)} 
     value='seed_range' 
 /> 
 
 <BigValue 
     data={season_summary.filter(d => d.team === $page.params.nba_teams)} 
     value='win_range' 
-/> 
-
-<BigValue 
-    data={season_summary.filter(d => d.team === $page.params.nba_teams)} 
-    value='predicted_wins' 
-    comparison='vs_vegas_num1' 
 /> 
 
 <LineChart

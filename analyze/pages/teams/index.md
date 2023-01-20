@@ -12,7 +12,7 @@ order by conf, avg_wins desc
 
 ```east_conf
 select
-  '[' || team || '](/teams/' || team || ')' as team_link,
+  '/teams/' || team as team_link,
   team,
   elo_rating,
   avg_wins,
@@ -24,7 +24,7 @@ WHERE conf = 'East'
 
 ```west_conf
 select
-  '[' || team || '](/teams/' || team || ')' as team_link,
+  '/teams/' || team as team_link,
   team,
   elo_rating,
   avg_wins,
@@ -34,17 +34,11 @@ from ${reg_season}
 WHERE conf = 'West'
 ```
 
-## team browser
+## Team Browser
 ### Eastern Conference
-{#each east_conf as record}
 
-[{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
-
-{/each}
+<DataTable data={east_conf} link=team_link showLinkCol=false rows=15/>
 
 ### Western Conference
-{#each west_conf as record}
 
-[{record.team}](/teams/{record.team}): <Value data={record} column=avg_wins/> avg. wins, <Value data={record} column=elo_rating/> elo, _<Value data={record} column=win_finals_pct1/> chance to win finals_  
-
-{/each}
+<DataTable data={west_conf} link=team_link showLinkCol=false rows=15/>
