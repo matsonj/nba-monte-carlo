@@ -56,7 +56,7 @@ ORDER BY seed, cumulative_pct1
     x=seed 
     y=cumulative_pct1
     series=team
-    title='Eastern Conference'
+    title='Western Conference'
     xAxisTitle=seed
     xTickMarks=true
     yMax=1
@@ -68,6 +68,18 @@ ORDER BY seed, cumulative_pct1
     y=cumulative_pct1
     series=team
     title='Eastern Conference'
+    xAxisTitle=seed
+    xTickMarks=true
+    yMax=1
+    yMin=0
+/>
+
+<ScatterPlot 
+    data={seed_details_cdf.filter(d => d.conf === "West")}  
+    x=seed 
+    y=cumulative_pct1
+    series=team
+    title='Western Conference'
     xAxisTitle=seed
     xTickMarks=true
     yMax=1
