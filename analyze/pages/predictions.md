@@ -30,7 +30,7 @@ SELECT
 FROM ${past_games} PG
     LEFT JOIN cte_team T ON T.team = PG.visiting_team OR T.Team = PG.home_team
 GROUP BY ALL
-ORDER BY accuracy_pct DESC
+ORDER BY accuracy_pct1 DESC
 ```
 
 ```future_games
