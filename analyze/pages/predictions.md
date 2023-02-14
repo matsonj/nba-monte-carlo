@@ -15,7 +15,7 @@ ORDER BY game_id
 SELECT
     COUNT(*) as total_games_played, 
     SUM(accurate_guess) AS correct_predictions,
-    correct_predictions/total_games_played::real AS accuracy_pct
+    correct_predictions/total_games_played::real AS accuracy_pct1
 FROM ${past_games}
 ```
 
@@ -26,7 +26,7 @@ SELECT
     T.Team,
     COUNT(*) as total_games_played, 
     SUM(PG.accurate_guess) AS correct_predictions,
-    correct_predictions/total_games_played::real AS accuracy_pct
+    correct_predictions/total_games_played::real AS accuracy_pct1
 FROM ${past_games} PG
     LEFT JOIN cte_team T ON T.team = PG.visiting_team OR T.Team = PG.home_team
 GROUP BY ALL
@@ -40,7 +40,7 @@ SELECT
     visiting_team_elo_rating AS visitor_ELO,
     home_team as home, 
     home_team_elo_rating AS home_ELO,
-    home_team_win_probability/10000 AS home_team_win_pct2
+    home_team_win_probability/10000 AS home_team_win_pct1
 FROM reg_season_predictions
 WHERE include_actuals = false AND winning_team = home_team
 ORDER BY game_id
@@ -59,7 +59,7 @@ ORDER BY game_id
 
 <BigValue 
     data={past_games_summary} 
-    value='accuracy_pct' 
+    value='accuracy_pct1' 
 /> 
 
 <DataTable
