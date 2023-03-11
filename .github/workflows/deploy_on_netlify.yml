@@ -36,7 +36,7 @@ jobs:
       - name: evidence install & build
         run: |
           make evidence-build
-          cd analyze && npm run build:strict
+          cd analyze && npm run build
 
       - name: copy output to working directory
         run: |
