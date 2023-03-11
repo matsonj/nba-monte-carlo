@@ -14,8 +14,8 @@
         ROUND(PERCENTILE_CONT(0.05) WITHIN GROUP (ORDER BY season_rank ASC), 1) AS seed_5th,
         ROUND(AVG(season_rank), 1) AS avg_seed,
         ROUND(PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY season_rank ASC), 1) AS seed_95th
-    FROM "main"."main"."reg_season_end" E
-    LEFT JOIN "main"."main"."vegas_wins" V ON V.team = E.winning_team
+    FROM "mdsbox"."main"."reg_season_end" E
+    LEFT JOIN "mdsbox"."main"."vegas_wins" V ON V.team = E.winning_team
     GROUP BY ALL
     )
 
@@ -32,4 +32,4 @@ SELECT
     c.made_play_in,
     0 AS sim_start_game_id
 FROM cte_summary C
-LEFT JOIN "main"."main"."reg_season_actuals" A ON A.team = C.team
+LEFT JOIN "mdsbox"."main"."reg_season_actuals" A ON A.team = C.team

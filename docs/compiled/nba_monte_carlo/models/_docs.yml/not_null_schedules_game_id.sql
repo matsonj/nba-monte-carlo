@@ -5,7 +5,7 @@
 
 
 select game_id
-from "main"."main"."schedules"
+from "mdsbox"."main"."schedules"
 where game_id is null
 
 

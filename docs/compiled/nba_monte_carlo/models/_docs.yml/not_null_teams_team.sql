@@ -5,7 +5,7 @@
 
 
 select team
-from "main"."main"."teams"
+from "mdsbox"."main"."teams"
 where team is null
 
 

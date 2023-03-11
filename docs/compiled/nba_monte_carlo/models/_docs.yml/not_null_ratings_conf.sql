@@ -5,7 +5,7 @@
 
 
 select conf
-from "main"."main"."ratings"
+from "mdsbox"."main"."ratings"
 where conf is null
 
 

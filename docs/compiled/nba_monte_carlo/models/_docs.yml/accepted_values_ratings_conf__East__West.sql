@@ -8,7 +8,7 @@ with all_values as (
         conf as value_field,
         count(*) as n_records
 
-    from "main"."main"."ratings"
+    from "mdsbox"."main"."ratings"
     group by conf
 
 )

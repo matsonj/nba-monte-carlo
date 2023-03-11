@@ -8,6 +8,6 @@ SELECT
     NULL AS home_conf,
     S.homeneutral AS home_team,
     NULL AS home_team_elo_rating
-FROM "main"."main"."prep_schedule" AS S
+FROM "mdsbox"."main"."prep_schedule" AS S
 WHERE S.type <> 'reg_season'
 GROUP BY ALL

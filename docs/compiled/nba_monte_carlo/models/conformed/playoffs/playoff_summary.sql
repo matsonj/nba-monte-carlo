@@ -2,7 +2,7 @@ WITH cte_playoffs_r1 AS (
     SELECT
         winning_team,
         COUNT(*) AS made_playoffs
-    FROM "main"."main"."initialize_seeding"
+    FROM "mdsbox"."main"."initialize_seeding"
     GROUP BY ALL
 ),
 
@@ -10,7 +10,7 @@ cte_playoffs_r2 AS (
     SELECT
         winning_team,
         COUNT(*) AS made_conf_semis
-    FROM "main"."main"."playoff_sim_r1"
+    FROM "mdsbox"."main"."playoff_sim_r1"
     GROUP BY ALL
 ),
 
@@ -18,7 +18,7 @@ cte_playoffs_r3 AS (
     SELECT 
         winning_team,
         COUNT(*) AS made_conf_finals
-    FROM "main"."main"."playoff_sim_r2"
+    FROM "mdsbox"."main"."playoff_sim_r2"
     GROUP BY ALL
 ),
 
@@ -26,7 +26,7 @@ cte_playoffs_r4 AS (
     SELECT 
         winning_team,
         COUNT(*) AS made_finals
-    FROM "main"."main"."playoff_sim_r3"
+    FROM "mdsbox"."main"."playoff_sim_r3"
     GROUP BY ALL
 ),
 
@@ -34,7 +34,7 @@ cte_playoffs_finals AS (
     SELECT 
         winning_team,
         COUNT(*) AS won_finals
-    FROM "main"."main"."playoff_sim_r4"
+    FROM "mdsbox"."main"."playoff_sim_r4"
     GROUP BY ALL
 )
 
@@ -45,7 +45,7 @@ SELECT
     R3.made_conf_finals,
     R4.made_finals,
     F.won_finals
-FROM "main"."main"."teams" T
+FROM "mdsbox"."main"."teams" T
 LEFT JOIN cte_playoffs_r1 R1 ON R1.winning_team = T.team
 LEFT JOIN cte_playoffs_r2 R2 ON R2.winning_team = T.team
 LEFT JOIN cte_playoffs_r3 R3 ON R3.winning_team = T.team

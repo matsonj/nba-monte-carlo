@@ -5,7 +5,7 @@
 
 
 select home_team
-from "main"."main"."latest_results"
+from "mdsbox"."main"."latest_results"
 where home_team is null
 
 

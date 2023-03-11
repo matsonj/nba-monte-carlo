@@ -1,5 +1,5 @@
 SELECT
     team,
     win_total
-FROM "main"."main"."ratings"
+FROM "mdsbox"."main"."ratings"
 GROUP BY ALL
