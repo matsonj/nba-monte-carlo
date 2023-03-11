@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "build": "evidence build",
-    "dev": "evidence dev -o",
+    "dev": "evidence dev --open",
     "test": "evidence build"
   },
   "engines": {
@@ -12,6 +12,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/evidence": "^10.0.0"
+    "@evidence-dev/evidence": "^14.0.0"
   }
 }
