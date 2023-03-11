@@ -5,7 +5,7 @@
 
 
 select team_long
-from "main"."main"."ratings"
+from "mdsbox"."main"."ratings"
 where team_long is null
 
 

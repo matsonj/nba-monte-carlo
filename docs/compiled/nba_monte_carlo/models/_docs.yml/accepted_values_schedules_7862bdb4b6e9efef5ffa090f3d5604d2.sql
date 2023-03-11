@@ -8,7 +8,7 @@ with all_values as (
         type as value_field,
         count(*) as n_records
 
-    from "main"."main"."schedules"
+    from "mdsbox"."main"."schedules"
     group by type
 
 )

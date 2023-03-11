@@ -4,7 +4,7 @@ SELECT
     P1.winning_team,
     P1.conf || '-7' AS seed,
     P1.winning_team_elo_rating
-FROM "main"."main"."playin_sim_r1_end" P1
+FROM "mdsbox"."main"."playin_sim_r1_end" P1
 WHERE P1.result = 'winner advance'
 UNION ALL
 SELECT
@@ -16,4 +16,4 @@ SELECT
         WHEN P2.winning_team = P2.home_team THEN P2.home_team_elo_rating
         ELSE P2.visiting_team_elo_rating
     END AS elo_rating
-FROM "main"."main"."playin_sim_r2" P2
+FROM "mdsbox"."main"."playin_sim_r2" P2

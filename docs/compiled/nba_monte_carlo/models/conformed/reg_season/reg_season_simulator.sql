@@ -9,7 +9,7 @@ SELECT
         ELSE S.visiting_team
     END AS winning_team,
     COALESCE(LR.include_actuals, false) AS include_actuals
-FROM "main"."main"."schedules" S
-LEFT JOIN "main"."main"."random_num_gen" R ON R.game_id = S.game_id
-LEFT JOIN "main"."main"."latest_results" LR ON LR.game_id = S.game_id
+FROM "mdsbox"."main"."schedules" S
+LEFT JOIN "mdsbox"."main"."random_num_gen" R ON R.game_id = S.game_id
+LEFT JOIN "mdsbox"."main"."latest_results" LR ON LR.game_id = S.game_id
 WHERE S.type = 'reg_season'

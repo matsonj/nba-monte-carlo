@@ -8,6 +8,6 @@ SELECT
     P.made_conf_finals,
     P.made_finals,
     P.won_finals
-FROM "main"."main"."reg_season_summary" R
-LEFT JOIN "main"."main"."playoff_summary" P ON P.team = R.team
-LEFT JOIN "main"."main"."ratings" ratings ON ratings.team = R.team
+FROM "mdsbox"."main"."reg_season_summary" R
+LEFT JOIN "mdsbox"."main"."playoff_summary" P ON P.team = R.team
+LEFT JOIN "mdsbox"."main"."ratings" ratings ON ratings.team = R.team

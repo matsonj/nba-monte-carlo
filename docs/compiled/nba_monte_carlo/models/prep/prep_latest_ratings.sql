@@ -3,7 +3,7 @@ WITH cte_team1 AS (
         date,
         team1,
         elo1_post
-    FROM "main"."main"."prep_nba_elo_latest"
+    FROM "mdsbox"."main"."prep_nba_elo_latest"
     WHERE elo1_post IS NOT NULL
 ),
 
@@ -12,7 +12,7 @@ cte_team2 AS (
         date,
         team2,
         elo2_post
-    FROM "main"."main"."prep_nba_elo_latest"
+    FROM "mdsbox"."main"."prep_nba_elo_latest"
     WHERE elo1_post IS NOT NULL
 ),
 

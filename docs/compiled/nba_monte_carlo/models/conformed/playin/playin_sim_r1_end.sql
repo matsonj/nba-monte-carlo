@@ -20,7 +20,7 @@ WITH cte_playin_details AS (
             WHEN S.game_id IN (1231, 1234) THEN 'winner advance'
             WHEN S.game_id IN (1232, 1235) THEN 'loser eliminated'
         END AS result
-    FROM "main"."main"."playin_sim_r1" S
+    FROM "mdsbox"."main"."playin_sim_r1" S
 )
 
 SELECT

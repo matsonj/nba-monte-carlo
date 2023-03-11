@@ -8,6 +8,6 @@ SELECT
     END AS elo_rating,
     orig.elo_rating AS original_rating,
     orig.win_total
-FROM "main"."main"."prep_team_ratings" orig
-LEFT JOIN "main"."main"."prep_elo_post" latest ON latest.team = orig.team
+FROM "mdsbox"."main"."prep_team_ratings" orig
+LEFT JOIN "mdsbox"."main"."prep_elo_post" latest ON latest.team = orig.team
 GROUP BY ALL
