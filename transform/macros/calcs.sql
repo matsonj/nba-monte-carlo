@@ -82,8 +82,8 @@ WHERE E.series_result = 4
 {%- macro american_odds(value) -%}
 
     CASE WHEN {{ value }} >= 0.5 
-        THEN '-' || ROUND( {{ value }} / ( 1.0 - {{ value }} ) * 100 )
-        ELSE '+' || ROUND((( 1.0 - {{ value }} ) / {{ value }} ) * 100 )
+        THEN '-' || ROUND( {{ value }} / ( 1.0 - {{ value }} ) * 100 )::int
+        ELSE '+' || ((( 1.0 - {{ value }} ) / ({{ value }}::real ) * 100)::int)
     END 
 
 {%- endmacro -%}
