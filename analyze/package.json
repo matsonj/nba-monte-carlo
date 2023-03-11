@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "build": "evidence build",
-    "dev": "evidence dev --open",
+    "build:strict": "evidence build:strict",
+    "dev": "evidence dev --open /",
     "test": "evidence build"
   },
   "engines": {
