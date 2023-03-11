@@ -7,7 +7,8 @@ SELECT
     home_team_win_probability,
     winning_team,
     include_actuals,
-    COUNT(*) AS occurances
+    COUNT(*) AS occurances,
+    {{ american_odds( 'home_team_win_probability/10000' ) }} AS american_odds
 FROM {{ ref( 'reg_season_simulator' ) }} S
     GROUP BY ALL
 
