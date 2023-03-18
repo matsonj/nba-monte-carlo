@@ -1,4 +1,4 @@
-# Detailed Analysis for <Value data={season_summary.filter(d => d.team === $page.params.nba_teams)} column=team_long/>
+# Detailed Analysis for <Value data={season_summary.filter(d => d.team === $page.params.nba_teams.replace(/\/+$/,""))} column=team_long/>
 
 ```season_summary
 select R.*,
