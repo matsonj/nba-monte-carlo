@@ -1,4 +1,12 @@
-{
+{  
+  "name": "my-evidence-project",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "evidence build",
+    "build:strict": "evidence build:strict",
+    "dev": "evidence dev --open /",
+    "test": "evidence build"
+  },
   "dependencies": {
     "@evidence-dev/components": "^2.2.0",
     "@evidence-dev/evidence": "^15.0.0",
