@@ -8,12 +8,19 @@
         extensions: ['.svelte', ".md"],
         preprocess: evidencePreprocess(),
         kit: {
-            adapter: adapter({
-                strict: false
-            }),
+            adapter: adapter(),
             files: {
                 routes: 'src/pages',
                 lib: 'src/components'
+            },
+            vite: {
+                optimizeDeps: {
+                    include: ['echarts-stat', 'export-to-csv', 'ssf', 'downloadjs'],
+                    exclude: ['@evidence-dev/components']
+                },
+                ssr: {
+                    external: ['@evidence-dev/db-orchestrator', 'git-remote-origin-url', '@evidence-dev/telemetry']
+                }
             }
         }
     };
