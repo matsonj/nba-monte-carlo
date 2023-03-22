@@ -40,6 +40,11 @@ FROM cte_interim_calc
 ORDER BY seed, cumulative_pct1
 ```
 
+```seed_details_cdf_scatter
+SELECT * FROM ${seed_details_cdf}
+WHERE cumulative_pct1 > 0.005 AND cumulative_pct1 < 0.995
+```
+
 <LineChart 
     data={seed_details_cdf.filter(d => d.conf === "East")}  
     x=seed 
@@ -63,7 +68,7 @@ ORDER BY seed, cumulative_pct1
 />
 
 <ScatterPlot 
-    data={seed_details_cdf.filter(d => d.conf === "East")}  
+    data={seed_details_cdf_scatter.filter(d => d.conf === "East")}  
     x=seed 
     y=cumulative_pct1
     series=team
@@ -75,7 +80,7 @@ ORDER BY seed, cumulative_pct1
 />
 
 <ScatterPlot 
-    data={seed_details_cdf.filter(d => d.conf === "West")}  
+    data={seed_details_cdf_scatter.filter(d => d.conf === "West")}  
     x=seed 
     y=cumulative_pct1
     series=team
