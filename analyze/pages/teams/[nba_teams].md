@@ -1,4 +1,4 @@
-# Detailed Analysis for <Value data={season_summary.filter(d => d.team === $page.params.nba_teams.replace(/\/+$/,""))} column=team_long/>
+# Detailed Analysis for <Value data={season_summary.filter(d => d.team === $page.params.nba_teams.toUpperCase().replace(/\/+$/,""))} column=team_long/>
 
 ```season_summary
 select R.*,
@@ -154,29 +154,29 @@ LEFT JOIN prep_nba_elo_latest AR ON
 ## Season-to-date Results
 
 <BigValue 
-    data={elo_latest.filter(d => d.team === $page.params.nba_teams)} 
+    data={elo_latest.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     value='elo_rating' 
     comparison='since_start' 
 /> 
 
 <BigValue 
-    data={season_summary.filter(d => d.team === $page.params.nba_teams)} 
+    data={season_summary.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     value='predicted_wins' 
     comparison='vs_vegas_num1' 
 /> 
 
 <BigValue 
-    data={season_summary.filter(d => d.team === $page.params.nba_teams)} 
+    data={season_summary.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     value='seed_range' 
 /> 
 
 <BigValue 
-    data={season_summary.filter(d => d.team === $page.params.nba_teams)} 
+    data={season_summary.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     value='win_range' 
 /> 
 
 <LineChart
-    data={game_trend.filter(d => d.team === $page.params.nba_teams)} 
+    data={game_trend.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     x=date
     y=cumulative_elo_change_num0
     title='elo change over time'
@@ -185,7 +185,7 @@ LEFT JOIN prep_nba_elo_latest AR ON
 ### Most Recent Games
 
 <DataTable
-    data={most_recent_games.filter(d => d.home_team === $page.params.nba_teams | d.visiting_team === $page.params.nba_teams)} 
+    data={most_recent_games.filter(d => d.home_team === $page.params.nba_teams.toUpperCase() | d.visiting_team === $page.params.nba_teams.toUpperCase())} 
     rows=5
 />
 
@@ -193,29 +193,29 @@ LEFT JOIN prep_nba_elo_latest AR ON
 ### Matchup Summary
 
 <DataTable
-    data={records_table.filter(d => d.team === $page.params.nba_teams)} 
+    data={records_table.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     rows=7
 />
 
 ### Playoff Odds
 
 <BigValue 
-    data={playoff_odds.filter(d => d.team === $page.params.nba_teams)} 
+    data={playoff_odds.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     value='top_six_pct1' 
 /> 
 
 <BigValue 
-    data={playoff_odds.filter(d => d.team === $page.params.nba_teams)} 
+    data={playoff_odds.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     value='play_in_pct1' 
 /> 
 
 <BigValue 
-    data={playoff_odds.filter(d => d.team === $page.params.nba_teams)} 
+    data={playoff_odds.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     value='missed_playoffs_pct1' 
 /> 
 
 <AreaChart 
-    data={wins_seed_scatter.filter(d => d.team === $page.params.nba_teams)}
+    data={wins_seed_scatter.filter(d => d.team === $page.params.nba_teams.toUpperCase())}
     x=wins
     y=odds_pct1
     series=season_result
@@ -224,7 +224,7 @@ LEFT JOIN prep_nba_elo_latest AR ON
 />
 
 <BarChart 
-    data={seed_details.filter(d => d.team === $page.params.nba_teams)} 
+    data={seed_details.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     x=seed
     y=occurances_pct1
     xAxisTitle=seed
