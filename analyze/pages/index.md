@@ -70,51 +70,68 @@ ORDER BY sort_key
 SELECT max(date) as end_date FROM latest_results
 ```
 ## Conference Summaries
-_<sub>This data was last updated as of <Value data={thru_date} column=end_date/>.</sub>_
+
+<Alert status="info">
+This data was last updated as of <Value data={thru_date} column=end_date/>.
+</Alert>
 
 ### End of Season Seeding
-<AreaChart
-    data={seed_details.filter(d => d.conf === "East")} 
-    x=seed
-    y=occurances_pct1
-    series=team
-    xAxisTitle=seed
-    title='Eastern Conference'
-    yMax=1
-/>
 
-<AreaChart
-    data={seed_details.filter(d => d.conf === "West")} 
-    x=seed
-    y=occurances_pct1
-    series=team
-    xAxisTitle=seed
-    title='Western Conference'
-    yMax=1
-/>
+<Tabs>
+    <Tab label="East">
+        <AreaChart
+            data={seed_details.filter(d => d.conf === "East")} 
+            x=seed
+            y=occurances_pct1
+            series=team
+            xAxisTitle=seed
+            title='Eastern Conference'
+            yMax=1
+        />
+    </Tab>
+
+    <Tab label="West">
+        <AreaChart
+            data={seed_details.filter(d => d.conf === "West")} 
+            x=seed
+            y=occurances_pct1
+            series=team
+            xAxisTitle=seed
+            title='Western Conference'
+            yMax=1
+        />
+    </Tab>
+</Tabs>
 
 ### End of Season Playoff Odds
-<BarChart
-    data={wins_seed_scatter.filter(d => d.conf === "East")} 
-    x=team
-    y=odds_pct1
-    series=season_result
-    xAxisTitle=seed
-    title='Eastern Conference'
-    swapXY=true
-    sort=sort_key
-/>
 
-<BarChart
-    data={wins_seed_scatter.filter(d => d.conf === "West")} 
-    x=team
-    y=odds_pct1
-    series=season_result
-    xAxisTitle=seed
-    title='Western Conference'
-    swapXY=true
-    sort=sort_key
-/>
+<Tabs>
+    <Tab label="East">
+        <BarChart
+            data={wins_seed_scatter.filter(d => d.conf === "East")} 
+            x=team
+            y=odds_pct1
+            series=season_result
+            xAxisTitle=seed
+            title='Eastern Conference'
+            swapXY=true
+            sort=sort_key
+        />
+    </Tab>
+
+    <Tab label="West">
+        <BarChart
+            data={wins_seed_scatter.filter(d => d.conf === "West")} 
+            x=team
+            y=odds_pct1
+            series=season_result
+            xAxisTitle=seed
+            title='Western Conference'
+            swapXY=true
+            sort=sort_key
+        />
+    </Tab>
+</Tabs>
 
 <center>
 
