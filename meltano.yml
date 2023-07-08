@@ -71,7 +71,7 @@ plugins:
     - name: dbt-duckdb
       namespace: dbt_ext
       label: dbt duckdb extension
-      pip_url: dbt-core~=1.4.0 dbt-duckdb~=1.4.0 git+https://github.com/meltano/dbt-ext.git duckdb==0.7.1
+      pip_url: dbt-core~=1.5.0 dbt-duckdb~=1.5.0 git+https://github.com/meltano/dbt-ext.git duckdb==0.7.1
       executable: dbt_invoker
       settings:
         - name: project_dir
