@@ -15,5 +15,7 @@ SELECT
     END AS losing_team,
     True AS include_actuals
 FROM "mdsbox"."main"."prep_nba_elo_latest"
-WHERE score1 IS NOT NULL
+WHERE score1 IS NOT NULL 
+-- remove actual results so that we can sim 2023-24 season
+    AND 1 = 0
 GROUP BY ALL
