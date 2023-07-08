@@ -15,7 +15,9 @@
             ELSE 0
         END AS game_result
     FROM '{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/nba_elo_latest/*.parquet' S
-    WHERE score1 IS NOT NULL
+    WHERE score1 IS NOT NULL 
+        --TEMPORARILY FILTER THIS OUT
+        AND 1=0
     GROUP BY ALL
     ORDER BY S._smart_source_lineno
 {% endset %}
