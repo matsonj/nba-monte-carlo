@@ -67,7 +67,7 @@ ORDER BY sort_key
 ```
 
 ```thru_date
-SELECT max(date) as end_date FROM latest_results
+SELECT COALESCE(max(date),CURRENT_DATE) as end_date FROM latest_results
 ```
 ## Conference Summaries
 
