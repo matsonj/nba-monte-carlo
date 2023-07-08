@@ -1,31 +1,31 @@
 ﻿team,team_long,conf,ELO rating,Win Total
-BOS,Boston Celtics,East,1686,53.5
-MIL,Milwaukee Bucks,East,1677,52.5
-MIA,Miami Heat,East,1642,48.5
-BRK,Brooklyn Nets,East,1661,50.5
-PHO,Phoenix Suns,West,1679,52.5
-LAC,Los Angeles Clippers,West,1674,52.5
-PHI,Philadelphia 76ers,East,1660,50.5
-DEN,Denver Nuggets,West,1649,49.5
-GSW,Golden State Warriors,West,1667,51.5
-DAL,Dallas Mavericks,West,1641,48.5
-MEM,Memphis Grizzlies,West,1638,48.5
-UTA,Utah Jazz,West,1431,24.5
-ATL,Atlanta Hawks,East,1618,45.5
-NOP,New Orleans Pelicans,West,1607,44.5
-TOR,Toronto Raptors,East,1629,45.5
-MIN,Minnesota Timberwolves,West,1638,48.5
-LAL,Los Angeles Lakers,West,1617,45.5
-POR,Portland Trail Blazers,West,1565,39.5
-CHI,Chicago Bulls,East,1593,42.5
-CHO,Charlotte Hornets,East,1543,36.5
-NYK,New York Knicks,East,1569,39.5
-IND,Indiana Pacers,East,1425,23.5
-CLE,Cleveland Cavaliers,East,1633,47.5
-SAC,Sacramento Kings,West,1514,33.5
-SAS,San Antonio Spurs,West,1413,22.5
-WAS,Washington Wizards,East,1534,35.5
-ORL,Orlando Magic,East,1453,26.5
-DET,Detroit Pistons,East,1482,29.5
-OKC,Oklahoma City Thunder,West,1423,23.5
-HOU,Houston Rockets,West,1423,23.5
+BOS,Boston Celtics,East,1650,47.5
+MIL,Milwaukee Bucks,East,1634,45.5
+MIA,Miami Heat,East,1631,45.0
+BRK,Brooklyn Nets,East,1586,40.0
+PHO,Phoenix Suns,West,1648,46.5
+LAC,Los Angeles Clippers,West,1606,42.0
+PHI,Philadelphia 76ers,East,1612,43.0
+DEN,Denver Nuggets,West,1652,46.5
+GSW,Golden State Warriors,West,1610,42.5
+DAL,Dallas Mavericks,West,1602,41.5
+MEM,Memphis Grizzlies,West,1597,40.5
+UTA,Utah Jazz,West,1581,38.5
+ATL,Atlanta Hawks,East,1587,40.0
+NOP,New Orleans Pelicans,West,1590,40.0
+TOR,Toronto Raptors,East,1584,39.0
+MIN,Minnesota Timberwolves,West,1586,49.5
+LAL,Los Angeles Lakers,West,1617,43.0
+POR,Portland Trail Blazers,West,1581,39.0
+CHI,Chicago Bulls,East,1582,39.0
+CHO,Charlotte Hornets,East,1580,39.0
+NYK,New York Knicks,East,1589,40.0
+IND,Indiana Pacers,East,1581,39.0
+CLE,Cleveland Cavaliers,East,1596,40.5
+SAC,Sacramento Kings,West,1588,40.0
+SAS,San Antonio Spurs,West,1582,39.0
+WAS,Washington Wizards,East,1580,38.5
+ORL,Orlando Magic,East,1581,39.0
+DET,Detroit Pistons,East,1580,39.0
+OKC,Oklahoma City Thunder,West,1584,39.0
+HOU,Houston Rockets,West,1580,39.0
