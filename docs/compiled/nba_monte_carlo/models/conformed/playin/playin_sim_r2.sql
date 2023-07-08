@@ -8,10 +8,12 @@ SELECT
     EV.winning_team_elo_rating AS visiting_team_elo_rating,
     EH.remaining_team AS home_team,
     EH.losing_team_elo_rating AS home_team_elo_rating,
-    ( 1 - (1 / (10 ^ (-( EV.winning_team_elo_rating - EH.losing_team_elo_rating - 70)::real/400)+1))) * 10000 as home_team_win_probability,
+    -- removing the 70 point adjustment for home team advantage for now
+   ( 1 - (1 / (10 ^ (-( EV.winning_team_elo_rating - EH.losing_team_elo_rating - 0)::real/400)+1))) * 10000 as home_team_win_probability,
     R.rand_result,
     CASE 
-        WHEN ( 1 - (1 / (10 ^ (-( EV.winning_team_elo_rating - EH.losing_team_elo_rating - 70)::real/400)+1))) * 10000 >= R.rand_result THEN EH.remaining_team
+        WHEN -- removing the 70 point adjustment for home team advantage for now
+   ( 1 - (1 / (10 ^ (-( EV.winning_team_elo_rating - EH.losing_team_elo_rating - 0)::real/400)+1))) * 10000 >= R.rand_result THEN EH.remaining_team
         ELSE EV.remaining_team
     END AS winning_team 
 FROM "mdsbox"."main"."schedules" S
