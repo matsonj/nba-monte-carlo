@@ -1,11 +1,13 @@
 {%- macro elo_calc(home_team, visiting_team) -%}
-   ( 1 - (1 / (10 ^ (-( {{visiting_team}} - {{home_team}} - 0)::real/400)+1))) * 10000
    -- removing the 70 point adjustment for home team advantage for now
+   ( 1 - (1 / (10 ^ (-( {{visiting_team}} - {{home_team}} - 0)::real/400)+1))) * 10000
+
 {%- endmacro -%}
 
 {%- macro elo_diff(home_team, visiting_team, result)  -%}
-   25.0 * (( {{result}} ) - (1 / (10 ^ ( - ({{visiting_team}} - {{home_team}} - 0)::real / 400) + 1)))
    -- removing the 70 point adjustment for home team advantage for now
+   25.0 * (( {{result}} ) - (1 / (10 ^ ( - ({{visiting_team}} - {{home_team}} - 0)::real / 400) + 1)))
+
 {%- endmacro -%}
 
 {% macro playoff_sim(round,seed_file) %}
