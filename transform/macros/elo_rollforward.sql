@@ -19,7 +19,7 @@
         --TEMPORARILY FILTER THIS OUT
         AND 1=0
     GROUP BY ALL
-    ORDER BY S._smart_source_lineno
+    ORDER BY game_id
 {% endset %}
 {% do log(sql_statement, info=False) %}
 

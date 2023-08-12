@@ -7,7 +7,7 @@ sources:
       external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
     tables:
       - name: schedule
-        identifier: nba_schedule_2023
+        identifier: nba_schedule
         description: this is the nba schedule
       - name: team_ratings
         description: team ELO ratings & win totals
@@ -19,6 +19,10 @@ sources:
         description: 538 RAPTOR ratings by player
       - name: latest_RAPTOR_by_team
         description: 538 RAPTOR ratings by player by team & game type
+      - name: nfl_schedule
+        description: nfl schedule
+      - name: nfl_team_ratings
+        description: nfl team ratings from vegas
   - name: nba_prep
     schema: prep
     meta: 
