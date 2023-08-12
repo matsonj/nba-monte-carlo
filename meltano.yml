@@ -48,7 +48,7 @@ plugins:
             start_date: "2001-01-01T00:00:00Z"
             key_properties: [date, team1, team2]
             format: csv
-        # load NBA data from local
+        # load NFL data from local
           - path: file://./data/nfl
             name: nfl_schedule
             pattern: nfl_schedule.csv

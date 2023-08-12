@@ -19,10 +19,6 @@ sources:
         description: 538 RAPTOR ratings by player
       - name: latest_RAPTOR_by_team
         description: 538 RAPTOR ratings by player by team & game type
-      - name: nfl_schedule
-        description: nfl schedule
-      - name: nfl_team_ratings
-        description: nfl team ratings from vegas
   - name: nba_prep
     schema: prep
     meta: 
@@ -32,3 +28,12 @@ sources:
         description: elo after running proc for record actual results
       - name: results_log
         description: game results with elo before each game. feeds into elo_post, which holds latest ratings
+  - name: nfl
+    schema: psa
+    meta:
+      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
+    tables:
+      - name: nfl_schedule
+        description: nfl schedule
+      - name: nfl_team_ratings
+        description: nfl team ratings from vegas
