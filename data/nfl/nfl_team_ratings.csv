@@ -1,0 +1,33 @@
+Team,Win Total,ELO rating,Conf,Division
+Buffalo Bills,10.5,1729.76563718597,AFC,East
+Miami Dolphins,9.5,1681.13241410486,AFC,East
+New York Jets,9.5,1676.81962490493,AFC,East
+New England Patriots,7.5,1605.49738694507,AFC,East
+Cincinnati Bengals,11.5,1717.78586912306,AFC,North
+Baltimore Ravens,8.5,1589.99596421381,AFC,North
+Cleveland Browns,8.5,1583.45094092808,AFC,North
+Pittsburgh Steelers,8.5,1578.09198940955,AFC,North
+Jacksonville Jaguars,9.5,1600.18698304192,AFC,South
+Tennessee Titans,7.5,1508.80023011146,AFC,South
+Indianapolis Colts,6.5,1459.76229611732,AFC,South
+Houston Texans,5.5,1418.28381122239,AFC,South
+Kansas City Chiefs,11.5,1762.52920677914,AFC,West
+Los Angeles Chargers,9.5,1669.57049071911,AFC,West
+Denver Broncos,8.5,1622.57658498554,AFC,West
+Las Vegas Raiders,7.5,1587.92769328906,AFC,West
+Philadelphia Eagles,10.5,1723.06689610956,NFC,East
+Dallas Cowboys,9.5,1680.12941645968,NFC,East
+New York Giants,8.5,1637.72667821245,NFC,East
+Washington Commanders,7.5,1596.99857761264,NFC,East
+Detroit Lions,9,1611.00993684181,NFC,North
+Minnesota Vikings,8.5,1607.42736606408,NFC,North
+Green Bay Packers,7.5,1549.21345906024,NFC,North
+Chicago Bears,7.5,1542.57634273391,NFC,North
+New Orleans Saints,9.5,1579.94137763577,NFC,South
+Carolina Panthers,7.5,1512.12835006181,NFC,South
+Atlanta Falcons,7.5,1501.03922942317,NFC,South
+Tampa Bay Buccaneers,6.5,1482.0264000382,NFC,South
+San Francisco 49ers,11.5,1730.12289472661,NFC,West
+Seattle Seahawks,8.5,1607.65690082201,NFC,West
+Los Angeles Rams,7.5,1566.85345285444,NFC,West
+Arizona Cardinals,5.5,1478.71549244838,NFC,West

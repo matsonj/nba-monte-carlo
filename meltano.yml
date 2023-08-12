@@ -22,29 +22,44 @@ plugins:
       pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
       config:
         tables:
-          - path: file://./data
-            name: nba_schedule_2023
-            pattern: nba_schedule_2023.csv
+        # load NBA data from local
+          - path: file://./data/nba
+            name: nba_schedule
+            pattern: nba_schedule.csv
             start_date: "2001-01-01T00:00:00Z"
             key_properties: [key]
             format: csv
-          - path: file://./data
+          - path: file://./data/nba
             name: team_ratings
             pattern: team_ratings.csv
             start_date: "2001-01-01T00:00:00Z"
             key_properties: [team]
             format: csv
-          - path: file://./data
+          - path: file://./data/nba
             name: xf_series_to_seed
             pattern: xf_series_to_seed.csv
             start_date: "2001-01-01T00:00:00Z"
             key_properties: [series_id]
             format: csv
+        # load nba data from web
           - path: https://projects.fivethirtyeight.com/nba-model
             name: nba_elo_latest
             pattern: nba_elo_latest.csv
             start_date: "2001-01-01T00:00:00Z"
             key_properties: [date, team1, team2]
+            format: csv
+        # load NBA data from local
+          - path: file://./data/nfl
+            name: nfl_schedule
+            pattern: nfl_schedule.csv
+            start_date: "2001-01-01T00:00:00Z"
+            key_properties: [id]
+            format: csv
+          - path: file://./data/nfl
+            name: nfl_team_ratings
+            pattern: team_ratings.csv
+            start_date: "2001-01-01T00:00:00Z"
+            key_properties: [team]
             format: csv
   loaders:
     - name: target-parquet
@@ -71,7 +86,7 @@ plugins:
     - name: dbt-duckdb
       namespace: dbt_ext
       label: dbt duckdb extension
-      pip_url: dbt-core~=1.5.0 dbt-duckdb~=1.5.0 git+https://github.com/meltano/dbt-ext.git duckdb==0.7.1
+      pip_url: dbt-core~=1.6.0 dbt-duckdb~=1.6.0 git+https://github.com/meltano/dbt-ext.git duckdb==0.8.1
       executable: dbt_invoker
       settings:
         - name: project_dir
