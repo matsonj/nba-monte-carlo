@@ -28,7 +28,7 @@ FROM reg_season_actuals_enriched
 ```east_conf
 select
   ROW_NUMBER() OVER (ORDER BY avg_wins DESC) AS seed,
-  '/teams/' || R.team as team_link,
+  '/nba/teams/' || R.team as team_link,
   R.team,
   R." ",
   S.record,
@@ -45,7 +45,7 @@ ORDER BY avg_wins DESC
 ```west_conf
 select
   ROW_NUMBER() OVER (ORDER BY avg_wins DESC) AS seed,
-  '/teams/' || R.team as team_link,
+  '/nba/teams/' || R.team as team_link,
   R.team,
   R." ",
   S.record,
