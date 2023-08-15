@@ -32,6 +32,14 @@ models:
         +materialized: table
       conformed:
         +materialized: view
+    nfl:
+      +tags: nfl
+      raw:
+        +materialized: table
+      prep:
+        +materialized: table
+      conformed:
+        +materialized: view
 vars:
   scenarios: 10000            # set number of scenarios. 100k is safe on 8GB of RAM
   include_actuals: true       # set to true to use actual game results, otherwise sim entire season
