@@ -32,12 +32,19 @@ docker-run-superset:
 		mdsbox make pipeline superset-visuals
 
 evidence-build:
+	meltano invoke evidence upgrade
+	meltano invoke evidence build
+
+evidence-run:
+	meltano invoke evidence dev
+
+evidence-build-old:
 	cd analyze && npm i -force
 	cd analyze && mkdir -p data_catalog
 	cp -r data/data_catalog/* analyze/data_catalog
 	cp analyze/data_catalog/mdsbox.db analyze/
 
-evidence-run:
+evidence-run-old:
 	cd analyze && npm run dev -- --host 0.0.0.0
 
 evidence-visuals:
