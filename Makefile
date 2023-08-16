@@ -33,6 +33,7 @@ docker-run-superset:
 
 evidence-build:
 	meltano invoke evidence upgrade
+	meltano invoke evidence build
 
 evidence-run:
 	meltano invoke evidence dev
