@@ -128,6 +128,6 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 
 <center>
 
-🏀 [Teams](/nfl/teams) 🏀 
+🏈 [Teams](/nfl/teams) 🏈 
 
  </center>
