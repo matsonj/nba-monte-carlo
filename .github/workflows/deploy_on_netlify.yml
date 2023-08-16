@@ -35,6 +35,7 @@ jobs:
         
       - name: evidence install & build
         run: |
+          meltano invoke evidence initialize
           make evidence-build
 
       - name: copy output to working directory
