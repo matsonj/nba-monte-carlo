@@ -29,13 +29,13 @@ jobs:
           meltano --log-level=debug install loaders
           meltano --log-level=debug install mappers
           meltano --log-level=debug install utility dbt-duckdb
+          meltano --log-level=debug install utility evidence
 
       - name: build pipeline
         run: make pipeline
         
       - name: evidence install & build
         run: |
-          meltano invoke evidence initialize
           make evidence-build
 
       - name: copy output to working directory
