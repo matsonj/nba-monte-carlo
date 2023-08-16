@@ -175,6 +175,8 @@ LEFT JOIN prep_nba_elo_latest AR ON
     value='win_range' 
 /> 
 
+{#if game_trend.length == 0}
+
 <LineChart
     data={game_trend.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     x=date
@@ -196,6 +198,8 @@ LEFT JOIN prep_nba_elo_latest AR ON
     data={records_table.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     rows=7
 />
+
+{/if}
 
 ### Playoff Odds
 
@@ -231,6 +235,8 @@ LEFT JOIN prep_nba_elo_latest AR ON
     title='projected end of season seeding'
 />
 
+{#if game_trend.length == 0}
+
 ## Playoff Analysis
 
 add the following:
@@ -238,3 +244,6 @@ add the following:
   - this will show % of time by spot, and then % of advancing by seed
 - playoff analysis
   - most common opponents with win rate by series (mostly nulls, sparsely populated)
+
+
+  {/if}
