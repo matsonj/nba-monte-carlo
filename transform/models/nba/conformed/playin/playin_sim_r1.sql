@@ -6,10 +6,10 @@ SELECT
     EV.elo_rating AS visiting_team_elo_rating,
     EH.winning_team AS home_team,
     EH.elo_rating AS home_team_elo_rating,
-    {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating' ) }} AS home_team_win_probability,
+    {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating', var('nba_elo_offset') ) }} AS home_team_win_probability,
     R.rand_result,
     CASE 
-        WHEN {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating' ) }} >= R.rand_result THEN EH.winning_team
+        WHEN {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating', var('nba_elo_offset') ) }} >= R.rand_result THEN EH.winning_team
         ELSE EV.winning_team
     END AS winning_team 
 FROM {{ ref( 'schedules' ) }} S
