@@ -1,13 +1,11 @@
 SELECT 
     R.scenario_id,
     S.*,
-    -- removing the 70 point adjustment for home team advantage for now
-   ( 1 - (1 / (10 ^ (-( S.visiting_team_elo_rating - S.home_team_elo_rating - 0)::real/400)+1))) * 10000 as home_team_win_probability,
+    ( 1 - (1 / (10 ^ (-( S.visiting_team_elo_rating - S.home_team_elo_rating - 70)::real/400)+1))) * 10000 as home_team_win_probability,
     R.rand_result,
     CASE 
         WHEN LR.include_actuals = true THEN LR.winning_team
-        WHEN -- removing the 70 point adjustment for home team advantage for now
-   ( 1 - (1 / (10 ^ (-( S.visiting_team_elo_rating - S.home_team_elo_rating - 0)::real/400)+1))) * 10000  >= R.rand_result THEN S.home_team
+        WHEN ( 1 - (1 / (10 ^ (-( S.visiting_team_elo_rating - S.home_team_elo_rating - 70)::real/400)+1))) * 10000  >= R.rand_result THEN S.home_team
         ELSE S.visiting_team
     END AS winning_team,
     COALESCE(LR.include_actuals, false) AS include_actuals
