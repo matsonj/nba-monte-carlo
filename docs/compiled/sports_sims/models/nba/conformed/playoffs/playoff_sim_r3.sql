@@ -15,12 +15,10 @@ WITH cte_playoff_sim AS (
         EV.elo_rating AS visiting_team_elo_rating,
         EH.winning_team AS home_team,
         EH.elo_rating AS home_team_elo_rating,
-        -- removing the 70 point adjustment for home team advantage for now
-   ( 1 - (1 / (10 ^ (-( EV.elo_rating - EH.elo_rating - 0)::real/400)+1))) * 10000 as home_team_win_probability,
+        ( 1 - (1 / (10 ^ (-( EV.elo_rating - EH.elo_rating - 70)::real/400)+1))) * 10000 as home_team_win_probability,
         R.rand_result,
         CASE
-            WHEN -- removing the 70 point adjustment for home team advantage for now
-   ( 1 - (1 / (10 ^ (-( EV.elo_rating - EH.elo_rating - 0)::real/400)+1))) * 10000 >= R.rand_result THEN EH.winning_team
+            WHEN ( 1 - (1 / (10 ^ (-( EV.elo_rating - EH.elo_rating - 70)::real/400)+1))) * 10000 >= R.rand_result THEN EH.winning_team
             ELSE EV.winning_team
         END AS winning_team 
         FROM "mdsbox"."main"."schedules" S
