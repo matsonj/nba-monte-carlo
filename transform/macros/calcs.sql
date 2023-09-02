@@ -1,12 +1,12 @@
-{%- macro elo_calc(home_team, visiting_team) -%}
-   -- removing the 70 point adjustment for home team advantage for now
-   ( 1 - (1 / (10 ^ (-( {{visiting_team}} - {{home_team}} - 0)::real/400)+1))) * 10000
+{%- macro elo_calc(home_team, visiting_team, home_adv) -%}
+
+   ( 1 - (1 / (10 ^ (-( {{visiting_team}} - {{home_team}} - {{home_adv}})::real/400)+1))) * 10000
 
 {%- endmacro -%}
 
-{%- macro elo_diff(home_team, visiting_team, result)  -%}
-   -- removing the 70 point adjustment for home team advantage for now
-   25.0 * (( {{result}} ) - (1 / (10 ^ ( - ({{visiting_team}} - {{home_team}} - 0)::real / 400) + 1)))
+{%- macro elo_diff(home_team, visiting_team, result, home_adv)  -%}
+
+   25.0 * (( {{result}} ) - (1 / (10 ^ ( - ({{visiting_team}} - {{home_team}} - {{home_adv}})::real / 400) + 1)))
 
 {%- endmacro -%}
 
@@ -24,10 +24,10 @@
         EV.elo_rating AS visiting_team_elo_rating,
         EH.winning_team AS home_team,
         EH.elo_rating AS home_team_elo_rating,
-        {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating' ) }} as home_team_win_probability,
+        {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating',var('nba_elo_offset') ) }} as home_team_win_probability,
         R.rand_result,
         CASE
-            WHEN {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating' ) }} >= R.rand_result THEN EH.winning_team
+            WHEN {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating', var('nba_elo_offset') ) }} >= R.rand_result THEN EH.winning_team
             ELSE EV.winning_team
         END AS winning_team 
         FROM {{ ref( 'schedules' ) }} S

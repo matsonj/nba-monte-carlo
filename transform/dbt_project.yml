@@ -46,4 +46,6 @@ vars:
   latest_ratings: true        # set to true to use latest ELO ratings, otherwise use start of season ratings
   enable_export: false        # set to true to export files to parquet
   sim_start_game_id: 0        # placeholder one multi-container is in place
+  nba_elo_offset: 70          # nba offset to ELO to get to ~12% home advantage
+  nfl_elo_offset: 52          # nfl offset to ELO to get to 7.5% home advantage
 on-run-end: "{{ export_to_parquet( var('enable_export') ) }}" 

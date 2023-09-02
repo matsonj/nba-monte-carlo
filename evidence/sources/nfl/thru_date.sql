@@ -1,0 +1,1 @@
+SELECT CURRENT_DATE as end_date
