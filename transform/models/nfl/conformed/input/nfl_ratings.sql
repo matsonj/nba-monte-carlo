@@ -2,6 +2,7 @@ SELECT
     orig.team,
     orig.conf,
     orig.division,
+    orig.team_short,
     /*  -- ADD BACK WHEN SEASON STARTS
     CASE
         WHEN latest.latest_ratings = true AND latest.elo_rating IS NOT NULL THEN latest.elo_rating
