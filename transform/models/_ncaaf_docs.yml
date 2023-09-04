@@ -1,0 +1,120 @@
+version: 2
+
+models:
+  # - name: prep_nba_elo_latest
+  #   tests:
+  #     - empty_table
+  - name: ncaaf_prep_schedule
+    tests:
+      - empty_table
+  - name: ncaaf_prep_team_ratings
+    tests:
+      - empty_table
+  # - name: prep_xf_series_to_seed
+  #   tests:
+  #     - empty_table
+  # - name: prep_latest_ratings
+  #   columns:
+  #     - name: team
+  #       tests:
+  #         - unique
+  #   tests:
+  #     - empty_table
+  # - name: ncaaf_latest_results
+  #   columns:
+  #     - name: game_id
+  #       tests:
+  #         - unique
+  #         - not_null
+  #     - name: home_team
+  #       tests:
+  #         - not_null
+  #     - name: home_team_score
+  #       tests:
+  #         - not_null
+  #     - name: visiting_team
+  #       tests:
+  #         - not_null
+  #     - name: visiting_team_score
+  #       tests:
+  #         - not_null
+  #     - name: date
+  #       tests:
+  #         - not_null
+  #     - name: winning_team
+  #       tests:
+  #         - not_null
+  #     - name: losing_team
+  #       tests:
+  #         - not_null
+  - name: ncaaf_schedules
+    columns:
+      - name: game_id
+        tests:
+          - unique
+          - not_null
+      - name: type
+        tests:
+          - accepted_values:
+              values: ['reg_season','playin_r1','playin_r2','playoffs_r1','playoffs_r2','playoffs_r3','playoffs_r4']
+      - name: series_id
+      - name: visiting_conf
+      - name: visiting_team
+        tests:
+          - not_null
+      - name: visiting_team_elo_rating
+      - name: home_conf
+      - name: home_team
+        tests:
+          - not_null
+      - name: home_team_elo_rating
+  - name: ncaaf_ratings
+    columns:
+      - name: team
+        tests:
+          - not_null
+          - unique
+      - name: conf
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['SEC (East)','SEC (West)','Big Ten (East)','ACC','CUSA','Big 12','Pac-12','American','MWC','Ind','Big Ten (West)','Sun Belt (East)','Sun Belt (West)','MAC (East)','MAC (West)','Other']
+      - name: elo_rating
+        tests:
+          - not_null
+  # - name: post_season_schedule
+  #   tests:
+  #     - empty_table
+  - name: ncaaf_reg_season_schedule
+    tests:
+      - empty_table
+  - name: ncaaf_random_num_gen
+    tests:
+      - empty_table
+  - name: ncaaf_scenario_gen
+    tests:
+      - empty_table
+  - name: ncaaf_teams
+    columns:
+      - name: team_long
+        tests:
+          - unique
+          - not_null
+  - name: ncaaf_vegas_wins
+    columns:
+      - name: team
+        tests:
+          - unique
+          - not_null
+ #     - name: win_total
+ #      tests:
+ #         - not_null
+  # - name: xf_series_to_seed
+  #   columns:
+  #     - name: series_id
+  #       tests:
+  #         - not_null
+  #         - unique
+  #     - name: seed
+  #       tests:
+  #         - not_null

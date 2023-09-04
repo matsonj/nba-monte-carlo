@@ -4,6 +4,8 @@ Welcome to the [NBA monte carlo simulator](https://github.com/matsonj/nba-monte-
 
 This project leverages duckdb, meltano, dbt, and evidence and builds and runs about once per day in a github action. You can learn more about this on [this page](/about).
 
-# [NBA Model](/nba)
+## [NBA Model](/nba)
 
-# [NFL Model](/nfl)
+## [NFL Model](/nfl)
+
+## [NCAA Football Model](/ncaaf)
