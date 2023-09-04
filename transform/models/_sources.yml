@@ -37,3 +37,12 @@ sources:
         description: nfl schedule
       - name: nfl_team_ratings
         description: nfl team ratings from vegas
+  - name: ncaaf
+    schema: psa
+    meta:
+      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
+    tables:
+      - name: ncaaf_schedule
+        description: ncaa football schedule
+      - name: ncaaf_team_ratings
+        description: ncaa football team ratings from vegas

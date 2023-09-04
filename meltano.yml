@@ -57,7 +57,20 @@ plugins:
             format: csv
           - path: file://./data/nfl
             name: nfl_team_ratings
-            pattern: team_ratings.csv
+            pattern: nfl_team_ratings.csv
+            start_date: "2001-01-01T00:00:00Z"
+            key_properties: [team]
+            format: csv
+            # load NCAAF data from local
+          - path: file://./data/ncaaf
+            name: ncaaf_schedule
+            pattern: ncaaf_schedule.csv
+            start_date: "2001-01-01T00:00:00Z"
+            key_properties: [id]
+            format: csv
+          - path: file://./data/ncaaf
+            name: ncaaf_team_ratings
+            pattern: ncaaf_team_ratings.csv
             start_date: "2001-01-01T00:00:00Z"
             key_properties: [team]
             format: csv
