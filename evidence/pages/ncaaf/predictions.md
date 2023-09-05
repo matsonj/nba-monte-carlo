@@ -43,7 +43,8 @@ _Home field advantage has not been included in these predictions. Historically, 
     title='Predictions'
     rows=25
     rowShading="true" 
-    rowLine="false">
+    rowLine="false"
+    search="true">
     <Column id="visitor"/>
     <Column id="visitor_ELO"/>
     <Column id="home"/>
