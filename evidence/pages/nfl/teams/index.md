@@ -16,7 +16,7 @@ select
   '/nfl/teams/' || R.team as team_link,
   R.team,
   R." ",
-  elo_rating AS elo_rating_num1,
+  elo_rating AS elo_rating_num0,
   avg_wins_num1,
   make_playoffs_pct1
 FROM ${reg_season} R
@@ -30,7 +30,7 @@ select
   '/nfl/teams/' || R.team as team_link,
   R.team,
   R." ",
-  elo_rating as elo_rating_num1,
+  elo_rating as elo_rating_num0,
   avg_wins_num1,
   make_playoffs_pct1
 FROM ${reg_season} R
@@ -44,7 +44,7 @@ ORDER BY avg_wins_num1 DESC
 <DataTable data={afc_conf} link=team_link rows=16>
   <Column id=seed/>
   <Column id=team/>
-  <Column id=elo_rating_num1/>
+  <Column id=elo_rating_num0/>
   <Column id=avg_wins_num1/>
   <Column id=make_playoffs_pct1/>
 </DataTable>
@@ -54,7 +54,7 @@ ORDER BY avg_wins_num1 DESC
 <DataTable data={nfc_conf} link=team_link rows=16>
   <Column id=seed/>
   <Column id=team/>
-  <Column id=elo_rating_num1/>
+  <Column id=elo_rating_num0/>
   <Column id=avg_wins_num1/>
   <Column id=make_playoffs_pct1/>
 </DataTable>
