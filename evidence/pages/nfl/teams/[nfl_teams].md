@@ -1,4 +1,4 @@
-# Detailed Analysis for <Value data={nfl_season_summary.filter(d => d.team === $page.params.nfl_teams)} column=team/>
+# Detailed Analysis for <Value data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} column=team/>
 
 ```nfl_season_summary
 select R.*,
@@ -44,40 +44,39 @@ GROUP BY ALL
 ## Season-to-date Results
 
 <BigValue 
-    data={nfl_season_summary.filter(d => d.team === $page.params.nfl_teams)} 
+    data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     value='predicted_wins' 
     comparison='vs_vegas_num1' 
 /> 
-
 <BigValue 
-    data={nfl_season_summary.filter(d => d.team === $page.params.nfl_teams)} 
+    data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     value='seed_range' 
 /> 
 
 <BigValue 
-    data={nfl_season_summary.filter(d => d.team === $page.params.nfl_teams)} 
+    data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     value='win_range' 
 />
 
 ### Playoff Odds
 
 <BigValue 
-    data={nfl_playoff_odds.filter(d => d.team === $page.params.nfl_teams)}  
+    data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
     value='first_rd_bye_pct1' 
 /> 
 
 <BigValue 
-    data={nfl_playoff_odds.filter(d => d.team === $page.params.nfl_teams)}  
+    data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
     value='made_playoffs_pct1' 
 /> 
 
 <BigValue 
-    data={nfl_playoff_odds.filter(d => d.team === $page.params.nfl_teams)}  
+    data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
     value='missed_playoffs_pct1' 
 /> 
 
 <AreaChart 
-    data={nfl_wins_seed_scatter.filter(d => d.team === $page.params.nfl_teams)}
+    data={nfl_wins_seed_scatter.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}
     x=wins
     y=odds_pct1
     series=season_result
@@ -86,7 +85,7 @@ GROUP BY ALL
 />
 
 <BarChart 
-    data={nfl_seed_details.filter(d => d.team === $page.params.nfl_teams)} 
+    data={nfl_seed_details.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     x=seed
     y=occurances_pct1
     xAxisTitle=seed
