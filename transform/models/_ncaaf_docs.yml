@@ -1,9 +1,20 @@
 version: 2
 
 models:
-  # - name: prep_nba_elo_latest
-  #   tests:
-  #     - empty_table
+  - name: ncaaf_prep_results
+    tests:
+      - empty_table
+    columns:
+      - name: winner
+        tests:
+          - relationships:
+              to: ref('ncaaf_prep_team_ratings')
+              field: Team
+      - name: loser
+        tests:
+          - relationships:
+              to: ref('ncaaf_prep_team_ratings')
+              field: Team
   - name: ncaaf_prep_schedule
     tests:
       - empty_table
