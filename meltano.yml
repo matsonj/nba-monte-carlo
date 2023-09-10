@@ -1,198 +1,193 @@
 version: 1
 default_environment: dev
 environments:
-  - name: dev
-    env:
-      TMP_PATH: /tmp
-  - name: staging
-    env:
-      TMP_PATH: /tmp
-  - name: docker
-    env:
-      MELTANO_PROJECT_ROOT: /workspaces/nba-monte-carlo
-      TMP_PATH: /workspaces/nba-monte-carlo/tmp
-  - name: prod
-    env:
-      TMP_PATH: /tmp
+- name: dev
+  env:
+    TMP_PATH: /tmp
+- name: staging
+  env:
+    TMP_PATH: /tmp
+- name: docker
+  env:
+    MELTANO_PROJECT_ROOT: /workspaces/nba-monte-carlo
+    TMP_PATH: /workspaces/nba-monte-carlo/tmp
+- name: prod
+  env:
+    TMP_PATH: /tmp
 
 plugins:
   extractors:
-    - name: tap-spreadsheets-anywhere
-      variant: ets
-      pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
-      config:
-        tables:
+  - name: tap-spreadsheets-anywhere
+    variant: ets
+    pip_url: git+https://github.com/ets/tap-spreadsheets-anywhere.git
+    config:
+      tables:
           # load NBA data from local
-          - path: file://./data/nba
-            name: nba_schedule
-            pattern: nba_schedule.csv
-            start_date: "2001-01-01T00:00:00Z"
-            key_properties: [key]
-            format: csv
-          - path: file://./data/nba
-            name: team_ratings
-            pattern: team_ratings.csv
-            start_date: "2001-01-01T00:00:00Z"
-            key_properties: [team]
-            format: csv
-          - path: file://./data/nba
-            name: xf_series_to_seed
-            pattern: xf_series_to_seed.csv
-            start_date: "2001-01-01T00:00:00Z"
-            key_properties: [series_id]
-            format: csv
+      - path: file://./data/nba
+        name: nba_schedule
+        pattern: nba_schedule.csv
+        start_date: '2001-01-01T00:00:00Z'
+        key_properties: [key]
+        format: csv
+      - path: file://./data/nba
+        name: team_ratings
+        pattern: team_ratings.csv
+        start_date: '2001-01-01T00:00:00Z'
+        key_properties: [team]
+        format: csv
+      - path: file://./data/nba
+        name: xf_series_to_seed
+        pattern: xf_series_to_seed.csv
+        start_date: '2001-01-01T00:00:00Z'
+        key_properties: [series_id]
+        format: csv
             # load nba data from web
-          - path: https://projects.fivethirtyeight.com/nba-model
-            name: nba_elo_latest
-            pattern: nba_elo_latest.csv
-            start_date: "2001-01-01T00:00:00Z"
-            key_properties: [date, team1, team2]
-            format: csv
+      - path: https://projects.fivethirtyeight.com/nba-model
+        name: nba_elo_latest
+        pattern: nba_elo_latest.csv
+        start_date: '2001-01-01T00:00:00Z'
+        key_properties: [date, team1, team2]
+        format: csv
             # load NFL data from local
-          - path: file://./data/nfl
-            name: nfl_schedule
-            pattern: nfl_schedule.csv
-            start_date: "2001-01-01T00:00:00Z"
-            key_properties: [id]
-            format: csv
-          - path: file://./data/nfl
-            name: nfl_team_ratings
-            pattern: nfl_team_ratings.csv
-            start_date: "2001-01-01T00:00:00Z"
-            key_properties: [team]
-            format: csv
-            # load NCAAF data from local
-          - path: file://./data/ncaaf
-            name: ncaaf_schedule
-            pattern: ncaaf_schedule.csv
-            start_date: "2001-01-01T00:00:00Z"
-            key_properties: [id]
-            format: csv
-          - path: file://./data/ncaaf
-            name: ncaaf_team_ratings
-            pattern: ncaaf_team_ratings.csv
-            start_date: "2001-01-01T00:00:00Z"
-            key_properties: [team]
-            format: csv
-          - path: file://./data/ncaaf
-            name: ncaaf_results
-            pattern: ncaaf_results.csv
-            start_date: "2001-01-01T00:00:00Z"
-            key_properties: [Rk]
-            format: csv
+      - path: file://./data/nfl
+        name: nfl_schedule
+        pattern: nfl_schedule.csv
+        start_date: '2001-01-01T00:00:00Z'
+        key_properties: [id]
+        format: csv
+      - path: file://./data/nfl
+        name: nfl_team_ratings
+        pattern: nfl_team_ratings.csv
+        start_date: '2001-01-01T00:00:00Z'
+        key_properties: [team]
+        format: csv
+        # load NCAAF data from local
+      - path: file://./data/ncaaf
+        name: ncaaf_schedule
+        pattern: ncaaf_schedule.csv
+        start_date: "2001-01-01T00:00:00Z"
+        key_properties: [id]
+        format: csv
+      - path: file://./data/ncaaf
+        name: ncaaf_team_ratings
+        pattern: ncaaf_team_ratings.csv
+        start_date: "2001-01-01T00:00:00Z"
+        key_properties: [team]
+        format: csv
+      - path: file://./data/ncaaf
+        name: ncaaf_results
+        pattern: ncaaf_results.csv
+        start_date: "2001-01-01T00:00:00Z"
+        key_properties: [Rk]
+        format: csv
   loaders:
-    - name: target-parquet
-      variant: estrategiahq
-      pip_url: git+https://github.com/estrategiahq/target-parquet.git
-      config:
-        destination_path: $MELTANO_PROJECT_ROOT/data/data_catalog/psa
-        file_size: 100000
-        compression_method: snappy
-        streams_in_separate_folder: true
-        add_record_metadata: true
-    - name: target-jsonl
-      variant: andyh1203
-      pip_url: target-jsonl
-      config:
-        output: $MELTANO_PROJECT_ROOT/output
-        do_timestamp_file: true
+  - name: target-parquet
+    variant: estrategiahq
+    pip_url: git+https://github.com/estrategiahq/target-parquet.git
+    config:
+      destination_path: $MELTANO_PROJECT_ROOT/data/data_catalog/psa
+      file_size: 100000
+      compression_method: snappy
+      streams_in_separate_folder: true
+      add_record_metadata: true
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
+    config:
+      output: $MELTANO_PROJECT_ROOT/output
+      do_timestamp_file: true
   utilities:
-    - name: superset
-      variant: apache
-      pip_url:
-        apache-superset>=1.5.0 markupsafe==2.0.1 Werkzeug==2.0.3 WTForms==2.3.0
-        duckdb-engine==0.6.8 jinja2<3.1.0 cryptography==3.4.7 Flask-WTF==1.0.1 duckdb==0.8.1
-      config:
-        ENABLE_PROXY_FIX: true
-    - name: dbt-duckdb
-      namespace: dbt_ext
-      label: dbt duckdb extension
-      pip_url:
-        dbt-core~=1.6.0 dbt-duckdb~=1.6.0 git+https://github.com/meltano/dbt-ext.git
-        duckdb==0.8.1
-      executable: dbt_invoker
+  - name: superset
+    variant: apache
+    pip_url: apache-superset>=1.5.0 markupsafe==2.0.1 Werkzeug==2.0.3 WTForms==2.3.0
+      duckdb-engine==0.6.8 jinja2<3.1.0 cryptography==3.4.7 Flask-WTF==1.0.1 duckdb==0.8.1
+    config:
+      ENABLE_PROXY_FIX: true
+  - name: dbt-duckdb
+    namespace: dbt_ext
+    label: dbt duckdb extension
+    pip_url: dbt-core~=1.6.0 dbt-duckdb~=1.6.0 git+https://github.com/meltano/dbt-ext.git
+      duckdb==0.8.1
+    executable: dbt_invoker
+    settings:
+    - name: project_dir
+      value: $MELTANO_PROJECT_ROOT/transform
+      label: Projects Directory
+    - name: skip_pre_invoke
+      env: DBT_EXT_SKIP_PRE_INVOKE
+      kind: boolean
+      value: true
+      description: Whether to skip pre-invoke hooks which automatically run dbt clean
+        and deps
+    - name: type
+      env: DBT_EXT_TYPE
+      value: duckdb
+    - name: profiles_dir
+      env: DBT_PROFILES_DIR
+      value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
+      label: Profiles Directory
+    - name: project_dir
+      value: $MELTANO_PROJECT_ROOT/transform
+      label: Projects Directory
+    - name: path
+      kind: string
+      label: Path
+      description: The path on your local filesystem where you would like the DuckDB
+        database file and it's associated write-ahead log to be written.
+    - name: schema
+      kind: string
+      value: main
+      label: Schema
+      description: Specify the schema to write into.
+    commands:
+      build:
+        args: build
+        description: Will run your models, tests, snapshots and seeds in DAG order.
+      describe:
+        args: describe
+        executable: dbt_extension
+      initialize:
+        args: initialize
+        executable: dbt_extension
+    config:
+      path: $MELTANO_PROJECT_ROOT/data/data_catalog/mdsbox.db
+  - name: evidence
+    variant: meltanolabs
+    pip_url: evidence-ext>=0.5
+    config:
+      home_dir: $MELTANO_PROJECT_ROOT/evidence
       settings:
-        - name: project_dir
-          value: $MELTANO_PROJECT_ROOT/transform
-          label: Projects Directory
-        - name: skip_pre_invoke
-          env: DBT_EXT_SKIP_PRE_INVOKE
-          kind: boolean
-          value: true
-          description:
-            Whether to skip pre-invoke hooks which automatically run dbt clean
-            and deps
-        - name: type
-          env: DBT_EXT_TYPE
-          value: duckdb
-        - name: profiles_dir
-          env: DBT_PROFILES_DIR
-          value: $MELTANO_PROJECT_ROOT/transform/profiles/duckdb
-          label: Profiles Directory
-        - name: project_dir
-          value: $MELTANO_PROJECT_ROOT/transform
-          label: Projects Directory
-        - name: path
-          kind: string
-          label: Path
-          description:
-            The path on your local filesystem where you would like the DuckDB
-            database file and it's associated write-ahead log to be written.
-        - name: schema
-          kind: string
-          value: main
-          label: Schema
-          description: Specify the schema to write into.
-      commands:
-        build:
-          args: build
-          description: Will run your models, tests, snapshots and seeds in DAG order.
-        describe:
-          args: describe
-          executable: dbt_extension
-        initialize:
-          args: initialize
-          executable: dbt_extension
-      config:
-        path: $MELTANO_PROJECT_ROOT/data/data_catalog/mdsbox.db
-    - name: evidence
-      variant: meltanolabs
-      pip_url: evidence-ext>=0.5
-      config:
-        home_dir: $MELTANO_PROJECT_ROOT/evidence
-        settings:
-          database: duckdb
-          duckdb:
-            filename: ../data/data_catalog/mdsbox.db
+        database: duckdb
+        duckdb:
+          filename: ../data/data_catalog/mdsbox.db
   mappers:
-    - name: meltano-map-transformer
-      variant: meltano
-      pip_url: git+https://github.com/MeltanoLabs/meltano-map-transform.git
-      mappings:
-        - name:
-            add-timestamps
+  - name: meltano-map-transformer
+    variant: meltano
+    pip_url: git+https://github.com/MeltanoLabs/meltano-map-transform.git
+    mappings:
+    - name: add-timestamps
             # This adds timestamp columns to all of the named streams
             # Debug by running:
             # % meltano run --full-refresh tap-spreadsheets-anywhere add-timestamps target-jsonl
-          config:
-            stream_maps:
-              latest_RAPTOR_by_player:
-                _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
-              latest_RAPTOR_by_team:
-                _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
-              nba_elo_latest:
-                _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
-              nba_schedule_2023:
-                _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
-              team_ratings:
-                _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
-              xf_series_to_seed:
-                _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
+      config:
+        stream_maps:
+          latest_RAPTOR_by_player:
+            _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
+          latest_RAPTOR_by_team:
+            _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
+          nba_elo_latest:
+            _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
+          nba_schedule_2023:
+            _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
+          team_ratings:
+            _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
+          xf_series_to_seed:
+            _sdc_extracted_at: datetime.datetime.utcnow().isoformat()
 schedules:
-  - name: spreadsheets-anywhere-to-duckdb
-    interval: "@once"
-    extractor: tap-spreadsheets-anywhere
-    loader: target-duckdb
-    transform: skip
-    start_date: 2022-10-01 18:08:45.303947
+- name: spreadsheets-anywhere-to-duckdb
+  interval: '@once'
+  extractor: tap-spreadsheets-anywhere
+  loader: target-duckdb
+  transform: skip
+  start_date: 2022-10-01 18:08:45.303947
 project_id: 0f7b47e6-7268-4193-9522-1773c1ee9fee
