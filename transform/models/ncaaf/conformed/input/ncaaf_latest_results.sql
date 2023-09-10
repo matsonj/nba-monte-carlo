@@ -13,7 +13,11 @@ SELECT
     END AS  visiting_team_score,
     R.Winner AS winning_team,
     R.Loser AS losing_team,
-    {{ var('include_actuals') }} AS include_actuals
+    {{ var('include_actuals') }} AS include_actuals,
+    CASE
+        WHEN visiting_team_score > home_team_score THEN 1
+        ELSE 0
+    END AS game_result
 FROM {{ ref( 'ncaaf_schedules' ) }} S
     LEFT JOIN {{ ref( 'ncaaf_prep_results' ) }} R ON R.Wk = S.Week_number
         AND (S.visiting_team = R.Winner OR S.visiting_team = R.Loser)
