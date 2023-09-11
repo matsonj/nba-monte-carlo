@@ -8,8 +8,6 @@ sources:
 
 # Predictions
 
-{#if past_games_summary.length == 0}
-
 ## Past Performance
 
 <BigValue 
@@ -33,7 +31,6 @@ sources:
     rows=30
 />
 
-{/if}
 ## Future Predictions
 
 _Home field advantage has not been included in these predictions. Historically, NCAA Football teams win 57.5% of their games at home._
