@@ -61,18 +61,24 @@ plugins:
         start_date: '2001-01-01T00:00:00Z'
         key_properties: [team]
         format: csv
-            # load NCAAF data from local
+        # load NCAAF data from local
       - path: file://./data/ncaaf
         name: ncaaf_schedule
         pattern: ncaaf_schedule.csv
-        start_date: '2001-01-01T00:00:00Z'
+        start_date: "2001-01-01T00:00:00Z"
         key_properties: [id]
         format: csv
       - path: file://./data/ncaaf
         name: ncaaf_team_ratings
         pattern: ncaaf_team_ratings.csv
-        start_date: '2001-01-01T00:00:00Z'
+        start_date: "2001-01-01T00:00:00Z"
         key_properties: [team]
+        format: csv
+      - path: file://./data/ncaaf
+        name: ncaaf_results
+        pattern: ncaaf_results.csv
+        start_date: "2001-01-01T00:00:00Z"
+        key_properties: [Rk]
         format: csv
   loaders:
   - name: target-parquet
@@ -100,7 +106,7 @@ plugins:
   - name: dbt-duckdb
     namespace: dbt_ext
     label: dbt duckdb extension
-    pip_url: dbt-core~=1.6.0 dbt-duckdb~=1.6.0 git+https://github.com/meltano/dbt-ext.git
+    pip_url: dbt-core~=1.6.0 dbt-duckdb~=1.6.0 git+https://github.com/meltano/dbt-ext.git pandas==2.0 pyarrow
       duckdb==0.8.1
     executable: dbt_invoker
     settings:

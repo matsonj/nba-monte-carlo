@@ -46,3 +46,5 @@ sources:
         description: ncaa football schedule
       - name: ncaaf_team_ratings
         description: ncaa football team ratings from vegas
+      - name: ncaaf_results
+        description: ncaa results for current season
