@@ -1,7 +1,7 @@
 import pandas as pd
 
 def calc_elo_diff(game_result: int, home_elo: float, visiting_elo: float) -> float:
-    return 25.0 * (( game_result ) - (1.0 / (10.0 ** (-(visiting_elo - home_elo - 70) / 400.0) + 1.0)))
+    return 150.0 * (( game_result ) - (1.0 / (10.0 ** (-(visiting_elo - home_elo - 70) / 400.0) + 1.0)))
 
 def model(dbt, sess):
     # get the existing elo ratings for the teams
