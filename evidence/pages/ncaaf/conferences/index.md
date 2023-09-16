@@ -8,7 +8,8 @@ sources:
     title='Conference Standings'
     rows=16
     rowShading="true" 
-    rowLine="false">
+    rowLine="false"
+    link="team_link">
     <Column id="conf"/>
     <Column id="teams"/>
     <Column id="record"/>
