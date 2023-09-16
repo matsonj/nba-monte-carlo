@@ -20,18 +20,14 @@
     )
 
 SELECT 
-    C.team,
     C.conf,
-    A.wins || ' - ' || A.losses AS record,
-    C.avg_wins,
-    C.vegas_wins,
-    R.elo_rating,
-    c.elo_vs_vegas,
-    C.wins_5th || ' to ' || C.wins_95th AS win_range,
-    C.seed_5th || ' to ' || C.seed_95th AS seed_range,
-    c.made_postseason,
-    c.first_round_bye,
-    0 AS sim_start_game_id
+    SUM(A.wins) || ' - ' || SUM(A.losses) AS record,
+    SUM(C.avg_wins) AS tot_wins,
+    SUM(C.vegas_wins) AS vegas_wins,
+    AVG(R.elo_rating) AS avg_elo_rating,
+    SUM(c.elo_vs_vegas) AS elo_vs_vegas,
+    COUNT(*) as teams
 FROM cte_summary C
 LEFT JOIN "mdsbox"."main"."ncaaf_reg_season_actuals" A ON A.team = C.team
 LEFT JOIN "mdsbox"."main"."ncaaf_ratings" R ON R.team = C.team
+GROUP BY ALL
