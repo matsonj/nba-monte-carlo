@@ -67,7 +67,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 66,2,09/02/2023,Sat,Portland State,Oregon,N
 67,2,09/02/2023,Sat,Rice,Texas,N
 68,2,09/02/2023,Sat,Robert Morris,Air Force,N
-69,2,09/02/2023,Sat,Sam Houston State,Brigham Young,N
+69,2,09/02/2023,Sat,Sam Houston,Brigham Young,N
 70,2,09/02/2023,Sat,South Alabama,Tulane,N
 71,2,09/02/2023,Sat,South Carolina,North Carolina,Y
 72,2,09/02/2023,Sat,South Carolina State,Charlotte,N
@@ -95,7 +95,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 94,2,09/04/2023,Mon,Clemson,Duke,N
 95,3,09/07/2023,Thu,Murray State,Louisville,N
 96,3,09/08/2023,Fri,Illinois,Kansas,N
-97,3,09/09/2023,Sat,Air Force,Sam Houston State,Y
+97,3,09/09/2023,Sat,Air Force,Sam Houston,Y
 98,3,09/09/2023,Sat,Alabama-Birmingham,Georgia Southern,N
 99,3,09/09/2023,Sat,Appalachian State,North Carolina,N
 100,3,09/09/2023,Sat,Arizona,Mississippi State,N
@@ -306,7 +306,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 305,5,09/23/2023,Sat,Oregon State,Washington State,N
 306,5,09/23/2023,Sat,Rice,South Florida,N
 307,5,09/23/2023,Sat,Rutgers,Michigan,N
-308,5,09/23/2023,Sat,Sam Houston State,Houston,N
+308,5,09/23/2023,Sat,Sam Houston,Houston,N
 309,5,09/23/2023,Sat,Southern California,Arizona State,N
 310,5,09/23/2023,Sat,Southern Methodist,Texas Christian,N
 311,5,09/23/2023,Sat,Southern Mississippi,Arkansas State,N
@@ -319,7 +319,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 318,5,09/23/2023,Sat,Western Kentucky,Troy,N
 319,5,09/23/2023,Sat,Western Michigan,Toledo,N
 320,5,09/24/2023,Sun,New Mexico State,Hawaii,N
-321,6,09/28/2023,Thu,Jacksonville State,Sam Houston State,N
+321,6,09/28/2023,Thu,Jacksonville State,Sam Houston,N
 322,6,09/28/2023,Thu,Middle Tennessee State,Western Kentucky,N
 323,6,09/28/2023,Thu,Temple,Tulsa,N
 324,6,09/29/2023,Fri,Cincinnati,Brigham Young,N
@@ -380,7 +380,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 379,6,09/30/2023,Sat,West Virginia,Texas Christian,N
 380,7,10/04/2023,Wed,Florida International,New Mexico State,N
 381,7,10/04/2023,Wed,Jacksonville State,Middle Tennessee State,N
-382,7,10/05/2023,Thu,Sam Houston State,Liberty,N
+382,7,10/05/2023,Thu,Sam Houston,Liberty,N
 383,7,10/05/2023,Thu,Western Kentucky,Louisiana Tech,N
 384,7,10/06/2023,Fri,Kansas State,Oklahoma State,N
 385,7,10/06/2023,Fri,Nebraska,Illinois,N
@@ -432,7 +432,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 431,8,10/10/2023,Tue,Coastal Carolina,Appalachian State,N
 432,8,10/10/2023,Tue,Liberty,Jacksonville State,N
 433,8,10/10/2023,Tue,Louisiana Tech,Middle Tennessee State,N
-434,8,10/11/2023,Wed,Sam Houston State,New Mexico State,N
+434,8,10/11/2023,Wed,Sam Houston,New Mexico State,N
 435,8,10/11/2023,Wed,Texas-El Paso,Florida International,N
 436,8,10/12/2023,Thu,Southern Methodist,East Carolina,N
 437,8,10/12/2023,Thu,West Virginia,Houston,N
@@ -487,7 +487,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 486,9,10/17/2023,Tue,Middle Tennessee State,Liberty,N
 487,9,10/17/2023,Tue,Southern Mississippi,South Alabama,N
 488,9,10/17/2023,Tue,Western Kentucky,Jacksonville State,N
-489,9,10/18/2023,Wed,Florida International,Sam Houston State,N
+489,9,10/18/2023,Wed,Florida International,Sam Houston,N
 490,9,10/18/2023,Wed,New Mexico State,Texas-El Paso,N
 491,9,10/19/2023,Thu,James Madison,Marshall,N
 492,9,10/19/2023,Thu,Rice,Tulsa,N
@@ -541,7 +541,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 540,10,10/24/2023,Tue,Liberty,Western Kentucky,N
 541,10,10/24/2023,Tue,New Mexico State,Louisiana Tech,N
 542,10,10/25/2023,Wed,Jacksonville State,Florida International,N
-543,10,10/25/2023,Wed,Texas-El Paso,Sam Houston State,N
+543,10,10/25/2023,Wed,Texas-El Paso,Sam Houston,N
 544,10,10/26/2023,Thu,Georgia State,Georgia Southern,N
 545,10,10/26/2023,Thu,Syracuse,Virginia Tech,N
 546,10,10/27/2023,Fri,Florida Atlantic,Charlotte,N
@@ -625,7 +625,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 624,11,11/04/2023,Sat,James Madison,Georgia State,N
 625,11,11/04/2023,Sat,Kansas,Iowa State,N
 626,11,11/04/2023,Sat,Kansas State,Texas,N
-627,11,11/04/2023,Sat,Kennesaw State,Sam Houston State,N
+627,11,11/04/2023,Sat,Kennesaw State,Sam Houston,N
 628,11,11/04/2023,Sat,Kentucky,Mississippi State,N
 629,11,11/04/2023,Sat,Louisiana,Arkansas State,N
 630,11,11/04/2023,Sat,Louisiana State,Alabama,N
@@ -705,7 +705,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 704,12,11/11/2023,Sat,Old Dominion,Liberty,N
 705,12,11/11/2023,Sat,Rice,Texas-San Antonio,N
 706,12,11/11/2023,Sat,Rutgers,Iowa,N
-707,12,11/11/2023,Sat,Sam Houston State,Louisiana Tech,N
+707,12,11/11/2023,Sat,Sam Houston,Louisiana Tech,N
 708,12,11/11/2023,Sat,San Diego State,Colorado State,N
 709,12,11/11/2023,Sat,Southern California,Oregon,N
 710,12,11/11/2023,Sat,Stanford,Oregon State,N
@@ -774,7 +774,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 773,13,11/18/2023,Sat,Purdue,Northwestern,N
 774,13,11/18/2023,Sat,Rice,Charlotte,N
 775,13,11/18/2023,Sat,Rutgers,Penn State,N
-776,13,11/18/2023,Sat,Sam Houston State,Western Kentucky,N
+776,13,11/18/2023,Sat,Sam Houston,Western Kentucky,N
 777,13,11/18/2023,Sat,San Diego State,San Jose State,N
 778,13,11/18/2023,Sat,Southern Methodist,Memphis,N
 779,13,11/18/2023,Sat,Southern Mississippi,Mississippi State,N
@@ -833,7 +833,7 @@ id,Week,Day,Date,VisTm,HomeTm,Neut
 832,14,11/25/2023,Sat,Louisiana-Monroe,Louisiana,N
 833,14,11/25/2023,Sat,Maryland,Rutgers,N
 834,14,11/25/2023,Sat,Miami (OH),Ball State,N
-835,14,11/25/2023,Sat,Middle Tennessee State,Sam Houston State,N
+835,14,11/25/2023,Sat,Middle Tennessee State,Sam Houston,N
 836,14,11/25/2023,Sat,Navy,Southern Methodist,N
 837,14,11/25/2023,Sat,North Carolina,North Carolina State,N
 838,14,11/25/2023,Sat,Northern Illinois,Kent State,N
