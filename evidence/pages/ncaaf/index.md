@@ -14,7 +14,8 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 
 ### Top 25 Teams
 
-<DataTable data={top_25} link=team_link rows=25>
+<DataTable data={top_25} link=team_link rows=25
+  rowShading="true">
   <Column id=Rk/>
   <Column id=team/>
   <Column id=conf/>

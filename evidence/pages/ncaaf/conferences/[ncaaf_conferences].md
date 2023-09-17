@@ -10,7 +10,8 @@ sources:
     title='Conference Standings'
     rowShading="true" 
     rowLine="false"
-    rows=100>
+    rows=100
+    link="team_link">
     <Column id="team"/>
     <Column id="record"/>
     <Column id="elo_rating" title="ELO"/>
