@@ -1,10 +1,11 @@
 import pandas as pd
 
-def calc_elo_diff(game_result: int, home_elo: float, visiting_elo: float) -> float:
-    return 150.0 * (( game_result ) - (1.0 / (10.0 ** (-(visiting_elo - home_elo - 70) / 400.0) + 1.0)))
+def calc_elo_diff(game_result: int, home_elo: float, visiting_elo: float, home_adv: float) -> float:
+    return 150.0 * (( game_result ) - (1.0 / (10.0 ** (-(visiting_elo - home_elo - home_adv) / 400.0) + 1.0)))
 
 def model(dbt, sess):
     # get the existing elo ratings for the teams
+    home_adv = dbt.config.get("ncaaf_elo_offset",52.0)
     team_ratings = dbt.ref("ncaaf_prep_team_ratings").df()
     original_elo = dict(zip(team_ratings["team"], team_ratings["elo_rating"].astype(float)))
     working_elo = original_elo.copy()
@@ -19,7 +20,7 @@ def model(dbt, sess):
     rows = []
     for (game_id, vteam, hteam, winner, game_result) in nba_elo_latest.fetchall():
         helo, velo = working_elo[hteam], working_elo[vteam]
-        elo_change =  calc_elo_diff(game_result, helo, velo)
+        elo_change =  calc_elo_diff(game_result, helo, velo, home_adv)
         rows.append((game_id, vteam, velo, hteam, helo, winner, elo_change))
         working_elo[hteam] -= elo_change
         working_elo[vteam] += elo_change
@@ -48,7 +49,7 @@ def source(*args, dbt_load_df_function):
     return dbt_load_df_function(sources[key])
 
 
-config_dict = {}
+config_dict = {'ncaaf_elo_offset': 52.0}
 
 
 class config:
