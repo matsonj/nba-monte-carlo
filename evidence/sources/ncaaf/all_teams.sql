@@ -10,4 +10,3 @@ SELECT
 from ncaaf_reg_season_summary
 where elo_vs_vegas IS NOT NULL
 order by elo_rating DESC
-limit 25
