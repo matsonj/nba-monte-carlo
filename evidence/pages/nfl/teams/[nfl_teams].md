@@ -1,4 +1,14 @@
-# Detailed Analysis for <Value data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} column=team/>
+---
+sources:
+  - all_teams: nfl/all_teams.sql
+  - season_summary: nfl/reg_season.sql
+  - elo_latest: nfl/elo_latest.sql
+  - most_recent_games: nfl/most_recent_games.sql
+  - game_trend: nfl/game_trend.sql
+  - future_games: nfl/future_games.sql
+---
+
+# Detailed Analysis for <Value data={all_teams.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} column=team/>
 
 ```nfl_season_summary
 select R.*,
@@ -44,6 +54,12 @@ GROUP BY ALL
 ## Season-to-date Results
 
 <BigValue 
+    data={elo_latest.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}
+    value='elo_rating' 
+    comparison='since_start_num1' 
+/> 
+
+<BigValue 
     data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     value='predicted_wins' 
     comparison='vs_vegas_num1' 
@@ -57,6 +73,36 @@ GROUP BY ALL
     data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     value='win_range' 
 />
+
+<LineChart
+    data={game_trend.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
+    x=week
+    y=cumulative_elo_change_num0
+    title='elo change over time'
+    xMax=12
+/>
+
+### Most Recent Games
+
+<DataTable
+    data={most_recent_games.filter(d => d.home_team.toUpperCase() === $page.params.nfl_teams.toUpperCase() | d.visiting_team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
+    rows=12
+/>
+
+### Future Games
+
+<DataTable
+    data={future_games.filter(d => d.home_team.toUpperCase() === $page.params.nfl_teams.toUpperCase() | d.visiting_team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
+    title='Predictions'
+    rows=25
+    rowShading="true" 
+    rowLine="false">
+    <Column id="visitor"/>
+    <Column id="home"/>
+    <Column id="home_win_pct2"/>
+    <Column id="odds" align="right"/>
+    <Column id="implied_line_num1" align="right"/>
+</DataTable>
 
 ### Playoff Odds
 
