@@ -1,0 +1,33 @@
+Week,Day,Date,Time,Winner/tie,,Loser/tie,,PtsW,PtsL,YdsW,TOW,YdsL,TOL
+1,Thu,2023-09-07,8:20PM,Detroit Lions,@,Kansas City Chiefs,boxscore,21,20,368,1,316,1
+1,Sun,2023-09-10,1:00PM,New Orleans Saints,,Tennessee Titans,boxscore,16,15,351,2,285,3
+1,Sun,2023-09-10,1:00PM,Tampa Bay Buccaneers,@,Minnesota Vikings,boxscore,20,17,242,0,369,3
+1,Sun,2023-09-10,1:00PM,Baltimore Ravens,,Houston Texans,boxscore,25,9,265,2,268,1
+1,Sun,2023-09-10,1:00PM,Cleveland Browns,,Cincinnati Bengals,boxscore,24,3,350,2,142,0
+1,Sun,2023-09-10,1:00PM,Jacksonville Jaguars,@,Indianapolis Colts,boxscore,31,21,342,2,280,3
+1,Sun,2023-09-10,1:00PM,San Francisco 49ers,@,Pittsburgh Steelers,boxscore,30,7,391,1,239,2
+1,Sun,2023-09-10,1:00PM,Washington Commanders,,Arizona Cardinals,boxscore,20,16,248,3,210,2
+1,Sun,2023-09-10,1:00PM,Atlanta Falcons,,Carolina Panthers,boxscore,24,10,221,0,281,3
+1,Sun,2023-09-10,4:25PM,Los Angeles Rams,@,Seattle Seahawks,boxscore,30,13,426,0,180,0
+1,Sun,2023-09-10,4:25PM,Philadelphia Eagles,@,New England Patriots,boxscore,25,20,251,1,382,2
+1,Sun,2023-09-10,4:25PM,Miami Dolphins,@,Los Angeles Chargers,boxscore,36,34,536,2,433,0
+1,Sun,2023-09-10,4:25PM,Las Vegas Raiders,@,Denver Broncos,boxscore,17,16,261,1,260,0
+1,Sun,2023-09-10,4:25PM,Green Bay Packers,@,Chicago Bears,boxscore,38,20,329,0,311,2
+1,Sun,2023-09-10,8:20PM,Dallas Cowboys,@,New York Giants,boxscore,40,0,265,0,171,3
+1,Mon,2023-09-11,8:15PM,New York Jets,,Buffalo Bills,boxscore,22,16,289,1,314,4
+2,Thu,2023-09-14,8:15PM,Philadelphia Eagles,,Minnesota Vikings,boxscore,34,28,430,1,374,4
+2,Sun,2023-09-17,1:00PM,Indianapolis Colts,@,Houston Texans,boxscore,31,20,353,0,389,1
+2,Sun,2023-09-17,1:00PM,Baltimore Ravens,@,Cincinnati Bengals,boxscore,27,24,415,0,282,1
+2,Sun,2023-09-17,1:00PM,Seattle Seahawks,@,Detroit Lions,boxscore,37,31,393,0,418,3
+2,Sun,2023-09-17,1:00PM,Tampa Bay Buccaneers,,Chicago Bears,boxscore,27,17,437,0,236,2
+2,Sun,2023-09-17,1:00PM,Kansas City Chiefs,@,Jacksonville Jaguars,boxscore,17,9,399,3,271,1
+2,Sun,2023-09-17,1:00PM,Tennessee Titans,,Los Angeles Chargers,boxscore,27,24,340,0,342,0
+2,Sun,2023-09-17,1:00PM,Buffalo Bills,,Las Vegas Raiders,boxscore,38,10,450,0,240,3
+2,Sun,2023-09-17,1:00PM,Atlanta Falcons,,Green Bay Packers,boxscore,25,24,446,1,224,0
+2,Sun,2023-09-17,4:05PM,San Francisco 49ers,@,Los Angeles Rams,boxscore,30,23,365,0,386,2
+2,Sun,2023-09-17,4:05PM,New York Giants,@,Arizona Cardinals,boxscore,31,28,439,1,379,0
+2,Sun,2023-09-17,4:25PM,Washington Commanders,@,Denver Broncos,boxscore,35,33,388,0,399,2
+2,Sun,2023-09-17,4:25PM,Dallas Cowboys,,New York Jets,boxscore,30,10,382,0,215,4
+2,Sun,2023-09-17,8:20PM,Miami Dolphins,@,New England Patriots,boxscore,24,17,389,1,288,2
+2,Mon,2023-09-18,7:15PM,New Orleans Saints,@,Carolina Panthers,preview,,,,,,
+2,Mon,2023-09-18,8:15PM,Cleveland Browns,@,Pittsburgh Steelers,preview,,,,,,
