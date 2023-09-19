@@ -37,6 +37,8 @@ sources:
         description: nfl schedule
       - name: nfl_team_ratings
         description: nfl team ratings from vegas
+      - name: nfl_results
+        description: nfl results for the current season
   - name: ncaaf
     schema: psa
     meta:
