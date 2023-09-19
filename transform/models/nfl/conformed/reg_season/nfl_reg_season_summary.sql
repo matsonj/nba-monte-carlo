@@ -24,10 +24,10 @@
 SELECT 
     C.team,
     C.conf,
-  --  A.wins || ' - ' || A.losses AS record,
+    A.wins || ' - ' || A.losses AS record,
     C.avg_wins,
     C.vegas_wins,
-    R.original_rating as elo_rating,
+    R.elo_rating,
     c.elo_vs_vegas,
     C.wins_5th || ' to ' || C.wins_95th AS win_range,
     C.seed_5th || ' to ' || C.seed_95th AS seed_range,
@@ -35,5 +35,5 @@ SELECT
     c.first_round_bye,
     {{ var( 'sim_start_game_id' ) }} AS sim_start_game_id
 FROM cte_summary C
---LEFT JOIN 'nfl_reg_season_actuals' A ON A.team = C.team
+LEFT JOIN 'nfl_reg_season_actuals' A ON A.team = C.team
 LEFT JOIN {{ ref( 'nfl_ratings' ) }} R ON R.team = C.team
