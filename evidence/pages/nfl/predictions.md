@@ -21,7 +21,7 @@ _Home field advantage has not been included in these predictions. Historically, 
     search="true">
     <Column id="visitor"/>
     <Column id="home"/>
-    <Column id="home_win_pct2"/>
+    <Column id="home_win_pct1"/>
     <Column id="odds" align="right"/>
     <Column id="implied_line_num1" align="right"/>
 </DataTable>

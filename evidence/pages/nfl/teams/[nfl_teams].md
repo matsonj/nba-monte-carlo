@@ -99,7 +99,7 @@ GROUP BY ALL
     rowLine="false">
     <Column id="visitor"/>
     <Column id="home"/>
-    <Column id="home_win_pct2"/>
+    <Column id="home_win_pct1"/>
     <Column id="odds" align="right"/>
     <Column id="implied_line_num1" align="right"/>
 </DataTable>
