@@ -37,7 +37,12 @@
     ],
     "features": {
         //see https://github.com/devcontainers/features/tree/main/src/docker-in-docker for details on below
-        "ghcr.io/devcontainers/features/docker-in-docker:1":{}
+        "ghcr.io/devcontainers/features/docker-in-docker:1":{},
+        //see https://docs.github.com/en/codespaces/developing-in-codespaces/using-github-codespaces-with-github-cli#ssh-into-a-codespace for details
+        // this is to enable tools eg harlequin to run properly
+        "ghcr.io/devcontainers/features/sshd:1": {
+            "version": "latest"
+        }
     },
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
