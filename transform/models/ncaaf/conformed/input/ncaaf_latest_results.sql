@@ -21,10 +21,30 @@ with cte_inner as (
             AND (S.VisTm = R.Winner OR S.VisTm = R.Loser)
     WHERE home_team_score IS NOT NULL 
     GROUP BY ALL
+),
+cte_outer AS (
+    SELECT *,
+        CASE
+            WHEN visiting_team_score > home_team_score THEN 1
+            WHEN visiting_team_score = home_team_score THEN 0.5
+            ELSE 0
+        END AS game_result,
+        ABS( visiting_team_score - home_team_score ) as margin
+    FROM cte_inner
 )
 SELECT *,
     CASE
-        WHEN visiting_team_score > home_team_score THEN 1
-        ELSE 0
-    END AS game_result
-FROM cte_inner
+        WHEN margin < 4 THEN 0.5
+        WHEN margin < 6 AND game_result = 1 THEN 0.58
+        WHEN margin < 6 AND game_result = 0 THEN 0.42
+        WHEN margin = 6 AND game_result = 1 THEN 0.66
+        WHEN margin = 6 AND game_result = 0 THEN 0.34
+        WHEN margin = 7 AND game_result = 1 THEN 0.74
+        WHEN margin = 7 AND game_result = 0 THEN 0.26
+        WHEN margin = 8 AND game_result = 1 THEN 0.82
+        WHEN margin = 8 AND game_result = 0 THEN 0.18
+        WHEN margin > 8 AND margin < 17 AND game_result = 1 THEN 0.9
+        WHEN margin > 8 AND margin < 17 AND game_result = 0 THEN 0.1
+        ELSE game_result
+    END AS game_result_v2
+FROM cte_outer
