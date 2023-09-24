@@ -1,6 +1,8 @@
 import pandas as pd
 
-def calc_elo_diff(game_result: int, home_elo: float, visiting_elo: float, home_adv: float) -> float:
+def calc_elo_diff(game_result: float, home_elo: float, visiting_elo: float, home_adv: float) -> float:
+    # just need to make sure i really get a game result that is float (annoying)
+    game_result = float(game_result)
     return 150.0 * (( game_result ) - (1.0 / (10.0 ** (-(visiting_elo - home_elo - home_adv) / 400.0) + 1.0)))
 
 def model(dbt, sess):
@@ -12,7 +14,7 @@ def model(dbt, sess):
 
     # loop over the historical game data and update the elo ratings as we go
     nba_elo_latest = (dbt.ref("ncaaf_latest_results")
-        .project("game_id, visiting_team, home_team, winning_team, game_result")
+        .project("game_id, visiting_team, home_team, winning_team, game_result_v2")
         .order("game_id")
     )
     nba_elo_latest.execute()
