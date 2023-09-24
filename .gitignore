@@ -4,6 +4,12 @@
 /transform/dbt_packages
 /transform/.tmp
 /docs/run
+/docs/compiled
+/docs/graph_summary.json
+/docs/graph.gpickle
+/docs/partial_parse.msgpack
+/docs/run_results.json
+/docs/semantic_manifest.json
 /data/data_catalog
 /output
 /logs
