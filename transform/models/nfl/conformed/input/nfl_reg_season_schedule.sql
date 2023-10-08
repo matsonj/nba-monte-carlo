@@ -5,10 +5,10 @@ SELECT
     0 as series_id,
     V.conf AS visiting_conf,
     V.team AS visiting_team,
-    R.visiting_team_elo_rating,
+    COALESCE(R.visiting_team_elo_rating,V.elo_rating::int) AS visiting_team_elo_rating,
     H.conf AS home_conf,
     H.team AS home_team,
-    R.home_team_elo_rating
+    COALESCE(R.home_team_elo_rating,H.elo_rating::int) AS home_team_elo_rating
 FROM {{ ref( 'nfl_prep_schedule' ) }} AS S
 LEFT JOIN {{ ref( 'nfl_ratings' ) }} V ON V.team = S.VisTm
 LEFT JOIN {{ ref( 'nfl_ratings' ) }} H ON H.team = S.HomeTm
