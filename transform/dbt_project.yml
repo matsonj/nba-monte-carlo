@@ -34,12 +34,12 @@ models:
         +materialized: view
     nfl:
       +tags: nfl
-      psa_new:
+      raw:
         +materialized: external
       prep:
         +materialized: table
-      conformed:
-        +materialized: view
+      analysis:
+        +materialized: table
     ncaaf:
       +tags: ncaaf
       raw:
@@ -56,3 +56,7 @@ vars:
   nba_elo_offset: 70          # nba offset to ELO to get to ~12% home advantage
   nfl_elo_offset: 52          # nfl offset to ELO to get to 7.5% home advantage
   ncaaf_elo_offset: 52        # ncaaf offset to ELO to get to 7.5% home advantage
+
+# external files are only registered as DuckDB views when they are created, not when they are referenced.
+on-run-start:
+  - "{{ register_upstream_external_models() }}"

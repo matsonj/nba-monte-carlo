@@ -15,8 +15,8 @@ with cte_inner as (
         R.Winner AS winning_team,
         R.Loser AS losing_team,
         {{ var('include_actuals') }} AS include_actuals
-    FROM {{ ref( 'nfl_prep_schedule' ) }} S
-        LEFT JOIN {{ ref( 'nfl_prep_results' ) }} R ON R.Wk = S.week
+    FROM {{ ref( 'nfl_raw_schedule' ) }} S
+        LEFT JOIN {{ ref( 'nfl_raw_results' ) }} R ON R.Wk = S.week
             AND (S.VisTm = R.Winner OR S.VisTm = R.Loser)
     WHERE home_team_score IS NOT NULL 
     GROUP BY ALL

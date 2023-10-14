@@ -9,8 +9,15 @@ SELECT
     H.conf AS home_conf,
     H.team AS home_team,
     COALESCE(R.home_team_elo_rating,H.elo_rating::int) AS home_team_elo_rating
-FROM {{ ref( 'nfl_prep_schedule' ) }} AS S
+FROM {{ ref( 'nfl_raw_schedule' ) }} AS S
 LEFT JOIN {{ ref( 'nfl_ratings' ) }} V ON V.team = S.VisTm
 LEFT JOIN {{ ref( 'nfl_ratings' ) }} H ON H.team = S.HomeTm
 LEFT JOIN {{ ref( 'nfl_elo_rollforward' ) }} R ON R.game_id = S.id
 GROUP BY ALL
+
+/* -- EXCLUDING UNTIL I GET A PLAYOFFS MODULE FIGURED OUT
+UNION ALL
+SELECT
+    *
+FROM {{ ref( 'post_season_schedule' ) }}
+*/

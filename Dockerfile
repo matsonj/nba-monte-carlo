@@ -21,12 +21,12 @@ RUN apt-get update && apt-get install -y \
   musl-dev \
   glibc-source \
   && rm -rf /var/lib/apt/lists/* \
-  && wget https://github.com/duckdb/duckdb/releases/download/v0.9.1/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip \
+  && wget https://github.com/duckdb/duckdb/releases/download/v0.9.1/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip
 
 COPY data ./data
 COPY transform ./transform
-COPY visuals ./visuals
 COPY Makefile .
-COPY analyze ./analyze
+COPY evidence ./evidence
+COPY requirements.txt .
 
 RUN make build

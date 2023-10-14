@@ -9,6 +9,6 @@ SELECT
     END AS elo_rating,
     orig.elo_rating AS original_rating,
     orig.win_total
-FROM {{ ref( 'nfl_prep_team_ratings' ) }} orig
+FROM {{ ref( 'nfl_raw_team_ratings' ) }} orig
 LEFT JOIN {{ ref( 'nfl_latest_elo' ) }} latest ON latest.team = orig.team
 GROUP BY ALL

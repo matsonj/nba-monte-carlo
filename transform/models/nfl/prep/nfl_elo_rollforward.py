@@ -8,7 +8,7 @@ def calc_elo_diff(game_result: float, home_elo: float, visiting_elo: float, home
 def model(dbt, sess):
     # get the existing elo ratings for the teams
     home_adv = dbt.config.get("nfl_elo_offset",52.0)
-    team_ratings = dbt.ref("nfl_prep_team_ratings").df()
+    team_ratings = dbt.ref("nfl_raw_team_ratings").df()
     original_elo = dict(zip(team_ratings["team"], team_ratings["elo_rating"].astype(float)))
     working_elo = original_elo.copy()
 
