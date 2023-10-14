@@ -1,3 +1,7 @@
+{{
+    config(materialized='external')
+}}
+
 SELECT
     Week as wk,
     "Winnertie" as winner,
