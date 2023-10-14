@@ -1,5 +1,7 @@
 {{ 
-    config(materialized='external')
+    config(
+        materialized='external',
+        location="../data/data_catalog/simulator/{{this.name}}.parquet")
 }}
 
 WITH cte_wins AS (

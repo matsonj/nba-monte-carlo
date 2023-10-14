@@ -2,12 +2,11 @@ build:
 	pip install -r requirements.txt
 	cd evidence && npm install @evidence-dev/evidence@latest @evidence-dev/core-components@latest
 	cd transform && dbt deps
+	mkdir -p data/data_catalog/raw
+	mkdir -p data/data_catalog/prep
+	mkdir -p data/data_catalog/simulator
 
 run:
-	mkdir -p data/data_catalog/conformed
-	mkdir -p data/data_catalog/prep
-	mkdir -p data/data_catalog/raw
-	mkdir -p data/data_catalog/psa
 	cd transform && dbt build
 
 serve:

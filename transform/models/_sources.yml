@@ -31,7 +31,7 @@ sources:
   - name: nfl
     schema: psa
     meta:
-      external_location: ../data/data_catalog/psa/{identifier}/*.parquet
+      external_location: ../data/nfl/{identifier}.csv
     tables:
       - name: nfl_schedule
         description: nfl schedule

@@ -9,6 +9,7 @@ meltano:
       type: duckdb
       threads: 4
       external_root: ../data/data_catalog/conformed
+      path: ../data/data_catalog/mdsbox.duckdb
     staging:
       type: duckdb
       threads: 4

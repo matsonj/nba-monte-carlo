@@ -1,12 +1,15 @@
 {{
-    config(materialized='external')
+    config(
+        materialized='external',
+        location="../data/data_catalog/prep/{{this.name}}.parquet"
+    )
 }}
 
 SELECT
     Week as wk,
-    "Winnertie" as winner,
+    "Winner/tie" as winner,
     PtsW as winner_pts,
-    "Losertie" as loser,
+    "Loser/tie" as loser,
     PtsL as loser_pts,
     CASE WHEN PtsL = PtsW THEN 1 ELSE 0 END as tie_flag
 FROM {{ source( 'nfl','nfl_results' ) }}
