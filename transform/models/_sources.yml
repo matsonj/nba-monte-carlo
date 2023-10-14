@@ -4,7 +4,7 @@ sources:
   - name: nba
     schema: psa
     meta:
-      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
+      external_location: ../data/data_catalog/psa/{identifier}/*.parquet
     tables:
       - name: schedule
         identifier: nba_schedule
@@ -22,7 +22,7 @@ sources:
   - name: nba_prep
     schema: prep
     meta: 
-      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/prep/{identifier}.parquet"
+      external_location: ../data/data_catalog/prep/{identifier}.parquet
     tables:
       - name: elo_post
         description: elo after running proc for record actual results
@@ -31,7 +31,7 @@ sources:
   - name: nfl
     schema: psa
     meta:
-      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
+      external_location: ../data/data_catalog/psa/{identifier}/*.parquet
     tables:
       - name: nfl_schedule
         description: nfl schedule
@@ -42,7 +42,7 @@ sources:
   - name: ncaaf
     schema: psa
     meta:
-      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
+      external_location: ../data/data_catalog/psa/{identifier}/*.parquet
     tables:
       - name: ncaaf_schedule
         description: ncaa football schedule

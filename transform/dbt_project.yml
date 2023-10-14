@@ -34,8 +34,8 @@ models:
         +materialized: view
     nfl:
       +tags: nfl
-      raw:
-        +materialized: table
+      psa_new:
+        +materialized: external
       prep:
         +materialized: table
       conformed:
@@ -52,9 +52,7 @@ vars:
   scenarios: 10000            # set number of scenarios. 100k is safe on 8GB of RAM
   include_actuals: true       # set to true to use actual game results, otherwise sim entire season
   latest_ratings: true        # set to true to use latest ELO ratings, otherwise use start of season ratings
-  enable_export: false        # set to true to export files to parquet
   sim_start_game_id: 0        # placeholder one multi-container is in place
   nba_elo_offset: 70          # nba offset to ELO to get to ~12% home advantage
   nfl_elo_offset: 52          # nfl offset to ELO to get to 7.5% home advantage
   ncaaf_elo_offset: 52        # ncaaf offset to ELO to get to 7.5% home advantage
-on-run-end: "{{ export_to_parquet( var('enable_export') ) }}" 
