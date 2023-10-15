@@ -8,9 +8,9 @@ SELECT
     american_odds AS odds,
     ROUND( 
         CASE
-            WHEN home_win_pct2 < 0.1 THEN -212.28 * home_win_pct2 + 41.475
-            WHEN home_win_pct2 >= 0.1 AND home_win_pct2 <= 0.9 THEN -41.437 * home_win_pct2 + 21.862
-            WHEN home_win_pct2 > 0.9 THEN -201.86 * home_win_pct2 + 167.42
+            WHEN home_win_pct2 < 0.1 THEN -201.68 * home_win_pct2 + 44.182
+            WHEN home_win_pct2 >= 0.1 AND home_win_pct2 <= 0.9 THEN -45.412 * home_win_pct2 + 23.938
+            WHEN home_win_pct2 > 0.9 THEN -308.62 * home_win_pct2 + 266.42
         END, 1 ) AS implied_line_num1
 FROM ncaaf_reg_season_predictions
 WHERE include_actuals = false AND winning_team = home_team
