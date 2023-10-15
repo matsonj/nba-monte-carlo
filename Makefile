@@ -5,6 +5,7 @@ build:
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
 	mkdir -p data/data_catalog/simulator
+	mkdir -p data/data_catalog/analysis
 
 run:
 	cd transform && dbt build

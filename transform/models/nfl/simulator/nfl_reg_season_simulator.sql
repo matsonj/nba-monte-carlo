@@ -1,9 +1,3 @@
-{{ 
-    config(
-        materialized='external',
-        location="../data/data_catalog/simulator/{{this.name}}.parquet")
-}}
-
 SELECT 
     R.scenario_id,
     S.*,
