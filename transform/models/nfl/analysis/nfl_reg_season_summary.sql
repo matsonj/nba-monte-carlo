@@ -1,8 +1,4 @@
-{{
-    config(materialized='external')
-}}
-
-    WITH cte_summary AS (
+WITH cte_summary AS (
     SELECT
         winning_team AS team,
         E.conf,

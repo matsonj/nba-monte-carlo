@@ -38,6 +38,8 @@ models:
         +materialized: external
       prep:
         +materialized: table
+      simulator:
+        +materialized: view
       analysis:
         +materialized: table
     ncaaf:

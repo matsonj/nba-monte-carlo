@@ -1,2 +1,3 @@
 pandas==2.0.0
+duckdb==0.8.1
 dbt-duckdb
