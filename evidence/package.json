@@ -13,8 +13,8 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "^2.0.3",
-    "@evidence-dev/evidence": "^22.0.0"
+    "@evidence-dev/core-components": "^2.1.1",
+    "@evidence-dev/evidence": "^23.0.1"
   },
   "overrides": {
     "jsonwebtoken": "9.0.0",
