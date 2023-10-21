@@ -1,6 +1,7 @@
 build:
+	pipx install meltano
+	meltano install
 	pip install -r requirements.txt
-	cd evidence && npm install @evidence-dev/evidence@latest @evidence-dev/core-components@latest
 	cd transform && dbt deps
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
@@ -11,7 +12,7 @@ run:
 	cd transform && dbt build
 
 serve:
-	cd evidence && npm run dev -- --host 0.0.0.0
+	meltano invoke evidence dev
 
 docker-build:
 	docker build -t mdsbox .
