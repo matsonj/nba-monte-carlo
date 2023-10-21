@@ -19,5 +19,5 @@ SELECT
     COALESCE(W.wins, 0) AS wins,
     COALESCE(L.losses, 0) AS losses
 FROM {{ ref( 'nba_teams' ) }} T
-LEFT JOIN cte_wins W ON W.winning_team = T.team
-LEFT JOIN cte_losses L ON L.losing_team = T.Team
+LEFT JOIN cte_wins W ON W.winning_team = T.team_long
+LEFT JOIN cte_losses L ON L.losing_team = T.Team_long

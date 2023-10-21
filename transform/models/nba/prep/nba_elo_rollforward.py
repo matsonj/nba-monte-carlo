@@ -3,13 +3,13 @@ import pandas as pd
 def calc_elo_diff(game_result: float, home_elo: float, visiting_elo: float, home_adv: float) -> float:
     # just need to make sure i really get a game result that is float (annoying)
     game_result = float(game_result)
-    return 150.0 * (( game_result ) - (1.0 / (10.0 ** (-(visiting_elo - home_elo - home_adv) / 400.0) + 1.0)))
+    return 25.0 * (( game_result ) - (1.0 / (10.0 ** (-(visiting_elo - home_elo - home_adv) / 400.0) + 1.0)))
 
 def model(dbt, sess):
     # get the existing elo ratings for the teams
-    home_adv = dbt.config.get("nba_elo_offset",52.0)
+    home_adv = dbt.config.get("nba_elo_offset",70.0)
     team_ratings = dbt.ref("nba_raw_team_ratings").df()
-    original_elo = dict(zip(team_ratings["team"], team_ratings["elo_rating"].astype(float)))
+    original_elo = dict(zip(team_ratings["team_long"], team_ratings["elo_rating"].astype(float)))
     working_elo = original_elo.copy()
 
     # loop over the historical game data and update the elo ratings as we go

@@ -1,7 +1,6 @@
 {{
     config(
-        materialized='external',
-        location="../data/data_catalog/analysis/{{this.name}}.parquet"
+        materialized='external'
     )
 }}
 
