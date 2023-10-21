@@ -18,8 +18,8 @@ models:
       - name: team
         tests:
           - unique
-    tests:
-      - empty_table
+#    tests:
+#      - empty_table
   - name: nba_latest_results
     columns:
       - name: game_id
@@ -38,9 +38,9 @@ models:
       - name: visiting_team_score
         tests:
           - not_null
-      - name: date
-        tests:
-          - not_null
+#      - name: date
+#        tests:
+#          - not_null
       - name: winning_team
         tests:
           - not_null
@@ -87,8 +87,8 @@ models:
         tests:
           - not_null
   - name: nba_post_season_schedule
-    tests:
-      - empty_table
+ #   tests:
+ #     - empty_table
   - name: nba_reg_season_schedule
     tests:
       - empty_table

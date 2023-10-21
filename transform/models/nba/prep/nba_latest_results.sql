@@ -13,10 +13,9 @@ with cte_inner as (
         END AS  visiting_team_score,
         R.Winner AS winning_team,
         R.Loser AS losing_team,
-        {{ var('include_actuals') }} AS include_actuals,
-
+        {{ var('include_actuals') }} AS include_actuals
     FROM {{ ref( 'nba_raw_schedule' ) }} S
-        LEFT JOIN {{ ref( 'nba_raw_results' ) }} R ON R.Date = S.Date
+        LEFT JOIN {{ ref( 'nba_raw_results' ) }} R ON R."date" = S."date"
             AND (S.VisTm = R.Winner OR S.VisTm = R.Loser)
     WHERE home_team_score IS NOT NULL 
     GROUP BY ALL

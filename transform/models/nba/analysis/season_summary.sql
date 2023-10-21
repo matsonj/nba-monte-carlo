@@ -1,7 +1,9 @@
-{{ 
+{{
     config(
-        materialized='external'
-) }}
+        materialized='external',
+        location="../data/data_catalog/analysis/{{this.name}}.parquet"
+    )
+}}
 
 SELECT
     ROUND(ratings.elo_rating,0)::int || ' (' || CASE WHEN original_rating < elo_rating THEN '+' ELSE '' END || (elo_rating-original_rating)::int || ')' AS elo_rating,

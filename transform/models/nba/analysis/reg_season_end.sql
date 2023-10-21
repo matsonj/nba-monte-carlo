@@ -1,7 +1,3 @@
-{{ 
-    config(materialized='external')
-}}
-
 WITH cte_wins AS (
     SELECT
         S.scenario_id,
