@@ -5,6 +5,5 @@
     )
 }}
 
-
 SELECT *
-FROM {{ source( 'nfl', 'nfl_schedule' ) }}
+FROM {{ source( 'ncaaf', 'ncaaf_team_ratings' ) }}

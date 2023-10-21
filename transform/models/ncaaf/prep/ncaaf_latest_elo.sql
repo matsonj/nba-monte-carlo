@@ -27,4 +27,4 @@ SELECT f.team
 , o.elo_rating AS original_rating
 , {{ var('latest_ratings') }} AS latest_ratings
 FROM final_rating f
-INNER JOIN {{ ref('ncaaf_prep_team_ratings') }} o ON f.team = o.team
+INNER JOIN {{ ref('ncaaf_raw_team_ratings') }} o ON f.team = o.team
