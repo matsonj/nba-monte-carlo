@@ -1,0 +1,24 @@
+version: 1
+default_environment: dev
+environments:
+- name: dev
+  env:
+    TMP_PATH: /tmp
+- name: staging
+  env:
+    TMP_PATH: /tmp
+- name: prod
+  env:
+    TMP_PATH: /tmp
+plugins:
+  utilities:
+  - name: evidence
+    variant: meltanolabs
+    pip_url: evidence-ext>=0.5
+    config:
+      home_dir: $MELTANO_PROJECT_ROOT/evidence
+      settings:
+        database: duckdb
+        duckdb:
+          filename: ../data/data_catalog/mdsbox.duckdb
+project_id: 0f7b47e6-7268-4193-9522-1773c1ee9fee
