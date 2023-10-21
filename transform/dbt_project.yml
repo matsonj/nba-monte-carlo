@@ -29,9 +29,9 @@ models:
       raw:
         +materialized: external
       prep:
-        +materialized: view
+        +materialized: table
       simulator:
-        +materialized: view
+        +materialized: table
       analysis:
         +materialized: table
     nfl:
@@ -53,7 +53,7 @@ models:
       simulator:
         +materialized: view
       analysis:
-        +materialized: table
+        +materialized: external
 vars:
   scenarios: 10000            # set number of scenarios. 100k is safe on 8GB of RAM
   include_actuals: true       # set to true to use actual game results, otherwise sim entire season

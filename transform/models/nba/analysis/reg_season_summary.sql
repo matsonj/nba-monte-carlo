@@ -1,5 +1,8 @@
 {{
-    config(materialized='external')
+    config(
+        materialized='external',
+        location="../data/data_catalog/analysis/{{this.name}}.parquet"
+    )
 }}
 
     WITH cte_summary AS (
