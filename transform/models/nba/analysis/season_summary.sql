@@ -13,4 +13,4 @@ SELECT
     P.won_finals
 FROM {{ ref( 'reg_season_summary' ) }} R
 LEFT JOIN {{ ref( 'playoff_summary' ) }} P ON P.team = R.team
-LEFT JOIN {{ ref( 'ratings' ) }} ratings ON ratings.team = R.team
+LEFT JOIN {{ ref( 'nba_ratings' ) }} ratings ON ratings.team = R.team

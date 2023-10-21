@@ -9,7 +9,7 @@ SELECT
         ELSE S.visiting_team
     END AS winning_team,
     COALESCE(LR.include_actuals, false) AS include_actuals
-FROM {{ ref( 'schedules' ) }} S
-LEFT JOIN {{ ref( 'random_num_gen' ) }} R ON R.game_id = S.game_id
-LEFT JOIN {{ ref( 'latest_results' ) }} LR ON LR.game_id = S.game_id
+FROM {{ ref( 'nba_schedules' ) }} S
+LEFT JOIN {{ ref( 'nba_random_num_gen' ) }} R ON R.game_id = S.game_id
+LEFT JOIN {{ ref( 'nba_latest_results' ) }} LR ON LR.game_id = S.game_id
 WHERE S.type = 'reg_season'

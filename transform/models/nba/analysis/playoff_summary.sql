@@ -45,7 +45,7 @@ SELECT
     R3.made_conf_finals,
     R4.made_finals,
     F.won_finals
-FROM {{ ref( 'teams' ) }} T
+FROM {{ ref( 'nba_teams' ) }} T
 LEFT JOIN cte_playoffs_r1 R1 ON R1.winning_team = T.team
 LEFT JOIN cte_playoffs_r2 R2 ON R2.winning_team = T.team
 LEFT JOIN cte_playoffs_r3 R3 ON R3.winning_team = T.team

@@ -8,6 +8,6 @@ SELECT
     NULL AS home_conf,
     S.homeneutral AS home_team,
     NULL AS home_team_elo_rating
-FROM {{ ref( 'prep_schedule' ) }} AS S
+FROM {{ ref( 'nba_prep_schedule' ) }} AS S
 WHERE S.type <> 'reg_season'
 GROUP BY ALL

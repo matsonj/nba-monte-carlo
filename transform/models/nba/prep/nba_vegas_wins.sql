@@ -1,5 +1,5 @@
 SELECT
     team,
     win_total
-FROM {{ ref( 'ratings' ) }}
+FROM {{ ref( 'nba_ratings' ) }}
 GROUP BY ALL
