@@ -18,5 +18,5 @@ GROUP BY ALL
 UNION ALL
 SELECT
     *
-FROM {{ ref( 'post_season_schedule' ) }}
+FROM {{ ref( 'nba_post_season_schedule' ) }}
 */

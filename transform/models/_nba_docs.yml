@@ -1,26 +1,26 @@
 version: 2
 
 models:
-  - name: prep_nba_elo_latest
+  - name: nba_elo_latest
     tests:
       - empty_table
-  - name: prep_schedule
+  - name: nba_raw_schedule
     tests:
       - empty_table
-  - name: prep_team_ratings
+  - name: nba_raw_team_ratings
     tests:
       - empty_table
-  - name: prep_xf_series_to_seed
+  - name: nba_raw_xf_series_to_seed
     tests:
       - empty_table
-  - name: prep_latest_ratings
+  - name: nba_latest_elo
     columns:
       - name: team
         tests:
           - unique
     tests:
       - empty_table
-  - name: latest_results
+  - name: nba_latest_results
     columns:
       - name: game_id
         tests:
@@ -47,7 +47,7 @@ models:
       - name: losing_team
         tests:
           - not_null
-  - name: schedules
+  - name: nba_schedules
     columns:
       - name: game_id
         tests:
@@ -68,7 +68,7 @@ models:
         tests:
           - not_null
       - name: home_team_elo_rating
-  - name: ratings
+  - name: nba_ratings
     columns:
       - name: team
         tests:
@@ -86,19 +86,16 @@ models:
       - name: elo_rating
         tests:
           - not_null
-  - name: post_season_schedule
+  - name: nba_post_season_schedule
     tests:
       - empty_table
-  - name: reg_season_schedule
+  - name: nba_reg_season_schedule
     tests:
       - empty_table
-  - name: random_num_gen
+  - name: nba_random_num_gen
     tests:
       - empty_table
-  - name: scenario_gen
-    tests:
-      - empty_table
-  - name: teams
+  - name: nba_teams
     columns:
       - name: team_long
         tests:
@@ -108,7 +105,7 @@ models:
         tests:
           - unique
           - not_null
-  - name: vegas_wins
+  - name: nba_vegas_wins
     columns:
       - name: team
         tests:
@@ -117,7 +114,7 @@ models:
       - name: win_total
         tests:
           - not_null
-  - name: xf_series_to_seed
+  - name: nba_xf_series_to_seed
     columns:
       - name: series_id
         tests:

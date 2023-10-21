@@ -8,6 +8,6 @@ SELECT
     END AS elo_rating,
     orig.elo_rating AS original_rating,
     orig.win_total
-FROM {{ ref( 'prep_team_ratings' ) }} orig
-LEFT JOIN {{ ref( 'prep_elo_post' ) }} latest ON latest.team = orig.team
+FROM {{ ref( 'nba_raw_team_ratings' ) }} orig
+LEFT JOIN {{ ref( 'nba_latest_elo' ) }} latest ON latest.team = orig.team
 GROUP BY ALL

@@ -17,7 +17,7 @@
         ROUND(AVG(season_rank), 1) AS avg_seed,
         ROUND(PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY season_rank ASC), 1) AS seed_95th
     FROM {{ ref( 'reg_season_end' ) }} E
-    LEFT JOIN {{ ref( 'vegas_wins' ) }} V ON V.team = E.winning_team
+    LEFT JOIN {{ ref( 'nba_vegas_wins' ) }} V ON V.team = E.winning_team
     GROUP BY ALL
     )
 
@@ -34,4 +34,4 @@ SELECT
     c.made_play_in,
     {{ var( 'sim_start_game_id' ) }} AS sim_start_game_id
 FROM cte_summary C
-LEFT JOIN {{ ref( 'reg_season_actuals' ) }} A ON A.team = C.team
+LEFT JOIN {{ ref( 'nba_reg_season_actuals' ) }} A ON A.team = C.team

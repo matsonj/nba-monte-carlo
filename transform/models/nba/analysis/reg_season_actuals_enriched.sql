@@ -6,7 +6,7 @@ WITH cte_wins AS (
     SELECT 
         winning_team,
         COUNT(*) as wins
-    FROM {{ ref( 'latest_results' ) }}
+    FROM {{ ref( 'nba_latest_results' ) }}
     GROUP BY ALL
 ),
 
@@ -14,7 +14,7 @@ cte_losses AS (
     SELECT 
         losing_team,
         COUNT(*) as losses
-    FROM {{ ref( 'latest_results' ) }}
+    FROM {{ ref( 'nba_latest_results' ) }}
     GROUP BY ALL
 ),
 
@@ -22,8 +22,8 @@ cte_favored_wins AS (
     SELECT 
         LR.winning_team,
         COUNT(*) as wins
-    FROM {{ ref( 'latest_results' ) }} LR
-    INNER JOIN {{ ref( 'prep_results_log' ) }} R ON R.game_id = LR.game_id
+    FROM {{ ref( 'nba_latest_results' ) }} LR
+    INNER JOIN {{ ref( 'nba_elo_rollforward' ) }} R ON R.game_id = LR.game_id
         AND R.favored_team = LR.winning_team
     GROUP BY ALL
 ),
@@ -32,8 +32,8 @@ cte_favored_losses AS (
     SELECT 
         LR.losing_team,
         COUNT(*) as losses
-    FROM {{ ref( 'latest_results' ) }} LR
-    INNER JOIN {{ ref( 'prep_results_log' ) }} R ON R.game_id = LR.game_id
+    FROM {{ ref( 'nba_latest_results' ) }} LR
+    INNER JOIN {{ ref( 'nba_elo_rollforward' ) }} R ON R.game_id = LR.game_id
         AND R.favored_team = LR.losing_team
     GROUP BY ALL
 ),
@@ -42,8 +42,8 @@ cte_avg_opponent_wins AS (
     SELECT 
         LR.winning_team,
         COUNT(*) as wins
-    FROM {{ ref( 'latest_results' ) }} LR
-    INNER JOIN {{ ref( 'prep_results_log' ) }} R ON R.game_id = LR.game_id
+    FROM {{ ref( 'nba_latest_results' ) }} LR
+    INNER JOIN {{ ref( 'nba_elo_rollforward' ) }} R ON R.game_id = LR.game_id
         AND ( (LR.winning_team = R.home_team AND R.visiting_team_above_avg = 1)
             OR (LR.winning_team = R.visiting_team AND R.home_team_above_avg = 1) )
     GROUP BY ALL
@@ -53,8 +53,8 @@ cte_avg_opponent_losses AS (
     SELECT 
         LR.losing_team,
         COUNT(*) as losses
-    FROM {{ ref( 'latest_results' ) }} LR
-    INNER JOIN {{ ref( 'prep_results_log' ) }} R ON R.game_id = LR.game_id
+    FROM {{ ref( 'nba_latest_results' ) }} LR
+    INNER JOIN {{ ref( 'nba_elo_rollforward' ) }} R ON R.game_id = LR.game_id
         AND ( (LR.losing_team = R.visiting_team AND R.home_team_above_avg = 1)
             OR (LR.losing_team = R.home_team AND R.visiting_team_above_avg = 1) )
     GROUP BY ALL
@@ -64,7 +64,7 @@ cte_home_wins AS (
     SELECT 
         LR.home_team,
         COUNT(*) as wins
-    FROM {{ ref( 'latest_results' ) }} LR
+    FROM {{ ref( 'nba_latest_results' ) }} LR
     WHERE LR.home_team = LR.winning_team
     GROUP BY ALL   
 ),
@@ -73,7 +73,7 @@ cte_home_losses AS (
     SELECT 
         LR.home_team,
         COUNT(*) as losses
-    FROM {{ ref( 'latest_results' ) }} LR
+    FROM {{ ref( 'nba_latest_results' ) }} LR
     WHERE LR.home_team = LR.losing_team  
     GROUP BY ALL  
 )
@@ -94,7 +94,7 @@ SELECT
     COALESCE(HL.losses,0) AS home_losses,
     COALESCE(W.wins, 0) - COALESCE(HW.wins, 0) AS away_wins,
     COALESCE(L.losses, 0) - COALESCE(HL.losses, 0) AS away_losses
-FROM {{ ref( 'teams' ) }} T
+FROM {{ ref( 'nba_teams' ) }} T
 LEFT JOIN cte_wins W ON W.winning_team = T.team
 LEFT JOIN cte_losses L ON L.losing_team = T.Team
 LEFT JOIN cte_favored_wins FW ON FW.winning_team = T.team

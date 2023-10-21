@@ -27,11 +27,13 @@ models:
     nba:
       +tags: nba
       raw:
-        +materialized: table
+        +materialized: external
       prep:
-        +materialized: table
-      conformed:
         +materialized: view
+      simulator:
+        +materialized: view
+      analysis:
+        +materialized: table
     nfl:
       +tags: nfl
       raw:
@@ -39,7 +41,7 @@ models:
       prep:
         +materialized: view
       simulator:
-        +materialized: table
+        +materialized: view
       analysis:
         +materialized: table
     ncaaf:
@@ -49,7 +51,7 @@ models:
       prep:
         +materialized: view
       simulator:
-        +materialized: table
+        +materialized: view
       analysis:
         +materialized: table
 vars:
