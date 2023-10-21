@@ -1,7 +1,7 @@
 {{
     config(
         materialized='external',
-        location="../data/data_catalog/prep/{{this.name}}.parquet"
+        location="../data/data_catalog/raw/{{this.name}}.parquet"
     )
 }}
 

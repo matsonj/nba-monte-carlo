@@ -42,7 +42,7 @@ sources:
   - name: ncaaf
     schema: psa
     meta:
-      external_location: ../data/data_catalog/psa/{identifier}/*.parquet
+      external_location: ../data/ncaaf/{identifier}.csv
     tables:
       - name: ncaaf_schedule
         description: ncaa football schedule

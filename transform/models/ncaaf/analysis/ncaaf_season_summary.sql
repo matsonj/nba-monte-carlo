@@ -1,8 +1,3 @@
-{{ 
-    config(
-        materialized='external'
-) }}
-
 SELECT
     ROUND(ratings.elo_rating,0)::int || ' (' || CASE WHEN original_rating < ratings.elo_rating THEN '+' ELSE '' END || (ratings.elo_rating-original_rating)::int || ')' AS elo_rating,
     R.*
