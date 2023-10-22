@@ -1,7 +1,8 @@
 build:
-	pipx install meltano
-	meltano install
 	pip install -r requirements.txt
+	pipx ensurepath
+	pipx install meltano==3.1.0
+	meltano install
 	cd transform && dbt deps
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
@@ -14,18 +15,12 @@ run:
 serve:
 	meltano invoke evidence dev
 
+evidence-build:
+	meltano invoke evidence upgrade
+	meltano invoke evidence build
+
 docker-build:
 	docker build -t mdsbox .
-
-evidence-run:
-	meltano invoke evidence dev
-
-evidence-run-old:
-	cd analyze && npm run dev -- --host 0.0.0.0
-
-evidence-visuals:
-	make evidence-build
-	make evidence-run
 
 docker-run-evidence:
 		docker run \
