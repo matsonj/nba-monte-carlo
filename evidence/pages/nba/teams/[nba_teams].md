@@ -117,15 +117,15 @@ GROUP BY ALL
 
 ```most_recent_games
 SELECT
-    date,
-    visiting_team,
+    game_date as date,
+    vstm as visiting_team,
     '@' as " ",
-    home_team,
-    score2 || ' - ' || score1 as score,
+    hmtm as home_team,
+    home_team_score || ' - ' || visiting_team_score as score,
     winning_team,
     ABS(elo_change) AS elo_change_num1
 FROM nba_results_log RL
-ORDER BY date desc
+ORDER BY game_date desc
 ```
 
 ```game_trend
@@ -133,18 +133,19 @@ with cte_games AS (
 SELECT 0 as game_id, team, original_rating as elo_rating, 0 as elo_change 
 FROM nba_latest_elo
 UNION ALL
-SELECT game_id, visiting_team as team, visiting_team_elo_rating as elo_rating, elo_change
+SELECT game_id, vstm as team, visiting_team_elo_rating as elo_rating, elo_change
 FROM nba_results_log
 UNION ALL
-SELECT game_id, home_team as team, home_team_elo_rating as elo_rating, elo_change*-1 as elo_change
+SELECT game_id, hmtm as team, home_team_elo_rating as elo_rating, elo_change*-1 as elo_change
 FROM nba_results_log )
 SELECT 
-    COALESCE(AR.date,'2022-10-17') AS date,
+    COALESCE(AR.game_date,'2023-10-23') AS date,
     RL.team, 
     RL.elo_rating, 
     RL.elo_change,
-    sum(RL.elo_change) over (partition by team order by COALESCE(AR.date,'2022-10-17') asc rows between unbounded preceding and current row) as cumulative_elo_change_num0
+    sum(RL.elo_change) over (partition by team order by COALESCE(AR.game_date,'2023-10-23') asc rows between unbounded preceding and current row) as cumulative_elo_change_num0
 FROM cte_games RL
+LEFT JOIN nba_results_log AR ON AR.game_id = RL.game_id
 ```
 
 ## Season-to-date Results
@@ -171,8 +172,6 @@ FROM cte_games RL
     value='win_range' 
 /> 
 
-{#if game_trend.length == 0}
-
 <LineChart
     data={game_trend.filter(d => d.team === $page.params.nba_teams.toUpperCase())} 
     x=date
@@ -195,7 +194,6 @@ FROM cte_games RL
     rows=7
 />
 
-{/if}
 
 ### Playoff Odds
 

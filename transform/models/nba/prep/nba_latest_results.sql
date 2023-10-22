@@ -1,6 +1,7 @@
 with cte_inner as (
     SELECT
         S.id as game_id,
+        S."date" as game_date,
         S.HomeTm AS home_team, 
         CASE
             WHEN S.HomeTm = R.Winner THEN R.Winner_Pts
