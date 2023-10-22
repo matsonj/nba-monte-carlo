@@ -10,7 +10,7 @@ WITH cte_base AS (
 )
 
 SELECT
-    Date as "date",
+    strptime("Year" || "Date",'%Y %b %-d')::date as "date",
     "Start (ET)" as "Start (ET)",
     "Visitor/Neutral" as "VisTm",
     PTS::int as visiting_team_score,

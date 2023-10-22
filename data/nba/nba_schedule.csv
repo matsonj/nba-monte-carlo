@@ -1,4 +1,4 @@
-id,type,Date,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Arena,Notes,series_id
+id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Arena,Notes,series_id
 1,reg_season,Tue, Oct 24, 2023,7:30p,Los Angeles Lakers,,Denver Nuggets,,,Ball Arena,,0
 2,reg_season,Tue, Oct 24, 2023,10:00p,Phoenix Suns,,Golden State Warriors,,,Chase Center,,0
 3,reg_season,Wed, Oct 25, 2023,7:00p,Houston Rockets,,Orlando Magic,,,Amway Center,,0

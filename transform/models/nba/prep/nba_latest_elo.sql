@@ -22,9 +22,11 @@ final_rating AS (
     FROM union_rating
     GROUP BY ALL
 )
-SELECT f.team
-, f.elo_rating AS elo_rating
-, o.elo_rating AS original_rating
-, {{ var('latest_ratings') }} AS latest_ratings
+SELECT 
+    f.team as team_long,
+    o.team,
+    f.elo_rating AS elo_rating,
+    o.elo_rating AS original_rating,
+    {{ var('latest_ratings') }} AS latest_ratings
 FROM final_rating f
 INNER JOIN {{ ref('nba_raw_team_ratings') }} o ON f.team = o.team_long
