@@ -10,7 +10,7 @@ build:
 	mkdir -p data/data_catalog/analysis
 
 run:
-	cd transform && dbt build
+	meltano invoke dbt-duckdb build
 
 serve:
 	meltano invoke evidence dev
