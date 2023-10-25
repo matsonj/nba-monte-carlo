@@ -1,52 +1,15 @@
 version: 2
 
 models:
-  # - name: prep_nba_elo_latest
-  #   tests:
-  #     - empty_table
-  - name: nfl_prep_schedule
+  - name: nfl_raw_results
     tests:
       - empty_table
-  - name: nfl_prep_team_ratings
+  - name: nfl_raw_schedule
     tests:
       - empty_table
-  # - name: prep_xf_series_to_seed
-  #   tests:
-  #     - empty_table
-  # - name: prep_latest_ratings
-  #   columns:
-  #     - name: team
-  #       tests:
-  #         - unique
-  #   tests:
-  #     - empty_table
-  # - name: nfl_latest_results
-  #   columns:
-  #     - name: game_id
-  #       tests:
-  #         - unique
-  #         - not_null
-  #     - name: home_team
-  #       tests:
-  #         - not_null
-  #     - name: home_team_score
-  #       tests:
-  #         - not_null
-  #     - name: visiting_team
-  #       tests:
-  #         - not_null
-  #     - name: visiting_team_score
-  #       tests:
-  #         - not_null
-  #     - name: date
-  #       tests:
-  #         - not_null
-  #     - name: winning_team
-  #       tests:
-  #         - not_null
-  #     - name: losing_team
-  #       tests:
-  #         - not_null
+  - name: nfl_raw_team_ratings
+    tests:
+      - empty_table
   - name: nfl_schedules
     columns:
       - name: game_id
@@ -82,16 +45,7 @@ models:
       - name: elo_rating
         tests:
           - not_null
-  # - name: post_season_schedule
-  #   tests:
-  #     - empty_table
-  - name: nfl_reg_season_schedule
-    tests:
-      - empty_table
   - name: nfl_random_num_gen
-    tests:
-      - empty_table
-  - name: nfl_scenario_gen
     tests:
       - empty_table
   - name: nfl_teams
@@ -109,12 +63,3 @@ models:
       - name: win_total
         tests:
           - not_null
-  # - name: xf_series_to_seed
-  #   columns:
-  #     - name: series_id
-  #       tests:
-  #         - not_null
-  #         - unique
-  #     - name: seed
-  #       tests:
-  #         - not_null
