@@ -13,24 +13,14 @@ It runs practically anywhere, and has been tested in the environments below.
 | Mac (Ventura) | ✅  | ✅  | ✅  | ✅  |
 | Linux (Ubuntu 20.04) |✅  | ✅  | ✅  | ✅  |
 
-## Many Visualization Options
-### [Apache Superset](https://superset.apache.org/)
-
-![image](https://user-images.githubusercontent.com/16811433/195012880-adf8da03-ab16-4c16-8080-95514fb41c21.png)
-![image](https://user-images.githubusercontent.com/16811433/195012951-dde884a0-88f5-48d5-8203-b6f06ba7dbd4.png)
+## Beautiful serving layer
 
 ### [Evidence.dev](https://www.evidence.dev)
 1 | 2 | 3
 -|-|-
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/16811433/210928882-9853abd4-5633-4b1a-b8e6-7d63faa8c3ca.png"> | <img width="600" alt="image" src="https://user-images.githubusercontent.com/16811433/210928938-cbe97bb6-b352-4b69-8669-83289af8bd2b.png"> | <img width="600" alt="image" src="https://user-images.githubusercontent.com/16811433/210929106-6e95db75-c068-48f5-a4b3-9ed57ac0023e.png">
 
-
-
-This version can also be explored live at [mdsinabox.com](http://www.mdsinabox.com). 
-### [Rill Developer](https://www.rilldata.com/)
-<img width="1435" alt="image" src="https://user-images.githubusercontent.com/16811433/210934893-7ca7d0aa-9629-4fbb-8009-89658b92158b.png">
-
-Rill should be considered experimental - no dashboards have been defined yet!
+It can also be explored live at [mdsinabox.com](http://www.mdsinabox.com). 
 
 # Getting Started
 ## Building MDS-in-a-box in Github Codespaces
@@ -84,7 +74,7 @@ make build pipeline superset-visuals
 Make sure to open up superset when prompted (default location is 127.0.0.1:8088). 
 The username and password is "admin" and "password".
 
-## Using Docker and Kubernetes
+## Using Docker
 
 You can build a docker container by running: 
 
@@ -113,10 +103,6 @@ docker-run:
 		--env ENVIRONMENT=docker \
 		mdsbox make pipeline superset-visuals
 ```
-You can then scale out to Kubernetes, assuming you have it installed:
-```
-kubectl apply -f ./kubernetes/pod.yaml
-```
 
 # Notes on Design Choices
 
@@ -138,4 +124,4 @@ dbt-duckdb supports external tables, which are parquet files exported to the ```
 - [ ] submit your PR or open an issue!
 
 ### Source Data
-The data contained within this project comes from [538](https://data.fivethirtyeight.com/#nba-forecasts), [basketball reference](https://basketballreference.com), and [draft kings](https://www.draftkings.com). 
+The data contained within this project comes from [pro football reference](https://www.pro-football-reference.com/), [sports reference (cfb)](https://www.sports-reference.com/cfb), [basketball reference](https://basketballreference.com), and [draft kings](https://www.draftkings.com). 

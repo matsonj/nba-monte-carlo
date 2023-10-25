@@ -31,4 +31,4 @@ docker-run-evidence:
 		--env MDS_LATEST_RATINGS=true \
 		--env MDS_ENABLE_EXPORT=true \
 		--env ENVIRONMENT=docker \
-		mdsbox make pipeline evidence-visuals
+		mdsbox make run serve
