@@ -16,7 +16,7 @@ select R.*,
     R.avg_wins as predicted_wins,
     (COALESCE(R.made_postseason,0) + COALESCE(R.first_round_bye,0) )/ 10000.0 as made_playoffs_pct1
 from nfl_reg_season_summary R
-left join nfl_prep_team_ratings T on R.team = T.team
+left join nfl_ratings T on R.team = T.team
 ```
 
 ```nfl_wins_seed_scatter

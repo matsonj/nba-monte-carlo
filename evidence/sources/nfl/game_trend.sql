@@ -16,5 +16,5 @@ SELECT
     RL.elo_change,
     sum(RL.elo_change) over (partition by team order by COALESCE(AR.Week_number,0) asc rows between unbounded preceding and current row) as cumulative_elo_change_num0
 FROM cte_games RL
-LEFT JOIN nfl_reg_season_schedule AR ON
+LEFT JOIN nfl_schedules AR ON
     AR.game_id = RL.game_id
