@@ -1,63 +1,26 @@
 version: 2
 
 models:
-  - name: ncaaf_prep_results
+  - name: ncaaf_raw_results
     tests:
       - empty_table
     columns:
       - name: winner
         tests:
           - relationships:
-              to: ref('ncaaf_prep_team_ratings')
+              to: ref('ncaaf_raw_team_ratings')
               field: Team
       - name: loser
         tests:
           - relationships:
-              to: ref('ncaaf_prep_team_ratings')
+              to: ref('ncaaf_raw_team_ratings')
               field: Team
-  - name: ncaaf_prep_schedule
+  - name: ncaaf_raw_schedule
     tests:
       - empty_table
-  - name: ncaaf_prep_team_ratings
+  - name: ncaaf_raw_team_ratings
     tests:
       - empty_table
-  # - name: prep_xf_series_to_seed
-  #   tests:
-  #     - empty_table
-  # - name: prep_latest_ratings
-  #   columns:
-  #     - name: team
-  #       tests:
-  #         - unique
-  #   tests:
-  #     - empty_table
-  # - name: ncaaf_latest_results
-  #   columns:
-  #     - name: game_id
-  #       tests:
-  #         - unique
-  #         - not_null
-  #     - name: home_team
-  #       tests:
-  #         - not_null
-  #     - name: home_team_score
-  #       tests:
-  #         - not_null
-  #     - name: visiting_team
-  #       tests:
-  #         - not_null
-  #     - name: visiting_team_score
-  #       tests:
-  #         - not_null
-  #     - name: date
-  #       tests:
-  #         - not_null
-  #     - name: winning_team
-  #       tests:
-  #         - not_null
-  #     - name: losing_team
-  #       tests:
-  #         - not_null
   - name: ncaaf_schedules
     columns:
       - name: game_id
@@ -93,16 +56,7 @@ models:
       - name: elo_rating
         tests:
           - not_null
-  # - name: post_season_schedule
-  #   tests:
-  #     - empty_table
-  - name: ncaaf_reg_season_schedule
-    tests:
-      - empty_table
   - name: ncaaf_random_num_gen
-    tests:
-      - empty_table
-  - name: ncaaf_scenario_gen
     tests:
       - empty_table
   - name: ncaaf_teams

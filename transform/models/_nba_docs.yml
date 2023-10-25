@@ -1,9 +1,6 @@
 version: 2
 
 models:
-  - name: nba_elo_latest
-    tests:
-      - empty_table
   - name: nba_raw_schedule
     tests:
       - empty_table
@@ -18,8 +15,8 @@ models:
       - name: team
         tests:
           - unique
-#    tests:
-#      - empty_table
+    tests:
+      - empty_table
   - name: nba_latest_results
     columns:
       - name: game_id
