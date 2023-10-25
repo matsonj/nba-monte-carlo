@@ -20,7 +20,7 @@ jobs:
         run: make build
 
       - name: build pipeline
-        run: make run
+        run: meltano invoke dbt-duckdb build
         
       - name: evidence install & build
         run: |
