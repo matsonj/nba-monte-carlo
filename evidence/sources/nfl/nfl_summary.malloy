@@ -12,4 +12,10 @@ source: season_results is duckdb.table('../../../data/data_catalog/conformed/nfl
         group_by: conf
         aggregate: tot_wins, percent_of_wins
     }
+
+}
+
+run: season_results -> {
+    group_by: conf
+    aggregate: tot_wins, percent_of_wins
 }

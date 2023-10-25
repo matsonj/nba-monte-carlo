@@ -1,4 +1,4 @@
-FROM nikolaik/python-nodejs:python3.9-nodejs19-bullseye
+FROM nikolaik/python-nodejs:python3.11-nodejs20-bullseye
 
 ARG SSL_KEYSTORE_PASSWORD
 USER root
@@ -21,18 +21,12 @@ RUN apt-get update && apt-get install -y \
   musl-dev \
   glibc-source \
   && rm -rf /var/lib/apt/lists/* \
-  && wget https://github.com/duckdb/duckdb/releases/download/v0.6.0/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip \
-  && pip install --no-cache-dir meltano==2.10.0
-
-COPY meltano.yml ./
-
-RUN meltano --log-level=debug --environment=docker install extractors
-RUN meltano --log-level=debug --environment=docker install loaders
-RUN meltano --log-level=debug --environment=docker install mappers
-RUN meltano --log-level=debug --environment=docker install utility dbt-duckdb
+  && wget https://github.com/duckdb/duckdb/releases/download/v0.9.1/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip
 
 COPY data ./data
 COPY transform ./transform
-COPY visuals ./visuals
 COPY Makefile .
-COPY analyze ./analyze
+COPY evidence ./evidence
+COPY requirements.txt .
+
+RUN make build

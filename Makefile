@@ -1,55 +1,26 @@
 build:
+	pip install -r requirements.txt
+	pipx ensurepath
+	pipx install meltano==3.1.0
 	meltano install
-
-pipeline:
-	meltano run tap-spreadsheets-anywhere add-timestamps target-parquet
-	mkdir -p data/data_catalog/conformed
-	mkdir -p data/data_catalog/prep
-	mkdir -p data/data_catalog/raw
 	meltano invoke dbt-duckdb deps
-	meltano invoke dbt-duckdb run-operation elo_rollforward
+	mkdir -p data/data_catalog/raw
+	mkdir -p data/data_catalog/prep
+	mkdir -p data/data_catalog/simulator
+	mkdir -p data/data_catalog/analysis
+
+run:
 	meltano invoke dbt-duckdb build
 
-docker-build:
-	docker build -t mdsbox .
-
-superset-visuals:
-	meltano install utility superset
-	meltano invoke superset fab create-admin --username admin --firstname lebron --lastname james --email admin@admin.org --password password
-	meltano invoke superset import-datasources -p visuals/datasources.yml
-	meltano invoke superset import-dashboards -p visuals/dashboards.json
-	meltano invoke superset:ui
-
-docker-run-superset:
-	docker run \
-		--publish 8088:8088 \
-	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
-		--env MDS_SCENARIOS=10000 \
-		--env MDS_INCLUDE_ACTUALS=true \
-		--env MDS_LATEST_RATINGS=true \
-		--env MDS_ENABLE_EXPORT=true \
-		--env ENVIRONMENT=docker \
-		mdsbox make pipeline superset-visuals
+serve:
+	meltano invoke evidence dev
 
 evidence-build:
 	meltano invoke evidence upgrade
 	meltano invoke evidence build
 
-evidence-run:
-	meltano invoke evidence dev
-
-evidence-build-old:
-	cd analyze && npm i -force
-	cd analyze && mkdir -p data_catalog
-	cp -r data/data_catalog/* analyze/data_catalog
-	cp analyze/data_catalog/mdsbox.db analyze/
-
-evidence-run-old:
-	cd analyze && npm run dev -- --host 0.0.0.0
-
-evidence-visuals:
-	make evidence-build
-	make evidence-run
+docker-build:
+	docker build -t mdsbox .
 
 docker-run-evidence:
 		docker run \
@@ -60,31 +31,4 @@ docker-run-evidence:
 		--env MDS_LATEST_RATINGS=true \
 		--env MDS_ENABLE_EXPORT=true \
 		--env ENVIRONMENT=docker \
-		mdsbox make pipeline evidence-visuals
-
-rill-install:
-	curl -s https://cdn.rilldata.com/install.sh | bash
-
-rill-build:
-	mkdir -p rill
-	cd rill && rill init
-	cd rill && for file in ../data/data_catalog/conformed/*.parquet; do rill source add $$file; done
-
-rill-run:
-	cd rill && rill start
-
-rill-visuals:
-	make rill-install
-	make rill-build
-	make rill-run
-
-docker-run-rill:
-		docker run \
-		--publish 9009:9009 \
-	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
-		--env MDS_SCENARIOS=10000 \
-		--env MDS_INCLUDE_ACTUALS=true \
-		--env MDS_LATEST_RATINGS=true \
-		--env MDS_ENABLE_EXPORT=true \
-		--env ENVIRONMENT=docker \
-		mdsbox make pipeline rill-visuals	
+		mdsbox make run serve

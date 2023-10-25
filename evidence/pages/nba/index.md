@@ -63,7 +63,7 @@ ORDER BY sort_key
 ```
 
 ```thru_date
-SELECT COALESCE(max(date),CURRENT_DATE) as end_date FROM latest_results
+SELECT COALESCE(max(game_date),CURRENT_DATE) as end_date FROM nba_latest_results
 ```
 ## Conference Summaries
 
