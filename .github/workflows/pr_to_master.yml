@@ -14,23 +14,10 @@ jobs:
       - name: Check out
         uses: actions/checkout@master
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
       - name: python basics
-        # should prob shift to requirements.txt, but setting like this for now
-        run: |
-          python3 -m pip install --user pipx
-          python3 -m pipx ensurepath
-          pipx install meltano==2.10.0
-
-      - name: meltano install
-        # explicitly not running all installs, since testing the visuals is out of scope
-        run: |
-          meltano --log-level=debug install extractors
-          meltano --log-level=debug install loaders
-          meltano --log-level=debug install mappers
-          meltano --log-level=debug install utility dbt-duckdb
-          meltano --log-level=debug install utility evidence
+        run: make build
 
       - name: build pipeline
-        run: make pipeline
+        run: make run

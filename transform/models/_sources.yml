@@ -4,34 +4,21 @@ sources:
   - name: nba
     schema: psa
     meta:
-      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
+      external_location: ../data/nba/{identifier}.csv
     tables:
-      - name: schedule
+      - name: nba_schedule
         identifier: nba_schedule
         description: this is the nba schedule
-      - name: team_ratings
+      - name: nba_team_ratings
         description: team ELO ratings & win totals
       - name: xf_series_to_seed
         description: cross ref table to match series to seeds
-      - name: nba_elo_latest
-        description: ratings from 538 repo
-      - name: latest_RAPTOR_by_player
-        description: 538 RAPTOR ratings by player
-      - name: latest_RAPTOR_by_team
-        description: 538 RAPTOR ratings by player by team & game type
-  - name: nba_prep
-    schema: prep
-    meta: 
-      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/prep/{identifier}.parquet"
-    tables:
-      - name: elo_post
-        description: elo after running proc for record actual results
-      - name: results_log
-        description: game results with elo before each game. feeds into elo_post, which holds latest ratings
+      - name: nba_results
+        description: nba results for the current season
   - name: nfl
     schema: psa
     meta:
-      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
+      external_location: ../data/nfl/{identifier}.csv
     tables:
       - name: nfl_schedule
         description: nfl schedule
@@ -42,7 +29,7 @@ sources:
   - name: ncaaf
     schema: psa
     meta:
-      external_location: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/psa/{identifier}/*.parquet"
+      external_location: ../data/ncaaf/{identifier}.csv
     tables:
       - name: ncaaf_schedule
         description: ncaa football schedule
