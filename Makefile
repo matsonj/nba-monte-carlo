@@ -3,7 +3,7 @@ build:
 	pipx ensurepath
 	pipx install meltano==3.1.0
 	meltano install
-	cd transform && dbt deps
+	meltano invoke dbt-duckdb deps
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
 	mkdir -p data/data_catalog/simulator
