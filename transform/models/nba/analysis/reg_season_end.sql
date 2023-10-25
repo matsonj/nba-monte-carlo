@@ -6,10 +6,10 @@ WITH cte_wins AS (
             WHEN S.winning_team = S.home_team THEN S.home_conf
             ELSE S.visiting_conf
         END AS conf,
-        CASE
+    /*    CASE
             WHEN S.winning_team = S.home_team THEN S.home_team_elo_rating
             ELSE S.visiting_team_elo_rating
-        END AS elo_rating,
+        END AS elo_rating, */
         COUNT(*) AS wins
     FROM {{ ref( 'reg_season_simulator' ) }} S
     GROUP BY ALL
@@ -40,6 +40,8 @@ cte_made_playoffs AS (
 )
 
 SELECT 
-    *,
+    MP.*,
+    LE.elo_rating,
     {{ var( 'sim_start_game_id' ) }} AS sim_start_game_id
-FROM cte_made_playoffs
+FROM cte_made_playoffs MP
+LEFT JOIN {{ ref( 'nba_latest_elo' ) }} LE ON LE.team = MP.winning_team

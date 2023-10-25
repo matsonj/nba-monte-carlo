@@ -22,14 +22,18 @@ with cte_inner as (
     GROUP BY ALL
 ),
 cte_outer AS (
-    SELECT *,
+    SELECT I.*,
         CASE
             WHEN visiting_team_score > home_team_score THEN 1
             WHEN visiting_team_score = home_team_score THEN 0.5
             ELSE 0
         END AS game_result,
-        ABS( visiting_team_score - home_team_score ) as margin
-    FROM cte_inner
+        ABS( visiting_team_score - home_team_score ) as margin,
+        W.team AS winning_team_short,
+        L.team AS losing_team_short
+    FROM cte_inner I
+    LEFT JOIN {{ ref( 'nba_teams' ) }} W ON W.team_long = I.winning_team
+    LEFT JOIN {{ ref( 'nba_teams' ) }} L ON L.team_long = I.losing_team
 )
 SELECT *,
     game_result AS game_result_v2
