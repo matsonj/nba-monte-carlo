@@ -9,7 +9,7 @@ meltano:
       type: duckdb
       threads: 4
       external_root: "{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/analysis"
-      path: ../data/data_catalog/mdsbox.duckdb
+      path: "{{ env_var('DBT_DUCKDB_PATH') }}"
     staging:
       type: duckdb
       threads: 4
