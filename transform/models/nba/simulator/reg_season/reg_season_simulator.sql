@@ -4,7 +4,7 @@ SELECT
     {{ elo_calc( 'S.home_team_elo_rating', 'S.visiting_team_elo_rating', var('nba_elo_offset') ) }} as home_team_win_probability,
     R.rand_result,
     CASE 
-        WHEN LR.include_actuals = true THEN LR.winning_team
+        WHEN LR.include_actuals = true THEN LR.winning_team_short
         WHEN {{ elo_calc( 'S.home_team_elo_rating', 'S.visiting_team_elo_rating', var('nba_elo_offset') ) }}  >= R.rand_result THEN S.home_team
         ELSE S.visiting_team
     END AS winning_team,
