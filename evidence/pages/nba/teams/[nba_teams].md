@@ -139,7 +139,7 @@ UNION ALL
 SELECT game_id, hmtm as team, home_team_elo_rating as elo_rating, elo_change*-1 as elo_change
 FROM nba_results_log )
 SELECT 
-    COALESCE(AR.game_date,'2023-10-23') AS date,
+    COALESCE(AR.game_date,'2023-10-23')::date AS date,
     RL.team, 
     RL.elo_rating, 
     RL.elo_change,
