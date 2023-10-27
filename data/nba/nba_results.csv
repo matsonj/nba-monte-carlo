@@ -1,2 +1,15 @@
-Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Arena,Notes
-Tue, Oct 24,2023,7:30p,Los Angeles Lakers,107,Denver Nuggets,119,,Ball Arena,
+Date,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,,,Attend.,Arena,Notes
+Tue Oct 24 2023,7:30p,Los Angeles Lakers,107,Denver Nuggets,119,Box Score,,19842,Ball Arena,
+Tue Oct 24 2023,10:00p,Phoenix Suns,108,Golden State Warriors,104,Box Score,,18064,Chase Center,
+Wed Oct 25 2023,7:00p,Houston Rockets,86,Orlando Magic,116,Box Score,,18846,Amway Center,
+Wed Oct 25 2023,7:00p,Boston Celtics,108,New York Knicks,104,Box Score,,19812,Madison Square Garden (IV),
+Wed Oct 25 2023,7:00p,Washington Wizards,120,Indiana Pacers,143,Box Score,,16004,Gainbridge Fieldhouse,
+Wed Oct 25 2023,7:00p,Atlanta Hawks,110,Charlotte Hornets,116,Box Score,,16129,Spectrum Center,
+Wed Oct 25 2023,7:30p,Detroit Pistons,102,Miami Heat,103,Box Score,,19695,Kaseya Center,
+Wed Oct 25 2023,7:30p,Minnesota Timberwolves,94,Toronto Raptors,97,Box Score,,19800,Scotiabank Arena,
+Wed Oct 25 2023,7:30p,Cleveland Cavaliers,114,Brooklyn Nets,113,Box Score,,17931,Barclays Center,
+Wed Oct 25 2023,8:00p,New Orleans Pelicans,111,Memphis Grizzlies,104,Box Score,,17798,FedEx Forum,
+Wed Oct 25 2023,8:00p,Oklahoma City Thunder,124,Chicago Bulls,104,Box Score,,21369,United Center,
+Wed Oct 25 2023,9:00p,Sacramento Kings,130,Utah Jazz,114,Box Score,,18206,Delta Center,
+Wed Oct 25 2023,9:30p,Dallas Mavericks,126,San Antonio Spurs,119,Box Score,,18947,AT&T Center,
+Wed Oct 25 2023,10:30p,Portland Trail Blazers,111,Los Angeles Clippers,123,Box Score,,19370,Crypto.com Arena,
