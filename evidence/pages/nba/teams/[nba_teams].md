@@ -146,7 +146,7 @@ SELECT
     sum(RL.elo_change) over (partition by team order by COALESCE(AR.game_date,'2023-10-23') asc rows between unbounded preceding and current row) as cumulative_elo_change_num0
 FROM cte_games RL
 LEFT JOIN nba_results_log AR ON AR.game_id = RL.game_id
-ORDER BY RL.game_id
+ORDER BY date
 ```
 
 ## Season-to-date Results
@@ -178,7 +178,6 @@ ORDER BY RL.game_id
     x=date
     y=cumulative_elo_change_num0
     title='elo change over time'
-    sort=true
 />
 
 ### Most Recent Games

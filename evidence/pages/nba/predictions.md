@@ -46,7 +46,6 @@ FROM reg_season_predictions
 WHERE include_actuals = false AND winning_team = home_team
 ORDER BY game_id
 ```
-{#if past_games_summary.length == 0}
 
 ## Past Performance
 
@@ -71,7 +70,6 @@ ORDER BY game_id
     rows=30
 />
 
-{/if}
 ## Future Predictions
 
 _Home field advantage has not been included in these predictions. Historically, NBA teams win 62% of their games at home._
