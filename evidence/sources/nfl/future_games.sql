@@ -9,7 +9,7 @@ SELECT
     home_team_win_probability/10000 AS home_win_pct1,
     american_odds AS odds,
     CASE
-        WHEN home_win_pct1 >= 0.52 THEN ROUND( -53.839 * home_win_pct1^2 + 44.494 * home_win_pct1 - 10.287, 1 )
+        WHEN home_win_pct1 >= 0.50 THEN ROUND( -53.839 * home_win_pct1^2 + 44.494 * home_win_pct1 - 10.287, 1 )
         ELSE ROUND( 52.822 * home_win_pct1^2 -67.249 * home_win_pct1 + 22.302, 1 )
     END AS implied_line_num1
 FROM nfl_reg_season_predictions
