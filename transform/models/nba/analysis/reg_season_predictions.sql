@@ -1,5 +1,6 @@
 SELECT 
     game_id,
+    date,
     home_team,
     home_team_elo_rating,
     visiting_team,
