@@ -12,4 +12,4 @@ SELECT
 FROM {{ ref( 'nba_schedules' ) }} S
 LEFT JOIN {{ ref( 'nba_random_num_gen' ) }} R ON R.game_id = S.game_id
 LEFT JOIN {{ ref( 'nba_latest_results' ) }} LR ON LR.game_id = S.game_id
-WHERE S.type = 'reg_season'
+WHERE S.type IN ('reg_season','tournament')

@@ -14,9 +14,11 @@ SELECT
    LR.home_team_score,
    LR.visiting_team_score,
    H.team AS hmTm,
-   V.team AS VsTm
+   V.team AS VsTm,
+   S.type
 FROM  {{ ref( 'nba_elo_rollforward' ) }} RL
 LEFT JOIN cte_avg_elo A ON 1=1
 LEFT JOIN {{ ref( 'nba_latest_results' ) }} LR ON LR.game_id = RL.game_id
 LEFT JOIN {{ ref( 'nba_teams' ) }} H ON H.team_long = RL.home_team
 LEFT JOIN {{ ref( 'nba_teams' ) }} V ON V.team_long = RL.visiting_team 
+LEFT JOIN {{ ref( 'nba_schedules' ) }} S ON S.game_id = RL.game_id

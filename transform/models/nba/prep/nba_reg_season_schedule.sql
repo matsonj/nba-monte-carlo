@@ -1,7 +1,9 @@
 SELECT
     S.id AS game_id,
     S.date as date,
-    'reg_season' AS type,
+    CASE WHEN s.notes = 'In-Season Tournament' 
+        THEN 'tournament' ELSE 'reg_season' END 
+    AS type,
     0 as series_id,
     V.conf AS visiting_conf,
     V.team AS visiting_team,
