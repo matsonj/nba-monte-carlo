@@ -53,7 +53,7 @@ models:
       - name: type
         tests:
           - accepted_values:
-              values: ['reg_season','playin_r1','playin_r2','playoffs_r1','playoffs_r2','playoffs_r3','playoffs_r4']
+              values: ['reg_season','playin_r1','playin_r2','playoffs_r1','playoffs_r2','playoffs_r3','playoffs_r4','tournament']
       - name: series_id
       - name: visiting_conf
       - name: visiting_team
