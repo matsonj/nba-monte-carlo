@@ -118,7 +118,7 @@ GROUP BY ALL
 ```most_recent_games
 SELECT
     game_date as date,
-    CASE WHEN type = 'tournament' THEN '🏆' ELSE '' END AS "",
+    CASE WHEN type = 'tournament' THEN '🏆' ELSE '' END AS "T",
     vstm as visiting_team,
     '@' as " ",
     hmtm as home_team,
