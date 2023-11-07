@@ -36,6 +36,7 @@ ORDER BY accuracy_pct1 DESC
 ```future_games
 SELECT
     game_id,
+    CASE WHEN type = 'tournament' THEN '🏆' ELSE '' END AS "T",
     visiting_team as visitor,
     visiting_team_elo_rating AS visitor_ELO,
     home_team as home, 
