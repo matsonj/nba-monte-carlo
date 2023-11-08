@@ -108,7 +108,7 @@ _It should be noted that predicted results do not have tiebreakers applied._
   <Column id=visitor_ELO title="Elo Rtg"/>
   <Column id=home/>
   <Column id=home_ELO title="Elo Rtg"/>
-  <Column id=home_win_pct1 title="Win % (Home)" contentType=colorscale scaleColor=blue/>
+  <Column id=home_win_pct1 title="Win % (Home)"/>
   <Column id=american_odds align=right title="Odds (Home)"/>
   <Column id=implied_line_num1 title="Line (Home)"/>
 </DataTable>
