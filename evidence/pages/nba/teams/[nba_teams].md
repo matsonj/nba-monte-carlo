@@ -49,7 +49,15 @@ sources:
 <DataTable
     data={most_recent_games.filter(d => d.home_team === $page.params.nba_teams.toUpperCase() | d.visiting_team === $page.params.nba_teams.toUpperCase())} 
     rows=5
-/>
+>
+  <Column id=date/>
+  <Column id=T title=" "/>
+  <Column id=visiting_team/>
+  <Column id=" "/>
+  <Column id=home_team/>
+  <Column id=winning_team/>
+  <Column id=score/>
+</DataTable>
 
 
 ### Matchup Summary
