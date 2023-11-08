@@ -10,7 +10,7 @@ sources:
 
 ## Future Predictions
 
-_Home field advantage has not been included in these predictions. Historically, NFL teams win 57.5% of their games at home._
+_Historically, NFL teams win 57.5% of their games at home, which explains why teams with lower elo ratings can be predicted to win._
 
 <DataTable
     data={future_games}
@@ -43,8 +43,12 @@ _Home field advantage has not been included in these predictions. Historically, 
     value='accuracy_pct1' 
 /> 
 
-<DataTable
-    data={past_games_summary_by_team}
-    title='Prediction Accuracy by Team'
-    rows=32
-/>
+<Accordion>
+  <AccordionItem title="Detailed Results by Team">
+    <DataTable
+        data={past_games_summary_by_team}
+        title='Prediction Accuracy by Team'
+        rows=32
+    />
+  </AccordionItem>
+</Accordion>

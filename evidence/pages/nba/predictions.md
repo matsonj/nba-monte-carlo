@@ -39,7 +39,7 @@ sources:
 
 ## Future Predictions
 
-_Home field advantage has not been included in these predictions. Historically, NBA teams win 62% of their games at home._
+_Historically, NBA teams win 62% of their games at home, which explains why teams with lower elo ratings can be predicted to win._
 
 
 <DataTable data={future_games} rows=15 >
