@@ -1,17 +1,11 @@
+---
+sources:
+  - seed_details: nba/seed_details.sql
+---
+
 # Advanced Analytical views 
 
 This is experimental and may break at any time
-
-```seed_details
-SELECT
-    winning_team as team,
-    season_rank as seed,
-    conf,
-    count(*) / 10000.0 as occurances_pct1
-FROM reg_season_end
-GROUP BY ALL
-ORDER BY seed, count(*) DESC
-```
 
 ```seed_details_cdf
 WITH 
