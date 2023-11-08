@@ -25,18 +25,24 @@ sources:
     value='accuracy_pct1' 
 /> 
 
-<DataTable
-    data={past_games_summary_by_team}
-    title='Prediction Accuracy by Team'
-    rows=30
-/>
+<Accordion>
+  <AccordionItem title="Detailed Results by Team">
+    <DataTable
+        data={past_games_summary_by_team}
+        title='Prediction Accuracy by Team'
+        rows=30
+    />
+  </AccordionItem>
+</Accordion>
+
+
 
 ## Future Predictions
 
 _Home field advantage has not been included in these predictions. Historically, NBA teams win 62% of their games at home._
 
 
-<DataTable data={future_games} >
+<DataTable data={future_games} rows=15 >
   <Column id=game_id/>
   <Column id=T title=" "/>
   <Column id=visitor/>
