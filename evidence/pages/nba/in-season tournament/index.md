@@ -1,93 +1,11 @@
-```future_games
-SELECT
-    date,
-    visiting_team as visitor,
-    visiting_team_elo_rating AS visitor_ELO,
-    home_team as home, 
-    home_team_elo_rating AS home_ELO,
-    home_team_win_probability/10000 AS home_team_win_pct1,
-    american_odds
-FROM reg_season_predictions
-WHERE include_actuals = false AND winning_team = home_team and type = 'tournament'
-ORDER BY game_id
-```
-
-```past_games
-SELECT *,
-    CASE
-        WHEN (home_team_win_probability > 5000.0 AND winning_team = home_team)
-            OR (home_team_win_probability < 5000.0 AND winning_team = visiting_team)
-            THEN 1 ELSE 0 END AS 'accurate_guess'
-FROM reg_season_predictions
-WHERE include_actuals = true and type = 'tournament'
-ORDER BY game_id
-```
-
-```standings
-WITH cte_wins AS (
-    SELECT
-        S.winning_team,
-        COUNT(*) AS wins
-    FROM ${past_games} S
-    GROUP BY ALL
-),
-cte_losses AS (
-    SELECT
-        CASE WHEN S.home_team = S.winning_team 
-            THEN S.visiting_team ELSE S.home_team
-        END AS losing_team,
-        COUNT(*) AS losses
-    FROM ${past_games} S
-    GROUP BY ALL
-)
-SELECT 
-    T.team,
-    '/nba/teams/' || T.team as team_link,
-    T.conf,
-    COALESCE(W.wins,0) AS wins,
-    COALESCE(L.losses,0) as losses,
-    COALESCE(W.wins,0) || '-' || COALESCE(L.losses,0) AS record,
-    T.tournament_group as group,
-    R.won_group AS won_group_pct1,
-    R.made_wildcard AS won_wildcard_pct1,
-    R.made_tournament AS made_tournament_pct1,
-    ROUND(R.wins,1) || '-' || ROUND(R.losses,1) AS proj_record 
-FROM nba_teams T
-    LEFT JOIN cte_wins W ON W.winning_team = T.team
-    LEFT JOIN cte_losses L ON L .losing_team = T.team
-    LEFT JOIN ${tournament_results} R ON R.winning_team = T.team
-GROUP BY ALL
-ORDER BY T.tournament_group, made_tournament_pct1 DESC
-```
-
-
-```tournament_results
-FROM tournament_end
-SELECT
-    winning_team,
-    tournament_group,
-    sum(made_tournament) / 10000.0 as won_group,
-    sum(made_wildcard) / 30000.0 as made_wildcard,
-    sum(made_tournament) / 10000.0 + sum(made_wildcard) / 30000.0 as made_tournament,
-    avg(wins) as wins,
-    avg(losses) as losses
-GROUP BY ALL
-ORDER BY tournament_group, made_tournament DESC
-```
-
-```most_recent_games
-SELECT
-    game_date as date,
-    vstm as visiting_team,
-    '@' as " ",
-    hmtm as home_team,
-    home_team_score || ' - ' || visiting_team_score as score,
-    winning_team,
-    ABS(elo_change) AS elo_change_num1
-FROM nba_results_log RL
-WHERE RL.type = 'tournament'
-ORDER BY game_date desc
-```
+---
+sources:
+  - future_games: nba/future_games.sql
+  - past_games: nba/past_games.sql
+  - tournament_standings: nba/tournament_standings.sql
+  - tournament_results: nba/tournament_results.sql
+  - most_recent_games: nba/most_recent_games.sql
+---
 
 # NBA In-season Tournament
 
@@ -101,7 +19,7 @@ _It should be noted that predicted results do not have tiebreakers applied._
 
         ### Group A Standings
 
-        <DataTable data={standings.filter(d => d.group === "east_a")} link=team_link rows=5>
+        <DataTable data={tournament_standings.filter(d => d.group === "east_a")} link=team_link rows=5>
         <Column id=team/>
         <Column id=record/>
         <Column id=proj_record/>
@@ -112,7 +30,7 @@ _It should be noted that predicted results do not have tiebreakers applied._
 
         ### Group B Standings
 
-        <DataTable data={standings.filter(d => d.group === "east_b")} link=team_link rows=5>
+        <DataTable data={tournament_standings.filter(d => d.group === "east_b")} link=team_link rows=5>
         <Column id=team/>
         <Column id=record/>
         <Column id=proj_record/>
@@ -123,7 +41,7 @@ _It should be noted that predicted results do not have tiebreakers applied._
 
         ### Group C Standings
 
-        <DataTable data={standings.filter(d => d.group === "east_c")} link=team_link rows=5>
+        <DataTable data={tournament_standings.filter(d => d.group === "east_c")} link=team_link rows=5>
         <Column id=team/>
         <Column id=record/>
         <Column id=proj_record/>
@@ -137,7 +55,7 @@ _It should be noted that predicted results do not have tiebreakers applied._
 
         ### Group A Standings
 
-        <DataTable data={standings.filter(d => d.group === "west_a")} link=team_link rows=5>
+        <DataTable data={tournament_standings.filter(d => d.group === "west_a")} link=team_link rows=5>
         <Column id=team/>
         <Column id=record/>
         <Column id=proj_record/>
@@ -148,7 +66,7 @@ _It should be noted that predicted results do not have tiebreakers applied._
 
         ### Group B Standings
 
-        <DataTable data={standings.filter(d => d.group === "west_b")} link=team_link rows=5>
+        <DataTable data={tournament_standings.filter(d => d.group === "west_b")} link=team_link rows=5>
         <Column id=team/>
         <Column id=record/>
         <Column id=proj_record/>
@@ -159,7 +77,7 @@ _It should be noted that predicted results do not have tiebreakers applied._
 
         ### Group C Standings
 
-        <DataTable data={standings.filter(d => d.group === "west_c")} link=team_link rows=5>
+        <DataTable data={tournament_standings.filter(d => d.group === "west_c")} link=team_link rows=5>
         <Column id=team/>
         <Column id=record/>
         <Column id=proj_record/>
@@ -173,16 +91,28 @@ _It should be noted that predicted results do not have tiebreakers applied._
 
 ## Recent Games
 
-<DataTable
-    data={most_recent_games} 
-    rows=5
-/>
+<DataTable data={most_recent_games.filter(d => d.type === "tournament")} rows=5>
+  <Column id=date/>
+  <Column id=visiting_team/>
+  <Column id=" "/>
+  <Column id=home_team/>
+  <Column id=winning_team/>
+  <Column id=score/>
+</DataTable>
 
 ## Upcoming Games
 
-<DataTable
-    data={future_games} 
-/>
+<DataTable data={future_games.filter(d => d.type === "tournament")} >
+  <Column id=game_id/>
+  <Column id=visitor/>
+  <Column id=visitor_ELO title="Elo Rtg"/>
+  <Column id=home/>
+  <Column id=home_ELO title="Elo Rtg"/>
+  <Column id=home_win_pct1 title="Win % (Home)" contentType=colorscale scaleColor=blue/>
+  <Column id=american_odds align=right title="Odds (Home)"/>
+  <Column id=implied_line_num1 title="Line (Home)"/>
+</DataTable>
+
 
 ## Predicted Matchups - Knockout Round
 
