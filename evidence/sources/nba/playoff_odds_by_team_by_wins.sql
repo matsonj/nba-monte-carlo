@@ -1,6 +1,6 @@
 SELECT
     winning_team as team,
- --   wins as wins,
+    wins as wins,
     conf,
     count(*) / 10000.0 as odds_pct1,
     case when season_rank <= 6 then 'top six seed'
