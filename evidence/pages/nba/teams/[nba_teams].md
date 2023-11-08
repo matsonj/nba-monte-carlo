@@ -5,7 +5,7 @@ sources:
   - elo_latest: nba/elo_latest.sql
   - seed_details: nba/seed_details.sql
   - wins_details: nba/wins_details.sql
-  - wins_seed_scatter: nba/wins_seed_scatter.sql
+  - playoff_wins: nba/playoff_odds_by_team_by_wins.sql
   - playoff_odds: nba/playoff_odds.sql
   - most_recent_games: nba/most_recent_games.sql
   - game_trend: nba/game_trend.sql
@@ -86,7 +86,7 @@ sources:
 /> 
 
 <AreaChart 
-    data={wins_seed_scatter.filter(d => d.team === $page.params.nba_teams.toUpperCase())}
+    data={playoff_wins.filter(d => d.team === $page.params.nba_teams.toUpperCase())}
     x=wins
     y=odds_pct1
     series=season_result
