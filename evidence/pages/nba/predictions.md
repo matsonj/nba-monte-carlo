@@ -1,56 +1,12 @@
+---
+sources:
+  - future_games: nba/future_games.sql
+  - past_games: nba/past_games.sql
+  - past_games_summary: nba/past_games_summary.sql
+  - past_games_summary_by_team: nba/past_games_summary_by_team.sql
+---
+
 # Predictions
-
-```past_games
-SELECT *,
-    CASE
-        WHEN (home_team_win_probability > 5000.0 AND winning_team = home_team)
-            OR (home_team_win_probability < 5000.0 AND winning_team = visiting_team)
-            THEN 1 ELSE 0 END AS 'accurate_guess'
-FROM reg_season_predictions
-WHERE include_actuals = true
-ORDER BY game_id
-```
-
-```past_games_summary
-SELECT
-    COUNT(*) as total_games_played, 
-    SUM(accurate_guess) AS correct_predictions,
-    correct_predictions/total_games_played::real AS accuracy_pct1
-FROM ${past_games}
-```
-
-```past_games_summary_by_team
-WITH cte_team AS 
-    (SELECT winning_team AS team FROM ${past_games} GROUP BY ALL)
-SELECT
-    T.Team,
-    COUNT(*) as total_games_played, 
-    SUM(PG.accurate_guess) AS correct_predictions,
-    correct_predictions/total_games_played::real AS accuracy_pct1
-FROM ${past_games} PG
-    LEFT JOIN cte_team T ON T.team = PG.visiting_team OR T.Team = PG.home_team
-GROUP BY ALL
-ORDER BY accuracy_pct1 DESC
-```
-
-```future_games
-SELECT
-    game_id,
-    CASE WHEN type = 'tournament' THEN '🏆' ELSE '' END AS "T",
-    visiting_team as visitor,
-    visiting_team_elo_rating AS visitor_ELO,
-    home_team as home, 
-    home_team_elo_rating AS home_ELO,
-    home_team_win_probability/10000 AS home_win_pct1,
-    american_odds,
-    CASE
-        WHEN home_win_pct1 >= 0.50 THEN ROUND( -30.564 * home_win_pct1 + 14.763, 1 )
-        ELSE ROUND( -30.564 * home_win_pct1 + 15.801, 1 )
-    END AS implied_line_num1
-FROM reg_season_predictions
-WHERE include_actuals = false AND winning_team = home_team
-ORDER BY game_id
-```
 
 ## Past Performance
 
@@ -80,8 +36,14 @@ ORDER BY game_id
 _Home field advantage has not been included in these predictions. Historically, NBA teams win 62% of their games at home._
 
 
-<DataTable
-    data={future_games}
-    title='Predictions'
-    rows=25
-/>
+<DataTable data={future_games} >
+  <Column id=game_id/>
+  <Column id=T title=" "/>
+  <Column id=visitor/>
+  <Column id=visitor_ELO title="Elo Rtg"/>
+  <Column id=home/>
+  <Column id=home_ELO title="Elo Rtg"/>
+  <Column id=home_win_pct1 title="Win % (Home)"/>
+  <Column id=american_odds align=right title="Odds (Home)"/>
+  <Column id=implied_line_num1 title="Line (Home)"/>
+</DataTable>
