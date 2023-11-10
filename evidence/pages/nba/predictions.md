@@ -52,4 +52,5 @@ _Historically, NBA teams win 62% of their games at home, which explains why team
   <Column id=home_win_pct1 title="Win % (Home)"/>
   <Column id=american_odds align=right title="Odds (Home)"/>
   <Column id=implied_line_num1 title="Line (Home)"/>
+  <Column id=predicted_score title="Score"/>
 </DataTable>

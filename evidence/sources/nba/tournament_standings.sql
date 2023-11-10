@@ -15,6 +15,15 @@ cte_losses AS (
     FROM ${past_games} S
     WHERE s.type = 'tournament'
     GROUP BY ALL
+),
+cte_scores AS (
+    FROM nba_results_by_team
+    SELECT
+        team,
+        avg(score) as pts,
+        sum(margin) as margin
+    WHERE type = 'tournament'
+    group by all
 )
 SELECT 
     T.team,
@@ -23,6 +32,8 @@ SELECT
     COALESCE(W.wins,0) AS wins,
     COALESCE(L.losses,0) as losses,
     COALESCE(W.wins,0) || '-' || COALESCE(L.losses,0) AS record,
+    coalesce(S.margin,0) as margin,
+    CASE WHEN S.margin > 0 THEN '+' || margin ELSE margin::varchar END AS pt_diff,   
     T.tournament_group as group,
     R.won_group AS won_group_pct1,
     R.made_wildcard AS won_wildcard_pct1,
@@ -32,5 +43,6 @@ FROM nba_teams T
     LEFT JOIN cte_wins W ON W.winning_team = T.team
     LEFT JOIN cte_losses L ON L .losing_team = T.team
     LEFT JOIN ${tournament_results} R ON R.winning_team = T.team
+    LEFT JOIN cte_scores S ON S.team = T.team
 GROUP BY ALL
 ORDER BY T.tournament_group, made_tournament_pct1 DESC
