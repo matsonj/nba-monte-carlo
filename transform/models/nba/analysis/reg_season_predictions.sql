@@ -32,10 +32,10 @@ GROUP BY ALL
 cte_final AS (
 SELECT
     *,
-    ROUND(avg_score + (implied_line / 2.0),0) AS home_score,
-    ROUND(avg_score - (implied_line / 2.0),0) AS visiting_score
+    ROUND(avg_score - (implied_line / 2.0),0) AS home_score,
+    ROUND(avg_score + (implied_line / 2.0),0) AS visiting_score
 FROM cte_interim_calcs
 )
 SELECT *,
-    home_score::int || ' - ' || visiting_score::int AS predicted_score
+    home_team || ' ' || home_score::int || ' - ' || visiting_score::int || ' ' || visiting_team AS predicted_score
 FROM cte_final
