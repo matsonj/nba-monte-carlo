@@ -7,10 +7,8 @@ SELECT
     home_team_elo_rating AS home_ELO,
     home_team_win_probability/10000 AS home_win_pct1,
     american_odds,
-    ROUND( CASE
-        WHEN home_win_pct1 >= 0.50 THEN ROUND( -30.564 * home_win_pct1 + 14.763, 1 )
-        ELSE ROUND( -30.564 * home_win_pct1 + 15.801, 1 )
-    END * 2, 0 ) / 2.0 AS implied_line_num1,
+    implied_line AS implied_line_num1,
+    predicted_score,
     type
 FROM reg_season_predictions
 WHERE include_actuals = false AND winning_team = home_team
