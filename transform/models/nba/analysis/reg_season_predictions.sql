@@ -37,5 +37,5 @@ SELECT
 FROM cte_interim_calcs
 )
 SELECT *,
-    home_score || ' - ' || visiting_score AS predicted_score
+    home_score::int || ' - ' || visiting_score::int AS predicted_score
 FROM cte_final
