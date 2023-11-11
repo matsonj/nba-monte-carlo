@@ -36,5 +36,15 @@ cte_outer AS (
     LEFT JOIN {{ ref( 'nba_teams' ) }} L ON L.team_long = I.losing_team
 )
 SELECT *,
-    game_result AS game_result_v2
+    CASE
+        WHEN margin < 4 AND game_result = 1 THEN 0.581
+        WHEN margin < 4 AND game_result = 0 THEN 0.419
+        WHEN margin < 6 AND game_result = 1 THEN 0.647
+        WHEN margin < 6 AND game_result = 0 THEN 0.353
+        WHEN margin < 9 AND game_result = 1 THEN 0.745
+        WHEN margin < 9 AND game_result = 0 THEN 0.255
+        WHEN margin < 12 AND game_result = 1 THEN 0.876
+        WHEN margin < 12 AND game_result = 0 THEN 0.124
+        ELSE game_result
+    END AS game_result_v2
 FROM cte_outer
