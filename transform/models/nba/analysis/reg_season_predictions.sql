@@ -19,6 +19,10 @@ SELECT
     COUNT(*) AS occurances,
     {{ american_odds( 'home_team_win_probability/10000' ) }} AS american_odds,
     type,
+    actual_home_team_score,
+    actual_visiting_team_score,
+    CASE WHEN actual_home_team_score > actual_visiting_team_score 
+        THEN actual_margin*-1 ELSE actual_margin END AS actual_margin,
     (H.pts + V.pts) / 2.0 AS avg_score,
     ROUND( CASE
         WHEN home_team_win_probability/10000 >= 0.50 THEN ROUND( -30.564 * home_team_win_probability/10000 + 14.763, 1 )
