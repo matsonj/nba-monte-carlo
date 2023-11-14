@@ -8,7 +8,10 @@ SELECT
         WHEN {{ elo_calc( 'S.home_team_elo_rating', 'S.visiting_team_elo_rating', var('nba_elo_offset') ) }}  >= R.rand_result THEN S.home_team
         ELSE S.visiting_team
     END AS winning_team,
-    COALESCE(LR.include_actuals, false) AS include_actuals
+    COALESCE(LR.include_actuals, false) AS include_actuals,
+    LR.home_team_score AS actual_home_team_score,
+    LR.visiting_team_score AS actual_visiting_team_score,
+    LR.margin AS actual_margin
 FROM {{ ref( 'nba_schedules' ) }} S
 LEFT JOIN {{ ref( 'nba_random_num_gen' ) }} R ON R.game_id = S.game_id
 LEFT JOIN {{ ref( 'nba_latest_results' ) }} LR ON LR.game_id = S.game_id

@@ -10,7 +10,7 @@ sources:
 ```wildcard_standings
 SELECT *
 FROM ${tournament_standings}
-ORDER BY conf, wins DESC, losses, margin DESC
+ORDER BY conf, made_tournament_pct1 DESC
 ```
 
 # NBA In-season Tournament
@@ -19,7 +19,7 @@ New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. Th
 
 ## Standings
 
-_It should be noted that predicted results do not have tiebreakers applied._
+_It should be noted that predicted results have tiebreakers approximated._
 <Tabs>
     <Tab label="East">
 
