@@ -22,7 +22,7 @@ SELECT
     (H.pts + V.pts) / 2.0 AS avg_score,
     ROUND( CASE
         WHEN home_team_win_probability/10000 >= 0.50 THEN ROUND( -30.564 * home_team_win_probability/10000 + 14.763, 1 )
-        ELSE ROUND( -30.564 * home_team_win_probability/100000 + 15.801, 1 )
+        ELSE ROUND( -30.564 * home_team_win_probability/10000 + 15.801, 1 )
     END * 2, 0 ) / 2.0 AS implied_line
 FROM {{ ref( 'reg_season_simulator' ) }} S
 LEFT JOIN cte_team_scores H ON H.team = S.home_team
