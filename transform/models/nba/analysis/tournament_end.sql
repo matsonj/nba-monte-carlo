@@ -62,6 +62,33 @@ cte_visitor_margin AS (
     GROUP BY ALL
 ),
 
+cte_head_to_head AS (
+    SELECT
+        g.scenario_id,
+        g.winning_team,
+        CASE
+            WHEN g.winning_team = g.home_team THEN g.visiting_team
+            ELSE g.home_team
+        END AS losing_team
+    FROM {{ ref( 'reg_season_simulator' ) }} g
+    WHERE type = 'tournament'
+),
+
+cte_head_to_head_wins AS (
+    SELECT
+        h.scenario_id,
+        h.winning_team AS team,
+        COUNT(*) AS h2h_wins
+    FROM cte_head_to_head h
+    INNER JOIN cte_wins w ON h.winning_team = w.winning_team AND h.scenario_id = w.scenario_id
+        AND h.losing_team IN (
+            SELECT winning_team 
+            FROM cte_wins 
+            WHERE wins = w.wins AND winning_team != w.winning_team
+                AND scenario_id = w.scenario_id
+        )
+    GROUP BY ALL
+),
 
 /* tiebreaking criteria: https://www.nba.com/news/in-season-tournament-101
 
@@ -76,13 +103,14 @@ cte_visitor_margin AS (
 cte_ranked_wins AS (
     SELECT
         R.*,
+        H2H.h2h_wins,
         home_pt_diff + visitor_pt_diff AS pt_diff,
         --no tiebreaker, so however row number handles order ties will need to be dealt with
-        ROW_NUMBER() OVER (PARTITION BY scenario_id, tournament_group ORDER BY wins DESC, pt_diff DESC ) AS group_rank
+        ROW_NUMBER() OVER (PARTITION BY R.scenario_id, tournament_group ORDER BY wins DESC, h2h_wins DESC, pt_diff DESC ) AS group_rank
     FROM cte_results_with_group R
     LEFT JOIN cte_home_margin H ON H.team = R.winning_team
     LEFT JOIN cte_visitor_margin V ON V.team = R.winning_team
-
+    LEFT JOIN cte_head_to_head_wins H2H ON H2H.team = R.winning_team AND H2H.scenario_id = R.scenario_id
 ),
 
 cte_wildcard AS (
