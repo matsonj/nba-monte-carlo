@@ -118,9 +118,10 @@ cte_wildcard AS (
         scenario_id,
         winning_team,
         conf,
+        wins,
         pt_diff,
         group_rank,
-        ROW_NUMBER() OVER (PARTITION BY scenario_id, conf ORDER BY pt_diff DESC ) AS wildcard_rank
+        ROW_NUMBER() OVER (PARTITION BY scenario_id, conf ORDER BY wins DESC, pt_diff DESC, random() ) AS wildcard_rank
     FROM cte_ranked_wins R
     WHERE group_rank = 2
 ),
