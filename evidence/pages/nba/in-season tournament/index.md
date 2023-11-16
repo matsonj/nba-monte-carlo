@@ -20,7 +20,6 @@ New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. Th
 
 ## Standings
 
-_It should be noted that predicted results have tiebreakers approximated._
 <Tabs>
     <Tab label="East">
 
@@ -59,30 +58,6 @@ _It should be noted that predicted results have tiebreakers approximated._
         <Column id=won_wildcard_pct1/>
         <Column id=made_tournament_pct1/>
         </DataTable>
-
-        ### Wildcard Standings
-
-        <DataTable data={wildcard_standings.filter(d => d.conf === "East")} link=team_link rows=15>
-        <Column id=team/>
-        <Column id=record/>
-        <Column id=pt_diff align=right/>
-        <Column id=proj_record align=right/>
-        <Column id=won_group_pct1/>
-        <Column id=won_wildcard_pct1/>
-        <Column id=made_tournament_pct1/>
-        </DataTable>
-
-        ## Predicted Seeding - Knockout Round
-
-        <DataTable data={tournament_seeding.filter(d => d.conf === "East")} rows=15>
-        <Column id=team/>
-        <Column id="1_pct" contentType=colorscale colorMax=1/>
-        <Column id="2_pct" contentType=colorscale colorMax=1/>
-        <Column id="3_pct" contentType=colorscale colorMax=1/>
-        <Column id="4_pct" contentType=colorscale colorMax=1/>
-        <Column id="total_pct2" contentType=colorscale colorMax=1/>
-        </DataTable>
-        
     </Tab>
     <Tab label="West">
 
@@ -121,6 +96,35 @@ _It should be noted that predicted results have tiebreakers approximated._
         <Column id=won_wildcard_pct1/>
         <Column id=made_tournament_pct1/>
         </DataTable>
+    </Tab>
+</Tabs>
+<Tabs>
+    <Tab label="East">
+      
+        ### Wildcard Standings
+
+        <DataTable data={wildcard_standings.filter(d => d.conf === "East")} link=team_link rows=15>
+        <Column id=team/>
+        <Column id=record/>
+        <Column id=pt_diff align=right/>
+        <Column id=proj_record align=right/>
+        <Column id=won_group_pct1/>
+        <Column id=won_wildcard_pct1/>
+        <Column id=made_tournament_pct1/>
+        </DataTable>
+
+        ### Predicted Seeding - Knockout Round
+
+        <DataTable data={tournament_seeding.filter(d => d.conf === "East")} rows=15>
+        <Column id=team/>
+        <Column id="1_pct" contentType=colorscale colorMax=1/>
+        <Column id="2_pct" contentType=colorscale colorMax=1/>
+        <Column id="3_pct" contentType=colorscale colorMax=1/>
+        <Column id="4_pct" contentType=colorscale colorMax=1/>
+        <Column id="total_pct2" contentType=colorscale colorMax=1/>
+        </DataTable>
+    </Tab>
+    <Tab label="West">
 
         ### Wildcard Standings
 
@@ -134,7 +138,7 @@ _It should be noted that predicted results have tiebreakers approximated._
         <Column id=made_tournament_pct1/>
         </DataTable>
 
-        ## Predicted Seeding - Knockout Round
+        ### Predicted Seeding - Knockout Round
 
         <DataTable data={tournament_seeding.filter(d => d.conf === "West")} rows=15>
         <Column id=team/>
@@ -144,9 +148,9 @@ _It should be noted that predicted results have tiebreakers approximated._
         <Column id="4_pct" contentType=colorscale colorMax=1/>
         <Column id="total_pct2" contentType=colorscale colorMax=1/>
         </DataTable>
-        
     </Tab>
 </Tabs>
+        
 
 ## Recent Games
 
