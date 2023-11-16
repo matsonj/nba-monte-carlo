@@ -100,7 +100,7 @@ New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. Th
 </Tabs>
 <Tabs>
     <Tab label="East">
-      
+
         ### Wildcard Standings
 
         <DataTable data={wildcard_standings.filter(d => d.conf === "East")} link=team_link rows=15>
