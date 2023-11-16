@@ -98,6 +98,9 @@ New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. Th
         </DataTable>
     </Tab>
 </Tabs>
+
+## Wildcard
+
 <Tabs>
     <Tab label="East">
 
@@ -117,11 +120,11 @@ New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. Th
 
         <DataTable data={tournament_seeding.filter(d => d.conf === "East")} rows=15>
         <Column id=team/>
-        <Column id="1_pct" contentType=colorscale colorMax=1/>
-        <Column id="2_pct" contentType=colorscale colorMax=1/>
-        <Column id="3_pct" contentType=colorscale colorMax=1/>
-        <Column id="4_pct" contentType=colorscale colorMax=1/>
-        <Column id="total_pct2" contentType=colorscale colorMax=1/>
+        <Column id="1_pct1" contentType=colorscale colorMax=1/>
+        <Column id="2_pct1" contentType=colorscale colorMax=1/>
+        <Column id="3_pct1" contentType=colorscale colorMax=1/>
+        <Column id="4_pct1" contentType=colorscale colorMax=1/>
+        <Column id="total_pct1" contentType=colorscale colorMax=1/>
         </DataTable>
     </Tab>
     <Tab label="West">
@@ -142,11 +145,11 @@ New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. Th
 
         <DataTable data={tournament_seeding.filter(d => d.conf === "West")} rows=15>
         <Column id=team/>
-        <Column id="1_pct" contentType=colorscale colorMax=1/>
-        <Column id="2_pct" contentType=colorscale colorMax=1/>
-        <Column id="3_pct" contentType=colorscale colorMax=1/>
-        <Column id="4_pct" contentType=colorscale colorMax=1/>
-        <Column id="total_pct2" contentType=colorscale colorMax=1/>
+        <Column id="1_pct1" contentType=colorscale colorMax=1/>
+        <Column id="2_pct1" contentType=colorscale colorMax=1/>
+        <Column id="3_pct1" contentType=colorscale colorMax=1/>
+        <Column id="4_pct1" contentType=colorscale colorMax=1/>
+        <Column id="total_pct1" contentType=colorscale colorMax=1/>
         </DataTable>
     </Tab>
 </Tabs>

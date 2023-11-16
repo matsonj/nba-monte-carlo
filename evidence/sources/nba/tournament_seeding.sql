@@ -19,11 +19,11 @@ cte_agg AS (
 SELECT
     team,
     conf,
-    COALESCE(first(occurances) FILTER (WHERE final_seed = 1 ),0) AS "1_pct",
-    COALESCE(first(occurances) FILTER (WHERE final_seed = 2 ),0) AS "2_pct",
-    COALESCE(first(occurances) FILTER (WHERE final_seed = 3 ),0) AS "3_pct",
-    COALESCE(first(occurances) FILTER (WHERE final_seed = 4 ),0) AS "4_pct",
-    SUM(occurances) AS total_pct2
+    COALESCE(first(occurances) FILTER (WHERE final_seed = 1 ),0) AS "1_pct1",
+    COALESCE(first(occurances) FILTER (WHERE final_seed = 2 ),0) AS "2_pct1",
+    COALESCE(first(occurances) FILTER (WHERE final_seed = 3 ),0) AS "3_pct1",
+    COALESCE(first(occurances) FILTER (WHERE final_seed = 4 ),0) AS "4_pct1",
+    SUM(occurances) AS total_pct1
 FROM cte_agg
 GROUP BY ALL
 ORDER BY "1_pct" DESC, ("1_pct"+"2_pct") DESC, ("1_pct"+"2_pct"+"3_pct") DESC, ("1_pct"+"2_pct"+"3_pct"+"4_pct") DESC
