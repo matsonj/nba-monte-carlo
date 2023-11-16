@@ -5,6 +5,7 @@ sources:
   - tournament_standings: nba/tournament_standings.sql
   - tournament_results: nba/tournament_results.sql
   - most_recent_games: nba/most_recent_games.sql
+  - tournament_seeding: nba/tournament_seeding.sql
 ---
 
 ```wildcard_standings
@@ -70,6 +71,17 @@ _It should be noted that predicted results have tiebreakers approximated._
         <Column id=won_wildcard_pct1/>
         <Column id=made_tournament_pct1/>
         </DataTable>
+
+        ## Predicted Seeding - Knockout Round
+
+        <DataTable data={tournament_seeding.filter(d => d.conf === "East")} rows=15>
+        <Column id=team/>
+        <Column id="1_pct" contentType=colorscale colorMax=1/>
+        <Column id="2_pct" contentType=colorscale colorMax=1/>
+        <Column id="3_pct" contentType=colorscale colorMax=1/>
+        <Column id="4_pct" contentType=colorscale colorMax=1/>
+        <Column id="total_pct2" contentType=colorscale colorMax=1/>
+        </DataTable>
         
     </Tab>
     <Tab label="West">
@@ -122,6 +134,17 @@ _It should be noted that predicted results have tiebreakers approximated._
         <Column id=made_tournament_pct1/>
         </DataTable>
 
+        ## Predicted Seeding - Knockout Round
+
+        <DataTable data={tournament_seeding.filter(d => d.conf === "West")} rows=15>
+        <Column id=team/>
+        <Column id="1_pct" contentType=colorscale colorMax=1/>
+        <Column id="2_pct" contentType=colorscale colorMax=1/>
+        <Column id="3_pct" contentType=colorscale colorMax=1/>
+        <Column id="4_pct" contentType=colorscale colorMax=1/>
+        <Column id="total_pct2" contentType=colorscale colorMax=1/>
+        </DataTable>
+        
     </Tab>
 </Tabs>
 
@@ -149,8 +172,3 @@ _It should be noted that predicted results have tiebreakers approximated._
   <Column id=implied_line_num1 title="Line (Home)"/>
   <Column id=predicted_score title="Score"/>
 </DataTable>
-
-
-## Predicted Matchups - Knockout Round
-
-Once I have a good method to predict winnders of each group and break ties, I will add probabilities for each of the 9 games in the tournament, both which teams will play in the games as well as the predicted winners.
