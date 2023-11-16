@@ -26,4 +26,4 @@ SELECT
     SUM(occurances) AS total_pct1
 FROM cte_agg
 GROUP BY ALL
-ORDER BY "1_pct" DESC, ("1_pct"+"2_pct") DESC, ("1_pct"+"2_pct"+"3_pct") DESC, ("1_pct"+"2_pct"+"3_pct"+"4_pct") DESC
+ORDER BY "1_pct1" DESC, ("1_pct1"+"2_pct1") DESC, ("1_pct1"+"2_pct1"+"3_pct1") DESC, ("1_pct1"+"2_pct1"+"3_pct1"+"4_pct1") DESC
