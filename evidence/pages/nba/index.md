@@ -106,15 +106,12 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
     </Tab>
 </Tabs>
 
-### [Team Standings](/nba/teams)
+## [Team Standings](/nba/teams)
 
 <DataTable data={summary_by_team} link=team_link rows=30>
-  <Column id=seed/>
   <Column id=" " contentType=image height=25px/>
   <Column id=team/>
   <Column id=record/>
   <Column id=elo_rating/>
   <Column id=avg_wins/>
-  <Column id=make_playoffs_pct1/>
-  <Column id=win_finals_pct1/>
 </DataTable>
