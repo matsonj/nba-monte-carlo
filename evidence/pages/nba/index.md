@@ -4,6 +4,8 @@ sources:
   - wins_seed_scatter: nba/wins_seed_scatter.sql
   - seed_details: nba/seed_details.sql
   - tournament_seeding: nba/tournament_seeding.sql
+  - reg_season: nba/reg_season.sql
+  - standings: nba/standings.sql
   - summary_by_team: nba/summary_by_team.sql
 ---
 
