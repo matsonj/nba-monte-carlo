@@ -106,7 +106,7 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 
 ### [Team Standings](/nba/teams)
 
-<DataTable data=summary_by_team link=team_link rows=30>
+<DataTable data={summary_by_team} link=team_link rows=30>
   <Column id=seed/>
   <Column id=" " contentType=image height=25px/>
   <Column id=team/>
