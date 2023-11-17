@@ -3,15 +3,48 @@ sources:
   - thru_date: nba/thru_date.sql
   - wins_seed_scatter: nba/wins_seed_scatter.sql
   - seed_details: nba/seed_details.sql
+  - tournament_seeding: nba/tournament_seeding.sql
+  - summary_by_team: nba/summary_by_team.sql
 ---
 
 # NBA Monte Carlo Simulator
 
-## Conference Summaries
-
 <Alert status="info">
 This data was last updated as of <Value data={thru_date} column=end_date/>.
 </Alert>
+
+## [In-Season Tournament](/nba/in-season%20tournament)
+
+<Tabs>
+    <Tab label="East">
+
+        ### Predicted Seeding - Knockout Round
+
+        <DataTable data={tournament_seeding.filter(d => d.conf === "East")} rows=15>
+        <Column id=team/>
+        <Column id="1_pct1" contentType=colorscale colorMax=1/>
+        <Column id="2_pct1" contentType=colorscale colorMax=1/>
+        <Column id="3_pct1" contentType=colorscale colorMax=1/>
+        <Column id="4_pct1" contentType=colorscale colorMax=1/>
+        <Column id="total_pct1" contentType=colorscale colorMax=1/>
+        </DataTable>
+    </Tab>
+    <Tab label="West">
+
+        ### Predicted Seeding - Knockout Round
+
+        <DataTable data={tournament_seeding.filter(d => d.conf === "West")} rows=15>
+        <Column id=team/>
+        <Column id="1_pct1" contentType=colorscale colorMax=1/>
+        <Column id="2_pct1" contentType=colorscale colorMax=1/>
+        <Column id="3_pct1" contentType=colorscale colorMax=1/>
+        <Column id="4_pct1" contentType=colorscale colorMax=1/>
+        <Column id="total_pct1" contentType=colorscale colorMax=1/>
+        </DataTable>
+    </Tab>
+</Tabs>
+
+## Conference Summaries
 
 ### End of Season Seeding
 
@@ -71,8 +104,15 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
     </Tab>
 </Tabs>
 
-<center>
+### [Team Standings](/nba/teams)
 
-🏀 [Teams](/nba/teams) 🏀 
-
- </center>
+<DataTable data=summary_by_team link=team_link rows=30>
+  <Column id=seed/>
+  <Column id=" " contentType=image height=25px/>
+  <Column id=team/>
+  <Column id=record/>
+  <Column id=elo_rating/>
+  <Column id=avg_wins/>
+  <Column id=make_playoffs_pct1/>
+  <Column id=win_finals_pct1/>
+</DataTable>
