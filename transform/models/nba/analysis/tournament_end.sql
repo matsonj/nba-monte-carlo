@@ -47,7 +47,7 @@ cte_results_with_group AS (
 cte_home_margin AS (
     SELECT
         T.Team,
-        SUM(COALESCE(-H.actual_margin,-H.implied_line)) AS home_pt_diff
+        COALESCE(SUM(COALESCE(-H.actual_margin,-H.implied_line)),0) AS home_pt_diff
     FROM {{ ref( 'nba_teams') }} T 
     LEFT JOIN {{ ref( 'reg_season_predictions' ) }} H ON H.home_team = T.team AND H.type = 'tournament' AND H.winning_team = H.home_team
     GROUP BY ALL
@@ -56,7 +56,7 @@ cte_home_margin AS (
 cte_visitor_margin AS (
     SELECT
         T.Team,
-        SUM(COALESCE(V.actual_margin,V.implied_line)) AS visitor_pt_diff
+        COALESCE(SUM(COALESCE(V.actual_margin,V.implied_line)),0) AS visitor_pt_diff
     FROM {{ ref( 'nba_teams') }} T 
     LEFT JOIN {{ ref( 'reg_season_predictions' ) }} V ON V.visiting_team = T.team AND V.type = 'tournament' AND V.winning_team = V.home_team
     GROUP BY ALL
