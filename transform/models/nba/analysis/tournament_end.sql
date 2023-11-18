@@ -90,6 +90,14 @@ cte_head_to_head_wins AS (
     GROUP BY ALL
 ),
 
+cte_fuzz AS (
+    SELECT
+        R.scenario_id,
+        R.winning_team,
+        ((4 - R.wins - R.losses) * floor(random() * 14 - 7)) AS fuzz
+    FROM cte_results_with_group R
+),
+
 /* tiebreaking criteria: https://www.nba.com/news/in-season-tournament-101
 
   • Head-to-head record in the Group Stage;
@@ -105,13 +113,14 @@ cte_ranked_wins AS (
         R.*,
         H2H.h2h_wins,
         -- fuzzing pt diff by scenario via brute force (7 pt swing either way)
-        home_pt_diff + visitor_pt_diff + ((4 - R.wins - R.losses) * floor(random() * 14 - 7))  AS pt_diff,
+        home_pt_diff + visitor_pt_diff + F.fuzz AS pt_diff,
         --no tiebreaker, so however row number handles order ties will need to be dealt with
         ROW_NUMBER() OVER (PARTITION BY R.scenario_id, tournament_group ORDER BY wins DESC, h2h_wins DESC, pt_diff DESC ) AS group_rank
     FROM cte_results_with_group R
     LEFT JOIN cte_home_margin H ON H.team = R.winning_team
     LEFT JOIN cte_visitor_margin V ON V.team = R.winning_team
     LEFT JOIN cte_head_to_head_wins H2H ON H2H.team = R.winning_team AND H2H.scenario_id = R.scenario_id
+    LEFT JOIN cte_fuzz F ON F.scenario_id = R.scenario_id AND F.winning_team = R.winning_team
 ),
 
 cte_wildcard AS (
