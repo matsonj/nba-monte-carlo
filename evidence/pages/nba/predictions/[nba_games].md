@@ -105,7 +105,7 @@ _<Value data={summary_by_team.filter(st =>
     )}  column=elo_rating/> | Rk: <Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
-    )}  column=elo_rank/> | <Value data={season_stats.filter(st =>
+    )}  column=elo_rank/>_ <br> _<Value data={season_stats.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
     )}  column=points_for_num1/> ppg |  <Value data={season_stats.filter(st =>
@@ -124,7 +124,7 @@ _<Value data={summary_by_team.filter(st =>
     )}  column=elo_rating/> | Rk: <Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
-    )}  column=elo_rank/> | <Value data={season_stats.filter(st =>
+    )}  column=elo_rank/>_ <br> _<Value data={season_stats.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
     )}  column=points_for_num1/> ppg |  <Value data={season_stats.filter(st =>
@@ -141,7 +141,7 @@ _<Value data={summary_by_team.filter(st =>
   <Column id=value/>
 </DataTable>
 
-Diff. of <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=elo_diff_hfa/> **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home_win_pct1/> Win Prob **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=american_odds/> ML **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=implied_line_num1/> Spread **->** Score: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=predicted_score/> 
+Diff. of <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=elo_diff_hfa/> **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home_win_pct1/> Win Prob **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=american_odds/> ML <br> <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=implied_line_num1/> Spread **->** Score: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=predicted_score/> 
 
 <LineChart
     data={game_trend.filter(gt =>
