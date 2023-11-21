@@ -42,7 +42,7 @@ sources:
 _Historically, NBA teams win 62% of their games at home, which explains why teams with lower elo ratings can be predicted to win._
 
 
-<DataTable data={future_games} rows=15 >
+<DataTable data={future_games} rows=15 link=game_link>
   <Column id=game_id/>
   <Column id=T title=" "/>
   <Column id=visitor/>
