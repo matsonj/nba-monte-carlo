@@ -1,5 +1,6 @@
 select
   ROW_NUMBER() OVER (PARTITION BY conf ORDER BY avg_wins DESC) AS seed,
+  ROW_NUMBER() OVER (ORDER BY elo_rating DESC) AS elo_rank,
   '/nba/teams/' || R.team as team_link,
   R.team,
   R." ",
