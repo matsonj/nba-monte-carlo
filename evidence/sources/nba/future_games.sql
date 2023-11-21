@@ -9,7 +9,8 @@ SELECT
     american_odds,
     implied_line AS implied_line_num1,
     predicted_score,
-    type
+    type,
+    '/nba/predictions/' || game_id as game_link,
 FROM reg_season_predictions
 WHERE include_actuals = false AND winning_team = home_team
 ORDER BY game_id
