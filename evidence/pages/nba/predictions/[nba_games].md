@@ -40,6 +40,53 @@ FROM cte_union
 GROUP BY ALL
 ```
 
+```predictions_table
+WITH cte_visitor_elo AS (
+    SELECT
+        'Away Elo Rating' as type,
+        game_id,
+        visitor_ELO as value
+    FROM ${future_games}
+),
+cte_home_elo AS (
+    SELECT
+        'Home Elo Rating',
+        game_id,
+        home_ELO
+    FROM ${future_games}
+),
+cte_elo_diff AS (
+    SELECT
+        'Elo Difference',
+        game_id,
+        elo_diff
+    FROM ${future_games}
+),
+cte_hfa AS (
+    SELECT
+        'Home Court Advantage',
+        game_id,
+        70 as hfa
+    FROM ${future_games}
+),
+cte_elo_diff_hfa AS (
+    SELECT
+        'Total Difference',
+        game_id,
+        elo_diff_hfa
+    FROM ${future_games}
+)
+SELECT * FROM cte_visitor_elo
+UNION ALL
+SELECT * FROM cte_home_elo
+UNION ALL
+SELECT * FROM cte_elo_diff
+UNION ALL
+SELECT * FROM cte_hfa
+UNION ALL
+SELECT * FROM cte_elo_diff_hfa
+```
+
 # Detailed Analysis for Game <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=game_id/>
 
 ## Game Date <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=date/>
@@ -89,10 +136,9 @@ GROUP BY ALL
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == gt.team || fg.visitor == gt.team))
     )} 
     x=date
-    y=elo_rating
+    y=elo_post
     title='elo change over time'
     series=team
-    step=true
     handleMissing=connect
     yMin={Math.min(
         game_trend.filter(gt =>
@@ -100,6 +146,12 @@ GROUP BY ALL
                 fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == gt.team || fg.visitor == gt.team))
         ).map(item => item.elo_rating)
     )}
+    colorPalette={
+        [
+        '#3366FF',
+        '#FF6600'
+        ]
+    }
 />
 
 ## Last 5 Games - <Value data={summary_by_team.filter(st => future_games.some(fg => fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team)))}  column=team/>
@@ -138,10 +190,9 @@ GROUP BY ALL
 
 ## Prediction Breakdown
 
-**Away Elo Rating:** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=visitor_ELO/><br>
-**Home Elo Rating:** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home_ELO/><br>
-**Elo Difference:** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=elo_diff/><br>
-**Home Field Advantage:** 70<br>
-**Total Difference:** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=elo_diff_hfa/><br>
+<DataTable data={predictions_table.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} rows=5>
+  <Column id=type/>
+  <Column id=value/>
+</DataTable>
 
-Elo difference of <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=elo_diff_hfa/> **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home_win_pct1/> Home Win Pct **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=implied_line_num1/> game line **->** Score: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=predicted_score/> 
+Elo difference of <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=elo_diff_hfa/> **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home_win_pct1/> Home Win Pct **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=american_odds/> ML **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=implied_line_num1/> Spread **->** Score: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=predicted_score/> 
