@@ -89,15 +89,17 @@ SELECT * FROM cte_elo_diff_hfa
 
 # Detailed Analysis for Game <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=game_id/>
 
-## <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=date/>: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=visitor/> @ <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home/>
+<center>
 
-**<Value data={summary_by_team.filter(st =>
+## Matchup: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=visitor/> @ <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home/> on <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=date/>
+
+_<Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
     )}  column=team/> (<Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
-    )}  column=record/>)** | elo <Value data={summary_by_team.filter(st =>
+    )}  column=record/>) | elo <Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
     )}  column=elo_rating/> | Rk: <Value data={summary_by_team.filter(st =>
@@ -109,14 +111,14 @@ SELECT * FROM cte_elo_diff_hfa
     )}  column=points_for_num1/> ppg |  <Value data={season_stats.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
-    )}  column=avg_margin_num1/> avg. margin<br>
-**<Value data={summary_by_team.filter(st =>
+    )}  column=avg_margin_num1/> avg. margin_<br>
+_<Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
     )}  column=team/> (<Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
-    )}  column=record/>)** | elo <Value data={summary_by_team.filter(st =>
+    )}  column=record/>) | elo <Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
     )}  column=elo_rating/> | Rk: <Value data={summary_by_team.filter(st =>
@@ -128,7 +130,9 @@ SELECT * FROM cte_elo_diff_hfa
     )}  column=points_for_num1/> ppg |  <Value data={season_stats.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
-    )}  column=avg_margin_num1/> avg. margin
+    )}  column=avg_margin_num1/> avg. margin_
+
+</center>
 
 ## Prediction Details
 
@@ -157,8 +161,8 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt($page.para
     )}
     colorPalette={
         [
-        '#3366FF',
-        '#FF6600'
+        '#29BDAD',
+        '#DE4500'
         ]
     }
 />
@@ -171,13 +175,11 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt($page.para
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == rg.visiting_team || fg.visitor == rg.home_team ))
     )} 
     rows=5>
-  <Column id=date/>
+  <Column id=matchup/>
   <Column id=T title=" "/>
-  <Column id=visiting_team/>
-  <Column id=" "/>
-  <Column id=home_team/>
   <Column id=winning_team/>
   <Column id=score/>
+  <Column id=elo_change_num1/>
 </DataTable>
 
 ## Last 5 Games - <Value data={summary_by_team.filter(st => future_games.some(fg => fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team)))}  column=team/>
@@ -188,11 +190,9 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt($page.para
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == rg.visiting_team || fg.home == rg.home_team ))
     )} 
     rows=5>
-  <Column id=date/>
+  <Column id=matchup/>
   <Column id=T title=" "/>
-  <Column id=visiting_team/>
-  <Column id=" "/>
-  <Column id=home_team/>
   <Column id=winning_team/>
   <Column id=score/>
+  <Column id=elo_change_num1/>
 </DataTable>
