@@ -10,6 +10,7 @@ SELECT
     END AS score,
     winning_team,
     ABS(elo_change) AS elo_change_num1,
-    type
+    type,
+    vstm || ' @ ' || hmtm AS matchup
 FROM nba_results_log RL
 ORDER BY game_date desc
