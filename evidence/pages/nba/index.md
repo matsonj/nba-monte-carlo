@@ -7,6 +7,7 @@ sources:
   - reg_season: nba/reg_season.sql
   - standings: nba/standings.sql
   - summary_by_team: nba/summary_by_team.sql
+  - future_games: nba/future_games.sql
 ---
 
 # NBA Monte Carlo Simulator
@@ -14,6 +15,21 @@ sources:
 <Alert status="info">
 This data was last updated as of <Value data={thru_date} column=end_date/>.
 </Alert>
+
+## [Upcoming Games](/nba/predictions)
+
+<DataTable data={future_games} rows=5 link=game_link>
+  <Column id=game_id/>
+  <Column id=T title=" "/>
+  <Column id=visitor/>
+  <Column id=visitor_ELO title="Elo Rtg"/>
+  <Column id=home/>
+  <Column id=home_ELO title="Elo Rtg"/>
+  <Column id=home_win_pct1 title="Win % (Home)"/>
+  <Column id=american_odds align=right title="Odds (Home)"/>
+  <Column id=implied_line_num1 title="Line (Home)"/>
+  <Column id=predicted_score title="Score"/>
+</DataTable>
 
 ## [In-Season Tournament](/nba/in-season%20tournament)
 
@@ -45,6 +61,16 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
         </DataTable>
     </Tab>
 </Tabs>
+
+## [Team Standings](/nba/teams)
+
+<DataTable data={summary_by_team} link=team_link rows=5 search=true>
+  <Column id=" " contentType=image height=25px/>
+  <Column id=team/>
+  <Column id=record/>
+  <Column id=elo_rating/>
+  <Column id=avg_wins/>
+</DataTable>
 
 ## Conference Summaries
 
@@ -106,12 +132,3 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
     </Tab>
 </Tabs>
 
-## [Team Standings](/nba/teams)
-
-<DataTable data={summary_by_team} link=team_link rows=30>
-  <Column id=" " contentType=image height=25px/>
-  <Column id=team/>
-  <Column id=record/>
-  <Column id=elo_rating/>
-  <Column id=avg_wins/>
-</DataTable>

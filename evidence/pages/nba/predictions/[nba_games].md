@@ -89,15 +89,15 @@ SELECT * FROM cte_elo_diff_hfa
 
 # Detailed Analysis for Game <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=game_id/>
 
-## Game Date <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=date/>
+## <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=date/>: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=visitor/> @ <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home/>
 
-**Away: <Value data={summary_by_team.filter(st =>
+**<Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
     )}  column=team/> (<Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
-    )}  column=record/>)** | <Value data={summary_by_team.filter(st =>
+    )}  column=record/>)** | elo <Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
     )}  column=elo_rating/> | Rk: <Value data={summary_by_team.filter(st =>
@@ -110,13 +110,13 @@ SELECT * FROM cte_elo_diff_hfa
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.visitor == st.team))
     )}  column=avg_margin_num1/> avg. margin<br>
-** Home: <Value data={summary_by_team.filter(st =>
+**<Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
     )}  column=team/> (<Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
-    )}  column=record/>)** | <Value data={summary_by_team.filter(st =>
+    )}  column=record/>)** | elo <Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
     )}  column=elo_rating/> | Rk: <Value data={summary_by_team.filter(st =>
@@ -129,6 +129,15 @@ SELECT * FROM cte_elo_diff_hfa
         future_games.some(fg=>
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == st.team))
     )}  column=avg_margin_num1/> avg. margin
+
+## Prediction Details
+
+<DataTable data={predictions_table.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} rows=5>
+  <Column id=type/>
+  <Column id=value/>
+</DataTable>
+
+Diff. of <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=elo_diff_hfa/> **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home_win_pct1/> Win Prob **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=american_odds/> ML **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=implied_line_num1/> Spread **->** Score: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=predicted_score/> 
 
 <LineChart
     data={game_trend.filter(gt =>
@@ -187,12 +196,3 @@ SELECT * FROM cte_elo_diff_hfa
   <Column id=winning_team/>
   <Column id=score/>
 </DataTable>
-
-## Prediction Breakdown
-
-<DataTable data={predictions_table.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} rows=5>
-  <Column id=type/>
-  <Column id=value/>
-</DataTable>
-
-Elo difference of <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=elo_diff_hfa/> **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home_win_pct1/> Home Win Pct **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=american_odds/> ML **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=implied_line_num1/> Spread **->** Score: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=predicted_score/> 
