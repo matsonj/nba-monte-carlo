@@ -40,6 +40,53 @@ FROM cte_union
 GROUP BY ALL
 ```
 
+```predictions_table
+WITH cte_visitor_elo AS (
+    SELECT
+        'Away Elo Rating' as type,
+        game_id,
+        visitor_ELO as value
+    FROM ${future_games}
+),
+cte_home_elo AS (
+    SELECT
+        'Home Elo Rating',
+        game_id,
+        home_ELO
+    FROM ${future_games}
+),
+cte_elo_diff AS (
+    SELECT
+        'Elo Difference',
+        game_id,
+        elo_diff
+    FROM ${future_games}
+),
+cte_hfa AS (
+    SELECT
+        'Home Court Advantage',
+        game_id,
+        70 as hfa
+    FROM ${future_games}
+),
+cte_elo_diff_hfa AS (
+    SELECT
+        'Total Difference'
+        game_id,
+        elo_diff_hfa
+    FROM ${future_games}
+)
+SELECT * FROM cte_visitor_elo
+UNION ALL
+SELECT * FROM cte_home_elo
+UNION ALL
+SELECT * FROM cte_elo_diff
+UNION ALL
+SELECT * FROM cte_hfa
+UNION ALL
+SELECT * FROM cte_elo_diff_hfa
+```
+
 # Detailed Analysis for Game <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=game_id/>
 
 ## Game Date <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=date/>
@@ -89,10 +136,9 @@ GROUP BY ALL
             fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == gt.team || fg.visitor == gt.team))
     )} 
     x=date
-    y=elo_rating
+    y=elo_post
     title='elo change over time'
     series=team
-    step=true
     handleMissing=connect
     yMin={Math.min(
         game_trend.filter(gt =>
@@ -137,6 +183,11 @@ GROUP BY ALL
 </DataTable>
 
 ## Prediction Breakdown
+
+<DataTable data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} rows=5>
+  <Column id=type/>
+  <Column id=value/>
+</DataTable>
 
 **Away Elo Rating:** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=visitor_ELO/><br>
 **Home Elo Rating:** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home_ELO/><br>
