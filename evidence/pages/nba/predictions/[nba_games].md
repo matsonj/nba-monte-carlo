@@ -87,11 +87,13 @@ UNION ALL
 SELECT * FROM cte_elo_diff_hfa
 ```
 
-# Detailed Analysis for Game <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=game_id/>
+# <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=visitor/> @ <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home/>
 
 <center>
 
-## Matchup: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=visitor/> @ <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home/> on <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=date/>
+## Game ID <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=game_id/> on <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=date/>
+
+### Team Matchup
 
 _<Value data={summary_by_team.filter(st =>
         future_games.some(fg=>
