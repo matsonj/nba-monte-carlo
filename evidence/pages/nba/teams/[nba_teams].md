@@ -9,6 +9,7 @@ sources:
   - playoff_odds: nba/playoff_odds.sql
   - most_recent_games: nba/most_recent_games.sql
   - game_trend: nba/game_trend.sql
+  - future_games: nba/future_games.sql
 ---
 
 # Detailed Analysis for <Value data={season_summary.filter(d => d.team === $page.params.nba_teams.toUpperCase().replace(/\/+$/,""))} column=team_long/>
@@ -67,6 +68,18 @@ sources:
     rows=7
 />
 
+### Upcoming Schedule
+
+<DataTable data={future_games.filter(d => d.home === $page.params.nba_teams.toUpperCase() | d.visitor === $page.params.nba_teams.toUpperCase())} rows=5 link=game_link>
+  <Column id=date/>
+  <Column id=T title=" "/>
+  <Column id=visitor/>
+  <Column id=home/>
+  <Column id=home_win_pct1 title="Win % (Home)"/>
+  <Column id=american_odds align=right title="Odds (Home)"/>
+  <Column id=implied_line_num1 title="Line (Home)"/>
+  <Column id=predicted_score title="Score"/>
+</DataTable>
 
 ### Playoff Odds
 
