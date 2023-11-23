@@ -11,20 +11,6 @@ source: season_results is duckdb.table('reg_season_end.parquet') extend {
             where: made_play_in = 1
         }
         win_count is count()
-    # bar_chart
-    view: by_wins is {
-        aggregate: bin_size is max(1)
-        nest: data is  {
-            group_by: wins
-            aggregate: row_count is count()
-        }
-    } -> {
-    group_by: wins_ is 
-        floor(data.wins / bin_size) * nullif(bin_size, 0) + bin_size / 2
-    aggregate: win_count is data.row_count.sum()
-    -- group_by: winning_team
-    order_by: wins_
-    }
     view: team_by_wins is {
         group_by: wins
         aggregate: win_count
@@ -34,3 +20,22 @@ source: season_results is duckdb.table('reg_season_end.parquet') extend {
 >>>malloy
 # bar_chart
 run: season_results extend { where: winning_team ? 'DEN' | 'LAL' } -> team_by_wins
+>>>malloy
+
+run: season_results -> {
+   -- where: winning_team ? 'DEN' | 'WAS'
+    group_by: winning_team
+    # bar_chart
+    nest: by_team is {
+        group_by: wins
+        aggregate: win_count
+        group_by: winning_team
+    }
+    # bar_chart
+    nest: seeding is {
+        group_by: season_rank
+        aggregate: win_count
+        group_by: winning_team
+    }
+}
+>>>malloy
