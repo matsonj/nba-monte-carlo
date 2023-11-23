@@ -1,0 +1,40 @@
+source: season_results is duckdb.table('reg_season_end.parquet') extend {
+
+    measure:
+        avg_wins is wins.avg()
+        avg_elo_rating is elo_rating.avg()
+        avg_seed is season_rank.avg()
+        made_postseason is count() {
+            where: made_playoffs = 1 AND made_play_in = 0
+            }
+        made_play_in_ is count() {
+            where: made_play_in = 1
+        }
+        win_count is count()
+
+     view: by_conf is {
+        group_by: conf
+        aggregate: avg_wins, avg_seed
+    }
+
+    view: by_team is {
+        group_by: winning_team
+        aggregate: avg_wins, avg_seed, made_postseason, made_play_in_
+    }
+
+    #bar_chart
+    view: by_wins is {
+        aggregate: bin_size is (max(wins) - min(wins)) / 20
+        nest: data is  {
+            group_by: wins
+            aggregate: row_count is count()
+        }
+    } -> {
+    group_by: wins_ is 
+        floor(data.wins / bin_size) * nullif(bin_size, 0) + bin_size / 2
+    aggregate: win_count is data.row_count.sum()
+    order_by: wins_
+    }
+}
+
+run: season_results extend { where: winning_team = 'DEN' } -> by_wins
