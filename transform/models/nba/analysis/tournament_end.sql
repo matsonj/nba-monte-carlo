@@ -6,7 +6,8 @@ WITH cte_wins AS (
             WHEN S.winning_team = S.home_team THEN S.home_conf
             ELSE S.visiting_conf
         END AS conf,
-        COUNT(*) AS wins
+        COUNT(*) AS wins,
+        SUM( CASE WHEN include_actuals = true THEN 1 ELSE 0 END) AS actual_wins
     FROM {{ ref( 'reg_season_simulator' ) }} S
     WHERE S.type = 'tournament'
     GROUP BY ALL
@@ -22,7 +23,8 @@ cte_losses AS (
             WHEN S.winning_team = S.home_team THEN S.visiting_conf
             ELSE S.home_conf
         END AS conf,
-        COUNT(*) AS losses
+        COUNT(*) AS losses,
+        SUM( CASE WHEN include_actuals = true THEN 1 ELSE 0 END) AS actual_losses
     FROM {{ ref( 'reg_season_simulator' ) }} S
     WHERE S.type = 'tournament'
     GROUP BY ALL
@@ -35,7 +37,9 @@ cte_results_with_group AS (
         T.conf,
         COALESCE(W.wins,0) AS wins,
         COALESCE(L.losses,0) as losses,
-        T.tournament_group
+        T.tournament_group,
+        COALESCE(W.actual_wins,0) AS actual_wins,
+        COALESCE(L.actual_losses,0) as actual_losses
     FROM {{ ref( 'nba_teams') }} T 
     LEFT JOIN ( 
         SELECT I.generate_series AS scenario_id
@@ -98,7 +102,7 @@ cte_fuzz AS (
     SELECT
         R.scenario_id,
         R.winning_team,
-        ((4 - R.wins - R.losses) * floor(random() * 14 - 7)) AS fuzz
+        ((R.wins-R.actual_wins) * floor(random() * 5)) + ((R.losses-R.actual_losses) * floor(random() * -5)) AS fuzz
     FROM cte_results_with_group R
 ),
 
