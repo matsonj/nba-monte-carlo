@@ -145,6 +145,17 @@ _<Value data={summary_by_team.filter(st =>
 
 Diff. of <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=elo_diff_hfa/> **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=home_win_pct1/> Win Prob **->** <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=american_odds/> ML <br> <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=implied_line_num1/> Spread **->** Score: <Value data={future_games.filter(d => d.game_id === parseInt($page.params.nba_games, 10))} column=predicted_score/> 
 
+<script>
+
+    let test_val = Math.min(
+            ...game_trend.filter(gt =>
+                future_games.some(fg=>
+                    fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == gt.team || fg.visitor == gt.team))
+            ).map(item => item.elo_rating)
+        )
+
+</script>
+
 <LineChart
     data={game_trend.filter(gt =>
         future_games.some(fg=>
@@ -155,12 +166,7 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt($page.para
     title='elo change over time'
     series=team
     handleMissing=connect
-    yMin={Math.min(
-        game_trend.filter(gt =>
-            future_games.some(fg=>
-                fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == gt.team || fg.visitor == gt.team))
-        ).map(item => item.elo_rating)
-    )}
+    yMin={parseFloat(test_val)-10}
     colorPalette={
         [
         '#29BDAD',
