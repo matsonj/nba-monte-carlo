@@ -11,7 +11,7 @@ sources:
 ```wildcard_standings
 SELECT *
 FROM ${tournament_standings}
-ORDER BY conf, made_tournament_pct1 DESC, wins DESC, margin DESC
+ORDER BY conf, wins DESC, made_tournament_pct1 DESC, margin DESC
 ```
 
 # NBA In-season Tournament
