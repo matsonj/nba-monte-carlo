@@ -272,213 +272,209 @@ id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Ar
 271,reg_season,Thu, Nov 30,2023,8:00p,Los Angeles Lakers,,Oklahoma City Thunder,,,Paycom Center,,0
 272,reg_season,Thu, Nov 30,2023,8:00p,Atlanta Hawks,,San Antonio Spurs,,,AT&T Center,,0
 273,reg_season,Thu, Nov 30,2023,10:00p,Los Angeles Clippers,,Golden State Warriors,,,Chase Center,,0
-274,reg_season,Fri,Dec 1,2023,7:00p,Washington Wizards,,Orlando Magic,,,Amway Center,,0
-275,reg_season,Fri,Dec 1,2023,7:30p,Philadelphia 76ers,,Boston Celtics,,,TD Garden,,0
-276,reg_season,Fri,Dec 1,2023,7:30p,Memphis Grizzlies,,Dallas Mavericks,,,American Airlines Center,,0
-277,reg_season,Fri,Dec 1,2023,7:30p,New York Knicks,,Toronto Raptors,,,Scotiabank Arena,,0
-278,reg_season,Fri,Dec 1,2023,8:00p,San Antonio Spurs,,New Orleans Pelicans,,,Smoothie King Center,,0
-279,reg_season,Fri,Dec 1,2023,10:00p,Denver Nuggets,,Phoenix Suns,,,Footprint Center,,0
-280,reg_season,Sat,Dec 2,2023,4:00p,Golden State Warriors,,Los Angeles Clippers,,,Crypto.com Arena,,0
-281,reg_season,Sat,Dec 2,2023,5:00p,Minnesota Timberwolves,,Charlotte Hornets,,,Spectrum Center,,0
-282,reg_season,Sat,Dec 2,2023,7:00p,Orlando Magic,,Brooklyn Nets,,,Barclays Center,,0
-283,reg_season,Sat,Dec 2,2023,7:00p,Cleveland Cavaliers,,Detroit Pistons,,,Little Caesars Arena,,0
-284,reg_season,Sat,Dec 2,2023,8:00p,New Orleans Pelicans,,Chicago Bulls,,,United Center,,0
-285,reg_season,Sat,Dec 2,2023,8:00p,Indiana Pacers,,Miami Heat,,,Kaseya Center,,0
-286,reg_season,Sat,Dec 2,2023,8:00p,Atlanta Hawks,,Milwaukee Bucks,,,Fiserv Forum,,0
-287,reg_season,Sat,Dec 2,2023,9:00p,Oklahoma City Thunder,,Dallas Mavericks,,,American Airlines Center,,0
-288,reg_season,Sat,Dec 2,2023,9:00p,Memphis Grizzlies,,Phoenix Suns,,,Footprint Center,,0
-289,reg_season,Sat,Dec 2,2023,9:30p,Portland Trail Blazers,,Utah Jazz,,,Delta Center,,0
-290,reg_season,Sat,Dec 2,2023,10:00p,Denver Nuggets,,Sacramento Kings,,,Golden 1 Center,,0
-291,reg_season,Sat,Dec 2,2023,10:30p,Houston Rockets,,Los Angeles Lakers,,,Crypto.com Arena,,0
-292,reg_season,Mon,Dec 4,2023,7:30p,Boston Celtics,,Indiana Pacers,,,Gainbridge Fieldhouse,Knockout Rounds,0
-293,reg_season,Mon,Dec 4,2023,10:00p,New Orleans Pelicans,,Sacramento Kings,,,Golden 1 Center,Knockout Rounds,0
-294,reg_season,Tue,Dec 5,2023,7:30p,New York Knicks,,Milwaukee Bucks,,,Fiserv Forum,Knockout Rounds,0
-295,reg_season,Tue,Dec 5,2023,10:00p,Phoenix Suns,,Los Angeles Lakers,,,Crypto.com Arena,Knockout Rounds,0
-296,reg_season,Wed,Dec 6,2023,7:00p,Orlando Magic,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-297,reg_season,Wed,Dec 6,2023,7:00p,Memphis Grizzlies,,Detroit Pistons,,,Little Caesars Arena,,0
-298,reg_season,Wed,Dec 6,2023,7:00p,Miami Heat,,Toronto Raptors,,,Scotiabank Arena,,0
-299,reg_season,Wed,Dec 6,2023,7:00p,Philadelphia 76ers,,Washington Wizards,,,Capital One Arena,,0
-300,reg_season,Wed,Dec 6,2023,7:30p,Brooklyn Nets,,Atlanta Hawks,,,State Farm Arena,,0
-301,reg_season,Wed,Dec 6,2023,7:30p,San Antonio Spurs,,Minnesota Timberwolves,,,Target Center,,0
-302,reg_season,Wed,Dec 6,2023,8:00p,Charlotte Hornets,,Chicago Bulls,,,United Center,,0
-303,reg_season,Wed,Dec 6,2023,8:00p,Oklahoma City Thunder,,Houston Rockets,,,Toyota Center,,0
-304,reg_season,Wed,Dec 6,2023,8:30p,Utah Jazz,,Dallas Mavericks,,,American Airlines Center,,0
-305,reg_season,Wed,Dec 6,2023,10:00p,Portland Trail Blazers,,Golden State Warriors,,,Chase Center,,0
-306,reg_season,Wed,Dec 6,2023,10:00p,Denver Nuggets,,Los Angeles Clippers,,,Crypto.com Arena,,0
-307,reg_season,Thu,Dec 7,2023,tbd,Placeholder,,Placeholder,,,Placeholder,Knockout Rounds,0
-308,reg_season,Thu,Dec 7,2023,tbd,Placeholder,,Placeholder,,,Placeholder,Knockout Rounds,0
-309,reg_season,Thu,Dec 7,2023,tbd,Placeholder,,Placeholder,,,Placeholder,Knockout Rounds,0
-310,reg_season,Thu,Dec 7,2023,tbd,Placeholder,,Placeholder,,,Placeholder,Knockout Rounds,0
-311,reg_season,Fri,Dec 8,2023,7:00p,Toronto Raptors,,Charlotte Hornets,,,Spectrum Center,,0
-312,reg_season,Fri,Dec 8,2023,7:00p,Detroit Pistons,,Orlando Magic,,,Amway Center,,0
-313,reg_season,Fri,Dec 8,2023,7:00p,Atlanta Hawks,,Philadelphia 76ers,,,Wells Fargo Center,,0
-314,reg_season,Fri,Dec 8,2023,7:30p,Washington Wizards,,Brooklyn Nets,,,Barclays Center,,0
-315,reg_season,Fri,Dec 8,2023,8:00p,Minnesota Timberwolves,,Memphis Grizzlies,,,FedEx Forum,,0
-316,reg_season,Fri,Dec 8,2023,8:00p,Cleveland Cavaliers,,Miami Heat,,,Kaseya Center,,0
-317,reg_season,Fri,Dec 8,2023,8:00p,Golden State Warriors,,Oklahoma City Thunder,,,Paycom Center,,0
-318,reg_season,Fri,Dec 8,2023,8:30p,Chicago Bulls,,San Antonio Spurs,,,Frost Bank Center,,0
-319,reg_season,Fri,Dec 8,2023,9:00p,Houston Rockets,,Denver Nuggets,,,Ball Arena,,0
-320,reg_season,Fri,Dec 8,2023,10:00p,Dallas Mavericks,,Portland Trail Blazers,,,Moda Center,,0
-321,reg_season,Fri,Dec 8,2023,10:00p,Los Angeles Clippers,,Utah Jazz,,,Delta Center,,0
-322,reg_season,Mon,Dec 11,2023,7:00p,Miami Heat,,Charlotte Hornets,,,Spectrum Center,,0
-323,reg_season,Mon,Dec 11,2023,7:00p,Indiana Pacers,,Detroit Pistons,,,Little Caesars Arena,,0
-324,reg_season,Mon,Dec 11,2023,7:00p,Cleveland Cavaliers,,Orlando Magic,,,Amway Center,,0
-325,reg_season,Mon,Dec 11,2023,7:00p,Washington Wizards,,Philadelphia 76ers,,,Wells Fargo Center,,0
-326,reg_season,Mon,Dec 11,2023,7:30p,Denver Nuggets,,Atlanta Hawks,,,State Farm Arena,,0
-327,reg_season,Mon,Dec 11,2023,7:30p,Toronto Raptors,,New York Knicks,,,Madison Square Garden (IV),,0
-328,reg_season,Mon,Dec 11,2023,8:00p,San Antonio Spurs,,Houston Rockets,,,Toyota Center,,0
-329,reg_season,Mon,Dec 11,2023,8:00p,Dallas Mavericks,,Memphis Grizzlies,,,FedEx Forum,,0
-330,reg_season,Mon,Dec 11,2023,8:00p,Chicago Bulls,,Milwaukee Bucks,,,Fiserv Forum,,0
-331,reg_season,Mon,Dec 11,2023,8:00p,Minnesota Timberwolves,,New Orleans Pelicans,,,Smoothie King Center,,0
-332,reg_season,Mon,Dec 11,2023,8:00p,Utah Jazz,,Oklahoma City Thunder,,,Paycom Center,,0
-333,reg_season,Mon,Dec 11,2023,10:00p,Brooklyn Nets,,Sacramento Kings,,,Golden 1 Center,,0
-334,reg_season,Mon,Dec 11,2023,10:30p,Portland Trail Blazers,,Los Angeles Clippers,,,Crypto.com Arena,,0
-335,reg_season,Tue,Dec 12,2023,7:30p,Cleveland Cavaliers,,Boston Celtics,,,TD Garden,,0
-336,reg_season,Tue,Dec 12,2023,7:30p,Los Angeles Lakers,,Dallas Mavericks,,,American Airlines Center,,0
-337,reg_season,Tue,Dec 12,2023,8:00p,Denver Nuggets,,Chicago Bulls,,,United Center,,0
-338,reg_season,Tue,Dec 12,2023,10:00p,Golden State Warriors,,Phoenix Suns,,,Footprint Center,,0
-339,reg_season,Tue,Dec 12,2023,10:30p,Sacramento Kings,,Los Angeles Clippers,,,Crypto.com Arena,,0
-340,reg_season,Wed,Dec 13,2023,7:00p,Philadelphia 76ers,,Detroit Pistons,,,Little Caesars Arena,,0
-341,reg_season,Wed,Dec 13,2023,7:00p,New Orleans Pelicans,,Washington Wizards,,,Capital One Arena,,0
-342,reg_season,Wed,Dec 13,2023,7:30p,Charlotte Hornets,,Miami Heat,,,Kaseya Center,,0
-343,reg_season,Wed,Dec 13,2023,7:30p,Atlanta Hawks,,Toronto Raptors,,,Scotiabank Arena,,0
-344,reg_season,Wed,Dec 13,2023,8:00p,Memphis Grizzlies,,Houston Rockets,,,Toyota Center,,0
-345,reg_season,Wed,Dec 13,2023,8:00p,Indiana Pacers,,Milwaukee Bucks,,,Fiserv Forum,,0
-346,reg_season,Wed,Dec 13,2023,8:00p,Los Angeles Lakers,,San Antonio Spurs,,,Frost Bank Center,,0
-347,reg_season,Wed,Dec 13,2023,9:00p,Brooklyn Nets,,Phoenix Suns,,,Footprint Center,,0
-348,reg_season,Wed,Dec 13,2023,9:00p,New York Knicks,,Utah Jazz,,,Delta Center,,0
-349,reg_season,Thu,Dec 14,2023,7:30p,Cleveland Cavaliers,,Boston Celtics,,,TD Garden,,0
-350,reg_season,Thu,Dec 14,2023,7:30p,Chicago Bulls,,Miami Heat,,,Kaseya Center,,0
-351,reg_season,Thu,Dec 14,2023,8:30p,Minnesota Timberwolves,,Dallas Mavericks,,,American Airlines Center,,0
-352,reg_season,Thu,Dec 14,2023,9:00p,Brooklyn Nets,,Denver Nuggets,,,Ball Arena,,0
-353,reg_season,Thu,Dec 14,2023,10:00p,Utah Jazz,,Portland Trail Blazers,,,Moda Center,,0
-354,reg_season,Thu,Dec 14,2023,10:00p,Oklahoma City Thunder,,Sacramento Kings,,,Golden 1 Center,,0
-355,reg_season,Thu,Dec 14,2023,10:30p,Golden State Warriors,,Los Angeles Clippers,,,Crypto.com Arena,,0
-356,reg_season,Fri,Dec 15,2023,7:00p,New Orleans Pelicans,,Charlotte Hornets,,,Spectrum Center,,0
-357,reg_season,Fri,Dec 15,2023,7:00p,Detroit Pistons,,Philadelphia 76ers,,,Wells Fargo Center,,0
-358,reg_season,Fri,Dec 15,2023,7:00p,Indiana Pacers,,Washington Wizards,,,Capital One Arena,,0
-359,reg_season,Fri,Dec 15,2023,7:30p,Orlando Magic,,Boston Celtics,,,TD Garden,,0
-360,reg_season,Fri,Dec 15,2023,7:30p,Los Angeles Lakers,,San Antonio Spurs,,,Frost Bank Center,,0
-361,reg_season,Fri,Dec 15,2023,7:30p,Atlanta Hawks,,Toronto Raptors,,,Scotiabank Arena,,0
-362,reg_season,Fri,Dec 15,2023,8:00p,Houston Rockets,,Memphis Grizzlies,,,FedEx Forum,,0
-363,reg_season,Fri,Dec 15,2023,10:00p,New York Knicks,,Phoenix Suns,,,Footprint Center,,0
-364,reg_season,Sat,Dec 16,2023,6:00p,Detroit Pistons,,Milwaukee Bucks,,,Fiserv Forum,,0
-365,reg_season,Sat,Dec 16,2023,7:00p,Philadelphia 76ers,,Charlotte Hornets,,,Spectrum Center,,0
-366,reg_season,Sat,Dec 16,2023,7:30p,Atlanta Hawks,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-367,reg_season,Sat,Dec 16,2023,8:00p,Chicago Bulls,,Miami Heat,,,Kaseya Center,,0
-368,reg_season,Sat,Dec 16,2023,8:00p,Indiana Pacers,,Minnesota Timberwolves,,,Target Center,,0
-369,reg_season,Sat,Dec 16,2023,8:30p,Brooklyn Nets,,Golden State Warriors,,,Chase Center,,0
-370,reg_season,Sat,Dec 16,2023,9:00p,Oklahoma City Thunder,,Denver Nuggets,,,Ball Arena,,0
-371,reg_season,Sat,Dec 16,2023,9:00p,Dallas Mavericks,,Portland Trail Blazers,,,Moda Center,,0
-372,reg_season,Sat,Dec 16,2023,10:00p,Utah Jazz,,Sacramento Kings,,,Golden 1 Center,,0
-373,reg_season,Sat,Dec 16,2023,10:30p,New York Knicks,,Los Angeles Clippers,,,Crypto.com Arena,,0
-374,reg_season,Sun,Dec 17,2023,3:00p,Orlando Magic,,Boston Celtics,,,TD Garden,,0
-375,reg_season,Sun,Dec 17,2023,3:30p,New Orleans Pelicans,,San Antonio Spurs,,,Frost Bank Center,,0
-376,reg_season,Sun,Dec 17,2023,7:00p,Houston Rockets,,Milwaukee Bucks,,,Fiserv Forum,,0
-377,reg_season,Sun,Dec 17,2023,8:00p,Washington Wizards,,Phoenix Suns,,,Footprint Center,,0
-378,reg_season,Sun,Dec 17,2023,9:00p,Golden State Warriors,,Portland Trail Blazers,,,Moda Center,,0
-379,reg_season,Mon,Dec 18,2023,7:00p,Houston Rockets,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-380,reg_season,Mon,Dec 18,2023,7:00p,Los Angeles Clippers,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-381,reg_season,Mon,Dec 18,2023,7:00p,Chicago Bulls,,Philadelphia 76ers,,,Wells Fargo Center,,0
-382,reg_season,Mon,Dec 18,2023,7:30p,Detroit Pistons,,Atlanta Hawks,,,State Farm Arena,,0
-383,reg_season,Mon,Dec 18,2023,7:30p,Minnesota Timberwolves,,Miami Heat,,,Kaseya Center,,0
-384,reg_season,Mon,Dec 18,2023,7:30p,Charlotte Hornets,,Toronto Raptors,,,Scotiabank Arena,,0
-385,reg_season,Mon,Dec 18,2023,8:00p,Memphis Grizzlies,,Oklahoma City Thunder,,,Paycom Center,,0
-386,reg_season,Mon,Dec 18,2023,9:00p,Dallas Mavericks,,Denver Nuggets,,,Ball Arena,,0
-387,reg_season,Mon,Dec 18,2023,9:00p,Brooklyn Nets,,Utah Jazz,,,Delta Center,,0
-388,reg_season,Mon,Dec 18,2023,10:00p,Washington Wizards,,Sacramento Kings,,,Golden 1 Center,,0
-389,reg_season,Mon,Dec 18,2023,10:30p,New York Knicks,,Los Angeles Lakers,,,Crypto.com Arena,,0
-390,reg_season,Tue,Dec 19,2023,7:30p,Memphis Grizzlies,,New Orleans Pelicans,,,Smoothie King Center,,0
-391,reg_season,Tue,Dec 19,2023,8:00p,San Antonio Spurs,,Milwaukee Bucks,,,Fiserv Forum,,0
-392,reg_season,Tue,Dec 19,2023,10:00p,Boston Celtics,,Golden State Warriors,,,Chase Center,,0
-393,reg_season,Tue,Dec 19,2023,10:00p,Phoenix Suns,,Portland Trail Blazers,,,Moda Center,,0
-394,reg_season,Wed,Dec 20,2023,7:00p,Utah Jazz,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-395,reg_season,Wed,Dec 20,2023,7:00p,Charlotte Hornets,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-396,reg_season,Wed,Dec 20,2023,7:00p,Miami Heat,,Orlando Magic,,,Amway Center,,0
-397,reg_season,Wed,Dec 20,2023,7:00p,Minnesota Timberwolves,,Philadelphia 76ers,,,Wells Fargo Center,,0
-398,reg_season,Wed,Dec 20,2023,7:30p,New York Knicks,,Brooklyn Nets,,,Barclays Center,,0
-399,reg_season,Wed,Dec 20,2023,7:30p,Denver Nuggets,,Toronto Raptors,,,Scotiabank Arena,,0
-400,reg_season,Wed,Dec 20,2023,8:00p,Los Angeles Lakers,,Chicago Bulls,,,United Center,,0
-401,reg_season,Wed,Dec 20,2023,8:00p,Atlanta Hawks,,Houston Rockets,,,Toyota Center,,0
-402,reg_season,Wed,Dec 20,2023,8:30p,Los Angeles Clippers,,Dallas Mavericks,,,American Airlines Center,,0
-403,reg_season,Wed,Dec 20,2023,10:00p,Boston Celtics,,Sacramento Kings,,,Golden 1 Center,,0
-404,reg_season,Thu,Dec 21,2023,7:00p,Utah Jazz,,Detroit Pistons,,,Little Caesars Arena,,0
-405,reg_season,Thu,Dec 21,2023,7:30p,New Orleans Pelicans,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-406,reg_season,Thu,Dec 21,2023,8:00p,San Antonio Spurs,,Chicago Bulls,,,United Center,,0
-407,reg_season,Thu,Dec 21,2023,8:00p,Indiana Pacers,,Memphis Grizzlies,,,FedEx Forum,,0
-408,reg_season,Thu,Dec 21,2023,8:00p,Orlando Magic,,Milwaukee Bucks,,,Fiserv Forum,,0
-409,reg_season,Thu,Dec 21,2023,8:00p,Los Angeles Clippers,,Oklahoma City Thunder,,,Paycom Center,,0
-410,reg_season,Thu,Dec 21,2023,9:00p,Los Angeles Lakers,,Minnesota Timberwolves,,,Target Center,,0
-411,reg_season,Thu,Dec 21,2023,10:00p,Washington Wizards,,Portland Trail Blazers,,,Moda Center,,0
-412,reg_season,Fri,Dec 22,2023,6:30p,Denver Nuggets,,Brooklyn Nets,,,Barclays Center,,0
-413,reg_season,Fri,Dec 22,2023,7:00p,Toronto Raptors,,Philadelphia 76ers,,,Wells Fargo Center,,0
-414,reg_season,Fri,Dec 22,2023,8:00p,Dallas Mavericks,,Houston Rockets,,,Toyota Center,,0
-415,reg_season,Fri,Dec 22,2023,8:00p,Atlanta Hawks,,Miami Heat,,,Kaseya Center,,0
-416,reg_season,Fri,Dec 22,2023,10:00p,Washington Wizards,,Golden State Warriors,,,Chase Center,,0
-417,reg_season,Fri,Dec 22,2023,10:00p,Phoenix Suns,,Sacramento Kings,,,Golden 1 Center,,0
-418,reg_season,Sat,Dec 23,2023,12:30p,Milwaukee Bucks,,New York Knicks,,,Madison Square Garden (IV),,0
-419,reg_season,Sat,Dec 23,2023,3:30p,Boston Celtics,,Los Angeles Clippers,,,Crypto.com Arena,,0
-420,reg_season,Sat,Dec 23,2023,7:00p,Denver Nuggets,,Charlotte Hornets,,,Spectrum Center,,0
-421,reg_season,Sat,Dec 23,2023,7:00p,Orlando Magic,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-422,reg_season,Sat,Dec 23,2023,7:00p,Houston Rockets,,New Orleans Pelicans,,,Smoothie King Center,,0
-423,reg_season,Sat,Dec 23,2023,7:30p,Memphis Grizzlies,,Atlanta Hawks,,,State Farm Arena,,0
-424,reg_season,Sat,Dec 23,2023,7:30p,Detroit Pistons,,Brooklyn Nets,,,Barclays Center,,0
-425,reg_season,Sat,Dec 23,2023,7:30p,Utah Jazz,,Toronto Raptors,,,Scotiabank Arena,,0
-426,reg_season,Sat,Dec 23,2023,8:00p,Cleveland Cavaliers,,Chicago Bulls,,,United Center,,0
-427,reg_season,Sat,Dec 23,2023,8:00p,Los Angeles Lakers,,Oklahoma City Thunder,,,Paycom Center,,0
-428,reg_season,Sat,Dec 23,2023,8:30p,San Antonio Spurs,,Dallas Mavericks,,,American Airlines Center,,0
-429,reg_season,Sat,Dec 23,2023,8:30p,Portland Trail Blazers,,Golden State Warriors,,,Chase Center,,0
-430,reg_season,Sat,Dec 23,2023,10:00p,Minnesota Timberwolves,,Sacramento Kings,,,Golden 1 Center,,0
-431,reg_season,Mon,Dec 25,2023,12:00p,Milwaukee Bucks,,New York Knicks,,,Madison Square Garden (IV),,0
-432,reg_season,Mon,Dec 25,2023,2:30p,Golden State Warriors,,Denver Nuggets,,,Ball Arena,,0
-433,reg_season,Mon,Dec 25,2023,5:00p,Boston Celtics,,Los Angeles Lakers,,,Crypto.com Arena,,0
-434,reg_season,Mon,Dec 25,2023,8:00p,Philadelphia 76ers,,Miami Heat,,,Kaseya Center,,0
-435,reg_season,Mon,Dec 25,2023,10:30p,Dallas Mavericks,,Phoenix Suns,,,Footprint Center,,0
-436,reg_season,Tue,Dec 26,2023,7:00p,Brooklyn Nets,,Detroit Pistons,,,Little Caesars Arena,,0
-437,reg_season,Tue,Dec 26,2023,7:00p,Orlando Magic,,Washington Wizards,,,Capital One Arena,,0
-438,reg_season,Tue,Dec 26,2023,8:00p,Atlanta Hawks,,Chicago Bulls,,,United Center,,0
-439,reg_season,Tue,Dec 26,2023,8:00p,Indiana Pacers,,Houston Rockets,,,Toyota Center,,0
-440,reg_season,Tue,Dec 26,2023,8:00p,Memphis Grizzlies,,New Orleans Pelicans,,,Smoothie King Center,,0
-441,reg_season,Tue,Dec 26,2023,8:00p,Minnesota Timberwolves,,Oklahoma City Thunder,,,Paycom Center,,0
-442,reg_season,Tue,Dec 26,2023,8:00p,Utah Jazz,,San Antonio Spurs,,,Frost Bank Center,,0
-443,reg_season,Tue,Dec 26,2023,10:00p,Sacramento Kings,,Portland Trail Blazers,,,Moda Center,,0
-444,reg_season,Tue,Dec 26,2023,10:30p,Charlotte Hornets,,Los Angeles Clippers,,,Crypto.com Arena,,0
-445,reg_season,Wed,Dec 27,2023,7:00p,Philadelphia 76ers,,Orlando Magic,,,Amway Center,,0
-446,reg_season,Wed,Dec 27,2023,7:00p,Toronto Raptors,,Washington Wizards,,,Capital One Arena,,0
-447,reg_season,Wed,Dec 27,2023,7:30p,Milwaukee Bucks,,Brooklyn Nets,,,Barclays Center,,0
-448,reg_season,Wed,Dec 27,2023,8:00p,Phoenix Suns,,Houston Rockets,,,Toyota Center,,0
-449,reg_season,Wed,Dec 27,2023,8:00p,New York Knicks,,Oklahoma City Thunder,,,Paycom Center,,0
-450,reg_season,Wed,Dec 27,2023,8:30p,Cleveland Cavaliers,,Dallas Mavericks,,,American Airlines Center,,0
-451,reg_season,Thu,Dec 28,2023,7:30p,Detroit Pistons,,Boston Celtics,,,TD Garden,,0
-452,reg_season,Thu,Dec 28,2023,8:00p,Indiana Pacers,,Chicago Bulls,,,United Center,,0
-453,reg_season,Thu,Dec 28,2023,8:00p,Dallas Mavericks,,Minnesota Timberwolves,,,Target Center,,0
-454,reg_season,Thu,Dec 28,2023,8:00p,Utah Jazz,,New Orleans Pelicans,,,Smoothie King Center,,0
-455,reg_season,Thu,Dec 28,2023,9:00p,Memphis Grizzlies,,Denver Nuggets,,,Ball Arena,,0
-456,reg_season,Thu,Dec 28,2023,10:00p,Miami Heat,,Golden State Warriors,,,Chase Center,,0
-457,reg_season,Thu,Dec 28,2023,10:00p,San Antonio Spurs,,Portland Trail Blazers,,,Moda Center,,0
-458,reg_season,Thu,Dec 28,2023,10:30p,Charlotte Hornets,,Los Angeles Lakers,,,Crypto.com Arena,,0
-459,reg_season,Fri,Dec 29,2023,7:00p,New York Knicks,,Orlando Magic,,,Amway Center,,0
-460,reg_season,Fri,Dec 29,2023,7:00p,Brooklyn Nets,,Washington Wizards,,,Capital One Arena,,0
-461,reg_season,Fri,Dec 29,2023,7:30p,Sacramento Kings,,Atlanta Hawks,,,State Farm Arena,,0
-462,reg_season,Fri,Dec 29,2023,7:30p,Toronto Raptors,,Boston Celtics,,,TD Garden,,0
-463,reg_season,Fri,Dec 29,2023,7:30p,Milwaukee Bucks,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-464,reg_season,Fri,Dec 29,2023,8:00p,Philadelphia 76ers,,Houston Rockets,,,Toyota Center,,0
-465,reg_season,Fri,Dec 29,2023,9:00p,Oklahoma City Thunder,,Denver Nuggets,,,Ball Arena,,0
-466,reg_season,Fri,Dec 29,2023,9:00p,Charlotte Hornets,,Phoenix Suns,,,Footprint Center,,0
-467,reg_season,Fri,Dec 29,2023,10:00p,San Antonio Spurs,,Portland Trail Blazers,,,Moda Center,,0
-468,reg_season,Fri,Dec 29,2023,10:30p,Memphis Grizzlies,,Los Angeles Clippers,,,Crypto.com Arena,,0
-469,reg_season,Sat,Dec 30,2023,5:00p,Miami Heat,,Utah Jazz,,,Delta Center,,0
-470,reg_season,Sat,Dec 30,2023,6:00p,Toronto Raptors,,Detroit Pistons,,,Little Caesars Arena,,0
-471,reg_season,Sat,Dec 30,2023,7:00p,New York Knicks,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-472,reg_season,Sat,Dec 30,2023,8:00p,Philadelphia 76ers,,Chicago Bulls,,,United Center,,0
-473,reg_season,Sat,Dec 30,2023,8:00p,Los Angeles Lakers,,Minnesota Timberwolves,,,Target Center,,0
-474,reg_season,Sat,Dec 30,2023,8:30p,Dallas Mavericks,,Golden State Warriors,,,Chase Center,,0
-475,reg_season,Sun,Dec 31,2023,3:00p,Atlanta Hawks,,Washington Wizards,,,Capital One Arena,,0
-476,reg_season,Sun,Dec 31,2023,7:00p,Los Angeles Lakers,,New Orleans Pelicans,,,Smoothie King Center,,0
-477,reg_season,Sun,Dec 31,2023,7:00p,Brooklyn Nets,,Oklahoma City Thunder,,,Paycom Center,,0
-478,reg_season,Sun,Dec 31,2023,7:00p,Boston Celtics,,San Antonio Spurs,,,Frost Bank Center,,0
-479,reg_season,Sun,Dec 31,2023,8:00p,Sacramento Kings,,Memphis Grizzlies,,,FedEx Forum,,0
-480,reg_season,Sun,Dec 31,2023,8:00p,Orlando Magic,,Phoenix Suns,,,Footprint Center,,0
+274,reg_season,Fri, Dec 1,2023,7:00p,Washington Wizards,,Orlando Magic,,,Amway Center,,0
+275,reg_season,Fri, Dec 1,2023,7:30p,Philadelphia 76ers,,Boston Celtics,,,TD Garden,,0
+276,reg_season,Fri, Dec 1,2023,7:30p,Memphis Grizzlies,,Dallas Mavericks,,,American Airlines Center,,0
+277,reg_season,Fri, Dec 1,2023,7:30p,New York Knicks,,Toronto Raptors,,,Scotiabank Arena,,0
+278,reg_season,Fri, Dec 1,2023,8:00p,San Antonio Spurs,,New Orleans Pelicans,,,Smoothie King Center,,0
+279,reg_season,Fri, Dec 1,2023,10:00p,Denver Nuggets,,Phoenix Suns,,,Footprint Center,,0
+280,reg_season,Sat, Dec 2,2023,4:00p,Golden State Warriors,,Los Angeles Clippers,,,Crypto.com Arena,,0
+281,reg_season,Sat, Dec 2,2023,5:00p,Minnesota Timberwolves,,Charlotte Hornets,,,Spectrum Center,,0
+282,reg_season,Sat, Dec 2,2023,7:00p,Orlando Magic,,Brooklyn Nets,,,Barclays Center,,0
+283,reg_season,Sat, Dec 2,2023,7:00p,Cleveland Cavaliers,,Detroit Pistons,,,Little Caesars Arena,,0
+284,reg_season,Sat, Dec 2,2023,8:00p,New Orleans Pelicans,,Chicago Bulls,,,United Center,,0
+285,reg_season,Sat, Dec 2,2023,8:00p,Indiana Pacers,,Miami Heat,,,Kaseya Center,,0
+286,reg_season,Sat, Dec 2,2023,8:00p,Atlanta Hawks,,Milwaukee Bucks,,,Fiserv Forum,,0
+287,reg_season,Sat, Dec 2,2023,9:00p,Oklahoma City Thunder,,Dallas Mavericks,,,American Airlines Center,,0
+288,reg_season,Sat, Dec 2,2023,9:00p,Memphis Grizzlies,,Phoenix Suns,,,Footprint Center,,0
+289,reg_season,Sat, Dec 2,2023,9:30p,Portland Trail Blazers,,Utah Jazz,,,Delta Center,,0
+290,reg_season,Sat, Dec 2,2023,10:00p,Denver Nuggets,,Sacramento Kings,,,Golden 1 Center,,0
+291,reg_season,Sat, Dec 2,2023,10:30p,Houston Rockets,,Los Angeles Lakers,,,Crypto.com Arena,,0
+292,reg_season,Mon, Dec 4,2023,7:30p,Boston Celtics,,Indiana Pacers,,,Gainbridge Fieldhouse,Knockout Rounds,0
+293,reg_season,Mon, Dec 4,2023,10:00p,New Orleans Pelicans,,Sacramento Kings,,,Golden 1 Center,Knockout Rounds,0
+294,reg_season,Tue, Dec 5,2023,7:30p,New York Knicks,,Milwaukee Bucks,,,Fiserv Forum,Knockout Rounds,0
+295,reg_season,Tue, Dec 5,2023,10:00p,Phoenix Suns,,Los Angeles Lakers,,,Crypto.com Arena,Knockout Rounds,0
+296,reg_season,Wed, Dec 6,2023,7:00p,Orlando Magic,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
+297,reg_season,Wed, Dec 6,2023,7:00p,Memphis Grizzlies,,Detroit Pistons,,,Little Caesars Arena,,0
+298,reg_season,Wed, Dec 6,2023,7:00p,Miami Heat,,Toronto Raptors,,,Scotiabank Arena,,0
+299,reg_season,Wed, Dec 6,2023,7:00p,Philadelphia 76ers,,Washington Wizards,,,Capital One Arena,,0
+300,reg_season,Wed, Dec 6,2023,7:30p,Brooklyn Nets,,Atlanta Hawks,,,State Farm Arena,,0
+301,reg_season,Wed, Dec 6,2023,7:30p,San Antonio Spurs,,Minnesota Timberwolves,,,Target Center,,0
+302,reg_season,Wed, Dec 6,2023,8:00p,Charlotte Hornets,,Chicago Bulls,,,United Center,,0
+303,reg_season,Wed, Dec 6,2023,8:00p,Oklahoma City Thunder,,Houston Rockets,,,Toyota Center,,0
+304,reg_season,Wed, Dec 6,2023,8:30p,Utah Jazz,,Dallas Mavericks,,,American Airlines Center,,0
+305,reg_season,Wed, Dec 6,2023,10:00p,Portland Trail Blazers,,Golden State Warriors,,,Chase Center,,0
+306,reg_season,Wed, Dec 6,2023,10:00p,Denver Nuggets,,Los Angeles Clippers,,,Crypto.com Arena,,0
+311,reg_season,Fri, Dec 8,2023,7:00p,Toronto Raptors,,Charlotte Hornets,,,Spectrum Center,,0
+312,reg_season,Fri, Dec 8,2023,7:00p,Detroit Pistons,,Orlando Magic,,,Amway Center,,0
+313,reg_season,Fri, Dec 8,2023,7:00p,Atlanta Hawks,,Philadelphia 76ers,,,Wells Fargo Center,,0
+314,reg_season,Fri, Dec 8,2023,7:30p,Washington Wizards,,Brooklyn Nets,,,Barclays Center,,0
+315,reg_season,Fri, Dec 8,2023,8:00p,Minnesota Timberwolves,,Memphis Grizzlies,,,FedEx Forum,,0
+316,reg_season,Fri, Dec 8,2023,8:00p,Cleveland Cavaliers,,Miami Heat,,,Kaseya Center,,0
+317,reg_season,Fri, Dec 8,2023,8:00p,Golden State Warriors,,Oklahoma City Thunder,,,Paycom Center,,0
+318,reg_season,Fri, Dec 8,2023,8:30p,Chicago Bulls,,San Antonio Spurs,,,Frost Bank Center,,0
+319,reg_season,Fri, Dec 8,2023,9:00p,Houston Rockets,,Denver Nuggets,,,Ball Arena,,0
+320,reg_season,Fri, Dec 8,2023,10:00p,Dallas Mavericks,,Portland Trail Blazers,,,Moda Center,,0
+321,reg_season,Fri, Dec 8,2023,10:00p,Los Angeles Clippers,,Utah Jazz,,,Delta Center,,0
+322,reg_season,Mon, Dec 11,2023,7:00p,Miami Heat,,Charlotte Hornets,,,Spectrum Center,,0
+323,reg_season,Mon, Dec 11,2023,7:00p,Indiana Pacers,,Detroit Pistons,,,Little Caesars Arena,,0
+324,reg_season,Mon, Dec 11,2023,7:00p,Cleveland Cavaliers,,Orlando Magic,,,Amway Center,,0
+325,reg_season,Mon, Dec 11,2023,7:00p,Washington Wizards,,Philadelphia 76ers,,,Wells Fargo Center,,0
+326,reg_season,Mon, Dec 11,2023,7:30p,Denver Nuggets,,Atlanta Hawks,,,State Farm Arena,,0
+327,reg_season,Mon, Dec 11,2023,7:30p,Toronto Raptors,,New York Knicks,,,Madison Square Garden (IV),,0
+328,reg_season,Mon, Dec 11,2023,8:00p,San Antonio Spurs,,Houston Rockets,,,Toyota Center,,0
+329,reg_season,Mon, Dec 11,2023,8:00p,Dallas Mavericks,,Memphis Grizzlies,,,FedEx Forum,,0
+330,reg_season,Mon, Dec 11,2023,8:00p,Chicago Bulls,,Milwaukee Bucks,,,Fiserv Forum,,0
+331,reg_season,Mon, Dec 11,2023,8:00p,Minnesota Timberwolves,,New Orleans Pelicans,,,Smoothie King Center,,0
+332,reg_season,Mon, Dec 11,2023,8:00p,Utah Jazz,,Oklahoma City Thunder,,,Paycom Center,,0
+333,reg_season,Mon, Dec 11,2023,10:00p,Brooklyn Nets,,Sacramento Kings,,,Golden 1 Center,,0
+334,reg_season,Mon, Dec 11,2023,10:30p,Portland Trail Blazers,,Los Angeles Clippers,,,Crypto.com Arena,,0
+335,reg_season,Tue, Dec 12,2023,7:30p,Cleveland Cavaliers,,Boston Celtics,,,TD Garden,,0
+336,reg_season,Tue, Dec 12,2023,7:30p,Los Angeles Lakers,,Dallas Mavericks,,,American Airlines Center,,0
+337,reg_season,Tue, Dec 12,2023,8:00p,Denver Nuggets,,Chicago Bulls,,,United Center,,0
+338,reg_season,Tue, Dec 12,2023,10:00p,Golden State Warriors,,Phoenix Suns,,,Footprint Center,,0
+339,reg_season,Tue, Dec 12,2023,10:30p,Sacramento Kings,,Los Angeles Clippers,,,Crypto.com Arena,,0
+340,reg_season,Wed, Dec 13,2023,7:00p,Philadelphia 76ers,,Detroit Pistons,,,Little Caesars Arena,,0
+341,reg_season,Wed, Dec 13,2023,7:00p,New Orleans Pelicans,,Washington Wizards,,,Capital One Arena,,0
+342,reg_season,Wed, Dec 13,2023,7:30p,Charlotte Hornets,,Miami Heat,,,Kaseya Center,,0
+343,reg_season,Wed, Dec 13,2023,7:30p,Atlanta Hawks,,Toronto Raptors,,,Scotiabank Arena,,0
+344,reg_season,Wed, Dec 13,2023,8:00p,Memphis Grizzlies,,Houston Rockets,,,Toyota Center,,0
+345,reg_season,Wed, Dec 13,2023,8:00p,Indiana Pacers,,Milwaukee Bucks,,,Fiserv Forum,,0
+346,reg_season,Wed, Dec 13,2023,8:00p,Los Angeles Lakers,,San Antonio Spurs,,,Frost Bank Center,,0
+347,reg_season,Wed, Dec 13,2023,9:00p,Brooklyn Nets,,Phoenix Suns,,,Footprint Center,,0
+348,reg_season,Wed, Dec 13,2023,9:00p,New York Knicks,,Utah Jazz,,,Delta Center,,0
+349,reg_season,Thu, Dec 14,2023,7:30p,Cleveland Cavaliers,,Boston Celtics,,,TD Garden,,0
+350,reg_season,Thu, Dec 14,2023,7:30p,Chicago Bulls,,Miami Heat,,,Kaseya Center,,0
+351,reg_season,Thu, Dec 14,2023,8:30p,Minnesota Timberwolves,,Dallas Mavericks,,,American Airlines Center,,0
+352,reg_season,Thu, Dec 14,2023,9:00p,Brooklyn Nets,,Denver Nuggets,,,Ball Arena,,0
+353,reg_season,Thu, Dec 14,2023,10:00p,Utah Jazz,,Portland Trail Blazers,,,Moda Center,,0
+354,reg_season,Thu, Dec 14,2023,10:00p,Oklahoma City Thunder,,Sacramento Kings,,,Golden 1 Center,,0
+355,reg_season,Thu, Dec 14,2023,10:30p,Golden State Warriors,,Los Angeles Clippers,,,Crypto.com Arena,,0
+356,reg_season,Fri, Dec 15,2023,7:00p,New Orleans Pelicans,,Charlotte Hornets,,,Spectrum Center,,0
+357,reg_season,Fri, Dec 15,2023,7:00p,Detroit Pistons,,Philadelphia 76ers,,,Wells Fargo Center,,0
+358,reg_season,Fri, Dec 15,2023,7:00p,Indiana Pacers,,Washington Wizards,,,Capital One Arena,,0
+359,reg_season,Fri, Dec 15,2023,7:30p,Orlando Magic,,Boston Celtics,,,TD Garden,,0
+360,reg_season,Fri, Dec 15,2023,7:30p,Los Angeles Lakers,,San Antonio Spurs,,,Frost Bank Center,,0
+361,reg_season,Fri, Dec 15,2023,7:30p,Atlanta Hawks,,Toronto Raptors,,,Scotiabank Arena,,0
+362,reg_season,Fri, Dec 15,2023,8:00p,Houston Rockets,,Memphis Grizzlies,,,FedEx Forum,,0
+363,reg_season,Fri, Dec 15,2023,10:00p,New York Knicks,,Phoenix Suns,,,Footprint Center,,0
+364,reg_season,Sat, Dec 16,2023,6:00p,Detroit Pistons,,Milwaukee Bucks,,,Fiserv Forum,,0
+365,reg_season,Sat, Dec 16,2023,7:00p,Philadelphia 76ers,,Charlotte Hornets,,,Spectrum Center,,0
+366,reg_season,Sat, Dec 16,2023,7:30p,Atlanta Hawks,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
+367,reg_season,Sat, Dec 16,2023,8:00p,Chicago Bulls,,Miami Heat,,,Kaseya Center,,0
+368,reg_season,Sat, Dec 16,2023,8:00p,Indiana Pacers,,Minnesota Timberwolves,,,Target Center,,0
+369,reg_season,Sat, Dec 16,2023,8:30p,Brooklyn Nets,,Golden State Warriors,,,Chase Center,,0
+370,reg_season,Sat, Dec 16,2023,9:00p,Oklahoma City Thunder,,Denver Nuggets,,,Ball Arena,,0
+371,reg_season,Sat, Dec 16,2023,9:00p,Dallas Mavericks,,Portland Trail Blazers,,,Moda Center,,0
+372,reg_season,Sat, Dec 16,2023,10:00p,Utah Jazz,,Sacramento Kings,,,Golden 1 Center,,0
+373,reg_season,Sat, Dec 16,2023,10:30p,New York Knicks,,Los Angeles Clippers,,,Crypto.com Arena,,0
+374,reg_season,Sun, Dec 17,2023,3:00p,Orlando Magic,,Boston Celtics,,,TD Garden,,0
+375,reg_season,Sun, Dec 17,2023,3:30p,New Orleans Pelicans,,San Antonio Spurs,,,Frost Bank Center,,0
+376,reg_season,Sun, Dec 17,2023,7:00p,Houston Rockets,,Milwaukee Bucks,,,Fiserv Forum,,0
+377,reg_season,Sun, Dec 17,2023,8:00p,Washington Wizards,,Phoenix Suns,,,Footprint Center,,0
+378,reg_season,Sun, Dec 17,2023,9:00p,Golden State Warriors,,Portland Trail Blazers,,,Moda Center,,0
+379,reg_season,Mon, Dec 18,2023,7:00p,Houston Rockets,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
+380,reg_season,Mon, Dec 18,2023,7:00p,Los Angeles Clippers,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+381,reg_season,Mon, Dec 18,2023,7:00p,Chicago Bulls,,Philadelphia 76ers,,,Wells Fargo Center,,0
+382,reg_season,Mon, Dec 18,2023,7:30p,Detroit Pistons,,Atlanta Hawks,,,State Farm Arena,,0
+383,reg_season,Mon, Dec 18,2023,7:30p,Minnesota Timberwolves,,Miami Heat,,,Kaseya Center,,0
+384,reg_season,Mon, Dec 18,2023,7:30p,Charlotte Hornets,,Toronto Raptors,,,Scotiabank Arena,,0
+385,reg_season,Mon, Dec 18,2023,8:00p,Memphis Grizzlies,,Oklahoma City Thunder,,,Paycom Center,,0
+386,reg_season,Mon, Dec 18,2023,9:00p,Dallas Mavericks,,Denver Nuggets,,,Ball Arena,,0
+387,reg_season,Mon, Dec 18,2023,9:00p,Brooklyn Nets,,Utah Jazz,,,Delta Center,,0
+388,reg_season,Mon, Dec 18,2023,10:00p,Washington Wizards,,Sacramento Kings,,,Golden 1 Center,,0
+389,reg_season,Mon, Dec 18,2023,10:30p,New York Knicks,,Los Angeles Lakers,,,Crypto.com Arena,,0
+390,reg_season,Tue, Dec 19,2023,7:30p,Memphis Grizzlies,,New Orleans Pelicans,,,Smoothie King Center,,0
+391,reg_season,Tue, Dec 19,2023,8:00p,San Antonio Spurs,,Milwaukee Bucks,,,Fiserv Forum,,0
+392,reg_season,Tue, Dec 19,2023,10:00p,Boston Celtics,,Golden State Warriors,,,Chase Center,,0
+393,reg_season,Tue, Dec 19,2023,10:00p,Phoenix Suns,,Portland Trail Blazers,,,Moda Center,,0
+394,reg_season,Wed, Dec 20,2023,7:00p,Utah Jazz,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
+395,reg_season,Wed, Dec 20,2023,7:00p,Charlotte Hornets,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+396,reg_season,Wed, Dec 20,2023,7:00p,Miami Heat,,Orlando Magic,,,Amway Center,,0
+397,reg_season,Wed, Dec 20,2023,7:00p,Minnesota Timberwolves,,Philadelphia 76ers,,,Wells Fargo Center,,0
+398,reg_season,Wed, Dec 20,2023,7:30p,New York Knicks,,Brooklyn Nets,,,Barclays Center,,0
+399,reg_season,Wed, Dec 20,2023,7:30p,Denver Nuggets,,Toronto Raptors,,,Scotiabank Arena,,0
+400,reg_season,Wed, Dec 20,2023,8:00p,Los Angeles Lakers,,Chicago Bulls,,,United Center,,0
+401,reg_season,Wed, Dec 20,2023,8:00p,Atlanta Hawks,,Houston Rockets,,,Toyota Center,,0
+402,reg_season,Wed, Dec 20,2023,8:30p,Los Angeles Clippers,,Dallas Mavericks,,,American Airlines Center,,0
+403,reg_season,Wed, Dec 20,2023,10:00p,Boston Celtics,,Sacramento Kings,,,Golden 1 Center,,0
+404,reg_season,Thu, Dec 21,2023,7:00p,Utah Jazz,,Detroit Pistons,,,Little Caesars Arena,,0
+405,reg_season,Thu, Dec 21,2023,7:30p,New Orleans Pelicans,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
+406,reg_season,Thu, Dec 21,2023,8:00p,San Antonio Spurs,,Chicago Bulls,,,United Center,,0
+407,reg_season,Thu, Dec 21,2023,8:00p,Indiana Pacers,,Memphis Grizzlies,,,FedEx Forum,,0
+408,reg_season,Thu, Dec 21,2023,8:00p,Orlando Magic,,Milwaukee Bucks,,,Fiserv Forum,,0
+409,reg_season,Thu, Dec 21,2023,8:00p,Los Angeles Clippers,,Oklahoma City Thunder,,,Paycom Center,,0
+410,reg_season,Thu, Dec 21,2023,9:00p,Los Angeles Lakers,,Minnesota Timberwolves,,,Target Center,,0
+411,reg_season,Thu, Dec 21,2023,10:00p,Washington Wizards,,Portland Trail Blazers,,,Moda Center,,0
+412,reg_season,Fri, Dec 22,2023,6:30p,Denver Nuggets,,Brooklyn Nets,,,Barclays Center,,0
+413,reg_season,Fri, Dec 22,2023,7:00p,Toronto Raptors,,Philadelphia 76ers,,,Wells Fargo Center,,0
+414,reg_season,Fri, Dec 22,2023,8:00p,Dallas Mavericks,,Houston Rockets,,,Toyota Center,,0
+415,reg_season,Fri, Dec 22,2023,8:00p,Atlanta Hawks,,Miami Heat,,,Kaseya Center,,0
+416,reg_season,Fri, Dec 22,2023,10:00p,Washington Wizards,,Golden State Warriors,,,Chase Center,,0
+417,reg_season,Fri, Dec 22,2023,10:00p,Phoenix Suns,,Sacramento Kings,,,Golden 1 Center,,0
+418,reg_season,Sat, Dec 23,2023,12:30p,Milwaukee Bucks,,New York Knicks,,,Madison Square Garden (IV),,0
+419,reg_season,Sat, Dec 23,2023,3:30p,Boston Celtics,,Los Angeles Clippers,,,Crypto.com Arena,,0
+420,reg_season,Sat, Dec 23,2023,7:00p,Denver Nuggets,,Charlotte Hornets,,,Spectrum Center,,0
+421,reg_season,Sat, Dec 23,2023,7:00p,Orlando Magic,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+422,reg_season,Sat, Dec 23,2023,7:00p,Houston Rockets,,New Orleans Pelicans,,,Smoothie King Center,,0
+423,reg_season,Sat, Dec 23,2023,7:30p,Memphis Grizzlies,,Atlanta Hawks,,,State Farm Arena,,0
+424,reg_season,Sat, Dec 23,2023,7:30p,Detroit Pistons,,Brooklyn Nets,,,Barclays Center,,0
+425,reg_season,Sat, Dec 23,2023,7:30p,Utah Jazz,,Toronto Raptors,,,Scotiabank Arena,,0
+426,reg_season,Sat, Dec 23,2023,8:00p,Cleveland Cavaliers,,Chicago Bulls,,,United Center,,0
+427,reg_season,Sat, Dec 23,2023,8:00p,Los Angeles Lakers,,Oklahoma City Thunder,,,Paycom Center,,0
+428,reg_season,Sat, Dec 23,2023,8:30p,San Antonio Spurs,,Dallas Mavericks,,,American Airlines Center,,0
+429,reg_season,Sat, Dec 23,2023,8:30p,Portland Trail Blazers,,Golden State Warriors,,,Chase Center,,0
+430,reg_season,Sat, Dec 23,2023,10:00p,Minnesota Timberwolves,,Sacramento Kings,,,Golden 1 Center,,0
+431,reg_season,Mon, Dec 25,2023,12:00p,Milwaukee Bucks,,New York Knicks,,,Madison Square Garden (IV),,0
+432,reg_season,Mon, Dec 25,2023,2:30p,Golden State Warriors,,Denver Nuggets,,,Ball Arena,,0
+433,reg_season,Mon, Dec 25,2023,5:00p,Boston Celtics,,Los Angeles Lakers,,,Crypto.com Arena,,0
+434,reg_season,Mon, Dec 25,2023,8:00p,Philadelphia 76ers,,Miami Heat,,,Kaseya Center,,0
+435,reg_season,Mon, Dec 25,2023,10:30p,Dallas Mavericks,,Phoenix Suns,,,Footprint Center,,0
+436,reg_season,Tue, Dec 26,2023,7:00p,Brooklyn Nets,,Detroit Pistons,,,Little Caesars Arena,,0
+437,reg_season,Tue, Dec 26,2023,7:00p,Orlando Magic,,Washington Wizards,,,Capital One Arena,,0
+438,reg_season,Tue, Dec 26,2023,8:00p,Atlanta Hawks,,Chicago Bulls,,,United Center,,0
+439,reg_season,Tue, Dec 26,2023,8:00p,Indiana Pacers,,Houston Rockets,,,Toyota Center,,0
+440,reg_season,Tue, Dec 26,2023,8:00p,Memphis Grizzlies,,New Orleans Pelicans,,,Smoothie King Center,,0
+441,reg_season,Tue, Dec 26,2023,8:00p,Minnesota Timberwolves,,Oklahoma City Thunder,,,Paycom Center,,0
+442,reg_season,Tue, Dec 26,2023,8:00p,Utah Jazz,,San Antonio Spurs,,,Frost Bank Center,,0
+443,reg_season,Tue, Dec 26,2023,10:00p,Sacramento Kings,,Portland Trail Blazers,,,Moda Center,,0
+444,reg_season,Tue, Dec 26,2023,10:30p,Charlotte Hornets,,Los Angeles Clippers,,,Crypto.com Arena,,0
+445,reg_season,Wed, Dec 27,2023,7:00p,Philadelphia 76ers,,Orlando Magic,,,Amway Center,,0
+446,reg_season,Wed, Dec 27,2023,7:00p,Toronto Raptors,,Washington Wizards,,,Capital One Arena,,0
+447,reg_season,Wed, Dec 27,2023,7:30p,Milwaukee Bucks,,Brooklyn Nets,,,Barclays Center,,0
+448,reg_season,Wed, Dec 27,2023,8:00p,Phoenix Suns,,Houston Rockets,,,Toyota Center,,0
+449,reg_season,Wed, Dec 27,2023,8:00p,New York Knicks,,Oklahoma City Thunder,,,Paycom Center,,0
+450,reg_season,Wed, Dec 27,2023,8:30p,Cleveland Cavaliers,,Dallas Mavericks,,,American Airlines Center,,0
+451,reg_season,Thu, Dec 28,2023,7:30p,Detroit Pistons,,Boston Celtics,,,TD Garden,,0
+452,reg_season,Thu, Dec 28,2023,8:00p,Indiana Pacers,,Chicago Bulls,,,United Center,,0
+453,reg_season,Thu, Dec 28,2023,8:00p,Dallas Mavericks,,Minnesota Timberwolves,,,Target Center,,0
+454,reg_season,Thu, Dec 28,2023,8:00p,Utah Jazz,,New Orleans Pelicans,,,Smoothie King Center,,0
+455,reg_season,Thu, Dec 28,2023,9:00p,Memphis Grizzlies,,Denver Nuggets,,,Ball Arena,,0
+456,reg_season,Thu, Dec 28,2023,10:00p,Miami Heat,,Golden State Warriors,,,Chase Center,,0
+457,reg_season,Thu, Dec 28,2023,10:00p,San Antonio Spurs,,Portland Trail Blazers,,,Moda Center,,0
+458,reg_season,Thu, Dec 28,2023,10:30p,Charlotte Hornets,,Los Angeles Lakers,,,Crypto.com Arena,,0
+459,reg_season,Fri, Dec 29,2023,7:00p,New York Knicks,,Orlando Magic,,,Amway Center,,0
+460,reg_season,Fri, Dec 29,2023,7:00p,Brooklyn Nets,,Washington Wizards,,,Capital One Arena,,0
+461,reg_season,Fri, Dec 29,2023,7:30p,Sacramento Kings,,Atlanta Hawks,,,State Farm Arena,,0
+462,reg_season,Fri, Dec 29,2023,7:30p,Toronto Raptors,,Boston Celtics,,,TD Garden,,0
+463,reg_season,Fri, Dec 29,2023,7:30p,Milwaukee Bucks,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
+464,reg_season,Fri, Dec 29,2023,8:00p,Philadelphia 76ers,,Houston Rockets,,,Toyota Center,,0
+465,reg_season,Fri, Dec 29,2023,9:00p,Oklahoma City Thunder,,Denver Nuggets,,,Ball Arena,,0
+466,reg_season,Fri, Dec 29,2023,9:00p,Charlotte Hornets,,Phoenix Suns,,,Footprint Center,,0
+467,reg_season,Fri, Dec 29,2023,10:00p,San Antonio Spurs,,Portland Trail Blazers,,,Moda Center,,0
+468,reg_season,Fri, Dec 29,2023,10:30p,Memphis Grizzlies,,Los Angeles Clippers,,,Crypto.com Arena,,0
+469,reg_season,Sat, Dec 30,2023,5:00p,Miami Heat,,Utah Jazz,,,Delta Center,,0
+470,reg_season,Sat, Dec 30,2023,6:00p,Toronto Raptors,,Detroit Pistons,,,Little Caesars Arena,,0
+471,reg_season,Sat, Dec 30,2023,7:00p,New York Knicks,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+472,reg_season,Sat, Dec 30,2023,8:00p,Philadelphia 76ers,,Chicago Bulls,,,United Center,,0
+473,reg_season,Sat, Dec 30,2023,8:00p,Los Angeles Lakers,,Minnesota Timberwolves,,,Target Center,,0
+474,reg_season,Sat, Dec 30,2023,8:30p,Dallas Mavericks,,Golden State Warriors,,,Chase Center,,0
+475,reg_season,Sun, Dec 31,2023,3:00p,Atlanta Hawks,,Washington Wizards,,,Capital One Arena,,0
+476,reg_season,Sun, Dec 31,2023,7:00p,Los Angeles Lakers,,New Orleans Pelicans,,,Smoothie King Center,,0
+477,reg_season,Sun, Dec 31,2023,7:00p,Brooklyn Nets,,Oklahoma City Thunder,,,Paycom Center,,0
+478,reg_season,Sun, Dec 31,2023,7:00p,Boston Celtics,,San Antonio Spurs,,,Frost Bank Center,,0
+479,reg_season,Sun, Dec 31,2023,8:00p,Sacramento Kings,,Memphis Grizzlies,,,FedEx Forum,,0
+480,reg_season,Sun, Dec 31,2023,8:00p,Orlando Magic,,Phoenix Suns,,,Footprint Center,,0
 481,reg_season,Mon, Jan 1,2024,3:00p,Minnesota Timberwolves,,New York Knicks,,,Madison Square Garden (IV),,0
 482,reg_season,Mon, Jan 1,2024,7:30p,Cleveland Cavaliers,,Toronto Raptors,,,Scotiabank Arena,,0
 483,reg_season,Mon, Jan 1,2024,8:00p,Detroit Pistons,,Houston Rockets,,,Toyota Center,,0
@@ -1229,114 +1225,114 @@ id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Ar
 1228,reg_season,Sun, Apr 14,2024,3:30p,Dallas Mavericks,,Oklahoma City Thunder,,,Paycom Center,,0
 1229,reg_season,Sun, Apr 14,2024,3:30p,Portland Trail Blazers,,Sacramento Kings,,,Golden 1 Center,,0
 1230,reg_season,Sun, Apr 14,2024,3:30p,Detroit Pistons,,San Antonio Spurs,,,AT&T Center,,0
-1231,playin_r1,,,West-8,,West-7,,,,,0
-1232,playin_r1,,,West-10,,West-9,,,,,0
-1233,playin_r2,,,winner-1232,,loser-1231,,,,,0
-1234,playin_r1,,,East-8,,East-7,,,,,0
-1235,playin_r1,,,East-10,,East-9,,,,,0
-1236,playin_r2,,,winner-1235,,loser-1234,,,,,0
-1237,playoffs_r1,,,West-8,,West-1,,,,,1
-1238,playoffs_r1,,,West-8,,West-1,,,,,1
-1239,playoffs_r1,,,West-1,,West-8,,,,,1
-1240,playoffs_r1,,,West-1,,West-8,,,,,1
-1241,playoffs_r1,,,West-1,,West-8,,,,,1
-1242,playoffs_r1,,,West-8,,West-1,,,,,1
-1243,playoffs_r1,,,West-8,,West-1,,,,,1
-1244,playoffs_r1,,,West-7,,West-2,,,,,2
-1245,playoffs_r1,,,West-7,,West-2,,,,,2
-1246,playoffs_r1,,,West-2,,West-7,,,,,2
-1247,playoffs_r1,,,West-2,,West-7,,,,,2
-1248,playoffs_r1,,,West-2,,West-7,,,,,2
-1249,playoffs_r1,,,West-7,,West-2,,,,,2
-1250,playoffs_r1,,,West-7,,West-2,,,,,2
-1251,playoffs_r1,,,West-6,,West-3,,,,,3
-1252,playoffs_r1,,,West-6,,West-3,,,,,3
-1253,playoffs_r1,,,West-3,,West-6,,,,,3
-1254,playoffs_r1,,,West-3,,West-6,,,,,3
-1255,playoffs_r1,,,West-3,,West-6,,,,,3
-1256,playoffs_r1,,,West-6,,West-3,,,,,3
-1257,playoffs_r1,,,West-6,,West-3,,,,,3
-1258,playoffs_r1,,,West-5,,West-4,,,,,4
-1259,playoffs_r1,,,West-5,,West-4,,,,,4
-1260,playoffs_r1,,,West-4,,West-5,,,,,4
-1261,playoffs_r1,,,West-4,,West-5,,,,,4
-1262,playoffs_r1,,,West-4,,West-5,,,,,4
-1263,playoffs_r1,,,West-5,,West-4,,,,,4
-1264,playoffs_r1,,,West-5,,West-4,,,,,4
-1265,playoffs_r1,,,East-8,,East-1,,,,,5
-1266,playoffs_r1,,,East-8,,East-1,,,,,5
-1267,playoffs_r1,,,East-1,,East-8,,,,,5
-1268,playoffs_r1,,,East-1,,East-8,,,,,5
-1269,playoffs_r1,,,East-1,,East-8,,,,,5
-1270,playoffs_r1,,,East-8,,East-1,,,,,5
-1271,playoffs_r1,,,East-8,,East-1,,,,,5
-1272,playoffs_r1,,,East-7,,East-2,,,,,6
-1273,playoffs_r1,,,East-7,,East-2,,,,,6
-1274,playoffs_r1,,,East-2,,East-7,,,,,6
-1275,playoffs_r1,,,East-2,,East-7,,,,,6
-1276,playoffs_r1,,,East-2,,East-7,,,,,6
-1277,playoffs_r1,,,East-7,,East-2,,,,,6
-1278,playoffs_r1,,,East-7,,East-2,,,,,6
-1279,playoffs_r1,,,East-6,,East-3,,,,,7
-1280,playoffs_r1,,,East-6,,East-3,,,,,7
-1281,playoffs_r1,,,East-3,,East-6,,,,,7
-1282,playoffs_r1,,,East-3,,East-6,,,,,7
-1283,playoffs_r1,,,East-3,,East-6,,,,,7
-1284,playoffs_r1,,,East-6,,East-3,,,,,7
-1285,playoffs_r1,,,East-6,,East-3,,,,,7
-1286,playoffs_r1,,,East-5,,East-4,,,,,8
-1287,playoffs_r1,,,East-5,,East-4,,,,,8
-1288,playoffs_r1,,,East-4,,East-5,,,,,8
-1289,playoffs_r1,,,East-4,,East-5,,,,,8
-1290,playoffs_r1,,,East-4,,East-5,,,,,8
-1291,playoffs_r1,,,East-5,,East-4,,,,,8
-1292,playoffs_r1,,,East-5,,East-4,,,,,8
-1293,playoffs_r2,,,West-4,,West-1,,,,,9
-1294,playoffs_r2,,,West-4,,West-1,,,,,9
-1295,playoffs_r2,,,West-1,,West-4,,,,,9
-1296,playoffs_r2,,,West-1,,West-4,,,,,9
-1297,playoffs_r2,,,West-1,,West-4,,,,,9
-1298,playoffs_r2,,,West-4,,West-1,,,,,9
-1299,playoffs_r2,,,West-4,,West-1,,,,,9
-1300,playoffs_r2,,,West-3,,West-2,,,,,10
-1301,playoffs_r2,,,West-3,,West-2,,,,,10
-1302,playoffs_r2,,,West-2,,West-3,,,,,10
-1303,playoffs_r2,,,West-2,,West-3,,,,,10
-1304,playoffs_r2,,,West-2,,West-3,,,,,10
-1305,playoffs_r2,,,West-3,,West-2,,,,,10
-1306,playoffs_r2,,,West-3,,West-2,,,,,10
-1307,playoffs_r2,,,East-4,,East-1,,,,,11
-1308,playoffs_r2,,,East-4,,East-1,,,,,11
-1309,playoffs_r2,,,East-1,,East-4,,,,,11
-1310,playoffs_r2,,,East-1,,East-4,,,,,11
-1311,playoffs_r2,,,East-1,,East-4,,,,,11
-1312,playoffs_r2,,,East-4,,East-1,,,,,11
-1313,playoffs_r2,,,East-4,,East-1,,,,,11
-1314,playoffs_r2,,,East-3,,East-2,,,,,12
-1315,playoffs_r2,,,East-3,,East-2,,,,,12
-1316,playoffs_r2,,,East-2,,East-3,,,,,12
-1317,playoffs_r2,,,East-2,,East-3,,,,,12
-1318,playoffs_r2,,,East-2,,East-3,,,,,12
-1319,playoffs_r2,,,East-3,,East-2,,,,,12
-1320,playoffs_r2,,,East-3,,East-2,,,,,12
-1321,playoffs_r3,,,West-2,,West-1,,,,,13
-1322,playoffs_r3,,,West-2,,West-1,,,,,13
-1323,playoffs_r3,,,West-1,,West-2,,,,,13
-1324,playoffs_r3,,,West-1,,West-2,,,,,13
-1325,playoffs_r3,,,West-1,,West-2,,,,,13
-1326,playoffs_r3,,,West-2,,West-1,,,,,13
-1327,playoffs_r3,,,West-2,,West-1,,,,,13
-1328,playoffs_r3,,,East-2,,East-1,,,,,14
-1329,playoffs_r3,,,East-2,,East-1,,,,,14
-1330,playoffs_r3,,,East-1,,East-2,,,,,14
-1331,playoffs_r3,,,East-1,,East-2,,,,,14
-1332,playoffs_r3,,,East-1,,East-2,,,,,14
-1333,playoffs_r3,,,East-2,,East-1,,,,,14
-1334,playoffs_r3,,,East-2,,East-1,,,,,14
-1335,playoffs_r4,,,West-1,,East-1,,,,,15
-1336,playoffs_r4,,,West-1,,East-1,,,,,15
-1337,playoffs_r4,,,West-1,,East-1,,,,,15
-1338,playoffs_r4,,,West-1,,East-1,,,,,15
-1339,playoffs_r4,,,West-1,,East-1,,,,,15
-1340,playoffs_r4,,,West-1,,East-1,,,,,15
-1341,playoffs_r4,,,West-1,,East-1,,,,,15
+1231,playin_r1,,,,,West-8,,West-7,,,,,0
+1232,playin_r1,,,,,West-10,,West-9,,,,,0
+1233,playin_r2,,,,,winner-1232,,loser-1231,,,,,0
+1234,playin_r1,,,,,East-8,,East-7,,,,,0
+1235,playin_r1,,,,,East-10,,East-9,,,,,0
+1236,playin_r2,,,,,winner-1235,,loser-1234,,,,,0
+1237,playoffs_r1,,,,,West-8,,West-1,,,,,1
+1238,playoffs_r1,,,,,West-8,,West-1,,,,,1
+1239,playoffs_r1,,,,,West-1,,West-8,,,,,1
+1240,playoffs_r1,,,,,West-1,,West-8,,,,,1
+1241,playoffs_r1,,,,,West-1,,West-8,,,,,1
+1242,playoffs_r1,,,,,West-8,,West-1,,,,,1
+1243,playoffs_r1,,,,,West-8,,West-1,,,,,1
+1244,playoffs_r1,,,,,West-7,,West-2,,,,,2
+1245,playoffs_r1,,,,,West-7,,West-2,,,,,2
+1246,playoffs_r1,,,,,West-2,,West-7,,,,,2
+1247,playoffs_r1,,,,,West-2,,West-7,,,,,2
+1248,playoffs_r1,,,,,West-2,,West-7,,,,,2
+1249,playoffs_r1,,,,,West-7,,West-2,,,,,2
+1250,playoffs_r1,,,,,West-7,,West-2,,,,,2
+1251,playoffs_r1,,,,,West-6,,West-3,,,,,3
+1252,playoffs_r1,,,,,West-6,,West-3,,,,,3
+1253,playoffs_r1,,,,,West-3,,West-6,,,,,3
+1254,playoffs_r1,,,,,West-3,,West-6,,,,,3
+1255,playoffs_r1,,,,,West-3,,West-6,,,,,3
+1256,playoffs_r1,,,,,West-6,,West-3,,,,,3
+1257,playoffs_r1,,,,,West-6,,West-3,,,,,3
+1258,playoffs_r1,,,,,West-5,,West-4,,,,,4
+1259,playoffs_r1,,,,,West-5,,West-4,,,,,4
+1260,playoffs_r1,,,,,West-4,,West-5,,,,,4
+1261,playoffs_r1,,,,,West-4,,West-5,,,,,4
+1262,playoffs_r1,,,,,West-4,,West-5,,,,,4
+1263,playoffs_r1,,,,,West-5,,West-4,,,,,4
+1264,playoffs_r1,,,,,West-5,,West-4,,,,,4
+1265,playoffs_r1,,,,,East-8,,East-1,,,,,5
+1266,playoffs_r1,,,,,East-8,,East-1,,,,,5
+1267,playoffs_r1,,,,,East-1,,East-8,,,,,5
+1268,playoffs_r1,,,,,East-1,,East-8,,,,,5
+1269,playoffs_r1,,,,,East-1,,East-8,,,,,5
+1270,playoffs_r1,,,,,East-8,,East-1,,,,,5
+1271,playoffs_r1,,,,,East-8,,East-1,,,,,5
+1272,playoffs_r1,,,,,East-7,,East-2,,,,,6
+1273,playoffs_r1,,,,,East-7,,East-2,,,,,6
+1274,playoffs_r1,,,,,East-2,,East-7,,,,,6
+1275,playoffs_r1,,,,,East-2,,East-7,,,,,6
+1276,playoffs_r1,,,,,East-2,,East-7,,,,,6
+1277,playoffs_r1,,,,,East-7,,East-2,,,,,6
+1278,playoffs_r1,,,,,East-7,,East-2,,,,,6
+1279,playoffs_r1,,,,,East-6,,East-3,,,,,7
+1280,playoffs_r1,,,,,East-6,,East-3,,,,,7
+1281,playoffs_r1,,,,,East-3,,East-6,,,,,7
+1282,playoffs_r1,,,,,East-3,,East-6,,,,,7
+1283,playoffs_r1,,,,,East-3,,East-6,,,,,7
+1284,playoffs_r1,,,,,East-6,,East-3,,,,,7
+1285,playoffs_r1,,,,,East-6,,East-3,,,,,7
+1286,playoffs_r1,,,,,East-5,,East-4,,,,,8
+1287,playoffs_r1,,,,,East-5,,East-4,,,,,8
+1288,playoffs_r1,,,,,East-4,,East-5,,,,,8
+1289,playoffs_r1,,,,,East-4,,East-5,,,,,8
+1290,playoffs_r1,,,,,East-4,,East-5,,,,,8
+1291,playoffs_r1,,,,,East-5,,East-4,,,,,8
+1292,playoffs_r1,,,,,East-5,,East-4,,,,,8
+1293,playoffs_r2,,,,,West-4,,West-1,,,,,9
+1294,playoffs_r2,,,,,West-4,,West-1,,,,,9
+1295,playoffs_r2,,,,,West-1,,West-4,,,,,9
+1296,playoffs_r2,,,,,West-1,,West-4,,,,,9
+1297,playoffs_r2,,,,,West-1,,West-4,,,,,9
+1298,playoffs_r2,,,,,West-4,,West-1,,,,,9
+1299,playoffs_r2,,,,,West-4,,West-1,,,,,9
+1300,playoffs_r2,,,,,West-3,,West-2,,,,,10
+1301,playoffs_r2,,,,,West-3,,West-2,,,,,10
+1302,playoffs_r2,,,,,West-2,,West-3,,,,,10
+1303,playoffs_r2,,,,,West-2,,West-3,,,,,10
+1304,playoffs_r2,,,,,West-2,,West-3,,,,,10
+1305,playoffs_r2,,,,,West-3,,West-2,,,,,10
+1306,playoffs_r2,,,,,West-3,,West-2,,,,,10
+1307,playoffs_r2,,,,,East-4,,East-1,,,,,11
+1308,playoffs_r2,,,,,East-4,,East-1,,,,,11
+1309,playoffs_r2,,,,,East-1,,East-4,,,,,11
+1310,playoffs_r2,,,,,East-1,,East-4,,,,,11
+1311,playoffs_r2,,,,,East-1,,East-4,,,,,11
+1312,playoffs_r2,,,,,East-4,,East-1,,,,,11
+1313,playoffs_r2,,,,,East-4,,East-1,,,,,11
+1314,playoffs_r2,,,,,East-3,,East-2,,,,,12
+1315,playoffs_r2,,,,,East-3,,East-2,,,,,12
+1316,playoffs_r2,,,,,East-2,,East-3,,,,,12
+1317,playoffs_r2,,,,,East-2,,East-3,,,,,12
+1318,playoffs_r2,,,,,East-2,,East-3,,,,,12
+1319,playoffs_r2,,,,,East-3,,East-2,,,,,12
+1320,playoffs_r2,,,,,East-3,,East-2,,,,,12
+1321,playoffs_r3,,,,,West-2,,West-1,,,,,13
+1322,playoffs_r3,,,,,West-2,,West-1,,,,,13
+1323,playoffs_r3,,,,,West-1,,West-2,,,,,13
+1324,playoffs_r3,,,,,West-1,,West-2,,,,,13
+1325,playoffs_r3,,,,,West-1,,West-2,,,,,13
+1326,playoffs_r3,,,,,West-2,,West-1,,,,,13
+1327,playoffs_r3,,,,,West-2,,West-1,,,,,13
+1328,playoffs_r3,,,,,East-2,,East-1,,,,,14
+1329,playoffs_r3,,,,,East-2,,East-1,,,,,14
+1330,playoffs_r3,,,,,East-1,,East-2,,,,,14
+1331,playoffs_r3,,,,,East-1,,East-2,,,,,14
+1332,playoffs_r3,,,,,East-1,,East-2,,,,,14
+1333,playoffs_r3,,,,,East-2,,East-1,,,,,14
+1334,playoffs_r3,,,,,East-2,,East-1,,,,,14
+1335,playoffs_r4,,,,,West-1,,East-1,,,,,15
+1336,playoffs_r4,,,,,East-1,,West-1,,,,,15
+1337,playoffs_r4,,,,,West-1,,East-1,,,,,15
+1338,playoffs_r4,,,,,East-1,,West-1,,,,,15
+1339,playoffs_r4,,,,,West-1,,East-1,,,,,15
+1340,playoffs_r4,,,,,East-1,,West-1,,,,,15
+1341,playoffs_r4,,,,,West-1,,East-1,,,,,15
