@@ -1,8 +1,9 @@
 SELECT
     S.id AS game_id,
     S.date as date,
-    CASE WHEN s.notes = 'In-Season Tournament' 
-        THEN 'tournament' ELSE 'reg_season' END 
+    CASE WHEN s.notes = 'In-Season Tournament' THEN 'tournament' 
+        WHEN s.notes = 'Knockout Rounds' THEN 'knockout'
+        ELSE 'reg_season' END 
     AS type,
     0 as series_id,
     V.conf AS visiting_conf,
@@ -15,5 +16,5 @@ FROM {{ ref( 'nba_raw_schedule' ) }} AS S
 LEFT JOIN {{ ref( 'nba_ratings' ) }} V ON V.team_long = S.VisTm
 LEFT JOIN {{ ref( 'nba_ratings' ) }} H ON H.team_long = S.HomeTm
 LEFT JOIN {{ ref( 'nba_elo_rollforward' ) }} R ON R.game_id = S.id
-WHERE S.type = 'reg_season'
+WHERE S.type = 'reg_season' 
 GROUP BY ALL

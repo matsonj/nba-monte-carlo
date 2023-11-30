@@ -1,6 +1,8 @@
 SELECT
     game_date AS date,
-    CASE WHEN type = 'tournament' THEN '🏆' ELSE '' END AS "T",
+    CASE WHEN type = 'tournament' THEN '🏆' 
+        WHEN type = 'knockout' THEN '🥊'
+    ELSE '' END AS "T",
     vstm AS visiting_team,
     '@' AS " ",
     hmtm AS home_team,

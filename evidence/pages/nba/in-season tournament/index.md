@@ -168,7 +168,7 @@ New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. Th
 
 ## Upcoming Games
 
-<DataTable data={future_games.filter(d => d.type === "tournament")} >
+<DataTable data={future_games.filter(d => d.type === "tournament" | d.type === "knockout" )} >
   <Column id=game_id/>
   <Column id=visitor/>
   <Column id=visitor_ELO title="Elo Rtg"/>
