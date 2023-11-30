@@ -1,7 +1,10 @@
 SELECT
     game_id,
     date,
-    CASE WHEN type = 'tournament' THEN '🏆' ELSE '' END AS "T",
+    CASE WHEN type = 'tournament' THEN '🏆' 
+        WHEN type = 'knockout' THEN '🥊'
+        ELSE '' END 
+    AS "T",
     visiting_team as visitor,
     visiting_team_elo_rating AS visitor_ELO,
     home_team as home, 

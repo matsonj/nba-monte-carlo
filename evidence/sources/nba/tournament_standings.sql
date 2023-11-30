@@ -45,4 +45,4 @@ FROM nba_teams T
     LEFT JOIN ${tournament_results} R ON R.winning_team = T.team
     LEFT JOIN cte_scores S ON S.team = T.team
 GROUP BY ALL
-ORDER BY T.tournament_group, made_tournament_pct1 DESC
+ORDER BY T.tournament_group,  wins DESC, won_group DESC, made_tournament_pct1 DESC, margin DESC
