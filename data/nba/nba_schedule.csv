@@ -305,6 +305,10 @@ id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Ar
 304,reg_season,Wed, Dec 6,2023,8:30p,Utah Jazz,,Dallas Mavericks,,,American Airlines Center,,0
 305,reg_season,Wed, Dec 6,2023,10:00p,Portland Trail Blazers,,Golden State Warriors,,,Chase Center,,0
 306,reg_season,Wed, Dec 6,2023,10:00p,Denver Nuggets,,Los Angeles Clippers,,,Crypto.com Arena,,0
+307,reg_season,Thu, Dec 7,2023,5:00p,Indiana Pacers,,Milwaukee Bucks,,,Vegas,Knockout Rounds,0
+308,reg_season,Thu, Dec 7,2023,9:00p,New Orleans Pelicans,,Los Angeles Lakers,,,Vegas,Knockout Rounds,0
+309,reg_season,Fri, Dec 8,2023,9:00p,Sacramento Kings,,Phoenix Suns,,,Footprint Center,,0
+310,reg_season,Fri, Dec 8,2023,7:30p,New York Knicks,,Boston Celtics,,,TD Garden,,0
 311,reg_season,Fri, Dec 8,2023,7:00p,Toronto Raptors,,Charlotte Hornets,,,Spectrum Center,,0
 312,reg_season,Fri, Dec 8,2023,7:00p,Detroit Pistons,,Orlando Magic,,,Amway Center,,0
 313,reg_season,Fri, Dec 8,2023,7:00p,Atlanta Hawks,,Philadelphia 76ers,,,Wells Fargo Center,,0
