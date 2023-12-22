@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - future_games: nfl/future_games.sql
   - past_games: nfl/past_games.sql
   - past_games_summary: nfl/past_games_summary.sql

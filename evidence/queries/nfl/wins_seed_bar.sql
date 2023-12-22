@@ -7,6 +7,6 @@ SELECT
         else 'missed playoffs'
     end as season_result,
     Count(*) FILTER (WHERE COALESCE(season_rank,100) = 1) AS sort_key
-FROM nfl_reg_season_end
+FROM src_nfl_reg_season_end
 GROUP BY ALL
 ORDER BY sort_key desc

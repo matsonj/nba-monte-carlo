@@ -8,6 +8,6 @@ SELECT
     record,
     '/nfl/teams/' || team as team_link,
     COALESCE((made_postseason + first_round_bye) / 10000.0,0) as make_playoffs_pct1
-from nfl_reg_season_summary
+from src_nfl_reg_season_summary
 where elo_vs_vegas IS NOT NULL
 order by elo_rating DESC

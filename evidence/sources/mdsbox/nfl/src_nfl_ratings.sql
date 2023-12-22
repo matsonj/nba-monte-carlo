@@ -1,0 +1,1 @@
+from nfl_ratings

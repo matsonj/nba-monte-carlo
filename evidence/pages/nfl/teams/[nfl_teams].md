@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - all_teams: nfl/all_teams.sql
   - season_summary: nfl/reg_season.sql
   - elo_latest: nfl/elo_latest.sql
@@ -15,8 +15,8 @@ select R.*,
     R.elo_vs_vegas*-1.0 as vs_vegas_num1,
     R.avg_wins as predicted_wins,
     (COALESCE(R.made_postseason,0) + COALESCE(R.first_round_bye,0) )/ 10000.0 as made_playoffs_pct1
-from nfl_reg_season_summary R
-left join nfl_ratings T on R.team = T.team
+from src_nfl_reg_season_summary R
+left join src_nfl_ratings T on R.team = T.team
 ```
 
 ```nfl_wins_seed_scatter
@@ -28,7 +28,7 @@ SELECT
         when season_rank between 2 and 7 then 'made playoffs'
         else 'missed playoffs'
     end as season_result
-FROM nfl_reg_season_end
+FROM src_nfl_reg_season_end
 GROUP BY ALL
 ```
 
@@ -47,7 +47,7 @@ SELECT
     winning_team as team,
     season_rank as seed,
     count(*) / 10000.0 as occurances_pct1
-FROM nfl_reg_season_end
+FROM src_nfl_reg_season_end
 GROUP BY ALL
 ```
 
