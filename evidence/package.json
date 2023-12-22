@@ -5,16 +5,27 @@
     "build": "evidence build",
     "build:strict": "evidence build:strict",
     "dev": "evidence dev --open /",
-    "test": "evidence build"
+    "test": "evidence build",
+    "sources": "evidence sources"
   },
   "engines": {
     "npm": ">=7.0.0",
-    "node": ">=16.14.0"
+    "node": ">=18.0.0"
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "^2.1.4",
-    "@evidence-dev/evidence": "^23.0.4"
+    "@evidence-dev/bigquery": "^2.0.1",
+    "@evidence-dev/core-components": "^3.0.2",
+    "@evidence-dev/csv": "^1.0.2",
+    "@evidence-dev/databricks": "^1.0.1",
+    "@evidence-dev/duckdb": "^1.0.2",
+    "@evidence-dev/evidence": "^24.0.5",
+    "@evidence-dev/mssql": "^1.0.1",
+    "@evidence-dev/mysql": "^1.0.1",
+    "@evidence-dev/postgres": "^1.0.1",
+    "@evidence-dev/snowflake": "^1.0.1",
+    "@evidence-dev/sqlite": "^2.0.1",
+    "@evidence-dev/trino": "^1.0.1"
   },
   "overrides": {
     "jsonwebtoken": "9.0.0",

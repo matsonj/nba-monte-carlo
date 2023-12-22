@@ -1,0 +1,1 @@
+FROM nba_latest_results

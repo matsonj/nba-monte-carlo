@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - future_games: nba/future_games.sql
   - past_games: nba/past_games.sql
   - past_games_summary: nba/past_games_summary.sql

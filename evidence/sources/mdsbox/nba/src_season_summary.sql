@@ -1,0 +1,1 @@
+select * from season_summary
