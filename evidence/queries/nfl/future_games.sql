@@ -12,6 +12,6 @@ SELECT
         WHEN home_win_pct1 >= 0.50 THEN ROUND( -53.839 * home_win_pct1^2 + 44.494 * home_win_pct1 - 10.287, 1 )
         ELSE ROUND( 54.501 * home_win_pct1^2 -64.296 * home_win_pct1 + 20.085, 1 )
     END AS implied_line_num1
-FROM nfl_reg_season_predictions
+FROM src_nfl_reg_season_predictions
 WHERE include_actuals = false AND winning_team = home_team
 ORDER BY game_id
