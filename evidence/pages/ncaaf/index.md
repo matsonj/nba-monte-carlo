@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - top_25: ncaaf/top_25.sql
   - thru_date: ncaaf/thru_date.sql
 ---

@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - conf_summary: ncaaf/past_games_by_conference.sql
 ---
 

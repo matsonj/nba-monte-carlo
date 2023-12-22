@@ -1,0 +1,1 @@
+SELECT COALESCE(max(game_date),CURRENT_DATE) as end_date FROM src_nba_latest_results

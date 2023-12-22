@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - all_teams: nfl/all_teams.sql
 ---
 

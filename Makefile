@@ -13,10 +13,12 @@ run:
 	meltano invoke dbt-duckdb build
 
 serve:
+	meltano invoke evidence npm run sources
 	meltano invoke evidence dev
 
 evidence-build:
 	meltano invoke evidence upgrade
+	meltano invoke evidence npm run sources
 	meltano invoke evidence build
 
 docker-build:
