@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - seed_details: nba/seed_details.sql
 ---
 

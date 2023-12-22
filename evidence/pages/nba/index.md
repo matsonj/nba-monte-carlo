@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - thru_date: nba/thru_date.sql
   - wins_seed_scatter: nba/wins_seed_scatter.sql
   - seed_details: nba/seed_details.sql
@@ -10,6 +10,12 @@ sources:
   - future_games: nba/future_games.sql
 ---
 
+```sql filtered_future_games
+    select *
+    from ${future_games}
+    where home like '${inputs.home_team}'
+```
+
 # NBA Monte Carlo Simulator
 
 <Alert status="info">
@@ -18,7 +24,16 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 
 ## [Upcoming Games](/nba/predictions)
 
-<DataTable data={future_games} rows=5 link=game_link>
+<Dropdown
+    data={future_games} 
+    name=home_team
+    value=home
+    title="Select a Team"
+>
+    <DropdownOption valueLabel="All Teams" value="%" />
+</Dropdown>
+
+<DataTable data={filtered_future_games} rows=5 link=game_link>
   <Column id=game_id/>
   <Column id=T title=" "/>
   <Column id=visitor/>
