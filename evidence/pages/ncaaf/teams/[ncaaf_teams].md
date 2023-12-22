@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - all_teams: ncaaf/all_teams.sql
   - season_summary: ncaaf/reg_season.sql
   - elo_latest: ncaaf/elo_latest.sql

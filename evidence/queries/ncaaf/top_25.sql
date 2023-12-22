@@ -7,7 +7,7 @@ SELECT
     avg_wins as avg_wins_num1,
     record,
     '/ncaaf/teams/' || team as team_link
-from ncaaf_reg_season_summary
+from src_ncaaf_reg_season_summary
 where elo_vs_vegas IS NOT NULL
 order by elo_rating DESC
 limit 25

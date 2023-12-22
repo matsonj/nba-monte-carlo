@@ -3,6 +3,6 @@ SELECT
     season_rank as seed,
     conf,
     count(*) / 10000.0 as occurances_pct1
-FROM ncaaf_reg_season_end
+FROM src_ncaaf_reg_season_end
 GROUP BY ALL
 ORDER BY seed, count(*) DESC

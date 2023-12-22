@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - team_summary: ncaaf/reg_season.sql
 ---
 
