@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - future_games: ncaaf/future_games.sql
   - past_games: ncaaf/past_games.sql
   - past_games_summary: ncaaf/past_games_summary.sql

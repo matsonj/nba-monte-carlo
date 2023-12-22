@@ -12,6 +12,6 @@ SELECT
             WHEN home_win_pct2 >= 0.1 AND home_win_pct2 <= 0.9 THEN -45.412 * home_win_pct2 + 23.938
             WHEN home_win_pct2 > 0.9 THEN -308.62 * home_win_pct2 + 266.42
         END, 1 ) AS implied_line_num1
-FROM ncaaf_reg_season_predictions
+FROM src_ncaaf_reg_season_predictions
 WHERE include_actuals = false AND winning_team = home_team
 ORDER BY game_id
