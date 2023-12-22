@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - all_teams: ncaaf/all_teams.sql
 ---
 

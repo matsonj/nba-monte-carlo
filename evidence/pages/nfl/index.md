@@ -1,5 +1,5 @@
 ---
-sources:
+queries:
   - thru_date: nfl/thru_date.sql
   - seed_details: nfl/seed_details.sql
   - wins_seed_bar: nfl/wins_seed_bar.sql

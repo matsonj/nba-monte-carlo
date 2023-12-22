@@ -1,0 +1,1 @@
+from ncaaf_season_summary
