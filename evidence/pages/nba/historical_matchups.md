@@ -21,7 +21,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         union all
         select season, team2
         from ${elo_history} )
-    where season = '${inputs.team1_season}'
+    where season LIKE CASE WHEN '${inputs.team1_season}' <> ' ' THEN '${inputs.team1_season}' ELSE '%' END
     group by all
     order by team
 ```
@@ -33,7 +33,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         union all
         select season, team2
         from ${elo_history} )
-    where season = '${inputs.team2_season}'
+    where season LIKE CASE WHEN '${inputs.team2_season}' <> ' ' THEN '${inputs.team2_season}' ELSE '%' END
     group by all
     order by team
 ```
