@@ -21,7 +21,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         union all
         select season, team2
         from ${elo_history} )
-    where season LIKE CASE WHEN '${inputs.team1_season}' <> ' ' THEN '${inputs.team1_season}' ELSE '%' END
+    where season = '${inputs.team1_season}'
     group by all
     order by team
 ```
@@ -33,7 +33,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         union all
         select season, team2
         from ${elo_history} )
-    where season LIKE CASE WHEN '${inputs.team2_season}' <> ' ' THEN '${inputs.team2_season}' ELSE '%' END
+    where season = '${inputs.team2_season}'
     group by all
     order by team
 ```
@@ -44,7 +44,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     value=season
     title="Team 1 Year"
 >
-    <DropdownOption valueLabel="None" value=" " />
+    <DropdownOption valueLabel="1986" value="1986" />
 </Dropdown>
 
 <Dropdown
@@ -53,7 +53,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     value=team
     title="Team 1"
 >
-    <DropdownOption valueLabel="None" value=" " />
+    <DropdownOption valueLabel="BOS" value="BOS" />
 </Dropdown>
 
 <Dropdown
@@ -62,7 +62,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     value=season
     title="Team 2 Year"
 >
-    <DropdownOption valueLabel="None" value=" " />
+    <DropdownOption valueLabel="1996" value="1996" />
 </Dropdown>
 
 <Dropdown
@@ -71,7 +71,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     value=team
     title="Team 2"
 >
-    <DropdownOption valueLabel="None" value=" " />
+    <DropdownOption valueLabel="CHI" value="CHI" />
 </Dropdown>
 
 ```sql team1_history
