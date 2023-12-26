@@ -21,6 +21,3 @@ jobs:
 
       - name: build pipeline
         run: make run
-
-      - name: run sources
-        run: meltano invoke evidence npm run sources
