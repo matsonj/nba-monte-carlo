@@ -4,20 +4,20 @@ build:
 	pipx install meltano==3.1.0
 	meltano install
 	meltano invoke dbt-duckdb deps
+	meltano invoke evidence npm install
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
 	mkdir -p data/data_catalog/simulator
 	mkdir -p data/data_catalog/analysis
 
 run:
+	meltano invoke evidence npm run sources
 	meltano invoke dbt-duckdb build
 
 serve:
-	meltano invoke evidence npm run sources
 	meltano invoke evidence dev
 
 evidence-build:
-	meltano invoke evidence npm run sources
 	meltano invoke evidence build
 
 docker-build:
