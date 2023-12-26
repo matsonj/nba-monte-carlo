@@ -11,8 +11,8 @@ build:
 	mkdir -p data/data_catalog/analysis
 
 run:
-	meltano invoke evidence npm run sources
 	meltano invoke dbt-duckdb build
+	meltano invoke evidence npm run sources
 
 serve:
 	meltano invoke evidence dev
