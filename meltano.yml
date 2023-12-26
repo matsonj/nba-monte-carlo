@@ -21,15 +21,11 @@ plugins:
     pip_url: evidence-ext>=0.5
     config:
       home_dir: $MELTANO_PROJECT_ROOT/evidence
-      settings:
-        database: duckdb
-        duckdb:
-          filename: ../data/data_catalog/mdsbox.duckdb
   - name: dbt-duckdb
     namespace: dbt_ext
     label: dbt duckdb extension
-    pip_url: dbt-core~=1.6.0 dbt-duckdb~=1.6.0 git+https://github.com/meltano/dbt-ext.git pandas==2.0 pyarrow
-      duckdb==0.9.1
+    pip_url: dbt-core~=1.7.0 dbt-duckdb~=1.7.0 git+https://github.com/meltano/dbt-ext.git pandas==2.0 pyarrow
+      duckdb~=0.9.1
     executable: dbt_invoker
     settings:
     - name: project_dir
