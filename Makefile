@@ -11,9 +11,9 @@ build:
 
 run:
 	meltano invoke dbt-duckdb build
-	meltano invoke evidence npm run sources
 
 serve:
+	meltano invoke evidence npm run sources
 	meltano invoke evidence dev
 
 evidence-build:
