@@ -41,50 +41,60 @@ GROUP BY ALL
 ```
 
 ```predictions_table
-WITH cte_visitor_elo AS (
-    SELECT
-        'Away Elo Rating' as type,
-        game_id,
-        visitor_ELO as value
-    FROM ${future_games}
-),
-cte_home_elo AS (
-    SELECT
-        'Home Elo Rating',
-        game_id,
-        home_ELO
-    FROM ${future_games}
-),
-cte_elo_diff AS (
-    SELECT
-        'Elo Difference',
-        game_id,
-        elo_diff
-    FROM ${future_games}
-),
-cte_hfa AS (
-    SELECT
-        'Home Court Advantage',
-        game_id,
-        70 as hfa
-    FROM ${future_games}
-),
-cte_elo_diff_hfa AS (
-    SELECT
-        'Total Difference',
-        game_id,
-        elo_diff_hfa
-    FROM ${future_games}
-)
-SELECT * FROM cte_visitor_elo
-UNION ALL
-SELECT * FROM cte_home_elo
-UNION ALL
-SELECT * FROM cte_elo_diff
-UNION ALL
-SELECT * FROM cte_hfa
-UNION ALL
-SELECT * FROM cte_elo_diff_hfa
+    WITH cte_visitor_elo AS (
+        SELECT
+            'Away Elo Rating' as type,
+            game_id,
+            visitor_ELO as value,
+            1 as key
+        FROM ${future_games}
+    ),
+    cte_home_elo AS (
+        SELECT
+            'Home Elo Rating',
+            game_id,
+            home_ELO,
+            2
+        FROM ${future_games}
+    ),
+    cte_elo_diff AS (
+        SELECT
+            'Elo Difference',
+            game_id,
+            elo_diff,
+            3
+        FROM ${future_games}
+    ),
+    cte_hfa AS (
+        SELECT
+            'Home Court Advantage',
+            game_id,
+            70 as hfa,
+            4
+        FROM ${future_games}
+    ),
+    cte_elo_diff_hfa AS (
+        SELECT
+            'Total Difference',
+            game_id,
+            elo_diff_hfa,
+            5
+        FROM ${future_games}
+    ),
+    cte_unions AS (
+    SELECT * FROM cte_visitor_elo
+    UNION ALL
+    SELECT * FROM cte_home_elo
+    UNION ALL
+    SELECT * FROM cte_elo_diff
+    UNION ALL
+    SELECT * FROM cte_hfa
+    UNION ALL
+    SELECT * FROM cte_elo_diff_hfa
+    )
+    select Type, Value, Key, game_id from cte_unions
+    GROUP BY ALL
+    ORDER BY key
 ```
 
 ```sql filtered_future_games
@@ -159,6 +169,7 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt(params.nba
                     fg.game_id === parseInt($page.params.nba_games, 10) && (fg.home == gt.team || fg.visitor == gt.team))
             ).map(item => item.elo_rating)
         )
+    $: y_min = Math.min(1600,test_val)
 
 </script>
 
@@ -171,7 +182,7 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt(params.nba
     y=elo_post
     title='elo change over time'
     series=team
-    yMin={parseFloat(test_val)-10}
+    yMin={parseFloat(y_min)-10}
     handleMissing=connect
     colorPalette={
         [
@@ -179,7 +190,9 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt(params.nba
         '#DE4500'
         ]
     }
-/>
+>
+  <ReferenceLine y=1600 label="league avg." hideValue=true labelPosition=aboveStart />
+</LineChart>
 
 ## Last 5 Games - <Value data={summary_by_team.filter(st => future_games.some(fg => fg.game_id === parseInt(params.nba_games, 10) && (fg.visitor == st.team)))}  column=team/>
 

@@ -15,6 +15,7 @@ queries:
   <Column id=record/>
   <Column id=elo_rating/>
   <Column id=avg_wins/>
+  <Column id=elo_vs_vegas_num1 contentType=delta/>
   <Column id=make_playoffs_pct1/>
   <Column id=win_finals_pct1/>
 </DataTable>
@@ -28,6 +29,7 @@ queries:
   <Column id=record/>
   <Column id=elo_rating/>
   <Column id=avg_wins/>
+  <Column id=elo_vs_vegas_num1 contentType=delta/>
   <Column id=make_playoffs_pct1/>
   <Column id=win_finals_pct1/>
 </DataTable>
