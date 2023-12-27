@@ -7,8 +7,8 @@ SELECT
     '@' AS " ",
     hmtm AS home_team,
     CASE 
-        WHEN home_team_score > visiting_team_score THEN home_team_score || ' - ' || visiting_team_score 
-        ELSE visiting_team_score || ' - ' || home_team_score
+        WHEN home_team_score > visiting_team_score THEN home_team_score::int || ' - ' || visiting_team_score::int 
+        ELSE visiting_team_score::int || ' - ' || home_team_score::int
     END AS score,
     winning_team,
     ABS(elo_change) AS elo_change_num1,

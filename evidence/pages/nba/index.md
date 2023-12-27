@@ -10,10 +10,15 @@ queries:
   - future_games: nba/future_games.sql
 ---
 
+```sql teams
+select * from src_nba_teams
+order by team
+```
+
 ```sql filtered_future_games
     select *
     from ${future_games}
-    where home like '${inputs.home_team}'
+    where home like '${inputs.team}' OR visitor like '${inputs.team}'
 ```
 
 # NBA Monte Carlo Simulator
@@ -25,57 +30,24 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 ## [Upcoming Games](/nba/predictions)
 
 <Dropdown
-    data={future_games} 
-    name=home_team
-    value=home
+    data={teams} 
+    name=team
+    value=team
     title="Select a Team"
 >
     <DropdownOption valueLabel="All Teams" value="%" />
 </Dropdown>
 
 <DataTable data={filtered_future_games} rows=5 link=game_link>
-  <Column id=game_id/>
+  <Column id=date/>
   <Column id=T title=" "/>
   <Column id=visitor/>
-  <Column id=visitor_ELO title="Elo Rtg"/>
   <Column id=home/>
-  <Column id=home_ELO title="Elo Rtg"/>
   <Column id=home_win_pct1 title="Win % (Home)"/>
   <Column id=american_odds align=right title="Odds (Home)"/>
   <Column id=implied_line_num1 title="Line (Home)"/>
   <Column id=predicted_score title="Score"/>
 </DataTable>
-
-## [In-Season Tournament](/nba/in-season%20tournament)
-
-<Tabs>
-    <Tab label="East">
-
-        ### Predicted Seeding - Knockout Round
-
-        <DataTable data={tournament_seeding.filter(d => d.conf === "East")} rows=15>
-        <Column id=team/>
-        <Column id="1_pct1" contentType=colorscale colorMax=1/>
-        <Column id="2_pct1" contentType=colorscale colorMax=1/>
-        <Column id="3_pct1" contentType=colorscale colorMax=1/>
-        <Column id="4_pct1" contentType=colorscale colorMax=1/>
-        <Column id="total_pct1" contentType=colorscale colorMax=1/>
-        </DataTable>
-    </Tab>
-    <Tab label="West">
-
-        ### Predicted Seeding - Knockout Round
-
-        <DataTable data={tournament_seeding.filter(d => d.conf === "West")} rows=15>
-        <Column id=team/>
-        <Column id="1_pct1" contentType=colorscale colorMax=1/>
-        <Column id="2_pct1" contentType=colorscale colorMax=1/>
-        <Column id="3_pct1" contentType=colorscale colorMax=1/>
-        <Column id="4_pct1" contentType=colorscale colorMax=1/>
-        <Column id="total_pct1" contentType=colorscale colorMax=1/>
-        </DataTable>
-    </Tab>
-</Tabs>
 
 ## [Team Standings](/nba/teams)
 
@@ -85,6 +57,9 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
   <Column id=record/>
   <Column id=elo_rating/>
   <Column id=avg_wins/>
+  <Column id=elo_vs_vegas_num1 contentType=delta/>
+  <Column id=make_playoffs_pct1/>
+  <Column id=win_finals_pct1/>
 </DataTable>
 
 ## Conference Summaries

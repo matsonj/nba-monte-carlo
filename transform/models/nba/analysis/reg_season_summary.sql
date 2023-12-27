@@ -30,8 +30,8 @@ SELECT
     C.avg_wins,
     C.vegas_wins,
     c.elo_vs_vegas,
-    C.wins_5th || ' to ' || C.wins_95th AS win_range,
-    C.seed_5th || ' to ' || C.seed_95th AS seed_range,
+    C.wins_5th::int || ' to ' || C.wins_95th::int AS win_range,
+    C.seed_5th::int || ' to ' || C.seed_95th::int AS seed_range,
     c.made_postseason,
     c.made_play_in,
     {{ var( 'sim_start_game_id' ) }} AS sim_start_game_id

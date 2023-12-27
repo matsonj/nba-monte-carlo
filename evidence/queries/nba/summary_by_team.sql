@@ -9,7 +9,8 @@ select
   avg_wins,
   make_playoffs_pct1,
   win_finals_pct1,
-  conf
+  conf,
+  elo_vs_vegas as elo_vs_vegas_num1
 FROM ${reg_season} R
 LEFT JOIN ${standings} S ON S.team = R.team
 ORDER BY avg_wins DESC

@@ -16,7 +16,9 @@ ORDER BY conf, wins DESC, made_tournament_pct1 DESC, margin DESC
 
 # NBA In-season Tournament
 
-New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. The tournament consists of Group Play followed by single elimination knock out rounds. You can learn about it [here](https://www.nba.com/news/in-season-tournament-101).
+Congrats to the Los Angeles Lakers for winning the 2023-24 NBA In-Season Tournament!
+
+_New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. The tournament consists of Group Play followed by single elimination knock out rounds. You can learn about it [here](https://www.nba.com/news/in-season-tournament-101)._
 
 ## Standings
 
@@ -157,25 +159,11 @@ New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. Th
 
 ## Recent Games
 
-<DataTable data={most_recent_games.filter(d => d.type === "tournament")} rows=5>
+<DataTable data={most_recent_games.filter(d => d.type === "tournament" || d.type === 'knockout')} rows=5>
   <Column id=date/>
   <Column id=visiting_team/>
   <Column id=" "/>
   <Column id=home_team/>
   <Column id=winning_team/>
   <Column id=score/>
-</DataTable>
-
-## Upcoming Games
-
-<DataTable data={future_games.filter(d => d.type === "tournament" | d.type === "knockout" )} >
-  <Column id=game_id/>
-  <Column id=visitor/>
-  <Column id=visitor_ELO title="Elo Rtg"/>
-  <Column id=home/>
-  <Column id=home_ELO title="Elo Rtg"/>
-  <Column id=home_win_pct1 title="Win % (Home)"/>
-  <Column id=american_odds align=right title="Odds (Home)"/>
-  <Column id=implied_line_num1 title="Line (Home)"/>
-  <Column id=predicted_score title="Score"/>
 </DataTable>
