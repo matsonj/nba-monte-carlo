@@ -6,6 +6,17 @@ queries:
   - past_games_summary_by_team: nba/past_games_summary_by_team.sql
 ---
 
+```sql teams
+select * from src_nba_teams
+order by team
+```
+
+```sql filtered_future_games
+    select *
+    from ${future_games}
+    where home like '${inputs.team}' OR visitor like '${inputs.team}'
+```
+
 # Predictions
 
 ## Past Performance
@@ -41,14 +52,20 @@ queries:
 
 _Historically, NBA teams win 62% of their games at home, which explains why teams with lower elo ratings can be predicted to win._
 
+<Dropdown
+    data={teams} 
+    name=team
+    value=team
+    title="Select a Team"
+>
+    <DropdownOption valueLabel="All Teams" value="%" />
+</Dropdown>
 
-<DataTable data={future_games} rows=15 link=game_link search=true>
-  <Column id=game_id/>
+<DataTable data={filtered_future_games} rows=15 link=game_link>
+  <Column id=date/>
   <Column id=T title=" "/>
   <Column id=visitor/>
-  <Column id=visitor_ELO title="Elo Rtg"/>
   <Column id=home/>
-  <Column id=home_ELO title="Elo Rtg"/>
   <Column id=home_win_pct1 title="Win % (Home)"/>
   <Column id=american_odds align=right title="Odds (Home)"/>
   <Column id=implied_line_num1 title="Line (Home)"/>

@@ -6,7 +6,7 @@ SELECT
         when season_rank between 2 and 7 then 'made playoffs'
         else 'missed playoffs'
     end as season_result,
-    Count(*) FILTER (WHERE COALESCE(season_rank,100) = 1) AS sort_key
+    Count(*) FILTER (WHERE season_rank <=1) * 10000 + COUNT(*) FILTER (WHERE season_rank <=7) AS sort_key
 FROM src_nfl_reg_season_end
 GROUP BY ALL
 ORDER BY sort_key desc

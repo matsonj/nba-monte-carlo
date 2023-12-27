@@ -4,7 +4,6 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 ```sql elo_history
     select *
     from nba_elo_history.nba_elo
-    where playoff is null
 ```
 
 ```sql seasons
@@ -109,14 +108,14 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     select 
         key, 
         count(*) as ct,
-        count(*) filter (where winner = '${inputs.team1}' and playoff is null) as wins,
-        count(*) filter (where loser = '${inputs.team1}' and playoff is null) as losses,
-        count(*) filter (where winner = '${inputs.team1}' and team1 = '${inputs.team1}' and playoff is null) as home_wins,
-        count(*) filter (where loser = '${inputs.team1}' and team1 = '${inputs.team1}' and playoff is null) as home_losses,
-        count(*) filter (where winner = '${inputs.team1}' and team2 = '${inputs.team1}' and playoff is null) as away_wins,
-        count(*) filter (where loser = '${inputs.team1}' and team2 = '${inputs.team1}' and playoff is null) as away_losses,
-        count(*) filter (where winner = '${inputs.team1}' and playoff is not null) as playoff_wins,
-        count(*) filter (where loser = '${inputs.team1}' and playoff is not null) as playoff_losses,
+        count(*) filter (where winner = '${inputs.team1}' and playoff = 'r') as wins,
+        count(*) filter (where loser = '${inputs.team1}' and playoff = 'r') as losses,
+        count(*) filter (where winner = '${inputs.team1}' and team1 = '${inputs.team1}' and playoff = 'r') as home_wins,
+        count(*) filter (where loser = '${inputs.team1}' and team1 = '${inputs.team1}' and playoff = 'r') as home_losses,
+        count(*) filter (where winner = '${inputs.team1}' and team2 = '${inputs.team1}' and playoff = 'r') as away_wins,
+        count(*) filter (where loser = '${inputs.team1}' and team2 = '${inputs.team1}' and playoff = 'r') as away_losses,
+        count(*) filter (where winner = '${inputs.team1}' and playoff <> 'r') as playoff_wins,
+        count(*) filter (where loser = '${inputs.team1}' and playoff <> 'r') as playoff_losses,
         avg(pf) as pf,
         avg(pa) as pa,
         avg(pf) - avg(pa) as margin,
@@ -148,14 +147,14 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     select 
         key, 
         count(*) as ct,
-        count(*) filter (where winner = '${inputs.team2}' and playoff is null) as wins,
-        count(*) filter (where loser = '${inputs.team2}' and playoff is null) as losses,
-        count(*) filter (where winner = '${inputs.team2}' and team1 = '${inputs.team2}' and playoff is null) as home_wins,
-        count(*) filter (where loser = '${inputs.team2}' and team1 = '${inputs.team2}' and playoff is null) as home_losses,
-        count(*) filter (where winner = '${inputs.team2}' and team2 = '${inputs.team2}' and playoff is null) as away_wins,
-        count(*) filter (where loser = '${inputs.team2}' and team2 = '${inputs.team2}' and playoff is null) as away_losses,
-        count(*) filter (where winner = '${inputs.team2}' and playoff is not null) as playoff_wins,
-        count(*) filter (where loser = '${inputs.team2}' and playoff is not null) as playoff_losses,
+        count(*) filter (where winner = '${inputs.team2}' and playoff = 'r') as wins,
+        count(*) filter (where loser = '${inputs.team2}' and playoff = 'r') as losses,
+        count(*) filter (where winner = '${inputs.team2}' and team1 = '${inputs.team2}' and playoff = 'r') as home_wins,
+        count(*) filter (where loser = '${inputs.team2}' and team1 = '${inputs.team2}' and playoff = 'r') as home_losses,
+        count(*) filter (where winner = '${inputs.team2}' and team2 = '${inputs.team2}' and playoff = 'r') as away_wins,
+        count(*) filter (where loser = '${inputs.team2}' and team2 = '${inputs.team2}' and playoff = 'r') as away_losses,
+        count(*) filter (where winner = '${inputs.team2}' and playoff <> 'r') as playoff_wins,
+        count(*) filter (where loser = '${inputs.team2}' and playoff <> 'r') as playoff_losses,
         avg(pf) as pf,
         avg(pa) as pa,
         avg(pf) - avg(pa) as margin,
@@ -253,9 +252,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 
 <script>
 
-    $: test_val = Math.min(
-            combined_trend.map(item => item.elo_rating)
-        )
+$: y_min = Math.min(...combined_trend.map(item => item.elo))
 
 </script>
 
@@ -265,7 +262,8 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     y=elo
     title='elo change over time'
     series=team
-    yMin={parseFloat(test_val)-25}
+    yMin={parseFloat(y_min)-25}
+    xAxisTitle='games played'
     handleMissing=connect
     colorPalette={
         [

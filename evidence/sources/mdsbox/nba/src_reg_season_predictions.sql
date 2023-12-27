@@ -1,1 +1,1 @@
-select * from reg_season_predictions
+select * EXCLUDE (game_id), game_id::int as game_id from reg_season_predictions

@@ -12,6 +12,7 @@ select
   elo_rating,
   avg_wins,
   COALESCE(made_playoffs / 10000.0,0) as make_playoffs_pct1,
-  COALESCE(won_finals / 10000.0,0) as win_finals_pct1
+  COALESCE(won_finals / 10000.0,0) as win_finals_pct1,
+  elo_vs_vegas *-1 as elo_vs_vegas
 from src_season_summary
 order by conf, avg_wins desc
