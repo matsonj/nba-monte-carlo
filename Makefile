@@ -36,7 +36,7 @@ docker-run-evidence:
 
 netlify-build:
 	pip install -r requirements.txt
-	sudo apt install python3.8-venv
+	pip install virtualenv
 	pipx ensurepath
 	pipx install meltano==3.1.0
 	meltano install
