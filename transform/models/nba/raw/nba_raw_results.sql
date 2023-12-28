@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='external',
-        location="{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/raw/{{this.name}}.parquet"
-    )
-}}
-
 WITH cte_base AS (
     SELECT * FROM {{ source( 'nba','nba_results' ) }}
 )

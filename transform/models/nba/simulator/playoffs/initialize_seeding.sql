@@ -1,9 +1,3 @@
-{{
-    config(
-        materialized='external',
-        location="{{ env_var('MELTANO_PROJECT_ROOT') }}/data/data_catalog/simulator/{{this.name}}.parquet"
-    )
-}}
 WITH cte_teams AS (
     SELECT
         scenario_id,
