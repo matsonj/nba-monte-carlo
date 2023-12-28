@@ -27,33 +27,33 @@ models:
     nba:
       +tags: nba
       raw:
-        +materialized: external
+        +materialized: table
       prep:
         +materialized: table
       simulator:
         +materialized: table
       analysis:
-        +materialized: table
+        +materialized: view
     nfl:
       +tags: nfl
       raw:
-        +materialized: external
+        +materialized: table
       prep:
         +materialized: view
       simulator:
-        +materialized: view
-      analysis:
         +materialized: table
+      analysis:
+        +materialized: view
     ncaaf:
       +tags: ncaaf
       raw:
-        +materialized: external
+        +materialized: table
       prep:
         +materialized: view
       simulator:
-        +materialized: view
+        +materialized: table
       analysis:
-        +materialized: external
+        +materialized: view
 vars:
   scenarios: 10000            # set number of scenarios. 100k is safe on 8GB of RAM
   include_actuals: true       # set to true to use actual game results, otherwise sim entire season
