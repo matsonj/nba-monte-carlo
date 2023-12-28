@@ -33,3 +33,16 @@ docker-run-evidence:
 		--env MDS_ENABLE_EXPORT=true \
 		--env ENVIRONMENT=docker \
 		mdsbox make run serve
+
+netlify-build:
+	pip install -r requirements.txt
+	apt install python3.8-venv
+	pipx ensurepath
+	pipx install meltano==3.1.0
+	meltano install
+	meltano invoke dbt-duckdb deps
+	meltano invoke evidence npm install
+	mkdir -p data/data_catalog/raw
+	mkdir -p data/data_catalog/prep
+	mkdir -p data/data_catalog/simulator
+	mkdir -p data/data_catalog/analysis
