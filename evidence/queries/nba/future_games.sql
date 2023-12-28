@@ -16,7 +16,7 @@ SELECT
     implied_line AS implied_line_num1,
     predicted_score,
     type,
-    '/nba/predictions/' || game_id as game_link,
+    '/nba/predictions/' || (game_id::int) as game_link
 FROM src_reg_season_predictions
 WHERE include_actuals = false AND winning_team = home_team
 ORDER BY game_id

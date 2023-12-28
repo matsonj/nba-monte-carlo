@@ -12,7 +12,7 @@ order by team
 ```
 
 ```sql filtered_future_games
-    select *
+    select * EXCLUDE (game_id), game_id::int as game_id
     from ${future_games}
     where home like '${inputs.team}' OR visitor like '${inputs.team}'
 ```
