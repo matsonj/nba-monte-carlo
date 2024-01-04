@@ -154,7 +154,7 @@ _<Value data={summary_by_team.filter(st =>
 
 ## Prediction Details
 
-<DataTable data={predictions_table.filter(d => d.game_id === parseInt(params.nba_games, 10))} rows=5>
+<DataTable data={predictions_table.filter(d => d.game_id === parseInt(params.nba_games, 10))} rows=5 rowLines=false>
   <Column id=type/>
   <Column id=value/>
 </DataTable>
