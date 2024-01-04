@@ -6,9 +6,25 @@ queries:
 ---
 
 # Team Browser
-## Eastern Conference
+## Select a conference
 
-<DataTable data={summary_by_team.filter(d => d.conf === "East")} link=team_link rows=15>
+```sql filtered_summary_by_team
+    select * 
+    from ${summary_by_team}
+    where conf like '${inputs.conference}'
+```
+
+<ButtonGroup
+    data={summary_by_team} 
+    name=conference
+    value=conf
+>
+    <ButtonGroupItem valueLabel="All" value="%" />
+</ButtonGroup>
+
+{#if inputs.conference != 'null'}
+
+<DataTable data={filtered_summary_by_team} link=team_link rows=30>
   <Column id=seed/>
   <Column id=" " contentType=image height=25px/>
   <Column id=team/>
@@ -20,9 +36,9 @@ queries:
   <Column id=win_finals_pct1/>
 </DataTable>
 
-## Western Conference
+{:else }
 
-<DataTable data={summary_by_team.filter(d => d.conf === "West")} link=team_link rows=15>
+<DataTable data={summary_by_team} link=team_link rows=30>
   <Column id=seed/>
   <Column id=" " contentType=image height=25px/>
   <Column id=team/>
@@ -33,3 +49,6 @@ queries:
   <Column id=make_playoffs_pct1/>
   <Column id=win_finals_pct1/>
 </DataTable>
+
+{/if}
+
