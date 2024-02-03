@@ -15,11 +15,11 @@
   "type": "module",
   "dependencies": {
     "@evidence-dev/bigquery": "^2.0.1",
-    "@evidence-dev/core-components": "^3.1.0",
+    "@evidence-dev/core-components": "^3.2.0",
     "@evidence-dev/csv": "^1.0.2",
     "@evidence-dev/databricks": "^1.0.1",
     "@evidence-dev/duckdb": "^1.0.2",
-    "@evidence-dev/evidence": "^25.0.0",
+    "@evidence-dev/evidence": "^26.0.0",
     "@evidence-dev/mssql": "^1.0.1",
     "@evidence-dev/mysql": "^1.0.1",
     "@evidence-dev/postgres": "^1.0.1",
