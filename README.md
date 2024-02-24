@@ -31,17 +31,17 @@ Want to try MDS-in-a-box right away? Create a Codespace:
 
 You can run in the Codespace by running the following command:
 ```
-make build pipeline superset-visuals
+make build run
 ```
-You will need to wait for the pipeline to run and Superset configuration to complete. The 4-core codespace performs signifcantly better in testing, and is recommended for a better experience.
+You will need to wait for the pipeline to run and Evidence configuration to complete. The 4-core codespace performs signifcantly better in testing, and is recommended for a better experience.
 
-Once the build completes, you can access the Superset dashboard by clicking on the Open in Browser button on the Ports tab:
+Once the build completes, you can access the Evidence dashboard by clicking on the Open in Browser button on the Ports tab:
 ![image](https://user-images.githubusercontent.com/79663385/204596948-64cac757-cbaf-434d-ab65-327b8ed8f043.png)
 and log in with the username and password: "admin" and "password".
 
 Codespaces also supports "Docker-in-docker", so you can run docker inside the codespace with the following command:
 ```
-make docker-build docker-run-superset
+make docker-build docker-run-evidence
 ```
 
 ## Building MDS-in-a-box in Windows
