@@ -109,15 +109,15 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         key, 
         count(*) as ct,
         count(*) filter (where winner = '${inputs.team1}' and playoff = 'r') as wins,
-        count(*) filter (where loser = '${inputs.team1}' and playoff = 'r') as losses,
+        -count(*) filter (where loser = '${inputs.team1}' and playoff = 'r') as losses,
         count(*) filter (where winner = '${inputs.team1}' and team1 = '${inputs.team1}' and playoff = 'r') as home_wins,
-        count(*) filter (where loser = '${inputs.team1}' and team1 = '${inputs.team1}' and playoff = 'r') as home_losses,
+        -count(*) filter (where loser = '${inputs.team1}' and team1 = '${inputs.team1}' and playoff = 'r') as home_losses,
         count(*) filter (where winner = '${inputs.team1}' and team2 = '${inputs.team1}' and playoff = 'r') as away_wins,
-        count(*) filter (where loser = '${inputs.team1}' and team2 = '${inputs.team1}' and playoff = 'r') as away_losses,
+        -count(*) filter (where loser = '${inputs.team1}' and team2 = '${inputs.team1}' and playoff = 'r') as away_losses,
         count(*) filter (where winner = '${inputs.team1}' and playoff <> 'r') as playoff_wins,
-        count(*) filter (where loser = '${inputs.team1}' and playoff <> 'r') as playoff_losses,
+        -count(*) filter (where loser = '${inputs.team1}' and playoff <> 'r') as playoff_losses,
         avg(pf) as pf,
-        avg(pa) as pa,
+        avg(-pa) as pa,
         avg(pf) - avg(pa) as margin,
         min(elo) as min_elo,
         avg(elo) as avg_elo,
@@ -148,15 +148,15 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         key, 
         count(*) as ct,
         count(*) filter (where winner = '${inputs.team2}' and playoff = 'r') as wins,
-        count(*) filter (where loser = '${inputs.team2}' and playoff = 'r') as losses,
+        -count(*) filter (where loser = '${inputs.team2}' and playoff = 'r') as losses,
         count(*) filter (where winner = '${inputs.team2}' and team1 = '${inputs.team2}' and playoff = 'r') as home_wins,
-        count(*) filter (where loser = '${inputs.team2}' and team1 = '${inputs.team2}' and playoff = 'r') as home_losses,
+        -count(*) filter (where loser = '${inputs.team2}' and team1 = '${inputs.team2}' and playoff = 'r') as home_losses,
         count(*) filter (where winner = '${inputs.team2}' and team2 = '${inputs.team2}' and playoff = 'r') as away_wins,
-        count(*) filter (where loser = '${inputs.team2}' and team2 = '${inputs.team2}' and playoff = 'r') as away_losses,
+        -count(*) filter (where loser = '${inputs.team2}' and team2 = '${inputs.team2}' and playoff = 'r') as away_losses,
         count(*) filter (where winner = '${inputs.team2}' and playoff <> 'r') as playoff_wins,
-        count(*) filter (where loser = '${inputs.team2}' and playoff <> 'r') as playoff_losses,
+        -count(*) filter (where loser = '${inputs.team2}' and playoff <> 'r') as playoff_losses,
         avg(pf) as pf,
-        avg(pa) as pa,
+        avg(-pa) as pa,
         avg(pf) - avg(pa) as margin,
         min(elo) as min_elo,
         avg(elo) as avg_elo,
@@ -186,9 +186,9 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     )
     select 
         CASE WHEN u1.value > u2.value THEN '✅' ELSE '' END AS "t1",
-        u1.value as "team1",
+        abs(u1.value::int) as "team1",
         s.stat,
-        u2.value as "team2",
+        abs(u2.value::int) as "team2",
         CASE WHEN u2.value > u1.value THEN '✅' ELSE '' END AS "t2"
     from cte_stats s
     left join cte_unpivot u1 on u1.stat = s.stat and u1.key = '${inputs.team1}' || ':' || '${inputs.team1_season}'
@@ -212,7 +212,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     with cte_games AS (
         select 
             date,
-            case when team1 = '${inputs.team1}' then elo1_pre else elo2_pre end as elo,
+            case when team1 = '${inputs.team1}' then elo1_post else elo2_post end as elo,
             '${inputs.team1}' || ':' || '${inputs.team1_season}' as key,
         from ${elo_history  } where (team1 = '${inputs.team1}' OR team2 = '${inputs.team1}') AND season = '${inputs.team1_season}'
     )
@@ -220,8 +220,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         key, 
         date,
         elo,
-        '${inputs.team1}' as team,
-        '${inputs.team1_season}' as season,
+        '${inputs.team1_season}' || ' ' || '${inputs.team1}' as team,
         ROW_NUMBER() OVER (ORDER BY date) as game_id
     from cte_games
 ```
@@ -230,7 +229,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     with cte_games AS (
         select 
             date,
-            case when team1 = '${inputs.team2}' then elo1_pre else elo2_pre end as elo,
+            case when team1 = '${inputs.team2}' then elo1_post else elo2_post end as elo,
             '${inputs.team2}' || ':' || '${inputs.team2_season}' as key,
         from ${elo_history  } where (team1 = '${inputs.team2}' OR team2 = '${inputs.team2}') AND season = '${inputs.team2_season}'
     )
@@ -238,8 +237,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         key, 
         date,
         elo,
-        '${inputs.team2}' as team,
-        '${inputs.team2_season}' as season,
+        '${inputs.team2_season}' || ' ' || '${inputs.team2}' as team,
         ROW_NUMBER() OVER (ORDER BY date) as game_id
     from cte_games
 ```
