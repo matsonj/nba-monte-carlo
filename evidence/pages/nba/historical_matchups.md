@@ -87,8 +87,6 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     order by date
 ```
 
-{#if inputs.team1 !== ' ' && inputs.team1_season !== ' ' && inputs.team2 !== ' ' & inputs.team2_season !== ''}
-
 ```sql team1_stats
     with cte_games AS (
         select 
@@ -194,7 +192,6 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     left join cte_unpivot u1 on u1.stat = s.stat and u1.key = '${inputs.team1}' || ':' || '${inputs.team1_season}'
     left join cte_unpivot u2 on u2.stat = s.stat and u2.key = '${inputs.team2}' || ':' || '${inputs.team2_season}'
 ```
-{/if}
 
 ## Head to Head Stats
 
@@ -269,4 +266,119 @@ $: y_min = Math.min(...combined_trend.map(item => item.elo))
         '#DE4500'
         ]
     }
+/>
+
+## 7 Games Series Results
+
+This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM.
+
+```sql elo_by_team
+    select 
+        t2.season || ' ' || t2.team as team2,
+        t2.avg_elo as elo2,
+        t1.season || ' ' || t1.team as team1,
+        t1.avg_elo as elo1
+    from ${team2_stats} t2
+    left join ${team1_stats} t1 ON 1=1
+```
+
+```sql games
+    SELECT I.generate_series AS game_id
+    FROM generate_series(1, 7 ) AS I
+```
+
+
+```sql monte_carlo_sim
+    WITH cte_scenario_gen AS (
+        SELECT I.generate_series AS scenario_id
+        FROM generate_series(1, 10000 ) AS I
+    ),
+    cte_schedule as (
+        SELECT
+            i.scenario_id,
+            G.game_id,
+            S.*,
+            (random() * 10000)::smallint AS rand_result
+        FROM cte_scenario_gen AS i
+        CROSS JOIN ${elo_by_team} AS S
+        LEFT JOIN ${games} G ON 1=1
+    ),
+    cte_step_1 as (
+        Select *,
+            ( 1 - (1 / (10 ^ (-( elo2 - elo1)::real/400)+1))) * 10000 as team1_win_probability,
+            CASE 
+                WHEN ( 1 - (1 / (10 ^ (-( elo2 - elo1)::real/400)+1))) * 10000  >= rand_result THEN S.team1
+                ELSE S.team2
+            END AS winning_team,
+        From cte_schedule S
+    ),
+    cte_step_2 AS (
+        SELECT step1.*,
+            ROW_NUMBER() OVER (PARTITION BY scenario_id, winning_team  ORDER BY scenario_id, game_id ) AS series_result
+        FROM cte_step_1 step1
+    )
+    select * from cte_step_2
+```
+
+```sql monte_carlo_winners
+    SELECT scenario_id,
+        game_id
+    FROM ${monte_carlo_sim}
+    WHERE series_result = 4
+```
+
+```sql mc_final_results
+with
+    cte_summary as (
+        SELECT step2.* 
+        FROM ${monte_carlo_sim} step2
+            LEFT JOIN ${monte_carlo_winners} F ON F.scenario_id = step2.scenario_id 
+                AND step2.game_id = f.game_id
+    )
+    SELECT
+        E.scenario_id,
+        E.game_id,
+        E.winning_team
+    FROM cte_summary E
+    where E.series_result = 4
+```
+
+```sql mc_summary
+    select
+        winning_team,
+        game_id as games_played,
+        case when game_id = 4 then '4-0'
+            when game_id = 5 then '4-1'
+            when game_id = 6 then '4-2'
+            else '4-3'
+        end as result,
+        count(*) as occurances,
+        count(*) / 10000.0 as occurances_pct1
+    from ${mc_final_results}
+    group by all
+    order by result
+```
+
+<BarChart 
+    data={mc_summary}
+    x=winning_team
+    y=occurances_pct1
+    series=result
+    xAxisTitle=games_played
+    title='Outcome by Team'
+    labels=true
+    swapXY=true 
+/>
+
+<BarChart 
+    data={mc_summary}
+    x=result
+    y=occurances_pct1
+    series=winning_team
+    xAxisTitle=games_played
+    title='Outcomes by Series Result'
+    type=grouped
+    labels=true
+    sort=false
+    swapXY=true 
 />
