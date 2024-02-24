@@ -31,17 +31,17 @@ Want to try MDS-in-a-box right away? Create a Codespace:
 
 You can run in the Codespace by running the following command:
 ```
-make build pipeline superset-visuals
+make build run
 ```
-You will need to wait for the pipeline to run and Superset configuration to complete. The 4-core codespace performs signifcantly better in testing, and is recommended for a better experience.
+You will need to wait for the pipeline to run and Evidence configuration to complete. The 4-core codespace performs signifcantly better in testing, and is recommended for a better experience.
 
-Once the build completes, you can access the Superset dashboard by clicking on the Open in Browser button on the Ports tab:
+Once the build completes, you can access the Evidence dashboard by clicking on the Open in Browser button on the Ports tab:
 ![image](https://user-images.githubusercontent.com/79663385/204596948-64cac757-cbaf-434d-ab65-327b8ed8f043.png)
 and log in with the username and password: "admin" and "password".
 
 Codespaces also supports "Docker-in-docker", so you can run docker inside the codespace with the following command:
 ```
-make docker-build docker-run-superset
+make docker-build docker-run-evidence
 ```
 
 ## Building MDS-in-a-box in Windows
@@ -69,9 +69,9 @@ cd nba-monte-carlo
 ```
 5. build your project
 ```
-make build pipeline superset-visuals
+make build run
 ```
-Make sure to open up superset when prompted (default location is 127.0.0.1:8088). 
+Make sure to open up evidence when prompted (default location is 127.0.0.1:8088). 
 The username and password is "admin" and "password".
 
 ## Using Docker
@@ -84,7 +84,7 @@ make docker-build
 
 Then run the container using 
 ```
-make docker-run-superset
+make docker-run-evidence
 ```
 These are both aliases defined in the Makefile:
 
@@ -92,7 +92,7 @@ These are both aliases defined in the Makefile:
 docker-build:
 	docker build -t mdsbox .
 
-docker-run:
+docker-run-evidence:
 	docker run \
 		--publish 8088:8088 \
 	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
@@ -101,7 +101,7 @@ docker-run:
 		--env MDS_LATEST_RATINGS=true \
 		--env MDS_ENABLE_EXPORT=true \
 		--env ENVIRONMENT=docker \
-		mdsbox make pipeline superset-visuals
+		mdsbox make run serve
 ```
 
 # Notes on Design Choices
