@@ -69,9 +69,9 @@ cd nba-monte-carlo
 ```
 5. build your project
 ```
-make build pipeline superset-visuals
+make build run
 ```
-Make sure to open up superset when prompted (default location is 127.0.0.1:8088). 
+Make sure to open up evidence when prompted (default location is 127.0.0.1:8088). 
 The username and password is "admin" and "password".
 
 ## Using Docker
@@ -84,7 +84,7 @@ make docker-build
 
 Then run the container using 
 ```
-make docker-run-superset
+make docker-run-evidence
 ```
 These are both aliases defined in the Makefile:
 
@@ -92,7 +92,7 @@ These are both aliases defined in the Makefile:
 docker-build:
 	docker build -t mdsbox .
 
-docker-run:
+docker-run-evidence:
 	docker run \
 		--publish 8088:8088 \
 	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
@@ -101,7 +101,7 @@ docker-run:
 		--env MDS_LATEST_RATINGS=true \
 		--env MDS_ENABLE_EXPORT=true \
 		--env ENVIRONMENT=docker \
-		mdsbox make pipeline superset-visuals
+		mdsbox make run serve
 ```
 
 # Notes on Design Choices
