@@ -275,9 +275,9 @@ This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM
 ```sql elo_by_team
     select 
         t2.season || ' ' || t2.team as team2,
-        t2.avg_elo as elo2,
+        t2.avg_elo - ('${inputs.elo_slider}'::real/2) as elo2,
         t1.season || ' ' || t1.team as team1,
-        t1.avg_elo as elo1
+        t1.avg_elo + ('${inputs.elo_slider}'::real/2) as elo1
     from ${team2_stats} t2
     left join ${team1_stats} t1 ON 1=1
 ```
@@ -305,9 +305,9 @@ This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM
     ),
     cte_step_1 as (
         Select *,
-            ( 1 - (1 / (10 ^ (-( elo2 - elo1)::real/400)+1))) * 10000 as team1_win_probability,
+            ( 1 - (1 / (10 ^ (-( elo2 - elo1 )::real/400)+1))) * 10000 as team1_win_probability,
             CASE 
-                WHEN ( 1 - (1 / (10 ^ (-( elo2 - elo1)::real/400)+1))) * 10000  >= rand_result THEN S.team1
+                WHEN ( 1 - (1 / (10 ^ (-( elo2 - elo1 )::real/400)+1))) * 10000  >= rand_result THEN S.team1
                 ELSE S.team2
             END AS winning_team,
         From cte_schedule S
@@ -382,3 +382,22 @@ with
     sort=false
     swapXY=true 
 />
+
+
+<Accordion>
+  <AccordionItem title="Elo Slider - for vibes-based adjustments of results">
+
+    _If you don't like the current results, you can modify the elo inputs with this slider._
+
+    ### Elo Slider
+
+    <Slider
+        name=elo_slider
+        value=score
+        current=0
+        title="elo slider"
+    />
+    <br>
+    The current value is {inputs.elo_slider}. 
+  </AccordionItem>
+</Accordion>
