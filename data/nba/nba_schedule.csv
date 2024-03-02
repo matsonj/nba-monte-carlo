@@ -604,7 +604,7 @@ id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Ar
 603,reg_season,Wed, Jan 17,2024,7:30p,Houston Rockets,,New York Knicks,,,Madison Square Garden (IV),,0
 604,reg_season,Wed, Jan 17,2024,7:30p,Miami Heat,,Toronto Raptors,,,Scotiabank Arena,,0
 605,reg_season,Wed, Jan 17,2024,8:00p,Charlotte Hornets,,New Orleans Pelicans,,,Smoothie King Center,,0
-606,reg_season,Wed, Jan 17,2024,9:00p,Golden State Warriors,,Utah Jazz,,,Delta Center,,0
+606,reg_season,Thu, Feb 15, 2024,9:00p,Golden State Warriors,,Utah Jazz,,,Delta Center,,0
 607,reg_season,Wed, Jan 17,2024,10:00p,Dallas Mavericks,,Los Angeles Lakers,,,Crypto.com Arena,,0
 608,reg_season,Wed, Jan 17,2024,10:00p,Brooklyn Nets,,Portland Trail Blazers,,,Moda Center,,0
 609,reg_season,Thu, Jan 18,2024,7:30p,Washington Wizards,,New York Knicks,,,Madison Square Garden (IV),,0
@@ -617,7 +617,7 @@ id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Ar
 616,reg_season,Fri, Jan 19,2024,7:30p,Denver Nuggets,,Boston Celtics,,,TD Garden,,0
 617,reg_season,Fri, Jan 19,2024,8:00p,Atlanta Hawks,,Miami Heat,,,Kaseya Center,,0
 618,reg_season,Fri, Jan 19,2024,8:00p,Phoenix Suns,,New Orleans Pelicans,,,Smoothie King Center,,0
-619,reg_season,Fri, Jan 19,2024,10:00p,Dallas Mavericks,,Golden State Warriors,,,Chase Center,,0
+619,reg_season,Fri, Apr 5, 2024,8:30p,Golden State Warriors,,Dallas Mavericks,,,Chase Center,,0
 620,reg_season,Fri, Jan 19,2024,10:00p,Indiana Pacers,,Portland Trail Blazers,,,Moda Center,,0
 621,reg_season,Fri, Jan 19,2024,10:30p,Brooklyn Nets,,Los Angeles Lakers,,,Crypto.com Arena,,0
 622,reg_season,Sat, Jan 20,2024,3:00p,Milwaukee Bucks,,Detroit Pistons,,,Little Caesars Arena,,0
@@ -1124,7 +1124,7 @@ id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Ar
 1123,reg_season,Tue, Apr 2,2024,7:00p,Oklahoma City Thunder,,Philadelphia 76ers,,,Wells Fargo Center,,0
 1124,reg_season,Tue, Apr 2,2024,7:00p,Los Angeles Lakers,,Toronto Raptors,,,Scotiabank Arena,,0
 1125,reg_season,Tue, Apr 2,2024,7:00p,Milwaukee Bucks,,Washington Wizards,,,Capital One Arena,,0
-1126,reg_season,Tue, Apr 2,2024,7:30p,Golden State Warriors,,Dallas Mavericks,,,American Airlines Center,,0
+1126,reg_season,Tue, Apr 2,2024,7:30p,Dallas Mavericks,,Golden State Warriors,,,American Airlines Center,,0
 1127,reg_season,Tue, Apr 2,2024,7:30p,New York Knicks,,Miami Heat,,,Kaseya Center,,0
 1128,reg_season,Tue, Apr 2,2024,8:00p,Houston Rockets,,Minnesota Timberwolves,,,Target Center,,0
 1129,reg_season,Tue, Apr 2,2024,9:00p,San Antonio Spurs,,Denver Nuggets,,,Ball Arena,,0
@@ -1152,7 +1152,7 @@ id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Ar
 1151,reg_season,Fri, Apr 5,2024,8:00p,Detroit Pistons,,Memphis Grizzlies,,,FedEx Forum,,0
 1152,reg_season,Fri, Apr 5,2024,8:00p,Toronto Raptors,,Milwaukee Bucks,,,Fiserv Forum,,0
 1153,reg_season,Fri, Apr 5,2024,8:00p,San Antonio Spurs,,New Orleans Pelicans,,,Smoothie King Center,,0
-1154,reg_season,Fri, Apr 5,2024,8:30p,Atlanta Hawks,,Dallas Mavericks,,,American Airlines Center,,0
+1154,reg_season,Fri, Apr 4,2024,7:30p,Atlanta Hawks,,Dallas Mavericks,,,American Airlines Center,,0
 1155,reg_season,Fri, Apr 5,2024,10:00p,Minnesota Timberwolves,,Phoenix Suns,,,Footprint Center,,0
 1156,reg_season,Fri, Apr 5,2024,10:30p,Utah Jazz,,Los Angeles Clippers,,,Crypto.com Arena,,0
 1157,reg_season,Sat, Apr 6,2024,3:30p,Cleveland Cavaliers,,Los Angeles Lakers,,,Crypto.com Arena,,0
