@@ -4,7 +4,7 @@ queries:
   - thru_date: ncaaf/thru_date.sql
 ---
 
-# NCAA College Football Monte Carlo Simulator
+# NCAA College Football Monte Carlo Simulator - 2023 Season
 
 ## Conference Summaries
 
