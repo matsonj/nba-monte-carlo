@@ -1,1 +1,1 @@
-SELECT CURRENT_DATE as end_date
+SELECT '2023-12-09' as end_date
