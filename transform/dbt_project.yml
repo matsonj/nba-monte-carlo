@@ -59,7 +59,7 @@ vars:
   include_actuals: true       # set to true to use actual game results, otherwise sim entire season
   latest_ratings: true        # set to true to use latest ELO ratings, otherwise use start of season ratings
   sim_start_game_id: 0        # placeholder one multi-container is in place
-  nba_elo_offset: 70          # nba offset to ELO to get to ~12% home advantage
+  nba_elo_offset: 100          # nba offset to ELO to get to ~12% home advantage
   nfl_elo_offset: 52          # nfl offset to ELO to get to 7.5% home advantage
   ncaaf_elo_offset: 52        # ncaaf offset to ELO to get to 7.5% home advantage
 

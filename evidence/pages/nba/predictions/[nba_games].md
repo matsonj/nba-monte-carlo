@@ -69,7 +69,7 @@ GROUP BY ALL
         SELECT
             'Home Court Advantage',
             game_id,
-            70 as hfa,
+            100 as hfa,
             4
         FROM ${future_games}
     ),
