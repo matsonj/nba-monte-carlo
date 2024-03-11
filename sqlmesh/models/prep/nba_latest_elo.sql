@@ -1,8 +1,10 @@
 MODEL (
   name nba.latest_elo,
-  kind VIEW
+  kind VIEW,
+  audits (
+     unique_values(columns=(team_long))
+  )
 );
-
 
 WITH home_rating AS (
     SELECT home_team as team

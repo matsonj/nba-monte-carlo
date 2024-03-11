@@ -1,6 +1,9 @@
 MODEL (
   name nba.latest_results,
-  kind FULL
+  kind FULL,
+  kind INCREMENTAL_BY_TIME_RANGE (
+    time_column game_date
+  )
 );
 
 with cte_inner as (
@@ -52,4 +55,6 @@ SELECT *,
         WHEN margin < 12 AND game_result = 0 THEN 0.124
         ELSE game_result
     END AS game_result_v2
-FROM cte_outer;
+FROM cte_outer
+WHERE
+  game_date BETWEEN @start_ds AND @end_ds;
