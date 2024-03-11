@@ -1,1 +1,7 @@
 pipx
+dbt-core~=1.7.0 
+dbt-duckdb~=1.7.0
+pandas==2.0 
+pyarrow
+duckdb~=0.9.2
+sqlmesh[duckdb,web]
