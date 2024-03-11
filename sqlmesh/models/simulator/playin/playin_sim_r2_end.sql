@@ -1,5 +1,5 @@
 MODEL (
-  name nba.playin_sum_r2_end,
+  name nba.playin_sim_r2_end,
   kind FULL
 );
 
