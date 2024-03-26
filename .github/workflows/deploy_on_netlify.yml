@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@master
         with:
           python-version: '3.11'
+          node-version: 20
 
       - name: python basics
         run: make build
