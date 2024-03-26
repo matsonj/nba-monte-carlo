@@ -20,7 +20,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         union all
         select season, team2
         from ${elo_history} )
-    where season = '${inputs.team1_season}'
+    where season = '${inputs.team1_season_dd.value}'
     group by all
     order by team
 ```
@@ -32,7 +32,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         union all
         select season, team2
         from ${elo_history} )
-    where season = '${inputs.team2_season}'
+    where season = '${inputs.team2_season_dd.value}'
     group by all
     order by team
 ```
@@ -197,9 +197,9 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 
 <DataTable data={stat_table} rows=all>
     <Column id="t1" align="center" title=" " />
-    <Column id="team1" align="right" title="{inputs.team1_season} {inputs.team1}"/>
+    <Column id="team1" align="right" title="{inputs.team1_season_dd.value} {inputs.team1_dd.value}"/>
     <Column id="stat" align="center" title="category" />
-    <Column id="team2" align="left" title="{inputs.team2_season} {inputs.team2}"/>
+    <Column id="team2" align="left" title="{inputs.team2_season_dd.value} {inputs.team2_dd.value}"/>
     <Column id="t2" align="center" title=" " />
 </DataTable>
 
