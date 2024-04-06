@@ -2,7 +2,7 @@
 config:
   send_anonymous_usage_stats: False
   use_colors: True
-meltano:
+default:
   target: dev
   outputs:
     dev:

@@ -1,19 +1,19 @@
 build:
 	pip install -r requirements.txt
 	pipx ensurepath
-	meltano invoke dbt-duckdb deps
-	meltano invoke evidence npm install
+	cd transform && dbt deps
+	cd evidence && npm install
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
 	mkdir -p data/data_catalog/simulator
 	mkdir -p data/data_catalog/analysis
 
 run:
-	meltano invoke dbt-duckdb build
-	meltano invoke evidence npm run sources
+	cd transform && dbt build
+	cd evidence && npm run sources
 
 dev:
-	meltano invoke evidence dev
+	cd evidence && npm run dev -- --host 0.0.0.0
 
 serve:
 	rm -rf evidence/build
@@ -30,7 +30,6 @@ docker-build:
 docker-run-evidence:
 		docker run \
 		--publish 3000:3000 \
-	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
 		--env MDS_SCENARIOS=10000 \
 		--env MDS_INCLUDE_ACTUALS=true \
 		--env MDS_LATEST_RATINGS=true \

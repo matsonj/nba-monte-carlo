@@ -1,5 +1,4 @@
 /venv
-/.meltano
 .env
 /transform/dbt_packages
 /transform/.tmp
@@ -15,4 +14,4 @@
 /logs
 /sqlmesh/logs
 /sqlmesh/.cache
-/sqlmesh/config.yaml
+*.pyc
