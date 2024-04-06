@@ -3,7 +3,6 @@ components:
   # This loads all of evidence's core charts and UI components
   # You probably don't want to edit this dependency unless you know what you are doing
   "@evidence-dev/core-components": {}
-  "@evidence-dev/labs": {}
 
   # Loading a plugin:
   # your-component-plugin: {}

@@ -18,7 +18,7 @@ order by team
 ```sql filtered_future_games
     select *
     from ${future_games}
-    where home like '${inputs.team}' OR visitor like '${inputs.team}'
+    where home like '${inputs.team_dd.value}' OR visitor like '${inputs.team_dd.value}'
 ```
 
 # NBA Monte Carlo Simulator
@@ -31,7 +31,7 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 
 <Dropdown
     data={teams} 
-    name=team
+    name=team_dd
     value=team
     title="Select a Team"
 >

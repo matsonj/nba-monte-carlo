@@ -17,12 +17,12 @@ dev:
 
 serve:
 	rm -rf evidence/build
-	cd evidence && npm run build
+	cd evidence && npm run build:strict
 	cd evidence && npm i -g http-server
 	cd evidence && npx http-server ./build
 
 evidence-build:
-	meltano invoke evidence build
+	cd evidence && npm run build
 
 docker-build:
 	docker build -t mdsbox .

@@ -108,8 +108,8 @@ queries:
 ```sql filtered_future_games
     select *
     from ${future_games}
-    where home = '${inputs.home_team}'
-        AND visitor = '${inputs.away_team}'
+    where home = '${inputs.home_team_dd.value}'
+        AND visitor = '${inputs.away_team_dd.value}'
 ```
 
 # Experimental: Matchup Calculator
@@ -119,7 +119,7 @@ It is experimental and can both break in unexpected ways and return incorrect in
 
 <Dropdown
     data={teams_alpha_sort} 
-    name=home_team
+    name=home_team_dd
     value=team
     title="Select Home Team"
 >
@@ -128,14 +128,14 @@ It is experimental and can both break in unexpected ways and return incorrect in
 
 <Dropdown
     data={teams_alpha_sort} 
-    name=away_team
+    name=away_team_dd
     value=team
     title="Select Away Team"
 >
     <DropdownOption valueLabel="None" value=" " />
 </Dropdown>
 
-{#if inputs.away_team != " " && inputs.home_team != " "}
+{#if inputs.away_team_dd.value != " " && inputs.home_team_dd.value != " "}
 
 
 # <Value data={filtered_future_games} column=visitor/> @ <Value data={filtered_future_games} column=home/>
@@ -144,19 +144,19 @@ It is experimental and can both break in unexpected ways and return incorrect in
 
 ### Team Matchup
 
-_<Value data={summary_by_team.filter(st => st.team === inputs.away_team)}  column=team/> (<Value data={summary_by_team.filter(st =>
-        st.team === inputs.away_team)} column=record/>) | elo <Value data={summary_by_team.filter(st => st.team === inputs.away_team)}
+_<Value data={summary_by_team.filter(st => st.team === inputs.away_team_dd.value)}  column=team/> (<Value data={summary_by_team.filter(st =>
+        st.team === inputs.away_team_dd.value)} column=record/>) | elo <Value data={summary_by_team.filter(st => st.team === inputs.away_team_dd.value)}
         column=elo_rating/> | Rk: <Value data={summary_by_team.filter(st =>
-        st.team === inputs.away_team)}  column=elo_rank/>_ <br> _<Value data={season_stats.filter(st =>
-        st.team === inputs.away_team)}  column=points_for_num1/> ppg |  <Value data={season_stats.filter(st =>
-        st.team === inputs.away_team)}  column=avg_margin_num1/> avg. margin_<br>
+        st.team === inputs.away_team_dd.value)}  column=elo_rank/>_ <br> _<Value data={season_stats.filter(st =>
+        st.team === inputs.away_team_dd.value)}  column=points_for_num1/> ppg |  <Value data={season_stats.filter(st =>
+        st.team === inputs.away_team_dd.value)}  column=avg_margin_num1/> avg. margin_<br>
 _<Value data={summary_by_team.filter(st =>
-        st.team === inputs.home_team)}  column=team/> (<Value data={summary_by_team.filter(st =>
-        st.team === inputs.home_team)}  column=record/>) | elo <Value data={summary_by_team.filter(st =>
-        st.team === inputs.home_team)}  column=elo_rating/> | Rk: <Value data={summary_by_team.filter(st =>
-        st.team === inputs.home_team)}  column=elo_rank/>_ <br> _<Value data={season_stats.filter(st =>
-        st.team === inputs.home_team)}  column=points_for_num1/> ppg |  <Value data={season_stats.filter(st =>
-        st.team === inputs.home_team)}  column=avg_margin_num1/> avg. margin_
+        st.team === inputs.home_team_dd.value)}  column=team/> (<Value data={summary_by_team.filter(st =>
+        st.team === inputs.home_team_dd.value)}  column=record/>) | elo <Value data={summary_by_team.filter(st =>
+        st.team === inputs.home_team_dd.value)}  column=elo_rating/> | Rk: <Value data={summary_by_team.filter(st =>
+        st.team === inputs.home_team_dd.value)}  column=elo_rank/>_ <br> _<Value data={season_stats.filter(st =>
+        st.team === inputs.home_team_dd.value)}  column=points_for_num1/> ppg |  <Value data={season_stats.filter(st =>
+        st.team === inputs.home_team_dd.value)}  column=avg_margin_num1/> avg. margin_
 
 </center>
 
@@ -172,14 +172,14 @@ Diff. of <Value data={filtered_future_games} column=elo_diff_hfa/> **->** <Value
 <script>
 
     $: test_val = Math.min(
-            ...game_trend.filter(gt => (inputs.home_team == gt.team || inputs.away_team == gt.team)
+            ...game_trend.filter(gt => (inputs.home_team_dd.value == gt.team || inputs.away_team_dd.value == gt.team)
             ).map(item => item.elo_rating)
         )
 
 </script>
 
 <LineChart
-    data={game_trend.filter(gt => (inputs.home_team == gt.team || inputs.away_team == gt.team))} 
+    data={game_trend.filter(gt => (inputs.home_team_dd.value == gt.team || inputs.away_team_dd.value == gt.team))} 
     x=date
     y=elo_post
     title='elo change over time'
@@ -194,10 +194,10 @@ Diff. of <Value data={filtered_future_games} column=elo_diff_hfa/> **->** <Value
     }
 />
 
-## Last 5 Games - <Value data={summary_by_team.filter(st => st.team == inputs.away_team)}  column=team/>
+## Last 5 Games - <Value data={summary_by_team.filter(st => st.team == inputs.away_team_dd.value)}  column=team/>
 
 <DataTable
-    data={most_recent_games.filter(rg => (inputs.away_team == rg.visiting_team || inputs.away_team == rg.home_team ))} 
+    data={most_recent_games.filter(rg => (inputs.away_team_dd.value == rg.visiting_team || inputs.away_team_dd.value == rg.home_team ))} 
     rows=5>
   <Column id=matchup/>
   <Column id=T title=" "/>
@@ -206,10 +206,10 @@ Diff. of <Value data={filtered_future_games} column=elo_diff_hfa/> **->** <Value
   <Column id=elo_change_num1/>
 </DataTable>
 
-## Last 5 Games - <Value data={summary_by_team.filter(st => st.team ==inputs.home_team)}  column=team/>
+## Last 5 Games - <Value data={summary_by_team.filter(st => st.team ==inputs.home_team_dd.value)}  column=team/>
 
 <DataTable
-    data={most_recent_games.filter(rg => (inputs.home_team == rg.visiting_team || inputs.home_team == rg.home_team ))}  
+    data={most_recent_games.filter(rg => (inputs.home_team_dd.value == rg.visiting_team || inputs.home_team_dd.value == rg.home_team ))}  
     rows=5>
   <Column id=matchup/>
   <Column id=T title=" "/>

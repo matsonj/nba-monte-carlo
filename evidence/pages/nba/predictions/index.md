@@ -14,7 +14,7 @@ order by team
 ```sql filtered_future_games
     select * EXCLUDE (game_id), game_id::int as game_id
     from ${future_games}
-    where home like '${inputs.team}' OR visitor like '${inputs.team}'
+    where home like '${inputs.team_dropdown.value}' OR visitor like '${inputs.team_dropdown.value}'
 ```
 
 # Predictions
@@ -54,7 +54,7 @@ _Historically, NBA teams win 62% of their games at home, which explains why team
 
 <Dropdown
     data={teams} 
-    name=team
+    name=team_dropdown
     value=team
     title="Select a Team"
 >
