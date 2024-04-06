@@ -8,8 +8,8 @@ default:
     dev:
       type: duckdb
       threads: 4
-      external_root: "/workspaces/nba-monte-carlo/data/data_catalog/analysis"
-      path: /workspaces/nba-monte-carlo/data/data_catalog/mdsbox.duckdb
+      external_root: "../data/data_catalog/analysis"
+      path: "../data/data_catalog/mdsbox.duckdb"
     staging:
       type: duckdb
       threads: 4
