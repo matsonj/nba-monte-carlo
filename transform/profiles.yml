@@ -8,13 +8,4 @@ default:
     dev:
       type: duckdb
       threads: 4
-      external_root: "../data/data_catalog/analysis"
       path: "../data/data_catalog/mdsbox.duckdb"
-    staging:
-      type: duckdb
-      threads: 4
-      external_root: /tmp/data_catalog/conformed
-    prod:
-      type: duckdb
-      threads: 4
-      external_root: /tmp/data_catalog/conformed

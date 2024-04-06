@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='external'
+        materialized='table'
     )
 }}
 
