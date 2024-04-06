@@ -1,0 +1,16 @@
+gateways:
+    local:
+        connection:
+            type: duckdb
+            database: /workspaces/nba-monte-carlo/data/data_catalog/sqlmeshbox.duckdb
+
+    motherduck:
+        connection:
+            type: motherduck
+            database: duckbox
+            token: {{ env_var('MOTHERDUCK_TOKEN')}}
+
+default_gateway: local
+
+model_defaults:
+    dialect: duckdb

@@ -2,7 +2,7 @@
 The latest version of the project is available at [mdsinabox.com](http://www.mdsinabox.com). The website embraces the notion of "Serverless BI" - the pages are built asynchronously with open source software on commodity hardware and then pushed to a static site. The github action that automatically deploys the site upon PR can be [found here](https://github.com/matsonj/nba-monte-carlo/blob/master/.github/workflows/deploy_on_netlify.yml).
 
 # MDS-in-a-box
-This project serves as end to end example of running the "Modern Data Stack" on a single node. The components are designed to be "hot swappable", using Meltano to create clearly defined interfaces between discrete components in the stack. It runs in many enviroments with many visualization options. In addition, the data transformation documentation is [self hosted on github pages](https://matsonj.github.io/nba-monte-carlo/#!/overview).
+This project serves as end to end example of running the "Modern Data Stack" on a single node. The components are designed to be "hot swappable", using makefile to create clearly defined interfaces between discrete components in the stack. It runs in many enviroments with many visualization options. In addition, the data transformation documentation is [self hosted on github pages](https://matsonj.github.io/nba-monte-carlo/#!/overview).
 ## Many Environments
 It runs practically anywhere, and has been tested in the environments below.
 
@@ -61,8 +61,8 @@ sudo apt-get install python3.9 python3-pip python3.9-venv
 ```
 4. clone the this repo.
 ```
-mkdir meltano-projects
-cd meltano-projects
+mkdir my_projects
+cd my_projects
 git clone https://github.com/matsonj/nba-monte-carlo.git
 # Go one folder level down into the folder that git just created
 cd nba-monte-carlo
@@ -95,7 +95,6 @@ docker-build:
 docker-run-evidence:
 	docker run \
 		--publish 8088:8088 \
-	 	--env MELTANO_CLI_LOG_LEVEL=WARNING \
 		--env MDS_SCENARIOS=10000 \
 		--env MDS_INCLUDE_ACTUALS=true \
 		--env MDS_LATEST_RATINGS=true \

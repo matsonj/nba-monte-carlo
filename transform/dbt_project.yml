@@ -1,6 +1,6 @@
 name: sports_sims
 version: '1.0'
-profile: meltano
+profile: default
 config-version: 2
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 model-paths:
