@@ -9,6 +9,7 @@ build:
 	mkdir -p data/data_catalog/analysis
 
 run:
+	cd dlt && python3 nba_pipeline.py
 	cd transform && dbt build
 	cd evidence && npm run sources
 

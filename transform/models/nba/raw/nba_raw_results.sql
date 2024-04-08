@@ -1,17 +1,17 @@
 WITH cte_base AS (
-    SELECT * FROM {{ source( 'nba','nba_results' ) }}
+    SELECT * FROM {{ source( 'nba_dlt','games' ) }}
 )
 
 SELECT
-    strptime("Date",'%a %b %-d %Y')::date as "date",
-    "Start (ET)" as "Start (ET)",
-    "Visitor/Neutral" as "VisTm",
-    PTS::int as visiting_team_score,
-    "Home/Neutral" as "HomeTm",
-    PTS_1::int as home_team_score,
-    "Attend." as "Attend.",
-    Arena as Arena,
-    Notes as Notes,
+    date::date as "date",
+    NULL as "Start (ET)",
+    away.team_long as "VisTm",
+    away_points::int as visiting_team_score,
+    home.team_long as "HomeTm",
+    home_points::int as home_team_score,
+    NULL as "Attend.",
+    NULL as Arena,
+    NULL as Notes,
     CASE WHEN visiting_team_score > home_team_score 
         THEN VisTm
         ELSE HomeTm
@@ -28,4 +28,8 @@ SELECT
         THEN home_team_score
         ELSE visiting_team_score
     END AS Loser_Pts
-FROM cte_base
+FROM cte_base a
+LEFT JOIN {{ ref( 'nba_raw_team_ratings' ) }} home
+    ON home.alt_key = a.home_team_abbreviation
+LEFT JOIN {{ ref( 'nba_raw_team_ratings' ) }} away
+    ON away.alt_key = a.away_team_abbreviation
