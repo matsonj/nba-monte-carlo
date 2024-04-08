@@ -1,9 +1,6 @@
 name: 'Scheduled Run'
 
 on:
-  push:
-    branches:
-    - master
   schedule:
     - cron: '0 10 * * *'  # This line sets the job to run every day at 10am UTC
 
