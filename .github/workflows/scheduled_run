@@ -1,0 +1,42 @@
+name: 'Scheduled Run'
+
+on:
+  push:
+    branches:
+    - master
+  schedule:
+    - cron: '0 10 * * *'  # This line sets the job to run every day at 10am UTC
+
+jobs:
+  deploy:
+    name: 'Deploy'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@master
+        with:
+          python-version: '3.11'
+          node-version: 20
+
+      - name: python basics
+        run: make build
+
+      - name: build pipeline
+        run: make run
+        
+      - name: evidence install & build
+        run: |
+          make evidence-build
+
+      - name: copy output to working directory
+        run: |
+          mkdir -p /home/runner/work/_temp/_github_home/build
+          cp -r evidence/build/* /home/runner/work/_temp/_github_home/build
+
+      - name: Deploy Netlify
+        uses: danakim/gh-action-deploy-netlify@master
+        with:
+          AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          DEPLOY_PROD: true
