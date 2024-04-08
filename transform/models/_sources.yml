@@ -37,3 +37,8 @@ sources:
         description: ncaa football team ratings from vegas
       - name: ncaaf_results
         description: ncaa results for current season
+  - name: nba_dlt
+    schema: nba_data
+    tables:
+      - name: games
+        description: nba games as sourced from pbpstats.com
