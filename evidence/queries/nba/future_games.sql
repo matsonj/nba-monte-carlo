@@ -10,7 +10,7 @@ SELECT
     home_team as home, 
     home_team_elo_rating AS home_ELO,
     home_team_elo_rating - visiting_team_elo_rating AS elo_diff,
-    elo_diff + 70 AS elo_diff_hfa,
+    elo_diff + 100 AS elo_diff_hfa,
     home_team_win_probability/10000 AS home_win_pct1,
     american_odds,
     implied_line AS implied_line_num1,
