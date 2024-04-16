@@ -7,6 +7,7 @@ queries:
   - summary_by_team: nba/summary_by_team.sql
   - past_games: nba/past_games.sql
   - most_recent_games: nba/most_recent_games.sql
+  - team_matchups: nba/team_matchups.sql
 ---
 
 ```season_stats
@@ -52,23 +53,23 @@ queries:
     WITH cte_visitor_elo AS (
         SELECT
             'Away Elo Rating' as type,
-            game_id,
-            visitor_ELO as value,
+            1 as game_id,
+            away_elo_rating as value,
             1 as key
         FROM ${filtered_future_games}
     ),
     cte_home_elo AS (
         SELECT
             'Home Elo Rating',
-            game_id,
-            home_ELO,
+            1 as game_id,
+            home_elo_rating,
             2
         FROM ${filtered_future_games}
     ),
     cte_elo_diff AS (
         SELECT
             'Elo Difference',
-            game_id,
+            1 as game_id,
             elo_diff,
             3
         FROM ${filtered_future_games}
@@ -76,7 +77,7 @@ queries:
     cte_hfa AS (
         SELECT
             'Home Court Advantage',
-            game_id,
+            1 as game_id,
             100 as hfa,
             4
         FROM ${filtered_future_games}
@@ -84,7 +85,7 @@ queries:
     cte_elo_diff_hfa AS (
         SELECT
             'Total Difference',
-            game_id,
+            1 as game_id,
             elo_diff_hfa,
             5
         FROM ${filtered_future_games}
@@ -107,9 +108,9 @@ queries:
 
 ```sql filtered_future_games
     select *
-    from ${future_games}
-    where home = '${inputs.home_team_dd.value}'
-        AND visitor = '${inputs.away_team_dd.value}'
+    from ${team_matchups}
+    where home_team = '${inputs.home_team_dd.value}'
+        AND away_team = '${inputs.away_team_dd.value}'
 ```
 
 # Experimental: Matchup Calculator
@@ -138,7 +139,7 @@ It is experimental and can both break in unexpected ways and return incorrect in
 {#if inputs.away_team_dd.value != " " && inputs.home_team_dd.value != " "}
 
 
-# <Value data={filtered_future_games} column=visitor/> @ <Value data={filtered_future_games} column=home/>
+# <Value data={filtered_future_games} column=away_team/> @ <Value data={filtered_future_games} column=home_team/>
 
 <center>
 
@@ -167,7 +168,7 @@ _<Value data={summary_by_team.filter(st =>
   <Column id=value/>
 </DataTable>
 
-Diff. of <Value data={filtered_future_games} column=elo_diff_hfa/> **->** <Value data={filtered_future_games} column=home_win_pct1/> Win Prob **->** <Value data={filtered_future_games} column=american_odds/> ML <br> <Value data={filtered_future_games} column=implied_line_num1/> Spread **->** Score: <Value data={filtered_future_games} column=predicted_score/> 
+Diff. of <Value data={filtered_future_games} column=elo_diff_hfa/> **->** <Value data={filtered_future_games} column=home_win_pct1/> Win Prob **->** <Value data={filtered_future_games} column=american_odds/> ML **->** Implied Line: <Value data={filtered_future_games} column=implied_line_num1/>
 
 <script>
 

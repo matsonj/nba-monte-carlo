@@ -1,17 +1,20 @@
 WITH cte_base AS (
     SELECT * FROM {{ source( 'nba_dlt','games' ) }}
+),
+cte_seed as (
+    SELECT * FROM {{ source( 'nba','nba_results' ) }}
 )
 
 SELECT
-    date::date as "date",
-    NULL as "Start (ET)",
-    away.team_long as "VisTm",
-    away_points::int as visiting_team_score,
-    home.team_long as "HomeTm",
-    home_points::int as home_team_score,
-    NULL as "Attend.",
-    NULL as Arena,
-    NULL as Notes,
+    coalesce(a.date,strptime(b."Date",'%a %b %-d %Y'))::date as "date",
+    b."Start (ET)" as "Start (ET)",
+    coalesce(away.team_long,b."Visitor/Neutral") as "VisTm",
+    coalesce(a.away_points,b.PTS)::int as visiting_team_score,
+    coalesce(home.team_long,b."Home/Neutral") as "HomeTm",
+    coalesce(a.home_points,b.PTS_1)::int as home_team_score,
+    b."Attend." as "Attend.",
+    b.Arena as Arena,
+    b.Notes as Notes,
     CASE WHEN visiting_team_score > home_team_score 
         THEN VisTm
         ELSE HomeTm
@@ -33,3 +36,5 @@ LEFT JOIN {{ ref( 'nba_raw_team_ratings' ) }} home
     ON home.alt_key = a.home_team_abbreviation
 LEFT JOIN {{ ref( 'nba_raw_team_ratings' ) }} away
     ON away.alt_key = a.away_team_abbreviation
+FULL OUTER JOIN cte_seed b on  strptime(b."Date",'%a %b %-d %Y')::date = a.date
+    AND b."Home/Neutral" = home.team_long
