@@ -1,4 +1,5 @@
 build:
+	uv pip install --system --no-cache -r requirements.txt
 	cd transform && dbt deps
 	cd evidence && npm install
 	mkdir -p data/data_catalog/raw
