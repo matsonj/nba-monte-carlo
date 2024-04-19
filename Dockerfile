@@ -29,6 +29,4 @@ COPY Makefile .
 COPY evidence ./evidence
 COPY requirements.txt .
 
-USER root
-
 RUN make build
