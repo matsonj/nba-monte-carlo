@@ -29,4 +29,6 @@ COPY Makefile .
 COPY evidence ./evidence
 COPY requirements.txt .
 
+RUN pip install uv
+
 RUN make build
