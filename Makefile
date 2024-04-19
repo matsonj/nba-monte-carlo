@@ -1,6 +1,4 @@
 build:
-	pip install -r requirements.txt
-	pipx ensurepath
 	cd transform && dbt deps
 	cd evidence && npm install
 	mkdir -p data/data_catalog/raw
