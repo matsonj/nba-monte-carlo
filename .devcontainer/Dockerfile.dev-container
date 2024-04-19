@@ -8,3 +8,6 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/shar
 RUN apt-get update
 RUN apt-get install -y gcc gfortran musl-dev
 ENV PYTHONUNBUFFERED 1
+
+# install uv
+RUN pip install uv
