@@ -4,5 +4,5 @@ dbt-duckdb~=1.7.0
 pandas==2.0 
 pyarrow
 duckdb~=0.9.2
-sqlmesh[duckdb,web]
+sqlmesh==0.88
 dlt[duckdb]>=0.3.25
