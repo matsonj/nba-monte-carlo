@@ -2,8 +2,8 @@
 Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 
 ```sql elo_history
-    select *
-    from nba_elo_history.nba_elo
+    select A.*
+    from nba_elo_history.nba_elo A
     union all
     select 
         l.game_date as date,
@@ -31,34 +31,34 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 ```
 
 ```sql seasons
-    select season
-    from ${elo_history}
+    select A.season
+    from ${elo_history} A
     group by all
-    order by season
+    order by A.season
 ```
 
 ```sql team1
-    select * from (
-        select season, team1 as team
-        from ${elo_history}
+    select C.* from (
+        select A.season, A.team1 as team
+        from ${elo_history} A
         union all
-        select season, team2
-        from ${elo_history} )
-    where season = '${inputs.team1_season_dd.value}'
+        select B.season, B.team2
+        from ${elo_history} B) as C
+    where C.season = ${inputs.team1_season_dd.value}
     group by all
-    order by team
+    order by C.team
 ```
 
 ```sql team2
-    select * from (
-        select season, team1 as team
-        from ${elo_history}
+    select C.* from (
+        select A.season, A.team1 as team
+        from ${elo_history} AS A
         union all
-        select season, team2
-        from ${elo_history} )
-    where season = '${inputs.team2_season_dd.value}'
+        select B.season, B.team2
+        from ${elo_history} AS B ) AS C
+    where C.season = ${inputs.team2_season_dd.value}
     group by all
-    order by team
+    order by C.team
 ```
 
 <Dropdown
@@ -99,14 +99,14 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 
 ```sql team1_history
     select * from nba_elo_history.nba_elo
-    where season = '${inputs.team1_season_dd.value}'
+    where season = ${inputs.team1_season_dd.value}
        and ( team1 = '${inputs.team1_dd.value}' OR team2 = '${inputs.team1_dd.value}')
     order by date
 ```
 
 ```sql team2_history
     select * from nba_elo_history.nba_elo
-    where season = '${inputs.team2_season_dd.value}'
+    where season = ${inputs.team2_season_dd.value}
         and ( team1 = '${inputs.team2_dd.value}' OR team2 = '${inputs.team2_dd.value}')
     order by date
 ```
@@ -125,7 +125,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
             case when team1 = '${inputs.team1_dd.value}' then score1 else score2 end as pf,
             case when team1 = '${inputs.team1_dd.value}' then score2 else score1 end as pa,
             '${inputs.team1_dd.value}' || ':' || '${inputs.team1_season_dd.value}' as key,
-        from ${elo_history  } where (team1 = '${inputs.team1_dd.value}' OR team2 = '${inputs.team1_dd.value}') AND season = '${inputs.team1_season_dd.value}'
+        from ${elo_history  } where (team1 = '${inputs.team1_dd.value}' OR team2 = '${inputs.team1_dd.value}') AND season = ${inputs.team1_season_dd.value}
     )
     select 
         key, 
@@ -145,7 +145,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         avg(elo) as avg_elo,
         max(elo) as max_elo,
         '${inputs.team1_dd.value}' as team,
-        '${inputs.team1_season_dd.value}' as season
+        ${inputs.team1_season_dd.value} as season
     from cte_games
     GROUP BY ALL
 ```
@@ -164,7 +164,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
             case when team1 = '${inputs.team2_dd.value}' then score1 else score2 end as pf,
             case when team1 = '${inputs.team2_dd.value}' then score2 else score1 end as pa,
             '${inputs.team2_dd.value}' || ':' || '${inputs.team2_season_dd.value}' as key,
-        from ${elo_history  } where (team1 = '${inputs.team2_dd.value}' OR team2 = '${inputs.team2_dd.value}') AND season = '${inputs.team2_season_dd.value}'
+        from ${elo_history  } where (team1 = '${inputs.team2_dd.value}' OR team2 = '${inputs.team2_dd.value}') AND season = ${inputs.team2_season_dd.value}
     )
     select 
         key, 
@@ -184,7 +184,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         avg(elo) as avg_elo,
         max(elo) as max_elo,
         '${inputs.team2_dd.value}' as team,
-        '${inputs.team2_season_dd.value}' as season
+        ${inputs.team2_season_dd.value} as season
     from cte_games
     GROUP BY ALL
 ```
@@ -235,7 +235,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
             date,
             case when team1 = '${inputs.team1_dd.value}' then elo1_post else elo2_post end as elo,
             '${inputs.team1_dd.value}' || ':' || '${inputs.team1_season_dd.value}' as key,
-        from ${elo_history  } where (team1 = '${inputs.team1_dd.value}' OR team2 = '${inputs.team1_dd.value}') AND season = '${inputs.team1_season_dd.value}'
+        from ${elo_history  } where (team1 = '${inputs.team1_dd.value}' OR team2 = '${inputs.team1_dd.value}') AND season = ${inputs.team1_season_dd.value}
     )
     select 
         key, 
@@ -250,9 +250,10 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     with cte_games AS (
         select 
             date,
-            case when team1 = '${inputs.team2}' then elo1_post else elo2_post end as elo,
-            '${inputs.team2}' || ':' || '${inputs.team2_season}' as key,
-        from ${elo_history  } where (team1 = '${inputs.team2}' OR team2 = '${inputs.team2}') AND season = '${inputs.team2_season}'
+            case when team1 = '${inputs.team2_dd.value}' then elo1_post else elo2_post end as elo,
+            '${inputs.team2_dd.value}' || ':' || '${inputs.team2_season_dd.value}' as key,
+        from ${elo_history  } where (team1 = '${inputs.team2_dd.value}' OR team2 = '${inputs.team2_dd.value}') 
+        AND season = ${inputs.team2_season_dd.value}
     )
     select 
         key, 
@@ -407,21 +408,15 @@ with
     swapXY=true 
 />
 
+_If you don't like the current results, you can modify the elo inputs with this slider._
 
-<Accordion>
-  <AccordionItem title="Elo Slider - for vibes-based adjustments of results">
+### Elo Slider
 
-    _If you don't like the current results, you can modify the elo inputs with this slider._
-
-    ### Elo Slider
-
-    <Slider
-        name=elo_slider
-        value=score
-        current=0
-        title="elo slider"
-    />
-    <br>
-    The current value is {inputs.elo_slider}. 
-  </AccordionItem>
-</Accordion>
+<Slider
+    name=elo_slider
+    value=score
+    current=0
+    title="elo slider"
+/>
+<br>
+The current value is {inputs.elo_slider}. 
