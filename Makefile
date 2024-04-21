@@ -12,7 +12,7 @@ build: install-uv
 
 run:
 	cd dlt && python3 nba_pipeline.py
-	cd transform && dbt build
+	cd transform && sudo dbt build
 	cd evidence && npm run sources
 
 dev:
