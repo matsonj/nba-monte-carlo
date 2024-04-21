@@ -1,15 +1,14 @@
-build:
-	pip install uv
-	uv pip install --system -r requirements.txt
-	cd transform && dbt deps
+install-uv:
+	sudo pip install uv
+	sudo uv pip install --system -r requirements.txt
+
+build: install-uv
+	cd transform && sudo dbt deps
 	cd evidence && npm install
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
 	mkdir -p data/data_catalog/simulator
 	mkdir -p data/data_catalog/analysis
-
-activate:
-	source .venv/bin/activate
 
 run:
 	cd dlt && python3 nba_pipeline.py
