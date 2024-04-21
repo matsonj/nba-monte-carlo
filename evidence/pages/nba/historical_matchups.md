@@ -7,9 +7,9 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
     union all
     select 
         l.game_date as date,
-        '2024' as season,
+        2024 as season,
         null as nuetral,
-        null as playoff,
+        'r' as playoff,
         l.hmTm as team1,
         l.VsTm as team2,
         r.home_team_elo_rating as elo1_pre,
@@ -98,14 +98,14 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 </Dropdown>
 
 ```sql team1_history
-    select * from nba_elo_history.nba_elo
+    select * from ${elo_history}
     where season = ${inputs.team1_season_dd.value}
        and ( team1 = '${inputs.team1_dd.value}' OR team2 = '${inputs.team1_dd.value}')
     order by date
 ```
 
 ```sql team2_history
-    select * from nba_elo_history.nba_elo
+    select * from ${elo_history}
     where season = ${inputs.team2_season_dd.value}
         and ( team1 = '${inputs.team2_dd.value}' OR team2 = '${inputs.team2_dd.value}')
     order by date
