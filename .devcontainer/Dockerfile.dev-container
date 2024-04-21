@@ -9,8 +9,8 @@ RUN apt-get update
 RUN apt-get install -y gcc gfortran musl-dev
 ENV PYTHONUNBUFFERED 1
 
-ADD --chmod=755 https://astral.sh/uv/install.sh /install.sh
-RUN /install.sh
+# ADD --chmod=755 https://astral.sh/uv/install.sh /install.sh
+# RUN /install.sh
 
 # uv needs access to tmp, so we need to make it writable
-RUN chmod 777 /tmp
+# RUN chmod 777 /tmp

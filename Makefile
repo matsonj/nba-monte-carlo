@@ -1,4 +1,5 @@
 build:
+	pip install uv
 	uv pip install --system -r requirements.txt
 	cd transform && dbt deps
 	cd evidence && npm install
