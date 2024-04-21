@@ -1,9 +1,9 @@
 install-uv:
-	sudo pip install uv
-	sudo uv pip install --system -r requirements.txt
+	pip install uv
+	uv pip install --system -r requirements.txt
 
 build: install-uv
-	cd transform && sudo dbt deps
+	cd transform && dbt deps
 	cd evidence && npm install
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
@@ -12,7 +12,7 @@ build: install-uv
 
 run:
 	cd dlt && python3 nba_pipeline.py
-	cd transform && sudo dbt build
+	cd transform && dbt build
 	cd evidence && npm run sources
 
 dev:
