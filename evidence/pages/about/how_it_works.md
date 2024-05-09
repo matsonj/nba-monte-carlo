@@ -1,4 +1,6 @@
-# How it works
+---
+title: How it works
+---
 
 ## Env. config
 - devcontainer (python + node)
