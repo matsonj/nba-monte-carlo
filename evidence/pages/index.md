@@ -4,9 +4,9 @@ title: mdsinabox - a sports monte carlo simulator
 
 <GithubStarCount user='matsonj' repo='nba-monte-carlo'/>
 
-Welcome to the [NBA monte carlo simulator](https://github.com/matsonj/nba-monte-carlo) project. Evidence is used as the as data visualization & analysis part of [MDS in a box](https://www.dataduel.co/modern-data-stack-in-a-box-with-duckdb/).
+A fast, free and open-source Modern Data Stack (MDS) that can be fully deployed on your laptop or to a single machine. 
 
-This project leverages duckdb, make, dbt, and evidence and builds and runs about once per day in a github action. You can learn more about this on [the about page](/about).
+This project implements a sports Monte Carlo simulator using [duckdb](https://duckdb.org/), [dbt](https://www.getdbt.com/), and [evidence](https://evidence.dev/). The project is built and run about once per day in a github action. You can learn more about this on the [original blog post](https://duckdb.org/2022/10/12/modern-data-stack-in-a-box.html) or on [the about page](/about).
 
 ### Want to track what I am cooking up next? Join the email list.
 

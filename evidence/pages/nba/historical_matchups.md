@@ -297,6 +297,20 @@ $: y_min = Math.min(...combined_trend.map(item => item.elo))
 
 This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM.
 
+<Dropdown title="team 1 wins" name=team_1_wins>
+    <DropdownOption valueLabel="0" value="0" />
+    <DropdownOption valueLabel="1" value="1" />
+    <DropdownOption valueLabel="2" value="2" />
+    <DropdownOption valueLabel="3" value="3" />
+</Dropdown>
+
+<Dropdown title="team 2 wins" name=team_2_wins>
+    <DropdownOption valueLabel="0" value="0" />
+    <DropdownOption valueLabel="1" value="1" />
+    <DropdownOption valueLabel="2" value="2" />
+    <DropdownOption valueLabel="3" value="3" />
+</Dropdown>
+
 ```sql elo_by_team
     select 
         t2.season || ' ' || t2.team as team2,
