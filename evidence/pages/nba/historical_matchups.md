@@ -297,14 +297,14 @@ $: y_min = Math.min(...combined_trend.map(item => item.elo))
 
 This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM.
 
-<Dropdown title="team 1 wins" name=team_1_wins>
+<Dropdown title="Team 1 wins" name=team_1_wins>
     <DropdownOption valueLabel="0" value="0" />
     <DropdownOption valueLabel="1" value="1" />
     <DropdownOption valueLabel="2" value="2" />
     <DropdownOption valueLabel="3" value="3" />
 </Dropdown>
 
-<Dropdown title="team 2 wins" name=team_2_wins>
+<Dropdown title="Team 2 wins" name=team_2_wins>
     <DropdownOption valueLabel="0" value="0" />
     <DropdownOption valueLabel="1" value="1" />
     <DropdownOption valueLabel="2" value="2" />
@@ -323,7 +323,7 @@ This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM
 
 ```sql games
     SELECT I.generate_series AS game_id
-    FROM generate_series(1, 7 ) AS I
+    FROM generate_series(1 + ${inputs.team_1_wins.value} + ${inputs.team_2_wins.value}, 7) AS I
 ```
 
 
@@ -353,7 +353,11 @@ This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM
     ),
     cte_step_2 AS (
         SELECT step1.*,
-            ROW_NUMBER() OVER (PARTITION BY scenario_id, winning_team  ORDER BY scenario_id, game_id ) AS series_result
+            ROW_NUMBER() OVER (PARTITION BY scenario_id, winning_team  ORDER BY scenario_id, game_id ) +
+            CASE 
+                WHEN winning_team = team1 THEN ${inputs.team_1_wins.value} 
+                ELSE ${inputs.team_2_wins.value} END 
+            AS series_result
         FROM cte_step_1 step1
     )
     select * from cte_step_2
