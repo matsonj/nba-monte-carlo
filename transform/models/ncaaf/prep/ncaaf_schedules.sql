@@ -1,22 +1,24 @@
-SELECT
-    S.id AS game_id,
-    S.week as week_number,
-    'reg_season' AS type,
+select
+    s.id as game_id,
+    s.week as week_number,
+    'reg_season' as type,
     0 as series_id,
-    V.conf AS visiting_conf,
-    V.team AS visiting_team,
-    COALESCE(R.visiting_team_elo_rating,V.elo_rating::int) AS visiting_team_elo_rating,
-    H.conf AS home_conf,
-    H.team AS home_team,
-    COALESCE(R.home_team_elo_rating,H.elo_rating::int) AS home_team_elo_rating
-FROM {{ ref( 'ncaaf_raw_schedule' ) }} AS S
-LEFT JOIN {{ ref( 'ncaaf_ratings' ) }} V ON V.team = S.VisTm
-LEFT JOIN {{ ref( 'ncaaf_ratings' ) }} H ON H.team = S.HomeTm
-LEFT JOIN {{ ref( 'ncaaf_elo_rollforward' ) }} R ON R.game_id = S.id
-GROUP BY ALL
-/* -- EXCLUDING UNTIL I GET A PLAYOFFS MODULE FIGURED OUT
+    v.conf as visiting_conf,
+    v.team as visiting_team,
+    coalesce(r.visiting_team_elo_rating, v.elo_rating::int) as visiting_team_elo_rating,
+    h.conf as home_conf,
+    h.team as home_team,
+    coalesce(r.home_team_elo_rating, h.elo_rating::int) as home_team_elo_rating
+from {{ ref("ncaaf_raw_schedule") }} as s
+left join {{ ref("ncaaf_ratings") }} v on v.team = s.vistm
+left join {{ ref("ncaaf_ratings") }} h on h.team = s.hometm
+left join {{ ref("ncaaf_elo_rollforward") }} r on r.game_id = s.id
+group by
+    all
+    /* -- EXCLUDING UNTIL I GET A PLAYOFFS MODULE FIGURED OUT
 UNION ALL
 SELECT
     *
 FROM {{ ref( 'nba_post_season_schedule' ) }}
 */
+    

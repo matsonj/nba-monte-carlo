@@ -1,51 +1,68 @@
-with cte_inner as (
-    SELECT
-        S.id as game_id,
-        S.week as week_number,
-        S.HomeTm AS home_team, 
-        CASE
-            WHEN S.HomeTm = R.Winner THEN R.Winner_Pts
-            ELSE R.Loser_Pts 
-        END AS home_team_score,
-        S.VisTm AS visiting_team,
-        CASE
-            WHEN S.VisTm = R.Winner THEN R.Winner_Pts
-            ELSE R.Loser_Pts 
-        END AS  visiting_team_score,
-        R.Winner AS winning_team,
-        R.Loser AS losing_team,
-        {{ var('include_actuals') }} AS include_actuals,
+with
+    cte_inner as (
+        select
+            s.id as game_id,
+            s.week as week_number,
+            s.hometm as home_team,
+            case
+                when s.hometm = r.winner then r.winner_pts else r.loser_pts
+            end as home_team_score,
+            s.vistm as visiting_team,
+            case
+                when s.vistm = r.winner then r.winner_pts else r.loser_pts
+            end as visiting_team_score,
+            r.winner as winning_team,
+            r.loser as losing_team,
+            {{ var("include_actuals") }} as include_actuals,
 
-    FROM {{ ref( 'ncaaf_raw_schedule' ) }} S
-        LEFT JOIN {{ ref( 'ncaaf_raw_results' ) }} R ON R.Wk = S.week
-            AND (S.VisTm = R.Winner OR S.VisTm = R.Loser)
-    WHERE home_team_score IS NOT NULL 
-    GROUP BY ALL
-),
-cte_outer AS (
-    SELECT *,
-        CASE
-            WHEN visiting_team_score > home_team_score THEN 1
-            WHEN visiting_team_score = home_team_score THEN 0.5
-            ELSE 0
-        END AS game_result,
-        ABS( visiting_team_score - home_team_score ) as margin
-    FROM cte_inner
-)
-SELECT *,
-    CASE
-        WHEN margin < 4 AND game_result = 1 THEN 0.585
-        WHEN margin < 4 AND game_result = 0 THEN 0.415
-        WHEN margin < 6 AND game_result = 1 THEN 0.666
-        WHEN margin < 6 AND game_result = 0 THEN 0.334
-        WHEN margin = 6 AND game_result = 1 THEN 0.707
-        WHEN margin = 6 AND game_result = 0 THEN 0.293
-        WHEN margin = 7 AND game_result = 1 THEN 0.73
-        WHEN margin = 7 AND game_result = 0 THEN 0.27
-        WHEN margin = 8 AND game_result = 1 THEN 0.75
-        WHEN margin = 8 AND game_result = 0 THEN 0.25
-        WHEN margin > 8 AND margin < 17 AND game_result = 1 THEN 0.85
-        WHEN margin > 8 AND margin < 17 AND game_result = 0 THEN 0.15
-        ELSE game_result
-    END AS game_result_v2
-FROM cte_outer
+        from {{ ref("ncaaf_raw_schedule") }} s
+        left join
+            {{ ref("ncaaf_raw_results") }} r
+            on r.wk = s.week
+            and (s.vistm = r.winner or s.vistm = r.loser)
+        where home_team_score is not null
+        group by all
+    ),
+    cte_outer as (
+        select
+            *,
+            case
+                when visiting_team_score > home_team_score
+                then 1
+                when visiting_team_score = home_team_score
+                then 0.5
+                else 0
+            end as game_result,
+            abs(visiting_team_score - home_team_score) as margin
+        from cte_inner
+    )
+select
+    *,
+    case
+        when margin < 4 and game_result = 1
+        then 0.585
+        when margin < 4 and game_result = 0
+        then 0.415
+        when margin < 6 and game_result = 1
+        then 0.666
+        when margin < 6 and game_result = 0
+        then 0.334
+        when margin = 6 and game_result = 1
+        then 0.707
+        when margin = 6 and game_result = 0
+        then 0.293
+        when margin = 7 and game_result = 1
+        then 0.73
+        when margin = 7 and game_result = 0
+        then 0.27
+        when margin = 8 and game_result = 1
+        then 0.75
+        when margin = 8 and game_result = 0
+        then 0.25
+        when margin > 8 and margin < 17 and game_result = 1
+        then 0.85
+        when margin > 8 and margin < 17 and game_result = 0
+        then 0.15
+        else game_result
+    end as game_result_v2
+from cte_outer

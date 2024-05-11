@@ -1,31 +1,42 @@
-WITH cte_summary AS (
-    SELECT
-        winning_team AS team,
-        E.conf,
-        ROUND(AVG(wins),1) AS avg_wins,
-        V.win_total AS vegas_wins,
-        ROUND(AVG(V.win_total) - AVG(wins), 1) AS elo_vs_vegas,
-        ROUND(PERCENTILE_CONT(0.05) WITHIN GROUP (ORDER BY wins ASC), 1) AS wins_5th,
-        ROUND(PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY wins ASC), 1) AS wins_95th,
-        COUNT(*) FILTER (WHERE made_playoffs = 1 AND first_round_bye = 0) AS made_postseason,
-        COUNT(*) FILTER (WHERE first_round_bye = 1) AS first_round_bye,
-        ROUND(PERCENTILE_CONT(0.05) WITHIN GROUP (ORDER BY season_rank ASC), 1) AS seed_5th,
-        ROUND(AVG(season_rank), 1) AS avg_seed,
-        ROUND(PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY season_rank ASC), 1) AS seed_95th
-    FROM {{ ref( 'ncaaf_reg_season_end' ) }} E
-    LEFT JOIN {{ ref( 'ncaaf_vegas_wins' ) }} V ON V.team = E.winning_team
-    GROUP BY ALL
+with
+    cte_summary as (
+        select
+            winning_team as team,
+            e.conf,
+            round(avg(wins), 1) as avg_wins,
+            v.win_total as vegas_wins,
+            round(avg(v.win_total) - avg(wins), 1) as elo_vs_vegas,
+            round(
+                percentile_cont(0.05) within group (order by wins asc), 1
+            ) as wins_5th,
+            round(
+                percentile_cont(0.95) within group (order by wins asc), 1
+            ) as wins_95th,
+            count(*) filter (
+                where made_playoffs = 1 and first_round_bye = 0
+            ) as made_postseason,
+            count(*) filter (where first_round_bye = 1) as first_round_bye,
+            round(
+                percentile_cont(0.05) within group (order by season_rank asc), 1
+            ) as seed_5th,
+            round(avg(season_rank), 1) as avg_seed,
+            round(
+                percentile_cont(0.95) within group (order by season_rank asc), 1
+            ) as seed_95th
+        from {{ ref("ncaaf_reg_season_end") }} e
+        left join {{ ref("ncaaf_vegas_wins") }} v on v.team = e.winning_team
+        group by all
     )
 
-SELECT 
-    C.conf,
-    SUM(A.wins) || ' - ' || SUM(A.losses) AS record,
-    SUM(C.avg_wins) AS tot_wins,
-    SUM(C.vegas_wins) AS vegas_wins,
-    AVG(R.elo_rating) AS avg_elo_rating,
-    SUM(c.elo_vs_vegas) AS elo_vs_vegas,
-    COUNT(*) as teams
-FROM cte_summary C
-LEFT JOIN {{ ref( 'ncaaf_reg_season_actuals' ) }} A ON A.team = C.team
-LEFT JOIN {{ ref( 'ncaaf_ratings' ) }} R ON R.team = C.team
-GROUP BY ALL
+select
+    c.conf,
+    sum(a.wins) || ' - ' || sum(a.losses) as record,
+    sum(c.avg_wins) as tot_wins,
+    sum(c.vegas_wins) as vegas_wins,
+    avg(r.elo_rating) as avg_elo_rating,
+    sum(c.elo_vs_vegas) as elo_vs_vegas,
+    count(*) as teams
+from cte_summary c
+left join {{ ref("ncaaf_reg_season_actuals") }} a on a.team = c.team
+left join {{ ref("ncaaf_ratings") }} r on r.team = c.team
+group by all

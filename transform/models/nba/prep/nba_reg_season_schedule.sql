@@ -1,20 +1,23 @@
-SELECT
-    S.id AS game_id,
-    S.date as date,
-    CASE WHEN s.notes = 'In-Season Tournament' THEN 'tournament' 
-        WHEN s.notes = 'Knockout Rounds' THEN 'knockout'
-        ELSE 'reg_season' END 
-    AS type,
+select
+    s.id as game_id,
+    s.date as date,
+    case
+        when s.notes = 'In-Season Tournament'
+        then 'tournament'
+        when s.notes = 'Knockout Rounds'
+        then 'knockout'
+        else 'reg_season'
+    end as type,
     0 as series_id,
-    V.conf AS visiting_conf,
-    V.team AS visiting_team,
-    COALESCE(R.visiting_team_elo_rating,V.elo_rating::int) AS visiting_team_elo_rating,
-    H.conf AS home_conf,
-    H.team AS home_team,
-    COALESCE(R.home_team_elo_rating,H.elo_rating::int) AS home_team_elo_rating
-FROM {{ ref( 'nba_raw_schedule' ) }} AS S
-LEFT JOIN {{ ref( 'nba_ratings' ) }} V ON V.team_long = S.VisTm
-LEFT JOIN {{ ref( 'nba_ratings' ) }} H ON H.team_long = S.HomeTm
-LEFT JOIN {{ ref( 'nba_elo_rollforward' ) }} R ON R.game_id = S.id
-WHERE S.type = 'reg_season' 
-GROUP BY ALL
+    v.conf as visiting_conf,
+    v.team as visiting_team,
+    coalesce(r.visiting_team_elo_rating, v.elo_rating::int) as visiting_team_elo_rating,
+    h.conf as home_conf,
+    h.team as home_team,
+    coalesce(r.home_team_elo_rating, h.elo_rating::int) as home_team_elo_rating
+from {{ ref("nba_raw_schedule") }} as s
+left join {{ ref("nba_ratings") }} v on v.team_long = s.vistm
+left join {{ ref("nba_ratings") }} h on h.team_long = s.hometm
+left join {{ ref("nba_elo_rollforward") }} r on r.game_id = s.id
+where s.type = 'reg_season'
+group by all

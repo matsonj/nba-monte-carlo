@@ -1,40 +1,37 @@
-WITH cte_base AS (
-    SELECT * FROM {{ source( 'nba_dlt','games' ) }}
-),
-cte_seed as (
-    SELECT * FROM {{ source( 'nba','nba_results' ) }}
-)
+with
+    cte_base as (select * from {{ source("nba_dlt", "games") }}),
+    cte_seed as (select * from {{ source("nba", "nba_results") }})
 
-SELECT
-    coalesce(a.date,strptime(b."Date",'%a %b %-d %Y'))::date as "date",
+select
+    coalesce(a.date, strptime(b."Date", '%a %b %-d %Y'))::date as "date",
     b."Start (ET)" as "Start (ET)",
-    coalesce(away.team_long,b."Visitor/Neutral") as "VisTm",
-    coalesce(a.away_points,b.PTS)::int as visiting_team_score,
-    coalesce(home.team_long,b."Home/Neutral") as "HomeTm",
-    coalesce(a.home_points,b.PTS_1)::int as home_team_score,
+    coalesce(away.team_long, b."Visitor/Neutral") as "VisTm",
+    coalesce(a.away_points, b.pts)::int as visiting_team_score,
+    coalesce(home.team_long, b."Home/Neutral") as "HomeTm",
+    coalesce(a.home_points, b.pts_1)::int as home_team_score,
     b."Attend." as "Attend.",
-    b.Arena as Arena,
-    b.Notes as Notes,
-    CASE WHEN visiting_team_score > home_team_score 
-        THEN VisTm
-        ELSE HomeTm
-    END AS Winner,
-    CASE WHEN visiting_team_score > home_team_score 
-        THEN HomeTm
-        ELSE VisTm
-    END AS Loser,
-    CASE WHEN visiting_team_score > home_team_score 
-        THEN visiting_team_score
-        ELSE home_team_score
-    END AS Winner_Pts,
-    CASE WHEN visiting_team_score > home_team_score 
-        THEN home_team_score
-        ELSE visiting_team_score
-    END AS Loser_Pts
-FROM cte_base a
-LEFT JOIN {{ ref( 'nba_raw_team_ratings' ) }} home
-    ON home.alt_key = a.home_team_abbreviation
-LEFT JOIN {{ ref( 'nba_raw_team_ratings' ) }} away
-    ON away.alt_key = a.away_team_abbreviation
-FULL OUTER JOIN cte_seed b on  strptime(b."Date",'%a %b %-d %Y')::date = a.date
-    AND b."Home/Neutral" = home.team_long
+    b.arena as arena,
+    b.notes as notes,
+    case
+        when visiting_team_score > home_team_score then vistm else hometm
+    end as winner,
+    case when visiting_team_score > home_team_score then hometm else vistm end as loser,
+    case
+        when visiting_team_score > home_team_score
+        then visiting_team_score
+        else home_team_score
+    end as winner_pts,
+    case
+        when visiting_team_score > home_team_score
+        then home_team_score
+        else visiting_team_score
+    end as loser_pts
+from cte_base a
+left join
+    {{ ref("nba_raw_team_ratings") }} home on home.alt_key = a.home_team_abbreviation
+left join
+    {{ ref("nba_raw_team_ratings") }} away on away.alt_key = a.away_team_abbreviation
+full outer join
+    cte_seed b
+    on strptime(b."Date", '%a %b %-d %Y')::date = a.date
+    and b."Home/Neutral" = home.team_long

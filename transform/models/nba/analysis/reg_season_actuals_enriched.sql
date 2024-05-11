@@ -1,108 +1,100 @@
-{{
-    config(
-        materialized='table'
+{{ config(materialized="table") }}
+
+with
+    cte_wins as (
+        select winning_team, count(*) as wins
+        from {{ ref("nba_latest_results") }}
+        group by all
+    ),
+
+    cte_losses as (
+        select losing_team, count(*) as losses
+        from {{ ref("nba_latest_results") }}
+        group by all
+    ),
+
+    cte_favored_wins as (
+        select lr.winning_team, count(*) as wins
+        from {{ ref("nba_latest_results") }} lr
+        inner join
+            {{ ref("nba_results_log") }} r
+            on r.game_id = lr.game_id
+            and r.favored_team = lr.winning_team
+        group by all
+    ),
+
+    cte_favored_losses as (
+        select lr.losing_team, count(*) as losses
+        from {{ ref("nba_latest_results") }} lr
+        inner join
+            {{ ref("nba_results_log") }} r
+            on r.game_id = lr.game_id
+            and r.favored_team = lr.losing_team
+        group by all
+    ),
+
+    cte_avg_opponent_wins as (
+        select lr.winning_team, count(*) as wins
+        from {{ ref("nba_latest_results") }} lr
+        inner join
+            {{ ref("nba_results_log") }} r
+            on r.game_id = lr.game_id
+            and (
+                (lr.winning_team = r.home_team and r.visiting_team_above_avg = 1)
+                or (lr.winning_team = r.visiting_team and r.home_team_above_avg = 1)
+            )
+        group by all
+    ),
+
+    cte_avg_opponent_losses as (
+        select lr.losing_team, count(*) as losses
+        from {{ ref("nba_latest_results") }} lr
+        inner join
+            {{ ref("nba_results_log") }} r
+            on r.game_id = lr.game_id
+            and (
+                (lr.losing_team = r.visiting_team and r.home_team_above_avg = 1)
+                or (lr.losing_team = r.home_team and r.visiting_team_above_avg = 1)
+            )
+        group by all
+    ),
+
+    cte_home_wins as (
+        select lr.home_team, count(*) as wins
+        from {{ ref("nba_latest_results") }} lr
+        where lr.home_team = lr.winning_team
+        group by all
+    ),
+
+    cte_home_losses as (
+        select lr.home_team, count(*) as losses
+        from {{ ref("nba_latest_results") }} lr
+        where lr.home_team = lr.losing_team
+        group by all
     )
-}}
 
-WITH cte_wins AS (
-    SELECT 
-        winning_team,
-        COUNT(*) as wins
-    FROM {{ ref( 'nba_latest_results' ) }}
-    GROUP BY ALL
-),
-
-cte_losses AS (
-    SELECT 
-        losing_team,
-        COUNT(*) as losses
-    FROM {{ ref( 'nba_latest_results' ) }}
-    GROUP BY ALL
-),
-
-
-cte_favored_wins AS (
-    SELECT 
-        LR.winning_team,
-        COUNT(*) as wins
-    FROM {{ ref( 'nba_latest_results' ) }} LR
-    INNER JOIN {{ ref( 'nba_results_log' ) }} R ON R.game_id = LR.game_id
-        AND R.favored_team = LR.winning_team
-    GROUP BY ALL
-),
-
-cte_favored_losses AS (
-    SELECT 
-        LR.losing_team,
-        COUNT(*) as losses
-    FROM {{ ref( 'nba_latest_results' ) }} LR
-    INNER JOIN {{ ref( 'nba_results_log' ) }} R ON R.game_id = LR.game_id
-        AND R.favored_team = LR.losing_team
-    GROUP BY ALL
-),
-
-cte_avg_opponent_wins AS (
-    SELECT 
-        LR.winning_team,
-        COUNT(*) as wins
-    FROM {{ ref( 'nba_latest_results' ) }} LR
-    INNER JOIN {{ ref( 'nba_results_log' ) }} R ON R.game_id = LR.game_id
-        AND ( (LR.winning_team = R.home_team AND R.visiting_team_above_avg = 1)
-            OR (LR.winning_team = R.visiting_team AND R.home_team_above_avg = 1) )
-    GROUP BY ALL
-),
-
-cte_avg_opponent_losses AS (
-    SELECT 
-        LR.losing_team,
-        COUNT(*) as losses
-    FROM {{ ref( 'nba_latest_results' ) }} LR
-    INNER JOIN {{ ref( 'nba_results_log' ) }} R ON R.game_id = LR.game_id
-        AND ( (LR.losing_team = R.visiting_team AND R.home_team_above_avg = 1)
-            OR (LR.losing_team = R.home_team AND R.visiting_team_above_avg = 1) )
-    GROUP BY ALL
-),
-
-cte_home_wins AS (
-    SELECT 
-        LR.home_team,
-        COUNT(*) as wins
-    FROM {{ ref( 'nba_latest_results' ) }} LR
-    WHERE LR.home_team = LR.winning_team
-    GROUP BY ALL   
-),
-
-cte_home_losses AS (
-    SELECT 
-        LR.home_team,
-        COUNT(*) as losses
-    FROM {{ ref( 'nba_latest_results' ) }} LR
-    WHERE LR.home_team = LR.losing_team  
-    GROUP BY ALL  
-)
-
-SELECT
-    T.team,
-    COALESCE(W.wins, 0) AS wins,
-    COALESCE(L.losses, 0) AS losses,
-    COALESCE(FW.wins, 0) AS wins_as_favorite,
-    COALESCE(FL.losses, 0) AS losses_as_favorite,
-    COALESCE(W.wins, 0) - COALESCE(FW.wins, 0) AS wins_as_underdog,
-    COALESCE(L.losses, 0) - COALESCE(FL.losses, 0) AS losses_as_underdog,
-    COALESCE(AW.wins,0) AS wins_vs_good_teams,
-    COALESCE(AL.losses,0) AS losses_vs_good_teams,
-    COALESCE(W.wins, 0) - COALESCE(AW.wins, 0) AS wins_vs_bad_teams,
-    COALESCE(L.losses, 0) - COALESCE(AL.losses, 0) AS losses_vs_bad_teams,
-    COALESCE(HW.wins,0) AS home_wins,
-    COALESCE(HL.losses,0) AS home_losses,
-    COALESCE(W.wins, 0) - COALESCE(HW.wins, 0) AS away_wins,
-    COALESCE(L.losses, 0) - COALESCE(HL.losses, 0) AS away_losses
-FROM {{ ref( 'nba_teams' ) }} T
-LEFT JOIN cte_wins W ON W.winning_team = T.team_long
-LEFT JOIN cte_losses L ON L.losing_team = T.Team_long
-LEFT JOIN cte_favored_wins FW ON FW.winning_team = T.Team_long
-LEFT JOIN cte_favored_losses FL ON FL.losing_team = T.Team_long
-LEFT JOIN cte_avg_opponent_wins AW ON AW.winning_team = T.Team_long
-LEFT JOIN cte_avg_opponent_losses AL ON AL.losing_team = T.Team_long
-LEFT JOIN cte_home_wins HW ON HW.home_team = T.Team_long
-LEFT JOIN cte_home_losses HL ON HL.home_team = T.Team_long
+select
+    t.team,
+    coalesce(w.wins, 0) as wins,
+    coalesce(l.losses, 0) as losses,
+    coalesce(fw.wins, 0) as wins_as_favorite,
+    coalesce(fl.losses, 0) as losses_as_favorite,
+    coalesce(w.wins, 0) - coalesce(fw.wins, 0) as wins_as_underdog,
+    coalesce(l.losses, 0) - coalesce(fl.losses, 0) as losses_as_underdog,
+    coalesce(aw.wins, 0) as wins_vs_good_teams,
+    coalesce(al.losses, 0) as losses_vs_good_teams,
+    coalesce(w.wins, 0) - coalesce(aw.wins, 0) as wins_vs_bad_teams,
+    coalesce(l.losses, 0) - coalesce(al.losses, 0) as losses_vs_bad_teams,
+    coalesce(hw.wins, 0) as home_wins,
+    coalesce(hl.losses, 0) as home_losses,
+    coalesce(w.wins, 0) - coalesce(hw.wins, 0) as away_wins,
+    coalesce(l.losses, 0) - coalesce(hl.losses, 0) as away_losses
+from {{ ref("nba_teams") }} t
+left join cte_wins w on w.winning_team = t.team_long
+left join cte_losses l on l.losing_team = t.team_long
+left join cte_favored_wins fw on fw.winning_team = t.team_long
+left join cte_favored_losses fl on fl.losing_team = t.team_long
+left join cte_avg_opponent_wins aw on aw.winning_team = t.team_long
+left join cte_avg_opponent_losses al on al.losing_team = t.team_long
+left join cte_home_wins hw on hw.home_team = t.team_long
+left join cte_home_losses hl on hl.home_team = t.team_long

@@ -27,4 +27,4 @@ select
     l.home_team_score as score1,
     l.visiting_team_score as score2
 from {{ ref("nba_elo_rollforward") }} r
-left join {{ ref( "nba_results_log" )}} l on r.game_id = l.game_id
+left join {{ ref("nba_results_log") }} l on r.game_id = l.game_id

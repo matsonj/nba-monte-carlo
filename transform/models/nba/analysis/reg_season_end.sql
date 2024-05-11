@@ -1,47 +1,41 @@
-WITH cte_wins AS (
-    SELECT
-        S.scenario_id,
-        S.winning_team,
-        CASE
-            WHEN S.winning_team = S.home_team THEN S.home_conf
-            ELSE S.visiting_conf
-        END AS conf,
-    /*    CASE
+with
+    cte_wins as (
+        select
+            s.scenario_id,
+            s.winning_team,
+            case
+                when s.winning_team = s.home_team then s.home_conf else s.visiting_conf
+            end as conf,
+            /*    CASE
             WHEN S.winning_team = S.home_team THEN S.home_team_elo_rating
             ELSE S.visiting_team_elo_rating
         END AS elo_rating, */
-        COUNT(*) AS wins
-    FROM {{ ref( 'reg_season_simulator' ) }} S
-    GROUP BY ALL
-),
+            count(*) as wins
+        from {{ ref("reg_season_simulator") }} s
+        group by all
+    ),
 
-cte_ranked_wins AS (
-    SELECT
-        *,
-        --no tiebreaker, so however row number handles order ties will need to be dealt with
-        ROW_NUMBER() OVER (PARTITION BY scenario_id, conf ORDER BY wins DESC, winning_team DESC ) AS season_rank
-    FROM cte_wins
+    cte_ranked_wins as (
+        select
+            *,
+            -- no tiebreaker, so however row number handles order ties will need to be
+            -- dealt with
+            row_number() over (
+                partition by scenario_id, conf order by wins desc, winning_team desc
+            ) as season_rank
+        from cte_wins
 
-),
+    ),
 
-cte_made_playoffs AS (
-    SELECT
-        *,
-        CASE
-            WHEN season_rank <= 10 THEN 1
-            ELSE 0
-        END AS made_playoffs,
-        CASE
-            WHEN season_rank BETWEEN 7 AND 10 THEN 1
-            ELSE 0
-        END AS made_play_in,
-        conf || '-' || season_rank::text AS seed
-    FROM cte_ranked_wins
-)
+    cte_made_playoffs as (
+        select
+            *,
+            case when season_rank <= 10 then 1 else 0 end as made_playoffs,
+            case when season_rank between 7 and 10 then 1 else 0 end as made_play_in,
+            conf || '-' || season_rank::text as seed
+        from cte_ranked_wins
+    )
 
-SELECT 
-    MP.*,
-    LE.elo_rating,
-    {{ var( 'sim_start_game_id' ) }} AS sim_start_game_id
-FROM cte_made_playoffs MP
-LEFT JOIN {{ ref( 'nba_latest_elo' ) }} LE ON LE.team = MP.winning_team
+select mp.*, le.elo_rating, {{ var("sim_start_game_id") }} as sim_start_game_id
+from cte_made_playoffs mp
+left join {{ ref("nba_latest_elo") }} le on le.team = mp.winning_team

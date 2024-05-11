@@ -1,17 +1,17 @@
-SELECT
-    S.id::int AS game_id,
-    S.date,
-    S.type,
-    S.series_id,
-    NULL AS visiting_conf,
-    S.VisTm AS visiting_team,
-    NULL AS visiting_team_elo_rating,
-    NULL AS home_conf,
-    S.HomeTm AS home_team,
-    NULL AS home_team_elo_rating
-FROM {{ ref( 'nba_raw_schedule' ) }} AS S
---LEFT JOIN {{ ref( 'nba_ratings' ) }} V ON V.team = S.VisTm
---LEFT JOIN {{ ref( 'nba_ratings' ) }} H ON H.team = S.HomeTm
---LEFT JOIN {{ ref( 'nba_elo_rollforward' ) }} R ON R.game_id = S.id
-WHERE S.type <> 'reg_season'
-GROUP BY ALL
+select
+    s.id::int as game_id,
+    s.date,
+    s.type,
+    s.series_id,
+    null as visiting_conf,
+    s.vistm as visiting_team,
+    null as visiting_team_elo_rating,
+    null as home_conf,
+    s.hometm as home_team,
+    null as home_team_elo_rating
+from {{ ref("nba_raw_schedule") }} as s
+-- LEFT JOIN {{ ref( 'nba_ratings' ) }} V ON V.team = S.VisTm
+-- LEFT JOIN {{ ref( 'nba_ratings' ) }} H ON H.team = S.HomeTm
+-- LEFT JOIN {{ ref( 'nba_elo_rollforward' ) }} R ON R.game_id = S.id
+where s.type <> 'reg_season'
+group by all

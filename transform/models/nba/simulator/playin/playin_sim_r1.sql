@@ -1,19 +1,29 @@
-SELECT
-    R.scenario_id,
-    S.game_id,
-    EV.conf AS conf,
-    EV.winning_team AS visiting_team,
-    EV.elo_rating AS visiting_team_elo_rating,
-    EH.winning_team AS home_team,
-    EH.elo_rating AS home_team_elo_rating,
-    {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating', var('nba_elo_offset') ) }} AS home_team_win_probability,
-    R.rand_result,
-    CASE 
-        WHEN {{ elo_calc( 'EH.elo_rating', 'EV.elo_rating', var('nba_elo_offset') ) }} >= R.rand_result THEN EH.winning_team
-        ELSE EV.winning_team
-    END AS winning_team 
-FROM {{ ref( 'nba_schedules' ) }} S
-    LEFT JOIN {{ ref( 'nba_random_num_gen' ) }} R ON R.game_id = S.game_id
-    LEFT JOIN {{ ref( 'reg_season_end' ) }} EH ON S.home_team = EH.seed AND R.scenario_id = EH.scenario_id
-    LEFT JOIN {{ ref( 'reg_season_end' ) }} EV ON S.visiting_team = EV.seed AND R.scenario_id = EV.scenario_id
-WHERE S.type = 'playin_r1'
+select
+    r.scenario_id,
+    s.game_id,
+    ev.conf as conf,
+    ev.winning_team as visiting_team,
+    ev.elo_rating as visiting_team_elo_rating,
+    eh.winning_team as home_team,
+    eh.elo_rating as home_team_elo_rating,
+    {{ elo_calc("EH.elo_rating", "EV.elo_rating", var("nba_elo_offset")) }}
+    as home_team_win_probability,
+    r.rand_result,
+    case
+        when
+            {{ elo_calc("EH.elo_rating", "EV.elo_rating", var("nba_elo_offset")) }}
+            >= r.rand_result
+        then eh.winning_team
+        else ev.winning_team
+    end as winning_team
+from {{ ref("nba_schedules") }} s
+left join {{ ref("nba_random_num_gen") }} r on r.game_id = s.game_id
+left join
+    {{ ref("reg_season_end") }} eh
+    on s.home_team = eh.seed
+    and r.scenario_id = eh.scenario_id
+left join
+    {{ ref("reg_season_end") }} ev
+    on s.visiting_team = ev.seed
+    and r.scenario_id = ev.scenario_id
+where s.type = 'playin_r1'

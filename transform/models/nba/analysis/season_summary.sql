@@ -1,17 +1,17 @@
-{{
-    config(
-        materialized='table'
-    )
-}}
+{{ config(materialized="table") }}
 
-SELECT
-    ROUND(ratings.elo_rating,0)::int || ' (' || CASE WHEN original_rating < elo_rating THEN '+' ELSE '' END || (elo_rating-original_rating)::int || ')' AS elo_rating,
-    R.*,
-    P.made_playoffs,
-    P.made_conf_semis,
-    P.made_conf_finals,
-    P.made_finals,
-    P.won_finals
-FROM {{ ref( 'reg_season_summary' ) }} R
-LEFT JOIN {{ ref( 'playoff_summary' ) }} P ON P.team = R.team
-LEFT JOIN {{ ref( 'nba_ratings' ) }} ratings ON ratings.team = R.team
+select
+    round(ratings.elo_rating, 0)::int
+    || ' ('
+    || case when original_rating < elo_rating then '+' else '' end
+    || (elo_rating - original_rating)::int
+    || ')' as elo_rating,
+    r.*,
+    p.made_playoffs,
+    p.made_conf_semis,
+    p.made_conf_finals,
+    p.made_finals,
+    p.won_finals
+from {{ ref("reg_season_summary") }} r
+left join {{ ref("playoff_summary") }} p on p.team = r.team
+left join {{ ref("nba_ratings") }} ratings on ratings.team = r.team

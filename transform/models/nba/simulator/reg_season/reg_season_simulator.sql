@@ -1,18 +1,33 @@
-SELECT 
-    R.scenario_id,
-    S.*,
-    {{ elo_calc( 'S.home_team_elo_rating', 'S.visiting_team_elo_rating', var('nba_elo_offset') ) }} as home_team_win_probability,
-    R.rand_result,
-    CASE 
-        WHEN LR.include_actuals = true THEN LR.winning_team_short
-        WHEN {{ elo_calc( 'S.home_team_elo_rating', 'S.visiting_team_elo_rating', var('nba_elo_offset') ) }}  >= R.rand_result THEN S.home_team
-        ELSE S.visiting_team
-    END AS winning_team,
-    COALESCE(LR.include_actuals, false) AS include_actuals,
-    LR.home_team_score AS actual_home_team_score,
-    LR.visiting_team_score AS actual_visiting_team_score,
-    LR.margin AS actual_margin
-FROM {{ ref( 'nba_schedules' ) }} S
-LEFT JOIN {{ ref( 'nba_random_num_gen' ) }} R ON R.game_id = S.game_id
-LEFT JOIN {{ ref( 'nba_latest_results' ) }} LR ON LR.game_id = S.game_id
-WHERE S.type IN ('reg_season','tournament','knockout')
+select
+    r.scenario_id,
+    s.*,
+    {{
+        elo_calc(
+            "S.home_team_elo_rating",
+            "S.visiting_team_elo_rating",
+            var("nba_elo_offset"),
+        )
+    }} as home_team_win_probability,
+    r.rand_result,
+    case
+        when lr.include_actuals = true
+        then lr.winning_team_short
+        when
+            {{
+                elo_calc(
+                    "S.home_team_elo_rating",
+                    "S.visiting_team_elo_rating",
+                    var("nba_elo_offset"),
+                )
+            }} >= r.rand_result
+        then s.home_team
+        else s.visiting_team
+    end as winning_team,
+    coalesce(lr.include_actuals, false) as include_actuals,
+    lr.home_team_score as actual_home_team_score,
+    lr.visiting_team_score as actual_visiting_team_score,
+    lr.margin as actual_margin
+from {{ ref("nba_schedules") }} s
+left join {{ ref("nba_random_num_gen") }} r on r.game_id = s.game_id
+left join {{ ref("nba_latest_results") }} lr on lr.game_id = s.game_id
+where s.type in ('reg_season', 'tournament', 'knockout')

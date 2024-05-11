@@ -1,2 +1,1 @@
-SELECT *
-FROM {{ source( 'nba', 'nba_team_ratings' ) }}
+select * from {{ source("nba", "nba_team_ratings") }}

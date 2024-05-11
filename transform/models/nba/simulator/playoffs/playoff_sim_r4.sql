@@ -1,5 +1,4 @@
-WITH cte_playoff_sim AS (
-    {{ playoff_sim('playoffs_r4','playoff_sim_r3' ) }}
-)
+with
+    cte_playoff_sim as ({{ playoff_sim("playoffs_r4", "playoff_sim_r3") }})
 
-{{ playoff_sim_end( 'cte_playoff_sim' ) }}
+    {{ playoff_sim_end("cte_playoff_sim") }}

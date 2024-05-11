@@ -1,23 +1,17 @@
-WITH cte_wins AS (
-    SELECT 
-        winning_team,
-        COUNT(*) as wins
-    FROM {{ ref( 'nfl_latest_results' ) }}
-    GROUP BY ALL
-),
+with
+    cte_wins as (
+        select winning_team, count(*) as wins
+        from {{ ref("nfl_latest_results") }}
+        group by all
+    ),
 
-cte_losses AS (
-    SELECT 
-        losing_team,
-        COUNT(*) as losses
-    FROM {{ ref( 'nfl_latest_results' ) }}
-    GROUP BY ALL
-)
+    cte_losses as (
+        select losing_team, count(*) as losses
+        from {{ ref("nfl_latest_results") }}
+        group by all
+    )
 
-SELECT
-    T.team_long as team,
-    COALESCE(W.wins, 0) AS wins,
-    COALESCE(L.losses, 0) AS losses
-FROM {{ ref( 'nfl_teams' ) }} T
-LEFT JOIN cte_wins W ON W.winning_team = T.team_long
-LEFT JOIN cte_losses L ON L.losing_team = T.Team_long
+select t.team_long as team, coalesce(w.wins, 0) as wins, coalesce(l.losses, 0) as losses
+from {{ ref("nfl_teams") }} t
+left join cte_wins w on w.winning_team = t.team_long
+left join cte_losses l on l.losing_team = t.team_long
