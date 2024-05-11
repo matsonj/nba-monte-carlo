@@ -1,21 +1,41 @@
-SELECT 
-    R.scenario_id,
-    S.game_id,
-    S.home_team[7:] AS home_team_id,
-    S.visiting_team[8:] AS visiting_team_id,
-    EV.conf AS conf,
-    EV.remaining_team AS visiting_team,
-    EV.winning_team_elo_rating AS visiting_team_elo_rating,
-    EH.remaining_team AS home_team,
-    EH.losing_team_elo_rating AS home_team_elo_rating,
-    {{ elo_calc( 'EH.losing_team_elo_rating', 'EV.winning_team_elo_rating', var('nba_elo_offset') ) }} as home_team_win_probability,
-    R.rand_result,
-    CASE 
-        WHEN {{ elo_calc( 'EH.losing_team_elo_rating', 'EV.winning_team_elo_rating', var('nba_elo_offset') ) }} >= R.rand_result THEN EH.remaining_team
-        ELSE EV.remaining_team
-    END AS winning_team 
-FROM {{ ref( 'nba_schedules' ) }} S
-    LEFT JOIN {{ ref( 'nba_random_num_gen' ) }} R ON R.game_id = S.game_id
-    LEFT JOIN {{ ref( 'playin_sim_r1_end' ) }} EH ON R.scenario_id = EH.scenario_id AND EH.game_id = S.home_team[7:]
-    LEFT JOIN {{ ref( 'playin_sim_r1_end' ) }} EV ON R.scenario_id = EV.scenario_id AND EV.game_id = S.visiting_team[8:]
-WHERE S.type = 'playin_r2'
+select
+    r.scenario_id,
+    s.game_id,
+    s.home_team[7:] as home_team_id,
+    s.visiting_team[8:] as visiting_team_id,
+    ev.conf as conf,
+    ev.remaining_team as visiting_team,
+    ev.winning_team_elo_rating as visiting_team_elo_rating,
+    eh.remaining_team as home_team,
+    eh.losing_team_elo_rating as home_team_elo_rating,
+    {{
+        elo_calc(
+            "EH.losing_team_elo_rating",
+            "EV.winning_team_elo_rating",
+            var("nba_elo_offset"),
+        )
+    }} as home_team_win_probability,
+    r.rand_result,
+    case
+        when
+            {{
+                elo_calc(
+                    "EH.losing_team_elo_rating",
+                    "EV.winning_team_elo_rating",
+                    var("nba_elo_offset"),
+                )
+            }} >= r.rand_result
+        then eh.remaining_team
+        else ev.remaining_team
+    end as winning_team
+from {{ ref("nba_schedules") }} s
+left join {{ ref("nba_random_num_gen") }} r on r.game_id = s.game_id
+left join
+    {{ ref("playin_sim_r1_end") }} eh
+    on r.scenario_id = eh.scenario_id
+    and eh.game_id = s.home_team[7:]
+left join
+    {{ ref("playin_sim_r1_end") }} ev
+    on r.scenario_id = ev.scenario_id
+    and ev.game_id = s.visiting_team[8:]
+where s.type = 'playin_r2'

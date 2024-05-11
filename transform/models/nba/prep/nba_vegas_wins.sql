@@ -1,5 +1,1 @@
-SELECT
-    team,
-    win_total::double as win_total
-FROM {{ ref( 'nba_ratings' ) }}
-GROUP BY ALL
+select team, win_total::double as win_total from {{ ref("nba_ratings") }} group by all

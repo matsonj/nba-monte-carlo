@@ -1,20 +1,17 @@
-SELECT 
+select
     game_id,
     home_team,
-    Home.team AS home_short,
+    home.team as home_short,
     home_team_elo_rating,
     visiting_team,
-    Visitor.team AS vis_short,
+    visitor.team as vis_short,
     visiting_team_elo_rating,
     home_team_win_probability,
     winning_team,
     include_actuals,
-    COUNT(*) AS occurances,
-    {{ american_odds( 'home_team_win_probability/10000' ) }} AS american_odds
-FROM {{ ref( 'ncaaf_reg_season_simulator' ) }} S
-LEFT JOIN {{ ref( 'ncaaf_ratings' ) }} Home ON Home.team = S.home_team
-LEFT JOIN {{ ref( 'ncaaf_ratings' ) }} Visitor ON Visitor.team = S.visiting_team
-GROUP BY ALL
-
-
-
+    count(*) as occurances,
+    {{ american_odds("home_team_win_probability/10000") }} as american_odds
+from {{ ref("ncaaf_reg_season_simulator") }} s
+left join {{ ref("ncaaf_ratings") }} home on home.team = s.home_team
+left join {{ ref("ncaaf_ratings") }} visitor on visitor.team = s.visiting_team
+group by all

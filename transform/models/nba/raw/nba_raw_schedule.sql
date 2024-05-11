@@ -1,7 +1,7 @@
-SELECT 
+select
     id,
     type,
-    strptime("Year" || "Date",'%Y %b %-d')::date AS "date",
+    strptime("Year" || "Date", '%Y %b %-d')::date as "date",
     "Start (ET)",
     "Visitor/Neutral" as "VisTm",
     "Home/Neutral" as "HomeTm",
@@ -9,4 +9,4 @@ SELECT
     arena,
     notes,
     series_id
-FROM {{ source( 'nba', 'nba_schedule' ) }}
+from {{ source("nba", "nba_schedule") }}

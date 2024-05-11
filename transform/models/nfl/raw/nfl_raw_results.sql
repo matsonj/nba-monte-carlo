@@ -1,8 +1,8 @@
-SELECT
-    Week as wk,
+select
+    week as wk,
     "Winner/tie" as winner,
-    PtsW as winner_pts,
+    ptsw as winner_pts,
     "Loser/tie" as loser,
-    PtsL as loser_pts,
-    CASE WHEN PtsL = PtsW THEN 1 ELSE 0 END as tie_flag
-FROM {{ source( 'nfl','nfl_results' ) }}
+    ptsl as loser_pts,
+    case when ptsl = ptsw then 1 else 0 end as tie_flag
+from {{ source("nfl", "nfl_results") }}

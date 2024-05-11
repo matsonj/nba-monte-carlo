@@ -19,8 +19,7 @@ with
         from {{ ref("nba_elo_history") }} h
         left join
             {{ ref("nba_season_teams") }} t
-            on (t.team = h.team1
-            or t.team = h.team2)    
+            on (t.team = h.team1 or t.team = h.team2)
             and h.season = t.season
     )
 select

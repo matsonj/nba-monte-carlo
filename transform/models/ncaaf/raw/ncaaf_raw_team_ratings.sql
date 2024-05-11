@@ -1,2 +1,1 @@
-SELECT *
-FROM {{ source( 'ncaaf', 'ncaaf_team_ratings' ) }}
+select * from {{ source("ncaaf", "ncaaf_team_ratings") }}

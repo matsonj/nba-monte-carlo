@@ -1,5 +1,1 @@
-SELECT
-    team,
-    win_total
-FROM {{ ref( 'ncaaf_ratings' ) }}
-GROUP BY ALL
+select team, win_total from {{ ref("ncaaf_ratings") }} group by all

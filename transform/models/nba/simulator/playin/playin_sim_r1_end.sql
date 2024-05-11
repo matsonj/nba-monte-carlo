@@ -1,32 +1,38 @@
-WITH cte_playin_details AS (
-    SELECT
-        S.scenario_id,
-        S.game_id,
-        S.winning_team,
-        CASE
-            WHEN S.winning_team = S.home_team THEN S.home_team_elo_rating
-            ELSE S.visiting_team_elo_rating
-        END AS winning_team_elo_rating,
-        S.conf AS conf,
-        CASE
-            WHEN S.winning_team = S.home_team THEN S.visiting_team
-            ELSE S.home_team
-        END AS losing_team,
-        CASE
-            WHEN S.winning_team = S.home_team THEN S.visiting_team_elo_rating
-            ELSE S.home_team_elo_rating
-        END AS losing_team_elo_rating,
-        CASE
-            WHEN S.game_id IN (1231, 1234) THEN 'winner advance'
-            WHEN S.game_id IN (1232, 1235) THEN 'loser eliminated'
-        END AS result
-    FROM {{ ref( 'playin_sim_r1' ) }} S
-)
+with
+    cte_playin_details as (
+        select
+            s.scenario_id,
+            s.game_id,
+            s.winning_team,
+            case
+                when s.winning_team = s.home_team
+                then s.home_team_elo_rating
+                else s.visiting_team_elo_rating
+            end as winning_team_elo_rating,
+            s.conf as conf,
+            case
+                when s.winning_team = s.home_team then s.visiting_team else s.home_team
+            end as losing_team,
+            case
+                when s.winning_team = s.home_team
+                then s.visiting_team_elo_rating
+                else s.home_team_elo_rating
+            end as losing_team_elo_rating,
+            case
+                when s.game_id in (1231, 1234)
+                then 'winner advance'
+                when s.game_id in (1232, 1235)
+                then 'loser eliminated'
+            end as result
+        from {{ ref("playin_sim_r1") }} s
+    )
 
-SELECT
+select
     *,
-    CASE
-        WHEN game_id IN (1231, 1234) THEN losing_team
-        WHEN game_id IN (1232, 1235) THEN winning_team
-    END AS remaining_team
-FROM cte_playin_details
+    case
+        when game_id in (1231, 1234)
+        then losing_team
+        when game_id in (1232, 1235)
+        then winning_team
+    end as remaining_team
+from cte_playin_details
