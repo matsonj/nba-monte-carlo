@@ -2,60 +2,26 @@
 Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 
 ```sql elo_history
-    select A.*
-    from nba_elo_history.nba_elo A
-    union all
-    select 
-        l.game_date as date,
-        2024 as season,
-        null as nuetral,
-        'r' as playoff,
-        l.hmTm as team1,
-        l.VsTm as team2,
-        r.home_team_elo_rating as elo1_pre,
-        r.visiting_team_elo_rating as elo2_pre,
-        null as elo_prob1,
-        null as elo_prob2,
-        case when l.home_team_score > l.visiting_team_score 
-                then r.home_team_elo_rating - r.elo_change
-                else r.home_team_elo_rating + r.elo_change
-                end as elo1_post,
-        case when l.home_team_score > l.visiting_team_score
-            then r.visiting_team_elo_rating + r.elo_change
-            else r.visiting_team_elo_rating - r.elo_change
-            end as  elo2_post,
-        l.home_team_score as score1,
-        l.visiting_team_score as score2
-    from src_nba_elo_rollforward r
-    left join src_nba_results_log l  on r.game_id = l.game_id
+    from src_nba_elo_history
 ```
 
 ```sql seasons
     select A.season
-    from ${elo_history} A
-    group by all
+    from src_nba_seasons A
     order by A.season
 ```
 
 ```sql team1
-    select C.* from (
-        select A.season, A.team1 as team
-        from ${elo_history} A
-        union all
-        select B.season, B.team2
-        from ${elo_history} B) as C
+    select C.*
+    from src_nba_season_teams C
     where C.season = ${inputs.team1_season_dd.value}
     group by all
     order by C.team
 ```
 
 ```sql team2
-    select C.* from (
-        select A.season, A.team1 as team
-        from ${elo_history} AS A
-        union all
-        select B.season, B.team2
-        from ${elo_history} AS B ) AS C
+    select C.* 
+    from src_nba_season_teams C
     where C.season = ${inputs.team2_season_dd.value}
     group by all
     order by C.team
@@ -112,81 +78,15 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 ```
 
 ```sql team1_stats
-    with cte_games AS (
-        select 
-            team1, 
-            team2,
-            score1,
-            score2,
-            playoff,
-            case when score1 > score2 then team1 else team2 end as winner,
-            case when score1 < score2 then team1 else team2 end as loser,
-            case when team1 = '${inputs.team1_dd.value}' then elo1_pre else elo2_pre end as elo,
-            case when team1 = '${inputs.team1_dd.value}' then score1 else score2 end as pf,
-            case when team1 = '${inputs.team1_dd.value}' then score2 else score1 end as pa,
-            '${inputs.team1_dd.value}' || ':' || '${inputs.team1_season_dd.value}' as key,
-        from ${elo_history  } where (team1 = '${inputs.team1_dd.value}' OR team2 = '${inputs.team1_dd.value}') AND season = ${inputs.team1_season_dd.value}
-    )
-    select 
-        key, 
-        count(*) as ct,
-        count(*) filter (where winner = '${inputs.team1_dd.value}' and playoff = 'r') as wins,
-        -count(*) filter (where loser = '${inputs.team1_dd.value}' and playoff = 'r') as losses,
-        count(*) filter (where winner = '${inputs.team1_dd.value}' and team1 = '${inputs.team1_dd.value}' and playoff = 'r') as home_wins,
-        -count(*) filter (where loser = '${inputs.team1_dd.value}' and team1 = '${inputs.team1_dd.value}' and playoff = 'r') as home_losses,
-        count(*) filter (where winner = '${inputs.team1_dd.value}' and team2 = '${inputs.team1_dd.value}' and playoff = 'r') as away_wins,
-        -count(*) filter (where loser = '${inputs.team1_dd.value}' and team2 = '${inputs.team1_dd.value}' and playoff = 'r') as away_losses,
-        count(*) filter (where winner = '${inputs.team1_dd.value}' and playoff <> 'r') as playoff_wins,
-        -count(*) filter (where loser = '${inputs.team1_dd.value}' and playoff <> 'r') as playoff_losses,
-        avg(pf) as pf,
-        avg(-pa) as pa,
-        avg(pf) - avg(pa) as margin,
-        min(elo) as min_elo,
-        avg(elo) as avg_elo,
-        max(elo) as max_elo,
-        '${inputs.team1_dd.value}' as team,
-        ${inputs.team1_season_dd.value} as season
-    from cte_games
-    GROUP BY ALL
+    select * 
+    from src_nba_team_stats 
+    where team = '${inputs.team1_dd.value}' AND season = ${inputs.team1_season_dd.value}
 ```
 
 ```sql team2_stats
-    with cte_games AS (
-        select 
-            team1, 
-            team2,
-            score1,
-            score2,
-            playoff,
-            case when score1 > score2 then team1 else team2 end as winner,
-            case when score1 < score2 then team1 else team2 end as loser,
-            case when team1 = '${inputs.team2_dd.value}' then elo1_pre else elo2_pre end as elo,
-            case when team1 = '${inputs.team2_dd.value}' then score1 else score2 end as pf,
-            case when team1 = '${inputs.team2_dd.value}' then score2 else score1 end as pa,
-            '${inputs.team2_dd.value}' || ':' || '${inputs.team2_season_dd.value}' as key,
-        from ${elo_history  } where (team1 = '${inputs.team2_dd.value}' OR team2 = '${inputs.team2_dd.value}') AND season = ${inputs.team2_season_dd.value}
-    )
-    select 
-        key, 
-        count(*) as ct,
-        count(*) filter (where winner = '${inputs.team2_dd.value}' and playoff = 'r') as wins,
-        -count(*) filter (where loser = '${inputs.team2_dd.value}' and playoff = 'r') as losses,
-        count(*) filter (where winner = '${inputs.team2_dd.value}' and team1 = '${inputs.team2_dd.value}' and playoff = 'r') as home_wins,
-        -count(*) filter (where loser = '${inputs.team2_dd.value}' and team1 = '${inputs.team2_dd.value}' and playoff = 'r') as home_losses,
-        count(*) filter (where winner = '${inputs.team2_dd.value}' and team2 = '${inputs.team2_dd.value}' and playoff = 'r') as away_wins,
-        -count(*) filter (where loser = '${inputs.team2_dd.value}' and team2 = '${inputs.team2_dd.value}' and playoff = 'r') as away_losses,
-        count(*) filter (where winner = '${inputs.team2_dd.value}' and playoff <> 'r') as playoff_wins,
-        -count(*) filter (where loser = '${inputs.team2_dd.value}' and playoff <> 'r') as playoff_losses,
-        avg(pf) as pf,
-        avg(-pa) as pa,
-        avg(pf) - avg(pa) as margin,
-        min(elo) as min_elo,
-        avg(elo) as avg_elo,
-        max(elo) as max_elo,
-        '${inputs.team2_dd.value}' as team,
-        ${inputs.team2_season_dd.value} as season
-    from cte_games
-    GROUP BY ALL
+    select * 
+    from src_nba_team_stats 
+    where team = '${inputs.team2_dd.value}' AND season = ${inputs.team2_season_dd.value}
 ```
 
 ```sql stat_table

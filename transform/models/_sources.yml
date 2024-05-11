@@ -15,6 +15,8 @@ sources:
         description: cross ref table to match series to seeds
       - name: nba_results
         description: nba results for the current season
+      - name: nba_elo
+        description: complete ELO ratings for all teams
   - name: nfl
     schema: psa
     meta:
