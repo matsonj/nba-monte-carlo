@@ -213,9 +213,9 @@ This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM
 
 ```sql elo_by_team
     select 
-        t2.season || ' ' || t2.team as team2,
+        ROUND(t2.season,0)::varchar(4) || ' ' || t2.team as team2,
         t2.avg_elo - ('${inputs.elo_slider}'::real/2) as elo2,
-        t1.season || ' ' || t1.team as team1,
+       ROUND(t1.season,0)::varchar(4) || ' ' || t1.team as team1,
         t1.avg_elo + ('${inputs.elo_slider}'::real/2) as elo1
     from ${team2_stats} t2
     left join ${team1_stats} t1 ON 1=1
