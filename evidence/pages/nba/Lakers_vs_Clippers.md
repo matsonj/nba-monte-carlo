@@ -1,6 +1,6 @@
 ```sql elo_history
     select *
-    from nba_elo_history.nba_elo
+    from src_nba_elo_history
 ```
 
 # Lakers vs Clippers
