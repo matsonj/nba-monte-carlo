@@ -52,11 +52,13 @@ GROUP BY ALL
 
 ## Season-to-date Results
 
+{#if elo_latest.length > 0}
 <BigValue 
     data={elo_latest.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}
     value='elo_rating' 
     comparison='since_start_num1' 
-/> 
+/>
+{/if}
 
 <BigValue 
     data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
@@ -72,7 +74,7 @@ GROUP BY ALL
     data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     value='win_range' 
 />
-
+{#if game_trend.length > 0}
 <LineChart
     data={game_trend.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     x=week
@@ -87,6 +89,11 @@ GROUP BY ALL
     data={most_recent_games.filter(d => d.home_team.toUpperCase() === $page.params.nfl_teams.toUpperCase() | d.visiting_team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     rows=12
 />
+{:else}
+
+_The regular season has yet to begin. Check back soon!_
+
+{/if}
 
 ### Playoff Odds
 

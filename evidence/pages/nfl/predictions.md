@@ -7,6 +7,7 @@ queries:
 
 # Predictions
 
+{#if past_games.length > 0}
 ## Past Performance
 
 <BigValue 
@@ -33,3 +34,9 @@ queries:
     />
   </AccordionItem>
 </Accordion>
+
+{:else}
+
+_The regular season has yet to begin. Check back soon!_
+
+{/if}
