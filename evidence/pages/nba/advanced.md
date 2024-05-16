@@ -61,6 +61,7 @@ WHERE cumulative_pct1 > 0.005 AND cumulative_pct1 < 0.995
     yMax=1
 />
 
+{#if seed_details_cdf_scatter.length > 0}
 <ScatterPlot 
     data={seed_details_cdf_scatter.filter(d => d.conf === "East")}  
     x=seed 
@@ -84,3 +85,4 @@ WHERE cumulative_pct1 > 0.005 AND cumulative_pct1 < 0.995
     yMax=1
     yMin=0
 />
+{/if}
