@@ -74,6 +74,7 @@ queries:
     rows=7
 />
 
+{#if future_games.length > 0}
 ### Upcoming Schedule
 
 <DataTable data={future_games.filter(d => d.home === params.nba_teams.toUpperCase() | d.visitor === params.nba_teams.toUpperCase())} rows=5 link=game_link>
@@ -132,4 +133,5 @@ add the following:
   - most common opponents with win rate by series (mostly nulls, sparsely populated)
 
 
+  {/if}
   {/if}

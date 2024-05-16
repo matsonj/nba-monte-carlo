@@ -47,7 +47,7 @@ order by team
 </Accordion>
 
 
-
+{#if filtered_future_games.length > 0}
 ## Future Predictions
 
 _Historically, NBA teams win 62% of their games at home, which explains why teams with lower elo ratings can be predicted to win._
@@ -71,3 +71,4 @@ _Historically, NBA teams win 62% of their games at home, which explains why team
   <Column id=implied_line_num1 title="Line (Home)"/>
   <Column id=predicted_score title="Score"/>
 </DataTable>
+{/if}

@@ -31,13 +31,13 @@ with
 select
     c.team,
     c.conf,
-    a.wins || ' - ' || a.losses as record,
+    a.wins::int || ' - ' || a.losses::int as record,
     c.avg_wins,
     c.vegas_wins,
     r.elo_rating,
     c.elo_vs_vegas,
-    c.wins_5th || ' to ' || c.wins_95th as win_range,
-    c.seed_5th || ' to ' || c.seed_95th as seed_range,
+    c.wins_5th::int || ' to ' || c.wins_95th::int as win_range,
+    c.seed_5th::int || ' to ' || c.seed_95th::int as seed_range,
     c.made_postseason,
     c.first_round_bye,
     {{ var("sim_start_game_id") }} as sim_start_game_id
