@@ -41,6 +41,8 @@ sources:
         description: ncaa results for current season
   - name: nba_dlt
     schema: nba_data
+    meta:
+      external_location: ../dlt/data/nba/nba_data/games/*.csv 
     tables:
       - name: games
         description: nba games as sourced from pbpstats.com
