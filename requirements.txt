@@ -1,9 +1,9 @@
 pipx
-dbt-core~=1.7.0 
-dbt-duckdb~=1.7.0
+dbt-core~=1.8.0
+dbt-duckdb~=1.8.0
 pandas==2.0 
 pyarrow
-duckdb~=0.9.2
+duckdb~=0.10.2
 sqlmesh==0.88
-dlt[duckdb]>=0.3.25
+dlt[filesystem]
 shandy-sqlfmt[jinjafmt]

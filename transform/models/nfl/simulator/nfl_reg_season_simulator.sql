@@ -10,16 +10,16 @@ select
     }} as home_team_win_probability,
     r.rand_result,
     case
-        when lr.include_actuals = true
-        then lr.winning_team
+ --       when lr.include_actuals = 'true'
+     --   then lr.winning_team
         when
-            {{
+            ({{
                 elo_calc(
                     "S.home_team_elo_rating",
                     "S.visiting_team_elo_rating",
                     var("nfl_elo_offset"),
                 )
-            }} >= r.rand_result
+            }})::int >= r.rand_result
         then s.home_team
         else s.visiting_team
     end as winning_team,
