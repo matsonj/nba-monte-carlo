@@ -62,7 +62,7 @@ vars:
   nba_elo_offset: 100          # nba offset to ELO to get to ~12% home advantage
   nfl_elo_offset: 52          # nfl offset to ELO to get to 7.5% home advantage
   ncaaf_elo_offset: 52        # ncaaf offset to ELO to get to 7.5% home advantage
-  nba_start_date: '2023-10-24'    # set as of date for start of season
+  nba_start_date: '2024-04-15'    # set as of date for start of season
 
 # external files are only registered as DuckDB views when they are created, not when they are referenced.
 on-run-start:
