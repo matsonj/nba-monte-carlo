@@ -1,7 +1,6 @@
 with
     cte_base as (select * from {{ source("nba_dlt", "games") }}),
     cte_seed as (select * from {{ source("nba", "nba_results") }})
-
 select
     coalesce(a.date, strptime(b."Date", '%a %b %-d %Y'))::date as "date",
     b."Start (ET)" as "Start (ET)",
@@ -35,3 +34,4 @@ full outer join
     cte_seed b
     on strptime(b."Date", '%a %b %-d %Y')::date = a.date
     and b."Home/Neutral" = home.team_long
+where a.date <= '{{ var( 'nba_start_date' ) }}' 

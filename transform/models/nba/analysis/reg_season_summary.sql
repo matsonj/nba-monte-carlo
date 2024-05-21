@@ -1,4 +1,8 @@
-{{ config(materialized="table") }}
+{{
+    config(
+        materialized="table"
+    )
+}}
 
 with
     cte_summary as (
@@ -41,6 +45,6 @@ select
     c.seed_5th::int || ' to ' || c.seed_95th::int as seed_range,
     c.made_postseason,
     c.made_play_in,
-    {{ var("sim_start_game_id") }} as sim_start_game_id
+    '{{ var("nba_start_date") }}'::date as nba_sim_start_date
 from cte_summary c
 left join {{ ref("nba_reg_season_actuals") }} a on a.team = c.team

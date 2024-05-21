@@ -14,10 +14,10 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "^4.2.0",
+    "@evidence-dev/core-components": "^4.0.1",
     "@evidence-dev/csv": "^1.0.7",
     "@evidence-dev/duckdb": "^1.0.9",
-    "@evidence-dev/evidence": "^35.0.0"
+    "@evidence-dev/evidence": "^33.0.1"
   },
   "overrides": {
     "jsonwebtoken": "9.0.0",
