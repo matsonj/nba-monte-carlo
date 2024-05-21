@@ -40,7 +40,7 @@ docker-run-evidence:
 		--env ENVIRONMENT=docker \
 		mdsbox make run serve
 
-DATES = $(shell python -c 'from datetime import datetime, timedelta; start_date = datetime(2023, 10, 24); end_date = datetime(2024, 4, 12); date_list = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]; print(" ".join(date.strftime("%Y-%m-%d") for date in date_list))')
+DATES = $(shell python -c 'from datetime import datetime, timedelta; start_date = datetime(2023, 10, 24); end_date = datetime(2024, 4, 14); date_list = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]; print(" ".join(date.strftime("%Y-%m-%d") for date in date_list))')
 
 dbt-run-backfill:
 	@for date in $(DATES); do \
