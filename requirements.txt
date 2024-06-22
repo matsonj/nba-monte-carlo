@@ -1,7 +1,8 @@
 pipx
 dbt-core~=1.8.0
 dbt-duckdb~=1.8.0
-pandas==2.0 
+pandas==2.0
+numpy~=1.24
 pyarrow
 duckdb~=0.10.2
 sqlmesh==0.88
