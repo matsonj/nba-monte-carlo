@@ -16,3 +16,4 @@
 /sqlmesh/.cache
 *.pyc
 /dlt/data
+/evidence/.evidence/meta
