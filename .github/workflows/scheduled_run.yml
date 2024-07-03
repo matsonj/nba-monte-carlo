@@ -12,9 +12,11 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@master
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          python-version: '3.11'
-          node-version: 20
+          node-version: '20'
 
       - name: Set up Python
         uses: actions/setup-python@v2
