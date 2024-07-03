@@ -19,7 +19,7 @@ queries:
     name=conference
     value=conf
 >
-    <ButtonGroupItem valueLabel="All" value="%" />
+    <ButtonGroupItem valueLabel="All" value="%" default />
 </ButtonGroup>
 
 {#if inputs.conference != 'null'}
