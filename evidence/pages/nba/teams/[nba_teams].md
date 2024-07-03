@@ -15,7 +15,7 @@ queries:
 ```sql filtered_season_summary
     select *
     from ${season_summary}
-    where team like '${params.nba_teams}'
+    where team like '${params.nba_teams.toUpperCase()}'
 ```
 
 # Detailed Analysis for <Value data={filtered_season_summary} column=team_long/>
