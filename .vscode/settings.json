@@ -5,5 +5,12 @@
         "L031",
         "L034"
     ],
-    "files.autoSave": "off"
+    "files.autoSave": "off",
+    "editor.acceptSuggestionOnEnter": true,
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "editor.quickSuggestionsDelay": 300
 }

@@ -1,1 +1,1 @@
-SELECT '2023-01-07' as end_date
+SELECT COALESCE(max(game_date),CURRENT_DATE) as end_date FROM src_nfl_latest_results

@@ -7,5 +7,5 @@ default:
   outputs:
     dev:
       type: duckdb
-      threads: 4
+      threads: 1
       path: "../data/data_catalog/mdsbox.duckdb"
