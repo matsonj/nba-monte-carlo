@@ -1,1 +1,1 @@
-SELECT COALESCE(max(game_date),CURRENT_DATE) as end_date FROM src_nfl_latest_results
+SELECT CURRENT_DATE as end_date
