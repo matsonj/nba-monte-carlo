@@ -27,8 +27,6 @@ This project implements a sports Monte Carlo simulator using [duckdb](https://du
 
 ## [NFL Model](/nfl)
 
-## [NCAA Football Model](/ncaaf)
-
 <script>
     let email = "";
     let src = "mdsinabox-home";

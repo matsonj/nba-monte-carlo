@@ -45,7 +45,7 @@ GROUP BY ALL
 SELECT
     winning_team as team,
     season_rank as seed,
-    count(*) / 10000.0 as occurances_pct1
+    count(*) / 10000.0 as occurances
 FROM src_nfl_reg_season_end
 GROUP BY ALL
 ```
@@ -56,14 +56,16 @@ GROUP BY ALL
 <BigValue 
     data={elo_latest.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}
     value='elo_rating' 
-    comparison='since_start_num1' 
+    comparison='since_start_num1'
+    comparisonTitle='Since Start' 
 />
 {/if}
 
 <BigValue 
     data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     value='predicted_wins' 
-    comparison='vs_vegas_num1' 
+    comparison='vs_vegas_num1'
+    comparisonTitle='vs Vegas Win Total' 
 /> 
 <BigValue 
     data={nfl_season_summary.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
@@ -87,8 +89,16 @@ GROUP BY ALL
 
 <DataTable
     data={most_recent_games.filter(d => d.home_team.toUpperCase() === $page.params.nfl_teams.toUpperCase() | d.visiting_team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
-    rows=12
-/>
+    rows=12>
+    <Column id=week/>
+    <Column id='visiting_team'/>
+    <Column id=' '/>
+    <Column id='home_team'/>
+    <Column id='score'/>
+    <Column id='winning_team'/>
+    <Column id='elo_change_num1' title='ELO chg.'/>
+
+</DataTable>
 {:else}
 
 _The regular season has yet to begin. Check back soon!_
@@ -99,17 +109,20 @@ _The regular season has yet to begin. Check back soon!_
 
 <BigValue 
     data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
-    value='first_rd_bye_pct1' 
+    value='first_rd_bye_pct1'
+    title='First Round Bye'
 /> 
 
 <BigValue 
     data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
-    value='made_playoffs_pct1' 
+    value='made_playoffs_pct1'
+    title='Made Playoffs'
 /> 
 
 <BigValue 
     data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
-    value='missed_playoffs_pct1' 
+    value='missed_playoffs_pct1'
+    title='Missed Playoffs' 
 /> 
 
 <AreaChart 
@@ -118,13 +131,14 @@ _The regular season has yet to begin. Check back soon!_
     y=odds_pct1
     series=season_result
     xAxisTitle=wins
-    title='projected end of season wins'
+    title='Projected Total Wins'
 />
 
 <BarChart 
     data={nfl_seed_details.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
     x=seed
-    y=occurances_pct1
+    y=occurances
+    yFmt=pct1
     xAxisTitle=seed
-    title='projected end of season seeding'
+    title='Projected End of Season Seed'
 />
