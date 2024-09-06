@@ -1,1 +1,0 @@
-from ncaaf_schedules
