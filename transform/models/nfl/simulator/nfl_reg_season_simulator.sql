@@ -10,8 +10,8 @@ select
     }} as home_team_win_probability,
     r.rand_result,
     case
- --       when lr.include_actuals = 'true'
-     --   then lr.winning_team
+        when lr.include_actuals = 'true'
+            then lr.winning_team
         when
             ({{
                 elo_calc(
