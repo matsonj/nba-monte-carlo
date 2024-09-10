@@ -4,7 +4,7 @@ dbt-duckdb~=1.8.0
 pandas==2.0
 numpy~=1.24
 pyarrow
-duckdb~=1.0.0
+duckdb~=1.1.0
 sqlmesh==0.88
 dlt[filesystem]
 shandy-sqlfmt[jinjafmt]
