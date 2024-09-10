@@ -13,7 +13,8 @@ with
             end as visiting_team_score,
             r.winner as winning_team,
             r.loser as losing_team,
-            {{ var("include_actuals") }} as include_actuals
+            {{ var("include_actuals") }} as include_actuals,
+            s.neutral as neutral_site
         from {{ ref("nfl_raw_schedule") }} s
         left join
             {{ ref("nfl_raw_results") }} r

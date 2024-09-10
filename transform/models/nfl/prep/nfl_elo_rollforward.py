@@ -14,15 +14,15 @@ def model(dbt, sess):
 
     # loop over the historical game data and update the elo ratings as we go
     nba_elo_latest = (dbt.ref("nfl_latest_results")
-        .project("game_id, visiting_team, home_team, winning_team, game_result_v2")
+        .project("game_id, visiting_team, home_team, winning_team, game_result_v2,neutral_site")
         .order("game_id")
     )
     nba_elo_latest.execute()
     columns = ["game_id", "visiting_team", "visiting_team_elo_rating", "home_team", "home_team_elo_rating", "winning_team", "elo_change"]
     rows = []
-    for (game_id, vteam, hteam, winner, game_result) in nba_elo_latest.fetchall():
+    for (game_id, vteam, hteam, winner, game_result,neutral_site) in nba_elo_latest.fetchall():
         helo, velo = working_elo[hteam], working_elo[vteam]
-        elo_change =  calc_elo_diff(game_result, helo, velo, home_adv)
+        elo_change = calc_elo_diff(game_result, helo, velo, 0 if neutral_site == 1 else home_adv)
         rows.append((game_id, vteam, velo, hteam, helo, winner, elo_change))
         working_elo[hteam] -= elo_change
         working_elo[vteam] += elo_change

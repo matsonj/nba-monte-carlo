@@ -8,7 +8,8 @@ select
     coalesce(r.visiting_team_elo_rating, v.elo_rating::int) as visiting_team_elo_rating,
     h.conf as home_conf,
     h.team as home_team,
-    coalesce(r.home_team_elo_rating, h.elo_rating::int) as home_team_elo_rating
+    coalesce(r.home_team_elo_rating, h.elo_rating::int) as home_team_elo_rating,
+    s.neutral as neutral_site
 from {{ ref("nfl_raw_schedule") }} as s
 left join {{ ref("nfl_ratings") }} v on v.team = s.vistm
 left join {{ ref("nfl_ratings") }} h on h.team = s.hometm
