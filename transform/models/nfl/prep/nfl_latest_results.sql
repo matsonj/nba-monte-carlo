@@ -14,7 +14,8 @@ with
             r.winner as winning_team,
             r.loser as losing_team,
             {{ var("include_actuals") }} as include_actuals,
-            s.neutral as neutral_site
+            s.neutral as neutral_site,
+            r.winner_pts - r.loser_pts as margin
         from {{ ref("nfl_raw_schedule") }} s
         left join
             {{ ref("nfl_raw_results") }} r
@@ -37,32 +38,5 @@ with
         from cte_inner
     )
 select
-    *,
-    case
-        when margin < 4 and game_result = 1
-        then 0.585
-        when margin < 4 and game_result = 0
-        then 0.415
-        when margin < 6 and game_result = 1
-        then 0.666
-        when margin < 6 and game_result = 0
-        then 0.334
-        when margin = 6 and game_result = 1
-        then 0.707
-        when margin = 6 and game_result = 0
-        then 0.293
-        when margin = 7 and game_result = 1
-        then 0.73
-        when margin = 7 and game_result = 0
-        then 0.27
-        when margin = 8 and game_result = 1
-        then 0.75
-        when margin = 8 and game_result = 0
-        then 0.25
-        when margin > 8 and margin < 17 and game_result = 1
-        then 0.85
-        when margin > 8 and margin < 17 and game_result = 0
-        then 0.15
-        else game_result
-    end as game_result_v2
+    *
 from cte_outer
