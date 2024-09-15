@@ -5,6 +5,7 @@ queries:
   - elo_latest: nfl/elo_latest.sql
   - most_recent_games: nfl/most_recent_games.sql
   - game_trend: nfl/game_trend.sql
+  - future_games: nfl/future_games.sql
 ---
 
 # Detailed Analysis for <Value data={all_teams.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} column=team/>
@@ -103,6 +104,19 @@ GROUP BY ALL
 
 _The regular season has yet to begin. Check back soon!_
 
+{/if}
+
+{#if future_games.length > 0}
+### Upcoming Schedule
+
+<DataTable data={future_games.filter(d => d.home.toUpperCase() === $page.params.nfl_teams.toUpperCase() | d.visitor.toUpperCase() === $page.params.nfl_teams.toUpperCase())} rows=17>
+  <Column id=week_number title="Wk"/>
+  <Column id=visitor/>
+  <Column id=home/>
+  <Column id=home_win_pct1 title="Win % (Home)"/>
+  <Column id=american_odds align=right title="Odds (Home)"/>
+  <Column id=implied_line title="Line (Home)" fmt=num1/>
+</DataTable>
 {/if}
 
 ### Playoff Odds
