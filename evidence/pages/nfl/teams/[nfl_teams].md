@@ -90,7 +90,7 @@ GROUP BY ALL
 
 <DataTable
     data={most_recent_games.filter(d => d.home_team.toUpperCase() === $page.params.nfl_teams.toUpperCase() | d.visiting_team.toUpperCase() === $page.params.nfl_teams.toUpperCase())} 
-    rows=12>
+    rows=4>
     <Column id=week/>
     <Column id='visiting_team'/>
     <Column id=' '/>
@@ -109,7 +109,7 @@ _The regular season has yet to begin. Check back soon!_
 {#if future_games.length > 0}
 ### Upcoming Schedule
 
-<DataTable data={future_games.filter(d => d.home.toUpperCase() === $page.params.nfl_teams.toUpperCase() | d.visitor.toUpperCase() === $page.params.nfl_teams.toUpperCase())} rows=17>
+<DataTable data={future_games.filter(d => d.home.toUpperCase() === $page.params.nfl_teams.toUpperCase() | d.visitor.toUpperCase() === $page.params.nfl_teams.toUpperCase())} rows=4>
   <Column id=week_number title="Wk"/>
   <Column id=visitor/>
   <Column id=home/>
