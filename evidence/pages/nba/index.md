@@ -29,7 +29,6 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 
 ## [Upcoming Games](/nba/predictions)
 
-{#if filtered_future_games.length > 0}
 <Dropdown
     data={teams} 
     name=team_dd
@@ -49,12 +48,6 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
   <Column id=implied_line_num1 title="Line (Home)"/>
   <Column id=predicted_score title="Score"/>
 </DataTable>
-
-{:else}
-
-_The regular season is over. Check back next year!_
-
-{/if}
 
 ## [Team Standings](/nba/teams)
 
