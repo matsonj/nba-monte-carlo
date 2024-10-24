@@ -10,3 +10,4 @@ select
     notes,
     series_id
 from {{ source("nba", "nba_schedule") }}
+where arena <> 'Placeholder' -- removing IST games w/o teams & arena

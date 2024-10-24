@@ -1,7 +1,8 @@
 with
     cte_team_scores as (
-        from {{ ref("nba_results_by_team") }}
-        select team, avg(score) as pts
+        select t.team, coalesce(avg(r.score),115) as pts --add 115 to account for missing data
+        from {{ ref( "nba_teams")}} t
+        left join {{ ref("nba_results_by_team") }} r on r.team = t.team
         group by all
     ),
     cte_interim_calcs as (
