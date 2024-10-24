@@ -335,6 +335,8 @@ _If you don't like the current results, you can modify the elo inputs with this 
     value=score
     current=0
     title="elo slider"
+    min=-100
+    max=100
 />
 <br>
 The current value is {inputs.elo_slider}. 

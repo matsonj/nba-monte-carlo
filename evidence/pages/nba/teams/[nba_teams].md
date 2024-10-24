@@ -31,7 +31,8 @@ queries:
 <BigValue 
     data={filtered_season_summary} 
     value='predicted_wins' 
-    comparison='vs_vegas_num1' 
+    comparison='vs_vegas_num1'
+    comparisonTitle='vs. Vegas'
 /> 
 
 <BigValue 
@@ -69,10 +70,13 @@ queries:
 
 ### Matchup Summary
 
-<DataTable
-    data={records_table.filter(d => d.team === params.nba_teams.toUpperCase())} 
-    rows=7
-/>
+<DataTable data={records_table.filter(d => d.team === params.nba_teams.toUpperCase())} rows=7>
+    <Column id=team/>
+    <Column id=type/>
+    <Column id=wins/>
+    <Column id=losses/>
+    <Column id=win_pct_num3 title="Win %"/>
+</DataTable>
 
 {#if future_games.length > 0}
 ### Upcoming Schedule
@@ -92,17 +96,20 @@ queries:
 
 <BigValue 
     data={playoff_odds.filter(d => d.team === params.nba_teams.toUpperCase())} 
-    value='top_six_pct1' 
+    value='top_six_pct1'
+    title='Top 6 Seed (%)' 
 /> 
 
 <BigValue 
     data={playoff_odds.filter(d => d.team === params.nba_teams.toUpperCase())} 
-    value='play_in_pct1' 
+    value='play_in_pct1'
+    title='Play-in (%)'
 /> 
 
 <BigValue 
     data={playoff_odds.filter(d => d.team === params.nba_teams.toUpperCase())} 
-    value='missed_playoffs_pct1' 
+    value='missed_playoffs_pct1'
+    title='Miss Playoffs (%)'
 /> 
 
 <AreaChart 
