@@ -2,12 +2,12 @@
   "name": "my-evidence-project",
   "version": "0.0.1",
   "scripts": {
-    "build": "VITE_EVIDENCE_SPA=true evidence build",
+    "build": "evidence build",
     "build:strict": "evidence build:strict",
     "dev": "evidence dev --open /",
     "test": "evidence build",
     "sources": "evidence sources",
-    "preview": "VITE_EVIDENCE_SPA=true evidence preview"
+    "preview": "evidence preview"
   },
   "engines": {
     "npm": ">=7.0.0",
@@ -24,8 +24,5 @@
     "jsonwebtoken": "9.0.0",
     "trim@<0.0.3": ">0.0.3",
     "sqlite3": "5.1.5"
-  },
-  "devDependencies": {
-    "@sveltejs/adapter-static": "^3.0.5"
   }
 }
