@@ -123,7 +123,7 @@ _New for the 2023-2024 season, the NBA has introduced an In-Season Tournament. T
         <Column id="1_pct1" contentType=colorscale colorMax=1 title="1"/>
         <Column id="2_pct1" contentType=colorscale colorMax=1 title="2"/>
         <Column id="3_pct1" contentType=colorscale colorMax=1 title="3"/>
-        <Column id="4_pct1" contentType=colorscale colorMax=1 title="3"/>
+        <Column id="4_pct1" contentType=colorscale colorMax=1 title="4"/>
         <Column id="total_pct1" contentType=colorscale colorMax=1 title="Total"/>
         </DataTable>
     </Tab>
