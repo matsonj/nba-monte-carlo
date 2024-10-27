@@ -34,6 +34,7 @@ order by team
 <BigValue 
     data={past_games_summary} 
     value='accuracy_pct1' 
+    title='Accuracy (%)'
 /> 
 
 <Accordion>
@@ -41,8 +42,12 @@ order by team
     <DataTable
         data={past_games_summary_by_team}
         title='Prediction Accuracy by Team'
-        rows=30
-    />
+        rows=30>
+        <Column id=team/>
+        <Column id=total_games_played/>
+        <Column id=correct_predictions/>
+        <Column id=accuracy_pct1 fmt='pct1' title='Accuracy (%)'/>
+    </DataTable>
   </AccordionItem>
 </Accordion>
 

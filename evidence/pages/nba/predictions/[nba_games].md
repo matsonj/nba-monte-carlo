@@ -206,7 +206,7 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt(params.nba
   <Column id=T title=" "/>
   <Column id=winning_team/>
   <Column id=score/>
-  <Column id=elo_change_num1/>
+  <Column id=elo_change_num1 title="Elo Change"/>
 </DataTable>
 
 ## Last 5 Games - <Value data={summary_by_team.filter(st => future_games.some(fg => fg.game_id === parseInt(params.nba_games, 10) && (fg.home == st.team)))}  column=team/>
@@ -221,5 +221,5 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt(params.nba
   <Column id=T title=" "/>
   <Column id=winning_team/>
   <Column id=score/>
-  <Column id=elo_change_num1/>
+  <Column id=elo_change_num1 title="Elo Change"/>
 </DataTable>

@@ -57,9 +57,9 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
   <Column id=record/>
   <Column id=elo_rating/>
   <Column id=avg_wins/>
-  <Column id=elo_vs_vegas_num1 contentType=delta/>
-  <Column id=make_playoffs_pct1/>
-  <Column id=win_finals_pct1/>
+  <Column id=elo_vs_vegas_num1 contentType=delta title="Elo vs. Vegas"/>
+  <Column id=make_playoffs_pct1 title="Make Playoffs (%)"/>
+  <Column id=win_finals_pct1 title = "Win Finals (%)" />
 </DataTable>
 
 ## Conference Summaries
