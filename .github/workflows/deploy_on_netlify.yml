@@ -34,14 +34,15 @@ jobs:
         run: |
           make evidence-build
 
-      - name: copy output to working directory
-        run: |
-          mkdir -p /home/runner/work/_temp/_github_home/build
-          cp -r evidence/build/* /home/runner/work/_temp/_github_home/build
+      # - name: copy output to working directory
+      #   run: |
+      #     mkdir -p /home/runner/work/_temp/_github_home/build
+      #     cp -r evidence/build/* /home/runner/work/_temp/_github_home/build
 
       - name: Deploy Netlify
-        uses: danakim/gh-action-deploy-netlify@master
+        uses: jsmrcaga/action-netlify-deploy@v2.3.0
         with:
-          AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          DEPLOY_PROD: true
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_DEPLOY_TO_PROD: true
+          build_directory: evidence/build
