@@ -54,17 +54,17 @@ queries:
 
 {#if inputs.conference != 'null'}
 
-<DataTable data={filtered_summary_by_team} link=team_link rows=30>
+<DataTable data={filtered_summary_by_team} link=team_link wrapTitles=true rows=30>
   <Column id=seed/>
   <Column id=" " contentType=image height=25px/>
   <Column id=team/>
-  <Column id=record/>
+  <Column id=record title = "Record (W-L)"/>
   <Column id=elo_rating/>
-  <Column id=avg_wins/>
-  <Column id=wins_array contentType=sparkarea title="Win Range" sparkX=wins sparkY=odds/>
-  <!-- <Column id=elo_vs_vegas_num1 contentType=delta title="Elo vs. Vegas"/> -->
+  <Column id=avg_wins title="Avg. Wins"/>
+  <Column id=wins_array contentType=sparkarea title="Win Range" sparkX=wins sparkY=odds sparkWidth=65 />
+  <Column id=elo_vs_vegas_num1 contentType=delta title="Elo vs. Vegas"/>
   <Column id=make_playoffs_pct1 title="Make Playoffs (%)"/>
-  <Column id=win_finals_pct1 title = "Win Finals (%)" />
+  <Column id=win_finals_pct1 title = "Make Finals (%)" />
 </DataTable>
 
 {:else }
