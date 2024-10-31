@@ -39,7 +39,7 @@ queries:
     from ${summary_by_team} st
     left join ${wins_array} wa on wa.team = st.team
     where conf like '${inputs.conference}'
-    order by elo_rating desc
+    order by avg_wins desc
 ```
 
 
