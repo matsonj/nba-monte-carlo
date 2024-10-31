@@ -38,8 +38,8 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
     <DropdownOption valueLabel="All Teams" value="%" />
 </Dropdown>
 
-<!-- <DataTable data={filtered_future_games} rows=5 link=game_link> -->
-<DataTable data={filtered_future_games} rows=5>
+<DataTable data={filtered_future_games} rows=5 link=game_link>
+<!-- <DataTable data={filtered_future_games} rows=5> -->
   <Column id=date/>
   <Column id=T title=" "/>
   <Column id=visitor/>
