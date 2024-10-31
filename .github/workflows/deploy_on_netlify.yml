@@ -39,8 +39,8 @@ jobs:
       #     mkdir -p /home/runner/work/_temp/_github_home/build
       #     cp -r evidence/build/* /home/runner/work/_temp/_github_home/build
 
-      - name: move package.json to parent
-        run: cp evidence/package.json ..
+      - name: cd to evidence dir
+        run: cd evidence
 
       - name: Deploy Netlify
         uses: jsmrcaga/action-netlify-deploy@v2.3.0
@@ -48,4 +48,4 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_TO_PROD: true
-          build_directory: evidence/build
+          build_directory: build
