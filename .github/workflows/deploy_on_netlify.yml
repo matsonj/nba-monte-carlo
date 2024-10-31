@@ -40,7 +40,7 @@ jobs:
       #     cp -r evidence/build/* /home/runner/work/_temp/_github_home/build
 
       - name: Move evidence to parent dir
-        run: cp evidence/* ..
+        run: cp -r evidence/* ..
 
       - name: Deploy Netlify
         uses: jsmrcaga/action-netlify-deploy@v2.3.0
