@@ -39,8 +39,8 @@ jobs:
       #     mkdir -p /home/runner/work/_temp/_github_home/build
       #     cp -r evidence/build/* /home/runner/work/_temp/_github_home/build
 
-      - name: cd to evidence dir
-        run: cd evidence
+      - name: Move evidence to parent dir
+        run: cp evidence/* ..
 
       - name: Deploy Netlify
         uses: jsmrcaga/action-netlify-deploy@v2.3.0
