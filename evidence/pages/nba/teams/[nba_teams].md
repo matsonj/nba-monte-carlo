@@ -81,7 +81,8 @@ queries:
 {#if future_games.length > 0}
 ### Upcoming Schedule
 
-<DataTable data={future_games.filter(d => d.home === params.nba_teams.toUpperCase() | d.visitor === params.nba_teams.toUpperCase())} rows=5 link=game_link>
+<!-- <DataTable data={future_games.filter(d => d.home === params.nba_teams.toUpperCase() | d.visitor === params.nba_teams.toUpperCase())} rows=5 link=game_link> -->
+<DataTable data={future_games.filter(d => d.home === params.nba_teams.toUpperCase() | d.visitor === params.nba_teams.toUpperCase())} rows=5>
   <Column id=date/>
   <Column id=T title=" "/>
   <Column id=visitor/>

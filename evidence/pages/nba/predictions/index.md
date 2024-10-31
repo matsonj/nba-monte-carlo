@@ -65,7 +65,8 @@ _Historically, NBA teams win 62% of their games at home, which explains why team
     <DropdownOption valueLabel="All Teams" value="%" />
 </Dropdown>
 
-<DataTable data={filtered_future_games} rows=15 link=game_link>
+<!-- <DataTable data={filtered_future_games} rows=15 link=game_link> -->
+<DataTable data={filtered_future_games} rows=15>
   <Column id=date/>
   <Column id=T title=" "/>
   <Column id=visitor/>
