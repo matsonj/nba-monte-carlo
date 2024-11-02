@@ -15,18 +15,18 @@ import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 
-dayjs.extend(utc);
-dayjs.extend(timezone);
+dayjs.extend(utc).extend(timezone);
 
-let today = dayjs().tz('America/Los_Angeles').format('YYYY-MM-DD');
-let yesterday = dayjs().tz('America/Los_Angeles').subtract(1, 'day').format('YYYY-MM-DD');
-let two_days_ago = dayjs().tz('America/Los_Angeles').subtract(2, 'day').format('YYYY-MM-DD');
+const pst = date => dayjs(date).tz('America/Los_Angeles').format('YYYY-MM-DD');
+const today = pst();
+const yesterday = pst(dayjs().subtract(1, 'day'));
+const two_days_ago = pst(dayjs().subtract(2, 'day'));
 </script>
 
 # NBA Today
 
 ## Games
-<DataTable data={future_games.filter(d => dayjs(d.date).tz('America/Los_Angeles').format('YYYY-MM-DD') < today)} rows=15 link=game_link wrapTitles=true rowShading=true rowLines=false>
+<DataTable data={future_games.filter(d => pst(d.date) < today)} rows=15 link=game_link wrapTitles=true rowShading=true rowLines=false>
   <Column id=date/>
   <Column id=T title=" "/>
   <Column id=visitor/>
@@ -39,7 +39,7 @@ let two_days_ago = dayjs().tz('America/Los_Angeles').subtract(2, 'day').format('
 
 ## Yesterday's Games
 <DataTable
-    data={most_recent_games.filter(d => dayjs(d.date).tz('America/Los_Angeles').format('YYYY-MM-DD') < yesterday && dayjs(d.date).tz('America/Los_Angeles').format('YYYY-MM-DD') >= two_days_ago)}
+    data={most_recent_games.filter(d => pst(d.date) < yesterday && pst(d.date) >= two_days_ago)}
     rows=12
     rowShading=true rowLines=false wrapTitles=true
 >
