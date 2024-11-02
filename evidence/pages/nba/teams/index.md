@@ -3,6 +3,8 @@ queries:
   - reg_season: nba/reg_season.sql
   - standings: nba/standings.sql
   - summary_by_team: nba/summary_by_team.sql
+title: Teams
+sidebar_position: 2
 ---
 
 # Team Browser

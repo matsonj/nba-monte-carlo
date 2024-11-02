@@ -6,6 +6,8 @@ queries:
   - tournament_results: nba/tournament_results.sql
   - most_recent_games: nba/most_recent_games.sql
   - tournament_seeding: nba/tournament_seeding.sql
+title: In-Season Tournament
+sidebar_position: 4
 ---
 
 ```wildcard_standings

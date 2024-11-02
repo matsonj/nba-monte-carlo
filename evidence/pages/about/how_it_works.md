@@ -1,5 +1,5 @@
 ---
-title: How it works
+title: how it works
 ---
 
 ## Env. config
