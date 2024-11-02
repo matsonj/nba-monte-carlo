@@ -26,7 +26,7 @@ let two_days_ago = dayjs().tz('America/Los_Angeles').subtract(2, 'day').format('
 # NBA Today
 
 ## Games
-<DataTable data={future_games.filter(d => dayjs(d.date).tz('America/Los_Angeles').format('YYYY-MM-DD') < today)} rows=15 link=game_link wrapTitles=true>
+<DataTable data={future_games.filter(d => dayjs(d.date).tz('America/Los_Angeles').format('YYYY-MM-DD') < today)} rows=15 link=game_link wrapTitles=true rowShading=true rowLines=false>
   <Column id=date/>
   <Column id=T title=" "/>
   <Column id=visitor/>
@@ -41,6 +41,7 @@ let two_days_ago = dayjs().tz('America/Los_Angeles').subtract(2, 'day').format('
 <DataTable
     data={most_recent_games.filter(d => dayjs(d.date).tz('America/Los_Angeles').format('YYYY-MM-DD') < yesterday && dayjs(d.date).tz('America/Los_Angeles').format('YYYY-MM-DD') >= two_days_ago)}
     rows=12
+    rowShading=true rowLines=false wrapTitles=true
 >
   <Column id=date/>
   <Column id=T title=" "/>
@@ -53,8 +54,7 @@ let two_days_ago = dayjs().tz('America/Los_Angeles').subtract(2, 'day').format('
 
 ## Standings
 
-<DataTable data={summary_by_team} link=team_link rows=5 search=true wrapTitles=true>
-  <Column id=" " contentType=image height=25px/>
+<DataTable data={summary_by_team} link=team_link rows=15 search=true wrapTitles=true rowShading=true rowLines=false>
   <Column id=team/>
   <Column id=record/>
   <Column id=elo_rating/>
