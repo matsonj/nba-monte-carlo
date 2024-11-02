@@ -1,6 +1,8 @@
 ---
 queries:
   - seed_details: nba/seed_details.sql
+title: Experimental Views
+sidebar_position: 99
 ---
 
 # Advanced Analytical views 
@@ -38,6 +40,57 @@ ORDER BY seed, cumulative_pct1
 SELECT * FROM ${seed_details_cdf}
 WHERE cumulative_pct1 > 0.005 AND cumulative_pct1 < 0.995
 ```
+
+```sql wins_by_seed
+    SELECT
+        avg(wins) as avg_wins,
+        conf,
+        ' '||round(season_rank,0)::int as seed,
+        count(*) as occurances,
+        round(
+            percentile_cont(0.05) within group (order by wins asc), 1
+        ) as wins_5th,
+        round(
+            percentile_cont(0.95) within group (order by wins asc), 1
+        ) as wins_95th,
+        min(wins) as min_wins,
+        max(wins) as max_wins,
+        season_rank as seed_rank
+    FROM src_reg_season_end
+    GROUP BY ALL
+    order by seed_rank, conf desc
+```
+<BoxPlot 
+    data={wins_by_seed.filter(d => d.conf === "East")}
+    name=seed
+    min=min_wins
+    max=max_wins
+    intervalBottom=wins_5th
+    midpoint=avg_wins
+    intervalTop=wins_95th
+    yFmt=num0
+    title="Wins by Seed, Eastern Conference"
+    swapXY=true
+    xTitle="Wins"
+    >
+    <ReferenceLine y=42 label='.500 line' hideValue=true/>
+</BoxPlot>
+
+<BoxPlot 
+    data={wins_by_seed.filter(d => d.conf === "West")}
+    name=seed
+    min=min_wins
+    max=max_wins
+    intervalBottom=wins_5th
+    midpoint=avg_wins
+    intervalTop=wins_95th
+    yFmt=num0
+    title="Wins by Seed, Western Conference"
+    swapXY=true
+    xTitle="Wins"
+    >
+    <ReferenceLine y=42 label='.500 line' hideValue=true/>
+</BoxPlot>
 
 <LineChart 
     data={seed_details_cdf.filter(d => d.conf === "East")}  

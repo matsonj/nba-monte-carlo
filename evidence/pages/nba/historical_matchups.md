@@ -1,3 +1,8 @@
+---
+title: Historical Matchups
+sidebar_position: 5
+---
+
 # Historical Matchups
 Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 

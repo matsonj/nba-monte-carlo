@@ -8,6 +8,9 @@ queries:
   - standings: nba/standings.sql
   - summary_by_team: nba/summary_by_team.sql
   - future_games: nba/future_games.sql
+title: NBA
+---
+
 ---
 
 ```sql teams
@@ -38,7 +41,7 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
     <DropdownOption valueLabel="All Teams" value="%" />
 </Dropdown>
 
-<DataTable data={filtered_future_games} rows=5 link=game_link>
+<DataTable data={filtered_future_games} rows=5 link=game_link wrapTitles=true>
 <!-- <DataTable data={filtered_future_games} rows=5> -->
   <Column id=date/>
   <Column id=T title=" "/>
@@ -52,15 +55,15 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 
 ## [Team Standings](/nba/teams)
 
-<DataTable data={summary_by_team} link=team_link rows=5 search=true>
+<DataTable data={summary_by_team} link=team_link rows=5 search=true wrapTitles=true>
   <Column id=" " contentType=image height=25px/>
   <Column id=team/>
   <Column id=record/>
   <Column id=elo_rating/>
-  <Column id=avg_wins/>
+  <Column id=avg_wins title="Avg. Wins"/>
   <Column id=elo_vs_vegas_num1 contentType=delta title="Elo vs. Vegas"/>
   <Column id=make_playoffs_pct1 title="Make Playoffs (%)"/>
-  <Column id=win_finals_pct1 title = "Win Finals (%)" />
+  <Column id=win_finals_pct1 title = "Make Finals (%)" />
 </DataTable>
 
 ## Conference Summaries

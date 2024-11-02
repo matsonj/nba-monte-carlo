@@ -4,6 +4,8 @@ queries:
   - past_games: nba/past_games.sql
   - past_games_summary: nba/past_games_summary.sql
   - past_games_summary_by_team: nba/past_games_summary_by_team.sql
+title: Predictions
+sidebar_position: 3
 ---
 
 ```sql teams
@@ -65,8 +67,7 @@ _Historically, NBA teams win 62% of their games at home, which explains why team
     <DropdownOption valueLabel="All Teams" value="%" />
 </Dropdown>
 
-<!-- <DataTable data={filtered_future_games} rows=15 link=game_link> -->
-<DataTable data={filtered_future_games} rows=15>
+<DataTable data={filtered_future_games} rows=15 link=game_link>
   <Column id=date/>
   <Column id=T title=" "/>
   <Column id=visitor/>

@@ -7,6 +7,7 @@ queries:
   - summary_by_team: nba/summary_by_team.sql
   - past_games: nba/past_games.sql
   - most_recent_games: nba/most_recent_games.sql
+title: Prediction Details
 ---
 
 ```season_stats

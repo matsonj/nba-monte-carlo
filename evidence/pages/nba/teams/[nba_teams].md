@@ -10,6 +10,7 @@ queries:
   - most_recent_games: nba/most_recent_games.sql
   - game_trend: nba/game_trend.sql
   - future_games: nba/future_games.sql
+title: Team Details
 ---
 
 ```sql filtered_season_summary
