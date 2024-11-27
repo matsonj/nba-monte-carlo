@@ -40,6 +40,16 @@ docker-run-evidence:
 		--env ENVIRONMENT=docker \
 		mdsbox make run serve
 
+docker-dev:
+		docker run \
+		--publish 3000:3000 \
+		--env MDS_SCENARIOS=10000 \
+		--env MDS_INCLUDE_ACTUALS=true \
+		--env MDS_LATEST_RATINGS=true \
+		--env MDS_ENABLE_EXPORT=true \
+		--env ENVIRONMENT=docker \
+		mdsbox make run dev
+
 DATES = $(shell python -c 'from datetime import datetime, timedelta; start_date = datetime(2023, 10, 24); end_date = datetime(2024, 4, 14); date_list = [start_date + timedelta(days=x) for x in range((end_date - start_date).days + 1)]; print(" ".join(date.strftime("%Y-%m-%d") for date in date_list))')
 
 dbt-run-backfill:

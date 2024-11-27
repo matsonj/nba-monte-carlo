@@ -3,7 +3,6 @@ title: Historical Matchups
 sidebar_position: 5
 ---
 
-# Historical Matchups
 Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 
 ```sql elo_history
@@ -25,7 +24,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 ```
 
 ```sql team2
-    select C.* 
+    select C.*
     from src_nba_season_teams C
     where C.season = ${inputs.team2_season_dd.value}
     group by all
@@ -33,7 +32,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 ```
 
 <Dropdown
-    data={seasons} 
+    data={seasons}
     name=team1_season_dd
     value=season
     title="Team 1 Year"
@@ -42,7 +41,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 </Dropdown>
 
 <Dropdown
-    data={team1} 
+    data={team1}
     name=team1_dd
     value=team
     title="Team 1"
@@ -51,7 +50,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 </Dropdown>
 
 <Dropdown
-    data={seasons} 
+    data={seasons}
     name=team2_season_dd
     value=season
     title="Team 2 Year"
@@ -60,7 +59,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 </Dropdown>
 
 <Dropdown
-    data={team2} 
+    data={team2}
     name=team2_dd
     value=team
     title="Team 2"
@@ -83,14 +82,14 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 ```
 
 ```sql team1_stats
-    select * 
-    from src_nba_team_stats 
+    select *
+    from src_nba_team_stats
     where team = '${inputs.team1_dd.value}' AND season = ${inputs.team1_season_dd.value}
 ```
 
 ```sql team2_stats
-    select * 
-    from src_nba_team_stats 
+    select *
+    from src_nba_team_stats
     where team = '${inputs.team2_dd.value}' AND season = ${inputs.team2_season_dd.value}
 ```
 
@@ -111,7 +110,7 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
         select distinct stat
         from cte_unpivot
     )
-    select 
+    select
         CASE WHEN u1.value > u2.value THEN '✅' ELSE '' END AS "t1",
         abs(u1.value::int) as "team1",
         s.stat,
@@ -136,14 +135,14 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 
 ```sql team1_trend
     with cte_games AS (
-        select 
+        select
             date,
             case when team1 = '${inputs.team1_dd.value}' then elo1_post else elo2_post end as elo,
             '${inputs.team1_dd.value}' || ':' || '${inputs.team1_season_dd.value}' as key,
         from ${elo_history  } where (team1 = '${inputs.team1_dd.value}' OR team2 = '${inputs.team1_dd.value}') AND season = ${inputs.team1_season_dd.value}
     )
-    select 
-        key, 
+    select
+        key,
         date,
         elo,
         '${inputs.team1_season_dd.value}' || ' ' || '${inputs.team1_dd.value}' as team,
@@ -153,15 +152,15 @@ Ever wondered if the '86 Celtics could beat the '96 Bulls? Wonder no more!
 
 ```sql team2_trend
     with cte_games AS (
-        select 
+        select
             date,
             case when team1 = '${inputs.team2_dd.value}' then elo1_post else elo2_post end as elo,
             '${inputs.team2_dd.value}' || ':' || '${inputs.team2_season_dd.value}' as key,
-        from ${elo_history  } where (team1 = '${inputs.team2_dd.value}' OR team2 = '${inputs.team2_dd.value}') 
+        from ${elo_history  } where (team1 = '${inputs.team2_dd.value}' OR team2 = '${inputs.team2_dd.value}')
         AND season = ${inputs.team2_season_dd.value}
     )
-    select 
-        key, 
+    select
+        key,
         date,
         elo,
         '${inputs.team2_season_dd.value}' || ' ' || '${inputs.team2_dd.value}' as team,
@@ -182,7 +181,7 @@ $: y_min = Math.min(...combined_trend.map(item => item.elo))
 </script>
 
 <LineChart
-    data={combined_trend} 
+    data={combined_trend}
     x=game_id
     y=elo
     title='elo change over time'
@@ -217,7 +216,7 @@ This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM
 </Dropdown>
 
 ```sql elo_by_team
-    select 
+    select
         (t2.season::varchar(4))[1:4] || ' ' || t2.team as team2,
         t2.avg_elo - ('${inputs.elo_slider}'::real/2) as elo2,
        (t1.season::varchar(4))[1:4] || ' ' || t1.team as team1,
@@ -250,7 +249,7 @@ This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM
     cte_step_1 as (
         Select *,
             ( 1 - (1 / (10 ^ (-( elo2 - elo1 )::real/400)+1))) * 10000 as team1_win_probability,
-            CASE 
+            CASE
                 WHEN ( 1 - (1 / (10 ^ (-( elo2 - elo1 )::real/400)+1))) * 10000  >= rand_result THEN S.team1
                 ELSE S.team2
             END AS winning_team,
@@ -259,9 +258,9 @@ This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM
     cte_step_2 AS (
         SELECT step1.*,
             ROW_NUMBER() OVER (PARTITION BY scenario_id, winning_team  ORDER BY scenario_id, game_id ) +
-            CASE 
-                WHEN winning_team = team1 THEN ${inputs.team_1_wins.value} 
-                ELSE ${inputs.team_2_wins.value} END 
+            CASE
+                WHEN winning_team = team1 THEN ${inputs.team_1_wins.value}
+                ELSE ${inputs.team_2_wins.value} END
             AS series_result
         FROM cte_step_1 step1
     )
@@ -278,9 +277,9 @@ This is a 10k iteration monte carlo sim, calculated in browser using DuckDB WASM
 ```sql mc_final_results
 with
     cte_summary as (
-        SELECT step2.* 
+        SELECT step2.*
         FROM ${monte_carlo_sim} step2
-            LEFT JOIN ${monte_carlo_winners} F ON F.scenario_id = step2.scenario_id 
+            LEFT JOIN ${monte_carlo_winners} F ON F.scenario_id = step2.scenario_id
                 AND step2.game_id = f.game_id
     )
     SELECT
@@ -307,7 +306,7 @@ with
     order by result
 ```
 
-<BarChart 
+<BarChart
     data={mc_summary}
     x=winning_team
     y=occurances_pct1
@@ -315,10 +314,10 @@ with
     xAxisTitle=games_played
     title='Outcome by Team'
     labels=true
-    swapXY=true 
+    swapXY=true
 />
 
-<BarChart 
+<BarChart
     data={mc_summary}
     x=result
     y=occurances_pct1
@@ -328,7 +327,7 @@ with
     type=grouped
     labels=true
     sort=false
-    swapXY=true 
+    swapXY=true
 />
 
 _If you don't like the current results, you can modify the elo inputs with this slider._
@@ -344,4 +343,4 @@ _If you don't like the current results, you can modify the elo inputs with this 
     max=100
 />
 <br>
-The current value is {inputs.elo_slider}. 
+The current value is {inputs.elo_slider}.
