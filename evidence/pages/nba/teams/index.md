@@ -66,7 +66,7 @@ sidebar_position: 2
   <Column id=wins_array contentType=sparkarea title="Win Range" sparkX=wins sparkY=odds sparkWidth=65 />
   <Column id=elo_vs_vegas_num1 contentType=delta title="Elo vs. Vegas"/>
   <Column id=make_playoffs_pct1 title="Make Playoffs (%)"/>
-  <Column id=win_finals_pct1 title = "Make Finals (%)" />
+  <Column id=win_finals_pct1 title = "Win Finals (%)" />
 </DataTable>
 
 {:else }

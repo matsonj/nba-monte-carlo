@@ -192,8 +192,8 @@ $: y_min = Math.min(...combined_trend.map(item => item.elo))
     handleMissing=connect
     colorPalette={
         [
-        '#29BDAD',
-        '#DE4500'
+        '#0777b3',
+        '#b85a22'
         ]
     }
 />
