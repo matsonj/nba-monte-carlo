@@ -14,10 +14,10 @@
   },
   "type": "module",
   "dependencies": {
-    "@evidence-dev/core-components": "^4.8.13",
-    "@evidence-dev/csv": "^1.0.13",
-    "@evidence-dev/duckdb": "^1.0.12",
-    "@evidence-dev/evidence": "^39.1.17",
+    "@evidence-dev/core-components": "^5.0.1",
+    "@evidence-dev/csv": "^1.0.14",
+    "@evidence-dev/duckdb": "^1.0.13",
+    "@evidence-dev/evidence": "^40.0.1",
     "dayjs": "^1.11.13"
   },
   "overrides": {
