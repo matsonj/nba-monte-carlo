@@ -73,7 +73,7 @@ WHERE cumulative_pct1 > 0.005 AND cumulative_pct1 < 0.995
     swapXY=true
     xTitle="Wins"
     >
-    <ReferenceLine y=42 label='.500 line' hideValue=true/>
+    <ReferenceLine y=42 label='.500 line' hideValue=true lineColor='#3b4856' labelColor='#3b4856'/>
 </BoxPlot>
 
 <BoxPlot 
@@ -89,7 +89,7 @@ WHERE cumulative_pct1 > 0.005 AND cumulative_pct1 < 0.995
     swapXY=true
     xTitle="Wins"
     >
-    <ReferenceLine y=42 label='.500 line' hideValue=true/>
+    <ReferenceLine y=42 label='.500 line' hideValue=true lineColor='#3b4856' labelColor='#3b4856'/>
 </BoxPlot>
 
 <LineChart 

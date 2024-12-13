@@ -185,6 +185,7 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt(params.nba
     series=team
     yMin={parseFloat(y_min)-10}
     handleMissing=connect
+    yGridlines=false
     colorPalette={
         [
         '#0777b3',
@@ -192,7 +193,7 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt(params.nba
         ]
     }
 >
-  <ReferenceLine y=1600 label="league avg." hideValue=true labelPosition=aboveStart />
+  <ReferenceLine y=1600 label="league avg." hideValue=true labelPosition=aboveStart lineColor='#3b4856' labelColor='#3b4856' />
 </LineChart>
 
 ## Last 5 Games - <Value data={summary_by_team.filter(st => future_games.some(fg => fg.game_id === parseInt(params.nba_games, 10) && (fg.visitor == st.team)))}  column=team/>
