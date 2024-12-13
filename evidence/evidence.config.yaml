@@ -2,6 +2,8 @@ appearance:
   default: system
   switcher: true
 
+
+# base colors https://mycolor.space/?hex=%230777B3&sub=1
 theme:
   # colorPalettes:
   #   default:
