@@ -315,6 +315,8 @@ with
     title='Outcome by Team'
     labels=true
     swapXY=true
+    colorPalette={['#0777b3', '#3e92d0','#60aeee','#80caff']}
+    sort=false
 />
 
 <BarChart
@@ -328,6 +330,7 @@ with
     labels=true
     sort=false
     swapXY=true
+    colorPalette={['#0777b3', '#b85a22']}
 />
 
 _If you don't like the current results, you can modify the elo inputs with this slider._

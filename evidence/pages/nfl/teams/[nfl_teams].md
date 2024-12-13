@@ -146,6 +146,7 @@ _The regular season has yet to begin. Check back soon!_
     series=season_result
     xAxisTitle=wins
     title='Projected Total Wins'
+    seriesColors={{'missed playoffs':'#9fadbd','made playoffs':'#3b4856','first round bye':'#0777b3'}}
 />
 
 <BarChart 

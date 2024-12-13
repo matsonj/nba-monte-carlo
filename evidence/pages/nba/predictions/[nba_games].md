@@ -187,8 +187,8 @@ Diff. of <Value data={future_games.filter(d => d.game_id === parseInt(params.nba
     handleMissing=connect
     colorPalette={
         [
-        '#29BDAD',
-        '#DE4500'
+        '#0777b3',
+        '#bd4e35'
         ]
     }
 >

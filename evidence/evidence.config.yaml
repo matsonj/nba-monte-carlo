@@ -19,14 +19,14 @@ theme:
   colorScales:
     default:
       - "#0777b3"  # Blue
-      - "#b85a22"  # Orange
+      - "#bd4e35"  # Orange
   colors:
     primary:
       light: "#0777b3"  # Blue
       dark: "#0777b3"  # Blue
     accent:
-      light: "#b85a22"  # Orange
-      dark: "#b85a22"  # Orange
+      light: "#bd4e35"  # Orange
+      dark: "#bd4e35"  # Orange
     base:
       light: "#f8f8f8" # Paper
       dark: "#231f20" # Dark

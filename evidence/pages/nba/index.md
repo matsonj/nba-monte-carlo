@@ -80,6 +80,7 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
             xAxisTitle=seed
             title='Eastern Conference'
             yMax=1
+            colorPalette={['#064265','#08517d','#0b5f96','#0e6cad','#1179c5','#1486dc','#2291e9','#3b9aea','#54a5ec','#6db0ee','#86bbf0','#9ec7f2','#b6d4f5','#cee1f8','#e5effb']}
         />
     </Tab>
 
@@ -92,6 +93,7 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
             xAxisTitle=seed
             title='Western Conference'
             yMax=1
+            colorPalette={['#064265','#08517d','#0b5f96','#0e6cad','#1179c5','#1486dc','#2291e9','#3b9aea','#54a5ec','#6db0ee','#86bbf0','#9ec7f2','#b6d4f5','#cee1f8','#e5effb']}
         />
     </Tab>
 </Tabs>
@@ -109,6 +111,7 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
             title='Eastern Conference'
             swapXY=true
             sort=sort_key
+            colorPalette={['#0777b3', '#3b4856','#9fadbd']}
         />
     </Tab>
 
@@ -122,6 +125,7 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
             title='Western Conference'
             swapXY=true
             sort=sort_key
+            colorPalette={['#0777b3', '#3b4856','#9fadbd']}
         />
     </Tab>
 </Tabs>

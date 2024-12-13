@@ -121,6 +121,7 @@ title: Team Details
     series=season_result
     xAxisTitle=wins
     title='projected end of season wins'
+    seriesColors={{'missed playoffs':'#9fadbd','play in':'#3b4856','top six seed':'#0777b3'}}
 />
 
 <BarChart 

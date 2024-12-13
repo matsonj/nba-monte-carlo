@@ -15,7 +15,7 @@ This project implements a sports Monte Carlo simulator using [duckdb](https://du
         type="email" 
         placeholder="Type your email..." 
         bind:value="{email}" 
-        style="border: 2px solid #DE4500; border-radius: 5px;"
+        style="border: 2px solid #bd4e35; border-radius: 5px;"
     />
 </label>
 
@@ -43,9 +43,9 @@ This project implements a sports Monte Carlo simulator using [duckdb](https://du
 <style>
     .submit-button {
         border-radius: 8px;
-        background-color: #DE4500;
+        background-color: #bd4e35;
         border: none;
-        color: lightgrey;
+        color: white;
         padding: 2px 6px;
         text-align: center;
         text-decoration: none;
