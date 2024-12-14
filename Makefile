@@ -1,9 +1,5 @@
-install-uv:
-	pip install uv
-	uv pip install --system -r requirements.txt
-
-build: install-uv
-	cd transform && dbt deps
+build:
+	cd transform && ../.venv/bin/dbt deps
 	cd evidence && npm install
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
@@ -11,8 +7,8 @@ build: install-uv
 	mkdir -p data/data_catalog/analysis
 
 run:
-	cd dlt && python3 nba_pipeline.py
-	cd transform && dbt build
+	cd dlt && ../.venv/bin/python3 nba_pipeline.py
+	cd transform && ../.venv/bin/dbt build
 	cd evidence && npm run sources
 
 dev:
@@ -55,5 +51,5 @@ DATES = $(shell python -c 'from datetime import datetime, timedelta; start_date 
 dbt-run-backfill:
 	@for date in $(DATES); do \
 		echo "Running dbt build for $$date"; \
-		(cd transform && dbt build -s tag:nba --vars "nba_start_date: $$date"); \
+		(cd transform && ../.venv/bin/dbt build -s tag:nba --vars "nba_start_date: $$date"); \
 	done

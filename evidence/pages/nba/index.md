@@ -8,7 +8,7 @@ queries:
   - standings: nba/standings.sql
   - summary_by_team: nba/summary_by_team.sql
   - future_games: nba/future_games.sql
-title: NBA
+title: NBA Sim
 ---
 
 ```sql teams

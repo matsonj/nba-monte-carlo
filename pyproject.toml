@@ -1,0 +1,16 @@
+[project]
+name = "nba-monte-carlo"
+version = "0.1.0"
+description = "dependencies for the NBA Monte Carlo simulator"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dbt-duckdb~=1.8.0",
+    "dlt[filesystem]",
+    "duckdb~=1.1.0",
+    "numpy",
+    "pandas",
+    "pyarrow",
+    "shandy-sqlfmt[jinjafmt]",
+    "sqlmesh==0.88",
+]

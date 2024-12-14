@@ -17,3 +17,4 @@
 *.pyc
 /dlt/data
 /evidence/.evidence/meta
+nba_monte_carlo.egg-info/*
