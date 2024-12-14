@@ -3,15 +3,10 @@ queries:
   - thru_date: nfl/thru_date.sql
   - seed_details: nfl/seed_details.sql
   - wins_seed_bar: nfl/wins_seed_bar.sql
+title: NFL Monte Carlo Simulator
 ---
 
-# NFL Monte Carlo Simulator
-
 ## Conference Summaries
-
-<Alert status="info">
-This data was last updated as of <Value data={thru_date} column=end_date/>.
-</Alert>
 
 ### End of Season Seeding
 
@@ -96,3 +91,7 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 🏈 [Teams](/nfl/teams) 🏈 
 
  </center>
+
+ <Alert status="info">
+This data was last updated as of <Value data={thru_date} column=end_date/>.
+</Alert>

@@ -11,8 +11,6 @@ queries:
 title: NBA
 ---
 
----
-
 ```sql teams
 select * from src_nba_teams
 order by team
@@ -23,12 +21,6 @@ order by team
     from ${future_games}
     where home like '${inputs.team_dd.value}' OR visitor like '${inputs.team_dd.value}'
 ```
-
-# NBA Monte Carlo Simulator
-
-<Alert status="info">
-This data was last updated as of <Value data={thru_date} column=end_date/>.
-</Alert>
 
 ## [Upcoming Games](/nba/predictions)
 
@@ -55,7 +47,7 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
 
 ## [Team Standings](/nba/teams)
 
-<DataTable data={summary_by_team} link=team_link rows=5 search=true wrapTitles=true>
+<DataTable data={summary_by_team} link=team_link rows=5 wrapTitles=true>
   <Column id=" " contentType=image height=25px/>
   <Column id=team/>
   <Column id=record/>
@@ -129,4 +121,8 @@ This data was last updated as of <Value data={thru_date} column=end_date/>.
         />
     </Tab>
 </Tabs>
+
+<Alert status="info">
+This data was last updated as of <Value data={thru_date} column=end_date/>.
+</Alert>
 
