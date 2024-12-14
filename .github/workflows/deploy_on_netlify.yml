@@ -46,5 +46,5 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: evidence/build
-          install_command: chmod +x utils/setup_env.sh && utils/setup_env.sh&& make build run
+          install_command: chmod +x utils/setup_env.sh && source utils/setup_env.sh&& make build run
           build_command: make evidence-build

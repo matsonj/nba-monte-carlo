@@ -31,7 +31,7 @@ jobs:
           python-version: '3.11'
 
       - name: setup python env
-        run: chmod +x utils/setup_env.sh && utils/setup_env.sh
+        run: chmod +x utils/setup_env.sh && source utils/setup_env.sh
         
       - name: python basics
         run: make build
