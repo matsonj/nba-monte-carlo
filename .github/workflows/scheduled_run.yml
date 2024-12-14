@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
       - name: Deploy Netlify
         uses: jsmrcaga/action-netlify-deploy@v2.3.0
