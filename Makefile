@@ -1,5 +1,5 @@
 build:
-	cd transform && dbt deps
+	cd transform && ../.venv/bin/dbt deps
 	cd evidence && npm install
 	mkdir -p data/data_catalog/raw
 	mkdir -p data/data_catalog/prep
@@ -8,7 +8,7 @@ build:
 
 run:
 	cd dlt && python3 nba_pipeline.py
-	cd transform && dbt build
+	cd transform && ../.venv/bin/dbt build
 	cd evidence && npm run sources
 
 dev:
@@ -51,5 +51,5 @@ DATES = $(shell python -c 'from datetime import datetime, timedelta; start_date 
 dbt-run-backfill:
 	@for date in $(DATES); do \
 		echo "Running dbt build for $$date"; \
-		(cd transform && dbt build -s tag:nba --vars "nba_start_date: $$date"); \
+		(cd transform && ../.venv/bin/dbt build -s tag:nba --vars "nba_start_date: $$date"); \
 	done
