@@ -7,7 +7,7 @@ build:
 	mkdir -p data/data_catalog/analysis
 
 run:
-	cd dlt && python3 nba_pipeline.py
+	cd dlt && ../.venv/bin/python3 nba_pipeline.py
 	cd transform && ../.venv/bin/dbt build
 	cd evidence && npm run sources
 
