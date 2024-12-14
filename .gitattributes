@@ -1,0 +1,4 @@
+# adding specific mapping for languages
+*.py linguist-language=Python
+*.sql linguist-language=SQL
+*.md linguist-language=Markdown
