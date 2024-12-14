@@ -23,8 +23,6 @@ const yesterday = pst(dayjs().subtract(1, 'day'));
 const two_days_ago = pst(dayjs().subtract(2, 'day'));
 </script>
 
-# NBA Today
-
 ## Games
 <DataTable data={future_games.filter(d => pst(d.date) < today)} rows=15 link=game_link wrapTitles=true rowShading=true rowLines=false>
   <Column id=date/>

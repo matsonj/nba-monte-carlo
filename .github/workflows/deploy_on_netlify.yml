@@ -22,7 +22,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       # - name: python basics
       #   run: make build
@@ -46,5 +46,5 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: evidence/build
-          install_command: make build run
+          install_command: chmod +x utils/setup_env.sh && utils/setup_env.sh&& make build run
           build_command: make evidence-build

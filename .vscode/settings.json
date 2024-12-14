@@ -1,10 +1,5 @@
 {
-    "sqlfluff.excludeRules": [
-        "L014",
-        "L016",
-        "L031",
-        "L034"
-    ],
+
     "files.autoSave": "off",
     "editor.acceptSuggestionOnEnter": true,
     "editor.quickSuggestions": {

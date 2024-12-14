@@ -1,8 +1,4 @@
-install-uv:
-	pip install uv
-	uv pip install --system -r requirements.txt
-
-build: install-uv
+build:
 	cd transform && dbt deps
 	cd evidence && npm install
 	mkdir -p data/data_catalog/raw

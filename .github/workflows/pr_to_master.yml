@@ -22,8 +22,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
+      - name: setup python env
+        run: chmod +x utils/setup_env.sh && utils/setup_env.sh
+        
       - name: python basics
         run: make build
 
