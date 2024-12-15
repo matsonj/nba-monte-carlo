@@ -23,6 +23,11 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Setup environment and build
+        run: |
+          chmod +x utils/setup_env.sh
+          . utils/setup_env.sh
+
       - name: Deploy Netlify
         uses: jsmrcaga/action-netlify-deploy@v2.3.0
         with:
@@ -30,8 +35,5 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: evidence/build
-          install_command: |
-            chmod +x utils/setup_env.sh
-            . utils/setup_env.sh
-            make build run
+          install_command: make build run
           build_command: make evidence-build

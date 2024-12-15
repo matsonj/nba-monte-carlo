@@ -24,20 +24,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      # - name: python basics
-      #   run: make build
-
-      # - name: build pipeline
-      #   run: make run
-        
-      # - name: evidence install & build
-      #   run: |
-      #     make evidence-build
-
-      # - name: copy output to working directory
-      #   run: |
-      #     mkdir -p /home/runner/work/_temp/_github_home/build
-      #     cp -r evidence/build/* /home/runner/work/_temp/_github_home/build
+      - name: Setup environment and build
+        run: |
+          chmod +x utils/setup_env.sh
+          . utils/setup_env.sh
 
       - name: Deploy Netlify
         uses: jsmrcaga/action-netlify-deploy@v2.3.0
@@ -46,8 +36,5 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: evidence/build
-          install_command: |
-            chmod +x utils/setup_env.sh
-            . utils/setup_env.sh
-            make build run
+          install_command: make build run
           build_command: make evidence-build
