@@ -12,12 +12,23 @@
 
     /* Text elements with serif font */
     h1, h2, h3, h4, h5, h6, p, a, li {
-        font-family: 'Source Serif 4', Georgia, serif;
+        @apply font-serif;
     }
 
     /* Data elements with sans-serif font */
-    table, .chart, .data-display, .stats {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    table, .data-display, .stats {
+        @apply font-sans;
+    }
+
+    /* Chart specific styling to override component styles */
+    .chart, .chart *, [_echarts_instance_] {
+        @apply font-sans !important;
+    }
+
+    /* Specific elements that should use sans-serif */
+    .inline-block, .relative.text-xl,
+    .text-xs, .text-sm, .text-md, .text-lg {
+        @apply font-sans;
     }
 
     body {
@@ -73,7 +84,7 @@
 @layer components {
     .markdown {
         @apply leading-normal text-base antialiased;
-        font-family: 'Source Serif 4', Georgia, serif;
+        @apply font-serif;
     }
 
     img.markdown {
@@ -145,7 +156,7 @@
     h5.markdown,
     h6.markdown {
         @apply scroll-mt-14 break-inside-avoid text-base-heading;
-        font-family: 'Source Serif 4', serif;
+        @apply font-serif;
         letter-spacing: 0.02em;
         /* ensure that table of contents links scroll with room for the header */
     }
