@@ -24,14 +24,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: setup python env
+      - name: install venv + run pipeline
         shell: bash -l {0}
         run: |
           chmod +x utils/setup_env.sh
           . utils/setup_env.sh
+          make build run
 
-      - name: python basics
-        run: make build
-
-      - name: build pipeline
-        run: make run
