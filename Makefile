@@ -1,4 +1,5 @@
 build:
+	uv venv && uv sync
 	cd transform && ../.venv/bin/dbt deps
 	cd evidence && npm install
 	mkdir -p data/data_catalog/raw
