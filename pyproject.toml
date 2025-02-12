@@ -5,9 +5,9 @@ description = "dependencies for the NBA Monte Carlo simulator"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "dbt-duckdb~=1.8.0",
+    "dbt-duckdb~=1.9.0",
     "dlt[filesystem]",
-    "duckdb~=1.1.0",
+    "duckdb~=1.2.0",
     "numpy",
     "pandas",
     "pyarrow",
