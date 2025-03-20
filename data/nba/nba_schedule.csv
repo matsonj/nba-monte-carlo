@@ -886,347 +886,347 @@ id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Ar
 885,reg_season,Fri, Feb 28, 2025,9:00p,New Orleans Pelicans,,Phoenix Suns,,,Footprint Center,,0
 886,reg_season,Fri, Feb 28, 2025,9:30p,Minnesota Timberwolves,,Utah Jazz,,,Delta Center,,0
 887,reg_season,Fri, Feb 28, 2025,10:00p,Los Angeles Clippers,,Los Angeles Lakers,,,Crypto.com Arena,,0
-888,reg_season,Sat, Mar 1, 2025,6:00p,Washington Wizards,,Charlotte Hornets,,,Spectrum Center,,0
-889,reg_season,Sat, Mar 1, 2025,7:00p,Brooklyn Nets,,Detroit Pistons,,,Little Caesars Arena,,0
-890,reg_season,Sat, Mar 1, 2025,8:00p,Sacramento Kings,,Houston Rockets,,,Toyota Center,,0
-891,reg_season,Sat, Mar 1, 2025,8:00p,San Antonio Spurs,,Memphis Grizzlies,,,FedEx Forum,,0
-892,reg_season,Sat, Mar 1, 2025,8:30p,Milwaukee Bucks,,Dallas Mavericks,,,American Airlines Center,,0
-893,reg_season,Sat, Mar 1, 2025,8:30p,Golden State Warriors,,Philadelphia 76ers,,,Wells Fargo Center,,0
-894,reg_season,Sun, Mar 2, 2025,1:00p,Denver Nuggets,,Boston Celtics,,,TD Garden,,0
-895,reg_season,Sun, Mar 2, 2025,3:30p,Portland Trail Blazers,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-896,reg_season,Sun, Mar 2, 2025,5:00p,Chicago Bulls,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-897,reg_season,Sun, Mar 2, 2025,6:00p,New York Knicks,,Miami Heat,,,Kaseya Center,,0
-898,reg_season,Sun, Mar 2, 2025,6:00p,Toronto Raptors,,Orlando Magic,,,Kia Center,,0
-899,reg_season,Sun, Mar 2, 2025,7:00p,Oklahoma City Thunder,,San Antonio Spurs,,,Frost Bank Center,,0
-900,reg_season,Sun, Mar 2, 2025,8:00p,New Orleans Pelicans,,Utah Jazz,,,Delta Center,,0
-901,reg_season,Sun, Mar 2, 2025,9:30p,Los Angeles Clippers,,Los Angeles Lakers,,,Crypto.com Arena,,0
-902,reg_season,Sun, Mar 2, 2025,9:30p,Minnesota Timberwolves,,Phoenix Suns,,,Footprint Center,,0
-903,reg_season,Mon, Mar 3, 2025,7:00p,Golden State Warriors,,Charlotte Hornets,,,Spectrum Center,,0
-904,reg_season,Mon, Mar 3, 2025,7:00p,Portland Trail Blazers,,Philadelphia 76ers,,,Wells Fargo Center,,0
-905,reg_season,Mon, Mar 3, 2025,7:30p,Washington Wizards,,Miami Heat,,,Kaseya Center,,0
-906,reg_season,Mon, Mar 3, 2025,8:00p,Atlanta Hawks,,Memphis Grizzlies,,,FedEx Forum,,0
-907,reg_season,Mon, Mar 3, 2025,8:00p,Houston Rockets,,Oklahoma City Thunder,,,Paycom Center,,0
-908,reg_season,Mon, Mar 3, 2025,8:30p,Sacramento Kings,,Dallas Mavericks,,,American Airlines Center,,0
-909,reg_season,Mon, Mar 3, 2025,9:30p,Detroit Pistons,,Utah Jazz,,,Delta Center,,0
-910,reg_season,Tue, Mar 4, 2025,7:00p,Houston Rockets,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-911,reg_season,Tue, Mar 4, 2025,7:00p,Toronto Raptors,,Orlando Magic,,,Kia Center,,0
-912,reg_season,Tue, Mar 4, 2025,7:30p,Milwaukee Bucks,,Atlanta Hawks,,,State Farm Arena,,0
-913,reg_season,Tue, Mar 4, 2025,7:30p,Golden State Warriors,,New York Knicks,,,Madison Square Garden (IV),,0
-914,reg_season,Tue, Mar 4, 2025,8:00p,Cleveland Cavaliers,,Chicago Bulls,,,United Center,,0
-915,reg_season,Tue, Mar 4, 2025,8:00p,Philadelphia 76ers,,Minnesota Timberwolves,,,Target Center,,0
-916,reg_season,Tue, Mar 4, 2025,8:30p,Brooklyn Nets,,San Antonio Spurs,,,Frost Bank Center,,0
-917,reg_season,Tue, Mar 4, 2025,10:00p,Los Angeles Clippers,,Phoenix Suns,,,Footprint Center,,0
-918,reg_season,Tue, Mar 4, 2025,10:30p,New Orleans Pelicans,,Los Angeles Lakers,,,Crypto.com Arena,,0
-919,reg_season,Wed, Mar 5, 2025,7:00p,Portland Trail Blazers,,Boston Celtics,,,TD Garden,,0
-920,reg_season,Wed, Mar 5, 2025,7:00p,Minnesota Timberwolves,,Charlotte Hornets,,,Spectrum Center,,0
-921,reg_season,Wed, Mar 5, 2025,7:00p,Miami Heat,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-922,reg_season,Wed, Mar 5, 2025,7:00p,Utah Jazz,,Washington Wizards,,,Capital One Arena,,0
-923,reg_season,Wed, Mar 5, 2025,8:00p,Oklahoma City Thunder,,Memphis Grizzlies,,,FedEx Forum,,0
-924,reg_season,Wed, Mar 5, 2025,9:00p,Sacramento Kings,,Denver Nuggets,,,Ball Arena,,0
-925,reg_season,Wed, Mar 5, 2025,9:30p,Dallas Mavericks,,Milwaukee Bucks,,,Fiserv Forum,,0
-926,reg_season,Wed, Mar 5, 2025,10:30p,Detroit Pistons,,Los Angeles Clippers,,,Intuit Dome,,0
-927,reg_season,Thu, Mar 6, 2025,7:30p,Indiana Pacers,,Atlanta Hawks,,,State Farm Arena,,0
-928,reg_season,Thu, Mar 6, 2025,7:30p,Philadelphia 76ers,,Boston Celtics,,,TD Garden,,0
-929,reg_season,Thu, Mar 6, 2025,7:30p,Golden State Warriors,,Brooklyn Nets,,,Barclays Center,,0
-930,reg_season,Thu, Mar 6, 2025,8:00p,Houston Rockets,,New Orleans Pelicans,,,Smoothie King Center,,0
-931,reg_season,Thu, Mar 6, 2025,10:00p,New York Knicks,,Los Angeles Lakers,,,Crypto.com Arena,,0
-932,reg_season,Fri, Mar 7, 2025,7:00p,Cleveland Cavaliers,,Charlotte Hornets,,,Spectrum Center,,0
-933,reg_season,Fri, Mar 7, 2025,7:30p,Memphis Grizzlies,,Dallas Mavericks,,,American Airlines Center,,0
-934,reg_season,Fri, Mar 7, 2025,7:30p,Utah Jazz,,Toronto Raptors,,,Scotiabank Arena,,0
-935,reg_season,Fri, Mar 7, 2025,8:00p,Minnesota Timberwolves,,Miami Heat,,,Kaseya Center,,0
-936,reg_season,Fri, Mar 7, 2025,8:00p,Portland Trail Blazers,,Oklahoma City Thunder,,,Paycom Center,,0
-937,reg_season,Fri, Mar 7, 2025,10:00p,Phoenix Suns,,Denver Nuggets,,,Ball Arena,,0
-938,reg_season,Fri, Mar 7, 2025,10:00p,San Antonio Spurs,,Sacramento Kings,,,Golden 1 Center,,0
-939,reg_season,Fri, Mar 7, 2025,10:30p,New York Knicks,,Los Angeles Clippers,,,Intuit Dome,,0
-940,reg_season,Sat, Mar 8, 2025,6:00p,Brooklyn Nets,,Charlotte Hornets,,,Spectrum Center,,0
-941,reg_season,Sat, Mar 8, 2025,7:00p,New Orleans Pelicans,,Houston Rockets,,,Toyota Center,,0
-942,reg_season,Sat, Mar 8, 2025,7:30p,Indiana Pacers,,Atlanta Hawks,,,State Farm Arena,,0
-943,reg_season,Sat, Mar 8, 2025,7:30p,Washington Wizards,,Toronto Raptors,,,Scotiabank Arena,,0
-944,reg_season,Sat, Mar 8, 2025,8:00p,Chicago Bulls,,Miami Heat,,,Kaseya Center,,0
-945,reg_season,Sat, Mar 8, 2025,8:00p,Orlando Magic,,Milwaukee Bucks,,,Fiserv Forum,,0
-946,reg_season,Sat, Mar 8, 2025,8:30p,Los Angeles Lakers,,Boston Celtics,,,TD Garden,,0
-947,reg_season,Sat, Mar 8, 2025,8:30p,Detroit Pistons,,Golden State Warriors,,,Chase Center,,0
-948,reg_season,Sun, Mar 9, 2025,1:00p,Denver Nuggets,,Oklahoma City Thunder,,,Paycom Center,,0
-949,reg_season,Sun, Mar 9, 2025,3:30p,Phoenix Suns,,Dallas Mavericks,,,American Airlines Center,,0
-950,reg_season,Sun, Mar 9, 2025,7:00p,Memphis Grizzlies,,New Orleans Pelicans,,,Smoothie King Center,,0
-951,reg_season,Sun, Mar 9, 2025,7:30p,Utah Jazz,,Philadelphia 76ers,,,Wells Fargo Center,,0
-952,reg_season,Sun, Mar 9, 2025,8:00p,Cleveland Cavaliers,,Milwaukee Bucks,,,Fiserv Forum,,0
-953,reg_season,Sun, Mar 9, 2025,8:00p,San Antonio Spurs,,Minnesota Timberwolves,,,Target Center,,0
-954,reg_season,Sun, Mar 9, 2025,9:00p,Detroit Pistons,,Portland Trail Blazers,,,Moda Center,,0
-955,reg_season,Sun, Mar 9, 2025,9:30p,Sacramento Kings,,Los Angeles Clippers,,,Intuit Dome,,0
-956,reg_season,Mon, Mar 10, 2025,7:30p,Philadelphia 76ers,,Atlanta Hawks,,,State Farm Arena,,0
-957,reg_season,Mon, Mar 10, 2025,7:30p,Utah Jazz,,Boston Celtics,,,TD Garden,,0
-958,reg_season,Mon, Mar 10, 2025,7:30p,Los Angeles Lakers,,Brooklyn Nets,,,Barclays Center,,0
-959,reg_season,Mon, Mar 10, 2025,7:30p,Charlotte Hornets,,Miami Heat,,,Kaseya Center,,0
-960,reg_season,Mon, Mar 10, 2025,7:30p,Washington Wizards,,Toronto Raptors,,,Scotiabank Arena,,0
-961,reg_season,Mon, Mar 10, 2025,8:00p,Indiana Pacers,,Chicago Bulls,,,United Center,,0
-962,reg_season,Mon, Mar 10, 2025,8:00p,Orlando Magic,,Houston Rockets,,,Toyota Center,,0
-963,reg_season,Mon, Mar 10, 2025,8:00p,Phoenix Suns,,Memphis Grizzlies,,,FedEx Forum,,0
-964,reg_season,Mon, Mar 10, 2025,8:00p,Denver Nuggets,,Oklahoma City Thunder,,,Paycom Center,,0
-965,reg_season,Mon, Mar 10, 2025,8:30p,Dallas Mavericks,,San Antonio Spurs,,,Frost Bank Center,,0
-966,reg_season,Mon, Mar 10, 2025,10:00p,Portland Trail Blazers,,Golden State Warriors,,,Chase Center,,0
-967,reg_season,Mon, Mar 10, 2025,10:30p,New York Knicks,,Sacramento Kings,,,Golden 1 Center,,0
-968,reg_season,Tue, Mar 11, 2025,7:00p,Brooklyn Nets,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-969,reg_season,Tue, Mar 11, 2025,7:00p,Washington Wizards,,Detroit Pistons,,,Little Caesars Arena,,0
-970,reg_season,Tue, Mar 11, 2025,7:00p,Milwaukee Bucks,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-971,reg_season,Tue, Mar 11, 2025,9:30p,Los Angeles Clippers,,New Orleans Pelicans,,,Smoothie King Center,,0
-972,reg_season,Wed, Mar 12, 2025,7:00p,Chicago Bulls,,Orlando Magic,,,Kia Center,,0
-973,reg_season,Wed, Mar 12, 2025,7:30p,Charlotte Hornets,,Atlanta Hawks,,,State Farm Arena,,0
-974,reg_season,Wed, Mar 12, 2025,7:30p,Oklahoma City Thunder,,Boston Celtics,,,TD Garden,,0
-975,reg_season,Wed, Mar 12, 2025,7:30p,Philadelphia 76ers,,Toronto Raptors,,,Scotiabank Arena,,0
-976,reg_season,Wed, Mar 12, 2025,8:00p,Phoenix Suns,,Houston Rockets,,,Toyota Center,,0
-977,reg_season,Wed, Mar 12, 2025,8:00p,Utah Jazz,,Memphis Grizzlies,,,FedEx Forum,,0
-978,reg_season,Wed, Mar 12, 2025,8:00p,Los Angeles Clippers,,Miami Heat,,,Kaseya Center,,0
-979,reg_season,Wed, Mar 12, 2025,8:00p,Dallas Mavericks,,San Antonio Spurs,,,Frost Bank Center,,0
-980,reg_season,Wed, Mar 12, 2025,10:00p,Minnesota Timberwolves,,Denver Nuggets,,,Ball Arena,,0
-981,reg_season,Wed, Mar 12, 2025,10:00p,New York Knicks,,Portland Trail Blazers,,,Moda Center,,0
-982,reg_season,Thu, Mar 13, 2025,7:00p,Washington Wizards,,Detroit Pistons,,,Little Caesars Arena,,0
-983,reg_season,Thu, Mar 13, 2025,7:30p,Los Angeles Lakers,,Milwaukee Bucks,,,Fiserv Forum,,0
-984,reg_season,Thu, Mar 13, 2025,8:00p,Brooklyn Nets,,Chicago Bulls,,,United Center,,0
-985,reg_season,Thu, Mar 13, 2025,10:00p,Sacramento Kings,,Golden State Warriors,,,Chase Center,,0
-986,reg_season,Fri, Mar 14, 2025,7:00p,Boston Celtics,,Miami Heat,,,Kaseya Center,,0
-987,reg_season,Fri, Mar 14, 2025,7:00p,Indiana Pacers,,Philadelphia 76ers,,,Wells Fargo Center,,0
-988,reg_season,Fri, Mar 14, 2025,7:30p,Los Angeles Clippers,,Atlanta Hawks,,,State Farm Arena,,0
-989,reg_season,Fri, Mar 14, 2025,8:00p,Dallas Mavericks,,Houston Rockets,,,Toyota Center,,0
-990,reg_season,Fri, Mar 14, 2025,8:00p,Cleveland Cavaliers,,Memphis Grizzlies,,,FedEx Forum,,0
-991,reg_season,Fri, Mar 14, 2025,8:00p,Orlando Magic,,Minnesota Timberwolves,,,Target Center,,0
-992,reg_season,Fri, Mar 14, 2025,8:00p,Charlotte Hornets,,San Antonio Spurs,,,Frost Bank Center,,0
-993,reg_season,Fri, Mar 14, 2025,9:30p,Los Angeles Lakers,,Denver Nuggets,,,Ball Arena,,0
-994,reg_season,Fri, Mar 14, 2025,9:30p,Toronto Raptors,,Utah Jazz,,,Delta Center,,0
-995,reg_season,Fri, Mar 14, 2025,10:00p,Sacramento Kings,,Phoenix Suns,,,Footprint Center,,0
-996,reg_season,Sat, Mar 15, 2025,6:00p,Boston Celtics,,Brooklyn Nets,,,Barclays Center,,0
-997,reg_season,Sat, Mar 15, 2025,7:00p,Oklahoma City Thunder,,Detroit Pistons,,,Little Caesars Arena,,0
-998,reg_season,Sat, Mar 15, 2025,8:00p,Chicago Bulls,,Houston Rockets,,,Toyota Center,,0
-999,reg_season,Sat, Mar 15, 2025,8:00p,Miami Heat,,Memphis Grizzlies,,,FedEx Forum,,0
-1000,reg_season,Sat, Mar 15, 2025,8:00p,Indiana Pacers,,Milwaukee Bucks,,,Fiserv Forum,,0
-1001,reg_season,Sat, Mar 15, 2025,8:30p,New York Knicks,,Golden State Warriors,,,Chase Center,,0
-1002,reg_season,Sat, Mar 15, 2025,8:30p,New Orleans Pelicans,,San Antonio Spurs,,,Frost Bank Center,,0
-1003,reg_season,Sat, Mar 15, 2025,9:00p,Washington Wizards,,Denver Nuggets,,,Ball Arena,,0
-1004,reg_season,Sun, Mar 16, 2025,1:00p,Philadelphia 76ers,,Dallas Mavericks,,,American Airlines Center,,0
-1005,reg_season,Sun, Mar 16, 2025,3:30p,Phoenix Suns,,Los Angeles Lakers,,,Crypto.com Arena,,0
-1006,reg_season,Sun, Mar 16, 2025,6:00p,Atlanta Hawks,,Brooklyn Nets,,,Barclays Center,,0
-1007,reg_season,Sun, Mar 16, 2025,6:00p,Orlando Magic,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-1008,reg_season,Sun, Mar 16, 2025,6:00p,Toronto Raptors,,Portland Trail Blazers,,,Moda Center,,0
-1009,reg_season,Sun, Mar 16, 2025,7:00p,Charlotte Hornets,,Los Angeles Clippers,,,Intuit Dome,,0
-1010,reg_season,Sun, Mar 16, 2025,7:00p,Utah Jazz,,Minnesota Timberwolves,,,Target Center,,0
-1011,reg_season,Sun, Mar 16, 2025,9:00p,Oklahoma City Thunder,,Milwaukee Bucks,,,Fiserv Forum,,0
-1012,reg_season,Mon, Mar 17, 2025,7:30p,Miami Heat,,New York Knicks,,,Madison Square Garden (IV),,0
-1013,reg_season,Mon, Mar 17, 2025,8:00p,Philadelphia 76ers,,Houston Rockets,,,Toyota Center,,0
-1014,reg_season,Mon, Mar 17, 2025,8:00p,Indiana Pacers,,Minnesota Timberwolves,,,Target Center,,0
-1015,reg_season,Mon, Mar 17, 2025,8:00p,Detroit Pistons,,New Orleans Pelicans,,,Smoothie King Center,,0
-1016,reg_season,Mon, Mar 17, 2025,8:00p,Orlando Magic,,San Antonio Spurs,,,Frost Bank Center,,0
-1017,reg_season,Mon, Mar 17, 2025,9:00p,Chicago Bulls,,Utah Jazz,,,Delta Center,,0
-1018,reg_season,Mon, Mar 17, 2025,10:00p,Denver Nuggets,,Golden State Warriors,,,Chase Center,,0
-1019,reg_season,Mon, Mar 17, 2025,10:00p,Toronto Raptors,,Phoenix Suns,,,Footprint Center,,0
-1020,reg_season,Mon, Mar 17, 2025,10:00p,Washington Wizards,,Portland Trail Blazers,,,Moda Center,,0
-1021,reg_season,Mon, Mar 17, 2025,10:00p,Memphis Grizzlies,,Sacramento Kings,,,Golden 1 Center,,0
-1022,reg_season,Tue, Mar 18, 2025,7:00p,Atlanta Hawks,,Charlotte Hornets,,,Spectrum Center,,0
-1023,reg_season,Tue, Mar 18, 2025,7:30p,Brooklyn Nets,,Boston Celtics,,,TD Garden,,0
-1024,reg_season,Tue, Mar 18, 2025,10:30p,Cleveland Cavaliers,,Los Angeles Clippers,,,Intuit Dome,,0
-1025,reg_season,Tue, Mar 18, 2025,10:30p,Milwaukee Bucks,,Los Angeles Lakers,,,Crypto.com Arena,,0
-1026,reg_season,Wed, Mar 19, 2025,7:00p,Dallas Mavericks,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1027,reg_season,Wed, Mar 19, 2025,7:00p,Houston Rockets,,Orlando Magic,,,Kia Center,,0
-1028,reg_season,Wed, Mar 19, 2025,7:30p,Detroit Pistons,,Miami Heat,,,Kaseya Center,,0
-1029,reg_season,Wed, Mar 19, 2025,7:30p,New Orleans Pelicans,,Minnesota Timberwolves,,,Target Center,,0
-1030,reg_season,Wed, Mar 19, 2025,8:00p,Philadelphia 76ers,,Oklahoma City Thunder,,,Paycom Center,,0
-1031,reg_season,Wed, Mar 19, 2025,8:00p,New York Knicks,,San Antonio Spurs,,,Frost Bank Center,,0
-1032,reg_season,Wed, Mar 19, 2025,9:00p,Washington Wizards,,Utah Jazz,,,Delta Center,,0
-1033,reg_season,Wed, Mar 19, 2025,10:00p,Toronto Raptors,,Golden State Warriors,,,Chase Center,,0
-1034,reg_season,Wed, Mar 19, 2025,10:00p,Denver Nuggets,,Los Angeles Lakers,,,Crypto.com Arena,,0
-1035,reg_season,Wed, Mar 19, 2025,10:00p,Chicago Bulls,,Phoenix Suns,,,Footprint Center,,0
-1036,reg_season,Wed, Mar 19, 2025,10:00p,Memphis Grizzlies,,Portland Trail Blazers,,,Moda Center,,0
-1037,reg_season,Wed, Mar 19, 2025,10:00p,Cleveland Cavaliers,,Sacramento Kings,,,Golden 1 Center,,0
+888,reg_season,Sat, Mar 1, 2025,6:00p,Washington Wizards,113,Charlotte Hornets,100,,Spectrum Center,,0
+889,reg_season,Sat, Mar 1, 2025,7:00p,Brooklyn Nets,94,Detroit Pistons,115,,Little Caesars Arena,,0
+890,reg_season,Sat, Mar 1, 2025,8:00p,Sacramento Kings,113,Houston Rockets,103,,Toyota Center,,0
+891,reg_season,Sat, Mar 1, 2025,8:00p,San Antonio Spurs,130,Memphis Grizzlies,128,,FedEx Forum,,0
+892,reg_season,Sat, Mar 1, 2025,8:30p,Milwaukee Bucks,132,Dallas Mavericks,117,,American Airlines Center,,0
+893,reg_season,Sat, Mar 1, 2025,8:30p,Golden State Warriors,119,Philadelphia 76ers,126,,Wells Fargo Center,,0
+894,reg_season,Sun, Mar 2, 2025,1:00p,Denver Nuggets,103,Boston Celtics,110,,TD Garden,,0
+895,reg_season,Sun, Mar 2, 2025,3:30p,Portland Trail Blazers,129,Cleveland Cavaliers,133,,Rocket Arena,,0
+896,reg_season,Sun, Mar 2, 2025,5:00p,Chicago Bulls,112,Indiana Pacers,127,,Gainbridge Fieldhouse,,0
+897,reg_season,Sun, Mar 2, 2025,6:00p,New York Knicks,116,Miami Heat,112,,Kaseya Center,,0
+898,reg_season,Sun, Mar 2, 2025,6:00p,Toronto Raptors,104,Orlando Magic,102,,Kia Center,,0
+899,reg_season,Sun, Mar 2, 2025,7:00p,Oklahoma City Thunder,146,San Antonio Spurs,132,,Frost Bank Center,,0
+900,reg_season,Sun, Mar 2, 2025,8:00p,New Orleans Pelicans,128,Utah Jazz,121,,Delta Center,,0
+901,reg_season,Sun, Mar 2, 2025,9:30p,Los Angeles Clippers,102,Los Angeles Lakers,108,,Crypto.com Arena,,0
+902,reg_season,Sun, Mar 2, 2025,9:30p,Minnesota Timberwolves,116,Phoenix Suns,98,,Footprint Center,,0
+903,reg_season,Mon, Mar 3, 2025,7:00p,Golden State Warriors,119,Charlotte Hornets,101,,Spectrum Center,,0
+904,reg_season,Mon, Mar 3, 2025,7:00p,Portland Trail Blazers,119,Philadelphia 76ers,102,,Wells Fargo Center,,0
+905,reg_season,Mon, Mar 3, 2025,7:30p,Washington Wizards,90,Miami Heat,106,,Kaseya Center,,0
+906,reg_season,Mon, Mar 3, 2025,8:00p,Atlanta Hawks,132,Memphis Grizzlies,130,,FedEx Forum,,0
+907,reg_season,Mon, Mar 3, 2025,8:00p,Houston Rockets,128,Oklahoma City Thunder,137,,Paycom Center,,0
+908,reg_season,Mon, Mar 3, 2025,8:30p,Sacramento Kings,122,Dallas Mavericks,98,,American Airlines Center,,0
+909,reg_season,Mon, Mar 3, 2025,9:00p,Detroit Pistons,134,Utah Jazz,106,,Delta Center,,0
+910,reg_season,Tue, Mar 4, 2025,7:00p,Houston Rockets,102,Indiana Pacers,115,,Gainbridge Fieldhouse,,0
+911,reg_season,Tue, Mar 4, 2025,7:00p,Toronto Raptors,114,Orlando Magic,113,,Kia Center,,0
+912,reg_season,Tue, Mar 4, 2025,7:30p,Milwaukee Bucks,127,Atlanta Hawks,121,,State Farm Arena,,0
+913,reg_season,Tue, Mar 4, 2025,7:30p,Golden State Warriors,114,New York Knicks,102,,Madison Square Garden (IV),,0
+914,reg_season,Tue, Mar 4, 2025,8:00p,Cleveland Cavaliers,139,Chicago Bulls,117,,United Center,,0
+915,reg_season,Tue, Mar 4, 2025,8:00p,Philadelphia 76ers,112,Minnesota Timberwolves,126,,Target Center,,0
+916,reg_season,Tue, Mar 4, 2025,8:30p,Brooklyn Nets,113,San Antonio Spurs,127,,Frost Bank Center,,0
+917,reg_season,Tue, Mar 4, 2025,10:00p,Los Angeles Clippers,117,Phoenix Suns,119,,Footprint Center,,0
+918,reg_season,Tue, Mar 4, 2025,10:30p,New Orleans Pelicans,115,Los Angeles Lakers,136,,Crypto.com Arena,,0
+919,reg_season,Wed, Mar 5, 2025,7:00p,Portland Trail Blazers,118,Boston Celtics,128,,TD Garden,,0
+920,reg_season,Wed, Mar 5, 2025,7:00p,Minnesota Timberwolves,125,Charlotte Hornets,110,,Spectrum Center,,0
+921,reg_season,Wed, Mar 5, 2025,7:00p,Miami Heat,107,Cleveland Cavaliers,112,,Rocket Arena,,0
+922,reg_season,Wed, Mar 5, 2025,7:00p,Utah Jazz,122,Washington Wizards,125,,Capital One Arena,,0
+923,reg_season,Wed, Mar 5, 2025,8:00p,Dallas Mavericks,107,Milwaukee Bucks,137,,Fiserv Forum,,0
+924,reg_season,Wed, Mar 5, 2025,9:00p,Sacramento Kings,110,Denver Nuggets,116,,Ball Arena,,0
+925,reg_season,Wed, Mar 5, 2025,9:30p,Oklahoma City Thunder,120,Memphis Grizzlies,103,,FedEx Forum,,0
+926,reg_season,Wed, Mar 5, 2025,10:30p,Detroit Pistons,115,Los Angeles Clippers,123,,Intuit Dome,,0
+927,reg_season,Thu, Mar 6, 2025,7:00p,Chicago Bulls,125,Orlando Magic,123,,Kia Center,,0
+928,reg_season,Thu, Mar 6, 2025,7:30p,Indiana Pacers,118,Atlanta Hawks,124,,State Farm Arena,,0
+929,reg_season,Thu, Mar 6, 2025,7:30p,Philadelphia 76ers,105,Boston Celtics,123,,TD Garden,,0
+930,reg_season,Thu, Mar 6, 2025,7:30p,Golden State Warriors,121,Brooklyn Nets,119,,Barclays Center,,0
+931,reg_season,Thu, Mar 6, 2025,8:00p,Houston Rockets,109,New Orleans Pelicans,97,,Smoothie King Center,,0
+932,reg_season,Thu, Mar 6, 2025,10:00p,New York Knicks,109,Los Angeles Lakers,113,,Crypto.com Arena,,0
+933,reg_season,Fri, Mar 7, 2025,7:00p,Cleveland Cavaliers,118,Charlotte Hornets,117,,Spectrum Center,,0
+934,reg_season,Fri, Mar 7, 2025,7:30p,Memphis Grizzlies,122,Dallas Mavericks,111,,American Airlines Center,,0
+935,reg_season,Fri, Mar 7, 2025,7:30p,Utah Jazz,109,Toronto Raptors,118,,Scotiabank Arena,,0
+936,reg_season,Fri, Mar 7, 2025,8:00p,Minnesota Timberwolves,106,Miami Heat,104,,Kaseya Center,,0
+937,reg_season,Fri, Mar 7, 2025,8:00p,Portland Trail Blazers,89,Oklahoma City Thunder,107,,Paycom Center,,0
+938,reg_season,Fri, Mar 7, 2025,10:00p,Phoenix Suns,141,Denver Nuggets,149,,Ball Arena,,0
+939,reg_season,Fri, Mar 7, 2025,10:00p,San Antonio Spurs,109,Sacramento Kings,127,,Golden 1 Center,,0
+940,reg_season,Fri, Mar 7, 2025,10:30p,New York Knicks,95,Los Angeles Clippers,105,,Intuit Dome,,0
+941,reg_season,Sat, Mar 8, 2025,6:00p,Brooklyn Nets,102,Charlotte Hornets,105,,Spectrum Center,,0
+942,reg_season,Sat, Mar 8, 2025,7:00p,New Orleans Pelicans,117,Houston Rockets,146,,Toyota Center,,0
+943,reg_season,Sat, Mar 8, 2025,7:30p,Indiana Pacers,118,Atlanta Hawks,120,,State Farm Arena,,0
+944,reg_season,Sat, Mar 8, 2025,7:30p,Washington Wizards,118,Toronto Raptors,117,,Scotiabank Arena,,0
+945,reg_season,Sat, Mar 8, 2025,8:00p,Chicago Bulls,114,Miami Heat,109,,Kaseya Center,,0
+946,reg_season,Sat, Mar 8, 2025,8:00p,Orlando Magic,111,Milwaukee Bucks,109,,Fiserv Forum,,0
+947,reg_season,Sat, Mar 8, 2025,8:30p,Los Angeles Lakers,101,Boston Celtics,111,,TD Garden,,0
+948,reg_season,Sat, Mar 8, 2025,8:30p,Detroit Pistons,110,Golden State Warriors,115,,Chase Center,,0
+949,reg_season,Sun, Mar 9, 2025,1:00p,Denver Nuggets,103,Oklahoma City Thunder,127,,Paycom Center,,0
+950,reg_season,Sun, Mar 9, 2025,3:30p,Phoenix Suns,125,Dallas Mavericks,116,,American Airlines Center,,0
+951,reg_season,Sun, Mar 9, 2025,7:00p,Memphis Grizzlies,107,New Orleans Pelicans,104,,Smoothie King Center,,0
+952,reg_season,Sun, Mar 9, 2025,7:30p,Utah Jazz,122,Philadelphia 76ers,126,,Wells Fargo Center,,0
+953,reg_season,Sun, Mar 9, 2025,8:00p,Cleveland Cavaliers,112,Milwaukee Bucks,100,,Fiserv Forum,,0
+954,reg_season,Sun, Mar 9, 2025,8:00p,San Antonio Spurs,124,Minnesota Timberwolves,141,,Target Center,,0
+955,reg_season,Sun, Mar 9, 2025,9:00p,Detroit Pistons,119,Portland Trail Blazers,112,,Moda Center,,0
+956,reg_season,Sun, Mar 9, 2025,9:30p,Sacramento Kings,110,Los Angeles Clippers,111,,Intuit Dome,,0
+957,reg_season,Mon, Mar 10, 2025,7:30p,Philadelphia 76ers,123,Atlanta Hawks,132,,State Farm Arena,,0
+958,reg_season,Mon, Mar 10, 2025,7:30p,Utah Jazz,108,Boston Celtics,114,,TD Garden,,0
+959,reg_season,Mon, Mar 10, 2025,7:30p,Los Angeles Lakers,108,Brooklyn Nets,111,,Barclays Center,,0
+960,reg_season,Mon, Mar 10, 2025,7:30p,Charlotte Hornets,105,Miami Heat,102,,Kaseya Center,,0
+961,reg_season,Mon, Mar 10, 2025,7:30p,Washington Wizards,104,Toronto Raptors,119,,Scotiabank Arena,,0
+962,reg_season,Mon, Mar 10, 2025,8:00p,Indiana Pacers,103,Chicago Bulls,121,,United Center,,0
+963,reg_season,Mon, Mar 10, 2025,8:00p,Orlando Magic,84,Houston Rockets,97,,Toyota Center,,0
+964,reg_season,Mon, Mar 10, 2025,8:00p,Phoenix Suns,118,Memphis Grizzlies,120,,FedEx Forum,,0
+965,reg_season,Mon, Mar 10, 2025,8:00p,Denver Nuggets,140,Oklahoma City Thunder,127,,Paycom Center,,0
+966,reg_season,Mon, Mar 10, 2025,8:30p,Dallas Mavericks,133,San Antonio Spurs,129,,Frost Bank Center,,0
+967,reg_season,Mon, Mar 10, 2025,10:00p,Portland Trail Blazers,120,Golden State Warriors,130,,Chase Center,,0
+968,reg_season,Mon, Mar 10, 2025,10:30p,New York Knicks,133,Sacramento Kings,104,,Golden 1 Center,,0
+969,reg_season,Tue, Mar 11, 2025,7:00p,Brooklyn Nets,104,Cleveland Cavaliers,109,,Rocket Arena,,0
+970,reg_season,Tue, Mar 11, 2025,7:00p,Washington Wizards,103,Detroit Pistons,123,,Little Caesars Arena,,0
+971,reg_season,Tue, Mar 11, 2025,7:30p,Milwaukee Bucks,114,Indiana Pacers,115,,Gainbridge Fieldhouse,,0
+972,reg_season,Tue, Mar 11, 2025,8:00p,Los Angeles Clippers,120,New Orleans Pelicans,127,,Smoothie King Center,,0
+973,reg_season,Wed, Mar 12, 2025,7:30p,Charlotte Hornets,110,Atlanta Hawks,123,,State Farm Arena,,0
+974,reg_season,Wed, Mar 12, 2025,7:30p,Oklahoma City Thunder,118,Boston Celtics,112,,TD Garden,,0
+975,reg_season,Wed, Mar 12, 2025,7:30p,Philadelphia 76ers,105,Toronto Raptors,118,,Scotiabank Arena,,0
+976,reg_season,Wed, Mar 12, 2025,8:00p,Phoenix Suns,104,Houston Rockets,111,,Toyota Center,,0
+977,reg_season,Wed, Mar 12, 2025,8:00p,Utah Jazz,115,Memphis Grizzlies,122,,FedEx Forum,,0
+978,reg_season,Wed, Mar 12, 2025,8:00p,Los Angeles Clippers,119,Miami Heat,104,,Kaseya Center,,0
+979,reg_season,Wed, Mar 12, 2025,8:00p,Dallas Mavericks,116,San Antonio Spurs,126,,Frost Bank Center,,0
+980,reg_season,Wed, Mar 12, 2025,10:00p,Minnesota Timberwolves,115,Denver Nuggets,95,,Ball Arena,,0
+981,reg_season,Wed, Mar 12, 2025,10:00p,New York Knicks,114,Portland Trail Blazers,113,,Moda Center,,0
+982,reg_season,Thu, Mar 13, 2025,7:00p,Washington Wizards,129,Detroit Pistons,125,,Little Caesars Arena,,0
+983,reg_season,Thu, Mar 13, 2025,7:30p,Los Angeles Lakers,106,Milwaukee Bucks,126,,Fiserv Forum,,0
+984,reg_season,Thu, Mar 13, 2025,8:00p,Brooklyn Nets,110,Chicago Bulls,116,,United Center,,0
+985,reg_season,Thu, Mar 13, 2025,8:00p,Orlando Magic,113,New Orleans Pelicans,93,,Smoothie King Center,,0
+986,reg_season,Thu, Mar 13, 2025,10:00p,Sacramento Kings,104,Golden State Warriors,130,,Chase Center,,0
+987,reg_season,Fri, Mar 14, 2025,7:00p,Boston Celtics,103,Miami Heat,91,,Kaseya Center,,0
+988,reg_season,Fri, Mar 14, 2025,7:00p,Indiana Pacers,112,Philadelphia 76ers,100,,Wells Fargo Center,,0
+989,reg_season,Fri, Mar 14, 2025,7:30p,Los Angeles Clippers,121,Atlanta Hawks,98,,State Farm Arena,,0
+990,reg_season,Fri, Mar 14, 2025,8:00p,Dallas Mavericks,96,Houston Rockets,133,,Toyota Center,,0
+991,reg_season,Fri, Mar 14, 2025,8:00p,Cleveland Cavaliers,133,Memphis Grizzlies,124,,FedEx Forum,,0
+992,reg_season,Fri, Mar 14, 2025,8:00p,Orlando Magic,111,Minnesota Timberwolves,118,,Target Center,,0
+993,reg_season,Fri, Mar 14, 2025,8:00p,Charlotte Hornets,145,San Antonio Spurs,134,,Frost Bank Center,,0
+994,reg_season,Fri, Mar 14, 2025,9:30p,Los Angeles Lakers,126,Denver Nuggets,131,,Ball Arena,,0
+995,reg_season,Fri, Mar 14, 2025,9:30p,Toronto Raptors,126,Utah Jazz,118,,Delta Center,,0
+996,reg_season,Fri, Mar 14, 2025,10:00p,Sacramento Kings,106,Phoenix Suns,122,,Footprint Center,,0
+997,reg_season,Sat, Mar 15, 2025,6:00p,Boston Celtics,115,Brooklyn Nets,113,,Barclays Center,,0
+998,reg_season,Sat, Mar 15, 2025,7:00p,Oklahoma City Thunder,113,Detroit Pistons,107,,Little Caesars Arena,,0
+999,reg_season,Sat, Mar 15, 2025,8:00p,Chicago Bulls,114,Houston Rockets,117,,Toyota Center,,0
+1000,reg_season,Sat, Mar 15, 2025,8:00p,Miami Heat,91,Memphis Grizzlies,125,,FedEx Forum,,0
+1001,reg_season,Sat, Mar 15, 2025,8:00p,Indiana Pacers,119,Milwaukee Bucks,126,,Fiserv Forum,,0
+1002,reg_season,Sat, Mar 15, 2025,8:30p,New York Knicks,94,Golden State Warriors,97,,Chase Center,,0
+1003,reg_season,Sat, Mar 15, 2025,8:30p,New Orleans Pelicans,115,San Antonio Spurs,119,,Frost Bank Center,,0
+1004,reg_season,Sat, Mar 15, 2025,9:00p,Washington Wizards,126,Denver Nuggets,123,,Ball Arena,,0
+1005,reg_season,Sun, Mar 16, 2025,1:00p,Orlando Magic,108,Cleveland Cavaliers,103,,Rocket Arena,,0
+1006,reg_season,Sun, Mar 16, 2025,1:00p,Philadelphia 76ers,130,Dallas Mavericks,125,,American Airlines Center,,0
+1007,reg_season,Sun, Mar 16, 2025,3:30p,Phoenix Suns,96,Los Angeles Lakers,107,,Crypto.com Arena,,0
+1008,reg_season,Sun, Mar 16, 2025,6:00p,Atlanta Hawks,114,Brooklyn Nets,122,,Barclays Center,,0
+1009,reg_season,Sun, Mar 16, 2025,6:00p,Toronto Raptors,102,Portland Trail Blazers,105,,Moda Center,,0
+1010,reg_season,Sun, Mar 16, 2025,7:00p,Charlotte Hornets,88,Los Angeles Clippers,123,,Intuit Dome,,0
+1011,reg_season,Sun, Mar 16, 2025,7:00p,Utah Jazz,102,Minnesota Timberwolves,128,,Target Center,,0
+1012,reg_season,Sun, Mar 16, 2025,9:00p,Oklahoma City Thunder,121,Milwaukee Bucks,105,,Fiserv Forum,,0
+1013,reg_season,Mon, Mar 17, 2025,7:30p,Miami Heat,95,New York Knicks,116,,Madison Square Garden (IV),,0
+1014,reg_season,Mon, Mar 17, 2025,8:00p,Philadelphia 76ers,137,Houston Rockets,144,,Toyota Center,,0
+1015,reg_season,Mon, Mar 17, 2025,8:00p,Indiana Pacers,132,Minnesota Timberwolves,130,,Target Center,,0
+1016,reg_season,Mon, Mar 17, 2025,8:00p,Detroit Pistons,127,New Orleans Pelicans,81,,Smoothie King Center,,0
+1017,reg_season,Mon, Mar 17, 2025,9:00p,Chicago Bulls,111,Utah Jazz,97,,Delta Center,,0
+1018,reg_season,Mon, Mar 17, 2025,10:00p,Denver Nuggets,114,Golden State Warriors,105,,Chase Center,,0
+1019,reg_season,Mon, Mar 17, 2025,10:00p,Toronto Raptors,89,Phoenix Suns,129,,Footprint Center,,0
+1020,reg_season,Mon, Mar 17, 2025,10:00p,Washington Wizards,97,Portland Trail Blazers,112,,Moda Center,,0
+1021,reg_season,Mon, Mar 17, 2025,10:00p,Memphis Grizzlies,122,Sacramento Kings,132,,Golden 1 Center,,0
+1022,reg_season,Mon, Mar 17, 2025,10:30p,San Antonio Spurs,109,Los Angeles Lakers,125,,Crypto.com Arena,,0
+1023,reg_season,Tue, Mar 18, 2025,7:00p,Atlanta Hawks,134,Charlotte Hornets,102,,Spectrum Center,,0
+1024,reg_season,Tue, Mar 18, 2025,7:30p,Brooklyn Nets,96,Boston Celtics,104,,TD Garden,,0
+1025,reg_season,Tue, Mar 18, 2025,10:00p,Milwaukee Bucks,93,Golden State Warriors,104,,Chase Center,,0
+1026,reg_season,Tue, Mar 18, 2025,10:30p,Cleveland Cavaliers,119,Los Angeles Clippers,132,,Intuit Dome,,0
+1027,reg_season,Wed, Mar 19, 2025,7:00p,Dallas Mavericks,131,Indiana Pacers,135,,Gainbridge Fieldhouse,,0
+1028,reg_season,Wed, Mar 19, 2025,7:00p,Houston Rockets,116,Orlando Magic,108,,Kia Center,,0
+1029,reg_season,Wed, Mar 19, 2025,7:30p,Detroit Pistons,116,Miami Heat,113,,Kaseya Center,,0
+1030,reg_season,Wed, Mar 19, 2025,8:00p,New Orleans Pelicans,119,Minnesota Timberwolves,115,,Target Center,,0
+1031,reg_season,Wed, Mar 19, 2025,8:00p,Philadelphia 76ers,100,Oklahoma City Thunder,133,,Paycom Center,,0
+1032,reg_season,Wed, Mar 19, 2025,8:00p,New York Knicks,105,San Antonio Spurs,120,,Frost Bank Center,,0
+1033,reg_season,Wed, Mar 19, 2025,9:00p,Washington Wizards,112,Utah Jazz,128,,Delta Center,,0
+1034,reg_season,Wed, Mar 19, 2025,10:00p,Denver Nuggets,108,Los Angeles Lakers,120,,Crypto.com Arena,,0
+1035,reg_season,Wed, Mar 19, 2025,10:00p,Chicago Bulls,121,Phoenix Suns,127,,Footprint Center,,0
+1036,reg_season,Wed, Mar 19, 2025,10:00p,Memphis Grizzlies,99,Portland Trail Blazers,115,,Moda Center,,0
+1037,reg_season,Wed, Mar 19, 2025,10:00p,Cleveland Cavaliers,119,Sacramento Kings,123,,Golden 1 Center,,0
 1038,reg_season,Thu, Mar 20, 2025,7:00p,New York Knicks,,Charlotte Hornets,,,Spectrum Center,,0
 1039,reg_season,Thu, Mar 20, 2025,7:00p,Brooklyn Nets,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1040,reg_season,Thu, Mar 20, 2025,10:00p,Milwaukee Bucks,,Golden State Warriors,,,Chase Center,,0
+1040,reg_season,Thu, Mar 20, 2025,10:00p,Toronto Raptors,,Golden State Warriors,,,Chase Center,,0
 1041,reg_season,Thu, Mar 20, 2025,10:00p,Chicago Bulls,,Sacramento Kings,,,Golden 1 Center,,0
-1042,reg_season,Fri, Mar 21, 2025,7:00p,Orlando Magic,,Washington Wizards,,,Capital One Arena,,0
-1043,reg_season,Fri, Mar 21, 2025,8:00p,Houston Rockets,,Miami Heat,,,Kaseya Center,,0
-1044,reg_season,Fri, Mar 21, 2025,8:00p,New Orleans Pelicans,,Minnesota Timberwolves,,,Target Center,,0
-1045,reg_season,Fri, Mar 21, 2025,8:00p,Charlotte Hornets,,Oklahoma City Thunder,,,Paycom Center,,0
-1046,reg_season,Fri, Mar 21, 2025,8:00p,Philadelphia 76ers,,San Antonio Spurs,,,Frost Bank Center,,0
-1047,reg_season,Fri, Mar 21, 2025,8:30p,Detroit Pistons,,Dallas Mavericks,,,American Airlines Center,,0
-1048,reg_season,Fri, Mar 21, 2025,9:30p,Boston Celtics,,Utah Jazz,,,Delta Center,,0
-1049,reg_season,Fri, Mar 21, 2025,10:00p,Cleveland Cavaliers,,Phoenix Suns,,,Footprint Center,,0
-1050,reg_season,Fri, Mar 21, 2025,10:00p,Denver Nuggets,,Portland Trail Blazers,,,Moda Center,,0
-1051,reg_season,Fri, Mar 21, 2025,10:30p,Memphis Grizzlies,,Los Angeles Clippers,,,Intuit Dome,,0
-1052,reg_season,Sat, Mar 22, 2025,5:00p,Brooklyn Nets,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1053,reg_season,Sat, Mar 22, 2025,7:00p,Golden State Warriors,,Atlanta Hawks,,,State Farm Arena,,0
-1054,reg_season,Sat, Mar 22, 2025,8:00p,Washington Wizards,,New York Knicks,,,Madison Square Garden (IV),,0
-1055,reg_season,Sat, Mar 22, 2025,10:00p,Milwaukee Bucks,,Sacramento Kings,,,Golden 1 Center,,0
-1056,reg_season,Sat, Mar 22, 2025,10:30p,Chicago Bulls,,Los Angeles Lakers,,,Crypto.com Arena,,0
-1057,reg_season,Sun, Mar 23, 2025,3:00p,New Orleans Pelicans,,Detroit Pistons,,,Little Caesars Arena,,0
-1058,reg_season,Sun, Mar 23, 2025,3:30p,Cleveland Cavaliers,,Utah Jazz,,,Delta Center,,0
-1059,reg_season,Sun, Mar 23, 2025,6:00p,Philadelphia 76ers,,Atlanta Hawks,,,State Farm Arena,,0
-1060,reg_season,Sun, Mar 23, 2025,6:00p,Charlotte Hornets,,Miami Heat,,,Kaseya Center,,0
-1061,reg_season,Sun, Mar 23, 2025,6:00p,Boston Celtics,,Portland Trail Blazers,,,Moda Center,,0
-1062,reg_season,Sun, Mar 23, 2025,6:00p,San Antonio Spurs,,Toronto Raptors,,,Scotiabank Arena,,0
-1063,reg_season,Sun, Mar 23, 2025,7:00p,Denver Nuggets,,Houston Rockets,,,Toyota Center,,0
-1064,reg_season,Sun, Mar 23, 2025,9:00p,Oklahoma City Thunder,,Los Angeles Clippers,,,Intuit Dome,,0
-1065,reg_season,Mon, Mar 24, 2025,7:00p,Minnesota Timberwolves,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1066,reg_season,Mon, Mar 24, 2025,7:00p,Los Angeles Lakers,,Orlando Magic,,,Kia Center,,0
-1067,reg_season,Mon, Mar 24, 2025,7:00p,Toronto Raptors,,Washington Wizards,,,Capital One Arena,,0
-1068,reg_season,Mon, Mar 24, 2025,7:30p,Dallas Mavericks,,Brooklyn Nets,,,Barclays Center,,0
-1069,reg_season,Mon, Mar 24, 2025,8:00p,Philadelphia 76ers,,New Orleans Pelicans,,,Smoothie King Center,,0
-1070,reg_season,Mon, Mar 24, 2025,9:00p,Chicago Bulls,,Denver Nuggets,,,Ball Arena,,0
-1071,reg_season,Mon, Mar 24, 2025,10:00p,Milwaukee Bucks,,Phoenix Suns,,,Footprint Center,,0
-1072,reg_season,Mon, Mar 24, 2025,10:00p,Boston Celtics,,Sacramento Kings,,,Golden 1 Center,,0
-1073,reg_season,Tue, Mar 25, 2025,7:00p,Orlando Magic,,Charlotte Hornets,,,Spectrum Center,,0
-1074,reg_season,Tue, Mar 25, 2025,7:00p,San Antonio Spurs,,Detroit Pistons,,,Little Caesars Arena,,0
-1075,reg_season,Tue, Mar 25, 2025,7:30p,Golden State Warriors,,Miami Heat,,,Kaseya Center,,0
-1076,reg_season,Tue, Mar 25, 2025,7:30p,Dallas Mavericks,,New York Knicks,,,Madison Square Garden (IV),,0
-1077,reg_season,Tue, Mar 25, 2025,8:00p,Atlanta Hawks,,Houston Rockets,,,Toyota Center,,0
-1078,reg_season,Tue, Mar 25, 2025,9:00p,Memphis Grizzlies,,Utah Jazz,,,Delta Center,,0
-1079,reg_season,Tue, Mar 25, 2025,10:00p,Cleveland Cavaliers,,Portland Trail Blazers,,,Moda Center,,0
-1080,reg_season,Tue, Mar 25, 2025,10:00p,Oklahoma City Thunder,,Sacramento Kings,,,Golden 1 Center,,0
-1081,reg_season,Wed, Mar 26, 2025,7:00p,Washington Wizards,,Philadelphia 76ers,,,Wells Fargo Center,,0
-1082,reg_season,Wed, Mar 26, 2025,7:30p,Toronto Raptors,,Brooklyn Nets,,,Barclays Center,,0
-1083,reg_season,Wed, Mar 26, 2025,7:30p,Los Angeles Lakers,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1084,reg_season,Wed, Mar 26, 2025,7:30p,Los Angeles Clippers,,New York Knicks,,,Madison Square Garden (IV),,0
-1085,reg_season,Wed, Mar 26, 2025,9:00p,Milwaukee Bucks,,Denver Nuggets,,,Ball Arena,,0
-1086,reg_season,Wed, Mar 26, 2025,10:00p,Boston Celtics,,Phoenix Suns,,,Footprint Center,,0
-1087,reg_season,Thu, Mar 27, 2025,7:00p,San Antonio Spurs,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-1088,reg_season,Thu, Mar 27, 2025,7:00p,Dallas Mavericks,,Orlando Magic,,,Kia Center,,0
-1089,reg_season,Thu, Mar 27, 2025,7:00p,Indiana Pacers,,Washington Wizards,,,Capital One Arena,,0
-1090,reg_season,Thu, Mar 27, 2025,7:30p,Atlanta Hawks,,Miami Heat,,,Kaseya Center,,0
-1091,reg_season,Thu, Mar 27, 2025,8:00p,Los Angeles Lakers,,Chicago Bulls,,,United Center,,0
-1092,reg_season,Thu, Mar 27, 2025,8:00p,Memphis Grizzlies,,Oklahoma City Thunder,,,Paycom Center,,0
-1093,reg_season,Thu, Mar 27, 2025,9:00p,Houston Rockets,,Utah Jazz,,,Delta Center,,0
-1094,reg_season,Thu, Mar 27, 2025,10:00p,Portland Trail Blazers,,Sacramento Kings,,,Golden 1 Center,,0
-1095,reg_season,Fri, Mar 28, 2025,7:00p,Cleveland Cavaliers,,Detroit Pistons,,,Little Caesars Arena,,0
-1096,reg_season,Fri, Mar 28, 2025,7:30p,Los Angeles Clippers,,Brooklyn Nets,,,Barclays Center,,0
-1097,reg_season,Fri, Mar 28, 2025,7:30p,Charlotte Hornets,,Toronto Raptors,,,Scotiabank Arena,,0
-1098,reg_season,Fri, Mar 28, 2025,8:00p,New York Knicks,,Milwaukee Bucks,,,Fiserv Forum,,0
-1099,reg_season,Fri, Mar 28, 2025,8:00p,Phoenix Suns,,Minnesota Timberwolves,,,Target Center,,0
-1100,reg_season,Fri, Mar 28, 2025,8:00p,Golden State Warriors,,New Orleans Pelicans,,,Smoothie King Center,,0
-1101,reg_season,Fri, Mar 28, 2025,9:00p,Utah Jazz,,Denver Nuggets,,,Ball Arena,,0
-1102,reg_season,Sat, Mar 29, 2025,5:00p,Sacramento Kings,,Orlando Magic,,,Kia Center,,0
-1103,reg_season,Sat, Mar 29, 2025,7:00p,Brooklyn Nets,,Washington Wizards,,,Capital One Arena,,0
-1104,reg_season,Sat, Mar 29, 2025,7:30p,Miami Heat,,Philadelphia 76ers,,,Wells Fargo Center,,0
-1105,reg_season,Sat, Mar 29, 2025,8:00p,Dallas Mavericks,,Chicago Bulls,,,United Center,,0
-1106,reg_season,Sat, Mar 29, 2025,8:00p,Los Angeles Lakers,,Memphis Grizzlies,,,FedEx Forum,,0
-1107,reg_season,Sat, Mar 29, 2025,8:00p,Indiana Pacers,,Oklahoma City Thunder,,,Paycom Center,,0
-1108,reg_season,Sat, Mar 29, 2025,8:00p,Boston Celtics,,San Antonio Spurs,,,Frost Bank Center,,0
-1109,reg_season,Sun, Mar 30, 2025,3:30p,Los Angeles Clippers,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-1110,reg_season,Sun, Mar 30, 2025,6:00p,Portland Trail Blazers,,New York Knicks,,,Madison Square Garden (IV),,0
-1111,reg_season,Sun, Mar 30, 2025,7:00p,Atlanta Hawks,,Milwaukee Bucks,,,Fiserv Forum,,0
-1112,reg_season,Sun, Mar 30, 2025,7:00p,Detroit Pistons,,Minnesota Timberwolves,,,Target Center,,0
-1113,reg_season,Sun, Mar 30, 2025,7:00p,Charlotte Hornets,,New Orleans Pelicans,,,Smoothie King Center,,0
-1114,reg_season,Sun, Mar 30, 2025,7:00p,Golden State Warriors,,San Antonio Spurs,,,Frost Bank Center,,0
-1115,reg_season,Sun, Mar 30, 2025,7:30p,Toronto Raptors,,Philadelphia 76ers,,,Wells Fargo Center,,0
-1116,reg_season,Sun, Mar 30, 2025,9:00p,Houston Rockets,,Phoenix Suns,,,Footprint Center,,0
-1117,reg_season,Mon, Mar 31, 2025,7:00p,Utah Jazz,,Charlotte Hornets,,,Spectrum Center,,0
-1118,reg_season,Mon, Mar 31, 2025,7:00p,Sacramento Kings,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1119,reg_season,Mon, Mar 31, 2025,7:00p,Los Angeles Clippers,,Orlando Magic,,,Kia Center,,0
-1120,reg_season,Mon, Mar 31, 2025,7:00p,Miami Heat,,Washington Wizards,,,Capital One Arena,,0
-1121,reg_season,Mon, Mar 31, 2025,8:00p,Boston Celtics,,Memphis Grizzlies,,,FedEx Forum,,0
-1122,reg_season,Mon, Mar 31, 2025,8:00p,Chicago Bulls,,Oklahoma City Thunder,,,Paycom Center,,0
-1123,reg_season,Mon, Mar 31, 2025,8:30p,Brooklyn Nets,,Dallas Mavericks,,,American Airlines Center,,0
-1124,reg_season,Mon, Mar 31, 2025,10:30p,Houston Rockets,,Los Angeles Lakers,,,Crypto.com Arena,,0
-1125,reg_season,Tue, Apr 1, 2025,7:30p,Portland Trail Blazers,,Atlanta Hawks,,,State Farm Arena,,0
-1126,reg_season,Tue, Apr 1, 2025,7:30p,Philadelphia 76ers,,New York Knicks,,,Madison Square Garden (IV),,0
-1127,reg_season,Tue, Apr 1, 2025,8:00p,Toronto Raptors,,Chicago Bulls,,,United Center,,0
-1128,reg_season,Tue, Apr 1, 2025,8:00p,Golden State Warriors,,Memphis Grizzlies,,,FedEx Forum,,0
-1129,reg_season,Tue, Apr 1, 2025,8:00p,Phoenix Suns,,Milwaukee Bucks,,,Fiserv Forum,,0
-1130,reg_season,Tue, Apr 1, 2025,10:00p,Minnesota Timberwolves,,Denver Nuggets,,,Ball Arena,,0
-1131,reg_season,Wed, Apr 2, 2025,7:00p,New York Knicks,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-1132,reg_season,Wed, Apr 2, 2025,7:00p,Charlotte Hornets,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1133,reg_season,Wed, Apr 2, 2025,7:00p,Sacramento Kings,,Washington Wizards,,,Capital One Arena,,0
-1134,reg_season,Wed, Apr 2, 2025,7:30p,Miami Heat,,Boston Celtics,,,TD Garden,,0
-1135,reg_season,Wed, Apr 2, 2025,8:00p,Utah Jazz,,Houston Rockets,,,Toyota Center,,0
-1136,reg_season,Wed, Apr 2, 2025,8:00p,Detroit Pistons,,Oklahoma City Thunder,,,Paycom Center,,0
-1137,reg_season,Wed, Apr 2, 2025,8:30p,Atlanta Hawks,,Dallas Mavericks,,,American Airlines Center,,0
-1138,reg_season,Wed, Apr 2, 2025,9:00p,San Antonio Spurs,,Denver Nuggets,,,Ball Arena,,0
-1139,reg_season,Wed, Apr 2, 2025,10:00p,New Orleans Pelicans,,Los Angeles Clippers,,,Intuit Dome,,0
-1140,reg_season,Thu, Apr 3, 2025,7:00p,Orlando Magic,,Washington Wizards,,,Capital One Arena,,0
-1141,reg_season,Thu, Apr 3, 2025,7:30p,Minnesota Timberwolves,,Brooklyn Nets,,,Barclays Center,,0
-1142,reg_season,Thu, Apr 3, 2025,7:30p,Memphis Grizzlies,,Miami Heat,,,Kaseya Center,,0
-1143,reg_season,Thu, Apr 3, 2025,7:30p,Milwaukee Bucks,,Philadelphia 76ers,,,Wells Fargo Center,,0
-1144,reg_season,Thu, Apr 3, 2025,7:30p,Portland Trail Blazers,,Toronto Raptors,,,Scotiabank Arena,,0
-1145,reg_season,Thu, Apr 3, 2025,10:00p,Golden State Warriors,,Los Angeles Lakers,,,Crypto.com Arena,,0
-1146,reg_season,Fri, Apr 4, 2025,7:00p,Sacramento Kings,,Charlotte Hornets,,,Spectrum Center,,0
-1147,reg_season,Fri, Apr 4, 2025,7:00p,Utah Jazz,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1148,reg_season,Fri, Apr 4, 2025,7:30p,Phoenix Suns,,Boston Celtics,,,TD Garden,,0
-1149,reg_season,Fri, Apr 4, 2025,7:30p,Detroit Pistons,,Toronto Raptors,,,Scotiabank Arena,,0
-1150,reg_season,Fri, Apr 4, 2025,8:00p,Portland Trail Blazers,,Chicago Bulls,,,United Center,,0
-1151,reg_season,Fri, Apr 4, 2025,8:00p,Oklahoma City Thunder,,Houston Rockets,,,Toyota Center,,0
-1152,reg_season,Fri, Apr 4, 2025,8:00p,Cleveland Cavaliers,,San Antonio Spurs,,,Frost Bank Center,,0
-1153,reg_season,Fri, Apr 4, 2025,10:00p,Denver Nuggets,,Golden State Warriors,,,Chase Center,,0
-1154,reg_season,Fri, Apr 4, 2025,10:30p,Dallas Mavericks,,Los Angeles Clippers,,,Intuit Dome,,0
-1155,reg_season,Fri, Apr 4, 2025,10:30p,New Orleans Pelicans,,Los Angeles Lakers,,,Crypto.com Arena,,0
-1156,reg_season,Sat, Apr 5, 2025,3:00p,New York Knicks,,Atlanta Hawks,,,State Farm Arena,,0
-1157,reg_season,Sat, Apr 5, 2025,7:00p,Memphis Grizzlies,,Detroit Pistons,,,Little Caesars Arena,,0
-1158,reg_season,Sat, Apr 5, 2025,7:00p,Minnesota Timberwolves,,Philadelphia 76ers,,,Wells Fargo Center,,0
-1159,reg_season,Sat, Apr 5, 2025,8:00p,Milwaukee Bucks,,Miami Heat,,,Kaseya Center,,0
-1160,reg_season,Sat, Apr 5, 2025,10:30p,Dallas Mavericks,,Los Angeles Clippers,,,Intuit Dome,,0
-1161,reg_season,Sun, Apr 6, 2025,1:00p,Chicago Bulls,,Charlotte Hornets,,,Spectrum Center,,0
-1162,reg_season,Sun, Apr 6, 2025,3:30p,Toronto Raptors,,Brooklyn Nets,,,Barclays Center,,0
-1163,reg_season,Sun, Apr 6, 2025,3:30p,Los Angeles Lakers,,Oklahoma City Thunder,,,Paycom Center,,0
-1164,reg_season,Sun, Apr 6, 2025,6:00p,Utah Jazz,,Atlanta Hawks,,,State Farm Arena,,0
-1165,reg_season,Sun, Apr 6, 2025,6:00p,Washington Wizards,,Boston Celtics,,,TD Garden,,0
-1166,reg_season,Sun, Apr 6, 2025,6:00p,Sacramento Kings,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-1167,reg_season,Sun, Apr 6, 2025,6:00p,San Antonio Spurs,,Portland Trail Blazers,,,Moda Center,,0
-1168,reg_season,Sun, Apr 6, 2025,7:00p,Orlando Magic,,New Orleans Pelicans,,,Smoothie King Center,,0
-1169,reg_season,Sun, Apr 6, 2025,7:00p,Phoenix Suns,,New York Knicks,,,Madison Square Garden (IV),,0
-1170,reg_season,Sun, Apr 6, 2025,8:00p,Indiana Pacers,,Denver Nuggets,,,Ball Arena,,0
-1171,reg_season,Sun, Apr 6, 2025,8:30p,Houston Rockets,,Golden State Warriors,,,Chase Center,,0
-1172,reg_season,Mon, Apr 7, 2025,7:00p,Sacramento Kings,,Detroit Pistons,,,Little Caesars Arena,,0
-1173,reg_season,Mon, Apr 7, 2025,7:30p,Philadelphia 76ers,,Miami Heat,,,Kaseya Center,,0
-1174,reg_season,Tue, Apr 8, 2025,7:00p,Memphis Grizzlies,,Charlotte Hornets,,,Spectrum Center,,0
-1175,reg_season,Tue, Apr 8, 2025,7:00p,Chicago Bulls,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-1176,reg_season,Tue, Apr 8, 2025,7:00p,Washington Wizards,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1177,reg_season,Tue, Apr 8, 2025,7:00p,Atlanta Hawks,,Orlando Magic,,,Kia Center,,0
-1178,reg_season,Tue, Apr 8, 2025,7:30p,New Orleans Pelicans,,Brooklyn Nets,,,Barclays Center,,0
-1179,reg_season,Tue, Apr 8, 2025,7:30p,Boston Celtics,,New York Knicks,,,Madison Square Garden (IV),,0
-1180,reg_season,Tue, Apr 8, 2025,8:00p,Minnesota Timberwolves,,Milwaukee Bucks,,,Fiserv Forum,,0
-1181,reg_season,Tue, Apr 8, 2025,8:00p,Los Angeles Lakers,,Oklahoma City Thunder,,,Paycom Center,,0
-1182,reg_season,Tue, Apr 8, 2025,10:00p,Golden State Warriors,,Phoenix Suns,,,Footprint Center,,0
-1183,reg_season,Tue, Apr 8, 2025,10:30p,San Antonio Spurs,,Los Angeles Clippers,,,Intuit Dome,,0
-1184,reg_season,Wed, Apr 9, 2025,7:00p,Boston Celtics,,Orlando Magic,,,Kia Center,,0
-1185,reg_season,Wed, Apr 9, 2025,7:00p,Philadelphia 76ers,,Washington Wizards,,,Capital One Arena,,0
-1186,reg_season,Wed, Apr 9, 2025,7:30p,Los Angeles Lakers,,Dallas Mavericks,,,American Airlines Center,,0
-1187,reg_season,Wed, Apr 9, 2025,7:30p,Charlotte Hornets,,Toronto Raptors,,,Scotiabank Arena,,0
-1188,reg_season,Wed, Apr 9, 2025,8:00p,Miami Heat,,Chicago Bulls,,,United Center,,0
-1189,reg_season,Wed, Apr 9, 2025,8:00p,New Orleans Pelicans,,Milwaukee Bucks,,,Fiserv Forum,,0
-1190,reg_season,Wed, Apr 9, 2025,9:00p,Portland Trail Blazers,,Utah Jazz,,,Delta Center,,0
-1191,reg_season,Wed, Apr 9, 2025,10:00p,San Antonio Spurs,,Golden State Warriors,,,Chase Center,,0
-1192,reg_season,Wed, Apr 9, 2025,10:00p,Oklahoma City Thunder,,Phoenix Suns,,,Footprint Center,,0
-1193,reg_season,Wed, Apr 9, 2025,10:00p,Denver Nuggets,,Sacramento Kings,,,Golden 1 Center,,0
-1194,reg_season,Wed, Apr 9, 2025,10:30p,Houston Rockets,,Los Angeles Clippers,,,Intuit Dome,,0
-1195,reg_season,Thu, Apr 10, 2025,7:00p,New York Knicks,,Detroit Pistons,,,Little Caesars Arena,,0
-1196,reg_season,Thu, Apr 10, 2025,7:00p,Cleveland Cavaliers,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1197,reg_season,Thu, Apr 10, 2025,7:30p,Atlanta Hawks,,Brooklyn Nets,,,Barclays Center,,0
-1198,reg_season,Thu, Apr 10, 2025,9:30p,Minnesota Timberwolves,,Memphis Grizzlies,,,FedEx Forum,,0
-1199,reg_season,Fri, Apr 11, 2025,7:00p,Milwaukee Bucks,,Detroit Pistons,,,Little Caesars Arena,,0
-1200,reg_season,Fri, Apr 11, 2025,7:00p,Orlando Magic,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-1201,reg_season,Fri, Apr 11, 2025,7:00p,Atlanta Hawks,,Philadelphia 76ers,,,Wells Fargo Center,,0
-1202,reg_season,Fri, Apr 11, 2025,7:30p,Charlotte Hornets,,Boston Celtics,,,TD Garden,,0
-1203,reg_season,Fri, Apr 11, 2025,7:30p,Cleveland Cavaliers,,New York Knicks,,,Madison Square Garden (IV),,0
-1204,reg_season,Fri, Apr 11, 2025,8:00p,Washington Wizards,,Chicago Bulls,,,United Center,,0
-1205,reg_season,Fri, Apr 11, 2025,8:00p,Miami Heat,,New Orleans Pelicans,,,Smoothie King Center,,0
-1206,reg_season,Fri, Apr 11, 2025,8:30p,Toronto Raptors,,Dallas Mavericks,,,American Airlines Center,,0
-1207,reg_season,Fri, Apr 11, 2025,9:00p,Memphis Grizzlies,,Denver Nuggets,,,Ball Arena,,0
-1208,reg_season,Fri, Apr 11, 2025,9:00p,Brooklyn Nets,,Minnesota Timberwolves,,,Target Center,,0
-1209,reg_season,Fri, Apr 11, 2025,9:30p,Oklahoma City Thunder,,Utah Jazz,,,Delta Center,,0
-1210,reg_season,Fri, Apr 11, 2025,10:00p,San Antonio Spurs,,Phoenix Suns,,,Footprint Center,,0
-1211,reg_season,Fri, Apr 11, 2025,10:00p,Golden State Warriors,,Portland Trail Blazers,,,Moda Center,,0
-1212,reg_season,Fri, Apr 11, 2025,10:00p,Los Angeles Clippers,,Sacramento Kings,,,Golden 1 Center,,0
-1213,reg_season,Fri, Apr 11, 2025,10:30p,Houston Rockets,,Los Angeles Lakers,,,Crypto.com Arena,,0
-1214,reg_season,Sun, Apr 13, 2025,1:00p,Orlando Magic,,Atlanta Hawks,,,State Farm Arena,,0
-1215,reg_season,Sun, Apr 13, 2025,1:00p,Charlotte Hornets,,Boston Celtics,,,TD Garden,,0
-1216,reg_season,Sun, Apr 13, 2025,1:00p,New York Knicks,,Brooklyn Nets,,,Barclays Center,,0
-1217,reg_season,Sun, Apr 13, 2025,1:00p,Indiana Pacers,,Cleveland Cavaliers,,,Rocket Mortgage Fieldhouse,,0
-1218,reg_season,Sun, Apr 13, 2025,1:00p,Washington Wizards,,Miami Heat,,,Kaseya Center,,0
-1219,reg_season,Sun, Apr 13, 2025,1:00p,Detroit Pistons,,Milwaukee Bucks,,,Fiserv Forum,,0
-1220,reg_season,Sun, Apr 13, 2025,1:00p,Chicago Bulls,,Philadelphia 76ers,,,Wells Fargo Center,,0
-1221,reg_season,Sun, Apr 13, 2025,3:30p,Los Angeles Clippers,,Golden State Warriors,,,Chase Center,,0
-1222,reg_season,Sun, Apr 13, 2025,3:30p,Denver Nuggets,,Houston Rockets,,,Toyota Center,,0
-1223,reg_season,Sun, Apr 13, 2025,3:30p,Dallas Mavericks,,Memphis Grizzlies,,,FedEx Forum,,0
-1224,reg_season,Sun, Apr 13, 2025,3:30p,Utah Jazz,,Minnesota Timberwolves,,,Target Center,,0
-1225,reg_season,Sun, Apr 13, 2025,3:30p,Oklahoma City Thunder,,New Orleans Pelicans,,,Smoothie King Center,,0
-1226,reg_season,Sun, Apr 13, 2025,3:30p,Los Angeles Lakers,,Portland Trail Blazers,,,Moda Center,,0
-1227,reg_season,Sun, Apr 13, 2025,3:30p,Phoenix Suns,,Sacramento Kings,,,Golden 1 Center,,0
-1228,reg_season,Sun, Apr 13, 2025,3:30p,Toronto Raptors,,San Antonio Spurs,,,Frost Bank Center,,0
+1042,reg_season,Thu, Mar 20, 2025,10:30p,Milwaukee Bucks,,Los Angeles Lakers,,,Crypto.com Arena,,0
+1043,reg_season,Fri, Mar 21, 2025,7:00p,Orlando Magic,,Washington Wizards,,,Capital One Arena,,0
+1044,reg_season,Fri, Mar 21, 2025,8:00p,Houston Rockets,,Miami Heat,,,Kaseya Center,,0
+1045,reg_season,Fri, Mar 21, 2025,8:00p,New Orleans Pelicans,,Minnesota Timberwolves,,,Target Center,,0
+1046,reg_season,Fri, Mar 21, 2025,8:00p,Charlotte Hornets,,Oklahoma City Thunder,,,Paycom Center,,0
+1047,reg_season,Fri, Mar 21, 2025,8:00p,Philadelphia 76ers,,San Antonio Spurs,,,Frost Bank Center,,0
+1048,reg_season,Fri, Mar 21, 2025,8:30p,Detroit Pistons,,Dallas Mavericks,,,American Airlines Center,,0
+1049,reg_season,Fri, Mar 21, 2025,9:30p,Boston Celtics,,Utah Jazz,,,Delta Center,,0
+1050,reg_season,Fri, Mar 21, 2025,10:00p,Cleveland Cavaliers,,Phoenix Suns,,,Footprint Center,,0
+1051,reg_season,Fri, Mar 21, 2025,10:00p,Denver Nuggets,,Portland Trail Blazers,,,Moda Center,,0
+1052,reg_season,Fri, Mar 21, 2025,10:30p,Memphis Grizzlies,,Los Angeles Clippers,,,Intuit Dome,,0
+1053,reg_season,Sat, Mar 22, 2025,5:00p,Brooklyn Nets,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+1054,reg_season,Sat, Mar 22, 2025,7:00p,Golden State Warriors,,Atlanta Hawks,,,State Farm Arena,,0
+1055,reg_season,Sat, Mar 22, 2025,8:00p,Washington Wizards,,New York Knicks,,,Madison Square Garden (IV),,0
+1056,reg_season,Sat, Mar 22, 2025,10:00p,Milwaukee Bucks,,Sacramento Kings,,,Golden 1 Center,,0
+1057,reg_season,Sat, Mar 22, 2025,10:30p,Chicago Bulls,,Los Angeles Lakers,,,Crypto.com Arena,,0
+1058,reg_season,Sun, Mar 23, 2025,3:00p,New Orleans Pelicans,,Detroit Pistons,,,Little Caesars Arena,,0
+1059,reg_season,Sun, Mar 23, 2025,3:30p,Cleveland Cavaliers,,Utah Jazz,,,Delta Center,,0
+1060,reg_season,Sun, Mar 23, 2025,6:00p,Philadelphia 76ers,,Atlanta Hawks,,,State Farm Arena,,0
+1061,reg_season,Sun, Mar 23, 2025,6:00p,Charlotte Hornets,,Miami Heat,,,Kaseya Center,,0
+1062,reg_season,Sun, Mar 23, 2025,6:00p,Boston Celtics,,Portland Trail Blazers,,,Moda Center,,0
+1063,reg_season,Sun, Mar 23, 2025,6:00p,San Antonio Spurs,,Toronto Raptors,,,Scotiabank Arena,,0
+1064,reg_season,Sun, Mar 23, 2025,7:00p,Denver Nuggets,,Houston Rockets,,,Toyota Center,,0
+1065,reg_season,Sun, Mar 23, 2025,9:00p,Oklahoma City Thunder,,Los Angeles Clippers,,,Intuit Dome,,0
+1066,reg_season,Mon, Mar 24, 2025,7:00p,Minnesota Timberwolves,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+1067,reg_season,Mon, Mar 24, 2025,7:00p,Los Angeles Lakers,,Orlando Magic,,,Kia Center,,0
+1068,reg_season,Mon, Mar 24, 2025,7:00p,Toronto Raptors,,Washington Wizards,,,Capital One Arena,,0
+1069,reg_season,Mon, Mar 24, 2025,7:30p,Dallas Mavericks,,Brooklyn Nets,,,Barclays Center,,0
+1070,reg_season,Mon, Mar 24, 2025,8:00p,Philadelphia 76ers,,New Orleans Pelicans,,,Smoothie King Center,,0
+1071,reg_season,Mon, Mar 24, 2025,9:00p,Chicago Bulls,,Denver Nuggets,,,Ball Arena,,0
+1072,reg_season,Mon, Mar 24, 2025,10:00p,Milwaukee Bucks,,Phoenix Suns,,,Footprint Center,,0
+1073,reg_season,Mon, Mar 24, 2025,10:00p,Boston Celtics,,Sacramento Kings,,,Golden 1 Center,,0
+1074,reg_season,Tue, Mar 25, 2025,7:00p,Orlando Magic,,Charlotte Hornets,,,Spectrum Center,,0
+1075,reg_season,Tue, Mar 25, 2025,7:00p,San Antonio Spurs,,Detroit Pistons,,,Little Caesars Arena,,0
+1076,reg_season,Tue, Mar 25, 2025,7:30p,Golden State Warriors,,Miami Heat,,,Kaseya Center,,0
+1077,reg_season,Tue, Mar 25, 2025,7:30p,Dallas Mavericks,,New York Knicks,,,Madison Square Garden (IV),,0
+1078,reg_season,Tue, Mar 25, 2025,8:00p,Atlanta Hawks,,Houston Rockets,,,Toyota Center,,0
+1079,reg_season,Tue, Mar 25, 2025,9:00p,Memphis Grizzlies,,Utah Jazz,,,Delta Center,,0
+1080,reg_season,Tue, Mar 25, 2025,10:00p,Cleveland Cavaliers,,Portland Trail Blazers,,,Moda Center,,0
+1081,reg_season,Tue, Mar 25, 2025,10:00p,Oklahoma City Thunder,,Sacramento Kings,,,Golden 1 Center,,0
+1082,reg_season,Wed, Mar 26, 2025,7:00p,Washington Wizards,,Philadelphia 76ers,,,Wells Fargo Center,,0
+1083,reg_season,Wed, Mar 26, 2025,7:30p,Toronto Raptors,,Brooklyn Nets,,,Barclays Center,,0
+1084,reg_season,Wed, Mar 26, 2025,7:30p,Los Angeles Lakers,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+1085,reg_season,Wed, Mar 26, 2025,7:30p,Los Angeles Clippers,,New York Knicks,,,Madison Square Garden (IV),,0
+1086,reg_season,Wed, Mar 26, 2025,9:00p,Milwaukee Bucks,,Denver Nuggets,,,Ball Arena,,0
+1087,reg_season,Wed, Mar 26, 2025,10:00p,Boston Celtics,,Phoenix Suns,,,Footprint Center,,0
+1088,reg_season,Thu, Mar 27, 2025,7:00p,San Antonio Spurs,,Cleveland Cavaliers,,,Rocket Arena,,0
+1089,reg_season,Thu, Mar 27, 2025,7:00p,Dallas Mavericks,,Orlando Magic,,,Kia Center,,0
+1090,reg_season,Thu, Mar 27, 2025,7:00p,Indiana Pacers,,Washington Wizards,,,Capital One Arena,,0
+1091,reg_season,Thu, Mar 27, 2025,7:30p,Atlanta Hawks,,Miami Heat,,,Kaseya Center,,0
+1092,reg_season,Thu, Mar 27, 2025,8:00p,Los Angeles Lakers,,Chicago Bulls,,,United Center,,0
+1093,reg_season,Thu, Mar 27, 2025,8:00p,Memphis Grizzlies,,Oklahoma City Thunder,,,Paycom Center,,0
+1094,reg_season,Thu, Mar 27, 2025,9:00p,Houston Rockets,,Utah Jazz,,,Delta Center,,0
+1095,reg_season,Thu, Mar 27, 2025,10:00p,Portland Trail Blazers,,Sacramento Kings,,,Golden 1 Center,,0
+1096,reg_season,Fri, Mar 28, 2025,7:00p,Cleveland Cavaliers,,Detroit Pistons,,,Little Caesars Arena,,0
+1097,reg_season,Fri, Mar 28, 2025,7:30p,Los Angeles Clippers,,Brooklyn Nets,,,Barclays Center,,0
+1098,reg_season,Fri, Mar 28, 2025,7:30p,Charlotte Hornets,,Toronto Raptors,,,Scotiabank Arena,,0
+1099,reg_season,Fri, Mar 28, 2025,8:00p,New York Knicks,,Milwaukee Bucks,,,Fiserv Forum,,0
+1100,reg_season,Fri, Mar 28, 2025,8:00p,Phoenix Suns,,Minnesota Timberwolves,,,Target Center,,0
+1101,reg_season,Fri, Mar 28, 2025,8:00p,Golden State Warriors,,New Orleans Pelicans,,,Smoothie King Center,,0
+1102,reg_season,Fri, Mar 28, 2025,9:00p,Utah Jazz,,Denver Nuggets,,,Ball Arena,,0
+1103,reg_season,Sat, Mar 29, 2025,5:00p,Sacramento Kings,,Orlando Magic,,,Kia Center,,0
+1104,reg_season,Sat, Mar 29, 2025,7:00p,Brooklyn Nets,,Washington Wizards,,,Capital One Arena,,0
+1105,reg_season,Sat, Mar 29, 2025,7:30p,Miami Heat,,Philadelphia 76ers,,,Wells Fargo Center,,0
+1106,reg_season,Sat, Mar 29, 2025,8:00p,Dallas Mavericks,,Chicago Bulls,,,United Center,,0
+1107,reg_season,Sat, Mar 29, 2025,8:00p,Los Angeles Lakers,,Memphis Grizzlies,,,FedEx Forum,,0
+1108,reg_season,Sat, Mar 29, 2025,8:00p,Indiana Pacers,,Oklahoma City Thunder,,,Paycom Center,,0
+1109,reg_season,Sat, Mar 29, 2025,8:00p,Boston Celtics,,San Antonio Spurs,,,Frost Bank Center,,0
+1110,reg_season,Sun, Mar 30, 2025,3:30p,Los Angeles Clippers,,Cleveland Cavaliers,,,Rocket Arena,,0
+1111,reg_season,Sun, Mar 30, 2025,6:00p,Portland Trail Blazers,,New York Knicks,,,Madison Square Garden (IV),,0
+1112,reg_season,Sun, Mar 30, 2025,7:00p,Atlanta Hawks,,Milwaukee Bucks,,,Fiserv Forum,,0
+1113,reg_season,Sun, Mar 30, 2025,7:00p,Detroit Pistons,,Minnesota Timberwolves,,,Target Center,,0
+1114,reg_season,Sun, Mar 30, 2025,7:00p,Charlotte Hornets,,New Orleans Pelicans,,,Smoothie King Center,,0
+1115,reg_season,Sun, Mar 30, 2025,7:00p,Golden State Warriors,,San Antonio Spurs,,,Frost Bank Center,,0
+1116,reg_season,Sun, Mar 30, 2025,7:30p,Toronto Raptors,,Philadelphia 76ers,,,Wells Fargo Center,,0
+1117,reg_season,Sun, Mar 30, 2025,9:00p,Houston Rockets,,Phoenix Suns,,,Footprint Center,,0
+1118,reg_season,Mon, Mar 31, 2025,7:00p,Utah Jazz,,Charlotte Hornets,,,Spectrum Center,,0
+1119,reg_season,Mon, Mar 31, 2025,7:00p,Sacramento Kings,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+1120,reg_season,Mon, Mar 31, 2025,7:00p,Los Angeles Clippers,,Orlando Magic,,,Kia Center,,0
+1121,reg_season,Mon, Mar 31, 2025,7:00p,Miami Heat,,Washington Wizards,,,Capital One Arena,,0
+1122,reg_season,Mon, Mar 31, 2025,7:30p,Boston Celtics,,Memphis Grizzlies,,,FedEx Forum,,0
+1123,reg_season,Mon, Mar 31, 2025,8:00p,Chicago Bulls,,Oklahoma City Thunder,,,Paycom Center,,0
+1124,reg_season,Mon, Mar 31, 2025,8:30p,Brooklyn Nets,,Dallas Mavericks,,,American Airlines Center,,0
+1125,reg_season,Mon, Mar 31, 2025,10:00p,Houston Rockets,,Los Angeles Lakers,,,Crypto.com Arena,,0
+1126,reg_season,Tue, Apr 1, 2025,7:30p,Portland Trail Blazers,,Atlanta Hawks,,,State Farm Arena,,0
+1127,reg_season,Tue, Apr 1, 2025,7:30p,Philadelphia 76ers,,New York Knicks,,,Madison Square Garden (IV),,0
+1128,reg_season,Tue, Apr 1, 2025,8:00p,Toronto Raptors,,Chicago Bulls,,,United Center,,0
+1129,reg_season,Tue, Apr 1, 2025,8:00p,Golden State Warriors,,Memphis Grizzlies,,,FedEx Forum,,0
+1130,reg_season,Tue, Apr 1, 2025,8:00p,Phoenix Suns,,Milwaukee Bucks,,,Fiserv Forum,,0
+1131,reg_season,Tue, Apr 1, 2025,8:00p,Orlando Magic,,San Antonio Spurs,,,Frost Bank Center,,0
+1132,reg_season,Tue, Apr 1, 2025,10:00p,Minnesota Timberwolves,,Denver Nuggets,,,Ball Arena,,0
+1133,reg_season,Wed, Apr 2, 2025,7:00p,New York Knicks,,Cleveland Cavaliers,,,Rocket Arena,,0
+1134,reg_season,Wed, Apr 2, 2025,7:00p,Charlotte Hornets,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+1135,reg_season,Wed, Apr 2, 2025,7:00p,Sacramento Kings,,Washington Wizards,,,Capital One Arena,,0
+1136,reg_season,Wed, Apr 2, 2025,7:30p,Miami Heat,,Boston Celtics,,,TD Garden,,0
+1137,reg_season,Wed, Apr 2, 2025,8:00p,Utah Jazz,,Houston Rockets,,,Toyota Center,,0
+1138,reg_season,Wed, Apr 2, 2025,8:00p,Detroit Pistons,,Oklahoma City Thunder,,,Paycom Center,,0
+1139,reg_season,Wed, Apr 2, 2025,8:30p,Atlanta Hawks,,Dallas Mavericks,,,American Airlines Center,,0
+1140,reg_season,Wed, Apr 2, 2025,9:00p,San Antonio Spurs,,Denver Nuggets,,,Ball Arena,,0
+1141,reg_season,Wed, Apr 2, 2025,10:00p,New Orleans Pelicans,,Los Angeles Clippers,,,Intuit Dome,,0
+1142,reg_season,Thu, Apr 3, 2025,7:00p,Orlando Magic,,Washington Wizards,,,Capital One Arena,,0
+1143,reg_season,Thu, Apr 3, 2025,7:30p,Minnesota Timberwolves,,Brooklyn Nets,,,Barclays Center,,0
+1144,reg_season,Thu, Apr 3, 2025,7:30p,Memphis Grizzlies,,Miami Heat,,,Kaseya Center,,0
+1145,reg_season,Thu, Apr 3, 2025,7:30p,Milwaukee Bucks,,Philadelphia 76ers,,,Wells Fargo Center,,0
+1146,reg_season,Thu, Apr 3, 2025,7:30p,Portland Trail Blazers,,Toronto Raptors,,,Scotiabank Arena,,0
+1147,reg_season,Thu, Apr 3, 2025,10:00p,Golden State Warriors,,Los Angeles Lakers,,,Crypto.com Arena,,0
+1148,reg_season,Fri, Apr 4, 2025,7:00p,Sacramento Kings,,Charlotte Hornets,,,Spectrum Center,,0
+1149,reg_season,Fri, Apr 4, 2025,7:00p,Utah Jazz,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+1150,reg_season,Fri, Apr 4, 2025,7:30p,Phoenix Suns,,Boston Celtics,,,TD Garden,,0
+1151,reg_season,Fri, Apr 4, 2025,7:30p,Detroit Pistons,,Toronto Raptors,,,Scotiabank Arena,,0
+1152,reg_season,Fri, Apr 4, 2025,8:00p,Portland Trail Blazers,,Chicago Bulls,,,United Center,,0
+1153,reg_season,Fri, Apr 4, 2025,8:00p,Oklahoma City Thunder,,Houston Rockets,,,Toyota Center,,0
+1154,reg_season,Fri, Apr 4, 2025,8:00p,Cleveland Cavaliers,,San Antonio Spurs,,,Frost Bank Center,,0
+1155,reg_season,Fri, Apr 4, 2025,10:00p,Denver Nuggets,,Golden State Warriors,,,Chase Center,,0
+1156,reg_season,Fri, Apr 4, 2025,10:30p,Dallas Mavericks,,Los Angeles Clippers,,,Intuit Dome,,0
+1157,reg_season,Fri, Apr 4, 2025,10:30p,New Orleans Pelicans,,Los Angeles Lakers,,,Crypto.com Arena,,0
+1158,reg_season,Sat, Apr 5, 2025,3:00p,New York Knicks,,Atlanta Hawks,,,State Farm Arena,,0
+1159,reg_season,Sat, Apr 5, 2025,7:00p,Memphis Grizzlies,,Detroit Pistons,,,Little Caesars Arena,,0
+1160,reg_season,Sat, Apr 5, 2025,7:00p,Minnesota Timberwolves,,Philadelphia 76ers,,,Wells Fargo Center,,0
+1161,reg_season,Sat, Apr 5, 2025,8:00p,Milwaukee Bucks,,Miami Heat,,,Kaseya Center,,0
+1162,reg_season,Sat, Apr 5, 2025,10:30p,Dallas Mavericks,,Los Angeles Clippers,,,Intuit Dome,,0
+1163,reg_season,Sun, Apr 6, 2025,1:00p,Chicago Bulls,,Charlotte Hornets,,,Spectrum Center,,0
+1164,reg_season,Sun, Apr 6, 2025,3:30p,Toronto Raptors,,Brooklyn Nets,,,Barclays Center,,0
+1165,reg_season,Sun, Apr 6, 2025,3:30p,Los Angeles Lakers,,Oklahoma City Thunder,,,Paycom Center,,0
+1166,reg_season,Sun, Apr 6, 2025,6:00p,Utah Jazz,,Atlanta Hawks,,,State Farm Arena,,0
+1167,reg_season,Sun, Apr 6, 2025,6:00p,Washington Wizards,,Boston Celtics,,,TD Garden,,0
+1168,reg_season,Sun, Apr 6, 2025,6:00p,Sacramento Kings,,Cleveland Cavaliers,,,Rocket Arena,,0
+1169,reg_season,Sun, Apr 6, 2025,6:00p,San Antonio Spurs,,Portland Trail Blazers,,,Moda Center,,0
+1170,reg_season,Sun, Apr 6, 2025,7:00p,Phoenix Suns,,New York Knicks,,,Madison Square Garden (IV),,0
+1171,reg_season,Sun, Apr 6, 2025,8:00p,Indiana Pacers,,Denver Nuggets,,,Ball Arena,,0
+1172,reg_season,Sun, Apr 6, 2025,8:30p,Houston Rockets,,Golden State Warriors,,,Chase Center,,0
+1173,reg_season,Sun, Apr 6, 2025,8:30p,Milwaukee Bucks,,New Orleans Pelicans,,,Smoothie King Center,,0
+1174,reg_season,Mon, Apr 7, 2025,7:00p,Sacramento Kings,,Detroit Pistons,,,Little Caesars Arena,,0
+1175,reg_season,Mon, Apr 7, 2025,7:30p,Philadelphia 76ers,,Miami Heat,,,Kaseya Center,,0
+1176,reg_season,Tue, Apr 8, 2025,7:00p,Memphis Grizzlies,,Charlotte Hornets,,,Spectrum Center,,0
+1177,reg_season,Tue, Apr 8, 2025,7:00p,Chicago Bulls,,Cleveland Cavaliers,,,Rocket Arena,,0
+1178,reg_season,Tue, Apr 8, 2025,7:00p,Washington Wizards,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+1179,reg_season,Tue, Apr 8, 2025,7:00p,Atlanta Hawks,,Orlando Magic,,,Kia Center,,0
+1180,reg_season,Tue, Apr 8, 2025,7:30p,New Orleans Pelicans,,Brooklyn Nets,,,Barclays Center,,0
+1181,reg_season,Tue, Apr 8, 2025,7:30p,Boston Celtics,,New York Knicks,,,Madison Square Garden (IV),,0
+1182,reg_season,Tue, Apr 8, 2025,8:00p,Minnesota Timberwolves,,Milwaukee Bucks,,,Fiserv Forum,,0
+1183,reg_season,Tue, Apr 8, 2025,8:00p,Los Angeles Lakers,,Oklahoma City Thunder,,,Paycom Center,,0
+1184,reg_season,Tue, Apr 8, 2025,10:00p,Golden State Warriors,,Phoenix Suns,,,Footprint Center,,0
+1185,reg_season,Tue, Apr 8, 2025,10:30p,San Antonio Spurs,,Los Angeles Clippers,,,Intuit Dome,,0
+1186,reg_season,Wed, Apr 9, 2025,7:00p,Boston Celtics,,Orlando Magic,,,Kia Center,,0
+1187,reg_season,Wed, Apr 9, 2025,7:00p,Philadelphia 76ers,,Washington Wizards,,,Capital One Arena,,0
+1188,reg_season,Wed, Apr 9, 2025,7:30p,Los Angeles Lakers,,Dallas Mavericks,,,American Airlines Center,,0
+1189,reg_season,Wed, Apr 9, 2025,7:30p,Charlotte Hornets,,Toronto Raptors,,,Scotiabank Arena,,0
+1190,reg_season,Wed, Apr 9, 2025,8:00p,Miami Heat,,Chicago Bulls,,,United Center,,0
+1191,reg_season,Wed, Apr 9, 2025,9:00p,Portland Trail Blazers,,Utah Jazz,,,Delta Center,,0
+1192,reg_season,Wed, Apr 9, 2025,10:00p,San Antonio Spurs,,Golden State Warriors,,,Chase Center,,0
+1193,reg_season,Wed, Apr 9, 2025,10:00p,Oklahoma City Thunder,,Phoenix Suns,,,Footprint Center,,0
+1194,reg_season,Wed, Apr 9, 2025,10:00p,Denver Nuggets,,Sacramento Kings,,,Golden 1 Center,,0
+1195,reg_season,Wed, Apr 9, 2025,10:30p,Houston Rockets,,Los Angeles Clippers,,,Intuit Dome,,0
+1196,reg_season,Thu, Apr 10, 2025,7:00p,New York Knicks,,Detroit Pistons,,,Little Caesars Arena,,0
+1197,reg_season,Thu, Apr 10, 2025,7:00p,Cleveland Cavaliers,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+1198,reg_season,Thu, Apr 10, 2025,7:30p,Atlanta Hawks,,Brooklyn Nets,,,Barclays Center,,0
+1199,reg_season,Thu, Apr 10, 2025,8:00p,New Orleans Pelicans,,Milwaukee Bucks,,,Fiserv Forum,,0
+1200,reg_season,Thu, Apr 10, 2025,9:30p,Minnesota Timberwolves,,Memphis Grizzlies,,,FedEx Forum,,0
+1201,reg_season,Fri, Apr 11, 2025,7:00p,Milwaukee Bucks,,Detroit Pistons,,,Little Caesars Arena,,0
+1202,reg_season,Fri, Apr 11, 2025,7:00p,Orlando Magic,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+1203,reg_season,Fri, Apr 11, 2025,7:00p,Atlanta Hawks,,Philadelphia 76ers,,,Wells Fargo Center,,0
+1204,reg_season,Fri, Apr 11, 2025,7:30p,Charlotte Hornets,,Boston Celtics,,,TD Garden,,0
+1205,reg_season,Fri, Apr 11, 2025,7:30p,Cleveland Cavaliers,,New York Knicks,,,Madison Square Garden (IV),,0
+1206,reg_season,Fri, Apr 11, 2025,8:00p,Washington Wizards,,Chicago Bulls,,,United Center,,0
+1207,reg_season,Fri, Apr 11, 2025,8:00p,Miami Heat,,New Orleans Pelicans,,,Smoothie King Center,,0
+1208,reg_season,Fri, Apr 11, 2025,8:30p,Toronto Raptors,,Dallas Mavericks,,,American Airlines Center,,0
+1209,reg_season,Fri, Apr 11, 2025,9:00p,Memphis Grizzlies,,Denver Nuggets,,,Ball Arena,,0
+1210,reg_season,Fri, Apr 11, 2025,9:00p,Brooklyn Nets,,Minnesota Timberwolves,,,Target Center,,0
+1211,reg_season,Fri, Apr 11, 2025,9:30p,Oklahoma City Thunder,,Utah Jazz,,,Delta Center,,0
+1212,reg_season,Fri, Apr 11, 2025,10:00p,San Antonio Spurs,,Phoenix Suns,,,Footprint Center,,0
+1213,reg_season,Fri, Apr 11, 2025,10:00p,Golden State Warriors,,Portland Trail Blazers,,,Moda Center,,0
+1214,reg_season,Fri, Apr 11, 2025,10:00p,Los Angeles Clippers,,Sacramento Kings,,,Golden 1 Center,,0
+1215,reg_season,Fri, Apr 11, 2025,10:30p,Houston Rockets,,Los Angeles Lakers,,,Crypto.com Arena,,0
+1216,reg_season,Sun, Apr 13, 2025,1:00p,Orlando Magic,,Atlanta Hawks,,,State Farm Arena,,0
+1217,reg_season,Sun, Apr 13, 2025,1:00p,Charlotte Hornets,,Boston Celtics,,,TD Garden,,0
+1218,reg_season,Sun, Apr 13, 2025,1:00p,New York Knicks,,Brooklyn Nets,,,Barclays Center,,0
+1219,reg_season,Sun, Apr 13, 2025,1:00p,Indiana Pacers,,Cleveland Cavaliers,,,Rocket Arena,,0
+1220,reg_season,Sun, Apr 13, 2025,1:00p,Washington Wizards,,Miami Heat,,,Kaseya Center,,0
+1221,reg_season,Sun, Apr 13, 2025,1:00p,Detroit Pistons,,Milwaukee Bucks,,,Fiserv Forum,,0
+1222,reg_season,Sun, Apr 13, 2025,1:00p,Chicago Bulls,,Philadelphia 76ers,,,Wells Fargo Center,,0
+1223,reg_season,Sun, Apr 13, 2025,3:30p,Los Angeles Clippers,,Golden State Warriors,,,Chase Center,,0
+1224,reg_season,Sun, Apr 13, 2025,3:30p,Denver Nuggets,,Houston Rockets,,,Toyota Center,,0
+1225,reg_season,Sun, Apr 13, 2025,3:30p,Dallas Mavericks,,Memphis Grizzlies,,,FedEx Forum,,0
+1226,reg_season,Sun, Apr 13, 2025,3:30p,Utah Jazz,,Minnesota Timberwolves,,,Target Center,,0
+1227,reg_season,Sun, Apr 13, 2025,3:30p,Oklahoma City Thunder,,New Orleans Pelicans,,,Smoothie King Center,,0
+1228,reg_season,Sun, Apr 13, 2025,3:30p,Los Angeles Lakers,,Portland Trail Blazers,,,Moda Center,,0
 1229,reg_season,Sun, Apr 13, 2025,3:30p,Phoenix Suns,,Sacramento Kings,,,Golden 1 Center,,0
 1230,reg_season,Sun, Apr 13, 2025,3:30p,Toronto Raptors,,San Antonio Spurs,,,Frost Bank Center,,0
 1231,playin_r1,,,,,West-8,,West-7,,,,,0
