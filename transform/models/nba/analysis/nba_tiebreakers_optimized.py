@@ -228,97 +228,178 @@ def model(dbt, sess):
     # Create team info dictionary for faster lookups
     team_info = {row['team']: dict(row) for row in teams.iter_rows(named=True)}
     
-    # Create a mapping of team abbreviations to full names
+    # Create a mapping of team abbreviations to full names and vice-versa
     team_map = dict(zip(teams["team"].to_list(), teams["team_long"].to_list()))
-    
+    team_abbr_map = dict(zip(teams["team_long"].to_list(), teams["team"].to_list()))
+
     # Pre-calculate all records using Polars operations
     all_teams = teams["team"].to_list()
     
-    # Calculate all head-to-head records in one go
-    h2h_pairs = []
-    for team1 in all_teams:
-        for team2 in all_teams:
-            if team1 != team2:
-                h2h_pairs.append((team1, team2))
-    
-    h2h_records = pl.DataFrame({
-        'team1': [p[0] for p in h2h_pairs],
-        'team2': [p[1] for p in h2h_pairs]
-    })
-    
-    # Calculate wins for each team pair using Polars native operations
-    def get_team_wins(row):
-        try:
-            team1_full = team_map[row['team1']]
-            team2_full = team_map[row['team2']]
-            h2h_games = results.filter(
-                ((pl.col('VisTm') == team1_full) & (pl.col('HomeTm') == team2_full)) |
-                ((pl.col('VisTm') == team2_full) & (pl.col('HomeTm') == team1_full))
-            )
-            team1_wins = h2h_games.filter(pl.col('winner') == team1_full).height
-            team2_wins = h2h_games.filter(pl.col('winner') == team2_full).height
-            return (team1_wins, team2_wins)
-        except Exception as e:
-            print(f"Error in get_team_wins for row {row}: {e}")
-            return (0, 0)
-    
-    h2h_records = h2h_records.with_columns([
-        pl.struct(['team1', 'team2']).map_elements(get_team_wins, return_dtype=pl.List(pl.Int64)).alias('wins')
+    # --- Vectorized H2H Calculation ---
+    # Map full names in results to abbreviations
+    results_with_abbr = results.with_columns([
+        pl.col("HomeTm").replace(team_abbr_map).alias("HomeTm_abbr"),
+        pl.col("VisTm").replace(team_abbr_map).alias("VisTm_abbr"),
+        pl.col("winner").replace(team_abbr_map).alias("winner_abbr")
     ])
-    
-    # Convert to dictionary for faster lookups
+
+    # Determine team1/team2 for consistent pairing (team1 < team2 alphabetically)
+    h2h_results = results_with_abbr.with_columns([
+        pl.min_horizontal(pl.col("HomeTm_abbr"), pl.col("VisTm_abbr")).alias("team1"),
+        pl.max_horizontal(pl.col("HomeTm_abbr"), pl.col("VisTm_abbr")).alias("team2")
+    ])
+
+    # Calculate wins for team1 and team2 in each game
+    h2h_results = h2h_results.with_columns([
+        pl.when(pl.col("winner_abbr") == pl.col("team1")).then(1).otherwise(0).alias("team1_won"),
+        pl.when(pl.col("winner_abbr") == pl.col("team2")).then(1).otherwise(0).alias("team2_won")
+    ])
+
+    # Aggregate wins for each pair
+    h2h_summary = h2h_results.group_by(["team1", "team2"]).agg([
+        pl.sum("team1_won"),
+        pl.sum("team2_won")
+    ])
+
+    # Create all possible team pairs to ensure all matchups are covered
+    all_pairs_df = pl.DataFrame({
+        't1': [t1 for t1 in all_teams for t2 in all_teams if t1 < t2],
+        't2': [t2 for t1 in all_teams for t2 in all_teams if t1 < t2]
+    })
+
+    # Join summary with all pairs and fill missing games with 0 wins
+    h2h_final = all_pairs_df.join(
+        h2h_summary, 
+        left_on=['t1', 't2'], 
+        right_on=['team1', 'team2'], 
+        how='left'
+    ).with_columns([
+        pl.col('team1_won').fill_null(0),
+        pl.col('team2_won').fill_null(0)
+    ]).select(['t1', 't2', 'team1_won', 'team2_won'])
+
+
+    # Convert to dictionary for faster lookups, ensuring both (t1, t2) and (t2, t1) exist
     all_h2h_records = {}
-    for row in h2h_records.iter_rows(named=True):
-        try:
-            all_h2h_records[(row['team1'], row['team2'])] = row['wins']
-        except Exception as e:
-            print(f"Error creating h2h record for row {row}: {e}")
-    
-    # Calculate division and conference records using Polars operations
-    all_div_records = {}
-    all_conf_records = {}
-    
+    for row in h2h_final.iter_rows(named=True):
+        t1, t2, t1_wins, t2_wins = row['t1'], row['t2'], row['team1_won'], row['team2_won']
+        all_h2h_records[(t1, t2)] = (t1_wins, t2_wins)
+        all_h2h_records[(t2, t1)] = (t2_wins, t1_wins)
+        
+    # Add entries for teams against themselves (0, 0) if needed by downstream logic, though typically not required for H2H
+    # for team in all_teams:
+    #     if (team, team) not in all_h2h_records:
+    #          all_h2h_records[(team, team)] = (0, 0)
+    # --- End Vectorized H2H Calculation ---
+
+    # --- Vectorized Division and Conference Record Calculation ---
+    # Prepare team info for joins
+    teams_sel = teams.select(['team', 'conf', 'division'])
+
+    # Join h2h results with team info for both teams
+    h2h_teams = h2h_final.join(
+        teams_sel, left_on='t1', right_on='team'
+    ).rename({
+        'conf': 'conf_t1',
+        'division': 'division_t1'
+    }).join(
+        teams_sel, left_on='t2', right_on='team'
+    ).rename({
+        'conf': 'conf_t2',
+        'division': 'division_t2'
+    })
+
+    # Create perspective from team1's view
+    persp1 = h2h_teams.select([
+        pl.col('t1').alias('team'),
+        pl.col('conf_t1'),
+        pl.col('division_t1'),
+        pl.col('conf_t2'),
+        pl.col('division_t2'),
+        pl.col('team1_won').alias('wins'),
+        pl.col('team2_won').alias('losses')
+    ])
+
+    # Create perspective from team2's view
+    persp2 = h2h_teams.select([
+        pl.col('t2').alias('team'),
+        pl.col('conf_t2').alias('conf_t1'), # Rename cols to match persp1
+        pl.col('division_t2').alias('division_t1'),
+        pl.col('conf_t1').alias('conf_t2'),
+        pl.col('division_t1').alias('division_t2'),
+        pl.col('team2_won').alias('wins'),
+        pl.col('team1_won').alias('losses')
+    ])
+
+    # Combine perspectives
+    all_perspectives = pl.concat([persp1, persp2])
+
+    # Calculate Division Records
+    div_records = all_perspectives.filter(pl.col('division_t1') == pl.col('division_t2'))
+    div_summary = div_records.group_by('team').agg(
+        pl.sum('wins').alias('div_wins'), 
+        pl.sum('losses').alias('div_losses')
+    )
+
+    # Calculate Conference Records
+    conf_records = all_perspectives.filter(pl.col('conf_t1') == pl.col('conf_t2'))
+    conf_summary = conf_records.group_by('team').agg(
+        pl.sum('wins').alias('conf_wins'), 
+        pl.sum('losses').alias('conf_losses')
+    )
+
+    # Convert summaries to dictionaries
+    all_div_records = {row['team']: (row['div_wins'], row['div_losses']) 
+                      for row in div_summary.iter_rows(named=True)}
+    all_conf_records = {row['team']: (row['conf_wins'], row['conf_losses']) 
+                       for row in conf_summary.iter_rows(named=True)}
+
+    # Ensure all teams are in the dictionaries
     for team in all_teams:
-        try:
-            # Division records
-            div = team_info[team]['division']
-            div_teams = [t for t in all_teams if team_info[t]['division'] == div and t != team]
-            div_wins = sum(all_h2h_records.get((team, t), (0, 0))[0] for t in div_teams)
-            div_losses = sum(all_h2h_records.get((team, t), (0, 0))[1] for t in div_teams)
-            all_div_records[team] = (div_wins, div_losses)
-            
-            # Conference records
-            conf = team_info[team]['conf']
-            conf_teams = [t for t in all_teams if team_info[t]['conf'] == conf and t != team]
-            conf_wins = sum(all_h2h_records.get((team, t), (0, 0))[0] for t in conf_teams)
-            conf_losses = sum(all_h2h_records.get((team, t), (0, 0))[1] for t in conf_teams)
-            all_conf_records[team] = (conf_wins, conf_losses)
-        except Exception as e:
-            print(f"Error calculating records for team {team}: {e}")
+        if team not in all_div_records:
             all_div_records[team] = (0, 0)
+        if team not in all_conf_records:
             all_conf_records[team] = (0, 0)
+    # --- End Vectorized Division and Conference Record Calculation ---
     
-    # Calculate point differentials
-    all_point_diffs = {}
+    # --- Vectorized Point Differential Calculation ---
+    # Use results_with_abbr which has HomeTm_abbr, VisTm_abbr, winner_abbr
+    # Calculate point difference from the perspective of the home team
+    results_with_diff = results_with_abbr.with_columns([
+        pl.when(pl.col("HomeTm_abbr") == pl.col("winner_abbr"))
+          .then(pl.col("winner_pts") - pl.col("loser_pts"))
+          .otherwise(pl.col("loser_pts") - pl.col("winner_pts"))
+          .alias("game_diff_home_perspective")
+    ])
+
+    # Create DataFrame for home team differentials
+    home_diffs = results_with_diff.select([
+        pl.col("HomeTm_abbr").alias("team"),
+        pl.col("game_diff_home_perspective").alias("diff")
+    ])
+
+    # Create DataFrame for visitor team differentials (negative of home diff)
+    away_diffs = results_with_diff.select([
+        pl.col("VisTm_abbr").alias("team"),
+        (-pl.col("game_diff_home_perspective")).alias("diff")
+    ])
+
+    # Combine home and away differentials
+    all_diffs = pl.concat([home_diffs, away_diffs])
+
+    # Group by team and sum differentials
+    point_diff_summary = all_diffs.group_by("team").agg(
+        pl.sum("diff").alias("total_diff")
+    )
+
+    # Convert to dictionary
+    all_point_diffs = {row['team']: row['total_diff'] for row in point_diff_summary.iter_rows(named=True)}
+
+    # Ensure all teams are in the dictionary, defaulting to 0 if they had no games
     for team in all_teams:
-        try:
-            team_full = team_map[team]
-            home_diff = results.filter(pl.col('HomeTm') == team_full).with_columns(
-                diff=pl.when(pl.col('winner') == team_full)
-                .then(pl.col('winner_pts') - pl.col('loser_pts'))
-                .otherwise(pl.col('loser_pts') - pl.col('winner_pts'))
-            )['diff'].sum()
-            
-            away_diff = results.filter(pl.col('VisTm') == team_full).with_columns(
-                diff=pl.when(pl.col('winner') == team_full)
-                .then(pl.col('winner_pts') - pl.col('loser_pts'))
-                .otherwise(pl.col('loser_pts') - pl.col('winner_pts'))
-            )['diff'].sum()
-            
-            all_point_diffs[team] = home_diff + away_diff
-        except Exception as e:
-            print(f"Error calculating point differential for team {team}: {e}")
+        if team not in all_point_diffs:
             all_point_diffs[team] = 0
+    # --- End Vectorized Point Differential Calculation ---
     
     # Pre-calculate wins and losses for each team in each scenario
     wins = simulator.group_by(['scenario_id', 'winning_team']).count().rename({'count': 'wins', 'winning_team': 'team'})
