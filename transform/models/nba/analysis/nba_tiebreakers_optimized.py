@@ -103,15 +103,16 @@ def calculate_point_differential(team: str, results: pl.DataFrame, team_map: Dic
     
     return home_diff + away_diff
 
-def break_two_way_tie(team1: str, team2: str, results: pl.DataFrame, teams: pl.DataFrame, 
-                     top_10_east: List[str], top_10_west: List[str], top_10_overall: List[str],
-                     team_map: Dict[str, str]) -> Tuple[str, str]:
+def break_two_way_tie(team1: str, team2: str, all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]],
+                     all_div_records: Dict[str, Tuple[int, int]], all_conf_records: Dict[str, Tuple[int, int]],
+                     all_point_diffs: Dict[str, int], teams: pl.DataFrame,
+                     top_10_east: List[str], top_10_west: List[str], top_10_overall: List[str]) -> Tuple[str, str]:
     """Apply tiebreaker rules for two teams. Returns (winner, tiebreaker_used)."""
     team1_info = teams.filter(pl.col('team') == team1).row(0)
     team2_info = teams.filter(pl.col('team') == team2).row(0)
     
     # 1. Head-to-head record
-    team1_h2h_wins, team2_h2h_wins = calculate_head_to_head(team1, team2, results, team_map)
+    team1_h2h_wins, team2_h2h_wins = all_h2h_records[(team1, team2)]
     if team1_h2h_wins > team2_h2h_wins:
         return team1, "head_to_head"
     elif team2_h2h_wins > team1_h2h_wins:
@@ -119,16 +120,16 @@ def break_two_way_tie(team1: str, team2: str, results: pl.DataFrame, teams: pl.D
     
     # 2. Division winner (if in same division)
     if team1_info[2] == team2_info[2]:  # division
-        team1_div_wins, _ = calculate_division_record(team1, team1_info[2], results, teams, team_map)
-        team2_div_wins, _ = calculate_division_record(team2, team2_info[2], results, teams, team_map)
+        team1_div_wins, _ = all_div_records[team1]
+        team2_div_wins, _ = all_div_records[team2]
         if team1_div_wins > team2_div_wins:
             return team1, "division_record"
         elif team2_div_wins > team1_div_wins:
             return team2, "division_record"
     
     # 3. Conference record
-    team1_conf_wins, _ = calculate_conference_record(team1, team1_info[1], results, teams, team_map)
-    team2_conf_wins, _ = calculate_conference_record(team2, team2_info[1], results, teams, team_map)
+    team1_conf_wins, _ = all_conf_records[team1]
+    team2_conf_wins, _ = all_conf_records[team2]
     if team1_conf_wins > team2_conf_wins:
         return team1, "conference_record"
     elif team2_conf_wins > team1_conf_wins:
@@ -136,36 +137,38 @@ def break_two_way_tie(team1: str, team2: str, results: pl.DataFrame, teams: pl.D
     
     # 4. Record against top-10 in conference
     top_10_conf = top_10_east if team1_info[1] == 'East' else top_10_west
-    team1_top10_wins, _ = calculate_top_10_record(team1, top_10_conf, results, team_map)
-    team2_top10_wins, _ = calculate_top_10_record(team2, top_10_conf, results, team_map)
+    team1_top10_wins = sum(all_h2h_records[(team1, t)][0] for t in top_10_conf if t != team1)
+    team2_top10_wins = sum(all_h2h_records[(team2, t)][0] for t in top_10_conf if t != team2)
     if team1_top10_wins > team2_top10_wins:
         return team1, "top_10_conference"
     elif team2_top10_wins > team1_top10_wins:
         return team2, "top_10_conference"
     
     # 5. Record against top-10 overall
-    team1_top10_wins, _ = calculate_top_10_record(team1, top_10_overall, results, team_map)
-    team2_top10_wins, _ = calculate_top_10_record(team2, top_10_overall, results, team_map)
+    team1_top10_wins = sum(all_h2h_records[(team1, t)][0] for t in top_10_overall if t != team1)
+    team2_top10_wins = sum(all_h2h_records[(team2, t)][0] for t in top_10_overall if t != team2)
     if team1_top10_wins > team2_top10_wins:
         return team1, "top_10_overall"
     elif team2_top10_wins > team1_top10_wins:
         return team2, "top_10_overall"
     
     # 6. Point differential
-    team1_diff = calculate_point_differential(team1, results, team_map)
-    team2_diff = calculate_point_differential(team2, results, team_map)
+    team1_diff = all_point_diffs[team1]
+    team2_diff = all_point_diffs[team2]
     if team1_diff > team2_diff:
         return team1, "point_differential"
     else:
         return team2, "point_differential"
 
-def break_multi_way_tie(tied_teams: List[str], results: pl.DataFrame, teams: pl.DataFrame,
-                       top_10_east: List[str], top_10_west: List[str], top_10_overall: List[str],
-                       team_map: Dict[str, str]) -> List[Tuple[str, str]]:
+def break_multi_way_tie(tied_teams: List[str], all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]],
+                       all_div_records: Dict[str, Tuple[int, int]], all_conf_records: Dict[str, Tuple[int, int]],
+                       all_point_diffs: Dict[str, int], teams: pl.DataFrame,
+                       top_10_east: List[str], top_10_west: List[str], top_10_overall: List[str]) -> List[Tuple[str, str]]:
     """Apply tiebreaker rules for three or more teams. Returns list of (team, tiebreaker_used)."""
     if len(tied_teams) == 2:
-        winner, tiebreaker = break_two_way_tie(tied_teams[0], tied_teams[1], results, teams, 
-                                             top_10_east, top_10_west, top_10_overall, team_map)
+        winner, tiebreaker = break_two_way_tie(tied_teams[0], tied_teams[1], all_h2h_records, all_div_records,
+                                             all_conf_records, all_point_diffs, teams,
+                                             top_10_east, top_10_west, top_10_overall)
         loser = tied_teams[1] if winner == tied_teams[0] else tied_teams[0]
         return [(winner, tiebreaker), (loser, tiebreaker)]
     
@@ -177,7 +180,7 @@ def break_multi_way_tie(tied_teams: List[str], results: pl.DataFrame, teams: pl.
     remaining_teams = []
     for team in tied_teams:
         team_info = teams.filter(pl.col('team') == team).row(0)
-        div_wins, _ = calculate_division_record(team, team_info[2], results, teams, team_map)
+        div_wins, _ = all_div_records[team]
         if div_wins > 0:  # If team has best division record
             division_winners.append(team)
         else:
@@ -185,20 +188,19 @@ def break_multi_way_tie(tied_teams: List[str], results: pl.DataFrame, teams: pl.
     
     if division_winners:
         if len(division_winners) == 1:
-            return [(division_winners[0], "division_winner")] + break_multi_way_tie(remaining_teams, results, teams,
-                                                                                 top_10_east, top_10_west, top_10_overall, team_map)
+            return [(division_winners[0], "division_winner")] + break_multi_way_tie(remaining_teams, all_h2h_records,
+                                                                                 all_div_records, all_conf_records,
+                                                                                 all_point_diffs, teams,
+                                                                                 top_10_east, top_10_west, top_10_overall)
         else:
-            return break_multi_way_tie(division_winners, results, teams,
-                                     top_10_east, top_10_west, top_10_overall, team_map) + [(t, "division_winner") for t in remaining_teams]
+            return break_multi_way_tie(division_winners, all_h2h_records, all_div_records,
+                                     all_conf_records, all_point_diffs, teams,
+                                     top_10_east, top_10_west, top_10_overall) + [(t, "division_winner") for t in remaining_teams]
     
     # 2. Record against other tied teams
     h2h_records = {}
     for team in tied_teams:
-        wins = 0
-        for opponent in tied_teams:
-            if opponent != team:
-                team_wins, _ = calculate_head_to_head(team, opponent, results, team_map)
-                wins += team_wins
+        wins = sum(all_h2h_records[(team, opponent)][0] for opponent in tied_teams if opponent != team)
         h2h_records[team] = wins
     
     # Sort by head-to-head record
@@ -206,8 +208,10 @@ def break_multi_way_tie(tied_teams: List[str], results: pl.DataFrame, teams: pl.
     
     # If there's a clear winner, return that team first and break remaining ties
     if h2h_records[sorted_teams[0]] > h2h_records[sorted_teams[1]]:
-        return [(sorted_teams[0], "head_to_head")] + break_multi_way_tie(sorted_teams[1:], results, teams,
-                                                                       top_10_east, top_10_west, top_10_overall, team_map)
+        return [(sorted_teams[0], "head_to_head")] + break_multi_way_tie(sorted_teams[1:], all_h2h_records,
+                                                                       all_div_records, all_conf_records,
+                                                                       all_point_diffs, teams,
+                                                                       top_10_east, top_10_west, top_10_overall)
     
     # If still tied, continue with other criteria
     # For now, return the current order with "multiple_tie" as the tiebreaker
@@ -221,6 +225,77 @@ def model(dbt, sess):
     
     # Create a mapping of team abbreviations to full names
     team_map = dict(zip(teams["team"].to_list(), teams["team_long"].to_list()))
+    
+    # Pre-calculate all records
+    all_teams = teams["team"].to_list()
+    all_h2h_records = {}
+    all_div_records = {}
+    all_conf_records = {}
+    all_point_diffs = {}
+    
+    # Pre-calculate head-to-head records
+    for team1 in all_teams:
+        team1_full = team_map[team1]
+        for team2 in all_teams:
+            if team1 != team2:
+                team2_full = team_map[team2]
+                h2h_games = results.filter(
+                    ((pl.col('VisTm') == team1_full) & (pl.col('HomeTm') == team2_full)) |
+                    ((pl.col('VisTm') == team2_full) & (pl.col('HomeTm') == team1_full))
+                )
+                team1_wins = h2h_games.filter(pl.col('winner') == team1_full).height
+                team2_wins = h2h_games.filter(pl.col('winner') == team2_full).height
+                all_h2h_records[(team1, team2)] = (team1_wins, team2_wins)
+    
+    # Pre-calculate division records
+    for team in all_teams:
+        team_full = team_map[team]
+        team_info = teams.filter(pl.col('team') == team).row(0)
+        division = team_info[2]
+        conference = team_info[1]
+        
+        # Division record
+        division_teams = teams.filter(pl.col('division') == division)['team'].to_list()
+        if team in division_teams:
+            division_teams.remove(team)
+        division_teams_full = [team_map[t] for t in division_teams]
+        div_games = results.filter(
+            ((pl.col('VisTm') == team_full) & (pl.col('HomeTm').is_in(division_teams_full))) |
+            ((pl.col('HomeTm') == team_full) & (pl.col('VisTm').is_in(division_teams_full)))
+        )
+        div_wins = div_games.filter(pl.col('winner') == team_full).height
+        div_losses = div_games.filter(pl.col('winner') != team_full).height
+        all_div_records[team] = (div_wins, div_losses)
+        
+        # Conference record
+        conf_teams = teams.filter(pl.col('conf') == conference)['team'].to_list()
+        if team in conf_teams:
+            conf_teams.remove(team)
+        conf_teams_full = [team_map[t] for t in conf_teams]
+        conf_games = results.filter(
+            ((pl.col('VisTm') == team_full) & (pl.col('HomeTm').is_in(conf_teams_full))) |
+            ((pl.col('HomeTm') == team_full) & (pl.col('VisTm').is_in(conf_teams_full)))
+        )
+        conf_wins = conf_games.filter(pl.col('winner') == team_full).height
+        conf_losses = conf_games.filter(pl.col('winner') != team_full).height
+        all_conf_records[team] = (conf_wins, conf_losses)
+        
+        # Point differential
+        home_games = results.filter(pl.col('HomeTm') == team_full)
+        home_diff = home_games.with_columns(
+            diff=pl.when(pl.col('winner') == team_full)
+            .then(pl.col('winner_pts') - pl.col('loser_pts'))
+            .otherwise(pl.col('loser_pts') - pl.col('winner_pts'))
+        )['diff'].sum()
+        
+        away_games = results.filter(pl.col('VisTm') == team_full)
+        away_diff = away_games.with_columns(
+            diff=pl.when(pl.col('winner') == team_full)
+            .then(pl.col('winner_pts') - pl.col('loser_pts'))
+            .otherwise(pl.col('loser_pts') - pl.col('winner_pts'))
+        )['diff'].sum()
+        
+        all_point_diffs[team] = home_diff + away_diff
     
     # Pre-calculate wins and losses for each team in each scenario
     # First calculate wins
@@ -268,8 +343,9 @@ def model(dbt, sess):
                 else:
                     if len(tied_teams) > 1:
                         # Break the tie
-                        resolved = break_multi_way_tie(tied_teams, results, teams,
-                                                     top_10_east, top_10_west, top_10_overall, team_map)
+                        resolved = break_multi_way_tie(tied_teams, all_h2h_records, all_div_records,
+                                                     all_conf_records, all_point_diffs, teams,
+                                                     top_10_east, top_10_west, top_10_overall)
                         rankings.extend(resolved)
                     else:
                         rankings.extend([(t, "no_tie") for t in tied_teams])
@@ -279,8 +355,9 @@ def model(dbt, sess):
             # Handle any remaining tied teams
             if tied_teams:
                 if len(tied_teams) > 1:
-                    resolved = break_multi_way_tie(tied_teams, results, teams,
-                                                 top_10_east, top_10_west, top_10_overall, team_map)
+                    resolved = break_multi_way_tie(tied_teams, all_h2h_records, all_div_records,
+                                                 all_conf_records, all_point_diffs, teams,
+                                                 top_10_east, top_10_west, top_10_overall)
                     rankings.extend(resolved)
                 else:
                     rankings.extend([(t, "no_tie") for t in tied_teams])
