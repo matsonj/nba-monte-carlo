@@ -188,34 +188,36 @@ def break_multi_way_tie(tied_teams: List[str], all_h2h_records: Dict[Tuple[str, 
     
     if division_winners:
         if len(division_winners) == 1:
-            return [(division_winners[0], "division_winner")] + break_multi_way_tie(remaining_teams, all_h2h_records,
-                                                                                 all_div_records, all_conf_records,
-                                                                                 all_point_diffs, teams,
-                                                                                 top_10_east, top_10_west, top_10_overall)
+            return [(division_winners[0], "division_winner")] + [(t, "division_winner") for t in remaining_teams]
         else:
-            return break_multi_way_tie(division_winners, all_h2h_records, all_div_records,
-                                     all_conf_records, all_point_diffs, teams,
-                                     top_10_east, top_10_west, top_10_overall) + [(t, "division_winner") for t in remaining_teams]
+            # Sort division winners by wins and return them first
+            sorted_winners = sorted(division_winners, key=lambda x: all_div_records[x][0], reverse=True)
+            return [(t, "division_winner") for t in sorted_winners] + [(t, "division_winner") for t in remaining_teams]
     
     # 2. Record against other tied teams
     h2h_records = {}
     for team in tied_teams:
-        wins = sum(all_h2h_records[(team, opponent)][0] for opponent in tied_teams if opponent != team)
+        wins = sum(all_h2h_records.get((team, opponent), (0, 0))[0] for opponent in tied_teams if opponent != team)
         h2h_records[team] = wins
     
     # Sort by head-to-head record
     sorted_teams = sorted(tied_teams, key=lambda x: h2h_records[x], reverse=True)
     
-    # If there's a clear winner, return that team first and break remaining ties
+    # If there's a clear winner, return that team first and the rest in order
     if h2h_records[sorted_teams[0]] > h2h_records[sorted_teams[1]]:
-        return [(sorted_teams[0], "head_to_head")] + break_multi_way_tie(sorted_teams[1:], all_h2h_records,
-                                                                       all_div_records, all_conf_records,
-                                                                       all_point_diffs, teams,
-                                                                       top_10_east, top_10_west, top_10_overall)
+        return [(sorted_teams[0], "head_to_head")] + [(t, "head_to_head") for t in sorted_teams[1:]]
     
-    # If still tied, continue with other criteria
-    # For now, return the current order with "multiple_tie" as the tiebreaker
-    return [(t, "multiple_tie") for t in sorted_teams]
+    # If still tied, use conference record
+    conf_records = {team: all_conf_records[team][0] for team in tied_teams}
+    sorted_teams = sorted(tied_teams, key=lambda x: conf_records[x], reverse=True)
+    
+    # If there's a clear winner by conference record
+    if conf_records[sorted_teams[0]] > conf_records[sorted_teams[1]]:
+        return [(t, "conference_record") for t in sorted_teams]
+    
+    # If still tied, use point differential
+    sorted_teams = sorted(tied_teams, key=lambda x: all_point_diffs[x], reverse=True)
+    return [(t, "point_differential") for t in sorted_teams]
 
 def model(dbt, sess):
     # Get the necessary data and convert to Polars
@@ -223,85 +225,103 @@ def model(dbt, sess):
     teams = pl.from_pandas(dbt.ref("nba_teams").df())
     results = pl.from_pandas(dbt.ref("nba_raw_results").df())
     
+    # Create team info dictionary for faster lookups
+    team_info = {row['team']: dict(row) for row in teams.iter_rows(named=True)}
+    
     # Create a mapping of team abbreviations to full names
     team_map = dict(zip(teams["team"].to_list(), teams["team_long"].to_list()))
     
-    # Pre-calculate all records
+    # Pre-calculate all records using Polars operations
     all_teams = teams["team"].to_list()
-    all_h2h_records = {}
-    all_div_records = {}
-    all_conf_records = {}
-    all_point_diffs = {}
     
-    # Pre-calculate head-to-head records
+    # Calculate all head-to-head records in one go
+    h2h_pairs = []
     for team1 in all_teams:
-        team1_full = team_map[team1]
         for team2 in all_teams:
             if team1 != team2:
-                team2_full = team_map[team2]
-                h2h_games = results.filter(
-                    ((pl.col('VisTm') == team1_full) & (pl.col('HomeTm') == team2_full)) |
-                    ((pl.col('VisTm') == team2_full) & (pl.col('HomeTm') == team1_full))
-                )
-                team1_wins = h2h_games.filter(pl.col('winner') == team1_full).height
-                team2_wins = h2h_games.filter(pl.col('winner') == team2_full).height
-                all_h2h_records[(team1, team2)] = (team1_wins, team2_wins)
+                h2h_pairs.append((team1, team2))
     
-    # Pre-calculate division records
+    h2h_records = pl.DataFrame({
+        'team1': [p[0] for p in h2h_pairs],
+        'team2': [p[1] for p in h2h_pairs]
+    })
+    
+    # Calculate wins for each team pair using Polars native operations
+    def get_team_wins(row):
+        try:
+            team1_full = team_map[row['team1']]
+            team2_full = team_map[row['team2']]
+            h2h_games = results.filter(
+                ((pl.col('VisTm') == team1_full) & (pl.col('HomeTm') == team2_full)) |
+                ((pl.col('VisTm') == team2_full) & (pl.col('HomeTm') == team1_full))
+            )
+            team1_wins = h2h_games.filter(pl.col('winner') == team1_full).height
+            team2_wins = h2h_games.filter(pl.col('winner') == team2_full).height
+            return (team1_wins, team2_wins)
+        except Exception as e:
+            print(f"Error in get_team_wins for row {row}: {e}")
+            return (0, 0)
+    
+    h2h_records = h2h_records.with_columns([
+        pl.struct(['team1', 'team2']).map_elements(get_team_wins, return_dtype=pl.List(pl.Int64)).alias('wins')
+    ])
+    
+    # Convert to dictionary for faster lookups
+    all_h2h_records = {}
+    for row in h2h_records.iter_rows(named=True):
+        try:
+            all_h2h_records[(row['team1'], row['team2'])] = row['wins']
+        except Exception as e:
+            print(f"Error creating h2h record for row {row}: {e}")
+    
+    # Calculate division and conference records using Polars operations
+    all_div_records = {}
+    all_conf_records = {}
+    
     for team in all_teams:
-        team_full = team_map[team]
-        team_info = teams.filter(pl.col('team') == team).row(0)
-        division = team_info[2]
-        conference = team_info[1]
-        
-        # Division record
-        division_teams = teams.filter(pl.col('division') == division)['team'].to_list()
-        if team in division_teams:
-            division_teams.remove(team)
-        division_teams_full = [team_map[t] for t in division_teams]
-        div_games = results.filter(
-            ((pl.col('VisTm') == team_full) & (pl.col('HomeTm').is_in(division_teams_full))) |
-            ((pl.col('HomeTm') == team_full) & (pl.col('VisTm').is_in(division_teams_full)))
-        )
-        div_wins = div_games.filter(pl.col('winner') == team_full).height
-        div_losses = div_games.filter(pl.col('winner') != team_full).height
-        all_div_records[team] = (div_wins, div_losses)
-        
-        # Conference record
-        conf_teams = teams.filter(pl.col('conf') == conference)['team'].to_list()
-        if team in conf_teams:
-            conf_teams.remove(team)
-        conf_teams_full = [team_map[t] for t in conf_teams]
-        conf_games = results.filter(
-            ((pl.col('VisTm') == team_full) & (pl.col('HomeTm').is_in(conf_teams_full))) |
-            ((pl.col('HomeTm') == team_full) & (pl.col('VisTm').is_in(conf_teams_full)))
-        )
-        conf_wins = conf_games.filter(pl.col('winner') == team_full).height
-        conf_losses = conf_games.filter(pl.col('winner') != team_full).height
-        all_conf_records[team] = (conf_wins, conf_losses)
-        
-        # Point differential
-        home_games = results.filter(pl.col('HomeTm') == team_full)
-        home_diff = home_games.with_columns(
-            diff=pl.when(pl.col('winner') == team_full)
-            .then(pl.col('winner_pts') - pl.col('loser_pts'))
-            .otherwise(pl.col('loser_pts') - pl.col('winner_pts'))
-        )['diff'].sum()
-        
-        away_games = results.filter(pl.col('VisTm') == team_full)
-        away_diff = away_games.with_columns(
-            diff=pl.when(pl.col('winner') == team_full)
-            .then(pl.col('winner_pts') - pl.col('loser_pts'))
-            .otherwise(pl.col('loser_pts') - pl.col('winner_pts'))
-        )['diff'].sum()
-        
-        all_point_diffs[team] = home_diff + away_diff
+        try:
+            # Division records
+            div = team_info[team]['division']
+            div_teams = [t for t in all_teams if team_info[t]['division'] == div and t != team]
+            div_wins = sum(all_h2h_records.get((team, t), (0, 0))[0] for t in div_teams)
+            div_losses = sum(all_h2h_records.get((team, t), (0, 0))[1] for t in div_teams)
+            all_div_records[team] = (div_wins, div_losses)
+            
+            # Conference records
+            conf = team_info[team]['conf']
+            conf_teams = [t for t in all_teams if team_info[t]['conf'] == conf and t != team]
+            conf_wins = sum(all_h2h_records.get((team, t), (0, 0))[0] for t in conf_teams)
+            conf_losses = sum(all_h2h_records.get((team, t), (0, 0))[1] for t in conf_teams)
+            all_conf_records[team] = (conf_wins, conf_losses)
+        except Exception as e:
+            print(f"Error calculating records for team {team}: {e}")
+            all_div_records[team] = (0, 0)
+            all_conf_records[team] = (0, 0)
+    
+    # Calculate point differentials
+    all_point_diffs = {}
+    for team in all_teams:
+        try:
+            team_full = team_map[team]
+            home_diff = results.filter(pl.col('HomeTm') == team_full).with_columns(
+                diff=pl.when(pl.col('winner') == team_full)
+                .then(pl.col('winner_pts') - pl.col('loser_pts'))
+                .otherwise(pl.col('loser_pts') - pl.col('winner_pts'))
+            )['diff'].sum()
+            
+            away_diff = results.filter(pl.col('VisTm') == team_full).with_columns(
+                diff=pl.when(pl.col('winner') == team_full)
+                .then(pl.col('winner_pts') - pl.col('loser_pts'))
+                .otherwise(pl.col('loser_pts') - pl.col('winner_pts'))
+            )['diff'].sum()
+            
+            all_point_diffs[team] = home_diff + away_diff
+        except Exception as e:
+            print(f"Error calculating point differential for team {team}: {e}")
+            all_point_diffs[team] = 0
     
     # Pre-calculate wins and losses for each team in each scenario
-    # First calculate wins
     wins = simulator.group_by(['scenario_id', 'winning_team']).count().rename({'count': 'wins', 'winning_team': 'team'})
-    
-    # Then calculate losses (team is the losing team if they are home/visiting team and not the winning team)
     losses = simulator.filter(
         ((pl.col('home_team') != pl.col('winning_team')) & pl.col('home_team').is_not_null()) |
         ((pl.col('visiting_team') != pl.col('winning_team')) & pl.col('visiting_team').is_not_null())
@@ -318,87 +338,96 @@ def model(dbt, sess):
     scenario_ids = standings['scenario_id'].unique().to_list()
     
     for scenario_id in scenario_ids:
-        # Get standings for this scenario
-        scenario_standings = standings.filter(pl.col('scenario_id') == scenario_id)
-        
-        # Calculate top 10 teams in each conference for this scenario
-        top_10_east = scenario_standings.filter(pl.col('conf') == 'East').sort('wins', descending=True).head(10)['team'].to_list()
-        top_10_west = scenario_standings.filter(pl.col('conf') == 'West').sort('wins', descending=True).head(10)['team'].to_list()
-        top_10_overall = scenario_standings.sort('wins', descending=True).head(10)['team'].to_list()
-        
-        # Group teams by conference and wins
-        east_standings = scenario_standings.filter(pl.col('conf') == 'East').sort('wins', descending=True)
-        west_standings = scenario_standings.filter(pl.col('conf') == 'West').sort('wins', descending=True)
-        
-        # Process each conference
-        def process_standings(conf_standings):
-            current_wins = None
-            tied_teams = []
-            rankings = []
+        try:
+            # Get standings for this scenario
+            scenario_standings = standings.filter(pl.col('scenario_id') == scenario_id)
             
-            for row in conf_standings.iter_rows(named=True):
-                if current_wins is None or row['wins'] == current_wins:
-                    tied_teams.append(row['team'])
-                    current_wins = row['wins']
-                else:
+            # Calculate top 10 teams in each conference for this scenario
+            top_10_east = scenario_standings.filter(pl.col('conf') == 'East').sort('wins', descending=True).head(10)['team'].to_list()
+            top_10_west = scenario_standings.filter(pl.col('conf') == 'West').sort('wins', descending=True).head(10)['team'].to_list()
+            top_10_overall = scenario_standings.sort('wins', descending=True).head(10)['team'].to_list()
+            
+            # Group teams by conference and wins
+            east_standings = scenario_standings.filter(pl.col('conf') == 'East').sort('wins', descending=True)
+            west_standings = scenario_standings.filter(pl.col('conf') == 'West').sort('wins', descending=True)
+            
+            # Process each conference
+            def process_standings(conf_standings):
+                current_wins = None
+                tied_teams = []
+                rankings = []
+                
+                for row in conf_standings.iter_rows(named=True):
+                    if current_wins is None or row['wins'] == current_wins:
+                        tied_teams.append(row['team'])
+                        current_wins = row['wins']
+                    else:
+                        if len(tied_teams) > 1:
+                            # Break the tie
+                            resolved = break_multi_way_tie(tied_teams, all_h2h_records, all_div_records,
+                                                         all_conf_records, all_point_diffs, teams,
+                                                         top_10_east, top_10_west, top_10_overall)
+                            rankings.extend(resolved)
+                        else:
+                            rankings.extend([(t, "no_tie") for t in tied_teams])
+                        tied_teams = [row['team']]
+                        current_wins = row['wins']
+                
+                # Handle any remaining tied teams
+                if tied_teams:
                     if len(tied_teams) > 1:
-                        # Break the tie
                         resolved = break_multi_way_tie(tied_teams, all_h2h_records, all_div_records,
                                                      all_conf_records, all_point_diffs, teams,
                                                      top_10_east, top_10_west, top_10_overall)
                         rankings.extend(resolved)
                     else:
                         rankings.extend([(t, "no_tie") for t in tied_teams])
-                    tied_teams = [row['team']]
-                    current_wins = row['wins']
+                
+                return rankings
             
-            # Handle any remaining tied teams
-            if tied_teams:
-                if len(tied_teams) > 1:
-                    resolved = break_multi_way_tie(tied_teams, all_h2h_records, all_div_records,
-                                                 all_conf_records, all_point_diffs, teams,
-                                                 top_10_east, top_10_west, top_10_overall)
-                    rankings.extend(resolved)
-                else:
-                    rankings.extend([(t, "no_tie") for t in tied_teams])
+            # Process rankings for this scenario
+            east_rankings = process_standings(east_standings)
+            west_rankings = process_standings(west_standings)
             
-            return rankings
-        
-        # Process rankings for this scenario
-        east_rankings = process_standings(east_standings)
-        west_rankings = process_standings(west_standings)
-        
-        # Add East teams
-        rank = 1
-        for team, tiebreaker in east_rankings:
-            team_info = teams.filter(pl.col('team') == team).row(0)
-            team_wins = scenario_standings.filter(pl.col('team') == team)['wins'].item()
-            output_data.append({
-                "scenario_id": scenario_id,
-                "team": team,
-                "conference": "East",
-                "rank": rank,
-                "division": team_info[5],  # division
-                "tiebreaker_used": tiebreaker,
-                "wins": team_wins
-            })
-            rank += 1
-        
-        # Add West teams
-        rank = 1
-        for team, tiebreaker in west_rankings:
-            team_info = teams.filter(pl.col('team') == team).row(0)
-            team_wins = scenario_standings.filter(pl.col('team') == team)['wins'].item()
-            output_data.append({
-                "scenario_id": scenario_id,
-                "team": team,
-                "conference": "West",
-                "rank": rank,
-                "division": team_info[5],  # division
-                "tiebreaker_used": tiebreaker,
-                "wins": team_wins
-            })
-            rank += 1
+            # Add East teams
+            rank = 1
+            for team, tiebreaker in east_rankings:
+                try:
+                    team_info_row = team_info[team]
+                    team_wins = scenario_standings.filter(pl.col('team') == team)['wins'].item()
+                    output_data.append({
+                        "scenario_id": scenario_id,
+                        "team": team,
+                        "conference": "East",
+                        "rank": rank,
+                        "division": team_info_row['division'],
+                        "tiebreaker_used": tiebreaker,
+                        "wins": team_wins
+                    })
+                    rank += 1
+                except Exception as e:
+                    print(f"Error processing East team {team} in scenario {scenario_id}: {e}")
+            
+            # Add West teams
+            rank = 1
+            for team, tiebreaker in west_rankings:
+                try:
+                    team_info_row = team_info[team]
+                    team_wins = scenario_standings.filter(pl.col('team') == team)['wins'].item()
+                    output_data.append({
+                        "scenario_id": scenario_id,
+                        "team": team,
+                        "conference": "West",
+                        "rank": rank,
+                        "division": team_info_row['division'],
+                        "tiebreaker_used": tiebreaker,
+                        "wins": team_wins
+                    })
+                    rank += 1
+                except Exception as e:
+                    print(f"Error processing West team {team} in scenario {scenario_id}: {e}")
+        except Exception as e:
+            print(f"Error processing scenario {scenario_id}: {e}")
     
     # Convert final output to pandas DataFrame
     return pd.DataFrame(output_data) 
