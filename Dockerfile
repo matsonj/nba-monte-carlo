@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
   musl-dev \
   glibc-source \
   && rm -rf /var/lib/apt/lists/* \
-  && wget https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip \
+  && wget https://github.com/duckdb/duckdb/releases/download/v1.2.2/duckdb_cli-linux-amd64.zip && unzip duckdb_cli-linux-amd64.zip \
   && curl -LsSf https://astral.sh/uv/install.sh | sh
 
 COPY data ./data
