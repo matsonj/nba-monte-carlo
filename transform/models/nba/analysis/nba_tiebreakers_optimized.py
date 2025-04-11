@@ -3,6 +3,35 @@ import polars as pl
 import numpy as np
 from typing import List, Dict, Tuple, Optional
 
+# THIS MODEL IMPLEMENTS THE NBA TIEBREAKERS FOR TIES FOR PLAYOFF SEEDING
+# THE RULES ARE AS FOLLOWS:
+# Tiebreaker Basis – 2 Teams Tied
+# (-) Tie breaker not needed (better overall winning percentage)
+# (1) Better winning percentage in games against each other
+# (2) Division leader wins a tie over a team not leading a division
+# (3) Division won-lost percentage (only if teams are in same division)
+# (4) Conference won-lost percentage
+# (5) Better winning percentage against teams eligible for the playoffs in own
+# conference (including teams that finished the regular season tied for a playoff
+# position)
+# (6) Better winning percentage against teams eligible for the playoffs in other
+# conference (including teams that finished the regular season tied for a playoff
+# position)
+# (7) Better net result of total points scored less total points allowed against all
+# opponents (“point differential”)
+# Tiebreaker Basis – Three or More Teams Tied
+# (-) Tie breaker not needed (better overall winning percentage)
+# (1) Division leader wins tie from team not leading a division (this criterion is
+# applied regardless of whether the tied teams are in the same division)
+# (2) Better winning percentage in all games among the tied teams
+# (3) Division won-lost percentage (only if all teams are in same division)
+# (4) Conference won-lost percentage
+# (5) Better winning percentage against teams eligible for the playoffs in own
+# conference (including teams that finished the regular season tied for a playoff
+# position)
+# (6) Better net result of total points scored less total points allowed against all
+# opponents (“point differential”)
+
 def calculate_head_to_head(team1: str, team2: str, results: pl.DataFrame, team_map: Dict[str, str]) -> Tuple[float, float]:
     """Calculate head-to-head record between two teams."""
     # Convert team abbreviations to full names
@@ -103,185 +132,307 @@ def calculate_point_differential(team: str, results: pl.DataFrame, team_map: Dic
     
     return home_diff + away_diff
 
-def break_two_way_tie(team1: str, team2: str, all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]],
-                     all_div_records: Dict[str, Tuple[int, int]], all_conf_records: Dict[str, Tuple[int, int]],
-                     all_point_diffs: Dict[str, int], teams: pl.DataFrame,
-                     top_10_east: List[str], top_10_west: List[str], top_10_overall: List[str]) -> Tuple[str, str]:
-    """Apply tiebreaker rules for two teams. Returns (winner, tiebreaker_used)."""
-    team1_info = teams.filter(pl.col('team') == team1).row(0)
-    team2_info = teams.filter(pl.col('team') == team2).row(0)
+# --- Tiebreaker Logic ---
+
+def _calculate_win_percentage(wins: int, losses: int) -> float:
+    """Calculates win percentage, handling division by zero."""
+    if wins + losses == 0:
+        return 0.0
+    return wins / (wins + losses)
+
+def _get_record_against_teams(team: str, opponent_list: List[str], all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]]) -> Tuple[int, int]:
+    """Calculates a team's W/L record against a specific list of opponents."""
+    wins = 0
+    losses = 0
+    for opponent in opponent_list:
+        if team == opponent: # Don't compare team against itself
+            continue
+        w, l = all_h2h_records.get((team, opponent), (0, 0))
+        wins += w
+        losses += l
+    return wins, losses
+
+def break_two_way_tie(team1: str, team2: str,
+                      all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]],
+                      all_div_records: Dict[str, Tuple[int, int]],
+                      all_conf_records: Dict[str, Tuple[int, int]],
+                      all_point_diffs: Dict[str, int],
+                      teams: pl.DataFrame,
+                      playoff_eligible_east: List[str],
+                      playoff_eligible_west: List[str]) -> Tuple[str, str]:
+    """Apply NBA tiebreaker rules for two teams. Returns (winner, tiebreaker_used)."""
     
-    # 1. Head-to-head record
-    team1_h2h_wins, team2_h2h_wins = all_h2h_records[(team1, team2)]
-    if team1_h2h_wins > team2_h2h_wins:
-        return team1, "head_to_head"
-    elif team2_h2h_wins > team1_h2h_wins:
-        return team2, "head_to_head"
+    # Cache team info to avoid repeated lookups
+    team1_info = teams.filter(pl.col('team') == team1).row(index=0, named=True)
+    team2_info = teams.filter(pl.col('team') == team2).row(index=0, named=True)
+    if not team1_info or not team2_info:
+        # Handle cases where team info might be missing (shouldn't happen with good data)
+        # Defaulting to team1, but logging or raising an error might be better
+        print(f"Warning: Missing team info for {team1} or {team2}")
+        return team1, "error_missing_team_info" 
+
+    # (-) Overall winning percentage is assumed to be equal for tied teams
+
+    # (1) Better winning percentage in games against each other
+    t1_h2h_wins, t2_h2h_wins = all_h2h_records.get((team1, team2), (0, 0))
+    if t1_h2h_wins > t2_h2h_wins:
+        return team1, "h2h_wins"
+    if t2_h2h_wins > t1_h2h_wins:
+        return team2, "h2h_wins"
+
+    # (2) Division leader wins a tie over a team not leading a division
+    # Note: Requires knowing which teams *won* their division overall, not just their record.
+    # This information isn't directly available in the inputs. Assuming this check is implicitly handled
+    # by overall record or needs external data. Skipping for now as it cannot be calculated.
+    # print("Warning: Tiebreaker step (2) Division Leader not implemented due to missing data.")
     
-    # 2. Division winner (if in same division)
-    if team1_info[2] == team2_info[2]:  # division
-        team1_div_wins, _ = all_div_records[team1]
-        team2_div_wins, _ = all_div_records[team2]
-        if team1_div_wins > team2_div_wins:
-            return team1, "division_record"
-        elif team2_div_wins > team1_div_wins:
-            return team2, "division_record"
-    
-    # 3. Conference record
-    team1_conf_wins, _ = all_conf_records[team1]
-    team2_conf_wins, _ = all_conf_records[team2]
-    if team1_conf_wins > team2_conf_wins:
-        return team1, "conference_record"
-    elif team2_conf_wins > team1_conf_wins:
-        return team2, "conference_record"
-    
-    # 4. Record against top-10 in conference
-    top_10_conf = top_10_east if team1_info[1] == 'East' else top_10_west
-    team1_top10_wins = sum(all_h2h_records[(team1, t)][0] for t in top_10_conf if t != team1)
-    team2_top10_wins = sum(all_h2h_records[(team2, t)][0] for t in top_10_conf if t != team2)
-    if team1_top10_wins > team2_top10_wins:
-        return team1, "top_10_conference"
-    elif team2_top10_wins > team1_top10_wins:
-        return team2, "top_10_conference"
-    
-    # 5. Record against top-10 overall
-    team1_top10_wins = sum(all_h2h_records[(team1, t)][0] for t in top_10_overall if t != team1)
-    team2_top10_wins = sum(all_h2h_records[(team2, t)][0] for t in top_10_overall if t != team2)
-    if team1_top10_wins > team2_top10_wins:
-        return team1, "top_10_overall"
-    elif team2_top10_wins > team1_top10_wins:
-        return team2, "top_10_overall"
-    
-    # 6. Point differential
-    team1_diff = all_point_diffs[team1]
-    team2_diff = all_point_diffs[team2]
+    # (3) Division won-lost percentage (only if teams are in same division)
+    if team1_info['division'] == team2_info['division']:
+        t1_div_wins, t1_div_losses = all_div_records.get(team1, (0, 0))
+        t2_div_wins, t2_div_losses = all_div_records.get(team2, (0, 0))
+        t1_div_pct = _calculate_win_percentage(t1_div_wins, t1_div_losses)
+        t2_div_pct = _calculate_win_percentage(t2_div_wins, t2_div_losses)
+        if t1_div_pct > t2_div_pct:
+            return team1, "division_record_pct"
+        if t2_div_pct > t1_div_pct:
+            return team2, "division_record_pct"
+            
+    # (4) Conference won-lost percentage
+    t1_conf_wins, t1_conf_losses = all_conf_records.get(team1, (0, 0))
+    t2_conf_wins, t2_conf_losses = all_conf_records.get(team2, (0, 0))
+    t1_conf_pct = _calculate_win_percentage(t1_conf_wins, t1_conf_losses)
+    t2_conf_pct = _calculate_win_percentage(t2_conf_wins, t2_conf_losses)
+    if t1_conf_pct > t2_conf_pct:
+        return team1, "conference_record_pct"
+    if t2_conf_pct > t1_conf_pct:
+        return team2, "conference_record_pct"
+
+    # (5) Better winning percentage against teams eligible for the playoffs in own conference
+    playoff_eligible_own_conf = playoff_eligible_east if team1_info['conf'] == 'East' else playoff_eligible_west
+    t1_vs_eligible_own_wins, t1_vs_eligible_own_losses = _get_record_against_teams(team1, playoff_eligible_own_conf, all_h2h_records)
+    t2_vs_eligible_own_wins, t2_vs_eligible_own_losses = _get_record_against_teams(team2, playoff_eligible_own_conf, all_h2h_records)
+    t1_vs_eligible_own_pct = _calculate_win_percentage(t1_vs_eligible_own_wins, t1_vs_eligible_own_losses)
+    t2_vs_eligible_own_pct = _calculate_win_percentage(t2_vs_eligible_own_wins, t2_vs_eligible_own_losses)
+    if t1_vs_eligible_own_pct > t2_vs_eligible_own_pct:
+        return team1, "vs_playoff_eligible_own_conf_pct"
+    if t2_vs_eligible_own_pct > t1_vs_eligible_own_pct:
+        return team2, "vs_playoff_eligible_own_conf_pct"
+
+    # (6) Better winning percentage against teams eligible for the playoffs in other conference
+    playoff_eligible_other_conf = playoff_eligible_west if team1_info['conf'] == 'East' else playoff_eligible_east
+    t1_vs_eligible_other_wins, t1_vs_eligible_other_losses = _get_record_against_teams(team1, playoff_eligible_other_conf, all_h2h_records)
+    t2_vs_eligible_other_wins, t2_vs_eligible_other_losses = _get_record_against_teams(team2, playoff_eligible_other_conf, all_h2h_records)
+    t1_vs_eligible_other_pct = _calculate_win_percentage(t1_vs_eligible_other_wins, t1_vs_eligible_other_losses)
+    t2_vs_eligible_other_pct = _calculate_win_percentage(t2_vs_eligible_other_wins, t2_vs_eligible_other_losses)
+    if t1_vs_eligible_other_pct > t2_vs_eligible_other_pct:
+        return team1, "vs_playoff_eligible_other_conf_pct"
+    if t2_vs_eligible_other_pct > t1_vs_eligible_other_pct:
+        return team2, "vs_playoff_eligible_other_conf_pct"
+
+    # (7) Better net result of total points scored less total points allowed against all opponents (“point differential”)
+    team1_diff = all_point_diffs.get(team1, -float('inf'))
+    team2_diff = all_point_diffs.get(team2, -float('inf'))
     if team1_diff > team2_diff:
         return team1, "point_differential"
-    else:
-        return team2, "point_differential"
+    # If point differentials are also equal (highly unlikely), default to team1 or random choice
+    # Returning team2 here follows the original code's final else clause implicitly
+    return team2, "point_differential"
 
-# --- Helper functions for multi-way tiebreakers ---
+# --- New/Modified Helpers for Multi-Way ---
 
-def _get_division_winners(tied_teams: List[str], all_div_records: Dict[str, Tuple[int, int]], teams: pl.DataFrame) -> Tuple[List[str], List[str]]:
-    """Identifies division leaders among tied teams based on simplified original logic."""
-    # Simplified logic from original code: Check if a team has > 0 division wins.
-    # A more complex/accurate check would be needed for official NBA rules (best record within division).
-    division_winners = []
-    remaining_teams = []
-    for team in tied_teams:
-        # Use .get to handle potential missing keys gracefully
-        div_wins, _ = all_div_records.get(team, (0, 0))
-        # Original logic used '> 0', assuming pre-calculated div wins reflect leadership.
-        # Let's stick to that for direct refactoring, but acknowledge it might be inaccurate.
-        # A better check might involve comparing records of teams *within the same division*.
-        team_info = teams.filter(pl.col('team') == team)
-        if not team_info.is_empty():
-            # This check requires knowing if the team *won* its division, which all_div_records doesn't directly state.
-            # The original check `if div_wins > 0:` is ambiguous. Let's refine slightly to check if they are *marked* as a division winner.
-            # Assuming 'division_winner' status is somehow derivable or stored elsewhere (e.g., in teams table, though not used before).
-            # For now, let's replicate the *intent* of separating based on division record superiority within the tied group.
-            # A placeholder check - replace with actual division winner logic if available
-            # We'll stick closer to the *original* implementation structure which seemed to just sort winners if multiple existed.
-            # Let's identify potential leaders based on having the best div record *within their division subset of the tie*
-            pass # Actual division winner logic is complex, deferring for now.
+def _get_h2h_pct_among_tied(team: str, tied_group: List[str], all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]]) -> float:
+    """Calculates H2H win pct for a team ONLY against others in the tied_group."""
+    wins, losses = _get_record_against_teams(team, tied_group, all_h2h_records)
+    return _calculate_win_percentage(wins, losses)
 
-    # Sticking to the original logic's *structure* which separated winners/remainders then sorted.
-    # Let's identify teams that *could* be division winners based on having *any* div wins.
-    potential_winners = [t for t in tied_teams if all_div_records.get(t, (0,0))[0] > 0]
-    remaining_teams = [t for t in tied_teams if t not in potential_winners]
+def _get_div_pct(team: str, all_div_records: Dict[str, Tuple[int, int]]) -> float:
+    """Gets division win pct from pre-calculated records."""
+    wins, losses = all_div_records.get(team, (0, 0))
+    return _calculate_win_percentage(wins, losses)
 
-    # If multiple potential winners, sort them by div wins. The original code did this.
-    if len(potential_winners) > 1:
-       potential_winners = sorted(potential_winners, key=lambda x: all_div_records.get(x, (0,0))[0], reverse=True)
+def _get_conf_pct(team: str, all_conf_records: Dict[str, Tuple[int, int]]) -> float:
+    """Gets conference win pct from pre-calculated records."""
+    wins, losses = all_conf_records.get(team, (0, 0))
+    return _calculate_win_percentage(wins, losses)
 
-    # This function will return the potentially sorted list of winners and the rest.
-    # The calling function needs to handle the cases (0, 1, or multiple winners)
-    return potential_winners, remaining_teams
+def _get_vs_playoff_eligible_pct(team: str, own_conf_eligible: List[str], all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]]) -> float:
+    """Calculates win pct against playoff eligible teams in own conference."""
+    wins, losses = _get_record_against_teams(team, own_conf_eligible, all_h2h_records)
+    return _calculate_win_percentage(wins, losses)
 
+# Hypothetical function - requires external data/logic
+def _is_division_leader(team: str, teams_table: pl.DataFrame, all_div_records: Dict[str, Tuple[int, int]], scenario_standings: pl.DataFrame) -> bool:
+    """Checks if team is the undisputed leader (most wins, no ties) in their division for the given scenario."""
+    try:
+        # Find the team's division and wins in this scenario
+        team_info = scenario_standings.filter(pl.col('team') == team)
+        if team_info.is_empty():
+            return False # Team not found in standings?
+        
+        team_division = team_info.select('division').item()
+        team_wins = team_info.select('wins').item()
 
-def _sort_by_multi_h2h(tied_teams: List[str], all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]]) -> Tuple[List[str], Dict[str, int]]:
-    """Sorts tied teams by their head-to-head record wins against each other."""
-    h2h_records = {}
-    for team in tied_teams:
-        wins = sum(all_h2h_records.get((team, opponent), (0, 0))[0] for opponent in tied_teams if opponent != team)
-        h2h_records[team] = wins
-    sorted_teams = sorted(tied_teams, key=lambda x: h2h_records.get(x, 0), reverse=True)
-    return sorted_teams, h2h_records
+        # Get all teams in the same division from the scenario standings
+        division_standings = scenario_standings.filter(pl.col('division') == team_division)
 
-def _sort_by_conf_record(tied_teams: List[str], all_conf_records: Dict[str, Tuple[int, int]]) -> Tuple[List[str], Dict[str, int]]:
-    """Sorts tied teams by their conference record wins."""
-    conf_wins = {team: all_conf_records.get(team, (0, 0))[0] for team in tied_teams}
-    sorted_teams = sorted(tied_teams, key=lambda x: conf_wins.get(x, 0), reverse=True)
-    return sorted_teams, conf_wins
+        # Find the maximum wins in that division
+        max_wins_in_division = division_standings.select(pl.max('wins')).item()
 
-def _sort_by_point_diff(tied_teams: List[str], all_point_diffs: Dict[str, int]) -> List[str]:
-    """Sorts tied teams by their overall point differential."""
-    sorted_teams = sorted(tied_teams, key=lambda x: all_point_diffs.get(x, -float('inf')), reverse=True)
-    return sorted_teams
-
-# --- End Helper functions ---
-
-def break_multi_way_tie(tied_teams: List[str], all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]],
-                       all_div_records: Dict[str, Tuple[int, int]], all_conf_records: Dict[str, Tuple[int, int]],
-                       all_point_diffs: Dict[str, int], teams: pl.DataFrame,
-                       top_10_east: List[str], top_10_west: List[str], top_10_overall: List[str]) -> List[Tuple[str, str]]:
-    """Apply tiebreaker rules for three or more teams using helper functions."""
-
-    # Base case: Two teams use the dedicated two-way tiebreaker
-    if len(tied_teams) <= 1:
-        return [(team, "no_tie") for team in tied_teams] # Handle empty or single team list
+        # Check if the team's wins match the maximum
+        if team_wins != max_wins_in_division:
+            return False # Not the leader
+        
+        # Check if *only one* team achieved the maximum wins
+        num_teams_with_max_wins = division_standings.filter(pl.col('wins') == max_wins_in_division).height
+        
+        # Return True only if the team has max wins and is the *only* one with max wins
+        return num_teams_with_max_wins == 1
     
-    if len(tied_teams) == 2:
+    except Exception as e:
+        # Log error or handle appropriately
+        print(f"Error in _is_division_leader for team {team}: {e}")
+        return False # Default to False on error
+
+# --- Main Multi-Way Tiebreaker Function (Refactored) ---
+def break_multi_way_tie(tied_teams: List[str],
+                        all_h2h_records: Dict[Tuple[str, str], Tuple[int, int]],
+                        all_div_records: Dict[str, Tuple[int, int]],
+                        all_conf_records: Dict[str, Tuple[int, int]],
+                        all_point_diffs: Dict[str, int],
+                        teams: pl.DataFrame, # Used for team info (conf, div)
+                        playoff_eligible_east: List[str],
+                        playoff_eligible_west: List[str],
+                        scenario_standings: pl.DataFrame) -> List[Tuple[str, str]]:
+    """Apply NBA tiebreaker rules for three or more teams recursively."""
+
+    # --- Base Cases ---
+    num_tied = len(tied_teams)
+    if num_tied == 0:
+        return []
+    if num_tied == 1:
+        return [(tied_teams[0], "no_tie")]
+    if num_tied == 2:
+        # Use the dedicated two-way tiebreaker
         winner, tiebreaker = break_two_way_tie(tied_teams[0], tied_teams[1], all_h2h_records, all_div_records,
                                              all_conf_records, all_point_diffs, teams,
-                                             top_10_east, top_10_west, top_10_overall)
+                                             playoff_eligible_east, playoff_eligible_west)
         loser = tied_teams[1] if winner == tied_teams[0] else tied_teams[0]
         return [(winner, tiebreaker), (loser, tiebreaker)]
 
-    # --- Multi-way tiebreaker logic ---
-    # Make a copy to work with
-    current_tied_teams = list(tied_teams)
+    # --- Recursive Multi-Way Tiebreaker Logic ---
+    
+    ranked_list: List[Tuple[str, str]] = []
+    remaining_to_rank = list(tied_teams) # Start with all teams needing ranking
 
-    # 1. Division winner rule (Simplified based on original implementation)
-    # Get potential division winners (teams with >0 div wins) and others
-    # The helper sorts multiple winners by div wins.
-    division_winners, remaining_teams = _get_division_winners(current_tied_teams, all_div_records, teams)
+    # Helper to apply a sorting key and recursively rank subgroups
+    def apply_tiebreaker(key_func, tiebreaker_name, higher_is_better=True) -> bool:
+        nonlocal remaining_to_rank, ranked_list
+        
+        if not remaining_to_rank: return True # All teams ranked
 
-    if division_winners:
-        # If only one winner, they are ranked first. Break tie among remaining.
-        if len(division_winners) == 1:
-            winner = division_winners[0]
-            remaining_ranked = break_multi_way_tie(remaining_teams, all_h2h_records, all_div_records,
-                                                 all_conf_records, all_point_diffs, teams,
-                                                 top_10_east, top_10_west, top_10_overall)
-            return [(winner, "division_winner")] + remaining_ranked
-        # If multiple winners, rank them first (already sorted by helper), then rank remaining.
+        # Sort remaining teams based on the current criterion
+        sorted_group = sorted(
+            remaining_to_rank,
+            key=key_func,
+            reverse=higher_is_better
+        )
+
+        # Group teams by their score according to the current criterion
+        grouped_by_score = []
+        if sorted_group:
+            current_group = [sorted_group[0]]
+            current_score = key_func(sorted_group[0])
+            for i in range(1, len(sorted_group)):
+                team = sorted_group[i]
+                score = key_func(team)
+                # Use tolerance for float comparison if needed, though unlikely here
+                if score == current_score:
+                    current_group.append(team)
+                else:
+                    grouped_by_score.append(current_group)
+                    current_group = [team]
+                    current_score = score
+            grouped_by_score.append(current_group)
+
+        # Check if this tiebreaker resolved anything
+        if len(grouped_by_score) > 1: # Did it create multiple rank levels?
+             newly_ranked = []
+             next_remaining = []
+             for group in grouped_by_score:
+                 if len(group) == 1:
+                     # This team is definitively ranked by this criterion
+                     newly_ranked.append((group[0], tiebreaker_name))
+                 else:
+                     # This subgroup remains tied, needs further breaking (recursive call)
+                     # Pass the subgroup back through the *entire* tiebreaker process
+                     recursive_ranks = break_multi_way_tie(group, all_h2h_records, all_div_records,
+                                                           all_conf_records, all_point_diffs, teams,
+                                                           playoff_eligible_east, playoff_eligible_west, 
+                                                           scenario_standings)
+                     newly_ranked.extend(recursive_ranks)
+             
+             ranked_list.extend(newly_ranked)
+             remaining_to_rank = [] # All teams processed in this path
+             return True # Tiebreaker applied and resolved fully (recursively)
         else:
-            # Keep the 'division_winner' tiebreaker tag for all winners as per original code.
-            winners_ranked = [(team, "division_winner") for team in division_winners]
-            remaining_ranked = break_multi_way_tie(remaining_teams, all_h2h_records, all_div_records,
-                                                   all_conf_records, all_point_diffs, teams,
-                                                   top_10_east, top_10_west, top_10_overall)
-            return winners_ranked + remaining_ranked
+            # Tiebreaker did not differentiate the group, move to the next rule
+            return False
 
-    # If no division winners involved, proceed with the entire group.
-    # 2. Head-to-head record among all tied teams
-    sorted_by_h2h, h2h_wins = _sort_by_multi_h2h(current_tied_teams, all_h2h_records)
-    # Check if H2H resolves the tie (is the top team strictly better than the second?)
-    if h2h_wins.get(sorted_by_h2h[0], 0) > h2h_wins.get(sorted_by_h2h[1], 0):
-        # Original code returned the full sorted list if H2H broke *any* part of the tie.
-        return [(team, "head_to_head") for team in sorted_by_h2h]
+    # --- Apply Rules Sequentially ---
 
-    # 3. Conference record among tied teams
-    # Only apply if H2H resulted in a tie at the top.
-    sorted_by_conf, conf_wins = _sort_by_conf_record(current_tied_teams, all_conf_records)
-    if conf_wins.get(sorted_by_conf[0], 0) > conf_wins.get(sorted_by_conf[1], 0):
-        return [(team, "conference_record") for team in sorted_by_conf]
+    # (1) Division leader wins tie from team not leading a division
+    # Pass scenario_standings to helper
+    leaders = [t for t in remaining_to_rank if _is_division_leader(t, teams, all_div_records, scenario_standings)]
+    non_leaders = [t for t in remaining_to_rank if t not in leaders]
 
-    # 4. Point differential (overall)
-    # Applied if conference record also resulted in a tie at the top.
-    sorted_by_diff = _sort_by_point_diff(current_tied_teams, all_point_diffs)
-    return [(team, "point_differential") for team in sorted_by_diff]
+    if leaders and non_leaders: # Rule applies only if mix of leaders/non-leaders
+        # Pass scenario_standings in recursive calls
+        ranked_leaders = break_multi_way_tie(leaders, all_h2h_records, all_div_records,
+                                             all_conf_records, all_point_diffs, teams,
+                                             playoff_eligible_east, playoff_eligible_west, scenario_standings)
+        ranked_non_leaders = break_multi_way_tie(non_leaders, all_h2h_records, all_div_records,
+                                                 all_conf_records, all_point_diffs, teams,
+                                                 playoff_eligible_east, playoff_eligible_west, scenario_standings)
+        # Assign the 'division_leader' tag primarily to the leaders breaking the tie here
+        ranked_list = [(t, "division_leader" if t in leaders else tb) for t, tb in ranked_leaders] + \
+                      [(t, tb) for t, tb in ranked_non_leaders]
+        return ranked_list # Tie resolved by this rule
+
+    # If Rule 1 didn't apply or resolve, proceed with the group 'remaining_to_rank'
+
+    # (2) Better winning percentage in all games among the tied teams
+    if apply_tiebreaker(lambda t: _get_h2h_pct_among_tied(t, remaining_to_rank, all_h2h_records), "h2h_pct_among_tied"):
+         return ranked_list
+
+    # (3) Division won-lost percentage (only if ALL teams are in same division)
+    first_team_div = teams.filter(pl.col('team') == remaining_to_rank[0]).select('division').item()
+    all_same_division = True
+    for team in remaining_to_rank[1:]:
+        if teams.filter(pl.col('team') == team).select('division').item() != first_team_div:
+            all_same_division = False
+            break
+            
+    if all_same_division:
+        if apply_tiebreaker(lambda t: _get_div_pct(t, all_div_records), "division_record_pct"):
+             return ranked_list
+
+    # (4) Conference won-lost percentage
+    if apply_tiebreaker(lambda t: _get_conf_pct(t, all_conf_records), "conference_record_pct"):
+         return ranked_list
+
+    # (5) Better winning percentage against teams eligible for the playoffs in own conference
+    # Determine own conference playoff eligible list based on the first team (all tied teams are in the same conf)
+    first_team_conf = teams.filter(pl.col('team') == remaining_to_rank[0]).select('conf').item()
+    own_conf_eligible = playoff_eligible_east if first_team_conf == 'East' else playoff_eligible_west
+    if apply_tiebreaker(lambda t: _get_vs_playoff_eligible_pct(t, own_conf_eligible, all_h2h_records), "vs_playoff_eligible_own_conf_pct"):
+         return ranked_list
+
+    # (6) Better net result (Point Differential)
+    # This is the final tiebreaker; it should fully rank the remaining teams.
+    final_sort = sorted(remaining_to_rank, key=lambda t: all_point_diffs.get(t, -float('inf')), reverse=True)
+    ranked_list.extend([(t, "point_differential") for t in final_sort])
+    
+    return ranked_list
 
 def model(dbt, sess):
     # Get the necessary data and convert to Polars
@@ -487,18 +638,29 @@ def model(dbt, sess):
             # Get standings for this scenario
             scenario_standings = standings.filter(pl.col('scenario_id') == scenario_id)
             
-            # Calculate top 10 teams (moved back to scenario level)
-            top_10_east = scenario_standings.filter(pl.col('conf') == 'East').sort('wins', descending=True).head(10)['team'].to_list()
-            top_10_west = scenario_standings.filter(pl.col('conf') == 'West').sort('wins', descending=True).head(10)['team'].to_list()
-            top_10_overall = scenario_standings.sort('wins', descending=True).head(10)['team'].to_list()
-            
+            # Calculate playoff eligible teams (top 10 per conference, with ties)
+            def get_playoff_eligible(standings_df: pl.DataFrame, conf: str) -> List[str]:
+                conf_standings = standings_df.filter(pl.col('conf') == conf).sort('wins', descending=True)
+                if conf_standings.height == 0:
+                    return []
+                # Find the 10th best win total (or last if fewer than 10 teams)
+                cutoff_index = min(9, conf_standings.height - 1)
+                tenth_place_wins = conf_standings[cutoff_index]['wins'].item()
+                # Include all teams with wins >= 10th place wins
+                eligible = conf_standings.filter(pl.col('wins') >= tenth_place_wins)
+                return eligible['team'].to_list()
+
+            playoff_eligible_east = get_playoff_eligible(scenario_standings, 'East')
+            playoff_eligible_west = get_playoff_eligible(scenario_standings, 'West')
+            # Removed top_10_overall as it's not used
+
             # Group teams by conference and wins
             east_standings = scenario_standings.filter(pl.col('conf') == 'East').sort('wins', descending=True)
             west_standings = scenario_standings.filter(pl.col('conf') == 'West').sort('wins', descending=True)
             
             # Process each conference
-            def process_standings(conf_standings: pl.DataFrame):
-                # ^^ Removed scenario_standings_full parameter
+            def process_standings(conf_standings: pl.DataFrame, scenario_standings_full: pl.DataFrame):
+                # ^^ Added scenario_standings_full parameter
                 current_wins = None
                 tied_teams = []
                 rankings = []
@@ -509,10 +671,11 @@ def model(dbt, sess):
                         current_wins = row['wins']
                     else:
                         if len(tied_teams) > 1:
-                            # Break the tie (uses top_10_* from outer scope)
+                            # Break the tie (uses playoff_eligible_* from outer scope)
                             resolved = break_multi_way_tie(tied_teams, all_h2h_records, all_div_records,
                                                          all_conf_records, all_point_diffs, teams,
-                                                         top_10_east, top_10_west, top_10_overall)
+                                                         playoff_eligible_east, playoff_eligible_west, 
+                                                         scenario_standings_full)
                             rankings.extend(resolved)
                         else:
                             rankings.extend([(t, "no_tie") for t in tied_teams])
@@ -522,9 +685,11 @@ def model(dbt, sess):
                 # Handle any remaining tied teams
                 if tied_teams:
                     if len(tied_teams) > 1:
+                        # Pass scenario_standings_full
                         resolved = break_multi_way_tie(tied_teams, all_h2h_records, all_div_records,
                                                      all_conf_records, all_point_diffs, teams,
-                                                     top_10_east, top_10_west, top_10_overall)
+                                                     playoff_eligible_east, playoff_eligible_west, 
+                                                     scenario_standings_full)
                         rankings.extend(resolved)
                     else:
                         rankings.extend([(t, "no_tie") for t in tied_teams])
@@ -532,9 +697,9 @@ def model(dbt, sess):
                 return rankings
             
             # Process rankings for this scenario
-            # Remove second argument from calls
-            east_rankings = process_standings(east_standings)
-            west_rankings = process_standings(west_standings)
+            # Pass scenario_standings as the second argument
+            east_rankings = process_standings(east_standings, scenario_standings)
+            west_rankings = process_standings(west_standings, scenario_standings)
             
             # Add East teams
             rank = 1
