@@ -493,7 +493,6 @@ def model(dbt, sess):
         pl.col('team2_won').fill_null(0)
     ]).select(['t1', 't2', 'team1_won', 'team2_won'])
 
-
     # Convert to dictionary for faster lookups, ensuring both (t1, t2) and (t2, t1) exist
     all_h2h_records = {}
     for row in h2h_final.iter_rows(named=True):
@@ -550,18 +549,20 @@ def model(dbt, sess):
     all_perspectives = pl.concat([persp1, persp2])
 
     # Calculate Division Records
-    div_records = all_perspectives.filter(pl.col('division_t1') == pl.col('division_t2'))
-    div_summary = div_records.group_by('team').agg(
+    div_summary = all_perspectives.filter(
+        pl.col('division_t1') == pl.col('division_t2')
+    ).group_by('team').agg([
         pl.sum('wins').alias('div_wins'), 
         pl.sum('losses').alias('div_losses')
-    )
+    ])
 
     # Calculate Conference Records
-    conf_records = all_perspectives.filter(pl.col('conf_t1') == pl.col('conf_t2'))
-    conf_summary = conf_records.group_by('team').agg(
+    conf_summary = all_perspectives.filter(
+        pl.col('conf_t1') == pl.col('conf_t2')
+    ).group_by('team').agg([
         pl.sum('wins').alias('conf_wins'), 
         pl.sum('losses').alias('conf_losses')
-    )
+    ])
 
     # Convert summaries to dictionaries
     all_div_records = {row['team']: (row['div_wins'], row['div_losses']) 
