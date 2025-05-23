@@ -1,33 +1,33 @@
 Team,Team_short,Win Total,ELO rating,Conf,Division
-Buffalo Bills,BUF,10.5,1736,AFC,East
-Miami Dolphins,MIA,9.5,1493,AFC,East
-New York Jets,NYJ,9.5,1575,AFC,East
-New England Patriots,NE,5.5,1466,AFC,East
-Cincinnati Bengals,CIN,10.5,1600,AFC,North
-Baltimore Ravens,BAL,11.5,1716,AFC,North
-Cleveland Browns,CLE,8.5,1441,AFC,North
-Pittsburgh Steelers,PIT,7.5,1754,AFC,North
-Jacksonville Jaguars,JAX,8.5,1491,AFC,South
-Tennessee Titans,TEN,6.5,1469,AFC,South
-Indianapolis Colts,IND,8.5,1577,AFC,South
-Houston Texans,HOU,9.5,1618,AFC,South
-Kansas City Chiefs,KC,11.5,1766,AFC,West
-Los Angeles Chargers,LAC,8.5,1723,AFC,West
-Denver Broncos,DEN,5.5,1666,AFC,West
-Las Vegas Raiders,LV,6.5,1432,AFC,West
-Philadelphia Eagles,PHI,10.5,1680,NFC,East
-Dallas Cowboys,DAL,10.5,1545,NFC,East
-New York Giants,NYG,6.5,1485,NFC,East
-Washington Commanders,WAS,6.5,1670,NFC,East
-Detroit Lions,DET,10.5,1806,NFC,North
-Minnesota Vikings,MIN,6.5,1717,NFC,North
-Green Bay Packers,GB,9.5,1680,NFC,North
-Chicago Bears,CHI,8.5,1539,NFC,North
-New Orleans Saints,NO,7.5,1534,NFC,South
-Carolina Panthers,CAR,4.5,1361,NFC,South
-Atlanta Falcons,ATL,9.5,1595,NFC,South
-Tampa Bay Buccaneers,TB,7.5,1657,NFC,South
-San Francisco 49ers,SF,11.5,1667,NFC,West
-Seattle Seahawks,SEA,7.5,1539,NFC,West
-Los Angeles Rams,LAR,8.5,1554,NFC,West
-Arizona Cardinals,ARI,6.5,1651,NFC,West
+Buffalo Bills,BUF,11.5,1718,AFC,East
+Miami Dolphins,MIA,8.5,1578,AFC,East
+New York Jets,NYJ,5.5,1452,AFC,East
+New England Patriots,NE,7.5,1518,AFC,East
+Cincinnati Bengals,CIN,9.5,1657,AFC,North
+Baltimore Ravens,BAL,11.5,1753,AFC,North
+Cleveland Browns,CLE,5.5,1488,AFC,North
+Pittsburgh Steelers,PIT,8.5,1616,AFC,North
+Jacksonville Jaguars,JAX,7.5,1533,AFC,South
+Tennessee Titans,TEN,5.5,1447,AFC,South
+Indianapolis Colts,IND,7.5,1541,AFC,South
+Houston Texans,HOU,9.5,1637,AFC,South
+Kansas City Chiefs,KC,11.5,1757,AFC,West
+Los Angeles Chargers,LAC,9.5,1654,AFC,West
+Denver Broncos,DEN,9.5,1653,AFC,West
+Las Vegas Raiders,LV,6.5,1526,AFC,West
+Philadelphia Eagles,PHI,11.5,1766,NFC,East
+Dallas Cowboys,DAL,7.5,1583,NFC,East
+New York Giants,NYG,5.5,1508,NFC,East
+Washington Commanders,WAS,9.5,1668,NFC,East
+Detroit Lions,DET,10.5,1730,NFC,North
+Minnesota Vikings,MIN,8.5,1638,NFC,North
+Green Bay Packers,GB,9.5,1676,NFC,North
+Chicago Bears,CHI,8.5,1634,NFC,North
+New Orleans Saints,NO,6.5,1470,NFC,South
+Carolina Panthers,CAR,6.5,1481,NFC,South
+Atlanta Falcons,ATL,7.5,1523,NFC,South
+Tampa Bay Buccaneers,TB,9.5,1615,NFC,South
+San Francisco 49ers,SF,10.5,1637,NFC,West
+Seattle Seahawks,SEA,7.5,1538,NFC,West
+Los Angeles Rams,LAR,9.5,1631,NFC,West
+Arizona Cardinals,ARI,8.5,1575,NFC,West
