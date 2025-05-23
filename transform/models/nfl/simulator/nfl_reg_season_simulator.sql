@@ -5,7 +5,7 @@ select
         elo_calc(
             "S.home_team_elo_rating",
             "S.visiting_team_elo_rating",
-            0 if "s.neutral_site" == 1 else var("nfl_elo_offset")
+            "S.game_site_adjustment"
         )
     }} as home_team_win_probability,
     r.rand_result,
@@ -17,7 +17,7 @@ select
                 elo_calc(
                     "S.home_team_elo_rating",
                     "S.visiting_team_elo_rating",
-                    0 if "s.neutral_site" == 1 else var("nfl_elo_offset")
+                    "S.game_site_adjustment"
                 )
             }})::int >= r.rand_result
         then s.home_team

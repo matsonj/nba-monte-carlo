@@ -9,7 +9,8 @@ select
     h.conf as home_conf,
     h.team as home_team,
     coalesce(r.home_team_elo_rating, h.elo_rating::int) as home_team_elo_rating,
-    s.neutral as neutral_site
+    s.neutral as neutral_site,
+    case when s.neutral = 0 then {{ var("nfl_elo_offset") }} else 0 end as game_site_adjustment
 from {{ ref("nfl_raw_schedule") }} as s
 left join {{ ref("nfl_ratings") }} v on v.team = s.vistm
 left join {{ ref("nfl_ratings") }} h on h.team = s.hometm

@@ -1,33 +1,33 @@
 Team,Team_short,Win Total,ELO rating,Conf,Division
-Buffalo Bills,BUF,11.5,1718,AFC,East
-Miami Dolphins,MIA,8.5,1578,AFC,East
-New York Jets,NYJ,5.5,1452,AFC,East
-New England Patriots,NE,7.5,1518,AFC,East
-Cincinnati Bengals,CIN,9.5,1657,AFC,North
-Baltimore Ravens,BAL,11.5,1753,AFC,North
-Cleveland Browns,CLE,5.5,1488,AFC,North
+Buffalo Bills,BUF,11.5,1713,AFC,East
+Miami Dolphins,MIA,8.5,1577,AFC,East
+New York Jets,NYJ,5.5,1446,AFC,East
+New England Patriots,NE,7.5,1510,AFC,East
+Cincinnati Bengals,CIN,9.5,1656,AFC,North
+Baltimore Ravens,BAL,11.5,1754,AFC,North
+Cleveland Browns,CLE,5.5,1486,AFC,North
 Pittsburgh Steelers,PIT,8.5,1616,AFC,North
-Jacksonville Jaguars,JAX,7.5,1533,AFC,South
-Tennessee Titans,TEN,5.5,1447,AFC,South
-Indianapolis Colts,IND,7.5,1541,AFC,South
-Houston Texans,HOU,9.5,1637,AFC,South
-Kansas City Chiefs,KC,11.5,1757,AFC,West
-Los Angeles Chargers,LAC,9.5,1654,AFC,West
-Denver Broncos,DEN,9.5,1653,AFC,West
-Las Vegas Raiders,LV,6.5,1526,AFC,West
-Philadelphia Eagles,PHI,11.5,1766,NFC,East
-Dallas Cowboys,DAL,7.5,1583,NFC,East
-New York Giants,NYG,5.5,1508,NFC,East
-Washington Commanders,WAS,9.5,1668,NFC,East
-Detroit Lions,DET,10.5,1730,NFC,North
+Jacksonville Jaguars,JAX,7.5,1530,AFC,South
+Tennessee Titans,TEN,5.5,1439,AFC,South
+Indianapolis Colts,IND,7.5,1536,AFC,South
+Houston Texans,HOU,9.5,1632,AFC,South
+Kansas City Chiefs,KC,11.5,1747,AFC,West
+Los Angeles Chargers,LAC,9.5,1650,AFC,West
+Denver Broncos,DEN,9.5,1645,AFC,West
+Las Vegas Raiders,LV,6.5,1516,AFC,West
+Philadelphia Eagles,PHI,11.5,1774,NFC,East
+Dallas Cowboys,DAL,7.5,1587,NFC,East
+New York Giants,NYG,5.5,1511,NFC,East
+Washington Commanders,WAS,9.5,1671,NFC,East
+Detroit Lions,DET,10.5,1741,NFC,North
 Minnesota Vikings,MIN,8.5,1638,NFC,North
-Green Bay Packers,GB,9.5,1676,NFC,North
-Chicago Bears,CHI,8.5,1634,NFC,North
-New Orleans Saints,NO,6.5,1470,NFC,South
-Carolina Panthers,CAR,6.5,1481,NFC,South
-Atlanta Falcons,ATL,7.5,1523,NFC,South
-Tampa Bay Buccaneers,TB,9.5,1615,NFC,South
-San Francisco 49ers,SF,10.5,1637,NFC,West
-Seattle Seahawks,SEA,7.5,1538,NFC,West
-Los Angeles Rams,LAR,9.5,1631,NFC,West
-Arizona Cardinals,ARI,8.5,1575,NFC,West
+Green Bay Packers,GB,9.5,1683,NFC,North
+Chicago Bears,CHI,8.5,1640,NFC,North
+New Orleans Saints,NO,6.5,1471,NFC,South
+Carolina Panthers,CAR,6.5,1484,NFC,South
+Atlanta Falcons,ATL,7.5,1524,NFC,South
+Tampa Bay Buccaneers,TB,9.5,1621,NFC,South
+San Francisco 49ers,SF,10.5,1643,NFC,West
+Seattle Seahawks,SEA,7.5,1541,NFC,West
+Los Angeles Rams,LAR,9.5,1633,NFC,West
+Arizona Cardinals,ARI,8.5,1580,NFC,West
