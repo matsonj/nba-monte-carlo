@@ -28,9 +28,10 @@ with
         group by all
     )
 select
-    f.team,
-    f.elo_rating as elo_rating,
+    o.team,
+    coalesce(f.elo_rating,o.elo_rating) as elo_rating,
     o.elo_rating as original_rating,
     {{ var("latest_ratings") }} as latest_ratings
-from final_rating f
-inner join {{ ref("nfl_raw_team_ratings") }} o on f.team = o.team
+from {{ ref("nfl_raw_team_ratings") }} o
+left join final_rating f on f.team = o.team
+
