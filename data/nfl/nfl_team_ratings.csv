@@ -1,33 +1,33 @@
 Team,Team_short,Win Total,ELO rating,Conf,Division
-Buffalo Bills,BUF,12.5,1766,AFC,East
-Miami Dolphins,MIA,8.4,1580,AFC,East
-New York Jets,NYJ,5.6,1457,AFC,East
-New England Patriots,NE,8.2,1545,AFC,East
-Cincinnati Bengals,CIN,9.5,1657,AFC,North
-Baltimore Ravens,BAL,11.9,1774,AFC,North
-Cleveland Browns,CLE,4.7,1449,AFC,North
-Pittsburgh Steelers,PIT,8.2,1606,AFC,North
-Jacksonville Jaguars,JAX,7.4,1533,AFC,South
-Tennessee Titans,TEN,5.7,1449,AFC,South
-Indianapolis Colts,IND,7.4,1535,AFC,South
-Houston Texans,HOU,9.2,1625,AFC,South
-Kansas City Chiefs,KC,11.1,1726,AFC,West
-Los Angeles Chargers,LAC,9.4,1643,AFC,West
-Denver Broncos,DEN,9.2,1624,AFC,West
-Las Vegas Raiders,LV,6.8,1523,AFC,West
-Philadelphia Eagles,PHI,11.1,1752,NFC,East
-Dallas Cowboys,DAL,7.8,1593,NFC,East
-New York Giants,NYG,5.2,1486,NFC,East
-Washington Commanders,WAS,9.7,1676,NFC,East
-Detroit Lions,DET,10.1,1717,NFC,North
-Minnesota Vikings,MIN,9,1654,NFC,North
-Green Bay Packers,GB,9.3,1667,NFC,North
-Chicago Bears,CHI,7.8,1601,NFC,North
+Buffalo Bills,BUF,11.9,1736,AFC,East
+Miami Dolphins,MIA,8.4,1577,AFC,East
+New York Jets,NYJ,5.6,1454,AFC,East
+New England Patriots,NE,8.3,1546,AFC,East
+Cincinnati Bengals,CIN,9.5,1654,AFC,North
+Baltimore Ravens,BAL,11.7,1760,AFC,North
+Cleveland Browns,CLE,4.8,1451,AFC,North
+Pittsburgh Steelers,PIT,8.3,1609,AFC,North
+Jacksonville Jaguars,JAX,7.5,1535,AFC,South
+Tennessee Titans,TEN,5.7,1451,AFC,South
+Indianapolis Colts,IND,7.4,1538,AFC,South
+Houston Texans,HOU,9.3,1631,AFC,South
+Kansas City Chiefs,KC,11.3,1738,AFC,West
+Los Angeles Chargers,LAC,9.5,1647,AFC,West
+Denver Broncos,DEN,9.3,1635,AFC,West
+Las Vegas Raiders,LV,6.8,1525,AFC,West
+Philadelphia Eagles,PHI,11.3,1763,NFC,East
+Dallas Cowboys,DAL,7.7,1592,NFC,East
+New York Giants,NYG,5.2,1491,NFC,East
+Washington Commanders,WAS,9.6,1674,NFC,East
+Detroit Lions,DET,10.3,1727,NFC,North
+Minnesota Vikings,MIN,8.8,1647,NFC,North
+Green Bay Packers,GB,9.4,1672,NFC,North
+Chicago Bears,CHI,8.1,1614,NFC,North
 New Orleans Saints,NO,5,1408,NFC,South
-Carolina Panthers,CAR,6.7,1501,NFC,South
-Atlanta Falcons,ATL,8,1552,NFC,South
-Tampa Bay Buccaneers,TB,9.3,1621,NFC,South
-San Francisco 49ers,SF,10,1626,NFC,West
-Seattle Seahawks,SEA,8.9,1604,NFC,West
-Los Angeles Rams,LAR,10,1662,NFC,West
-Arizona Cardinals,ARI,8.5,1590,NFC,West
+Carolina Panthers,CAR,6.7,1495,NFC,South
+Atlanta Falcons,ATL,7.8,1542,NFC,South
+Tampa Bay Buccaneers,TB,9.4,1621,NFC,South
+San Francisco 49ers,SF,10.2,1635,NFC,West
+Seattle Seahawks,SEA,8.7,1596,NFC,West
+Los Angeles Rams,LAR,9.8,1651,NFC,West
+Arizona Cardinals,ARI,8.5,1588,NFC,West
