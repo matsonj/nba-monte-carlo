@@ -1,33 +1,33 @@
 Team,Team_short,Win Total,ELO rating,Conf,Division
-Buffalo Bills,BUF,11.5,1713,AFC,East
-Miami Dolphins,MIA,8.5,1577,AFC,East
-New York Jets,NYJ,5.5,1446,AFC,East
-New England Patriots,NE,7.5,1510,AFC,East
-Cincinnati Bengals,CIN,9.5,1656,AFC,North
-Baltimore Ravens,BAL,11.5,1754,AFC,North
-Cleveland Browns,CLE,5.5,1486,AFC,North
+Buffalo Bills,BUF,11.5,1712,AFC,East
+Miami Dolphins,MIA,8.5,1576,AFC,East
+New York Jets,NYJ,5.5,1443,AFC,East
+New England Patriots,NE,8.5,1556,AFC,East
+Cincinnati Bengals,CIN,9.5,1655,AFC,North
+Baltimore Ravens,BAL,11.5,1748,AFC,North
+Cleveland Browns,CLE,4.5,1442,AFC,North
 Pittsburgh Steelers,PIT,8.5,1616,AFC,North
-Jacksonville Jaguars,JAX,7.5,1530,AFC,South
-Tennessee Titans,TEN,5.5,1439,AFC,South
-Indianapolis Colts,IND,7.5,1536,AFC,South
-Houston Texans,HOU,9.5,1632,AFC,South
-Kansas City Chiefs,KC,11.5,1747,AFC,West
-Los Angeles Chargers,LAC,9.5,1650,AFC,West
-Denver Broncos,DEN,9.5,1645,AFC,West
-Las Vegas Raiders,LV,6.5,1516,AFC,West
-Philadelphia Eagles,PHI,11.5,1774,NFC,East
-Dallas Cowboys,DAL,7.5,1587,NFC,East
-New York Giants,NYG,5.5,1511,NFC,East
-Washington Commanders,WAS,9.5,1671,NFC,East
-Detroit Lions,DET,10.5,1741,NFC,North
-Minnesota Vikings,MIN,8.5,1638,NFC,North
-Green Bay Packers,GB,9.5,1683,NFC,North
-Chicago Bears,CHI,8.5,1640,NFC,North
-New Orleans Saints,NO,6.5,1471,NFC,South
-Carolina Panthers,CAR,6.5,1484,NFC,South
-Atlanta Falcons,ATL,7.5,1524,NFC,South
-Tampa Bay Buccaneers,TB,9.5,1621,NFC,South
-San Francisco 49ers,SF,10.5,1643,NFC,West
-Seattle Seahawks,SEA,7.5,1541,NFC,West
-Los Angeles Rams,LAR,9.5,1633,NFC,West
-Arizona Cardinals,ARI,8.5,1580,NFC,West
+Jacksonville Jaguars,JAX,7.5,1531,AFC,South
+Tennessee Titans,TEN,5.5,1436,AFC,South
+Indianapolis Colts,IND,7.5,1537,AFC,South
+Houston Texans,HOU,9.5,1633,AFC,South
+Kansas City Chiefs,KC,11.5,1775,AFC,West
+Los Angeles Chargers,LAC,9.5,1680,AFC,West
+Denver Broncos,DEN,9.5,1675,AFC,West
+Las Vegas Raiders,LV,9.5,1672,AFC,West
+Philadelphia Eagles,PHI,11.5,1786,NFC,East
+Dallas Cowboys,DAL,7.5,1605,NFC,East
+New York Giants,NYG,5.5,1529,NFC,East
+Washington Commanders,WAS,9.5,1690,NFC,East
+Detroit Lions,DET,10.5,1737,NFC,North
+Minnesota Vikings,MIN,8.5,1642,NFC,North
+Green Bay Packers,GB,9.5,1684,NFC,North
+Chicago Bears,CHI,8.5,1648,NFC,North
+New Orleans Saints,NO,5.5,1409,NFC,South
+Carolina Panthers,CAR,6.5,1464,NFC,South
+Atlanta Falcons,ATL,7.5,1504,NFC,South
+Tampa Bay Buccaneers,TB,9.5,1601,NFC,South
+San Francisco 49ers,SF,10.5,1616,NFC,West
+Seattle Seahawks,SEA,8.5,1555,NFC,West
+Los Angeles Rams,LAR,6.5,1485,NFC,West
+Arizona Cardinals,ARI,8.5,1555,NFC,West
