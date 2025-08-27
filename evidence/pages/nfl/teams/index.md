@@ -28,7 +28,7 @@ ORDER BY avg_wins_num1 DESC
   <Column id=seed/>
   <Column id=team/>
   <Column id=record/>
-  <Column id=elo_rating_num0 title='ELO rating'/>
+  <Column id=elo_rating_num0 title='Elo rating'/>
   <Column id=avg_wins_num1 title='Avg. Wins'/>
   <Column id=make_playoffs_pct1 title='Playoff Odds (%)'/>
 </DataTable>
@@ -39,7 +39,7 @@ ORDER BY avg_wins_num1 DESC
   <Column id=seed/>
   <Column id=team/>
   <Column id=record/>
-  <Column id=elo_rating_num0 title='ELO rating'/>
+  <Column id=elo_rating_num0 title='Elo rating'/>
   <Column id=avg_wins_num1 title='Avg. Wins'/>
   <Column id=make_playoffs_pct1 title='Playoff Odds (%)'/>
 </DataTable>

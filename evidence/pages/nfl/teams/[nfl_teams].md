@@ -97,7 +97,7 @@ GROUP BY ALL
     <Column id='home_team'/>
     <Column id='score'/>
     <Column id='winning_team'/>
-    <Column id='elo_change_num1' title='ELO chg.'/>
+    <Column id='elo_change_num1' title='Elo chg.'/>
 
 </DataTable>
 {:else}
