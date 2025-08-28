@@ -271,3 +271,16 @@ id,Week,Day,Date,VisTm,HomeTm,Neutral
 270,18,Sun,2025-01-04,Arizona Cardinals,Los Angeles Rams,0
 271,18,Sun,2025-01-04,Seattle Seahawks,San Francisco 49ers,0
 272,18,Sun,2025-01-04,Carolina Panthers,Tampa Bay Buccaneers,0
+273,19,,,NFC-7,NFC-2,0
+274,19,,,NFC-6,NFC-3,0
+275,19,,,NFC-5,NFC-4,0
+276,19,,,AFC-7,AFC-2,0
+277,19,,,AFC-6,AFC-3,0
+278,19,,,AFC-5,AFC-4,0
+279,20,,,NFC-4,NFC-1,0
+280,20,,,NFC-3,NFC-2,0
+281,20,,,AFC-4,AFC-1,0
+282,20,,,AFC-3,AFC-2,0
+283,21,,,NFC-2,NFC-1,0
+284,21,,,AFC-2,AFC-1,0
+285,22,,,NFC-1,AFC-1,1

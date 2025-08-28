@@ -50,7 +50,7 @@ models:
       - empty_table
   - name: nfl_teams
     columns:
-      - name: team_long
+      - name: team
         tests:
           - unique
           - not_null

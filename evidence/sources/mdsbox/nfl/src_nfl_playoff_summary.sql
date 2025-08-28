@@ -1,0 +1,1 @@
+select * from nfl_playoff_summary

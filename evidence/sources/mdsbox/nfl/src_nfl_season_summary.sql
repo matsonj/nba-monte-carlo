@@ -1,0 +1,1 @@
+select * from nfl_season_summary
