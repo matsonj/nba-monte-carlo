@@ -1,0 +1,1 @@
+FROM nfl_teams
