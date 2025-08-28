@@ -17,14 +17,13 @@ with
 
     cte_ranked_wins as (
         select
-            *,
-            -- no tiebreaker, so however row number handles order ties will need to be
-            -- dealt with
-            row_number() over (
-                partition by scenario_id, conf order by wins desc, winning_team desc
-            ) as season_rank
-        from cte_wins
-
+            scenario_id,
+            team as winning_team,
+            conference as conf,
+            wins,
+            rank as season_rank,
+            tiebreaker_used
+        from {{ ref("nfl_tiebreakers_optimized") }}
     ),
 
     cte_made_playoffs as (
