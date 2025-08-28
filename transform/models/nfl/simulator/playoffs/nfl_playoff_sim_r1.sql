@@ -14,10 +14,10 @@ with
             ev.elo_rating as visiting_team_elo_rating,
             eh.winning_team as home_team,
             eh.elo_rating as home_team_elo_rating,
-            {{ elo_calc('EH.elo_rating', 'EV.elo_rating', var('nfl_elo_offset')) }} as home_team_win_probability,
+            {{ elo_calc('EH.elo_rating', 'EV.elo_rating', 's.game_site_adjustment') }} as home_team_win_probability,
             r.rand_result,
             case
-                when {{ elo_calc('EH.elo_rating', 'EV.elo_rating', var('nfl_elo_offset')) }} >= r.rand_result then eh.winning_team
+                when {{ elo_calc('EH.elo_rating', 'EV.elo_rating', 's.game_site_adjustment') }} >= r.rand_result then eh.winning_team
                 else ev.winning_team
             end as winning_team
         from {{ ref('nfl_schedules') }} s
