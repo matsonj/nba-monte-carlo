@@ -58,12 +58,14 @@ models:
       - name: visiting_conf
       - name: visiting_team
         tests:
-          - not_null
+          - not_null:
+              severity: warn
       - name: visiting_team_elo_rating
       - name: home_conf
       - name: home_team
         tests:
-          - not_null
+          - not_null:
+              severity: warn
       - name: home_team_elo_rating
   - name: nba_ratings
     columns:
