@@ -1,31 +1,31 @@
 ﻿team,team_long,conf,elo_rating,win_total,tournament_group,alt_key,division
-ATL,Atlanta Hawks,East,1539,35.6,east_c,ATL,Southeast
-BOS,Boston Celtics,East,1764,58.2,east_c,BOS,Atlantic
-BRK,Brooklyn Nets,East,1384,20.2,east_a,BKN,Atlantic
-CHI,Chicago Bulls,East,1471,28.4,east_c,CHI,Central
-CHO,Charlotte Hornets,East,1496,31.1,east_a,CHA,Southeast
-CLE,Cleveland Cavaliers,East,1673,49,east_c,CLE,Central
-DET,Detroit Pistons,East,1445,25.9,east_b,DET,Central
-IND,Indiana Pacers,East,1643,46.5,east_b,IND,Central
-MIA,Miami Heat,East,1623,43.8,east_b,MIA,Southeast
-MIL,Milwaukee Bucks,East,1673,49.2,east_b,MIL,Central
-NYK,New York Knicks,East,1711,53.2,east_a,NYK,Atlantic
-ORL,Orlando Magic,East,1650,47.3,east_a,ORL,Southeast
-PHI,Philadelphia 76ers,East,1670,48.6,east_a,PHI,Atlantic
-TOR,Toronto Raptors,East,1473,28.7,east_b,TOR,Atlantic
-WAS,Washington Wizards,East,1372,19.6,east_c,WAS,Southeast
-DAL,Dallas Mavericks,West,1688,49.5,west_c,DAL,Southwest
-DEN,Denver Nuggets,West,1701,50.5,west_c,DEN,Northwest
-GSW,Golden State Warriors,West,1635,43.5,west_c,GSW,Pacific
-HOU,Houston Rockets,West,1631,43,west_a,HOU,Southwest
-LAC,Los Angeles Clippers,West,1558,35.3,west_a,LAC,Pacific
-LAL,Los Angeles Lakers,West,1624,43,west_b,LAL,Pacific
-MEM,Memphis Grizzlies,West,1662,46.5,west_c,MEM,Southwest
-MIN,Minnesota Timberwolves,West,1708,51.2,west_a,MIN,Northwest
-NOP,New Orleans Pelicans,West,1653,45.5,west_c,NOP,Southwest
-OKC,Oklahoma City Thunder,West,1767,57.2,west_b,OKC,Northwest
-PHO,Phoenix Suns,West,1681,48.3,west_b,PHX,Pacific
-POR,Portland Trail Blazers,West,1407,20.9,west_a,POR,Northwest
-SAC,Sacramento Kings,West,1663,47.1,west_a,SAC,Pacific
-SAS,San Antonio Spurs,West,1555,35.3,west_b,SAS,Southwest
-UTA,Utah Jazz,West,1482,27.9,west_b,UTA,Northwest
+ATL,Atlanta Hawks,East,1655,47.3,east_a,ATL,Southeast
+BOS,Boston Celtics,East,1602,41.4,east_b,BOS,Atlantic
+BRK,Brooklyn Nets,East,1373,19.4,east_b,BKN,Atlantic
+CHI,Chicago Bulls,East,1525,33.4,east_c,CHI,Central
+CHO,Charlotte Hornets,East,1466,27.4,east_c,CHA,Southeast
+CLE,Cleveland Cavaliers,East,1746,56.3,east_a,CLE,Central
+DET,Detroit Pistons,East,1646,46.3,east_b,DET,Central
+IND,Indiana Pacers,East,1564,37.4,east_a,IND,Central
+MIA,Miami Heat,East,1564,37.4,east_c,MIA,Southeast
+MIL,Milwaukee Bucks,East,1618,43.4,east_c,MIL,Central
+NYK,New York Knicks,East,1713,53.3,east_c,NYK,Atlantic
+ORL,Orlando Magic,East,1696,51.3,east_b,ORL,Southeast
+PHI,Philadelphia 76ers,East,1619,43.4,east_b,PHI,Atlantic
+TOR,Toronto Raptors,East,1580,39.4,east_a,TOR,Atlantic
+WAS,Washington Wizards,East,1383,20.4,east_a,WAS,Southeast
+DAL,Dallas Mavericks,West,1613,41.4,west_b,DAL,Southwest
+DEN,Denver Nuggets,West,1726,53.3,west_c,DEN,Northwest
+GSW,Golden State Warriors,West,1667,47.3,west_c,GSW,Pacific
+HOU,Houston Rockets,West,1708,52.3,west_c,HOU,Southwest
+LAC,Los Angeles Clippers,West,1683,49.3,west_b,LAC,Pacific
+LAL,Los Angeles Lakers,West,1654,46.3,west_b,LAL,Pacific
+MEM,Memphis Grizzlies,West,1590,39.4,west_b,MEM,Southwest
+MIN,Minnesota Timberwolves,West,1682,49.3,west_a,MIN,Northwest
+NOP,New Orleans Pelicans,West,1505,30.4,west_b,NOP,Southwest
+OKC,Oklahoma City Thunder,West,1826,62.3,west_a,OKC,Northwest
+PHO,Phoenix Suns,West,1506,30.4,west_a,PHX,Pacific
+POR,Portland Trail Blazers,West,1554,35.4,west_c,POR,Northwest
+SAC,Sacramento Kings,West,1520,32.4,west_a,SAC,Pacific
+SAS,San Antonio Spurs,West,1641,44.4,west_c,SAS,Southwest
+UTA,Utah Jazz,West,1374,18.4,west_a,UTA,Northwest
