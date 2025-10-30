@@ -9,9 +9,9 @@ with
         select
             winning_team as team,
             e.conf,
-            round(avg(wins), 1) as avg_wins,
+            round(avg(wins)/80.0*82.0, 1) as avg_wins, --gross up for 82 games
             v.win_total as vegas_wins,
-            round(avg(v.win_total) - (avg(wins)), 1) as elo_vs_vegas,
+            round(avg(v.win_total) - (avg(wins))/80.0*82.0, 1) as elo_vs_vegas, --gross up for 82 games
             round(
                 percentile_cont(0.05) within group (order by wins asc), 1
             ) as wins_5th,
