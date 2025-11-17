@@ -61,7 +61,7 @@ title: NFL Sim
             sort=sort_key
             yGridlines=false
             yAxisLabels=false
-            colorPalette={['#0777b3', '#3b4856','#9fadbd']}
+            seriesColors={{'missed playoffs':'#9fadbd','wild card team':'#3b4856','first round bye':'#7d5ba6','won division':'#0777b3'}}  
         >
         <ReferenceLine y=0.5 hideValue=true lineType=solid lineColor='#f8f8f8' lineWidth=0.5/>
         </BarChart>
@@ -79,7 +79,7 @@ title: NFL Sim
             sort=sort_key
             yGridlines=false
             yAxisLabels=false
-            colorPalette={['#0777b3', '#3b4856','#9fadbd']}
+            seriesColors={{'missed playoffs':'#9fadbd','wild card team':'#3b4856','first round bye':'#7d5ba6','won division':'#0777b3'}}
         >
         <ReferenceLine y=0.5 hideValue=true lineType=solid lineColor='#f8f8f8' lineWidth=0.5/>
         </BarChart>
