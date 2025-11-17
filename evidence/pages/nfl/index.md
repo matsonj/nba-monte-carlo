@@ -58,10 +58,10 @@ title: NFL Sim
             xAxisTitle=seed
             title='American Conference'
             swapXY=true
-            sort=sort_key
+            sort=false
             yGridlines=false
             yAxisLabels=false
-            colorPalette={['#0777b3', '#3b4856','#9fadbd']}
+            seriesColors={{'first round bye':'#7d5ba6','won division':'#0777b3','wild card team':'#3b4856','missed playoffs':'#9fadbd'}}  
         >
         <ReferenceLine y=0.5 hideValue=true lineType=solid lineColor='#f8f8f8' lineWidth=0.5/>
         </BarChart>
@@ -76,10 +76,10 @@ title: NFL Sim
             xAxisTitle=seed
             title='National Conference'
             swapXY=true
-            sort=sort_key
+            sort=false
             yGridlines=false
             yAxisLabels=false
-            colorPalette={['#0777b3', '#3b4856','#9fadbd']}
+            seriesColors={{'first round bye':'#7d5ba6','won division':'#0777b3','wild card team':'#3b4856','missed playoffs':'#9fadbd'}} 
         >
         <ReferenceLine y=0.5 hideValue=true lineType=solid lineColor='#f8f8f8' lineWidth=0.5/>
         </BarChart>

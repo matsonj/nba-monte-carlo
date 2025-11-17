@@ -31,6 +31,7 @@ with
             *,
             case when season_rank = 1 then 1 else 0 end as first_round_bye,
             case when season_rank between 1 and 7 then 1 else 0 end as made_playoffs,
+            case when season_rank between 1 and 4 then 1 else 0 end as won_division,
             conf || '-' || season_rank::text as seed
         from cte_ranked_wins
     )

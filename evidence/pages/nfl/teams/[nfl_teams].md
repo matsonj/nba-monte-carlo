@@ -25,7 +25,8 @@ SELECT
     wins as wins,
     count(*) / 10000.0 as odds_pct1,
     case when season_rank = 1 then 'first round bye'
-        when season_rank between 2 and 7 then 'made playoffs'
+        when season_rank between 2 and 4 then 'won division'
+        when season_rank between 5 and 7 then 'wild card team'
         else 'missed playoffs'
     end as season_result
 FROM src_nfl_reg_season_end
@@ -36,8 +37,9 @@ GROUP BY ALL
 SELECT 
     team,
     COALESCE(SUM(odds_pct1) FILTER (WHERE season_result = 'first round bye'),0) as first_rd_bye_pct1,
-    COALESCE(SUM(odds_pct1) FILTER (WHERE season_result = 'made playoffs'),0) as made_playoffs_pct1,
-    COALESCE(SUM(odds_pct1) FILTER (WHERE season_result = 'missed playoffs'),0) as missed_playoffs_pct1
+    COALESCE(SUM(odds_pct1) FILTER (WHERE season_result = 'wild card team'),0) as made_playoffs_pct1,
+    COALESCE(SUM(odds_pct1) FILTER (WHERE season_result = 'missed playoffs'),0) as missed_playoffs_pct1,
+    COALESCE(SUM(odds_pct1) FILTER (WHERE season_result = 'won division'),0) as won_division_pct1
 FROM ${nfl_wins_seed_scatter}
 GROUP BY ALL
 ```
@@ -119,7 +121,7 @@ _The regular season has yet to begin. Check back soon!_
 </DataTable>
 {/if}
 
-### Playoff Odds
+### Playoff Odds <Info description="Odds are exclusive, not cumulative."/>
 
 <BigValue 
     data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
@@ -129,8 +131,14 @@ _The regular season has yet to begin. Check back soon!_
 
 <BigValue 
     data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
+    value='won_division_pct1'
+    title='Won Division' 
+/> 
+
+<BigValue 
+    data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
     value='made_playoffs_pct1'
-    title='Made Playoffs'
+    title='Made Wild Card'
 /> 
 
 <BigValue 
@@ -146,7 +154,7 @@ _The regular season has yet to begin. Check back soon!_
     series=season_result
     xAxisTitle=wins
     title='Projected Total Wins'
-    seriesColors={{'missed playoffs':'#9fadbd','made playoffs':'#3b4856','first round bye':'#0777b3'}}
+    seriesColors={{'missed playoffs':'#9fadbd','wild card team':'#3b4856','first round bye':'#7d5ba6','won division':'#0777b3'}}
 />
 
 <BarChart 
