@@ -121,11 +121,7 @@ _The regular season has yet to begin. Check back soon!_
 </DataTable>
 {/if}
 
-### Playoff Odds
-
-<Alert>
-    <span style="font-size: 0.75em">Odds are exclusive, not cumulative.</span>
-</Alert>
+### Playoff Odds <Info description="Odds are exclusive, not cumulative."/>
 
 <BigValue 
     data={nfl_playoff_odds.filter(d => d.team.toUpperCase() === $page.params.nfl_teams.toUpperCase())}  
