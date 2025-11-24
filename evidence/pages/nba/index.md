@@ -102,7 +102,7 @@ order by team
             xAxisTitle=seed
             title='Eastern Conference'
             swapXY=true
-            sort=sort_key
+            sort=false
             colorPalette={['#0777b3', '#3b4856','#9fadbd']}
         />
     </Tab>
@@ -116,7 +116,7 @@ order by team
             xAxisTitle=seed
             title='Western Conference'
             swapXY=true
-            sort=sort_key
+            sort=false
             colorPalette={['#0777b3', '#3b4856','#9fadbd']}
         />
     </Tab>
