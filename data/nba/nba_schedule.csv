@@ -298,203 +298,203 @@ id,type,Day,Date,Year,Start (ET),Visitor/Neutral,PTS,Home/Neutral,PTS,Attend.,Ar
 297,reg_season,Sun, Nov 30, 2025,7:00p,San Antonio Spurs,,Minnesota Timberwolves,,,Target Center,,0
 298,reg_season,Sun, Nov 30, 2025,9:00p,Memphis Grizzlies,,Sacramento Kings,,,Golden 1 Center,,0
 299,reg_season,Sun, Nov 30, 2025,9:30p,New Orleans Pelicans,,Los Angeles Lakers,,,Crypto.com Arena,,0
-300,reg_season,Mon, Dec 1, 2025,7:00p,Atlanta Hawks,,Detroit Pistons,,,Little Caesars Arena,,0
-301,reg_season,Mon, Dec 1, 2025,7:00p,Cleveland Cavaliers,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-302,reg_season,Mon, Dec 1, 2025,7:00p,Milwaukee Bucks,,Washington Wizards,,,Capital One Arena,,0
-303,reg_season,Mon, Dec 1, 2025,7:30p,Charlotte Hornets,,Brooklyn Nets,,,Barclays Center,,0
-304,reg_season,Mon, Dec 1, 2025,7:30p,Los Angeles Clippers,,Miami Heat,,,Kaseya Center,,0
-305,reg_season,Mon, Dec 1, 2025,7:30p,Chicago Bulls,,Orlando Magic,,,Kia Center,,0
-306,reg_season,Mon, Dec 1, 2025,9:00p,Dallas Mavericks,,Denver Nuggets,,,Ball Arena,,0
-307,reg_season,Mon, Dec 1, 2025,9:00p,Houston Rockets,,Utah Jazz,,,Delta Center,,0
-308,reg_season,Mon, Dec 1, 2025,10:00p,Phoenix Suns,,Los Angeles Lakers,,,Crypto.com Arena,,0
-309,reg_season,Tue, Dec 2, 2025,7:00p,Washington Wizards,,Philadelphia 76ers,,,Xfinity Mobile Arena,,0
-310,reg_season,Tue, Dec 2, 2025,7:30p,Portland Trail Blazers,,Toronto Raptors,,,Scotiabank Arena,,0
-311,reg_season,Tue, Dec 2, 2025,8:00p,New York Knicks,,Boston Celtics,,,TD Garden,,0
-312,reg_season,Tue, Dec 2, 2025,8:00p,Minnesota Timberwolves,,New Orleans Pelicans,,,Smoothie King Center,,0
-313,reg_season,Tue, Dec 2, 2025,8:00p,Memphis Grizzlies,,San Antonio Spurs,,,Frost Bank Center,,0
-314,reg_season,Tue, Dec 2, 2025,11:00p,Oklahoma City Thunder,,Golden State Warriors,,,Chase Center,,0
-315,reg_season,Wed, Dec 3, 2025,7:00p,Portland Trail Blazers,,Cleveland Cavaliers,,,Rocket Arena,,0
-316,reg_season,Wed, Dec 3, 2025,7:00p,Denver Nuggets,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-317,reg_season,Wed, Dec 3, 2025,7:00p,San Antonio Spurs,,Orlando Magic,,,Kia Center,,0
-318,reg_season,Wed, Dec 3, 2025,7:30p,Los Angeles Clippers,,Atlanta Hawks,,,State Farm Arena,,0
-319,reg_season,Wed, Dec 3, 2025,7:30p,Charlotte Hornets,,New York Knicks,,,Madison Square Garden (IV),,0
-320,reg_season,Wed, Dec 3, 2025,8:00p,Brooklyn Nets,,Chicago Bulls,,,United Center,,0
-321,reg_season,Wed, Dec 3, 2025,8:00p,Sacramento Kings,,Houston Rockets,,,Toyota Center,,0
-322,reg_season,Wed, Dec 3, 2025,8:00p,Detroit Pistons,,Milwaukee Bucks,,,Fiserv Forum,,0
-323,reg_season,Wed, Dec 3, 2025,8:30p,Miami Heat,,Dallas Mavericks,,,American Airlines Center,,0
-324,reg_season,Thu, Dec 4, 2025,7:00p,Golden State Warriors,,Philadelphia 76ers,,,Xfinity Mobile Arena,,0
-325,reg_season,Thu, Dec 4, 2025,7:00p,Boston Celtics,,Washington Wizards,,,Capital One Arena,,0
-326,reg_season,Thu, Dec 4, 2025,7:30p,Utah Jazz,,Brooklyn Nets,,,Barclays Center,,0
-327,reg_season,Thu, Dec 4, 2025,7:30p,Los Angeles Lakers,,Toronto Raptors,,,Scotiabank Arena,,0
-328,reg_season,Thu, Dec 4, 2025,8:00p,Minnesota Timberwolves,,New Orleans Pelicans,,,Smoothie King Center,,0
-329,reg_season,Fri, Dec 5, 2025,7:00p,Los Angeles Lakers,,Boston Celtics,,,TD Garden,,0
-330,reg_season,Fri, Dec 5, 2025,7:00p,Miami Heat,,Orlando Magic,,,Kia Center,,0
-331,reg_season,Fri, Dec 5, 2025,7:30p,Denver Nuggets,,Atlanta Hawks,,,State Farm Arena,,0
-332,reg_season,Fri, Dec 5, 2025,7:30p,San Antonio Spurs,,Cleveland Cavaliers,,,Rocket Arena,,0
-333,reg_season,Fri, Dec 5, 2025,7:30p,Portland Trail Blazers,,Detroit Pistons,,,Little Caesars Arena,,0
-334,reg_season,Fri, Dec 5, 2025,7:30p,Utah Jazz,,New York Knicks,,,Madison Square Garden (IV),,0
-335,reg_season,Fri, Dec 5, 2025,7:30p,Charlotte Hornets,,Toronto Raptors,,,Scotiabank Arena,,0
-336,reg_season,Fri, Dec 5, 2025,8:00p,Indiana Pacers,,Chicago Bulls,,,United Center,,0
-337,reg_season,Fri, Dec 5, 2025,8:00p,Phoenix Suns,,Houston Rockets,,,Toyota Center,,0
-338,reg_season,Fri, Dec 5, 2025,8:00p,Los Angeles Clippers,,Memphis Grizzlies,,,FedExForum,,0
-339,reg_season,Fri, Dec 5, 2025,8:00p,Philadelphia 76ers,,Milwaukee Bucks,,,Fiserv Forum,,0
-340,reg_season,Fri, Dec 5, 2025,9:30p,Dallas Mavericks,,Oklahoma City Thunder,,,Paycom Center,,0
-341,reg_season,Sat, Dec 6, 2025,5:00p,New Orleans Pelicans,,Brooklyn Nets,,,Barclays Center,,0
-342,reg_season,Sat, Dec 6, 2025,7:00p,Atlanta Hawks,,Washington Wizards,,,Capital One Arena,,0
-343,reg_season,Sat, Dec 6, 2025,7:30p,Golden State Warriors,,Cleveland Cavaliers,,,Rocket Arena,,0
-344,reg_season,Sat, Dec 6, 2025,7:30p,Milwaukee Bucks,,Detroit Pistons,,,Little Caesars Arena,,0
-345,reg_season,Sat, Dec 6, 2025,8:00p,Sacramento Kings,,Miami Heat,,,Kaseya Center,,0
-346,reg_season,Sat, Dec 6, 2025,8:00p,Los Angeles Clippers,,Minnesota Timberwolves,,,Target Center,,0
-347,reg_season,Sat, Dec 6, 2025,8:30p,Houston Rockets,,Dallas Mavericks,,,American Airlines Center,,0
-348,reg_season,Sun, Dec 7, 2025,12:00p,Orlando Magic,,New York Knicks,,,Madison Square Garden (IV),,0
-349,reg_season,Sun, Dec 7, 2025,3:30p,Boston Celtics,,Toronto Raptors,,,Scotiabank Arena,,0
-350,reg_season,Sun, Dec 7, 2025,6:00p,Denver Nuggets,,Charlotte Hornets,,,Spectrum Center,,0
-351,reg_season,Sun, Dec 7, 2025,6:00p,Portland Trail Blazers,,Memphis Grizzlies,,,FedExForum,,0
-352,reg_season,Sun, Dec 7, 2025,7:00p,Golden State Warriors,,Chicago Bulls,,,United Center,,0
-353,reg_season,Sun, Dec 7, 2025,7:30p,Los Angeles Lakers,,Philadelphia 76ers,,,Xfinity Mobile Arena,,0
-354,reg_season,Sun, Dec 7, 2025,8:00p,Oklahoma City Thunder,,Utah Jazz,,,Delta Center,,0
-355,reg_season,Mon, Dec 8, 2025,7:00p,Sacramento Kings,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
-356,reg_season,Mon, Dec 8, 2025,8:00p,Phoenix Suns,,Minnesota Timberwolves,,,Target Center,,0
-357,reg_season,Mon, Dec 8, 2025,9:30p,San Antonio Spurs,,New Orleans Pelicans,,,Smoothie King Center,,0
-358,reg_season,Tue, Dec 9, 2025,,placeholder,,placeholder,,,,,0
-359,reg_season,Tue, Dec 9, 2025,,placeholder,,placeholder,,,,,0
-360,reg_season,Tue, Dec 9, 2025,,placeholder,,placeholder,,,,,0
-361,reg_season,Tue, Dec 9, 2025,,placeholder,,placeholder,,,,,0
-362,reg_season,Tue, Dec 9, 2025,,placeholder,,placeholder,,,,,0
-363,reg_season,Tue, Dec 9, 2025,,placeholder,,placeholder,,,,,0
-364,reg_season,Tue, Dec 9, 2025,,placeholder,,placeholder,,,,,0
-365,reg_season,Wed, Dec 10, 2025,,placeholder,,placeholder,,,,,0
-366,reg_season,Wed, Dec 10, 2025,,placeholder,,placeholder,,,,,0
-367,reg_season,Wed, Dec 10, 2025,,placeholder,,placeholder,,,,,0
-368,reg_season,Wed, Dec 10, 2025,,placeholder,,placeholder,,,,,0
-369,reg_season,Wed, Dec 10, 2025,,placeholder,,placeholder,,,,,0
-370,reg_season,Wed, Dec 10, 2025,,placeholder,,placeholder,,,,,0
-371,reg_season,Wed, Dec 10, 2025,,placeholder,,placeholder,,,,,0
-372,reg_season,Thu, Dec 11, 2025,,placeholder,,placeholder,,,,,0
-373,reg_season,Thu, Dec 11, 2025,,placeholder,,placeholder,,,,,0
-374,reg_season,Thu, Dec 11, 2025,,placeholder,,placeholder,,,,,0
-375,reg_season,Thu, Dec 11, 2025,,placeholder,,placeholder,,,,,0
-376,reg_season,Thu, Dec 11, 2025,,placeholder,,placeholder,,,,,0
-377,reg_season,Thu, Dec 11, 2025,,placeholder,,placeholder,,,,,0
-378,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-379,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-380,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-381,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-382,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-383,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-384,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-385,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-386,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-387,reg_season,Fri, Dec 12, 2025,,placeholder,,placeholder,,,,,0
-388,reg_season,Wed, Dec 17, 2025,8:00p,Cleveland Cavaliers,,Chicago Bulls,,,,,0
-389,reg_season,Wed, Dec 17, 2025,8:00p,Memphis Grizzlies,,Minnesota Timberwolves,,,,,0
-390,reg_season,Wed, Dec 17, 2025,8:00p,Los Angeles Clippers,,Oklahoma City Thunder,,,,,0
-391,reg_season,Wed, Dec 17, 2025,8:00p,Washington Wizards,,San Antonio Spurs,,,,,0
-392,reg_season,Thu, Dec 18, 2025,7:00p,Atlanta Hawks,,Charlotte Hornets,,,,,0
-393,reg_season,Thu, Dec 18, 2025,7:00p,New York Knicks,,Indiana Pacers,,,,,0
-394,reg_season,Thu, Dec 18, 2025,7:30p,Miami Heat,,Brooklyn Nets,,,,,0
-395,reg_season,Thu, Dec 18, 2025,8:00p,Toronto Raptors,,Milwaukee Bucks,,,,,0
-396,reg_season,Thu, Dec 18, 2025,8:00p,Houston Rockets,,New Orleans Pelicans,,,,,0
-397,reg_season,Thu, Dec 18, 2025,8:30p,Detroit Pistons,,Dallas Mavericks,,,,,0
-398,reg_season,Thu, Dec 18, 2025,9:00p,Orlando Magic,,Denver Nuggets,,,,,0
-399,reg_season,Thu, Dec 18, 2025,9:00p,Golden State Warriors,,Phoenix Suns,,,,,0
-400,reg_season,Thu, Dec 18, 2025,9:00p,Los Angeles Lakers,,Utah Jazz,,,,,0
-401,reg_season,Thu, Dec 18, 2025,10:00p,Sacramento Kings,,Portland Trail Blazers,,,,,0
-402,reg_season,Fri, Dec 19, 2025,7:00p,Miami Heat,,Boston Celtics,,,,,0
-403,reg_season,Fri, Dec 19, 2025,7:00p,Philadelphia 76ers,,New York Knicks,,,,,0
-404,reg_season,Fri, Dec 19, 2025,7:30p,San Antonio Spurs,,Atlanta Hawks,,,,,0
-405,reg_season,Fri, Dec 19, 2025,7:30p,Chicago Bulls,,Cleveland Cavaliers,,,,,0
-406,reg_season,Fri, Dec 19, 2025,9:30p,Oklahoma City Thunder,,Minnesota Timberwolves,,,,,0
-407,reg_season,Sat, Dec 20, 2025,5:00p,Houston Rockets,,Denver Nuggets,,,,,0
-408,reg_season,Sat, Dec 20, 2025,7:00p,Indiana Pacers,,New Orleans Pelicans,,,,,0
-409,reg_season,Sat, Dec 20, 2025,7:00p,Dallas Mavericks,,Philadelphia 76ers,,,,,0
-410,reg_season,Sat, Dec 20, 2025,7:00p,Boston Celtics,,Toronto Raptors,,,,,0
-411,reg_season,Sat, Dec 20, 2025,7:30p,Charlotte Hornets,,Detroit Pistons,,,,,0
-412,reg_season,Sat, Dec 20, 2025,8:00p,Washington Wizards,,Memphis Grizzlies,,,,,0
-413,reg_season,Sat, Dec 20, 2025,8:30p,Phoenix Suns,,Golden State Warriors,,,,,0
-414,reg_season,Sat, Dec 20, 2025,9:30p,Orlando Magic,,Utah Jazz,,,,,0
-415,reg_season,Sat, Dec 20, 2025,10:00p,Portland Trail Blazers,,Sacramento Kings,,,,,0
-416,reg_season,Sat, Dec 20, 2025,10:30p,Los Angeles Lakers,,Los Angeles Clippers,,,,,0
-417,reg_season,Sun, Dec 21, 2025,3:30p,Chicago Bulls,,Atlanta Hawks,,,,,0
-418,reg_season,Sun, Dec 21, 2025,6:00p,Toronto Raptors,,Brooklyn Nets,,,,,0
-419,reg_season,Sun, Dec 21, 2025,6:00p,Miami Heat,,New York Knicks,,,,,0
-420,reg_season,Sun, Dec 21, 2025,7:00p,Milwaukee Bucks,,Minnesota Timberwolves,,,,,0
-421,reg_season,Sun, Dec 21, 2025,7:00p,San Antonio Spurs,,Washington Wizards,,,,,0
-422,reg_season,Sun, Dec 21, 2025,10:00p,Houston Rockets,,Sacramento Kings,,,,,0
-423,reg_season,Mon, Dec 22, 2025,7:00p,Charlotte Hornets,,Cleveland Cavaliers,,,,,0
-424,reg_season,Mon, Dec 22, 2025,7:30p,Indiana Pacers,,Boston Celtics,,,,,0
-425,reg_season,Mon, Dec 22, 2025,8:00p,Dallas Mavericks,,New Orleans Pelicans,,,,,0
-426,reg_season,Mon, Dec 22, 2025,9:00p,Utah Jazz,,Denver Nuggets,,,,,0
-427,reg_season,Mon, Dec 22, 2025,9:30p,Memphis Grizzlies,,Oklahoma City Thunder,,,,,0
-428,reg_season,Mon, Dec 22, 2025,10:00p,Orlando Magic,,Golden State Warriors,,,,,0
-429,reg_season,Mon, Dec 22, 2025,10:00p,Detroit Pistons,,Portland Trail Blazers,,,,,0
-430,reg_season,Tue, Dec 23, 2025,7:00p,Washington Wizards,,Charlotte Hornets,,,,,0
-431,reg_season,Tue, Dec 23, 2025,7:00p,Brooklyn Nets,,Philadelphia 76ers,,,,,0
-432,reg_season,Tue, Dec 23, 2025,7:30p,Chicago Bulls,,Atlanta Hawks,,,,,0
-433,reg_season,Tue, Dec 23, 2025,7:30p,New Orleans Pelicans,,Cleveland Cavaliers,,,,,0
-434,reg_season,Tue, Dec 23, 2025,7:30p,Milwaukee Bucks,,Indiana Pacers,,,,,0
-435,reg_season,Tue, Dec 23, 2025,7:30p,Toronto Raptors,,Miami Heat,,,,,0
-436,reg_season,Tue, Dec 23, 2025,8:00p,Denver Nuggets,,Dallas Mavericks,,,,,0
-437,reg_season,Tue, Dec 23, 2025,8:00p,New York Knicks,,Minnesota Timberwolves,,,,,0
-438,reg_season,Tue, Dec 23, 2025,8:30p,Oklahoma City Thunder,,San Antonio Spurs,,,,,0
-439,reg_season,Tue, Dec 23, 2025,9:00p,Los Angeles Lakers,,Phoenix Suns,,,,,0
-440,reg_season,Tue, Dec 23, 2025,9:00p,Memphis Grizzlies,,Utah Jazz,,,,,0
-441,reg_season,Tue, Dec 23, 2025,10:00p,Orlando Magic,,Portland Trail Blazers,,,,,0
-442,reg_season,Tue, Dec 23, 2025,10:00p,Detroit Pistons,,Sacramento Kings,,,,,0
-443,reg_season,Tue, Dec 23, 2025,11:00p,Houston Rockets,,Los Angeles Clippers,,,,,0
-444,reg_season,Thu, Dec 25, 2025,12:00p,Cleveland Cavaliers,,New York Knicks,,,,,0
-445,reg_season,Thu, Dec 25, 2025,2:30p,San Antonio Spurs,,Oklahoma City Thunder,,,,,0
-446,reg_season,Thu, Dec 25, 2025,5:00p,Dallas Mavericks,,Golden State Warriors,,,,,0
-447,reg_season,Thu, Dec 25, 2025,8:00p,Houston Rockets,,Los Angeles Lakers,,,,,0
-448,reg_season,Thu, Dec 25, 2025,10:30p,Minnesota Timberwolves,,Denver Nuggets,,,,,0
-449,reg_season,Fri, Dec 26, 2025,7:00p,Miami Heat,,Atlanta Hawks,,,,,0
-450,reg_season,Fri, Dec 26, 2025,7:00p,Charlotte Hornets,,Orlando Magic,,,,,0
-451,reg_season,Fri, Dec 26, 2025,7:00p,Toronto Raptors,,Washington Wizards,,,,,0
-452,reg_season,Fri, Dec 26, 2025,7:30p,Boston Celtics,,Indiana Pacers,,,,,0
-453,reg_season,Fri, Dec 26, 2025,8:00p,Philadelphia 76ers,,Chicago Bulls,,,,,0
-454,reg_season,Fri, Dec 26, 2025,8:00p,Milwaukee Bucks,,Memphis Grizzlies,,,,,0
-455,reg_season,Fri, Dec 26, 2025,8:00p,Phoenix Suns,,New Orleans Pelicans,,,,,0
-456,reg_season,Fri, Dec 26, 2025,9:30p,Detroit Pistons,,Utah Jazz,,,,,0
-457,reg_season,Fri, Dec 26, 2025,10:00p,Los Angeles Clippers,,Portland Trail Blazers,,,,,0
-458,reg_season,Sat, Dec 27, 2025,5:00p,Dallas Mavericks,,Sacramento Kings,,,,,0
-459,reg_season,Sat, Dec 27, 2025,7:00p,Phoenix Suns,,New Orleans Pelicans,,,,,0
-460,reg_season,Sat, Dec 27, 2025,7:00p,Denver Nuggets,,Orlando Magic,,,,,0
-461,reg_season,Sat, Dec 27, 2025,8:00p,New York Knicks,,Atlanta Hawks,,,,,0
-462,reg_season,Sat, Dec 27, 2025,8:00p,Milwaukee Bucks,,Chicago Bulls,,,,,0
-463,reg_season,Sat, Dec 27, 2025,8:00p,Cleveland Cavaliers,,Houston Rockets,,,,,0
-464,reg_season,Sat, Dec 27, 2025,8:00p,Indiana Pacers,,Miami Heat,,,,,0
-465,reg_season,Sat, Dec 27, 2025,8:00p,Brooklyn Nets,,Minnesota Timberwolves,,,,,0
-466,reg_season,Sat, Dec 27, 2025,8:00p,Utah Jazz,,San Antonio Spurs,,,,,0
-467,reg_season,Sun, Dec 28, 2025,3:30p,Philadelphia 76ers,,Oklahoma City Thunder,,,,,0
-468,reg_season,Sun, Dec 28, 2025,3:30p,Golden State Warriors,,Toronto Raptors,,,,,0
-469,reg_season,Sun, Dec 28, 2025,6:00p,Boston Celtics,,Portland Trail Blazers,,,,,0
-470,reg_season,Sun, Dec 28, 2025,6:00p,Memphis Grizzlies,,Washington Wizards,,,,,0
-471,reg_season,Sun, Dec 28, 2025,9:00p,Detroit Pistons,,Los Angeles Clippers,,,,,0
-472,reg_season,Sun, Dec 28, 2025,9:30p,Sacramento Kings,,Los Angeles Lakers,,,,,0
-473,reg_season,Mon, Dec 29, 2025,7:00p,Milwaukee Bucks,,Charlotte Hornets,,,,,0
-474,reg_season,Mon, Dec 29, 2025,7:00p,Phoenix Suns,,Washington Wizards,,,,,0
-475,reg_season,Mon, Dec 29, 2025,7:30p,Golden State Warriors,,Brooklyn Nets,,,,,0
-476,reg_season,Mon, Dec 29, 2025,7:30p,Denver Nuggets,,Miami Heat,,,,,0
-477,reg_season,Mon, Dec 29, 2025,7:30p,Orlando Magic,,Toronto Raptors,,,,,0
-478,reg_season,Mon, Dec 29, 2025,8:00p,Minnesota Timberwolves,,Chicago Bulls,,,,,0
-479,reg_season,Mon, Dec 29, 2025,8:00p,Indiana Pacers,,Houston Rockets,,,,,0
-480,reg_season,Mon, Dec 29, 2025,8:00p,New York Knicks,,New Orleans Pelicans,,,,,0
-481,reg_season,Mon, Dec 29, 2025,8:00p,Atlanta Hawks,,Oklahoma City Thunder,,,,,0
-482,reg_season,Mon, Dec 29, 2025,8:00p,Cleveland Cavaliers,,San Antonio Spurs,,,,,0
-483,reg_season,Mon, Dec 29, 2025,11:00p,Dallas Mavericks,,Portland Trail Blazers,,,,,0
-484,reg_season,Tue, Dec 30, 2025,8:00p,Philadelphia 76ers,,Memphis Grizzlies,,,,,0
-485,reg_season,Tue, Dec 30, 2025,9:00p,Boston Celtics,,Utah Jazz,,,,,0
-486,reg_season,Tue, Dec 30, 2025,10:30p,Detroit Pistons,,Los Angeles Lakers,,,,,0
-487,reg_season,Tue, Dec 30, 2025,11:00p,Sacramento Kings,,Los Angeles Clippers,,,,,0
-488,reg_season,Wed, Dec 31, 2025,1:00p,Golden State Warriors,,Charlotte Hornets,,,,,0
-489,reg_season,Wed, Dec 31, 2025,3:00p,Minnesota Timberwolves,,Atlanta Hawks,,,,,0
-490,reg_season,Wed, Dec 31, 2025,3:00p,Orlando Magic,,Indiana Pacers,,,,,0
-491,reg_season,Wed, Dec 31, 2025,3:30p,Phoenix Suns,,Cleveland Cavaliers,,,,,0
-492,reg_season,Wed, Dec 31, 2025,7:00p,New Orleans Pelicans,,Chicago Bulls,,,,,0
-493,reg_season,Wed, Dec 31, 2025,7:00p,New York Knicks,,San Antonio Spurs,,,,,0
-494,reg_season,Wed, Dec 31, 2025,7:30p,Denver Nuggets,,Toronto Raptors,,,,,0
-495,reg_season,Wed, Dec 31, 2025,8:00p,Washington Wizards,,Milwaukee Bucks,,,,,0
-496,reg_season,Wed, Dec 31, 2025,8:00p,Portland Trail Blazers,,Oklahoma City Thunder,,,,,0
+300,reg_season,Mon, Dec 1, 2025,7:00p,Atlanta Hawks,98,Detroit Pistons,99,19008,Little Caesars Arena,,0
+301,reg_season,Mon, Dec 1, 2025,7:00p,Cleveland Cavaliers,135,Indiana Pacers,119,15470,Gainbridge Fieldhouse,,0
+302,reg_season,Mon, Dec 1, 2025,7:00p,Milwaukee Bucks,126,Washington Wizards,129,13709,Capital One Arena,,0
+303,reg_season,Mon, Dec 1, 2025,7:30p,Charlotte Hornets,103,Brooklyn Nets,116,16443,Barclays Center,,0
+304,reg_season,Mon, Dec 1, 2025,7:30p,Los Angeles Clippers,123,Miami Heat,140,19600,Kaseya Center,,0
+305,reg_season,Mon, Dec 1, 2025,7:30p,Chicago Bulls,120,Orlando Magic,125,18096,Kia Center,,0
+306,reg_season,Mon, Dec 1, 2025,9:00p,Dallas Mavericks,131,Denver Nuggets,121,19587,Ball Arena,,0
+307,reg_season,Mon, Dec 1, 2025,9:00p,Houston Rockets,125,Utah Jazz,133,18186,Delta Center,,0
+308,reg_season,Mon, Dec 1, 2025,10:00p,Phoenix Suns,125,Los Angeles Lakers,108,18997,Crypto.com Arena,,0
+309,reg_season,Tue, Dec 2, 2025,7:00p,Washington Wizards,102,Philadelphia 76ers,121,16743,Xfinity Mobile Arena,,0
+310,reg_season,Tue, Dec 2, 2025,7:30p,Portland Trail Blazers,118,Toronto Raptors,121,19203,Scotiabank Arena,,0
+311,reg_season,Tue, Dec 2, 2025,8:00p,New York Knicks,117,Boston Celtics,123,19156,TD Garden,,0
+312,reg_season,Tue, Dec 2, 2025,8:00p,Minnesota Timberwolves,149,New Orleans Pelicans,142,12770,Smoothie King Center,,0
+313,reg_season,Tue, Dec 2, 2025,8:00p,Memphis Grizzlies,119,San Antonio Spurs,126,18354,Frost Bank Center,,0
+314,reg_season,Tue, Dec 2, 2025,11:00p,Oklahoma City Thunder,124,Golden State Warriors,112,18064,Chase Center,,0
+315,reg_season,Wed, Dec 3, 2025,7:00p,Portland Trail Blazers,122,Cleveland Cavaliers,110,19432,Rocket Arena,,0
+316,reg_season,Wed, Dec 3, 2025,7:00p,Denver Nuggets,135,Indiana Pacers,120,15578,Gainbridge Fieldhouse,,0
+317,reg_season,Wed, Dec 3, 2025,7:00p,San Antonio Spurs,114,Orlando Magic,112,17643,Kia Center,,0
+318,reg_season,Wed, Dec 3, 2025,7:30p,Los Angeles Clippers,115,Atlanta Hawks,92,16470,State Farm Arena,,0
+319,reg_season,Wed, Dec 3, 2025,7:30p,Charlotte Hornets,104,New York Knicks,119,19812,Madison Square Garden (IV),,0
+320,reg_season,Wed, Dec 3, 2025,8:00p,Brooklyn Nets,113,Chicago Bulls,103,20633,United Center,,0
+321,reg_season,Wed, Dec 3, 2025,8:00p,Sacramento Kings,95,Houston Rockets,121,18055,Toyota Center,,0
+322,reg_season,Wed, Dec 3, 2025,8:00p,Detroit Pistons,109,Milwaukee Bucks,113,16256,Fiserv Forum,,0
+323,reg_season,Wed, Dec 3, 2025,8:30p,Miami Heat,108,Dallas Mavericks,118,19509,American Airlines Center,,0
+324,reg_season,Thu, Dec 4, 2025,7:00p,Golden State Warriors,98,Philadelphia 76ers,99,18221,Xfinity Mobile Arena,,0
+325,reg_season,Thu, Dec 4, 2025,7:00p,Boston Celtics,146,Washington Wizards,101,16026,Capital One Arena,,0
+326,reg_season,Thu, Dec 4, 2025,7:30p,Utah Jazz,123,Brooklyn Nets,110,16485,Barclays Center,,0
+327,reg_season,Thu, Dec 4, 2025,7:30p,Los Angeles Lakers,123,Toronto Raptors,120,19800,Scotiabank Arena,,0
+328,reg_season,Thu, Dec 4, 2025,8:00p,Minnesota Timberwolves,125,New Orleans Pelicans,116,16459,Smoothie King Center,,0
+329,reg_season,Fri, Dec 5, 2025,7:00p,Los Angeles Lakers,105,Boston Celtics,126,19156,TD Garden,,0
+330,reg_season,Fri, Dec 5, 2025,7:00p,Miami Heat,105,Orlando Magic,106,17794,Kia Center,,0
+331,reg_season,Fri, Dec 5, 2025,7:30p,Denver Nuggets,134,Atlanta Hawks,133,16149,State Farm Arena,,0
+332,reg_season,Fri, Dec 5, 2025,7:30p,San Antonio Spurs,117,Cleveland Cavaliers,130,19432,Rocket Arena,,0
+333,reg_season,Fri, Dec 5, 2025,7:30p,Portland Trail Blazers,116,Detroit Pistons,122,19907,Little Caesars Arena,,0
+334,reg_season,Fri, Dec 5, 2025,7:30p,Utah Jazz,112,New York Knicks,146,19812,Madison Square Garden (IV),,0
+335,reg_season,Fri, Dec 5, 2025,7:30p,Charlotte Hornets,111,Toronto Raptors,86,19800,Scotiabank Arena,,0
+336,reg_season,Fri, Dec 5, 2025,8:00p,Indiana Pacers,120,Chicago Bulls,105,20471,United Center,,0
+337,reg_season,Fri, Dec 5, 2025,8:00p,Phoenix Suns,98,Houston Rockets,117,18055,Toyota Center,,0
+338,reg_season,Fri, Dec 5, 2025,8:00p,Los Angeles Clippers,98,Memphis Grizzlies,107,15052,FedExForum,,0
+339,reg_season,Fri, Dec 5, 2025,8:00p,Philadelphia 76ers,116,Milwaukee Bucks,101,17341,Fiserv Forum,,0
+340,reg_season,Fri, Dec 5, 2025,9:30p,Dallas Mavericks,111,Oklahoma City Thunder,132,18203,Paycom Center,,0
+341,reg_season,Sat, Dec 6, 2025,5:00p,New Orleans Pelicans,101,Brooklyn Nets,119,17055,Barclays Center,,0
+342,reg_season,Sat, Dec 6, 2025,7:00p,Atlanta Hawks,131,Washington Wizards,116,15596,Capital One Arena,,0
+343,reg_season,Sat, Dec 6, 2025,7:30p,Golden State Warriors,99,Cleveland Cavaliers,94,19432,Rocket Arena,,0
+344,reg_season,Sat, Dec 6, 2025,7:30p,Milwaukee Bucks,112,Detroit Pistons,124,19931,Little Caesars Arena,,0
+345,reg_season,Sat, Dec 6, 2025,8:00p,Sacramento Kings,127,Miami Heat,111,19700,Kaseya Center,,0
+346,reg_season,Sat, Dec 6, 2025,8:00p,Los Angeles Clippers,106,Minnesota Timberwolves,109,17506,Target Center,,0
+347,reg_season,Sat, Dec 6, 2025,8:30p,Houston Rockets,109,Dallas Mavericks,122,19310,American Airlines Center,,0
+348,reg_season,Sun, Dec 7, 2025,12:00p,Orlando Magic,100,New York Knicks,106,19812,Madison Square Garden (IV),,0
+349,reg_season,Sun, Dec 7, 2025,3:30p,Boston Celtics,121,Toronto Raptors,113,18492,Scotiabank Arena,,0
+350,reg_season,Sun, Dec 7, 2025,6:00p,Denver Nuggets,115,Charlotte Hornets,106,18416,Spectrum Center,,0
+351,reg_season,Sun, Dec 7, 2025,6:00p,Portland Trail Blazers,96,Memphis Grizzlies,119,14189,FedExForum,,0
+352,reg_season,Sun, Dec 7, 2025,7:00p,Golden State Warriors,123,Chicago Bulls,91,18449,United Center,,0
+353,reg_season,Sun, Dec 7, 2025,7:30p,Los Angeles Lakers,112,Philadelphia 76ers,108,20431,Xfinity Mobile Arena,,0
+354,reg_season,Sun, Dec 7, 2025,8:00p,Oklahoma City Thunder,131,Utah Jazz,101,18186,Delta Center,,0
+355,reg_season,Mon, Dec 8, 2025,7:00p,Sacramento Kings,105,Indiana Pacers,116,16465,Gainbridge Fieldhouse,,0
+356,reg_season,Mon, Dec 8, 2025,7:30p,Phoenix Suns,108,Minnesota Timberwolves,105,16046,Target Center,,0
+357,reg_season,Mon, Dec 8, 2025,8:00p,San Antonio Spurs,135,New Orleans Pelicans,132,15783,Smoothie King Center,,0
+358,reg_season,Tue, Dec 9, 2025,6:00p,Miami Heat,108,Orlando Magic,117,18605,Kia Center,Knockout Round,0
+359,reg_season,Tue, Dec 9, 2025,8:30p,New York Knicks,117,Toronto Raptors,101,17801,Scotiabank Arena,Knockout Round,0
+360,reg_season,Wed, Dec 10, 2025,7:30p,Phoenix Suns,89,Oklahoma City Thunder,138,18203,Paycom Center,Knockout Round,0
+361,reg_season,Wed, Dec 10, 2025,10:00p,San Antonio Spurs,132,Los Angeles Lakers,119,18684,Crypto.com Arena,Knockout Round,0
+362,reg_season,Thu, Dec 11, 2025,8:00p,Los Angeles Clippers,113,Houston Rockets,115,18055,Toyota Center,,0
+363,reg_season,Thu, Dec 11, 2025,8:00p,Boston Celtics,101,Milwaukee Bucks,116,15458,Fiserv Forum,,0
+364,reg_season,Thu, Dec 11, 2025,8:00p,Portland Trail Blazers,120,New Orleans Pelicans,143,13448,Smoothie King Center,,0
+365,reg_season,Thu, Dec 11, 2025,10:00p,Denver Nuggets,136,Sacramento Kings,105,16307,Golden 1 Center,,0
+366,reg_season,Fri, Dec 12, 2025,7:00p,Chicago Bulls,129,Charlotte Hornets,126,16205,Spectrum Center,,0
+367,reg_season,Fri, Dec 12, 2025,7:00p,Atlanta Hawks,115,Detroit Pistons,142,18989,Little Caesars Arena,,0
+368,reg_season,Fri, Dec 12, 2025,7:00p,Indiana Pacers,105,Philadelphia 76ers,115,19746,Xfinity Mobile Arena,,0
+369,reg_season,Fri, Dec 12, 2025,7:00p,Cleveland Cavaliers,130,Washington Wizards,126,15465,Capital One Arena,,0
+370,reg_season,Fri, Dec 12, 2025,8:00p,Utah Jazz,130,Memphis Grizzlies,126,15502,FedExForum,,0
+371,reg_season,Fri, Dec 12, 2025,8:30p,Brooklyn Nets,111,Dallas Mavericks,119,19032,American Airlines Center,,0
+372,reg_season,Fri, Dec 12, 2025,10:00p,Minnesota Timberwolves,127,Golden State Warriors,120,18064,Chase Center,,0
+373,reg_season,Sat, Dec 13, 2025,5:30p,New York Knicks,132,Orlando Magic,120,16697,T-Mobile Arena,Knockout Round,0
+374,reg_season,Sat, Dec 13, 2025,9:00p,San Antonio Spurs,111,Oklahoma City Thunder,109,18519,T-Mobile Arena,Knockout Round,0
+375,reg_season,Sun, Dec 14, 2025,3:00p,Washington Wizards,108,Indiana Pacers,89,16001,Gainbridge Fieldhouse,,0
+376,reg_season,Sun, Dec 14, 2025,3:30p,Charlotte Hornets,119,Cleveland Cavaliers,111,19432,Rocket Arena,,0
+377,reg_season,Sun, Dec 14, 2025,6:00p,Philadelphia 76ers,117,Atlanta Hawks,120,16250,State Farm Arena,,0
+378,reg_season,Sun, Dec 14, 2025,6:00p,Milwaukee Bucks,82,Brooklyn Nets,127,16439,Barclays Center,,0
+379,reg_season,Sun, Dec 14, 2025,7:00p,New Orleans Pelicans,114,Chicago Bulls,104,18372,United Center,,0
+380,reg_season,Sun, Dec 14, 2025,7:00p,Sacramento Kings,103,Minnesota Timberwolves,117,15466,Target Center,,0
+381,reg_season,Sun, Dec 14, 2025,8:00p,Los Angeles Lakers,116,Phoenix Suns,114,17071,Mortgage Matchup Center,,0
+382,reg_season,Sun, Dec 14, 2025,9:00p,Golden State Warriors,131,Portland Trail Blazers,136,19064,Moda Center,,0
+383,reg_season,Mon, Dec 15, 2025,7:00p,Detroit Pistons,112,Boston Celtics,105,19156,TD Garden,,0
+384,reg_season,Mon, Dec 15, 2025,7:30p,Toronto Raptors,106,Miami Heat,96,19600,Kaseya Center,,0
+385,reg_season,Mon, Dec 15, 2025,9:00p,Dallas Mavericks,133,Utah Jazz,140,18186,Delta Center,,0
+386,reg_season,Mon, Dec 15, 2025,9:30p,Houston Rockets,125,Denver Nuggets,128,19596,Ball Arena,,0
+387,reg_season,Mon, Dec 15, 2025,10:30p,Memphis Grizzlies,121,Los Angeles Clippers,103,17927,Intuit Dome,,0
+388,reg_season,Wed, Dec 17, 2025,8:00p,Cleveland Cavaliers,111,Chicago Bulls,127,18872,United Center,,0
+389,reg_season,Wed, Dec 17, 2025,8:00p,Memphis Grizzlies,116,Minnesota Timberwolves,110,16287,Target Center,,0
+390,reg_season,Thu, Dec 18, 2025,7:00p,Atlanta Hawks,126,Charlotte Hornets,133,16124,Spectrum Center,,0
+391,reg_season,Thu, Dec 18, 2025,7:00p,New York Knicks,114,Indiana Pacers,113,15660,Gainbridge Fieldhouse,,0
+392,reg_season,Thu, Dec 18, 2025,7:30p,Miami Heat,106,Brooklyn Nets,95,17548,Barclays Center,,0
+393,reg_season,Thu, Dec 18, 2025,8:00p,Toronto Raptors,111,Milwaukee Bucks,105,17341,Fiserv Forum,,0
+394,reg_season,Thu, Dec 18, 2025,8:00p,Houston Rockets,128,New Orleans Pelicans,133,16766,Smoothie King Center,,0
+395,reg_season,Thu, Dec 18, 2025,8:00p,Los Angeles Clippers,101,Oklahoma City Thunder,122,18203,Paycom Center,,0
+396,reg_season,Thu, Dec 18, 2025,8:00p,Washington Wizards,94,San Antonio Spurs,119,18754,Frost Bank Center,,0
+397,reg_season,Thu, Dec 18, 2025,8:30p,Detroit Pistons,114,Dallas Mavericks,116,19600,American Airlines Center,,0
+398,reg_season,Thu, Dec 18, 2025,9:00p,Orlando Magic,115,Denver Nuggets,126,19731,Ball Arena,,0
+399,reg_season,Thu, Dec 18, 2025,9:00p,Golden State Warriors,98,Phoenix Suns,99,17071,Mortgage Matchup Center,,0
+400,reg_season,Thu, Dec 18, 2025,9:00p,Los Angeles Lakers,143,Utah Jazz,135,18186,Delta Center,,0
+401,reg_season,Thu, Dec 18, 2025,10:00p,Sacramento Kings,133,Portland Trail Blazers,134,16382,Moda Center,,0
+402,reg_season,Fri, Dec 19, 2025,7:00p,Miami Heat,116,Boston Celtics,129,19156,TD Garden,,0
+403,reg_season,Fri, Dec 19, 2025,7:00p,Philadelphia 76ers,116,New York Knicks,107,19812,Madison Square Garden (IV),,0
+404,reg_season,Fri, Dec 19, 2025,7:30p,San Antonio Spurs,126,Atlanta Hawks,98,15505,State Farm Arena,,0
+405,reg_season,Fri, Dec 19, 2025,7:30p,Chicago Bulls,136,Cleveland Cavaliers,125,19432,Rocket Arena,,0
+406,reg_season,Fri, Dec 19, 2025,9:30p,Oklahoma City Thunder,107,Minnesota Timberwolves,112,18978,Target Center,,0
+407,reg_season,Sat, Dec 20, 2025,5:00p,Houston Rockets,115,Denver Nuggets,101,19955,Ball Arena,,0
+408,reg_season,Sat, Dec 20, 2025,7:00p,Indiana Pacers,109,New Orleans Pelicans,128,16434,Smoothie King Center,,0
+409,reg_season,Sat, Dec 20, 2025,7:00p,Dallas Mavericks,114,Philadelphia 76ers,121,19056,Xfinity Mobile Arena,,0
+410,reg_season,Sat, Dec 20, 2025,7:00p,Boston Celtics,112,Toronto Raptors,96,19533,Scotiabank Arena,,0
+411,reg_season,Sat, Dec 20, 2025,7:30p,Charlotte Hornets,86,Detroit Pistons,112,20062,Little Caesars Arena,,0
+412,reg_season,Sat, Dec 20, 2025,8:00p,Washington Wizards,130,Memphis Grizzlies,122,15780,FedExForum,,0
+413,reg_season,Sat, Dec 20, 2025,8:30p,Phoenix Suns,116,Golden State Warriors,119,18064,Chase Center,,0
+414,reg_season,Sat, Dec 20, 2025,9:30p,Orlando Magic,128,Utah Jazz,127,18186,Delta Center,,0
+415,reg_season,Sat, Dec 20, 2025,10:00p,Portland Trail Blazers,98,Sacramento Kings,93,15963,Golden 1 Center,,0
+416,reg_season,Sat, Dec 20, 2025,10:30p,Los Angeles Lakers,88,Los Angeles Clippers,103,17927,Intuit Dome,,0
+417,reg_season,Sun, Dec 21, 2025,3:30p,Chicago Bulls,152,Atlanta Hawks,150,15110,State Farm Arena,,0
+418,reg_season,Sun, Dec 21, 2025,6:00p,Toronto Raptors,81,Brooklyn Nets,96,17548,Barclays Center,,0
+419,reg_season,Sun, Dec 21, 2025,6:00p,Miami Heat,125,New York Knicks,132,19812,Madison Square Garden (IV),,0
+420,reg_season,Sun, Dec 21, 2025,7:00p,Milwaukee Bucks,100,Minnesota Timberwolves,103,18978,Target Center,,0
+421,reg_season,Sun, Dec 21, 2025,7:00p,San Antonio Spurs,124,Washington Wizards,113,20028,Capital One Arena,,0
+422,reg_season,Sun, Dec 21, 2025,10:00p,Houston Rockets,124,Sacramento Kings,125,15796,Golden 1 Center,,0
+423,reg_season,Mon, Dec 22, 2025,7:00p,Charlotte Hornets,,Cleveland Cavaliers,,,Rocket Arena,,0
+424,reg_season,Mon, Dec 22, 2025,7:30p,Indiana Pacers,,Boston Celtics,,,TD Garden,,0
+425,reg_season,Mon, Dec 22, 2025,8:00p,Dallas Mavericks,,New Orleans Pelicans,,,Smoothie King Center,,0
+426,reg_season,Mon, Dec 22, 2025,9:00p,Utah Jazz,,Denver Nuggets,,,Ball Arena,,0
+427,reg_season,Mon, Dec 22, 2025,9:30p,Memphis Grizzlies,,Oklahoma City Thunder,,,Paycom Center,,0
+428,reg_season,Mon, Dec 22, 2025,10:00p,Orlando Magic,,Golden State Warriors,,,Chase Center,,0
+429,reg_season,Mon, Dec 22, 2025,10:00p,Detroit Pistons,,Portland Trail Blazers,,,Moda Center,,0
+430,reg_season,Tue, Dec 23, 2025,7:00p,Washington Wizards,,Charlotte Hornets,,,Spectrum Center,,0
+431,reg_season,Tue, Dec 23, 2025,7:00p,Brooklyn Nets,,Philadelphia 76ers,,,Xfinity Mobile Arena,,0
+432,reg_season,Tue, Dec 23, 2025,7:30p,Chicago Bulls,,Atlanta Hawks,,,State Farm Arena,,0
+433,reg_season,Tue, Dec 23, 2025,7:30p,New Orleans Pelicans,,Cleveland Cavaliers,,,Rocket Arena,,0
+434,reg_season,Tue, Dec 23, 2025,7:30p,Milwaukee Bucks,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+435,reg_season,Tue, Dec 23, 2025,7:30p,Toronto Raptors,,Miami Heat,,,Kaseya Center,,0
+436,reg_season,Tue, Dec 23, 2025,8:00p,Denver Nuggets,,Dallas Mavericks,,,American Airlines Center,,0
+437,reg_season,Tue, Dec 23, 2025,8:00p,New York Knicks,,Minnesota Timberwolves,,,Target Center,,0
+438,reg_season,Tue, Dec 23, 2025,8:30p,Oklahoma City Thunder,,San Antonio Spurs,,,Frost Bank Center,,0
+439,reg_season,Tue, Dec 23, 2025,9:00p,Los Angeles Lakers,,Phoenix Suns,,,Mortgage Matchup Center,,0
+440,reg_season,Tue, Dec 23, 2025,9:00p,Memphis Grizzlies,,Utah Jazz,,,Delta Center,,0
+441,reg_season,Tue, Dec 23, 2025,10:00p,Orlando Magic,,Portland Trail Blazers,,,Moda Center,,0
+442,reg_season,Tue, Dec 23, 2025,10:00p,Detroit Pistons,,Sacramento Kings,,,Golden 1 Center,,0
+443,reg_season,Tue, Dec 23, 2025,10:30p,Houston Rockets,,Los Angeles Clippers,,,Intuit Dome,,0
+444,reg_season,Thu, Dec 25, 2025,12:00p,Cleveland Cavaliers,,New York Knicks,,,Madison Square Garden (IV),,0
+445,reg_season,Thu, Dec 25, 2025,2:30p,San Antonio Spurs,,Oklahoma City Thunder,,,Paycom Center,,0
+446,reg_season,Thu, Dec 25, 2025,5:00p,Dallas Mavericks,,Golden State Warriors,,,Chase Center,,0
+447,reg_season,Thu, Dec 25, 2025,8:00p,Houston Rockets,,Los Angeles Lakers,,,Crypto.com Arena,,0
+448,reg_season,Thu, Dec 25, 2025,10:30p,Minnesota Timberwolves,,Denver Nuggets,,,Ball Arena,,0
+449,reg_season,Fri, Dec 26, 2025,7:00p,Miami Heat,,Atlanta Hawks,,,State Farm Arena,,0
+450,reg_season,Fri, Dec 26, 2025,7:00p,Boston Celtics,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+451,reg_season,Fri, Dec 26, 2025,7:00p,Charlotte Hornets,,Orlando Magic,,,Kia Center,,0
+452,reg_season,Fri, Dec 26, 2025,7:00p,Toronto Raptors,,Washington Wizards,,,Capital One Arena,,0
+453,reg_season,Fri, Dec 26, 2025,7:30p,Philadelphia 76ers,,Chicago Bulls,,,United Center,,0
+454,reg_season,Fri, Dec 26, 2025,8:00p,Milwaukee Bucks,,Memphis Grizzlies,,,FedExForum,,0
+455,reg_season,Fri, Dec 26, 2025,8:00p,Phoenix Suns,,New Orleans Pelicans,,,Smoothie King Center,,0
+456,reg_season,Fri, Dec 26, 2025,9:30p,Detroit Pistons,,Utah Jazz,,,Delta Center,,0
+457,reg_season,Fri, Dec 26, 2025,10:00p,Los Angeles Clippers,,Portland Trail Blazers,,,Moda Center,,0
+458,reg_season,Sat, Dec 27, 2025,5:00p,Dallas Mavericks,,Sacramento Kings,,,Golden 1 Center,,0
+459,reg_season,Sat, Dec 27, 2025,7:00p,Phoenix Suns,,New Orleans Pelicans,,,Smoothie King Center,,0
+460,reg_season,Sat, Dec 27, 2025,7:00p,Denver Nuggets,,Orlando Magic,,,Kia Center,,0
+461,reg_season,Sat, Dec 27, 2025,8:00p,New York Knicks,,Atlanta Hawks,,,State Farm Arena,,0
+462,reg_season,Sat, Dec 27, 2025,8:00p,Milwaukee Bucks,,Chicago Bulls,,,United Center,,0
+463,reg_season,Sat, Dec 27, 2025,8:00p,Cleveland Cavaliers,,Houston Rockets,,,Toyota Center,,0
+464,reg_season,Sat, Dec 27, 2025,8:00p,Indiana Pacers,,Miami Heat,,,Kaseya Center,,0
+465,reg_season,Sat, Dec 27, 2025,8:00p,Brooklyn Nets,,Minnesota Timberwolves,,,Target Center,,0
+466,reg_season,Sat, Dec 27, 2025,8:00p,Utah Jazz,,San Antonio Spurs,,,Frost Bank Center,,0
+467,reg_season,Sun, Dec 28, 2025,3:30p,Philadelphia 76ers,,Oklahoma City Thunder,,,Paycom Center,,0
+468,reg_season,Sun, Dec 28, 2025,3:30p,Golden State Warriors,,Toronto Raptors,,,Scotiabank Arena,,0
+469,reg_season,Sun, Dec 28, 2025,6:00p,Boston Celtics,,Portland Trail Blazers,,,Moda Center,,0
+470,reg_season,Sun, Dec 28, 2025,6:00p,Memphis Grizzlies,,Washington Wizards,,,Capital One Arena,,0
+471,reg_season,Sun, Dec 28, 2025,9:00p,Detroit Pistons,,Los Angeles Clippers,,,Intuit Dome,,0
+472,reg_season,Sun, Dec 28, 2025,9:30p,Sacramento Kings,,Los Angeles Lakers,,,Crypto.com Arena,,0
+473,reg_season,Mon, Dec 29, 2025,7:00p,Milwaukee Bucks,,Charlotte Hornets,,,Spectrum Center,,0
+474,reg_season,Mon, Dec 29, 2025,7:00p,Phoenix Suns,,Washington Wizards,,,Capital One Arena,,0
+475,reg_season,Mon, Dec 29, 2025,7:30p,Golden State Warriors,,Brooklyn Nets,,,Barclays Center,,0
+476,reg_season,Mon, Dec 29, 2025,7:30p,Denver Nuggets,,Miami Heat,,,Kaseya Center,,0
+477,reg_season,Mon, Dec 29, 2025,7:30p,Orlando Magic,,Toronto Raptors,,,Scotiabank Arena,,0
+478,reg_season,Mon, Dec 29, 2025,8:00p,Minnesota Timberwolves,,Chicago Bulls,,,United Center,,0
+479,reg_season,Mon, Dec 29, 2025,8:00p,Indiana Pacers,,Houston Rockets,,,Toyota Center,,0
+480,reg_season,Mon, Dec 29, 2025,8:00p,New York Knicks,,New Orleans Pelicans,,,Smoothie King Center,,0
+481,reg_season,Mon, Dec 29, 2025,8:00p,Atlanta Hawks,,Oklahoma City Thunder,,,Paycom Center,,0
+482,reg_season,Mon, Dec 29, 2025,8:00p,Cleveland Cavaliers,,San Antonio Spurs,,,Frost Bank Center,,0
+483,reg_season,Mon, Dec 29, 2025,10:30p,Dallas Mavericks,,Portland Trail Blazers,,,Moda Center,,0
+484,reg_season,Tue, Dec 30, 2025,8:00p,Philadelphia 76ers,,Memphis Grizzlies,,,FedExForum,,0
+485,reg_season,Tue, Dec 30, 2025,9:00p,Boston Celtics,,Utah Jazz,,,Delta Center,,0
+486,reg_season,Tue, Dec 30, 2025,10:30p,Detroit Pistons,,Los Angeles Lakers,,,Crypto.com Arena,,0
+487,reg_season,Tue, Dec 30, 2025,11:00p,Sacramento Kings,,Los Angeles Clippers,,,Intuit Dome,,0
+488,reg_season,Wed, Dec 31, 2025,1:00p,Golden State Warriors,,Charlotte Hornets,,,Spectrum Center,,0
+489,reg_season,Wed, Dec 31, 2025,3:00p,Minnesota Timberwolves,,Atlanta Hawks,,,State Farm Arena,,0
+490,reg_season,Wed, Dec 31, 2025,3:00p,Orlando Magic,,Indiana Pacers,,,Gainbridge Fieldhouse,,0
+491,reg_season,Wed, Dec 31, 2025,3:30p,Phoenix Suns,,Cleveland Cavaliers,,,Rocket Arena,,0
+492,reg_season,Wed, Dec 31, 2025,7:00p,New Orleans Pelicans,,Chicago Bulls,,,United Center,,0
+493,reg_season,Wed, Dec 31, 2025,7:00p,New York Knicks,,San Antonio Spurs,,,Frost Bank Center,,0
+494,reg_season,Wed, Dec 31, 2025,7:30p,Denver Nuggets,,Toronto Raptors,,,Scotiabank Arena,,0
+495,reg_season,Wed, Dec 31, 2025,8:00p,Washington Wizards,,Milwaukee Bucks,,,Fiserv Forum,,0
+496,reg_season,Wed, Dec 31, 2025,8:00p,Portland Trail Blazers,,Oklahoma City Thunder,,,Paycom Center,,0
 497,reg_season,Thu, Jan 1, 2026,6:00p,Houston Rockets,,Brooklyn Nets,,,,,0
 498,reg_season,Thu, Jan 1, 2026,7:00p,Miami Heat,,Detroit Pistons,,,,,0
 499,reg_season,Thu, Jan 1, 2026,8:30p,Philadelphia 76ers,,Dallas Mavericks,,,,,0
