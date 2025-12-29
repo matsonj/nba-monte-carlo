@@ -204,12 +204,13 @@ def model(dbt, sess):
         # rank inside division: wins, h2h (within tied wins), div, common, conf, sov, sos
         div_group = ["scenario_id", "conf", "division"]
         div_h2h = _h2h_metrics(base.select(["scenario_id", "conf", "division", "wins", "team"]), h2h, div_group)
-        div_common = _common_metrics(base.select(["scenario_id", "conf", "division", "team"]).unique(), long_games, ["scenario_id", "conf", "division"])
+        # Common games must be calculated among teams with the same record (wins) - not all teams in division
+        div_common = _common_metrics(base.select(["scenario_id", "conf", "division", "wins", "team"]).unique(), long_games, ["scenario_id", "conf", "division", "wins"])
         div_sov = _sov_metrics(base.select(["scenario_id", "conf", "division", "team"]).unique(), long_games, team_records, ["scenario_id", "conf", "division"])
         div_sos = _sos_metrics(base.select(["scenario_id", "conf", "division", "team"]).unique(), long_games, team_records, ["scenario_id", "conf", "division"])
 
         div_full = base.join(div_h2h, on=["scenario_id", "conf", "division", "wins", "team"], how="left").join(
-            div_common, on=["scenario_id", "conf", "division", "team"], how="left"
+            div_common, on=["scenario_id", "conf", "division", "wins", "team"], how="left"
         ).join(
             div_sov, on=["scenario_id", "conf", "division", "team"], how="left"
         ).join(
@@ -235,12 +236,13 @@ def model(dbt, sess):
         # Division winners seeding (1-4) within conference
         conf_group = ["scenario_id", "conf"]
         conf_h2h = _h2h_metrics(div_ranked.select(["scenario_id", "conf", "wins", "team"]), h2h, conf_group)
-        conf_common = _common_metrics(div_ranked.select(["scenario_id", "conf", "team"]).unique(), long_games, ["scenario_id", "conf"])
+        # Common games must be calculated among division winners with the same record
+        conf_common = _common_metrics(div_ranked.select(["scenario_id", "conf", "wins", "team"]).unique(), long_games, ["scenario_id", "conf", "wins"])
         conf_sov = _sov_metrics(div_ranked.select(["scenario_id", "conf", "team"]).unique(), long_games, team_records, ["scenario_id", "conf"])
         conf_sos = _sos_metrics(div_ranked.select(["scenario_id", "conf", "team"]).unique(), long_games, team_records, ["scenario_id", "conf"])
 
         conf_full = div_ranked.join(conf_h2h, on=["scenario_id", "conf", "wins", "team"], how="left").join(
-            conf_common, on=["scenario_id", "conf", "team"], how="left"
+            conf_common, on=["scenario_id", "conf", "wins", "team"], how="left"
         ).join(
             conf_sov, on=["scenario_id", "conf", "team"], how="left"
         ).join(
@@ -308,12 +310,13 @@ def model(dbt, sess):
 
         wc_group = ["scenario_id", "conf"]
         wc_h2h = _h2h_metrics(wc_base.select(["scenario_id", "conf", "wins", "team"]), h2h, wc_group)
-        wc_common = _common_metrics(wc_base.select(["scenario_id", "conf", "team"]).unique(), long_games, wc_group)
+        # Common games must be calculated among wildcard contenders with the same record
+        wc_common = _common_metrics(wc_base.select(["scenario_id", "conf", "wins", "team"]).unique(), long_games, ["scenario_id", "conf", "wins"])
         wc_sov = _sov_metrics(wc_base.select(["scenario_id", "conf", "team"]).unique(), long_games, team_records, wc_group)
         wc_sos = _sos_metrics(wc_base.select(["scenario_id", "conf", "team"]).unique(), long_games, team_records, wc_group)
 
         wc_full = wc_base.join(wc_h2h, on=["scenario_id", "conf", "wins", "team"], how="left").join(
-            wc_common, on=["scenario_id", "conf", "team"], how="left"
+            wc_common, on=["scenario_id", "conf", "wins", "team"], how="left"
         ).join(
             wc_sov, on=["scenario_id", "conf", "team"], how="left"
         ).join(
