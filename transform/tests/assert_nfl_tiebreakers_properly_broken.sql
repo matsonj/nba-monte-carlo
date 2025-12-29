@@ -161,6 +161,11 @@ two_team_h2h_validation AS (
 ),
 
 -- Validate head-to-head tiebreakers were applied correctly
+-- NOTE: This test only catches violations when the model reports tiebreaker_used = 'head-to-head'.
+-- It does NOT catch bugs where H2H is tied and subsequent tiebreakers (division record, common games,
+-- conference record, SOV, SOS) are miscalculated. Those bugs require validating the full NFL
+-- tiebreaker chain, which is too complex/slow for this test. The fix for such bugs must be in
+-- the model code (nfl_tiebreakers_optimized.py).
 h2h_tiebreaker_violations AS (
     SELECT 
         scenario_id,
@@ -230,6 +235,10 @@ tiebreaker_consistency AS (
 ),
 
 -- Test 6: Coin toss validation (should only be used as last resort)
+-- NOTE: When H2H is tied, validating subsequent tiebreakers (division record, common games, 
+-- conference record, SOV, SOS) requires complex computation that is too slow for this test.
+-- The model code in nfl_tiebreakers_optimized.py must correctly implement the full NFL
+-- tiebreaker chain. Bugs in those calculations may not be caught by this test.
 premature_coin_toss AS (
     SELECT 
         tr.scenario_id,
