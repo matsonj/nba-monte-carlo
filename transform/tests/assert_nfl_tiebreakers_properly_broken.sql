@@ -234,11 +234,126 @@ tiebreaker_consistency AS (
     HAVING COUNT(DISTINCT team) > 1 AND COUNT(DISTINCT tiebreaker_used) > 1
 ),
 
--- Test 6: Coin toss validation (should only be used as last resort)
--- NOTE: When H2H is tied, validating subsequent tiebreakers (division record, common games, 
--- conference record, SOV, SOS) requires complex computation that is too slow for this test.
--- The model code in nfl_tiebreakers_optimized.py must correctly implement the full NFL
--- tiebreaker chain. Bugs in those calculations may not be caught by this test.
+-- Test 6: Division ties where H2H is tied - validate division and conference record tiebreakers
+-- This is a focused test for two-team division ties where H2H is tied but div/conf record should decide
+long_games AS (
+    SELECT scenario_id, home_team as team, visiting_team as opponent,
+           CASE WHEN winning_team = home_team THEN 1 ELSE 0 END as won
+    FROM game_results
+    UNION ALL
+    SELECT scenario_id, visiting_team as team, home_team as opponent,
+           CASE WHEN winning_team = visiting_team THEN 1 ELSE 0 END as won
+    FROM game_results
+),
+
+-- Pre-calculate division and conference records for all teams (fast, no correlated subqueries)
+team_div_conf_records AS (
+    SELECT 
+        lg.scenario_id,
+        lg.team,
+        ti.division,
+        ti.conference,
+        -- Division record: games against same-division AND same-conference opponents
+        -- (AFC South and NFC South are different divisions!)
+        SUM(CASE WHEN ti_opp.division = ti.division AND ti_opp.conference = ti.conference THEN lg.won ELSE 0 END) as div_wins,
+        SUM(CASE WHEN ti_opp.division = ti.division AND ti_opp.conference = ti.conference THEN 1 ELSE 0 END) as div_games,
+        -- Conference record: games against same-conference opponents
+        SUM(CASE WHEN ti_opp.conference = ti.conference THEN lg.won ELSE 0 END) as conf_wins,
+        SUM(CASE WHEN ti_opp.conference = ti.conference THEN 1 ELSE 0 END) as conf_games
+    FROM long_games lg
+    JOIN team_info ti ON lg.team = ti.team
+    JOIN team_info ti_opp ON lg.opponent = ti_opp.team
+    GROUP BY lg.scenario_id, lg.team, ti.division, ti.conference
+),
+
+-- Find division title disputes: one team is division winner, one isn't, but they have same wins and tied H2H
+-- This is the SPECIFIC case where division/conf record should decide the division winner
+div_title_disputes AS (
+    SELECT 
+        tr1.scenario_id,
+        ti1.division,
+        -- team1 is the division winner (rank 1-4), team2 is not
+        tr1.team as winner_team,
+        tr2.team as loser_team,
+        tr1.wins,
+        tr1.rank as winner_rank,
+        tr2.rank as loser_rank,
+        -- H2H
+        CASE WHEN tr1.team < tr2.team THEN COALESCE(h2h.team1_h2h_wins, 0) ELSE COALESCE(h2h.team2_h2h_wins, 0) END as winner_h2h,
+        CASE WHEN tr1.team < tr2.team THEN COALESCE(h2h.team2_h2h_wins, 0) ELSE COALESCE(h2h.team1_h2h_wins, 0) END as loser_h2h,
+        -- Division records
+        COALESCE(r1.div_wins, 0) as winner_div_wins,
+        COALESCE(r1.div_games, 1) as winner_div_games,
+        COALESCE(r2.div_wins, 0) as loser_div_wins,
+        COALESCE(r2.div_games, 1) as loser_div_games,
+        -- Conference records
+        COALESCE(r1.conf_wins, 0) as winner_conf_wins,
+        COALESCE(r1.conf_games, 1) as winner_conf_games,
+        COALESCE(r2.conf_wins, 0) as loser_conf_wins,
+        COALESCE(r2.conf_games, 1) as loser_conf_games
+    FROM tiebreaker_results tr1
+    JOIN tiebreaker_results tr2 ON tr1.scenario_id = tr2.scenario_id 
+        AND tr1.conference = tr2.conference
+        AND tr1.wins = tr2.wins
+        AND tr1.team != tr2.team
+    JOIN team_info ti1 ON tr1.team = ti1.team
+    JOIN team_info ti2 ON tr2.team = ti2.team
+    LEFT JOIN (
+        SELECT gr.scenario_id,
+            LEAST(gr.home_team, gr.visiting_team) as team1,
+            GREATEST(gr.home_team, gr.visiting_team) as team2,
+            SUM(CASE WHEN gr.winning_team = LEAST(gr.home_team, gr.visiting_team) THEN 1 ELSE 0 END) as team1_h2h_wins,
+            SUM(CASE WHEN gr.winning_team = GREATEST(gr.home_team, gr.visiting_team) THEN 1 ELSE 0 END) as team2_h2h_wins
+        FROM game_results gr
+        GROUP BY gr.scenario_id, LEAST(gr.home_team, gr.visiting_team), GREATEST(gr.home_team, gr.visiting_team)
+    ) h2h ON h2h.scenario_id = tr1.scenario_id
+        AND h2h.team1 = LEAST(tr1.team, tr2.team)
+        AND h2h.team2 = GREATEST(tr1.team, tr2.team)
+    LEFT JOIN team_div_conf_records r1 ON r1.scenario_id = tr1.scenario_id AND r1.team = tr1.team
+    LEFT JOIN team_div_conf_records r2 ON r2.scenario_id = tr2.scenario_id AND r2.team = tr2.team
+    WHERE ti1.division = ti2.division  -- Same division
+        AND tr1.rank BETWEEN 1 AND 4   -- tr1 is division winner
+        AND tr2.rank > 4               -- tr2 is NOT division winner
+        -- H2H is tied (so division record should decide)
+        AND CASE WHEN tr1.team < tr2.team THEN COALESCE(h2h.team1_h2h_wins, 0) ELSE COALESCE(h2h.team2_h2h_wins, 0) END 
+          = CASE WHEN tr1.team < tr2.team THEN COALESCE(h2h.team2_h2h_wins, 0) ELSE COALESCE(h2h.team1_h2h_wins, 0) END
+),
+
+-- Flag violations: the "loser" (non-division winner) has BETTER division record than the "winner"
+div_conf_tiebreaker_violations AS (
+    SELECT 
+        scenario_id,
+        division,
+        winner_team,
+        loser_team,
+        wins,
+        winner_rank,
+        loser_rank,
+        winner_h2h,
+        loser_h2h,
+        winner_div_wins,
+        winner_div_games,
+        loser_div_wins,
+        loser_div_games,
+        CAST(winner_div_wins AS DOUBLE) / winner_div_games as winner_div_pct,
+        CAST(loser_div_wins AS DOUBLE) / loser_div_games as loser_div_pct,
+        winner_conf_wins,
+        winner_conf_games,
+        loser_conf_wins,
+        loser_conf_games,
+        CAST(winner_conf_wins AS DOUBLE) / winner_conf_games as winner_conf_pct,
+        CAST(loser_conf_wins AS DOUBLE) / loser_conf_games as loser_conf_pct
+    FROM div_title_disputes
+    WHERE 
+        -- Violation: Loser has strictly BETTER division record than winner
+        CAST(loser_div_wins AS DOUBLE) / loser_div_games > CAST(winner_div_wins AS DOUBLE) / winner_div_games + 0.001
+        OR
+        -- Violation: Division record tied, but loser has better conference record
+        (ABS(CAST(winner_div_wins AS DOUBLE) / winner_div_games - CAST(loser_div_wins AS DOUBLE) / loser_div_games) < 0.001
+         AND CAST(loser_conf_wins AS DOUBLE) / loser_conf_games > CAST(winner_conf_wins AS DOUBLE) / winner_conf_games + 0.001)
+),
+
+-- Test 7: Coin toss validation (should only be used as last resort)
 premature_coin_toss AS (
     SELECT 
         tr.scenario_id,
@@ -366,6 +481,21 @@ assertion_failures AS (
         team as detail,
         team || ' resolved by coin toss/team name - verify all other tiebreakers were properly exhausted' as description
     FROM premature_coin_toss
+    
+    UNION ALL
+    
+    -- Test 11: Division title given to wrong team when H2H tied and div/conf record should decide
+    SELECT 
+        'DIV_TITLE_VIOLATION' as failure_type,
+        scenario_id,
+        division as conference,
+        winner_team || ' vs ' || loser_team as detail,
+        'Wrong division winner: ' || winner_team || ' won division (rank ' || CAST(winner_rank AS VARCHAR) || 
+        ') but ' || loser_team || ' (rank ' || CAST(loser_rank AS VARCHAR) || ') has better record. ' ||
+        'H2H tied (' || CAST(winner_h2h AS VARCHAR) || '-' || CAST(loser_h2h AS VARCHAR) || '). ' ||
+        'Div record: ' || CAST(ROUND(winner_div_pct * 100, 1) AS VARCHAR) || '% vs ' || CAST(ROUND(loser_div_pct * 100, 1) AS VARCHAR) || '%. ' ||
+        'Conf record: ' || CAST(ROUND(winner_conf_pct * 100, 1) AS VARCHAR) || '% vs ' || CAST(ROUND(loser_conf_pct * 100, 1) AS VARCHAR) || '%' as description
+    FROM div_conf_tiebreaker_violations
 )
 
 -- Return all assertion failures (should be 0 rows if everything is correct)
