@@ -224,7 +224,7 @@ def model(dbt, sess):
                 pl.col("wins"),
                 pl.col("h2h_pct").fill_null(0.5),
                 pl.col("div_pct").fill_null(0),
-                pl.when(pl.col("common_games").fill_null(0) >= 4).then(pl.col("common_pct")).otherwise(0.5),
+                pl.col("common_pct").fill_null(0.5),
                 pl.col("conf_pct").fill_null(0),
                 pl.col("avg_defeated_pct").fill_null(0.5),
                 pl.col("strength_of_schedule").fill_null(0.5),
@@ -256,7 +256,7 @@ def model(dbt, sess):
                 pl.col("wins"),
                 pl.when(pl.col("h2h_games").fill_null(0) > 0).then(pl.col("h2h_pct")).otherwise(0.5),
                 # Division winners are from different divisions; skip division-record step in ranking
-                pl.when(pl.col("common_games").fill_null(0) >= 4).then(pl.col("common_pct")).otherwise(0.5),
+                pl.col("common_pct").fill_null(0.5),
                 pl.col("conf_pct").fill_null(0),
                 pl.col("avg_defeated_pct").fill_null(0.5),
                 pl.col("strength_of_schedule").fill_null(0.5),
@@ -279,7 +279,7 @@ def model(dbt, sess):
             pl.col("div_pct").n_unique().alias("div_pct_nunique"),
             # Common games requires >=4 and differing pct
             pl.col("common_games").max().alias("max_common_games"),
-            pl.col("common_pct").filter(pl.col("common_games").fill_null(0) >= 4).n_unique().alias("common_pct_nunique"),
+            pl.col("common_pct").n_unique().alias("common_pct_nunique"),
             # Conference pct
             pl.col("conf_pct").n_unique().alias("conf_pct_nunique"),
             # Strength of victory and schedule
@@ -292,7 +292,7 @@ def model(dbt, sess):
             pl.when(pl.col("wins_nunique") > 1).then(pl.lit("wins"))
             .when((pl.col("h2h_nunique") > 1)).then(pl.lit("head-to-head"))
             .when((pl.col("division_nunique") == 1) & (pl.col("div_pct_nunique") > 1)).then(pl.lit("division record"))
-            .when((pl.col("max_common_games").fill_null(0) >= 4) & (pl.col("common_pct_nunique") > 1)).then(pl.lit("common games"))
+            .when(pl.col("common_pct_nunique") > 1).then(pl.lit("common games"))
             .when(pl.col("conf_pct_nunique") > 1).then(pl.lit("conference record"))
             .when(pl.col("sov_nunique") > 1).then(pl.lit("strength of victory"))
             .when(pl.col("sos_nunique") > 1).then(pl.lit("strength of schedule"))
@@ -330,7 +330,7 @@ def model(dbt, sess):
                 pl.col("wins"),
                 pl.when(pl.col("h2h_games").fill_null(0) > 0).then(pl.col("h2h_pct")).otherwise(0.5),
                 pl.col("conf_pct").fill_null(0),
-                pl.when(pl.col("common_games").fill_null(0) >= 4).then(pl.col("common_pct")).otherwise(0.5),
+                pl.col("common_pct").fill_null(0.5),
                 pl.col("avg_defeated_pct").fill_null(0.5),
                 pl.col("strength_of_schedule").fill_null(0.5),
             ],
@@ -349,7 +349,7 @@ def model(dbt, sess):
             pl.col("h2h_pct").filter(pl.col("h2h_games").fill_null(0) > 0).n_unique().alias("h2h_nunique"),
             pl.col("conf_pct").n_unique().alias("conf_pct_nunique"),
             pl.col("common_games").max().alias("max_common_games"),
-            pl.col("common_pct").filter(pl.col("common_games").fill_null(0) >= 4).n_unique().alias("common_pct_nunique"),
+            pl.col("common_pct").n_unique().alias("common_pct_nunique"),
             pl.col("avg_defeated_pct").fill_null(0.5).n_unique().alias("sov_nunique"),
             pl.col("strength_of_schedule").fill_null(0.5).n_unique().alias("sos_nunique"),
         ])
@@ -359,7 +359,7 @@ def model(dbt, sess):
             pl.when(pl.col("wins_nunique") > 1).then(pl.lit("wins"))
             .when((pl.col("h2h_nunique") > 1)).then(pl.lit("head-to-head"))
             .when(pl.col("conf_pct_nunique") > 1).then(pl.lit("conference record"))
-            .when((pl.col("max_common_games").fill_null(0) >= 4) & (pl.col("common_pct_nunique") > 1)).then(pl.lit("common games"))
+            .when(pl.col("common_pct_nunique") > 1).then(pl.lit("common games"))
             .when(pl.col("sov_nunique") > 1).then(pl.lit("strength of victory"))
             .when(pl.col("sos_nunique") > 1).then(pl.lit("strength of schedule"))
             .otherwise(pl.lit("team name")).alias("tiebreaker_used")
