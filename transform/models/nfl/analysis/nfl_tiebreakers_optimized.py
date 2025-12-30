@@ -95,9 +95,17 @@ def _h2h_metrics(candidates: pl.DataFrame, h2h: pl.DataFrame, group_keys: List[s
 
 
 def _common_metrics(candidates: pl.DataFrame, long_games: pl.DataFrame, group_keys: List[str]) -> pl.DataFrame:
+    # Get tied teams for exclusion
+    tied_teams = candidates.select(["scenario_id", "team"])
+
     team_opps = candidates.join(long_games, on=["scenario_id", "team"], how="inner").select([
         "scenario_id", *group_keys[1:], "team", "opponent", "won"
-    ])
+    ]).join(
+        tied_teams.rename({"team": "opp_team"}), 
+        left_on=["scenario_id", "opponent"], 
+        right_on=["scenario_id", "opp_team"], 
+        how="anti"  # Exclude opponents that are tied teams
+    )
 
     counts = team_opps.group_by(["scenario_id", *group_keys[1:], "opponent"]).agg([
         pl.col("team").n_unique().alias("teams_played"),
