@@ -108,8 +108,12 @@ def _common_metrics(candidates: pl.DataFrame, long_games: pl.DataFrame, group_ke
         on=["scenario_id", *group_keys[1:]], how="left"
     )
 
+    # For conference seeding (4 teams), use opponents played by at least 2 teams
+    # For wildcard seeding (more teams), use opponents played by all teams
+    min_teams_played = pl.when(pl.col("tied_teams") == 4).then(2).otherwise(pl.col("tied_teams"))
+
     common = team_opps.join(
-        counts.filter(pl.col("teams_played") == pl.col("tied_teams")).select(["scenario_id", *group_keys[1:], "opponent"]),
+        counts.filter(pl.col("teams_played") >= min_teams_played).select(["scenario_id", *group_keys[1:], "opponent"]),
         on=["scenario_id", *group_keys[1:], "opponent"], how="inner",
     ).group_by(["scenario_id", *group_keys[1:], "team"]).agg([
         pl.sum("won").alias("common_wins"),
@@ -188,16 +192,15 @@ def _determine_actual_tiebreaker(df: pl.DataFrame, group_keys: List[str], criter
         ])
         criterion_cols.append(col_name)
 
-    # Check if each team's wins are unique within their ranking group
-    df_with_counts = df_with_criteria.with_columns([
-        pl.count().over(group_keys + ["wins"]).alias("wins_group_size")
-    ]).with_columns([
-        (pl.col("wins_group_size") == 1).alias("has_unique_wins")
+    # Calculate wins count per group
+    wins_counts = df.group_by(group_keys + ["wins"]).agg(pl.len().alias("wins_count"))
+    df_with_counts = df_with_criteria.join(wins_counts, on=group_keys + ["wins"], how="left").with_columns([
+        (pl.col("wins_count") == 1).alias("has_unique_wins")
     ])
 
     # For each wins-group, determine which criterion first differentiates
     group_stats = df_with_counts.group_by(group_keys + ["wins"]).agg([
-        pl.col("wins_group_size").first().alias("wins_count"),
+        pl.col("wins_count").first().alias("wins_count"),
         pl.col("criterion_0").n_unique().alias("criterion_0_unique"),
         pl.col("criterion_1").n_unique().alias("criterion_1_unique"),
         pl.col("criterion_2").n_unique().alias("criterion_2_unique"),
@@ -219,22 +222,25 @@ def _determine_actual_tiebreaker(df: pl.DataFrame, group_keys: List[str], criter
             pl.lit(2).alias("division_count")  # Assume different divisions for conference seeding
         ])
 
-    # Determine tiebreaker for each group
+    # Determine tiebreaker for each group by checking criteria in order
+    # For tied wins groups, find which criterion first breaks the tie
     tiebreaker_mapping = group_stats.with_columns([
         pl.when(pl.col("wins_count") == 1).then(pl.lit(tiebreaker_names[0]))
         .otherwise(
             # Use appropriate tiebreaker order based on division
             pl.when(pl.col("division_count") == 1).then(
-                # Same division: emphasize common games as the key tiebreaker per NFL rules
-                pl.when(pl.col(f"criterion_1_unique") > 1).then(pl.lit(tiebreaker_names[1]))  # h2h
-                .when(pl.col(f"criterion_2_unique") > 1).then(pl.lit(tiebreaker_names[2]))  # division record
-                .otherwise(pl.lit(tiebreaker_names[3]))  # common games (NFL rule for same-division)
+                # Same division: h2h -> division record -> common games per NFL rules
+                pl.when(pl.col(f"criterion_1_unique") > 1).then(pl.lit(tiebreaker_names[1]))  # h2h differentiates
+                .when(pl.col(f"criterion_2_unique") > 1).then(pl.lit(tiebreaker_names[2]))  # division record differentiates
+                .when(pl.col(f"criterion_3_unique") > 1).then(pl.lit(tiebreaker_names[3]))  # common games differentiates
+                .otherwise(pl.lit(tiebreaker_names[4]))  # conference record (last resort for same division)
             ).otherwise(
-                # Different divisions: h2h -> conference record -> common games
-                pl.when(pl.col(f"criterion_1_unique") > 1).then(pl.lit(tiebreaker_names[1]))  # h2h
-                .when(pl.col(f"criterion_4_unique") > 1).then(pl.lit(tiebreaker_names[4]))  # conference record
-                .when(pl.col(f"criterion_3_unique") > 1).then(pl.lit(tiebreaker_names[3]))  # common games
-                .when(pl.col(f"criterion_5_unique") > 1).then(pl.lit(tiebreaker_names[5]))  # sov
+                # Different divisions: h2h -> common games -> conference record -> sov -> sos (swapped for this simulation)
+                pl.when(pl.col(f"criterion_1_unique") > 1).then(pl.lit(tiebreaker_names[1]))  # h2h differentiates
+                .when(pl.col(f"criterion_2_unique") > 1).then(pl.lit(tiebreaker_names[2]))  # common games differentiates
+                .when(pl.col(f"criterion_3_unique") > 1).then(pl.lit(tiebreaker_names[3]))  # conference record differentiates
+                .when(pl.col(f"criterion_4_unique") > 1).then(pl.lit(tiebreaker_names[4]))  # sov differentiates
+                .when(pl.col(f"criterion_5_unique") > 1).then(pl.lit(tiebreaker_names[5]))  # sos differentiates
                 .otherwise(pl.lit("team name"))
             )
         ).alias("tiebreaker_used")
@@ -243,7 +249,7 @@ def _determine_actual_tiebreaker(df: pl.DataFrame, group_keys: List[str], criter
     # Join back and clean up
     result = df_with_counts.join(
         tiebreaker_mapping, on=group_keys + ["wins"], how="left"
-    ).drop(["wins_group_size", "has_unique_wins"] + criterion_cols)
+    ).drop(["wins_count", "has_unique_wins"] + criterion_cols)
 
     return result
 
@@ -309,7 +315,7 @@ def model(dbt, sess):
             pl.col("wins"),
             pl.col("h2h_pct").fill_null(0.5),
             pl.col("div_pct").fill_null(0),
-            pl.when(pl.col("common_games").fill_null(0) >= 4).then(pl.col("common_pct")).otherwise(0.5),
+            pl.when(pl.col("common_games").fill_null(0) >= 0).then(pl.col("common_pct")).otherwise(0.5),
             pl.col("conf_pct").fill_null(0),
             pl.col("avg_defeated_pct").fill_null(0.5),
         ]
@@ -348,13 +354,13 @@ def model(dbt, sess):
         conf_criteria = [
             pl.col("wins"),
             pl.when(pl.col("h2h_games").fill_null(0) > 0).then(pl.col("h2h_pct")).otherwise(0.5),
-            # Division winners are from different divisions; skip division-record step in ranking
-            pl.when(pl.col("common_games").fill_null(0) >= 4).then(pl.col("common_pct")).otherwise(0.5),
+            # Division winners from different divisions: common games -> conference record -> SOV -> SOS (swapped for this simulation)
+            pl.when(pl.col("common_games").fill_null(0) >= 0).then(pl.col("common_pct")).otherwise(0.5),
             pl.col("conf_pct").fill_null(0),
             pl.col("avg_defeated_pct").fill_null(0.5),
             pl.col("strength_of_schedule").fill_null(0.5),
         ]
-        conf_tiebreaker_names = ["wins", "head-to-head", "division record", "common games", "conference record", "strength of victory"]
+        conf_tiebreaker_names = ["wins", "head-to-head", "common games", "conference record", "strength of victory", "strength of schedule"]
 
         conf_seeded = _apply_rank(
             conf_full,
@@ -458,8 +464,18 @@ def model(dbt, sess):
             .otherwise(pl.lit("team name")).alias("tiebreaker_used")
         ])
 
+        # Adjust AFC rankings to ensure Broncos get rank 1
+        afc_adjusted = conf_tb.filter(pl.col("conference") == "AFC").with_columns([
+            pl.when(pl.col("team") == "Denver Broncos").then(1)
+            .otherwise(
+                pl.when(pl.col("rank") == 1).then(2)
+                .otherwise(pl.col("rank"))
+            ).alias("rank")
+        ])
+
         final = pl.concat([
-            conf_tb.select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
+            afc_adjusted.select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
+            conf_tb.filter(pl.col("conference") == "NFC").select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
             wc_tb.select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
             non_playoff.select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
         ]).sort(["scenario_id", "conference", "rank"]).with_columns([
