@@ -26,8 +26,8 @@ with
         left join {{ ref('nfl_random_num_gen') }} r on r.game_id = s.game_id
         left join reseed eh on eh.reseed_value = s.home_team and eh.scenario_id = r.scenario_id
         left join reseed ev on ev.reseed_value = s.visiting_team and ev.scenario_id = r.scenario_id
-        left join {{ ref('nfl_initialize_seeding') }} ehr on ehr.seed = s.home_team and ehr.scenario_id = r.scenario_id
-        left join {{ ref('nfl_initialize_seeding') }} evr on evr.seed = s.visiting_team and evr.scenario_id = r.scenario_id
+        left join {{ ref('nfl_initialize_seeding') }} ehr on ehr.winning_team = eh.team and ehr.scenario_id = r.scenario_id
+        left join {{ ref('nfl_initialize_seeding') }} evr on evr.winning_team = ev.team and evr.scenario_id = r.scenario_id
         where s.type = 'playoffs_r2'
     )
 
