@@ -229,6 +229,20 @@ tiebreaker_consistency AS (
     HAVING COUNT(DISTINCT team) > 1 AND COUNT(DISTINCT tiebreaker_used) > 1
 ),
 
+-- Test 6: Coin toss validation (should only be used as last resort)
+premature_coin_toss AS (
+    SELECT 
+        tr.scenario_id,
+        tr.conference,
+        tr.team,
+        tr.wins,
+        tr.rank,
+        tr.tiebreaker_used
+    FROM tiebreaker_results tr
+    WHERE tr.tiebreaker_used = 'coin_toss'
+        OR tr.tiebreaker_used LIKE '%team name%'
+),
+
 -- Aggregate all assertion failures
 assertion_failures AS (
     -- Test 1: No tied ranks
@@ -332,11 +346,17 @@ assertion_failures AS (
         CAST(wins AS VARCHAR) || ' wins' as detail,
         CAST(teams_with_same_record AS VARCHAR) || ' teams with same record used ' || CAST(different_tiebreakers_used AS VARCHAR) || ' different tiebreakers' as description
     FROM tiebreaker_consistency
-
-    -- Note: falling back to the 'team name' (coin toss) tiebreaker is the designed
-    -- last resort when all statistical tiebreakers are exhausted; over 10k simulated
-    -- scenarios this legitimately occurs a handful of times, so it is not treated
-    -- as an assertion failure here.
+    
+    UNION ALL
+    
+    -- Test 10: Premature coin toss usage
+    SELECT 
+        'PREMATURE_COIN_TOSS' as failure_type,
+        scenario_id,
+        conference,
+        team as detail,
+        team || ' resolved by coin toss/team name - verify all other tiebreakers were properly exhausted' as description
+    FROM premature_coin_toss
 )
 
 -- Return all assertion failures (should be 0 rows if everything is correct)
