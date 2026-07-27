@@ -28,6 +28,11 @@ sources:
         description: nfl team ratings from vegas
       - name: nfl_results
         description: nfl results for the current season
+        meta:
+          # explicit schema so the file can be empty (header only) at season start;
+          # the csv sniffer can't infer a header from a file with no data rows
+          formatter: template
+          external_location: "read_csv('../data/nfl/nfl_results.csv', header=true, columns={'Week': 'bigint', 'Day': 'varchar', 'Date': 'date', 'Time': 'varchar', 'Winner/tie': 'varchar', 'at_winner': 'varchar', 'Loser/tie': 'varchar', 'boxscore': 'varchar', 'PtsW': 'bigint', 'PtsL': 'bigint', 'YdsW': 'bigint', 'TOW': 'bigint', 'YdsL': 'bigint', 'TOL': 'bigint'})"
   - name: ncaaf
     schema: psa
     meta:

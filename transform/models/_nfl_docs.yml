@@ -3,7 +3,10 @@ version: 2
 models:
   - name: nfl_raw_results
     tests:
-      - empty_table
+      # empty is expected at the start of a season, so warn instead of fail
+      - empty_table:
+          config:
+            severity: warn
   - name: nfl_raw_schedule
     tests:
       - empty_table

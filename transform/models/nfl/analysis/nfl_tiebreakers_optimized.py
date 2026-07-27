@@ -403,13 +403,7 @@ def model(dbt, sess):
             wc_sov, on=["scenario_id", "conf", "team"], how="left"
         ).join(
             wc_sos, on=["scenario_id", "conf", "team"], how="left"
-        )        .with_columns([
-            # Override common_pct for Rams and 49ers to use correct common opponents record
-            pl.when(pl.col("team") == "Los Angeles Rams").then(pl.lit(6.0/8.0))  # 6-2 = 0.75
-            .when(pl.col("team") == "San Francisco 49ers").then(pl.lit(5.0/8.0))  # 5-3 = 0.625
-            .otherwise(pl.col("common_pct"))
-            .alias("common_pct")
-        ])
+        )
 
         wc_criteria = [
             pl.col("wins"),
@@ -464,18 +458,8 @@ def model(dbt, sess):
             .otherwise(pl.lit("team name")).alias("tiebreaker_used")
         ])
 
-        # Adjust AFC rankings to ensure Broncos get rank 1
-        afc_adjusted = conf_tb.filter(pl.col("conference") == "AFC").with_columns([
-            pl.when(pl.col("team") == "Denver Broncos").then(1)
-            .otherwise(
-                pl.when(pl.col("rank") == 1).then(2)
-                .otherwise(pl.col("rank"))
-            ).alias("rank")
-        ])
-
         final = pl.concat([
-            afc_adjusted.select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
-            conf_tb.filter(pl.col("conference") == "NFC").select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
+            conf_tb.select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
             wc_tb.select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
             non_playoff.select(["scenario_id", "team", "conference", "wins", "rank", "tiebreaker_used"]),
         ]).sort(["scenario_id", "conference", "rank"]).with_columns([
