@@ -1,276 +1,276 @@
 id,Week,Day,Date,VisTm,HomeTm,Neutral
-1,1,Thu,2025-09-04,Dallas Cowboys,Philadelphia Eagles,0
-2,1,Fri,2025-09-05,Kansas City Chiefs,Los Angeles Chargers,1
-3,1,Sun,2025-09-07,Tampa Bay Buccaneers,Atlanta Falcons,0
-4,1,Sun,2025-09-07,Cincinnati Bengals,Cleveland Browns,0
-5,1,Sun,2025-09-07,Miami Dolphins,Indianapolis Colts,0
-6,1,Sun,2025-09-07,Carolina Panthers,Jacksonville Jaguars,0
-7,1,Sun,2025-09-07,Arizona Cardinals,New Orleans Saints,0
-8,1,Sun,2025-09-07,Las Vegas Raiders,New England Patriots,0
-9,1,Sun,2025-09-07,Pittsburgh Steelers,New York Jets,0
-10,1,Sun,2025-09-07,New York Giants,Washington Commanders,0
-11,1,Sun,2025-09-07,Tennessee Titans,Denver Broncos,0
-12,1,Sun,2025-09-07,San Francisco 49ers,Seattle Seahawks,0
-13,1,Sun,2025-09-07,Detroit Lions,Green Bay Packers,0
-14,1,Sun,2025-09-07,Houston Texans,Los Angeles Rams,0
-15,1,Sun,2025-09-07,Baltimore Ravens,Buffalo Bills,0
-16,1,Mon,2025-09-08,Minnesota Vikings,Chicago Bears,0
-17,2,Thu,2025-09-11,Washington Commanders,Green Bay Packers,0
-18,2,Sun,2025-09-14,Jacksonville Jaguars,Cincinnati Bengals,0
-19,2,Sun,2025-09-14,New York Giants,Dallas Cowboys,0
-20,2,Sun,2025-09-14,Chicago Bears,Detroit Lions,0
-21,2,Sun,2025-09-14,New England Patriots,Miami Dolphins,0
-22,2,Sun,2025-09-14,San Francisco 49ers,New Orleans Saints,0
-23,2,Sun,2025-09-14,Buffalo Bills,New York Jets,0
-24,2,Sun,2025-09-14,Los Angeles Rams,Tennessee Titans,0
-25,2,Sun,2025-09-14,Seattle Seahawks,Pittsburgh Steelers,0
-26,2,Sun,2025-09-14,Cleveland Browns,Baltimore Ravens,0
-27,2,Sun,2025-09-14,Denver Broncos,Indianapolis Colts,0
-28,2,Sun,2025-09-14,Carolina Panthers,Arizona Cardinals,0
-29,2,Sun,2025-09-14,Philadelphia Eagles,Kansas City Chiefs,0
-30,2,Sun,2025-09-14,Atlanta Falcons,Minnesota Vikings,0
-31,2,Mon,2025-09-15,Tampa Bay Buccaneers,Houston Texans,0
-32,2,Mon,2025-09-15,Los Angeles Chargers,Las Vegas Raiders,0
-33,3,Thu,2025-09-18,Miami Dolphins,Buffalo Bills,0
-34,3,Sun,2025-09-21,Atlanta Falcons,Carolina Panthers,0
-35,3,Sun,2025-09-21,Green Bay Packers,Cleveland Browns,0
-36,3,Sun,2025-09-21,Houston Texans,Jacksonville Jaguars,0
-37,3,Sun,2025-09-21,Cincinnati Bengals,Minnesota Vikings,0
-38,3,Sun,2025-09-21,Pittsburgh Steelers,New England Patriots,0
-39,3,Sun,2025-09-21,Indianapolis Colts,Tennessee Titans,0
-40,3,Sun,2025-09-21,Los Angeles Rams,Philadelphia Eagles,0
-41,3,Sun,2025-09-21,New York Jets,Tampa Bay Buccaneers,0
-42,3,Sun,2025-09-21,Las Vegas Raiders,Washington Commanders,0
-43,3,Sun,2025-09-21,Denver Broncos,Los Angeles Chargers,0
-44,3,Sun,2025-09-21,New Orleans Saints,Seattle Seahawks,0
-45,3,Sun,2025-09-21,Dallas Cowboys,Chicago Bears,0
-46,3,Sun,2025-09-21,Arizona Cardinals,San Francisco 49ers,0
-47,3,Sun,2025-09-21,Kansas City Chiefs,New York Giants,0
-48,3,Mon,2025-09-22,Detroit Lions,Baltimore Ravens,0
-49,4,Thu,2025-09-25,Seattle Seahawks,Arizona Cardinals,0
-50,4,Sun,2025-09-28,Minnesota Vikings,Pittsburgh Steelers,1
-51,4,Sun,2025-09-28,Washington Commanders,Atlanta Falcons,0
-52,4,Sun,2025-09-28,New Orleans Saints,Buffalo Bills,0
-53,4,Sun,2025-09-28,Cleveland Browns,Detroit Lions,0
-54,4,Sun,2025-09-28,Tennessee Titans,Houston Texans,0
-55,4,Sun,2025-09-28,Carolina Panthers,New England Patriots,0
-56,4,Sun,2025-09-28,Los Angeles Chargers,New York Giants,0
-57,4,Sun,2025-09-28,Philadelphia Eagles,Tampa Bay Buccaneers,0
-58,4,Sun,2025-09-28,Indianapolis Colts,Los Angeles Rams,0
-59,4,Sun,2025-09-28,Jacksonville Jaguars,San Francisco 49ers,0
-60,4,Sun,2025-09-28,Baltimore Ravens,Kansas City Chiefs,0
-61,4,Sun,2025-09-28,Chicago Bears,Las Vegas Raiders,0
-62,4,Sun,2025-09-28,Green Bay Packers,Dallas Cowboys,0
-63,4,Mon,2025-09-29,New York Jets,Miami Dolphins,0
-64,4,Mon,2025-09-29,Cincinnati Bengals,Denver Broncos,0
-65,5,Thu,2025-10-02,San Francisco 49ers,Los Angeles Rams,0
-66,5,Sun,2025-10-05,Minnesota Vikings,Cleveland Browns,1
-67,5,Sun,2025-10-05,Miami Dolphins,Carolina Panthers,0
-68,5,Sun,2025-10-05,Las Vegas Raiders,Indianapolis Colts,0
-69,5,Sun,2025-10-05,New York Giants,New Orleans Saints,0
-70,5,Sun,2025-10-05,Dallas Cowboys,New York Jets,0
-71,5,Sun,2025-10-05,Denver Broncos,Philadelphia Eagles,0
-72,5,Sun,2025-10-05,Houston Texans,Baltimore Ravens,0
-73,5,Sun,2025-10-05,Tennessee Titans,Arizona Cardinals,0
-74,5,Sun,2025-10-05,Tampa Bay Buccaneers,Seattle Seahawks,0
-75,5,Sun,2025-10-05,Detroit Lions,Cincinnati Bengals,0
-76,5,Sun,2025-10-05,Washington Commanders,Los Angeles Chargers,0
-77,5,Sun,2025-10-05,New England Patriots,Buffalo Bills,0
-78,5,Mon,2025-10-06,Kansas City Chiefs,Jacksonville Jaguars,0
-79,6,Thu,2025-10-09,Philadelphia Eagles,New York Giants,0
-80,6,Sun,2025-10-12,Denver Broncos,New York Jets,1
-81,6,Sun,2025-10-12,Dallas Cowboys,Carolina Panthers,0
-82,6,Sun,2025-10-12,Arizona Cardinals,Indianapolis Colts,0
-83,6,Sun,2025-10-12,Seattle Seahawks,Jacksonville Jaguars,0
-84,6,Sun,2025-10-12,Los Angeles Chargers,Miami Dolphins,0
-85,6,Sun,2025-10-12,Cleveland Browns,Pittsburgh Steelers,0
-86,6,Sun,2025-10-12,Los Angeles Rams,Baltimore Ravens,0
-87,6,Sun,2025-10-12,San Francisco 49ers,Tampa Bay Buccaneers,0
-88,6,Sun,2025-10-12,Tennessee Titans,Las Vegas Raiders,0
-89,6,Sun,2025-10-12,Cincinnati Bengals,Green Bay Packers,0
-90,6,Sun,2025-10-12,New England Patriots,New Orleans Saints,0
-91,6,Sun,2025-10-12,Detroit Lions,Kansas City Chiefs,0
-92,6,Mon,2025-10-13,Buffalo Bills,Atlanta Falcons,0
-93,6,Mon,2025-10-13,Chicago Bears,Washington Commanders,0
-94,7,Thu,2025-10-16,Pittsburgh Steelers,Cincinnati Bengals,0
-95,7,Sun,2025-10-19,Los Angeles Rams,Jacksonville Jaguars,1
-96,7,Sun,2025-10-19,New Orleans Saints,Chicago Bears,0
-97,7,Sun,2025-10-19,Miami Dolphins,Cleveland Browns,0
-98,7,Sun,2025-10-19,Las Vegas Raiders,Kansas City Chiefs,0
-99,7,Sun,2025-10-19,Philadelphia Eagles,Minnesota Vikings,0
-100,7,Sun,2025-10-19,Carolina Panthers,New York Jets,0
-101,7,Sun,2025-10-19,New England Patriots,Tennessee Titans,0
-102,7,Sun,2025-10-19,New York Giants,Denver Broncos,0
-103,7,Sun,2025-10-19,Indianapolis Colts,Los Angeles Chargers,0
-104,7,Sun,2025-10-19,Green Bay Packers,Arizona Cardinals,0
-105,7,Sun,2025-10-19,Washington Commanders,Dallas Cowboys,0
-106,7,Sun,2025-10-19,Atlanta Falcons,San Francisco 49ers,0
-107,7,Mon,2025-10-20,Tampa Bay Buccaneers,Detroit Lions,0
-108,7,Mon,2025-10-20,Houston Texans,Seattle Seahawks,0
-109,8,Thu,2025-10-23,Minnesota Vikings,Los Angeles Chargers,0
-110,8,Sun,2025-10-26,Miami Dolphins,Atlanta Falcons,0
-111,8,Sun,2025-10-26,Buffalo Bills,Carolina Panthers,0
-112,8,Sun,2025-10-26,New York Jets,Cincinnati Bengals,0
-113,8,Sun,2025-10-26,San Francisco 49ers,Houston Texans,0
-114,8,Sun,2025-10-26,Cleveland Browns,New England Patriots,0
-115,8,Sun,2025-10-26,New York Giants,Philadelphia Eagles,0
-116,8,Sun,2025-10-26,Chicago Bears,Baltimore Ravens,0
-117,8,Sun,2025-10-26,Tampa Bay Buccaneers,New Orleans Saints,0
-118,8,Sun,2025-10-26,Tennessee Titans,Indianapolis Colts,0
-119,8,Sun,2025-10-26,Dallas Cowboys,Denver Broncos,0
-120,8,Sun,2025-10-26,Green Bay Packers,Pittsburgh Steelers,0
-121,8,Mon,2025-10-27,Washington Commanders,Kansas City Chiefs,0
-122,9,Thu,2025-10-30,Baltimore Ravens,Miami Dolphins,0
-123,9,Sun,2025-11-02,Chicago Bears,Cincinnati Bengals,0
-124,9,Sun,2025-11-02,Minnesota Vikings,Detroit Lions,0
-125,9,Sun,2025-11-02,Carolina Panthers,Green Bay Packers,0
-126,9,Sun,2025-11-02,Denver Broncos,Houston Texans,0
-127,9,Sun,2025-11-02,Atlanta Falcons,New England Patriots,0
-128,9,Sun,2025-11-02,San Francisco 49ers,New York Giants,0
-129,9,Sun,2025-11-02,Los Angeles Chargers,Tennessee Titans,0
-130,9,Sun,2025-11-02,Indianapolis Colts,Pittsburgh Steelers,0
-131,9,Sun,2025-11-02,Jacksonville Jaguars,Las Vegas Raiders,0
-132,9,Sun,2025-11-02,New Orleans Saints,Los Angeles Rams,0
-133,9,Sun,2025-11-02,Kansas City Chiefs,Buffalo Bills,0
-134,9,Sun,2025-11-02,Seattle Seahawks,Washington Commanders,0
-135,9,Mon,2025-11-03,Arizona Cardinals,Dallas Cowboys,0
-136,10,Thu,2025-11-06,Las Vegas Raiders,Denver Broncos,0
-137,10,Sun,2025-11-09,Atlanta Falcons,Indianapolis Colts,1
-138,10,Sun,2025-11-09,New Orleans Saints,Carolina Panthers,0
-139,10,Sun,2025-11-09,New York Giants,Chicago Bears,0
-140,10,Sun,2025-11-09,Jacksonville Jaguars,Houston Texans,0
-141,10,Sun,2025-11-09,Buffalo Bills,Miami Dolphins,0
-142,10,Sun,2025-11-09,Baltimore Ravens,Minnesota Vikings,0
-143,10,Sun,2025-11-09,Cleveland Browns,New York Jets,0
-144,10,Sun,2025-11-09,New England Patriots,Tampa Bay Buccaneers,0
-145,10,Sun,2025-11-09,Arizona Cardinals,Seattle Seahawks,0
-146,10,Sun,2025-11-09,Los Angeles Rams,San Francisco 49ers,0
-147,10,Sun,2025-11-09,Detroit Lions,Washington Commanders,0
-148,10,Sun,2025-11-09,Pittsburgh Steelers,Los Angeles Chargers,0
-149,10,Mon,2025-11-10,Philadelphia Eagles,Green Bay Packers,0
-150,11,Thu,2025-11-13,New York Jets,New England Patriots,0
-151,11,Sun,2025-11-16,Washington Commanders,Miami Dolphins,1
-152,11,Sun,2025-11-16,Carolina Panthers,Atlanta Falcons,0
-153,11,Sun,2025-11-16,Tampa Bay Buccaneers,Buffalo Bills,0
-154,11,Sun,2025-11-16,Los Angeles Chargers,Jacksonville Jaguars,0
-155,11,Sun,2025-11-16,Chicago Bears,Minnesota Vikings,0
-156,11,Sun,2025-11-16,Green Bay Packers,New York Giants,0
-157,11,Sun,2025-11-16,Houston Texans,Tennessee Titans,0
-158,11,Sun,2025-11-16,Cincinnati Bengals,Pittsburgh Steelers,0
-159,11,Sun,2025-11-16,San Francisco 49ers,Arizona Cardinals,0
-160,11,Sun,2025-11-16,Seattle Seahawks,Los Angeles Rams,0
-161,11,Sun,2025-11-16,Baltimore Ravens,Cleveland Browns,0
-162,11,Sun,2025-11-16,Kansas City Chiefs,Denver Broncos,0
-163,11,Sun,2025-11-16,Detroit Lions,Philadelphia Eagles,0
-164,11,Mon,2025-11-17,Dallas Cowboys,Las Vegas Raiders,0
-165,12,Thu,2025-11-20,Buffalo Bills,Houston Texans,0
-166,12,Sun,2025-11-23,Pittsburgh Steelers,Chicago Bears,0
-167,12,Sun,2025-11-23,New England Patriots,Cincinnati Bengals,0
-168,12,Sun,2025-11-23,New York Giants,Detroit Lions,0
-169,12,Sun,2025-11-23,Minnesota Vikings,Green Bay Packers,0
-170,12,Sun,2025-11-23,Indianapolis Colts,Kansas City Chiefs,0
-171,12,Sun,2025-11-23,Seattle Seahawks,Tennessee Titans,0
-172,12,Sun,2025-11-23,New York Jets,Baltimore Ravens,0
-173,12,Sun,2025-11-23,Jacksonville Jaguars,Arizona Cardinals,0
-174,12,Sun,2025-11-23,Cleveland Browns,Las Vegas Raiders,0
-175,12,Sun,2025-11-23,Philadelphia Eagles,Dallas Cowboys,0
-176,12,Sun,2025-11-23,Atlanta Falcons,New Orleans Saints,0
-177,12,Sun,2025-11-23,Tampa Bay Buccaneers,Los Angeles Rams,0
-178,12,Mon,2025-11-24,Carolina Panthers,San Francisco 49ers,0
-179,13,Thu,2025-11-27,Green Bay Packers,Detroit Lions,0
-180,13,Thu,2025-11-27,Kansas City Chiefs,Dallas Cowboys,0
-181,13,Thu,2025-11-27,Cincinnati Bengals,Baltimore Ravens,0
-182,13,Fri,2025-11-28,Chicago Bears,Philadelphia Eagles,0
-183,13,Sun,2025-11-30,Los Angeles Rams,Carolina Panthers,0
-184,13,Sun,2025-11-30,San Francisco 49ers,Cleveland Browns,0
-185,13,Sun,2025-11-30,Houston Texans,Indianapolis Colts,0
-186,13,Sun,2025-11-30,New Orleans Saints,Miami Dolphins,0
-187,13,Sun,2025-11-30,Atlanta Falcons,New York Jets,0
-188,13,Sun,2025-11-30,Jacksonville Jaguars,Tennessee Titans,0
-189,13,Sun,2025-11-30,Arizona Cardinals,Tampa Bay Buccaneers,0
-190,13,Sun,2025-11-30,Minnesota Vikings,Seattle Seahawks,0
-191,13,Sun,2025-11-30,Buffalo Bills,Pittsburgh Steelers,0
-192,13,Sun,2025-11-30,Las Vegas Raiders,Los Angeles Chargers,0
-193,13,Sun,2025-11-30,Denver Broncos,Washington Commanders,0
-194,13,Mon,2025-12-01,New York Giants,New England Patriots,0
-195,14,Thu,2025-12-04,Dallas Cowboys,Detroit Lions,0
-196,14,Sun,2025-12-07,Seattle Seahawks,Atlanta Falcons,0
-197,14,Sun,2025-12-07,Tennessee Titans,Cleveland Browns,0
-198,14,Sun,2025-12-07,Chicago Bears,Green Bay Packers,0
-199,14,Sun,2025-12-07,Indianapolis Colts,Jacksonville Jaguars,0
-200,14,Sun,2025-12-07,Washington Commanders,Minnesota Vikings,0
-201,14,Sun,2025-12-07,Miami Dolphins,New York Jets,0
-202,14,Sun,2025-12-07,Pittsburgh Steelers,Baltimore Ravens,0
-203,14,Sun,2025-12-07,New Orleans Saints,Tampa Bay Buccaneers,0
-204,14,Sun,2025-12-07,Denver Broncos,Las Vegas Raiders,0
-205,14,Sun,2025-12-07,Cincinnati Bengals,Buffalo Bills,0
-206,14,Sun,2025-12-07,Los Angeles Rams,Arizona Cardinals,0
-207,14,Sun,2025-12-07,Houston Texans,Kansas City Chiefs,0
-208,14,Mon,2025-12-08,Philadelphia Eagles,Los Angeles Chargers,0
-209,15,Thu,2025-12-11,Atlanta Falcons,Tampa Bay Buccaneers,0
-210,15,Sun,2025-12-14,Cleveland Browns,Chicago Bears,0
-211,15,Sun,2025-12-14,Baltimore Ravens,Cincinnati Bengals,0
-212,15,Sun,2025-12-14,Arizona Cardinals,Houston Texans,0
-213,15,Sun,2025-12-14,New York Jets,Jacksonville Jaguars,0
-214,15,Sun,2025-12-14,Los Angeles Chargers,Kansas City Chiefs,0
-215,15,Sun,2025-12-14,Buffalo Bills,New England Patriots,0
-216,15,Sun,2025-12-14,Washington Commanders,New York Giants,0
-217,15,Sun,2025-12-14,Las Vegas Raiders,Philadelphia Eagles,0
-218,15,Sun,2025-12-14,Green Bay Packers,Denver Broncos,0
-219,15,Sun,2025-12-14,Carolina Panthers,New Orleans Saints,0
-220,15,Sun,2025-12-14,Detroit Lions,Los Angeles Rams,0
-221,15,Sun,2025-12-14,Indianapolis Colts,Seattle Seahawks,0
-222,15,Sun,2025-12-14,Tennessee Titans,San Francisco 49ers,0
-223,15,Sun,2025-12-14,Minnesota Vikings,Dallas Cowboys,0
-224,15,Mon,2025-12-15,Miami Dolphins,Pittsburgh Steelers,0
-225,16,Thu,2025-12-18,Los Angeles Rams,Seattle Seahawks,0
-226,16,Sat,2025-12-20,Green Bay Packers,Chicago Bears,0
-227,16,Sat,2025-12-20,Philadelphia Eagles,Washington Commanders,0
-228,16,Sun,2025-12-21,Tampa Bay Buccaneers,Carolina Panthers,0
-229,16,Sun,2025-12-21,Buffalo Bills,Cleveland Browns,0
-230,16,Sun,2025-12-21,Los Angeles Chargers,Dallas Cowboys,0
-231,16,Sun,2025-12-21,New York Jets,New Orleans Saints,0
-232,16,Sun,2025-12-21,Minnesota Vikings,New York Giants,0
-233,16,Sun,2025-12-21,Kansas City Chiefs,Tennessee Titans,0
-234,16,Sun,2025-12-21,New England Patriots,Baltimore Ravens,0
-235,16,Sun,2025-12-21,Atlanta Falcons,Arizona Cardinals,0
-236,16,Sun,2025-12-21,Jacksonville Jaguars,Denver Broncos,0
-237,16,Sun,2025-12-21,Pittsburgh Steelers,Detroit Lions,0
-238,16,Sun,2025-12-21,Las Vegas Raiders,Houston Texans,0
-239,16,Sun,2025-12-21,Cincinnati Bengals,Miami Dolphins,0
-240,16,Mon,2025-12-22,San Francisco 49ers,Indianapolis Colts,0
-241,17,Thu,2025-12-25,Dallas Cowboys,Washington Commanders,0
-242,17,Thu,2025-12-25,Detroit Lions,Minnesota Vikings,0
-243,17,Thu,2025-12-25,Denver Broncos,Kansas City Chiefs,0
-244,17,Sun,2025-12-28,Seattle Seahawks,Carolina Panthers,0
-245,17,Sun,2025-12-28,Arizona Cardinals,Cincinnati Bengals,0
-246,17,Sun,2025-12-28,Pittsburgh Steelers,Cleveland Browns,0
-247,17,Sun,2025-12-28,Jacksonville Jaguars,Indianapolis Colts,0
-248,17,Sun,2025-12-28,Baltimore Ravens,Green Bay Packers,0
-249,17,Sun,2025-12-28,Tampa Bay Buccaneers,Miami Dolphins,0
-250,17,Sun,2025-12-28,New England Patriots,New York Jets,0
-251,17,Sun,2025-12-28,New Orleans Saints,Tennessee Titans,0
-252,17,Sun,2025-12-28,New York Giants,Las Vegas Raiders,0
-253,17,Sun,2025-12-28,Houston Texans,Los Angeles Chargers,0
-254,17,Sun,2025-12-28,Philadelphia Eagles,Buffalo Bills,0
-255,17,Sun,2025-12-28,Chicago Bears,San Francisco 49ers,0
-256,17,Mon,2025-12-29,Los Angeles Rams,Atlanta Falcons,0
-257,18,Sun,2025-01-04,New Orleans Saints,Atlanta Falcons,0
-258,18,Sun,2025-01-04,New York Jets,Buffalo Bills,0
-259,18,Sun,2025-01-04,Detroit Lions,Chicago Bears,0
-260,18,Sun,2025-01-04,Cleveland Browns,Cincinnati Bengals,0
-261,18,Sun,2025-01-04,Los Angeles Chargers,Denver Broncos,0
-262,18,Sun,2025-01-04,Indianapolis Colts,Houston Texans,0
-263,18,Sun,2025-01-04,Tennessee Titans,Jacksonville Jaguars,0
-264,18,Sun,2025-01-04,Green Bay Packers,Minnesota Vikings,0
-265,18,Sun,2025-01-04,Miami Dolphins,New England Patriots,0
-266,18,Sun,2025-01-04,Dallas Cowboys,New York Giants,0
-267,18,Sun,2025-01-04,Washington Commanders,Philadelphia Eagles,0
-268,18,Sun,2025-01-04,Baltimore Ravens,Pittsburgh Steelers,0
-269,18,Sun,2025-01-04,Kansas City Chiefs,Las Vegas Raiders,0
-270,18,Sun,2025-01-04,Arizona Cardinals,Los Angeles Rams,0
-271,18,Sun,2025-01-04,Seattle Seahawks,San Francisco 49ers,0
-272,18,Sun,2025-01-04,Carolina Panthers,Tampa Bay Buccaneers,0
+1,1,Wed,2026-09-09,New England Patriots,Seattle Seahawks,0
+2,1,Thu,2026-09-10,San Francisco 49ers,Los Angeles Rams,1
+3,1,Sun,2026-09-13,Chicago Bears,Carolina Panthers,0
+4,1,Sun,2026-09-13,Tampa Bay Buccaneers,Cincinnati Bengals,0
+5,1,Sun,2026-09-13,Baltimore Ravens,Indianapolis Colts,0
+6,1,Sun,2026-09-13,New Orleans Saints,Detroit Lions,0
+7,1,Sun,2026-09-13,Buffalo Bills,Houston Texans,0
+8,1,Sun,2026-09-13,Cleveland Browns,Jacksonville Jaguars,0
+9,1,Sun,2026-09-13,New York Jets,Tennessee Titans,0
+10,1,Sun,2026-09-13,Atlanta Falcons,Pittsburgh Steelers,0
+11,1,Sun,2026-09-13,Green Bay Packers,Minnesota Vikings,0
+12,1,Sun,2026-09-13,Washington Commanders,Philadelphia Eagles,0
+13,1,Sun,2026-09-13,Miami Dolphins,Las Vegas Raiders,0
+14,1,Sun,2026-09-13,Arizona Cardinals,Los Angeles Chargers,0
+15,1,Sun,2026-09-13,Dallas Cowboys,New York Giants,0
+16,1,Mon,2026-09-14,Denver Broncos,Kansas City Chiefs,0
+17,2,Thu,2026-09-17,Detroit Lions,Buffalo Bills,0
+18,2,Sun,2026-09-20,Carolina Panthers,Atlanta Falcons,0
+19,2,Sun,2026-09-20,Minnesota Vikings,Chicago Bears,0
+20,2,Sun,2026-09-20,Cincinnati Bengals,Houston Texans,0
+21,2,Sun,2026-09-20,Pittsburgh Steelers,New England Patriots,0
+22,2,Sun,2026-09-20,Green Bay Packers,New York Jets,0
+23,2,Sun,2026-09-20,Philadelphia Eagles,Tennessee Titans,0
+24,2,Sun,2026-09-20,New Orleans Saints,Baltimore Ravens,0
+25,2,Sun,2026-09-20,Cleveland Browns,Tampa Bay Buccaneers,0
+26,2,Sun,2026-09-20,Jacksonville Jaguars,Denver Broncos,0
+27,2,Sun,2026-09-20,Las Vegas Raiders,Los Angeles Chargers,0
+28,2,Sun,2026-09-20,Seattle Seahawks,Arizona Cardinals,0
+29,2,Sun,2026-09-20,Washington Commanders,Dallas Cowboys,0
+30,2,Sun,2026-09-20,Miami Dolphins,San Francisco 49ers,0
+31,2,Sun,2026-09-20,Indianapolis Colts,Kansas City Chiefs,0
+32,2,Mon,2026-09-21,New York Giants,Los Angeles Rams,0
+33,3,Thu,2026-09-24,Atlanta Falcons,Green Bay Packers,0
+34,3,Sun,2026-09-27,Los Angeles Chargers,Buffalo Bills,0
+35,3,Sun,2026-09-27,Carolina Panthers,Cleveland Browns,0
+36,3,Sun,2026-09-27,Houston Texans,Indianapolis Colts,0
+37,3,Sun,2026-09-27,New York Jets,Detroit Lions,0
+38,3,Sun,2026-09-27,New England Patriots,Jacksonville Jaguars,0
+39,3,Sun,2026-09-27,Kansas City Chiefs,Miami Dolphins,0
+40,3,Sun,2026-09-27,Tennessee Titans,New York Giants,0
+41,3,Sun,2026-09-27,Cincinnati Bengals,Pittsburgh Steelers,0
+42,3,Sun,2026-09-27,Seattle Seahawks,Washington Commanders,0
+43,3,Sun,2026-09-27,Arizona Cardinals,San Francisco 49ers,0
+44,3,Sun,2026-09-27,Minnesota Vikings,Tampa Bay Buccaneers,0
+45,3,Sun,2026-09-27,Baltimore Ravens,Dallas Cowboys,1
+46,3,Sun,2026-09-27,Las Vegas Raiders,New Orleans Saints,0
+47,3,Sun,2026-09-27,Los Angeles Rams,Denver Broncos,0
+48,3,Mon,2026-09-28,Philadelphia Eagles,Chicago Bears,0
+49,4,Thu,2026-10-01,Pittsburgh Steelers,Cleveland Browns,0
+50,4,Sun,2026-10-04,Indianapolis Colts,Washington Commanders,1
+51,4,Sun,2026-10-04,New England Patriots,Buffalo Bills,0
+52,4,Sun,2026-10-04,New York Jets,Chicago Bears,0
+53,4,Sun,2026-10-04,Jacksonville Jaguars,Cincinnati Bengals,0
+54,4,Sun,2026-10-04,Dallas Cowboys,Houston Texans,0
+55,4,Sun,2026-10-04,Arizona Cardinals,New York Giants,0
+56,4,Sun,2026-10-04,Los Angeles Rams,Philadelphia Eagles,0
+57,4,Sun,2026-10-04,Tennessee Titans,Baltimore Ravens,0
+58,4,Sun,2026-10-04,Green Bay Packers,Tampa Bay Buccaneers,0
+59,4,Sun,2026-10-04,Miami Dolphins,Minnesota Vikings,0
+60,4,Sun,2026-10-04,Kansas City Chiefs,Las Vegas Raiders,0
+61,4,Sun,2026-10-04,Los Angeles Chargers,Seattle Seahawks,0
+62,4,Sun,2026-10-04,Denver Broncos,San Francisco 49ers,0
+63,4,Sun,2026-10-04,Detroit Lions,Carolina Panthers,0
+64,4,Mon,2026-10-05,Atlanta Falcons,New Orleans Saints,0
+65,5,Thu,2026-10-08,Tampa Bay Buccaneers,Dallas Cowboys,0
+66,5,Sun,2026-10-11,Philadelphia Eagles,Jacksonville Jaguars,1
+67,5,Sun,2026-10-11,Cincinnati Bengals,Miami Dolphins,0
+68,5,Sun,2026-10-11,Minnesota Vikings,New Orleans Saints,0
+69,5,Sun,2026-10-11,Las Vegas Raiders,New England Patriots,0
+70,5,Sun,2026-10-11,Cleveland Browns,New York Jets,0
+71,5,Sun,2026-10-11,Houston Texans,Tennessee Titans,0
+72,5,Sun,2026-10-11,Indianapolis Colts,Pittsburgh Steelers,0
+73,5,Sun,2026-10-11,New York Giants,Washington Commanders,0
+74,5,Sun,2026-10-11,Denver Broncos,Los Angeles Chargers,0
+75,5,Sun,2026-10-11,Detroit Lions,Arizona Cardinals,0
+76,5,Sun,2026-10-11,Chicago Bears,Green Bay Packers,0
+77,5,Sun,2026-10-11,San Francisco 49ers,Seattle Seahawks,0
+78,5,Sun,2026-10-11,Baltimore Ravens,Atlanta Falcons,0
+79,5,Mon,2026-10-12,Buffalo Bills,Los Angeles Rams,0
+80,6,Thu,2026-10-15,Seattle Seahawks,Denver Broncos,0
+81,6,Sun,2026-10-18,Houston Texans,Jacksonville Jaguars,1
+82,6,Sun,2026-10-18,Chicago Bears,Atlanta Falcons,0
+83,6,Sun,2026-10-18,Baltimore Ravens,Cleveland Browns,0
+84,6,Sun,2026-10-18,Tennessee Titans,Indianapolis Colts,0
+85,6,Sun,2026-10-18,New York Jets,New England Patriots,0
+86,6,Sun,2026-10-18,New Orleans Saints,New York Giants,0
+87,6,Sun,2026-10-18,Carolina Panthers,Philadelphia Eagles,0
+88,6,Sun,2026-10-18,Pittsburgh Steelers,Tampa Bay Buccaneers,0
+89,6,Sun,2026-10-18,Arizona Cardinals,Los Angeles Rams,0
+90,6,Sun,2026-10-18,Los Angeles Chargers,Kansas City Chiefs,0
+91,6,Sun,2026-10-18,Buffalo Bills,Las Vegas Raiders,0
+92,6,Sun,2026-10-18,Dallas Cowboys,Green Bay Packers,0
+93,6,Mon,2026-10-19,Washington Commanders,San Francisco 49ers,0
+94,7,Thu,2026-10-22,New England Patriots,Chicago Bears,0
+95,7,Sun,2026-10-25,Pittsburgh Steelers,New Orleans Saints,1
+96,7,Sun,2026-10-25,San Francisco 49ers,Atlanta Falcons,0
+97,7,Sun,2026-10-25,Tampa Bay Buccaneers,Carolina Panthers,0
+98,7,Sun,2026-10-25,New York Giants,Houston Texans,0
+99,7,Sun,2026-10-25,Indianapolis Colts,Minnesota Vikings,0
+100,7,Sun,2026-10-25,Miami Dolphins,New York Jets,0
+101,7,Sun,2026-10-25,Cleveland Browns,Tennessee Titans,0
+102,7,Sun,2026-10-25,Cincinnati Bengals,Baltimore Ravens,0
+103,7,Sun,2026-10-25,Denver Broncos,Arizona Cardinals,0
+104,7,Sun,2026-10-25,Green Bay Packers,Detroit Lions,0
+105,7,Sun,2026-10-25,Los Angeles Rams,Las Vegas Raiders,0
+106,7,Sun,2026-10-25,Kansas City Chiefs,Seattle Seahawks,0
+107,7,Mon,2026-10-26,Dallas Cowboys,Philadelphia Eagles,0
+108,8,Thu,2026-10-29,Carolina Panthers,Green Bay Packers,0
+109,8,Sun,2026-11-01,Baltimore Ravens,Buffalo Bills,0
+110,8,Sun,2026-11-01,Tennessee Titans,Cincinnati Bengals,0
+111,8,Sun,2026-11-01,Arizona Cardinals,Dallas Cowboys,0
+112,8,Sun,2026-11-01,Minnesota Vikings,Detroit Lions,0
+113,8,Sun,2026-11-01,Indianapolis Colts,Jacksonville Jaguars,0
+114,8,Sun,2026-11-01,Las Vegas Raiders,New York Jets,0
+115,8,Sun,2026-11-01,Cleveland Browns,Pittsburgh Steelers,0
+116,8,Sun,2026-11-01,Atlanta Falcons,Tampa Bay Buccaneers,0
+117,8,Sun,2026-11-01,Los Angeles Chargers,Los Angeles Rams,0
+118,8,Sun,2026-11-01,Kansas City Chiefs,Denver Broncos,0
+119,8,Sun,2026-11-01,New England Patriots,Miami Dolphins,0
+120,8,Sun,2026-11-01,Philadelphia Eagles,Washington Commanders,0
+121,8,Mon,2026-11-02,Chicago Bears,Seattle Seahawks,0
+122,9,Thu,2026-11-05,Jacksonville Jaguars,Baltimore Ravens,0
+123,9,Sun,2026-11-08,Cincinnati Bengals,Atlanta Falcons,1
+124,9,Sun,2026-11-08,Denver Broncos,Carolina Panthers,0
+125,9,Sun,2026-11-08,Dallas Cowboys,Indianapolis Colts,0
+126,9,Sun,2026-11-08,New York Jets,Kansas City Chiefs,0
+127,9,Sun,2026-11-08,Detroit Lions,Miami Dolphins,0
+128,9,Sun,2026-11-08,Cleveland Browns,New Orleans Saints,0
+129,9,Sun,2026-11-08,New York Giants,Philadelphia Eagles,0
+130,9,Sun,2026-11-08,Los Angeles Rams,Washington Commanders,0
+131,9,Sun,2026-11-08,Houston Texans,Los Angeles Chargers,0
+132,9,Sun,2026-11-08,Las Vegas Raiders,San Francisco 49ers,0
+133,9,Sun,2026-11-08,Green Bay Packers,New England Patriots,0
+134,9,Sun,2026-11-08,Arizona Cardinals,Seattle Seahawks,0
+135,9,Sun,2026-11-08,Tampa Bay Buccaneers,Chicago Bears,0
+136,9,Mon,2026-11-09,Buffalo Bills,Minnesota Vikings,0
+137,10,Thu,2026-11-12,Washington Commanders,New York Giants,0
+138,10,Sun,2026-11-15,New England Patriots,Detroit Lions,1
+139,10,Sun,2026-11-15,Kansas City Chiefs,Atlanta Falcons,0
+140,10,Sun,2026-11-15,Houston Texans,Cleveland Browns,0
+141,10,Sun,2026-11-15,Miami Dolphins,Indianapolis Colts,0
+142,10,Sun,2026-11-15,Minnesota Vikings,Green Bay Packers,0
+143,10,Sun,2026-11-15,Carolina Panthers,New Orleans Saints,0
+144,10,Sun,2026-11-15,Buffalo Bills,New York Jets,0
+145,10,Sun,2026-11-15,Jacksonville Jaguars,Tennessee Titans,0
+146,10,Sun,2026-11-15,Los Angeles Rams,Arizona Cardinals,0
+147,10,Sun,2026-11-15,Seattle Seahawks,Las Vegas Raiders,0
+148,10,Sun,2026-11-15,San Francisco 49ers,Dallas Cowboys,0
+149,10,Sun,2026-11-15,Pittsburgh Steelers,Cincinnati Bengals,0
+150,10,Mon,2026-11-16,Los Angeles Chargers,Baltimore Ravens,0
+151,11,Thu,2026-11-19,Indianapolis Colts,Houston Texans,0
+152,11,Sun,2026-11-22,Miami Dolphins,Buffalo Bills,0
+153,11,Sun,2026-11-22,Baltimore Ravens,Carolina Panthers,0
+154,11,Sun,2026-11-22,New Orleans Saints,Chicago Bears,0
+155,11,Sun,2026-11-22,Tennessee Titans,Dallas Cowboys,0
+156,11,Sun,2026-11-22,Tampa Bay Buccaneers,Detroit Lions,0
+157,11,Sun,2026-11-22,Arizona Cardinals,Kansas City Chiefs,0
+158,11,Sun,2026-11-22,Jacksonville Jaguars,New York Giants,0
+159,11,Sun,2026-11-22,New York Jets,Los Angeles Chargers,0
+160,11,Sun,2026-11-22,Las Vegas Raiders,Denver Broncos,0
+161,11,Sun,2026-11-22,Pittsburgh Steelers,Philadelphia Eagles,0
+162,11,Sun,2026-11-22,Minnesota Vikings,San Francisco 49ers,1
+163,11,Mon,2026-11-23,Cincinnati Bengals,Washington Commanders,0
+164,12,Wed,2026-11-25,Green Bay Packers,Los Angeles Rams,0
+165,12,Thu,2026-11-26,Chicago Bears,Detroit Lions,0
+166,12,Thu,2026-11-26,Philadelphia Eagles,Dallas Cowboys,0
+167,12,Thu,2026-11-26,Kansas City Chiefs,Buffalo Bills,0
+168,12,Fri,2026-11-27,Denver Broncos,Pittsburgh Steelers,0
+169,12,Sun,2026-11-29,New Orleans Saints,Cincinnati Bengals,0
+170,12,Sun,2026-11-29,Las Vegas Raiders,Cleveland Browns,0
+171,12,Sun,2026-11-29,New York Giants,Indianapolis Colts,0
+172,12,Sun,2026-11-29,Baltimore Ravens,Houston Texans,0
+173,12,Sun,2026-11-29,New York Jets,Miami Dolphins,0
+174,12,Sun,2026-11-29,Atlanta Falcons,Minnesota Vikings,0
+175,12,Sun,2026-11-29,Tennessee Titans,Jacksonville Jaguars,0
+176,12,Sun,2026-11-29,Washington Commanders,Arizona Cardinals,0
+177,12,Sun,2026-11-29,Seattle Seahawks,San Francisco 49ers,0
+178,12,Sun,2026-11-29,New England Patriots,Los Angeles Chargers,0
+179,12,Mon,2026-11-30,Carolina Panthers,Tampa Bay Buccaneers,0
+180,13,Thu,2026-12-03,Kansas City Chiefs,Los Angeles Rams,0
+181,13,Sun,2026-12-06,Detroit Lions,Atlanta Falcons,0
+182,13,Sun,2026-12-06,Jacksonville Jaguars,Chicago Bears,0
+183,13,Sun,2026-12-06,Cincinnati Bengals,Cleveland Browns,0
+184,13,Sun,2026-12-06,Green Bay Packers,New Orleans Saints,0
+185,13,Sun,2026-12-06,San Francisco 49ers,New York Giants,0
+186,13,Sun,2026-12-06,Washington Commanders,Tennessee Titans,0
+187,13,Sun,2026-12-06,Los Angeles Chargers,Tampa Bay Buccaneers,0
+188,13,Sun,2026-12-06,Philadelphia Eagles,Arizona Cardinals,0
+189,13,Sun,2026-12-06,Miami Dolphins,Denver Broncos,0
+190,13,Sun,2026-12-06,Carolina Panthers,Minnesota Vikings,0
+191,13,Sun,2026-12-06,Buffalo Bills,New England Patriots,0
+192,13,Sun,2026-12-06,Houston Texans,Pittsburgh Steelers,0
+193,13,Mon,2026-12-07,Dallas Cowboys,Seattle Seahawks,0
+194,14,Thu,2026-12-10,Minnesota Vikings,New England Patriots,0
+195,14,Sun,2026-12-13,New Orleans Saints,Carolina Panthers,0
+196,14,Sun,2026-12-13,Atlanta Falcons,Cleveland Browns,0
+197,14,Sun,2026-12-13,Tennessee Titans,Detroit Lions,0
+198,14,Sun,2026-12-13,Chicago Bears,Miami Dolphins,0
+199,14,Sun,2026-12-13,Denver Broncos,New York Jets,0
+200,14,Sun,2026-12-13,Indianapolis Colts,Philadelphia Eagles,0
+201,14,Sun,2026-12-13,Tampa Bay Buccaneers,Baltimore Ravens,0
+202,14,Sun,2026-12-13,Houston Texans,Washington Commanders,0
+203,14,Sun,2026-12-13,Los Angeles Chargers,Las Vegas Raiders,0
+204,14,Sun,2026-12-13,Kansas City Chiefs,Cincinnati Bengals,0
+205,14,Sun,2026-12-13,New York Giants,Seattle Seahawks,0
+206,14,Sun,2026-12-13,Los Angeles Rams,San Francisco 49ers,0
+207,14,Sun,2026-12-13,Buffalo Bills,Green Bay Packers,0
+208,14,Mon,2026-12-14,Pittsburgh Steelers,Jacksonville Jaguars,0
+209,15,Thu,2026-12-17,San Francisco 49ers,Los Angeles Chargers,0
+210,15,Sat,2026-12-19,Seattle Seahawks,Philadelphia Eagles,0
+211,15,Sat,2026-12-19,Chicago Bears,Buffalo Bills,0
+212,15,Sun,2026-12-20,Cincinnati Bengals,Carolina Panthers,0
+213,15,Sun,2026-12-20,Miami Dolphins,Green Bay Packers,0
+214,15,Sun,2026-12-20,Jacksonville Jaguars,Houston Texans,0
+215,15,Sun,2026-12-20,Cleveland Browns,New York Giants,0
+216,15,Sun,2026-12-20,Indianapolis Colts,Tennessee Titans,0
+217,15,Sun,2026-12-20,Baltimore Ravens,Pittsburgh Steelers,0
+218,15,Sun,2026-12-20,New Orleans Saints,Tampa Bay Buccaneers,0
+219,15,Sun,2026-12-20,Atlanta Falcons,Washington Commanders,0
+220,15,Sun,2026-12-20,New York Jets,Arizona Cardinals,0
+221,15,Sun,2026-12-20,Denver Broncos,Las Vegas Raiders,0
+222,15,Sun,2026-12-20,Dallas Cowboys,Los Angeles Rams,0
+223,15,Sun,2026-12-20,Detroit Lions,Minnesota Vikings,0
+224,15,Mon,2026-12-21,New England Patriots,Kansas City Chiefs,0
+225,16,Thu,2026-12-24,Houston Texans,Philadelphia Eagles,0
+226,16,Fri,2026-12-25,Green Bay Packers,Chicago Bears,0
+227,16,Fri,2026-12-25,Buffalo Bills,Denver Broncos,0
+228,16,Fri,2026-12-25,Los Angeles Rams,Seattle Seahawks,0
+229,16,Sun,2026-12-27,Tampa Bay Buccaneers,Atlanta Falcons,0
+230,16,Sun,2026-12-27,Cincinnati Bengals,Indianapolis Colts,0
+231,16,Sun,2026-12-27,Los Angeles Chargers,Miami Dolphins,0
+232,16,Sun,2026-12-27,Washington Commanders,Minnesota Vikings,0
+233,16,Sun,2026-12-27,Arizona Cardinals,New Orleans Saints,0
+234,16,Sun,2026-12-27,New England Patriots,New York Jets,0
+235,16,Sun,2026-12-27,Carolina Panthers,Pittsburgh Steelers,0
+236,16,Sun,2026-12-27,Cleveland Browns,Baltimore Ravens,0
+237,16,Sun,2026-12-27,Tennessee Titans,Las Vegas Raiders,0
+238,16,Sun,2026-12-27,San Francisco 49ers,Kansas City Chiefs,0
+239,16,Sun,2026-12-27,Jacksonville Jaguars,Dallas Cowboys,0
+240,16,Mon,2026-12-28,New York Giants,Detroit Lions,0
+241,17,Thu,2026-12-31,Baltimore Ravens,Cincinnati Bengals,0
+242,17,Sun,2026-01-03,New Orleans Saints,Atlanta Falcons,0
+243,17,Sun,2026-01-03,Seattle Seahawks,Carolina Panthers,0
+244,17,Sun,2026-01-03,Indianapolis Colts,Cleveland Browns,0
+245,17,Sun,2026-01-03,New York Giants,Dallas Cowboys,0
+246,17,Sun,2026-01-03,Washington Commanders,Jacksonville Jaguars,0
+247,17,Sun,2026-01-03,Buffalo Bills,Miami Dolphins,0
+248,17,Sun,2026-01-03,Denver Broncos,New England Patriots,0
+249,17,Sun,2026-01-03,Minnesota Vikings,New York Jets,0
+250,17,Sun,2026-01-03,Pittsburgh Steelers,Tennessee Titans,0
+251,17,Sun,2026-01-03,Kansas City Chiefs,Los Angeles Chargers,0
+252,17,Sun,2026-01-03,Los Angeles Rams,Tampa Bay Buccaneers,0
+253,17,Sun,2026-01-03,Las Vegas Raiders,Arizona Cardinals,0
+254,17,Sun,2026-01-03,Detroit Lions,Chicago Bears,0
+255,17,Sun,2026-01-03,Philadelphia Eagles,San Francisco 49ers,0
+256,17,Mon,2026-01-04,Houston Texans,Green Bay Packers,0
+257,18,Sun,2026-01-10,New York Jets,Buffalo Bills,0
+258,18,Sun,2026-01-10,Atlanta Falcons,Carolina Panthers,0
+259,18,Sun,2026-01-10,Cleveland Browns,Cincinnati Bengals,0
+260,18,Sun,2026-01-10,Jacksonville Jaguars,Indianapolis Colts,0
+261,18,Sun,2026-01-10,San Francisco 49ers,Arizona Cardinals,0
+262,18,Sun,2026-01-10,Los Angeles Chargers,Denver Broncos,0
+263,18,Sun,2026-01-10,Detroit Lions,Green Bay Packers,0
+264,18,Sun,2026-01-10,Tennessee Titans,Houston Texans,0
+265,18,Sun,2026-01-10,Las Vegas Raiders,Kansas City Chiefs,0
+266,18,Sun,2026-01-10,Chicago Bears,Minnesota Vikings,0
+267,18,Sun,2026-01-10,Tampa Bay Buccaneers,New Orleans Saints,0
+268,18,Sun,2026-01-10,Miami Dolphins,New England Patriots,0
+269,18,Sun,2026-01-10,Philadelphia Eagles,New York Giants,0
+270,18,Sun,2026-01-10,Seattle Seahawks,Los Angeles Rams,0
+271,18,Sun,2026-01-10,Pittsburgh Steelers,Baltimore Ravens,0
+272,18,Sun,2026-01-10,Dallas Cowboys,Washington Commanders,0
 273,19,,,NFC-7,NFC-2,0
 274,19,,,NFC-6,NFC-3,0
 275,19,,,NFC-5,NFC-4,0
