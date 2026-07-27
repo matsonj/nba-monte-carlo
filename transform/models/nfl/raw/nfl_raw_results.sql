@@ -1,8 +1,11 @@
+-- casts are explicit because the csv sniffer types the score columns as varchar
+-- at season start, when no game is completed and every score is null
 select
-    week as wk,
-    "Winner/tie" as winner,
-    ptsw as winner_pts,
-    "Loser/tie" as loser,
-    ptsl as loser_pts,
-    case when ptsl = ptsw then 1 else 0 end as tie_flag
-from {{ source("nfl", "nfl_results") }}
+    cast(week as bigint) as wk,
+    winner,
+    cast(winner_pts as bigint) as winner_pts,
+    loser,
+    cast(loser_pts as bigint) as loser_pts,
+    case when loser_pts = winner_pts then 1 else 0 end as tie_flag
+from {{ source("nfl_dlt", "games") }}
+where completed
