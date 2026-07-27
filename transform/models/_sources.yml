@@ -26,13 +26,6 @@ sources:
         description: nfl schedule
       - name: nfl_team_ratings
         description: nfl team ratings from vegas
-      - name: nfl_results
-        description: nfl results for the current season
-        meta:
-          # explicit schema so the file can be empty (header only) at season start;
-          # the csv sniffer can't infer a header from a file with no data rows
-          formatter: template
-          external_location: "read_csv('../data/nfl/nfl_results.csv', header=true, columns={'Week': 'bigint', 'Day': 'varchar', 'Date': 'date', 'Time': 'varchar', 'Winner/tie': 'varchar', 'at_winner': 'varchar', 'Loser/tie': 'varchar', 'boxscore': 'varchar', 'PtsW': 'bigint', 'PtsL': 'bigint', 'YdsW': 'bigint', 'TOW': 'bigint', 'YdsL': 'bigint', 'TOL': 'bigint'})"
   - name: ncaaf
     schema: psa
     meta:
@@ -47,7 +40,14 @@ sources:
   - name: nba_dlt
     schema: nba_data
     meta:
-      external_location: ../dlt/data/nba/nba_data/games/*.csv 
+      external_location: ../dlt/data/nba/nba_data/games/*.csv
     tables:
       - name: games
         description: nba games as sourced from pbpstats.com
+  - name: nfl_dlt
+    schema: nfl_data
+    meta:
+      external_location: ../dlt/data/nfl/nfl_data/games/*.csv
+    tables:
+      - name: games
+        description: nfl games for the current season as sourced from the espn scoreboard api; includes unplayed games with null scores
