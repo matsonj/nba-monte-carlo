@@ -34,4 +34,6 @@ full outer join
     cte_seed b
     on strptime(b."Date", '%a %b %-d %Y')::date = a.date
     and b."Home/Neutral" = home.team_long
-where a.date <= '{{ var( 'nba_start_date' ) }}' 
+-- Keep unmatched seed rows in the full outer join when filtering by date.
+where coalesce(a.date, strptime(b."Date", '%a %b %-d %Y')::date)
+    <= '{{ var( 'nba_start_date' ) }}'
