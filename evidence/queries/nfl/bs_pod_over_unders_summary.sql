@@ -18,6 +18,7 @@ select
     p.win_total,
     round(r.avg_wins, 1) as proj_wins,
     case
+        when r.avg_wins is null then null
         when r.avg_wins > p.win_total then 'over'
         when r.avg_wins < p.win_total then 'under'
         else 'push'
