@@ -20,11 +20,11 @@ with
         select team, count(*) as scheduled_games
         from
             (
-                select home_team as team, game_id
+                select home_team as team
                 from {{ ref("nfl_schedules") }}
                 where type = 'reg_season'
                 union all
-                select visiting_team as team, game_id
+                select visiting_team as team
                 from {{ ref("nfl_schedules") }}
                 where type = 'reg_season'
             ) schedule_by_team
@@ -33,7 +33,6 @@ with
 
     completed_games as (
         select
-            s.game_id,
             r.home_team,
             r.home_team_score,
             r.visiting_team,
