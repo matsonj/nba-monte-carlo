@@ -12,7 +12,12 @@ url = (
     f"?dates={season}0901-{season + 1}0301&limit=1000"
 )
 
-response = requests.get(url)
+response = requests.get(
+    url,
+    headers={
+        "User-Agent": "nba-monte-carlo/1.0 (+https://github.com/matsonj/nba-monte-carlo)",
+    },
+)
 response.raise_for_status()
 
 # ESPN postseason week numbers -> continuation of regular season numbering,
