@@ -88,7 +88,7 @@ title: NFL Sim
 
 <center>
 
-🏈 [Teams](/nfl/teams) 🏈 
+🏈 [Teams](/nfl/teams) · [BS Pod Over/Unders](/nfl/bs-pod-over-unders) 🏈
 
  </center>
 

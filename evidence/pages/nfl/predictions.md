@@ -5,6 +5,7 @@ queries:
   - past_games_summary_by_team: nfl/past_games_summary_by_team.sql
   - future_games: nfl/future_games.sql
   - teams: nfl/all_teams.sql
+sidebar_position: 3
 ---
 
 # Predictions

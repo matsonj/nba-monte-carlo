@@ -66,3 +66,68 @@ models:
       - name: win_total
         tests:
           - not_null
+  - name: nfl_bs_pod_over_unders
+    description: Current-season Bill Simmons and Cousin Sal NFC win-total picks with live settlement status.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - season
+            - speaker
+            - team
+    columns:
+      - name: season
+        tests:
+          - not_null
+      - name: speaker
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Bill Simmons', 'Cousin Sal']
+      - name: team
+        tests:
+          - not_null
+      - name: conf
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['NFC']
+      - name: division
+        tests:
+          - not_null
+      - name: pick
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['over', 'under']
+      - name: line
+        tests:
+          - not_null
+      - name: episode_date
+        tests:
+          - not_null
+      - name: episode_url
+        tests:
+          - not_null
+      - name: games_played
+        tests:
+          - not_null
+      - name: scheduled_games
+        tests:
+          - not_null
+      - name: current_wins
+        tests:
+          - not_null
+      - name: current_losses
+        tests:
+          - not_null
+      - name: current_ties
+        tests:
+          - not_null
+      - name: regular_season_complete
+        tests:
+          - not_null
+      - name: live_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['On track', 'Behind', 'Win', 'Loss', 'Push']
