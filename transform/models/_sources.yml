@@ -26,6 +26,8 @@ sources:
         description: nfl schedule
       - name: nfl_team_ratings
         description: nfl team ratings from vegas
+      - name: bs_pod_over_unders
+        description: Bill Simmons and Cousin Sal NFL win-total picks
   - name: ncaaf
     schema: psa
     meta:
