@@ -1,6 +1,7 @@
 with team_picks as (
     select
         team,
+        max(conf) as conf,
         max(division) as division,
         max(line) as win_total,
         max(pick) filter (where speaker = 'Bill Simmons') as bill_pick,
@@ -9,10 +10,10 @@ with team_picks as (
         max(live_status) filter (where speaker = 'Cousin Sal') as sal_status
     from src_nfl_bs_pod_over_unders
     where season = 2026
-        and conf = 'NFC'
     group by team
 )
 select
+    p.conf,
     p.team,
     p.division,
     p.win_total,
@@ -37,4 +38,4 @@ select
     end as sal_status_score
 from team_picks p
 left join src_nfl_reg_season_summary r on r.team = p.team
-order by p.division, p.team
+order by p.conf, p.division, p.team
