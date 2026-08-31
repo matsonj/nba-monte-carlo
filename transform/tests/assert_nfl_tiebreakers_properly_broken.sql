@@ -228,9 +228,20 @@ tiebreaker_consistency AS (
     GROUP BY scenario_id, conference, wins, tiebreaker_used
     HAVING COUNT(DISTINCT team) > 1 AND COUNT(DISTINCT tiebreaker_used) > 1
 ),
--- A team-name fallback is the deterministic stand-in for the NFL coin toss when
--- every statistical criterion is equal; it is not an assertion failure.
 
+-- A team-name fallback is the deterministic stand-in for the NFL coin toss when
+-- every statistical criterion is equal. Only an explicit coin_toss marker is invalid.
+premature_coin_toss AS (
+    SELECT
+        tr.scenario_id,
+        tr.conference,
+        tr.team,
+        tr.wins,
+        tr.rank,
+        tr.tiebreaker_used
+    FROM tiebreaker_results tr
+    WHERE tr.tiebreaker_used = 'coin_toss'
+),
 
 -- Aggregate all assertion failures
 assertion_failures AS (
@@ -335,6 +346,17 @@ assertion_failures AS (
         CAST(wins AS VARCHAR) || ' wins' as detail,
         CAST(teams_with_same_record AS VARCHAR) || ' teams with same record used ' || CAST(different_tiebreakers_used AS VARCHAR) || ' different tiebreakers' as description
     FROM tiebreaker_consistency
+
+    UNION ALL
+
+    -- Explicit coin-toss markers are unsupported by the tiebreaker model.
+    SELECT
+        'PREMATURE_COIN_TOSS' as failure_type,
+        scenario_id,
+        conference,
+        team as detail,
+        team || ' resolved by an explicit coin_toss marker' as description
+    FROM premature_coin_toss
     
 )
 
