@@ -8,6 +8,5 @@ select
     count(*) filter (where not regular_season_complete and live_status = 'Behind') as behind
 from src_nfl_bs_pod_over_unders
 where season = 2026
-    and conf = 'NFC'
 group by speaker
 order by speaker

@@ -67,7 +67,7 @@ models:
         tests:
           - not_null
   - name: nfl_bs_pod_over_unders
-    description: Current-season Bill Simmons and Cousin Sal NFC win-total picks with live settlement status.
+    description: Current-season Bill Simmons and Cousin Sal AFC and NFC win-total picks with live settlement status.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -90,7 +90,7 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['NFC']
+              values: ['AFC','NFC']
       - name: division
         tests:
           - not_null
