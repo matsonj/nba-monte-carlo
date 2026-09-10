@@ -4,6 +4,8 @@ with team_picks as (
         max(conf) as conf,
         max(division) as division,
         max(line) as win_total,
+        max(projected_wins) as proj_wins,
+        max(projected_side) as proj,
         max(pick) filter (where speaker = 'Bill Simmons') as bill_pick,
         max(live_status) filter (where speaker = 'Bill Simmons') as bill_status,
         max(pick) filter (where speaker = 'Cousin Sal') as sal_pick,
@@ -13,29 +15,29 @@ with team_picks as (
     group by team
 )
 select
-    p.conf,
-    p.team,
-    p.division,
-    p.win_total,
-    round(r.avg_wins, 1) as proj_wins,
-    case
-        when r.avg_wins is null then null
-        when r.avg_wins > p.win_total then 'over'
-        when r.avg_wins < p.win_total then 'under'
-        else 'push'
-    end as proj,
-    p.bill_pick,
-    p.bill_status,
-    case
-        when p.bill_status = 'On track' then 1
-        when p.bill_status = 'Behind' then -1
-    end as bill_status_score,
-    p.sal_pick,
-    p.sal_status,
-    case
-        when p.sal_status = 'On track' then 1
-        when p.sal_status = 'Behind' then -1
-    end as sal_status_score
-from team_picks p
-left join src_nfl_reg_season_summary r on r.team = p.team
-order by p.conf, p.division, p.team
+    conf,
+    team,
+    division,
+    win_total,
+    proj_wins,
+    proj,
+    bill_pick,
+    case bill_status
+        when 'On track' then '✅ On track'
+        when 'Win' then '✅ Win'
+        when 'Behind' then '❌ Behind'
+        when 'Loss' then '❌ Loss'
+        when 'Push' then '➖ Push'
+        else bill_status
+    end as bill_status,
+    sal_pick,
+    case sal_status
+        when 'On track' then '✅ On track'
+        when 'Win' then '✅ Win'
+        when 'Behind' then '❌ Behind'
+        when 'Loss' then '❌ Loss'
+        when 'Push' then '➖ Push'
+        else sal_status
+    end as sal_status
+from team_picks
+order by conf, division, team

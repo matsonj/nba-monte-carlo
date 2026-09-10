@@ -126,7 +126,18 @@ models:
       - name: regular_season_complete
         tests:
           - not_null
+      - name: projected_wins
+        description: Simulation average regular-season wins for the team, rounded to one decimal.
+        tests:
+          - not_null
+      - name: projected_side
+        description: Side of the line the unrounded simulation average currently lands on.
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['over', 'under', 'push']
       - name: live_status
+        description: Settled result once the regular season is complete; otherwise On track when the simulation projects the picked side of the line, Behind when it does not.
         tests:
           - not_null
           - accepted_values:

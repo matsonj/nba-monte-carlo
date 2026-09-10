@@ -69,6 +69,14 @@ with
         group by team
     ),
 
+    -- simulation average regular-season wins per team (unrounded so the
+    -- over/under comparison never lands exactly on a half-win line)
+    projections as (
+        select winning_team as team, avg(wins) as projected_wins_raw
+        from {{ ref("nfl_reg_season_end") }}
+        group by winning_team
+    ),
+
     metrics as (
         select
             p.season,
@@ -90,16 +98,27 @@ with
                 and coalesce(a.games_played, 0) >= s.scheduled_games
                 then true
                 else false
-            end as regular_season_complete
+            end as regular_season_complete,
+            j.projected_wins_raw,
+            round(j.projected_wins_raw, 1) as projected_wins
         from picks p
         left join teams t on t.team = p.team
         left join scheduled_games s on s.team = p.team
         left join actuals a on a.team = p.team
+        left join projections j on j.team = p.team
     ),
 
     results as (
         select
-            *,
+            * exclude (projected_wins_raw),
+            -- which side of the line the simulation currently projects. Once the
+            -- season is complete the projection collapses to the actual win total.
+            case
+                when projected_wins_raw is null then null
+                when projected_wins_raw > line then 'over'
+                when projected_wins_raw < line then 'under'
+                else 'push'
+            end as projected_side,
             case
                 when regular_season_complete then
                     case
@@ -114,8 +133,13 @@ with
 
 select
     *,
+    -- an open pick is on track when the simulation projects the team to finish on
+    -- the picked side of the line. Falls back to the current win total if a team is
+    -- somehow missing from the simulation output.
     case
         when regular_season_complete then final_result
+        when projected_side is not null and pick = projected_side then 'On track'
+        when projected_side is not null then 'Behind'
         when (pick = 'over' and current_wins > line)
             or (pick = 'under' and current_wins < line)
         then 'On track'
