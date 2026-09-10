@@ -23,18 +23,18 @@ select
     proj,
     bill_pick,
     case bill_status
-        when 'On track' then '✅ On track'
+        when 'On track' then '🟢 On track'
         when 'Win' then '✅ Win'
-        when 'Behind' then '❌ Behind'
+        when 'Behind' then '🔴 Behind'
         when 'Loss' then '❌ Loss'
         when 'Push' then '➖ Push'
         else bill_status
     end as bill_status,
     sal_pick,
     case sal_status
-        when 'On track' then '✅ On track'
+        when 'On track' then '🟢 On track'
         when 'Win' then '✅ Win'
-        when 'Behind' then '❌ Behind'
+        when 'Behind' then '🔴 Behind'
         when 'Loss' then '❌ Loss'
         when 'Push' then '➖ Push'
         else sal_status

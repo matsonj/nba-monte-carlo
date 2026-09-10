@@ -8,7 +8,7 @@ sidebar_position: 4
 
 # 2026 NFL BS Pod Over/Unders
 
-Bill Simmons and Cousin Sal's regular-season win-total picks for the AFC and NFC. `Proj wins` is the current simulation average; `Proj` shows whether that projection is over or under the listed win total. Picks remain open until the regular season is complete. A pick is ✅ `On track` when the simulation projects the team to finish on the picked side of the line and ❌ `Behind` when it does not. Once a team's regular season is complete the pick settles as a Win, Loss, or Push.
+Bill Simmons and Cousin Sal's regular-season win-total picks for the AFC and NFC. `Proj wins` is the current simulation average; `Proj` shows whether that projection is over or under the listed win total. Picks remain open until the regular season is complete. Open picks are 🟢 `On track` when the simulation projects the team to finish on the picked side of the line and 🔴 `Behind` when it does not. Once a team's regular season is complete the pick settles as ✅ `Win`, ❌ `Loss`, or ➖ `Push`.
 
 [AFC episode transcript](https://podscripts.co/podcasts/the-bill-simmons-podcast/the-annual-afc-overunders-with-bill-simmons-cousin-sal-and-joe-house) · [NFC episode transcript](https://podscripts.co/podcasts/the-bill-simmons-podcast/the-annual-nfc-overunders-with-bill-simmons-cousin-sal-and-joe-house)
 
