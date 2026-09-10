@@ -1,41 +1,40 @@
-with team_picks as (
+-- display labels for each pick status, joined once before the speaker pivot
+with status_labels (live_status, label) as (
+    values
+        ('On track', '🟢 On track'),
+        ('Behind',   '🔴 Behind'),
+        ('Win',      '✅ Win'),
+        ('Loss',     '❌ Loss'),
+        ('Push',     '➖ Push')
+),
+
+picks as (
     select
-        team,
-        max(conf) as conf,
-        max(division) as division,
-        max(line) as win_total,
-        max(pick) filter (where speaker = 'Bill Simmons') as bill_pick,
-        max(live_status) filter (where speaker = 'Bill Simmons') as bill_status,
-        max(pick) filter (where speaker = 'Cousin Sal') as sal_pick,
-        max(live_status) filter (where speaker = 'Cousin Sal') as sal_status
-    from src_nfl_bs_pod_over_unders
-    where season = 2026
-    group by team
+        p.team,
+        p.conf,
+        p.division,
+        p.line,
+        p.projected_wins,
+        p.projected_side,
+        p.speaker,
+        p.pick,
+        coalesce(l.label, p.live_status) as status
+    from src_nfl_bs_pod_over_unders p
+    left join status_labels l on l.live_status = p.live_status
+    where p.season = 2026
 )
+
 select
-    p.conf,
-    p.team,
-    p.division,
-    p.win_total,
-    round(r.avg_wins, 1) as proj_wins,
-    case
-        when r.avg_wins is null then null
-        when r.avg_wins > p.win_total then 'over'
-        when r.avg_wins < p.win_total then 'under'
-        else 'push'
-    end as proj,
-    p.bill_pick,
-    p.bill_status,
-    case
-        when p.bill_status = 'On track' then 1
-        when p.bill_status = 'Behind' then -1
-    end as bill_status_score,
-    p.sal_pick,
-    p.sal_status,
-    case
-        when p.sal_status = 'On track' then 1
-        when p.sal_status = 'Behind' then -1
-    end as sal_status_score
-from team_picks p
-left join src_nfl_reg_season_summary r on r.team = p.team
-order by p.conf, p.division, p.team
+    conf,
+    team,
+    division,
+    max(line) as win_total,
+    max(projected_wins) as proj_wins,
+    max(projected_side) as proj,
+    max(pick) filter (where speaker = 'Bill Simmons') as bill_pick,
+    max(status) filter (where speaker = 'Bill Simmons') as bill_status,
+    max(pick) filter (where speaker = 'Cousin Sal') as sal_pick,
+    max(status) filter (where speaker = 'Cousin Sal') as sal_status
+from picks
+group by conf, team, division
+order by conf, division, team
