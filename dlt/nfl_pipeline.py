@@ -3,22 +3,24 @@ import os
 import dlt
 from dlt.sources.helpers import requests
 
-# Season start year, e.g. 2026 for the 2026-27 season. The scoreboard is queried
-# by date window because ESPN's year/week params only resolve for the most
-# recently published season.
+# Season start year, e.g. 2026 for the 2026-27 season. ESPN's year/week params
+# only resolve for the most recently published season and date ranges are
+# rejected (400), so fetch both calendar years the season spans and keep only
+# events tagged with this season.
 season = int(os.environ.get("MDS_NFL_SEASON", "2026"))
-url = (
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
-    f"?dates={season}0901-{season + 1}0301&limit=1000"
-)
-
-response = requests.get(
-    url,
-    headers={
-        "User-Agent": "nba-monte-carlo/1.0 (+https://github.com/matsonj/nba-monte-carlo)",
-    },
-)
-response.raise_for_status()
+events = {}
+for year in (season, season + 1):
+    response = requests.get(
+        "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
+        f"?dates={year}&limit=1000",
+        headers={
+            "User-Agent": "nba-monte-carlo/1.0 (+https://github.com/matsonj/nba-monte-carlo)",
+        },
+    )
+    response.raise_for_status()
+    for event in response.json().get("events", []):
+        if event["season"]["year"] == season:
+            events[event["id"]] = event
 
 # ESPN postseason week numbers -> continuation of regular season numbering,
 # matching how downstream models identify playoff rounds (wk >= 19).
@@ -27,7 +29,7 @@ POSTSEASON_WEEKS = {1: 19, 2: 20, 3: 21, 5: 22}
 
 
 def games():
-    for event in response.json().get("events", []):
+    for event in events.values():
         season_type = event["season"]["type"]
         week = event["week"]["number"]
         if season_type == 2:
