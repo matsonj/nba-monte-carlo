@@ -1,4 +1,4 @@
-team,team_long,conf,ELO rating,Win Total,Tournament_group,alt_key,Division
+team,team_long,conf,elo_rating,win_total,tournament_group,alt_key,division
 ATL,Atlanta Hawks,East,1622,43.1,east_c,ATL,Southeast
 BOS,Boston Celtics,East,1696,51,east_c,BOS,Atlantic
 BRK,Brooklyn Nets,East,1442,24.3,east_a,BKN,Atlantic
