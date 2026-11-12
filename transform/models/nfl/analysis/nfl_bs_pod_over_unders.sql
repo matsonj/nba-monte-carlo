@@ -99,6 +99,10 @@ with
                 then true
                 else false
             end as regular_season_complete,
+            (
+                coalesce(a.current_wins, 0)
+                + greatest(coalesce(s.scheduled_games, 0) - coalesce(a.games_played, 0), 0)
+            )::integer as max_possible_wins,
             j.projected_wins_raw,
             round(j.projected_wins_raw, 1) as projected_wins
         from picks p
@@ -119,16 +123,22 @@ with
                 when projected_wins_raw < line then 'under'
                 else 'push'
             end as projected_side,
+            -- a pick settles as soon as the outcome is mathematically locked, not
+            -- only when the regular season ends. max_possible_wins assumes the team
+            -- wins every remaining game.
             case
-                when regular_season_complete then
-                    case
-                        when pick = 'over' and current_wins > line then 'Win'
-                        when pick = 'under' and current_wins < line then 'Win'
-                        when current_wins = line then 'Push'
-                        else 'Loss'
-                    end
+                when pick = 'over' and current_wins > line then 'Win'
+                when pick = 'over' and max_possible_wins < line then 'Loss'
+                when pick = 'under' and max_possible_wins < line then 'Win'
+                when pick = 'under' and current_wins > line then 'Loss'
+                when regular_season_complete and current_wins = line then 'Push'
             end as final_result
         from metrics
+    ),
+
+    settled as (
+        select *, final_result is not null as is_settled
+        from results
     )
 
 select
@@ -137,7 +147,7 @@ select
     -- the picked side of the line. Falls back to the current win total if a team is
     -- somehow missing from the simulation output.
     case
-        when regular_season_complete then final_result
+        when is_settled then final_result
         when projected_side is not null and pick = projected_side then 'On track'
         when projected_side is not null then 'Behind'
         when (pick = 'over' and current_wins > line)
@@ -145,4 +155,4 @@ select
         then 'On track'
         else 'Behind'
     end as live_status
-from results
+from settled
